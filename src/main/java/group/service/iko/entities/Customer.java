@@ -1,0 +1,63 @@
+package group.service.iko.entities;
+
+import javax.persistence.*;
+import java.util.List;
+import java.util.Set;
+
+@Entity
+@Table()
+public class Customer {
+
+    @Id
+    @GeneratedValue(strategy =GenerationType.IDENTITY)
+    private int id;
+    @Column
+    private String name;
+    @Column
+    private String contacts;
+    @Column
+    private String otherInfo;
+    @OneToMany(mappedBy = "customer", fetch = FetchType.EAGER)
+    private List<Machine> machineList;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getContacts() {
+        return contacts;
+    }
+
+    public void setContacts(String contacts) {
+        this.contacts = contacts;
+    }
+
+    public String getOtherInfo() {
+        return otherInfo;
+    }
+
+    public void setOtherInfo(String otherInfo) {
+        this.otherInfo = otherInfo;
+    }
+
+    public List<Machine> getMachineList() {
+        return machineList;
+    }
+
+    public void setMachineList(List<Machine> machineList) {
+        this.machineList = machineList;
+    }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "name='" + name + '\'' +
+                ", contacts='" + contacts + '\'' +
+                ", otherInfo='" + otherInfo + '\'' +
+                '}';
+    }
+}
