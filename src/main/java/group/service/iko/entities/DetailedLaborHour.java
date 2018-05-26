@@ -17,6 +17,16 @@ public class DetailedLaborHour {
     @JoinColumn(name = "history_record_id")
     private HistoryRecord historyRecord;
 
+    public DetailedLaborHour(){
+
+    }
+
+    public DetailedLaborHour(String workerName, int jobDuration) {
+
+        this.workerName = workerName;
+        this.jobDuration = jobDuration;
+    }
+
 
     public int getId() {
         return id;

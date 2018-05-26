@@ -3,7 +3,9 @@ package group.service.iko.db;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import org.springframework.stereotype.Service;
 
+@Service
 public class SessionFactoryImpl {
 
     private static SessionFactory sessionFactory;

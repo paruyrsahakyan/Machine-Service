@@ -1,13 +1,17 @@
 package test;
 
 
-import group.service.iko.db.CustomerHibernateDAO;
-import group.service.iko.db.HistoryRecordHibernateDAO;
-import group.service.iko.entities.Customer;
-import group.service.iko.entities.HistoryRecord;
-import group.service.iko.entities.Machine;
-import group.service.iko.entities.RecordFile;
+import group.service.iko.db.MachineHibernateDAO;
+import group.service.iko.entities.*;
+import group.service.iko.service.CustomerService;
+import group.service.iko.service.DetailedLaborHourService;
+import group.service.iko.service.HistoryRecordService;
+import group.service.iko.service.MachineService;
+
+import java.sql.Array;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -38,46 +42,15 @@ public class Test {
         RecordFile recordFile = new RecordFile();
         recordFile.setFilename("1imapge.jpg");
         recordFile.setHistoryRecord(historyRecord);
-//
-//        MachineHibernateDAO machineHibernateDAO = new MachineHibernateDAO();
-//        machineHibernateDAO.addMachine(newMachine);
-//        machineHibernateDAO.updateMachine(newMachine);
-//        machineHibernateDAO.addMachine(newMachine);
-//        List<Machine> list= machineHibernateDAO.getMachinesByCustomer("Vahagn & Samvel7");
-//        machineHibernateDAO.deleteMachine(newMachine);
-//        machineHibernateDAO.updateMachine(newMachine);
-////
-        CustomerHibernateDAO customerHibernateDAO = new CustomerHibernateDAO();
-        customerHibernateDAO.saveCustomer(customer);
-//        List<Customer> list = customerHibernateDAO.getAllCustomers();
-//        System.out.println(list);
-//              System.out.println(customerHibernateDAO.getCustomer("GTS"));
-//////
-//        HistoryRecordHibernateDAO historyRecordHibernateDAO = new HistoryRecordHibernateDAO();
-//        HistoryRecord historyRecord1 = historyRecordHibernateDAO.getRecord(2);
-//        List<RecordFile> recordFiles = historyRecord1.getRecordFiles();
-//        for(RecordFile recordFile1: recordFiles){
-//            System.out.println(recordFile);
-//        }
+        DetailedLaborHourService detailedLaborHourService =  new DetailedLaborHourService();
 
-////
-//        RecordFileHibernateDAO recordFileHibernateDAO = new RecordFileHibernateDAO();
-//        recordFileHibernateDAO.saveRecordFile(recordFile);
-//        RecordFile recordFile1 = recordFileHibernateDAO.getRecorFilById(1);
-//        HistoryRecord historyRecord1 = recordFile1.getHistoryRecord();
-//        System.out.println("||||");
-//        System.out.println("||||");
-//        System.out.println("||||");
-//        System.out.println("||||");
-////        System.out.println(historyRecord);
-//        for(RecordFile recordFile2: historyRecord.getRecordFiles()){
-//            System.out.println(recordFile2);
+        HistoryRecordService historyRecordService = new HistoryRecordService();
+        HistoryRecord historyRecord1 = historyRecordService.getLastRecord();
 
-
-        
-
-
-           
+        List<DetailedLaborHour> detailedLaborHourList =
+                detailedLaborHourService.getDetailedLaborByRecordId(historyRecord.getId());
+        System.out.println(Arrays.asList(detailedLaborHourList));
 
     }
+
 }

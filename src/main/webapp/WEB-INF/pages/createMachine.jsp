@@ -1,0 +1,38 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: Admin
+  Date: 5/19/2018
+  Time: 9:18 PM
+  To change this template use File | Settings | File Templates.
+--%>
+
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
+<head>
+    <title>Создание новой машины</title>
+</head>
+<body>
+<h2>Создание новой машины</h2> <br>
+<form action="/newMachine/${customerName}">
+    Влоделец: <br>
+    ${customerName}<br><br>
+    Модель  Машины:<br>
+    <input type="text" name="model" style="height: auto"><br><br>
+    Серийный номер:<br>
+    <input type="text" name="serialNumber" style="height: auto"><br><br>
+    Модель ДВС: <br>
+    <input type="text" name="engineModel" style="height: auto"><br><br>
+    Сер. номер ДВС: <br>
+    <input type="text" name="engineSerialNumber" style="height: auto"><br><br>
+    Год производства: <br>
+    <input type="number" name="productionYear" style="height: auto" ><br><br>
+
+    Другая информация: <br>
+    <textarea name="otherInfo" cols="40" rows="5"></textarea> <br><br>
+
+
+    <input type="submit" value="Сохранить">
+</form>
+
+</body>
+</html>

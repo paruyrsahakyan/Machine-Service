@@ -11,7 +11,7 @@ public class Customer {
     @Id
     @GeneratedValue(strategy =GenerationType.IDENTITY)
     private int id;
-    @Column
+    @Column(unique = true)
     private String name;
     @Column
     private String contacts;
@@ -19,6 +19,24 @@ public class Customer {
     private String otherInfo;
     @OneToMany(mappedBy = "customer", fetch = FetchType.EAGER)
     private List<Machine> machineList;
+
+@Override
+    public String toString() {
+        return "Customer{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", contacts='" + contacts + '\'' +
+                ", otherInfo='" + otherInfo + '\'' +
+                                '}';
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -52,12 +70,4 @@ public class Customer {
         this.machineList = machineList;
     }
 
-    @Override
-    public String toString() {
-        return "Customer{" +
-                "name='" + name + '\'' +
-                ", contacts='" + contacts + '\'' +
-                ", otherInfo='" + otherInfo + '\'' +
-                '}';
-    }
 }

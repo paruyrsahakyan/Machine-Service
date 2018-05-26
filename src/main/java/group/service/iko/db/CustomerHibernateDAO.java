@@ -5,6 +5,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,34 +19,45 @@ public class CustomerHibernateDAO {
 
     }
 
-    public void saveCustomer(Customer customer){
+    public void saveCustomer(Customer customer) {
         session = SessionFactoryImpl.getSessionFactory().openSession();
         session.save(customer);
         session.flush();
         session.close();
     }
+
     public void updateCustomer(Customer customer) {
         session = SessionFactoryImpl.getSessionFactory().openSession();
         session.update(customer);
         session.flush();
         session.close();
     }
-    public  void deleteCustomer(Customer customer){
+
+    public void deleteCustomer(Customer customer) {
         session = SessionFactoryImpl.getSessionFactory().openSession();
         session.delete(customer);
         session.flush();
         session.close();
     }
-    public Customer getCustomerById(int id){
+
+    public Customer getCustomerById(int id) {
         session = SessionFactoryImpl.getSessionFactory().openSession();
-        String hql = "FROM group.service.iko.entities.Customer WHERE id="+id;
+        String hql = "FROM group.service.iko.entities.Customer WHERE id=" + id;
         Query query = session.createQuery(hql);
-        return  (Customer) query.uniqueResult();
+        Customer customer = (Customer) query.uniqueResult();
+        session.flush();
+        session.close();
+        return customer;
+
     }
+
     public List<Customer> getAllCustomers() {
         session = SessionFactoryImpl.getSessionFactory().openSession();
         String hql = "from group.service.iko.entities.Customer";
-        Query query= session.createQuery(hql);
-        return (List<Customer>) query.list();
-            }
-            }
+        Query query = session.createQuery(hql);
+        List<Customer> customerList= (List<Customer>) query.list();
+        session.flush();
+        session.close();
+        return customerList;
+    }
+}

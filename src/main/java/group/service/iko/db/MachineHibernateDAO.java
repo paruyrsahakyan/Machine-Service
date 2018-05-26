@@ -36,7 +36,9 @@ public class MachineHibernateDAO {
         String hql = "FROM group.service.iko.entities.Machine WHERE customer='"
                 + customer+"'";
         Query query =session.createQuery(hql);
-        return (List<Machine>) query.list();
+        List<Machine> machineList = query.list();
+        session.close();
+        return (machineList);
 
     }
 

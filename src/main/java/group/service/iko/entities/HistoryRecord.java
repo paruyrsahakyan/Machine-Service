@@ -28,12 +28,27 @@ public class HistoryRecord {
     private List<RecordFile> recordFiles;
     @Column
     private int laborHour;
-    @OneToMany(mappedBy = "historyRecord")
+    @OneToMany(mappedBy = "historyRecord" )
     private List<DetailedLaborHour> laborHours;
 
     public HistoryRecord() {
     }
 
+    public int getLaborHour() {
+        return laborHour;
+    }
+
+    public void setLaborHour(int laborHour) {
+        this.laborHour = laborHour;
+    }
+
+    public List<DetailedLaborHour> getLaborHours() {
+        return laborHours;
+    }
+
+    public void setLaborHours(List<DetailedLaborHour> laborHours) {
+        this.laborHours = laborHours;
+    }
 
     public int getId() {
         return id;
@@ -111,6 +126,9 @@ public class HistoryRecord {
                 ", machine=" + machine +
                 ", otherInfo='" + otherInfo + '\'' +
                 ", recordFiles=" + recordFiles +
+                ", laborHour=" + laborHour +
+                ", laborHours=" + laborHours +
                 '}';
     }
 }
+

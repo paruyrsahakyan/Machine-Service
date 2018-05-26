@@ -33,6 +33,20 @@ public class Machine {
 
     }
 
+    @Override
+    public String toString() {
+        return "Machine{" +
+                "id=" + id +
+                ", model='" + model + '\'' +
+                ", serialNumber='" + serialNumber + '\'' +
+                ", engineModel='" + engineModel + '\'' +
+                ", engineSerialNumber='" + engineSerialNumber + '\'' +
+                ", productionYear=" + productionYear +
+                ", otherInfo='" + otherInfo + '\'' +
+                ", customer=" + customer +
+                                '}';
+    }
+
     public int getId() {
         return id;
     }
