@@ -15,13 +15,13 @@
     <h3>${model}:   ${serialNumber}</h3>
 <form action="/newHistoryRecord/${model}/${serialNumber}">
 Описание работы:  <br>
-    <input type="text" name="title">
+    <input type="text" name="title" required>
     <br><br>
     Моточасы:<br>
     <input type="number" name="SMR">
     <br><br>
     Дата:<br>
-    <input type="date" name="date" >
+    <input type="date" name="date" required>
     <br><br>
     Человекочасы: <br>
     <input type="number" name="laborHour">

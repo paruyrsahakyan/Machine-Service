@@ -13,17 +13,7 @@
     </style>
 </head>
 <body>
-<div class="center">
-    <form method="get">
-        <label>
-            search:
-            <input type = "text" style="width: 300px;"/>
-        </label>
-        <input type="submit" value="search">
-    </form>
 
-    </label>
-</div>
 
 <p> <a href="/allCustomers"> все компании</a> </p>
 <p> <a href="/allMachines"> все машины</a> </p>

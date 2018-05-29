@@ -7,6 +7,8 @@ import group.service.iko.entities.HistoryRecord;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
+import java.util.List;
+
 public class HistoryRecordService {
     HistoryRecordHibernateDAO historyRecordHibernateDAO;
     public HistoryRecordService(){
@@ -35,6 +37,5 @@ public void saveHistoryRecord(HistoryRecord historyRecord){
         historyRecordHibernateDAO.updateRecord(historyRecord);
 
     }
-
 
 }

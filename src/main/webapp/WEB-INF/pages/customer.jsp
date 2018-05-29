@@ -50,7 +50,7 @@
     </tr>
 
 </table>
-    <h3>Сисок машин</h3>
+    <h3>Парк машин</h3>
     <table style="width: auto">
         <tr>
             <th>N</th>
