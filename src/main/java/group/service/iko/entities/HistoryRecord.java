@@ -1,7 +1,10 @@
 package group.service.iko.entities;
 
+import org.hibernate.annotations.IndexColumn;
+
 import javax.persistence.*;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Set;
 
@@ -14,8 +17,7 @@ public class HistoryRecord {
     @Column
     private  String title;
     @Column
-    private  Date recordDate;
-    @Column
+    private GregorianCalendar recordDate;
     private int SMR;
     @Column
     private String recordInformation;
@@ -28,7 +30,7 @@ public class HistoryRecord {
     private List<RecordFile> recordFiles;
     @Column
     private int laborHour;
-    @OneToMany(mappedBy = "historyRecord" )
+    @OneToMany(mappedBy = "historyRecord")
     private List<DetailedLaborHour> laborHours;
 
     public HistoryRecord() {
@@ -67,11 +69,11 @@ public class HistoryRecord {
         this.title = title;
     }
 
-    public Date getRecordDate() {
+    public GregorianCalendar getRecordDate() {
         return recordDate;
     }
 
-    public void setRecordDate(Date recordDate) {
+    public void setRecordDate(GregorianCalendar recordDate) {
         this.recordDate = recordDate;
     }
 
@@ -127,8 +129,7 @@ public class HistoryRecord {
                 ", otherInfo='" + otherInfo + '\'' +
                 ", recordFiles=" + recordFiles +
                 ", laborHour=" + laborHour +
-                ", laborHours=" + laborHours +
-                '}';
+                                '}';
     }
 }
 

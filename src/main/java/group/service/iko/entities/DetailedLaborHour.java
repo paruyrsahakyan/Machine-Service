@@ -59,4 +59,14 @@ public class DetailedLaborHour {
     public void setHistoryRecord(HistoryRecord historyRecord) {
         this.historyRecord = historyRecord;
     }
+
+    @Override
+    public String toString() {
+        return "DetailedLaborHour{" +
+                "id=" + id +
+                ", workerName='" + workerName + '\'' +
+                ", jobDuration=" + jobDuration +
+                ", historyRecord=" + historyRecord +
+                '}';
+    }
 }

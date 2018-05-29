@@ -1,18 +1,15 @@
 package group.service.iko.controller;
 
+import group.service.iko.calendarAdapter.CalendarAdapter;
 import group.service.iko.entities.DetailedLaborHour;
 import group.service.iko.entities.HistoryRecord;
 import group.service.iko.entities.Machine;
-import group.service.iko.service.CustomerService;
+import group.service.iko.service.*;
 import group.service.iko.entities.Customer;
-import group.service.iko.service.DetailedLaborHourService;
-import group.service.iko.service.HistoryRecordService;
-import group.service.iko.service.MachineService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.*;
@@ -227,7 +224,7 @@ public class MainController {
         historyRecord.setTitle(title);
         historyRecord.setSMR(SMR);
         historyRecord.setLaborHour(laborhour);
-//        historyRecord.setRecordDate(date);
+        historyRecord.setRecordDate(CalendarAdapter.getGregCalendar(date));
         HistoryRecordService historyRecordService = new HistoryRecordService();
         historyRecordService.saveHistoryRecord(historyRecord);
         HistoryRecord savedHistoryRecord = historyRecordService.getLastRecord();
@@ -250,9 +247,82 @@ System.out.println(savedHistoryRecord);
 System.out.println(savedDetailedLaborList);
         modelAndView.addObject("historyRecord", savedHistoryRecord);
         modelAndView.addObject("laborHourList", savedDetailedLaborList);
-                return modelAndView;
+        String recordDate = CalendarAdapter.getStringFormat(savedHistoryRecord.getRecordDate());
+        modelAndView.addObject("recordDate",  recordDate);
+               return modelAndView;
 
     }
+
+    @RequestMapping("/updateHistoryRecord/{historyRecordId}")
+public ModelAndView updateHistoryRecord(@PathVariable("historyRecordId") int historyRecordId){
+
+        ModelAndView modelAndView = new ModelAndView("updateHistoryRecord");
+        HistoryRecordService historyRecordService = new HistoryRecordService();
+        HistoryRecord historyRecord = historyRecordService.getHistoryRecordById(historyRecordId);
+
+        modelAndView.addObject("historyRecord", historyRecord);
+        String recordDate = CalendarAdapter.getStringFormat(historyRecord.getRecordDate());
+        DetailedLaborHourService laborHourService = new DetailedLaborHourService();
+        List<DetailedLaborHour> laborHourList = laborHourService.getDetailedLaborByRecordId(historyRecordId);
+        modelAndView.addObject("recordDate", recordDate);
+        modelAndView.addObject("laborHourList", laborHourList);
+        return modelAndView;
+    }
+    @RequestMapping("/updatedHistoryRecord/{historyRecordId}")
+    public ModelAndView updatedHistoryRecord(@PathVariable("historyRecordId") int historyRecordId,
+                                            @RequestParam("title") String title,
+                                            @RequestParam(name = "SMR", defaultValue = "0" ) int SMR,
+                                            @RequestParam("date") String date,
+                                            @RequestParam(name = "laborHour", defaultValue = "0") int laborHour,
+                                            @RequestParam("workerName[]") String[] workerNames,
+                                            @RequestParam(value = "manHour[]")  String[] manHours
+                                             )
+    {
+        ModelAndView modelAndView = new ModelAndView("historyRecord");
+        HistoryRecordService historyRecordService = new HistoryRecordService();
+        HistoryRecord historyRecord = historyRecordService.getHistoryRecordById(historyRecordId);
+        historyRecord.setTitle(title);
+        historyRecord.setSMR(SMR);
+        historyRecord.setRecordDate(CalendarAdapter.getGregCalendar(date));
+        historyRecord.setLaborHour(laborHour);
+        historyRecordService.updateHistoryRecord(historyRecord);
+        DetailedLaborHour  detailedLaborHour;
+        DetailedLaborHourService laborHourService = new DetailedLaborHourService();
+        laborHourService.deleteAllByHistoryRecordId(historyRecordId);
+        for(int i = 0; i<workerNames.length; i++) {
+            if (!workerNames[i].equals("")) {
+                detailedLaborHour = new DetailedLaborHour();
+                detailedLaborHour.setWorkerName(workerNames[i]);
+                detailedLaborHour.setHistoryRecord(historyRecord);
+                if (!manHours[i].equals("")) {
+                    detailedLaborHour.setJobDuration(Integer.parseInt(manHours[i]));
+                                   }
+                laborHourService.saveDetailedLaborHour(detailedLaborHour);
+            }
+        }
+HistoryRecord updatedHistoryRecord = historyRecordService.getHistoryRecordById(historyRecordId);
+                 modelAndView.addObject("historyRecord", updatedHistoryRecord);
+                 String recordDate = CalendarAdapter.getStringFormat(updatedHistoryRecord.getRecordDate());
+                 List<DetailedLaborHour> laborHourList = laborHourService.getDetailedLaborByRecordId(historyRecordId);
+                  System.out.println(recordDate);
+                 modelAndView.addObject("recordDate", recordDate);
+                 modelAndView.addObject("laborHourList", laborHourList);
+       return  modelAndView;
+                    }
+
+
+    @PostMapping("/fileAdded/{historyRecordId}")
+public  ModelAndView fileAdded(@PathVariable("historyRecordId") int historyRecordId,
+                               @RequestParam("file")  MultipartFile  file){
+        System.out.println("insidee servlet");
+        ModelAndView modelAndView = new ModelAndView("historyRecord");
+        StorageService storageService = new StorageService();
+        storageService.storeFile(file, historyRecordId);
+       return modelAndView;
+
+}
+
+
 
 }
 

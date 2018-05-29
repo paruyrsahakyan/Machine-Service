@@ -40,17 +40,21 @@ public class HistoryRecordHibernateDAO {
         session.flush();
         session.close();
     }
-    public HistoryRecord getRecord(int id) {
+    public HistoryRecord getRecordById(int id) {
         session = sessionFactory.openSession();
         String hql = "from group.service.iko.entities.HistoryRecord where id =" + id;
         Query query = session.createQuery(hql);
-        return (HistoryRecord) query.uniqueResult();
+        HistoryRecord historyRecord = (HistoryRecord) query.uniqueResult();
+        session.close();
+        return  historyRecord;
     }
     public List<HistoryRecord> getAllRecords(){
         session= sessionFactory.openSession();
         String hql = "from group.service.iko.entities.HistoryRecord";
         Query query = session.createQuery(hql);
-        return (List<HistoryRecord>) query.list();
+        List<HistoryRecord> historyRecordList =  (List<HistoryRecord>) query.list();
+        session.close();
+        return historyRecordList;
             }
 
 

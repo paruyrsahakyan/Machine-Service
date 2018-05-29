@@ -27,7 +27,7 @@ public class Machine {
     @JoinColumn(name = "customer_id")
     private Customer customer;
     @OneToMany(mappedBy = "machine", fetch = FetchType.EAGER)
-    private List<HistoryRecord> historyRecordSet;
+    private List<HistoryRecord> historyRecordList;
 
     public Machine() {
 
@@ -43,7 +43,7 @@ public class Machine {
                 ", engineSerialNumber='" + engineSerialNumber + '\'' +
                 ", productionYear=" + productionYear +
                 ", otherInfo='" + otherInfo + '\'' +
-                ", customer=" + customer +
+                ", customer=" + customer.getName() +
                                 '}';
     }
 
@@ -111,11 +111,11 @@ public class Machine {
         this.customer = customer;
     }
 
-    public List<HistoryRecord> getHistoryRecordSet() {
-        return historyRecordSet;
+    public List<HistoryRecord> getHistoryRecordList() {
+        return historyRecordList;
     }
 
-    public void setHistoryRecordSet(List<HistoryRecord> historyRecordSet) {
-        this.historyRecordSet = historyRecordSet;
+    public void setHistoryRecordList(List<HistoryRecord> historyRecordList) {
+        this.historyRecordList = historyRecordList;
     }
 }

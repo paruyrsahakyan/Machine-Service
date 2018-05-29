@@ -26,6 +26,15 @@ public void saveHistoryRecord(HistoryRecord historyRecord){
         session.close();
         return lastHistoryRecord;
     }
+    public HistoryRecord getHistoryRecordById(int id){
+    HistoryRecordHibernateDAO historyRecordHibernateDAO = new HistoryRecordHibernateDAO();
+    return historyRecordHibernateDAO.getRecordById(id);
+    }
+    public  void updateHistoryRecord(HistoryRecord historyRecord){
+        HistoryRecordHibernateDAO historyRecordHibernateDAO = new HistoryRecordHibernateDAO();
+        historyRecordHibernateDAO.updateRecord(historyRecord);
+
+    }
 
 
 }

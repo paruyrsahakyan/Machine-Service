@@ -38,6 +38,8 @@
     <br><br>
     Имя раборника: Длительность работы:
     <input type="text" name="workerName4" > &nbsp; <input type="number" name="manHour4">
+    <br><br>
+
 <input type="submit" value="сохранить" >
 </form>
 

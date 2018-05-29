@@ -68,9 +68,10 @@
         </tr>
     </table>
     </div>
+<br> <br>
 <a href="/updateMachine/${machine.id}" style="bottom: auto"> Редактировать</a>  &nbsp;
 <a href="/createHistoryRecord/${machine.id}">Создать новую запись истории</a>  &nbsp;
-<a href="/historyRecord/${machine.id}">Пoказать работы   </a>
+<a href="/customer/machine/RecordList/${machine.id}"> Пoказать работы </a>
 
 </body>
-</html>$
+</html>

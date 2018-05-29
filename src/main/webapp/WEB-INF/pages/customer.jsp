@@ -26,11 +26,13 @@
 
 <div>
 
-<h2>информация о заказчике</h2>
+<h2>Информация о заказчике</h2>
 
 
     <a href="/updateCustomer/${customer.id}" style="bottom: auto"> Редактировать</a>
+    &nbsp; &nbsp;
     <a href="/createMachine/${customer.id}" style="bottom: auto"> Добавить машину</a>
+    <br> <br>
 
 <table style="width: auto">
     <tr>
@@ -48,6 +50,24 @@
     </tr>
 
 </table>
+    <h3>Сисок машин</h3>
+    <table style="width: auto">
+        <tr>
+            <th>N</th>
+            <th>Модель</th>
+            <th>Серийный номер</th>
+              </tr>
+
+        <% int i = 1; %>
+        <c:forEach items="${customer.machineList}" var="machine">
+            <tr>
+                <td><%= i++%> </td>
+                <td>${machine.model}</td>
+                <td><a href="/machine/${machine.id}"> ${machine.serialNumber} </a></td>
+                            </tr>
+        </c:forEach>
+        </tr>
+    </table>
 </div>
 
 </body>

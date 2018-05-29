@@ -1,56 +1,64 @@
 package test;
 
 
-import group.service.iko.db.MachineHibernateDAO;
-import group.service.iko.entities.*;
-import group.service.iko.service.CustomerService;
+import group.service.iko.calendarAdapter.CalendarAdapter;
+import group.service.iko.entities.DetailedLaborHour;
+import group.service.iko.entities.HistoryRecord;
 import group.service.iko.service.DetailedLaborHourService;
 import group.service.iko.service.HistoryRecordService;
-import group.service.iko.service.MachineService;
+import group.service.iko.service.StorageService;
+import org.springframework.web.multipart.MultipartFile;
 
-import java.sql.Array;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
-
 public class Test {
-    public static void main(String[] args) throws SQLException {
+    public static void main(String[] args) throws IOException {
 
-        Customer customer = new Customer();
-        customer.setName("aaa");
-        customer.setContacts("077 9345678 Artak");
-        customer.setOtherInfo("какая то информация");
-        Machine newMachine = new Machine();
-        newMachine.setModel("D275-5A");
-        newMachine.setSerialNumber("112");
-        newMachine.setOtherInfo("some info");
-        newMachine.setCustomer(customer);
-        Customer customer1= new Customer();
-        customer1.setName("aaa");
-        newMachine.setCustomer(customer1);
-        newMachine.setId(1);
-        HistoryRecord historyRecord = new HistoryRecord();
-        historyRecord.setRecordDate(new Date(2018-1900, 05-1, 25));
-        historyRecord.setTitle("Engine oil change");
-        historyRecord.setSMR(1232);
-        historyRecord.setMachine(newMachine);
-        historyRecord.setId(2);
 
-        RecordFile recordFile = new RecordFile();
-        recordFile.setFilename("1imapge.jpg");
-        recordFile.setHistoryRecord(historyRecord);
-        DetailedLaborHourService detailedLaborHourService =  new DetailedLaborHourService();
+      StorageService storageService = new StorageService();
+      MultipartFile multipartFile= new MultipartFile() {
+        public String getName() {
+          return null;
+        }
 
-        HistoryRecordService historyRecordService = new HistoryRecordService();
-        HistoryRecord historyRecord1 = historyRecordService.getLastRecord();
+        public String getOriginalFilename() {
+          return null;
+        }
 
-        List<DetailedLaborHour> detailedLaborHourList =
-                detailedLaborHourService.getDetailedLaborByRecordId(historyRecord.getId());
-        System.out.println(Arrays.asList(detailedLaborHourList));
+        public String getContentType() {
+          return null;
+        }
 
-    }
+        public boolean isEmpty() {
+          return false;
+        }
 
-}
+        public long getSize() {
+          return 0;
+        }
+
+        public byte[] getBytes() throws IOException {
+          return new byte[0];
+        }
+
+        public InputStream getInputStream() throws IOException {
+          return null;
+        }
+
+        public void transferTo(File file) throws IOException, IllegalStateException {
+
+        }
+      };
+      storageService.storeFile(multipartFile, 57);
+
+
+        }
+          }
+
+
