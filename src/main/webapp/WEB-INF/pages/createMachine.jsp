@@ -13,9 +13,9 @@
 </head>
 <body>
 <h2>Регистрация новой машины</h2> <br>
-<form action="/newMachine/${customerName}">
-    Влоделец: &nbsp;
-    ${customerName}<br><br>
+<h3>Влоделец: &nbsp; ${customerName}</h3>
+<form action="/customer/newMachine/${customerId}" method="post" accept-charset="UTF-8">
+
     Модель Машины:<br>
     <input type="text" name="model" style="height: auto"><br><br>
     Серийный номер:<br>
@@ -26,7 +26,6 @@
     <input type="text" name="engineSerialNumber" style="height: auto"><br><br>
     Год производства: <br>
     <input type="number" name="productionYear" style="height: auto"><br><br>
-
     Другая информация: <br>
     <textarea name="otherInfo" cols="40" rows="5"></textarea> <br><br>
 

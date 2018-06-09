@@ -13,12 +13,17 @@
     </style>
 </head>
 <body>
-
-
-<p> <a href="/allCustomers"> все компании</a> </p>
-<p> <a href="/allMachines"> все машины</a> </p>
-<p> <a href="/allCustomers"> все компании</a> </p>
-
+<h1 style="text-align: center"> IKO SERVICE </h1>
+<a href="/allCustomers"> Все компании</a>
+<br>
+<br>
+<a href="/allMachines"> Все машины</a>
+<br>
+<br>
+<a href="/analysis/worker"> Анализ работ</a>
+<br>
+<br>
+<a href="/search/machine"> Анализ работ</a>
 
 </body>
 </html>

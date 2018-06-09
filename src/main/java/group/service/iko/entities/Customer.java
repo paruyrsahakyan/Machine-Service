@@ -17,7 +17,7 @@ public class Customer {
     private String contacts;
     @Column
     private String otherInfo;
-    @OneToMany(mappedBy = "customer", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "customer", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Machine> machineList;
 
 @Override

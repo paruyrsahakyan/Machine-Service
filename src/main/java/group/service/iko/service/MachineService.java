@@ -32,9 +32,11 @@ public class MachineService {
     public Machine getMachineById(int machineId) {
 
         Session session = SessionFactoryImpl.getSessionFactory().openSession();
-        String hql = "from group.service.iko.entities.Machine where id="+machineId;
-        Machine machine = (Machine) session.createQuery(hql).uniqueResult();
-        session.close();
+        String hql = "from group.service.iko.entities.Machine where id= :machineId";
+        Query query = session.createQuery(hql);
+        query.setParameter("machineId", machineId);
+      Machine machine = (Machine) query.uniqueResult();
+       session.close();
         return machine;
     }
 
@@ -63,6 +65,22 @@ public class MachineService {
         Query query = session.createQuery(hql);
         query.setMaxResults(1);
         return (Machine) query.uniqueResult();
+
+    }
+
+    public void deleteMachineById(int machineId) {
+        Machine machine = new Machine();
+        machine.setId(machineId);
+        machineHibernateDAO.deleteMachine(machine);
+    }
+
+    public int getCustomerIdByMachineId(int machineId) {
+        Session session = SessionFactoryImpl.getSessionFactory().openSession();
+        String hql = "select customer.id from group.service.iko.entities.Machine " +
+                "where id ="+machineId;
+        Query query = session.createQuery(hql);
+              int customerId = (Integer) query.uniqueResult();
+              return customerId;
 
     }
 }

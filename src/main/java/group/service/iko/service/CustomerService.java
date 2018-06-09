@@ -42,7 +42,11 @@ customerHibernateDAO = new CustomerHibernateDAO();
              public  Customer getCustomerById(int id) {
          return customerHibernateDAO.getCustomerById(id);
 
-
              }
 
+    public void deleteCustomerById(int customerId) {
+         Customer customer = new Customer();
+         customer.setId(customerId);
+         customerHibernateDAO.deleteCustomer(customer);
+    }
 }

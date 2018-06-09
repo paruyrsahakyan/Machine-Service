@@ -29,9 +29,13 @@
 <h2>Информация о заказчике</h2>
 
 
-    <a href="/updateCustomer/${customer.id}" style="bottom: auto"> Редактировать</a>
+    <a href="/customer/updateCustomer/${customer.id}" style="bottom: auto"> Редактировать</a>
     &nbsp; &nbsp;
-    <a href="/createMachine/${customer.id}" style="bottom: auto"> Добавить машину</a>
+    <a href="/customer/createMachine/${customer.id}" style="bottom: auto"> Добавить машину</a>
+    &nbsp; &nbsp;
+    <a href="/customer/deleteCustomer/${customer.id}"
+       onclick="return confirm('!!!Вы уверены что хатите удалить компанию!!!');"
+       style="color: crimson;">Удалить компанию</a>
     <br> <br>
 
 <table style="width: auto">
@@ -63,7 +67,7 @@
             <tr>
                 <td><%= i++%> </td>
                 <td>${machine.model}</td>
-                <td><a href="/machine/${machine.id}"> ${machine.serialNumber} </a></td>
+                <td><a href="/customer/machine/${machine.id}"> ${machine.serialNumber} </a></td>
                             </tr>
         </c:forEach>
         </tr>

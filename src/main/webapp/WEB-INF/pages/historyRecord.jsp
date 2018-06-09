@@ -10,7 +10,7 @@
 <html>
 <head>
     <title>historyRecord</title>
-    <style>
+        <style>
         table {
             font-family: arial, sans-serif;
             border-collapse: collapse;
@@ -29,8 +29,12 @@
     </style>
 </head>
 <body>
-<h2>Запись в истории</h2>
-<br>
+<h2 style="text-align: center">Запись истории</h2>
+<a href="/"> главное меню</a>
+<br> <br>
+<a href="/customer/machine/${historyRecord.machine.id}" >
+<H3> ${historyRecord.machine.model} : sn${historyRecord.machine.serialNumber} </H3>
+</a>
 <table>
 <tr>
     <th>Дата</th>
@@ -45,21 +49,46 @@
         <td>${historyRecord.SMR}</td>
     </tr>
       <tr>
-        <th>Длительност работы (н/ч)</th>
+        <th>Длительность работы (н/ч)</th>
         <td>${historyRecord.laborHour}</td>
     </tr>
+    <tr>
+        <th>Детальная информация о работе</th>
+        <td>${historyRecord.recordInformation}</td>
+    </tr>
+    <tr>
+        <th>Дополнительная информация</th>
+        <td>${historyRecord.otherInfo}</td>
+    </tr>
 </table>
+<h4>Исполнители: </h4>
 <table>
-    <h4>Исполнители </h4>
-    <c:forEach items="${laborHourList}" var="laborHour">
+       <c:forEach items="${historyRecord.laborHours}" var="laborHour">
         <tr>
             <th>${laborHour.workerName}</th>
             <td>${laborHour.jobDuration}</td>
         </tr>
     </c:forEach>
 </table>
-<a href="/updateHistoryRecord/${historyRecord.id}">Редактировать</a>
-<a href ="/addFiles/${historyRecord.id}"> Добавить файлы</a>
+<br>
+Прикрепленные файлы:
+<br>
+<c:forEach items="${fileList}" var="file">
+    &nbsp;
+    <a href="/customer/machine/historyRecord/downloadFile/${file.id}" target="_blank" >
+            ${file.fileName}  </a>
+    &nbsp;|
+</c:forEach>
+<br>
+<br>
+<a href="/customer/machine/historyRecord/updateHistoryRecord/${historyRecord.id}" >Редактировать</a>
+&nbsp;
+<a href ="/customer/machine/historyRecord/addFiles/${historyRecord.id}"> Добавить/удалить файлы</a>
+<br>
+<br>
+<a href="/customer/machine/historyRecord/deleteHistoryRecord/${historyRecord.id}"
+   onclick="return confirm('!!!Вы уверены что хатите удалить запись!!!');"
+style="color: crimson">Удалить запись</a>
 
 </body>
 </html>

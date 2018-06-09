@@ -9,9 +9,11 @@
 <html>
 <head>
     <title>Редактировать</title>
+    <meta>
 </head>
 <body>
-<form action="/updatedCustomer/${customer.id}">
+<h3>Редактирование информации заказчика</h3>
+<form action="/customer/updatedCustomer/${customer.id}" method="post" accept-charset="UTF-8">
     Название компании:<br>
     <input type="text" name="name" style="height: auto" value="${customer.name}"><br><br>
     Контактные данные:<br>

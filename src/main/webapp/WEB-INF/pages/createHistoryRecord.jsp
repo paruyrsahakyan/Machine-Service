@@ -13,31 +13,80 @@
 <h2>Новая запись</h2>
 <br>
     <h3>${model}:   ${serialNumber}</h3>
-<form action="/newHistoryRecord/${model}/${serialNumber}">
+<form action="/customer/machine/newHistoryRecord/${machineId}" method="post" accept-charset="UTF-8">
 Описание работы:  <br>
     <input type="text" name="title" required>
     <br><br>
     Моточасы:<br>
-    <input type="number" name="SMR">
+    <input type="number" name="SMR" >
     <br><br>
     Дата:<br>
     <input type="date" name="date" required>
     <br><br>
     Человекочасы: <br>
-    <input type="number" name="laborHour">
+    <input type="number" name="laborHour" step="0.25">
+    <br><br>
+    Детальная информация о работе: <br>
+    <textarea name="recordInformation" cols="40" rows="5"> </textarea>
+    <br><br>
+    Дополнительная информация: <br>
+    <input type="text" name="otherInfo"> </input>
     <br><br>
 <h3> Часы по работникам</h3>
-    Имя раборника:  Длительность работы:
-    <input type="text" name="workerName1" > &nbsp; <input type="number" name="manHour1">
+    Имя работника:  Нормачасы:
+    <select name="workerName1">
+        <option value="" selected></option>
+        <option value="Саакян Паруйр">Саакян Паруйр</option>
+        <option value="Григорян Арсен">Григорян Арсен</option>
+        <option value="Чандырян Давид">Чандырян Давид</option>
+        <option value="Уклеин Павел">Уклеин Павел</option>
+        <option value="Рудометкин Василий">Рудометкин Василий</option>
+        <option value="Акобян Грачя">Акобян Грачя</option>
+        <option value="Харисов Марат">Харисов Марат</option>
+    </select>
+     &nbsp; <input type="number" name="manHour1" step="0.25">
     <br><br>
-    Имя раборника:   Длительность работы:
-    <input type="text" name="workerName2" > &nbsp; <input type="number" name="manHour2" >
+    Имя раборника:   Нормачасы:
+    <select name="workerName2">
+        <option value="" selected></option>
+        <option value="Саакян Паруйр">Саакян Паруйр</option>
+        <option value="Григорян Арсен">Григорян Арсен</option>
+        <option value="Чандырян Давид">Чандырян Давид</option>
+        <option value="Уклеин Павел">Уклеин Павел</option>
+        <option value="Рудометкин Василий">Рудометкин Василий</option>
+        <option value="Акобян Грачя">Акобян Грачя</option>
+        <option value="Харисов Марат">Харисов Марат</option>
+    </select>
+    &nbsp;
+    <input type="number" name="manHour2" step="0.25" >
     <br><br>
-    Имя раборника: Длительность работы:
-    <input type="text" name="workerName3" > &nbsp; <input type="number" name="manHour3" >
+    Имя раборника: Нормачасы:
+    <select name="workerName3">
+        <option value="" selected></option>
+        <option value="Саакян Паруйр">Саакян Паруйр</option>
+        <option value="Григорян Арсен">Григорян Арсен</option>
+        <option value="Чандырян Давид">Чандырян Давид</option>
+        <option value="Уклеин Павел">Уклеин Павел</option>
+        <option value="Рудометкин Василий">Рудометкин Василий</option>
+        <option value="Акобян Грачя">Акобян Грачя</option>
+        <option value="Харисов Марат">Харисов Марат</option>
+    </select>
+    &nbsp;
+    <input type="number" name="manHour3" step="0.25" >
     <br><br>
-    Имя раборника: Длительность работы:
-    <input type="text" name="workerName4" > &nbsp; <input type="number" name="manHour4">
+    Имя раборника: Нормачасы:
+    <select name="workerName4">
+        <option value="" selected></option>
+        <option value="Саакян Паруйр">Саакян Паруйр</option>
+        <option value="Григорян Арсен">Григорян Арсен</option>
+        <option value="Чандырян Давид">Чандырян Давид</option>
+        <option value="Уклеин Павел">Уклеин Павел</option>
+        <option value="Рудометкин Василий">Рудометкин Василий</option>
+        <option value="Акобян Грачя">Акобян Грачя</option>
+        <option value="Харисов Марат">Харисов Марат</option>
+    </select>
+    &nbsp;
+    <input type="number" name="manHour4" step="0.25">
     <br><br>
 
 <input type="submit" value="сохранить" >

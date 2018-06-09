@@ -1,4 +1,4 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <%--
   Created by IntelliJ IDEA.
   User: Admin
@@ -6,44 +6,91 @@
   Time: 9:21 PM
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html; charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <html>
 <head>
     <title>Редактирование записи  в истории</title>
 </head>
+<body>
 <h2>Редактирование записи</h2>
 <h3> ${historyRecord.machine.model} :   ${historyRecord.machine.serialNumber}</h3>
-<form action="/updatedHistoryRecord/${historyRecord.id}">
-    Описание работы:
-    <input type="text" name="title" value="${historyRecord.title}">
-    <br>
-    Моточасы:
-    <input type="number" name="SMR" value="${historyRecord.SMR}">
-    <br>
-    Дата:
-    <input type="date" name="date"  value="${recordDate}">
-    <br>
-    Человекочасы:
-    <input type="number" name="laborHour" value="${historyRecord.laborHour}" >
-    <br>
+<form action="/customer/machine/historyRecord/updatedHistoryRecord/${historyRecord.id}" method="post" accept-charset="UTF-8">
+    <TABLE>
+        <TR>
+            <TD>Дата:</TD>
+            <TD><input type="date" name="date"  value="${recordDate}"></TD>
+        </TR>
+        <TR>
+            <TD>Описание работы:</TD>
+            <TD><input type="text" name="title" value="${historyRecord.title}"> </TD>
+        </TR>
+        <TR>
+            <TD>Моточасы:</TD>
+            <TD> <input type="number" name="SMR" value="${historyRecord.SMR}">  </TD>
+        </TR>
+        <TR>
+            <TD> Человекочасы:</TD>
+            <TD> <input type="number" name="laborHour" value="${historyRecord.laborHour}" > </TD>
+        </TR>
+        <TR>
+        <TD> Детальная информация: </TD>
+        <TD> <textarea name="recordInfo" cols="40" rows="5">${historyRecord.recordInformation} </textarea> </TD>
+        </TR>
+        <TR>
+            <TD> Дополнительная информация: </TD>
+            <TD> <input type="text" name="otherInfo" value="${historyRecord.otherInfo}" > </textarea> </TD>
+        </TR>
+    </TABLE>
+
 <h3> Часы по работникам</h3>
 
     <c:forEach items="${laborHourList}" var="laborHour">
     Имя раборника:  Длительность работы:
-
-    <input type="text" name="workerName[]"  value="${laborHour.workerName}"> &nbsp;
-        <input type="number" name="manHour[]" value="${laborHour.jobDuration}">
+        <select name="workerName[]">
+        <option value="${laborHour.workerName}" selected>${laborHour.workerName}</option>
+       <option value=""></option>
+        <option value="Саакян Паруйр">Саакян Паруйр</option>
+        <option value="Григорян Арсен">Григорян Арсен</option>
+        <option value="Чандырян Давид">Чандырян Давид</option>
+        <option value="Уклеин Павел">Уклеин Павел</option>
+        <option value="Рудометкин Василий">Рудометкин Василий</option>
+        <option value="Акобян Грачя">Акобян Грачя</option>
+        <option value="Харисов Марат">Харисов Марат</option>
+    </select>   &nbsp;
+        <input type="number" name="manHour[]"  step="0.25" value="${laborHour.jobDuration}">
     <br>
     </c:forEach>
     Имя раборника:  Длительность работы:
-    <input type="text" name="workerName[]" > &nbsp;
-    <input type="number" name="manHour[]"  >
+    <select name="workerName[]">
+        <option value="" selected></option>
+        <option value="Саакян Паруйр">Саакян Паруйр</option>
+        <option value="Григорян Арсен">Григорян Арсен</option>
+        <option value="Чандырян Давид">Чандырян Давид</option>
+        <option value="Уклеин Павел">Уклеин Павел</option>
+        <option value="Рудометкин Василий">Рудометкин Василий</option>
+        <option value="Акобян Грачя">Акобян Грачя</option>
+        <option value="Харисов Марат">Харисов Марат</option>
+    </select> &nbsp;
+    <input type="number" name="manHour[]" step="0.25"  value="0">
     <br>
+
     Имя раборника:  Длительность работы:
-    <input type="text" name="workerName[]"  > &nbsp;
-    <input type="number" name="manHour[]" >
-    <br>
-    <input type="submit" name="Сохранить">
+    <select name="workerName[]">
+        <option value="" selected></option>
+        <option value="Саакян Паруйр">Саакян Паруйр</option>
+        <option value="Григорян Арсен">Григорян Арсен</option>
+        <option value="Чандырян Давид">Чандырян Давид</option>
+        <option value="Уклеин Павел">Уклеин Павел</option>
+        <option value="Рудометкин Василий">Рудометкин Василий</option>
+        <option value="Акобян Грачя">Акобян Грачя</option>
+        <option value="Харисов Марат">Харисов Марат</option>
+    </select> &nbsp;
+    <input type="number" name="manHour[]" step="0.25"  value="0">
+
+
+<input type="submit" value="сохранить" >
 </form>
 </body>
 </html>

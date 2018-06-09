@@ -4,9 +4,8 @@ import com.sun.javafx.beans.IDProperty;
 
 import javax.persistence.*;
 
-@Entity
+@Entity(name = "record_file")
 public class RecordFile {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -14,10 +13,19 @@ public class RecordFile {
     private String filePath;
     @Column
     private String filename;
+    @Column
+    private String fileDescription;
     @ManyToOne
     @JoinColumn(name="history_record_id")
     private HistoryRecord historyRecord;
 
+    public String getFileDescription() {
+        return fileDescription;
+    }
+
+    public void setFileDescription(String fileDescription) {
+        this.fileDescription = fileDescription;
+    }
 
     public int getId() {
         return id;
@@ -43,7 +51,7 @@ public class RecordFile {
         this.historyRecord = historyRecord;
     }
 
-    public String getFilename() {
+    public String getFileName() {
         return filename;
     }
 
@@ -57,7 +65,7 @@ public class RecordFile {
                 "id=" + id +
                 ", filePath='" + filePath + '\'' +
                 ", filename='" + filename + '\'' +
-                ", historyRecord=" + historyRecord +
+                ", historyRecord=" + historyRecord.getTitle() +
                 '}';
     }
 }

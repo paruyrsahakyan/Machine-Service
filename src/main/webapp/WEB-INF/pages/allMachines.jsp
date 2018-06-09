@@ -22,13 +22,14 @@
     </style>
 </head>
 <body>
-<a href="/"> главное меню</a>
-<br>
-<br>
 
 <div>
 
-    <h2>Все машины</h2>
+    <h2 style="text-align: center">Все машины</h2>
+
+    <a href="/"> главное меню</a>
+    <br>
+    <br>
 
 
 
@@ -45,7 +46,7 @@
         <tr>
                 <td><%= i++%> </td>
                 <td>${machine.model}</td>
-                <td><a href="/machine/${machine.id}"> ${machine.serialNumber} </a></td>
+                <td><a href="/customer/machine/${machine.id}"> ${machine.serialNumber} </a></td>
                 <td>${machine.customer.name}</td>
         </tr>
             </c:forEach>

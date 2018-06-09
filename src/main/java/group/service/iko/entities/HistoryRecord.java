@@ -1,5 +1,6 @@
 package group.service.iko.entities;
 
+import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.IndexColumn;
 
 import javax.persistence.*;
@@ -12,12 +13,13 @@ import java.util.Set;
 @Table(name = "history_record")
 public class HistoryRecord {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private  int id;
     @Column
     private  String title;
     @Column
     private GregorianCalendar recordDate;
+    @Column
     private int SMR;
     @Column
     private String recordInformation;
@@ -26,21 +28,23 @@ public class HistoryRecord {
     private Machine machine;
     @Column
     private String otherInfo;
-    @OneToMany(mappedBy = "historyRecord", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "historyRecord", fetch = FetchType.LAZY)
+    @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private List<RecordFile> recordFiles;
     @Column
-    private int laborHour;
-    @OneToMany(mappedBy = "historyRecord")
+    private double laborHour;
+    @OneToMany(mappedBy = "historyRecord", fetch = FetchType.EAGER)
+    @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private List<DetailedLaborHour> laborHours;
 
     public HistoryRecord() {
     }
 
-    public int getLaborHour() {
+    public double getLaborHour() {
         return laborHour;
     }
 
-    public void setLaborHour(int laborHour) {
+    public void setLaborHour(double laborHour) {
         this.laborHour = laborHour;
     }
 
@@ -127,8 +131,7 @@ public class HistoryRecord {
                 ", recordInformation='" + recordInformation + '\'' +
                 ", machine=" + machine +
                 ", otherInfo='" + otherInfo + '\'' +
-                ", recordFiles=" + recordFiles +
-                ", laborHour=" + laborHour +
+                 ", laborHour=" + laborHour +
                                 '}';
     }
 }

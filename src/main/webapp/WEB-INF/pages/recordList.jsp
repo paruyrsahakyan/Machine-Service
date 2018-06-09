@@ -22,15 +22,16 @@
     </style>
 </head>
 <body>
+<h2 style="text-align: center">История Машины</h2>
+
 <a href="/"> главное меню</a>
 <br>
 <br>
 
-<div>
+    <a href="/customer/machine/${machine.id}" >
+        <H3> ${machine.model} : sn${machine.serialNumber} </H3>
+    </a>
 
-    <h2>Все машины</h2>
-
-    <h3>${machine.model} : ${machine.serialNumber}</h3>
     <form action="/customer/machine/recordList/${machine.id}">
         <input type="date" name="startDate" value="${startDate}">
         <input type="date" name="endDate" value = "${endDate}">
@@ -50,14 +51,14 @@
             <tr>
                 <td><%= i++%> </td>
                 <td>${record.recordDate}</td>
-                <td><a href="/cusomer/machine/recordList/record/${record.id}"> ${record.title} </a></td>
+                <td><a href="/customer/machine/historyRecord/${record.id}"> ${record.title} </a></td>
                 <td>${record.SMR}</td>
                 <td>${record.laborHour}</td>
             </tr>
         </c:forEach>
         </tr>
     </table>
-</div>
+
 </body>
 </html>
 

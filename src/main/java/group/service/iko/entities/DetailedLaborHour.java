@@ -12,7 +12,7 @@ public class DetailedLaborHour {
     @Column
     private String workerName;
     @Column
-    private int jobDuration;
+    private double jobDuration;
     @ManyToOne()
     @JoinColumn(name = "history_record_id")
     private HistoryRecord historyRecord;
@@ -21,10 +21,10 @@ public class DetailedLaborHour {
 
     }
 
-    public DetailedLaborHour(String workerName, int jobDuration) {
+    public DetailedLaborHour(String workerName, String jobDuration) {
 
         this.workerName = workerName;
-        this.jobDuration = jobDuration;
+        this.jobDuration = Double.parseDouble(jobDuration);
     }
 
 
@@ -44,11 +44,11 @@ public class DetailedLaborHour {
         this.workerName = workerName;
     }
 
-    public int getJobDuration() {
+    public double getJobDuration() {
         return jobDuration;
     }
 
-    public void setJobDuration(int jobDuration) {
+    public void setJobDuration(double jobDuration) {
         this.jobDuration = jobDuration;
     }
 

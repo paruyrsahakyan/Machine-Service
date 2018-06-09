@@ -26,7 +26,7 @@
 
 <h2>Все Компании</h2>
 
-<a href="/createCustomer"> Добавить компанию</a>
+<a href="/customer/createCustomer" > Создать новую компанию</a>
 <br><br>
 
 

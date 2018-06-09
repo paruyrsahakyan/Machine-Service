@@ -1,9 +1,12 @@
 package group.service.iko.entities;
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
-import java.util.Date;
 import java.util.List;
-import java.util.Set;
+
+
+
 
 @Entity
 @Table(name = "machine")
@@ -27,6 +30,7 @@ public class Machine {
     @JoinColumn(name = "customer_id")
     private Customer customer;
     @OneToMany(mappedBy = "machine", fetch = FetchType.EAGER)
+    @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private List<HistoryRecord> historyRecordList;
 
     public Machine() {
@@ -43,8 +47,7 @@ public class Machine {
                 ", engineSerialNumber='" + engineSerialNumber + '\'' +
                 ", productionYear=" + productionYear +
                 ", otherInfo='" + otherInfo + '\'' +
-                ", customer=" + customer.getName() +
-                                '}';
+                                             '}';
     }
 
     public int getId() {

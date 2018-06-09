@@ -16,14 +16,14 @@
     document.onkeypress = stopRKey;
 
 </script>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>Создание новой компании</title>
 </head>
 <body>
 <h2>Создание новой компании</h2> <br>
-<form action="/newCustomer">
+<form action="/customer/newCustomer"  method="post" accept-charset="UTF-8"  >
     Название компании:<br>
     <input type="text" name="name" style="height: auto"><br><br>
     Контактные данные:<br>
