@@ -18,6 +18,10 @@ public class MachineDTO {
     private String otherInfo;
     private String customer;
 
+
+    public  MachineDTO(){
+
+    }
     public MachineDTO(Machine machine) {
         id = machine.getId();
         model = machine.getModel();

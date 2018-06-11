@@ -1,6 +1,7 @@
 package group.service.iko.controller;
 
 import group.service.iko.calendarAdapter.CalendarAdapter;
+import group.service.iko.dto.DtoFactory;
 import group.service.iko.entities.DetailedLaborHour;
 import group.service.iko.entities.HistoryRecord;
 import group.service.iko.entities.Machine;
@@ -32,7 +33,7 @@ public class MainController {
     public ModelAndView allCustomers() {
         ModelAndView modelAndView = new ModelAndView("allCustomers");
         List<Customer> customers = customerService.getAllCustomers();
-        modelAndView.addObject("customers", customers);
+        modelAndView.addObject("customerList", customers);
         return modelAndView;
     }
 
@@ -41,72 +42,32 @@ public class MainController {
         ModelAndView modelAndView = new ModelAndView("allMachines");
         machineService = new MachineService();
         List<Machine> machineList = machineService.getAllMachines();
-        modelAndView.addObject("machineList", machineList);
+        modelAndView.addObject("machineList", DtoFactory.makeMachineDtoList(machineList));
         return modelAndView;
     }
 
-    @RequestMapping("/customer/{customerId}")
-    public ModelAndView customerPage(@PathVariable("customerId") int id) {
-        ModelAndView modelAndView = new ModelAndView("customer");
-        Customer customer = customerService.getCustomerById(id);
-        modelAndView.addObject("customer", customer);
+    @RequestMapping("/allMachines/filtered")
+    public ModelAndView filteredMachines
+            (@RequestParam(value = "model", defaultValue = "") String model,
+             @RequestParam(value = "serialNumber", defaultValue = "") String serialNumber) {
+        ModelAndView modelAndView = new ModelAndView("allMachines");
+        MachineService machineService = new MachineService();
+        List<Machine> machineList = machineService.getMachinesFiltered(model, serialNumber);
+        modelAndView.addObject("machineList", DtoFactory.makeMachineDtoList(machineList));
+        modelAndView.addObject("model", model);
+        modelAndView.addObject("serialNumber", serialNumber);
         return modelAndView;
     }
 
-    @RequestMapping("/customer/createCustomer")
-    public ModelAndView createCustomer() {
-        ModelAndView modelAndView = new ModelAndView("createCustomer");
-        return modelAndView;
+    @RequestMapping("/allCustomers/filtered")
+    public ModelAndView filteredCustomers
+            (@RequestParam(value = "customerName", defaultValue = "") String customerName) {
+        ModelAndView modelAndView = new ModelAndView("allCustomers");
 
-    }
-
-    @RequestMapping("/customer/newCustomer")
-    public ModelAndView newCustomerPage(@RequestParam("name") String name,
-                                        @RequestParam("contacts") String contacts,
-                                        @RequestParam("otherInfo") String otherInfo) {
-        ModelAndView modelAndView = new ModelAndView("customer");
-        Customer customer = new Customer();
-        customer.setName(name);
-        customer.setContacts(contacts);
-        customer.setOtherInfo(otherInfo);
-        customerService.saveCustomer(customer);
-        Customer createdCustomer = customerService.getCustomerByName(name);
-        modelAndView.addObject("customer", createdCustomer);
+        CustomerService customerService = new CustomerService();
+        List<Customer> customerList = customerService.getCustomersFiltered(customerName);
+        modelAndView.addObject("customerList", DtoFactory.makeCustomerDtoList(customerList));
+        modelAndView.addObject("customerName", customerName);
         return modelAndView;
     }
-
-    @RequestMapping("/customer/updateCustomer/{customerId}")
-    public ModelAndView updateCustomer(@PathVariable("customerId") int id) {
-        ModelAndView modelAndView = new ModelAndView("updateCustomer");
-        Customer customer = customerService.getCustomerById(id);
-        modelAndView.addObject(customer);
-        return modelAndView;
-    }
-
-    @RequestMapping("/customer/updatedCustomer/{customerId}")
-    public ModelAndView updatedCustomer(@RequestParam("name") String name,
-                                        @RequestParam("contacts") String contacts,
-                                        @RequestParam("otherInfo") String otherInfo,
-                                        @PathVariable("customerId") int customerId) {
-        ModelAndView modelAndView = new ModelAndView("customer");
-        Customer customer = new Customer();
-        customer.setName(name);
-        customer.setContacts(contacts);
-        customer.setOtherInfo(otherInfo);
-        customer.setId(customerId);
-        customerService.updateCustomer(customer);
-        Customer updatedCustomer = customerService.getCustomerById(customerId);
-        modelAndView.addObject("customer", updatedCustomer);
-        return modelAndView;
-    }
-    @RequestMapping("/customer/deleteCustomer/{customerId}")
-    public ModelAndView deleteCustomer(@PathVariable("customerId") int customerId){
-   ModelAndView modelAndView = new ModelAndView("index");
-   CustomerService customerService = new CustomerService();
-   customerService.deleteCustomerById(customerId);
-   return modelAndView;
-
-    }
-
-
 }

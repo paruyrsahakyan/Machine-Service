@@ -32,6 +32,13 @@
     <br>
 
 
+    <form action="/allMachines/filtered" method="get">
+        <B>Фильтры | </B> модел: <input type="text" name="model" value="${model}"> &nbsp;&nbsp;
+        серийный номер։ <input type="text"  name="serialNumber" value="${serialNumber}">
+        <input type="submit" value="обновить список">
+
+         </form>
+<br>
 
     <table style="width: auto">
         <tr>
@@ -47,7 +54,7 @@
                 <td><%= i++%> </td>
                 <td>${machine.model}</td>
                 <td><a href="/customer/machine/${machine.id}"> ${machine.serialNumber} </a></td>
-                <td>${machine.customer.name}</td>
+                <td>${machine.customer}</td>
         </tr>
             </c:forEach>
         </tr>

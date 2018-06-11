@@ -23,7 +23,7 @@
 <a href="/analysis/worker"> Анализ работ</a>
 <br>
 <br>
-<a href="/search/machine"> Анализ работ</a>
+<a href="/search/machine"> не дороботано</a>
 
 </body>
 </html>

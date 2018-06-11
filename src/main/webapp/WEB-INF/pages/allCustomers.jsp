@@ -30,6 +30,12 @@
 <br><br>
 
 
+<form action="/allCustomers/filtered" method="get">
+    <B>Фильтр | </B> Название клиента: <input type="text" name="customerName" value="${customerName}"> &nbsp;&nbsp;
+        <input type="submit" value="обновить список">
+
+</form>
+<br>
 
 <table>
     <tr>
@@ -38,7 +44,7 @@
         <th>контакты </th>
     </tr>
     <% int i = 1;%>
-    <c:forEach items="${customers}" var="customer">
+    <c:forEach items="${customerList}" var="customer">
     <tr>
         <td><%=i++%></td>
         <td><a href="/customer/${customer.id}"> ${customer.name} </a></td>

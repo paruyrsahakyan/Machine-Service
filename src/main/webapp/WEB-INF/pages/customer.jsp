@@ -31,7 +31,7 @@
 
     <a href="/customer/updateCustomer/${customer.id}" style="bottom: auto"> Редактировать</a>
     &nbsp; &nbsp;
-    <a href="/customer/createMachine/${customer.id}" style="bottom: auto"> Добавить машину</a>
+    <a href="/customer/machine/createMachine/${customer.id}" style="bottom: auto"> Добавить машину</a>
     &nbsp; &nbsp;
     <a href="/customer/deleteCustomer/${customer.id}"
        onclick="return confirm('!!!Вы уверены что хатите удалить компанию!!!');"

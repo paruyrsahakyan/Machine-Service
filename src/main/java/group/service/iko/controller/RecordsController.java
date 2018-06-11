@@ -25,7 +25,7 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
-@Controller("/customer/machine/" )
+@Controller("/customer/machine/historyRecord" )
 public class RecordsController {
 
     @RequestMapping("/customer/machine/historyRecord/{recordId}")
@@ -43,7 +43,7 @@ public class RecordsController {
 
     }
 
-    @RequestMapping("/customer/machine/recordList/{machineId}")
+    @RequestMapping("/customer/machine/historyRecord/recordList/{machineId}")
     public ModelAndView recordListOfMachine(@PathVariable("machineId") int machineId,
                                             @RequestParam(value = "startDate", defaultValue = "") String startDate,
                                             @RequestParam(value = "endDate", defaultValue = "") String endDate) {
@@ -60,7 +60,7 @@ public class RecordsController {
         return modelAndView;
     }
 
-    @RequestMapping("/customer/machine/createHistoryRecord/{machineId}")
+    @RequestMapping("/customer/machine/historyRecord/createHistoryRecord/{machineId}")
     public ModelAndView createHistoryRecord(@PathVariable("machineId") int machineId) {
         MachineService machineService = new MachineService();
         Machine machine = machineService.getMachineById(machineId);
@@ -75,7 +75,7 @@ public class RecordsController {
         return modelAndView;
     }
 
-    @RequestMapping("/customer/machine/newHistoryRecord/{machineId}")
+    @RequestMapping("/customer/machine/historyRecord/newHistoryRecord/{machineId}")
 
     public ModelAndView newHistoryRecord(@PathVariable("machineId") int machineId,
                                          @RequestParam("title") String title,

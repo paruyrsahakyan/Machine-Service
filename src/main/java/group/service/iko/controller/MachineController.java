@@ -1,5 +1,6 @@
 package group.service.iko.controller;
 
+import group.service.iko.dto.DtoFactory;
 import group.service.iko.dto.MachineDTO;
 import group.service.iko.entities.Customer;
 import group.service.iko.entities.Machine;
@@ -12,11 +13,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-@Controller("/customer/")
+import java.util.List;
+
+@Controller("/customer/machine/")
 public class MachineController {
 
 
-    @RequestMapping(value = "/customer/createMachine/{customerId}")
+    @RequestMapping(value = "/customer/machine/createMachine/{customerId}")
     public ModelAndView createMachine(@PathVariable("customerId") int customerId) {
         ModelAndView modelAndView = new ModelAndView("createMachine");
         CustomerService customerService = new CustomerService();
@@ -26,7 +29,7 @@ public class MachineController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/customer/newMachine/{customerName}", method = RequestMethod.POST)
+    @RequestMapping(value = "/customer/machine/newMachine/{customerName}", method = RequestMethod.POST)
     public ModelAndView newMachine(@RequestParam("model") String model,
                                    @RequestParam("serialNumber") String serialNumber,
                                    @RequestParam("engineModel") String engineModel,
@@ -111,8 +114,8 @@ public class MachineController {
 
 
         return modelAndView;
-
     }
+
 
 
 }

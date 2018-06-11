@@ -71,8 +71,8 @@
     </div>
 <br> <br>
 <a href="/customer/machine/updateMachine/${machine.id}" style="bottom: auto"> Редактировать</a>  &nbsp;<b>|</b>
-<a href="/customer/machine/createHistoryRecord/${machine.id}">Создать новую запись истории</a>  &nbsp;<b>|</b>
-<a href="/customer/machine/recordList/${machine.id}"> Пoказать работы </a>
+<a href="/customer/machine/historyRecord/createHistoryRecord/${machine.id}">Создать новую запись истории</a>  &nbsp;<b>|</b>
+<a href="/customer/machine/historyRecord/recordList/${machine.id}"> Пoказать работы </a>
 <br>
 <br>
 <a href="/customer/machine/deleteMachine/${machine.id}"
