@@ -1,9 +1,15 @@
 package group.service.iko.controller;
 
 import group.service.iko.entities.Customer;
+import group.service.iko.entities.User;
+import group.service.iko.security.TokenService;
 import group.service.iko.service.CustomerService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -11,10 +17,22 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller("/customer/")
 public class CustomerController {
 
+    private final TokenService tokenService;
 
+    @Autowired
+    public CustomerController(TokenService tokenService) {
+        this.tokenService = tokenService;
+    }
+
+//    @PostMapping("token")
+//    public ModelAndView issueToken(User user) {
+//        ModelAndView modelAndView = new ModelAndView("tokrn");
+//        modelAndView.addObject("tokrn", )
+//        return tokenService.encode(user);
+//    }
 
     @RequestMapping("/customer/{customerId}")
-    public ModelAndView customerPage(@PathVariable("customerId") int id) {
+      public ModelAndView customerPage(@PathVariable("customerId") int id) {
         ModelAndView modelAndView = new ModelAndView("customer");
         CustomerService customerService = new CustomerService();
         Customer customer = customerService.getCustomerById(id);
@@ -55,6 +73,7 @@ public class CustomerController {
     }
 
     @RequestMapping("/customer/updatedCustomer/{customerId}")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ModelAndView updatedCustomer(@RequestParam("name") String name,
                                         @RequestParam("contacts") String contacts,
                                         @RequestParam("otherInfo") String otherInfo,

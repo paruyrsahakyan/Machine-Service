@@ -26,6 +26,10 @@
 
 <h2>Все Компании</h2>
 
+<a href="/"> главное меню</a>
+<br>
+<br>
+
 <a href="/customer/createCustomer" > Создать новую компанию</a>
 <br><br>
 
@@ -57,5 +61,5 @@
 
 </table>
 
-</body>`
+</body>
 </html>

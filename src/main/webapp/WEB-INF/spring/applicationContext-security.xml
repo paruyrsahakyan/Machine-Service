@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bean:beans  xmlns:bean="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.springframework.org/schema/security"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+        http://www.springframework.org/schema/security
+        http://www.springframework.org/schema/security/spring-security-4.2.xsd">
+    <http auto-config="true" >
+        <intercept-url pattern="/" access="permitAll()" />
+        <intercept-url pattern="/*" access="hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')"/>
+        <intercept-url pattern="/analysis/*" access="hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')"/>
+        <intercept-url pattern="/customer/createCustomer*" access="hasRole('ROLE_ADMIN')"/>
+        <intercept-url pattern="/customer/newCustomer*" access="hasRole('ROLE_ADMIN')"/>
+        <intercept-url pattern="/customer/updateCustomer/*" access="hasRole('ROLE_ADMIN')"/>
+        <intercept-url pattern="/customer/updatedCustomer/*" access="hasRole('ROLE_ADMIN')"/>
+        <intercept-url pattern="/customer/deleteCustomer/*" access="hasRole('ROLE_ADMIN')"/>
+        <intercept-url pattern="/customer/machine/deleteMachine/*" access="hasRole('ROLE_ADMIN')"/>
+        <intercept-url pattern="/customer/machine/updateMachine/*" access="hasRole('ROLE_ADMIN')"/>
+        <intercept-url pattern="/customer/machine/updatedMachine/*" access="hasRole('ROLE_ADMIN')"/>
+        <intercept-url pattern="/customer/machine/createMachine/*" access="hasRole('ROLE_ADMIN')"/>
+        <intercept-url pattern="/customer/machine/newMachine/*" access="hasRole('ROLE_ADMIN')"/>
+        <intercept-url pattern="/customer/machine/historyRecord/updateHistoryRecord/*" access="hasRole('ROLE_ADMIN')"/>
+        <intercept-url pattern="/customer/machine/historyRecord/updatedHistoryRecord/*" access="hasRole('ROLE_ADMIN')"/>
+        <intercept-url pattern="/customer/machine/historyRecord/deleteHistoryRecord/*" access="hasRole('ROLE_ADMIN')"/>
+        <intercept-url pattern="/customer/machine/historyRecord/addFiles/*"  access="hasRole('ROLE_ADMIN')"/>
+        <intercept-url pattern="/customer/machine/historyRecord/files/updatedList/*"  access="hasRole('ROLE_ADMIN')" />
+    </http>
+    <authentication-manager>
+        <authentication-provider>
+            <password-encoder ref="encoder"/>
+            <user-service>
+                <user authorities="ROLE_ADMIN" name="admin" password="$2a$10$nvEUgQFowvUzEWZ0goTqXuc9jk1Qd1v0aPgDnhIL/XWOw6nPjqwJ2"/>
+                <user authorities="ROLE_USER" name="user" password="$2a$10$v0oWOvfs7mBMUXT7m/BLNOLxYPRDujsteZv40ZY3K6Z4VtI8P3hmC"/>
+            </user-service>
+        </authentication-provider>
+    </authentication-manager>
+    <bean:bean id="encoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
+</bean:beans>

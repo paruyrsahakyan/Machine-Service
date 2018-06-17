@@ -6,6 +6,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"  %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@page pageEncoding="UTF-8"%>
 <%request.setCharacterEncoding("UTF-8");%>
 <%@page contentType="text/html; charset=Windows-1251" %>
@@ -24,7 +26,8 @@
 <br>
 <a href="/customer/machine/historyRecord/${historyRecord.id}"> Вернутся в страницу записи </a>
 <H3>${historyRecord.machine} &nbsp; | &nbsp;${historyRecord.title} &nbsp; |&nbsp; ${historyRecord.recordDate} </H3>
-<form action="/customer/machine/historyRecord/files/updatedList/${historyRecordId}" method="post" enctype="multipart/form-data" accept-charset="UTF-8">
+<form:form action="/customer/machine/historyRecord/files/updatedList/${historyRecordId}"
+           method="post"  accept-charset="UTF-8" enctype="multipart/form-data">
     описание файла: <input type="text" name="fileDescription1" maxlength="24" > <input type="file" name="file1">
     <br> <br>
     описание файла: <input type="text" name="fileDescription2" maxlength="24" > <input type="file" name="file2">
@@ -61,7 +64,8 @@
 </table>
         <br>
         <input type="submit" value="Обновить">
-    </form>
+
+    </form:form>
 
 </body>
 </html>

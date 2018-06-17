@@ -6,15 +6,17 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <html>
 <head>
     <title>updateMachine</title>
 </head>
 <body>
 <h2>Редактирование машины</h2>
-<br> <br>
+<a href="/customer/machine/${machine.id}">Отменить редактирование</a>
+<br>
 <h4>Владелец: ${machine.customer}</h4>
-<form action="/customer/machine/updatedMachine/${machine.id}" method="post" accept-charset="UTF-8">
+<form:form action="/customer/machine/updatedMachine/${machine.id}" method="post" accept-charset="UTF-8">
 
     Модель  Машины:<br>
     <input type="text" name="model" style="height: auto" value="${machine.model}"><br><br>
@@ -30,7 +32,7 @@
     <textarea name="otherInfo" cols="40" rows="5" >${machine.otherInfo}</textarea> <br><br>
            <input type="submit" value="Сохранить">
 
-</form>
+</form:form>
 
 </body>
 </html>

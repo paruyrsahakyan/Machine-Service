@@ -8,6 +8,7 @@ import group.service.iko.entities.Machine;
 import group.service.iko.service.*;
 import group.service.iko.entities.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -23,13 +24,14 @@ public class MainController {
     private MachineService machineService;
 
     @RequestMapping("/")
-    public ModelAndView index() {
+        public ModelAndView index() {
         ModelAndView modelAndView = new ModelAndView("index");
         return modelAndView;
 
     }
 
     @RequestMapping("/allCustomers")
+    @PreAuthorize("hasRole('ROLE_USER')")
     public ModelAndView allCustomers() {
         ModelAndView modelAndView = new ModelAndView("allCustomers");
         List<Customer> customers = customerService.getAllCustomers();
@@ -38,6 +40,7 @@ public class MainController {
     }
 
     @RequestMapping("/allMachines")
+    @PreAuthorize("hasRole('ROLE_USER')")
     public ModelAndView allMachines() {
         ModelAndView modelAndView = new ModelAndView("allMachines");
         machineService = new MachineService();
@@ -47,6 +50,7 @@ public class MainController {
     }
 
     @RequestMapping("/allMachines/filtered")
+    @PreAuthorize("hasRole('ROLE_USER')")
     public ModelAndView filteredMachines
             (@RequestParam(value = "model", defaultValue = "") String model,
              @RequestParam(value = "serialNumber", defaultValue = "") String serialNumber) {

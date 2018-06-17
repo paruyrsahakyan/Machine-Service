@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServletResponse;
 import javax.swing.plaf.basic.BasicInternalFrameTitlePane;
 import java.io.*;
@@ -24,7 +25,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
-
+@MultipartConfig
 @Controller("/customer/machine/historyRecord" )
 public class RecordsController {
 
@@ -195,6 +196,20 @@ public class RecordsController {
         modelAndView.addObject("laborHourList", laborHourList);
         return modelAndView;
     }
+    @RequestMapping("/customer/machine/historyRecord/deleteHistoryRecord/{historyRecordId}")
+    public ModelAndView deleteHistoryRecord(@PathVariable("historyRecordId") int recordId){
+        ModelAndView modelAndView = new ModelAndView("machine");
+        HistoryRecordService historyRecordService = new HistoryRecordService();
+        int machineId = historyRecordService.getMachineIdByRecordId(recordId);
+        MachineService machineService = new MachineService();
+        HistoryRecord historyRecord = new HistoryRecord();
+        historyRecord.setId(recordId);
+        historyRecordService.deleteHistoryRecord(historyRecord);
+        Machine machine = machineService.getMachineById(machineId);
+        modelAndView.addObject("machine", new MachineDTO(machine));
+
+        return modelAndView;
+    }
 
     @RequestMapping("/customer/machine/historyRecord/addFiles/{historyRecordId}")
     public ModelAndView addFiles(@PathVariable("historyRecordId") int historyRecordId) {
@@ -301,18 +316,6 @@ String fileName = recordFile.getFileName();
 
         FileCopyUtils.copy(inputStream, response.getOutputStream());
     }
-    @RequestMapping("/customer/machine/historyRecord/deleteHistoryRecord/{historyRecordId}")
-    public ModelAndView deleteHistoryRecord(@PathVariable("historyRecordId") int recordId){
-        ModelAndView modelAndView = new ModelAndView("machine");
-        HistoryRecordService historyRecordService = new HistoryRecordService();
-        int machineId = historyRecordService.getMachineIdByRecordId(recordId);
-        MachineService machineService = new MachineService();
-        HistoryRecord historyRecord = new HistoryRecord();
-        historyRecord.setId(recordId);
-        historyRecordService.deleteHistoryRecord(historyRecord);
-        Machine machine = machineService.getMachineById(machineId);
-        modelAndView.addObject("machine", new MachineDTO(machine));
 
-        return modelAndView;
-              }
+
             }

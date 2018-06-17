@@ -5,16 +5,17 @@
   Time: 9:18 PM
   To change this template use File | Settings | File Templates.
 --%>
-
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <html>
 <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>Новая Машина</title>
 </head>
 <body>
 <h2>Регистрация новой машины</h2> <br>
 <h3>Влоделец: &nbsp; ${customerName}</h3>
-<form action="/customer/newMachine/${customerId}" method="post" accept-charset="UTF-8">
+<form:form action="/customer/machine/newMachine/${customerId}" method="Post" >
 
     Модель Машины:<br>
     <input type="text" name="model" style="height: auto"><br><br>
@@ -31,7 +32,7 @@
 
 
     <input type="submit" value="Сохранить">
-</form>
+</form:form>
 
 </body>
 </html>

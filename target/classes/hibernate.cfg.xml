@@ -14,5 +14,7 @@
         <mapping class="group.service.iko.entities.RecordFile"/>
         <mapping class ="group.service.iko.entities.DetailedLaborHour"/>
 
+
+
     </session-factory>
 </hibernate-configuration>

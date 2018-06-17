@@ -8,6 +8,7 @@
 --%>
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"  %>
 
 <html>
 <head>
@@ -16,7 +17,7 @@
 <body>
 <h2>Редактирование записи</h2>
 <h3> ${historyRecord.machine.model} :   ${historyRecord.machine.serialNumber}</h3>
-<form action="/customer/machine/historyRecord/updatedHistoryRecord/${historyRecord.id}" method="post" accept-charset="UTF-8">
+<form:form action="/customer/machine/historyRecord/updatedHistoryRecord/${historyRecord.id}" method="post" accept-charset="UTF-8">
     <TABLE>
         <TR>
             <TD>Дата:</TD>
@@ -91,6 +92,6 @@
 
 
 <input type="submit" value="сохранить" >
-</form>
+</form:form>
 </body>
 </html>

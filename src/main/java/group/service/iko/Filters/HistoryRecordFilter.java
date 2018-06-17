@@ -6,6 +6,8 @@ import group.service.iko.entities.HistoryRecord;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 public class HistoryRecordFilter {
 
@@ -15,15 +17,19 @@ public class HistoryRecordFilter {
                                                           GregorianCalendar endDate) {
 
         List<HistoryRecord> filteredRecordList = new ArrayList<HistoryRecord>();
-        GregorianCalendar recordDate;
+        /*GregorianCalendar recordDate;
         for (HistoryRecord record : recordList) {
             recordDate = record.getRecordDate();
             if (recordDate.after(startDate) && recordDate.before(endDate)) {
-                System.out.println("=====================true===================");
                 filteredRecordList.add(record);
             }
-        }
-        return filteredRecordList;
+        }*/
+
+        return recordList.stream().filter(
+                historyRecord -> historyRecord.getRecordDate().after(startDate)
+                        && historyRecord.getRecordDate().before(endDate)).collect(Collectors.toList());
+
+//        return filteredRecordList;
     }
 
     public static List<HistoryRecord> filterRecordsByDate(List<HistoryRecord> recordList,
