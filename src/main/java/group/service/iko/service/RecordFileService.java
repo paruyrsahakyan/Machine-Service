@@ -6,15 +6,18 @@ import group.service.iko.entities.RecordFile;
 import org.hibernate.Query;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public class RecordFileService {
+    @Autowired
     private RecordFileDAO recordFileDAO;
     Session session;
 
     public RecordFileService(){
-        recordFileDAO = new RecordFileDAO();
+
     }
 
     public void saveFile(RecordFile recordFile){
@@ -49,6 +52,7 @@ public class RecordFileService {
         Query query = session.createSQLQuery(sql);
               Integer id= (Integer) query.uniqueResult();
               if(id==null) id = 0;
+
         session.close();
         return id+1;
 

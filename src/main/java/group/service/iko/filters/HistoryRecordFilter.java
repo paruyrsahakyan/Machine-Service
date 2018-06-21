@@ -1,4 +1,4 @@
-package group.service.iko.Filters;
+package group.service.iko.filters;
 
 import group.service.iko.calendarAdapter.CalendarAdapter;
 import group.service.iko.entities.HistoryRecord;
@@ -6,7 +6,6 @@ import group.service.iko.entities.HistoryRecord;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.List;
-import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class HistoryRecordFilter {

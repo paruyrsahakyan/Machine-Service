@@ -28,7 +28,7 @@
 
         </multipart-config>
     </servlet>
-    
+
     <servlet-mapping>
         <servlet-name>spring</servlet-name>
         <url-pattern>/</url-pattern>
@@ -80,8 +80,6 @@
             org.springframework.web.filter.DelegatingFilterProxy
         </filter-class>
     </filter>
-
-
 
 
     <filter-mapping>

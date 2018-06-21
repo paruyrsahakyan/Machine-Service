@@ -10,12 +10,12 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 @Service
-public class CustomerHibernateDAO {
+public class CustomerDAO {
 
     private SessionFactory sessionFactory;
     private Session session;
 
-    public CustomerHibernateDAO() {
+    public CustomerDAO() {
 
     }
 

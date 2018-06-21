@@ -20,7 +20,7 @@
 <a href="/allMachines"> Все машины</a>
 <br>
 <br>
-<a href="/analysis/worker"> Анализ работ</a>
+<a href="/analysis/worker/jobs"> Анализ работ</a>
 
 </body>
 </html>

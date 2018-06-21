@@ -32,7 +32,7 @@
         <H3> ${machine.model} : sn${machine.serialNumber} </H3>
     </a>
 
-    <form action="/customer/machine/recordList/${machine.id}">
+    <form action="/customer/machine/historyRecord/recordList/${machine.id}">
         <input type="date" name="startDate" value="${startDate}">
         <input type="date" name="endDate" value = "${endDate}">
         <input type="submit" value="Фильтр по датам">

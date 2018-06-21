@@ -4,9 +4,11 @@ import group.service.iko.entities.RecordFile;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class RecordFileDAO {
     private SessionFactory sessionFactory;
     private Session session;

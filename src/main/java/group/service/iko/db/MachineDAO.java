@@ -3,11 +3,13 @@ package group.service.iko.db;
 import group.service.iko.entities.Machine;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 
-public class MachineHibernateDAO {
+@Service
+public class MachineDAO {
 
     private Session session;
 

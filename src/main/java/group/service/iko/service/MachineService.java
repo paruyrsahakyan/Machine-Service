@@ -1,6 +1,6 @@
 package group.service.iko.service;
 
-import group.service.iko.db.MachineHibernateDAO;
+import group.service.iko.db.MachineDAO;
 import group.service.iko.db.SessionFactoryImpl;
 import group.service.iko.entities.Machine;
 import org.hibernate.Query;
@@ -13,10 +13,10 @@ import java.util.List;
 public class MachineService {
     private Session session;
 
-    private MachineHibernateDAO machineHibernateDAO;
+    @Autowired
+    private MachineDAO machineDAO;
 
     public MachineService() {
-        machineHibernateDAO = new MachineHibernateDAO();
 
     }
 
@@ -42,7 +42,7 @@ public class MachineService {
     }
 
     public void saveMachine(Machine machine) {
-        machineHibernateDAO.addMachine(machine);
+        machineDAO.addMachine(machine);
     }
 
     public Machine getMachineByModelAndSerialNumber(String model, String serialNumber) {
@@ -56,7 +56,7 @@ public class MachineService {
     }
 
     public void updateMachine(Machine machine) {
-        machineHibernateDAO.updateMachine(machine);
+        machineDAO.updateMachine(machine);
     }
 
     public Machine getLastRecord() {
@@ -72,7 +72,7 @@ public class MachineService {
     public void deleteMachineById(int machineId) {
         Machine machine = new Machine();
         machine.setId(machineId);
-        machineHibernateDAO.deleteMachine(machine);
+        machineDAO.deleteMachine(machine);
     }
 
     public int getCustomerIdByMachineId(int machineId) {

@@ -8,21 +8,25 @@ import group.service.iko.entities.HistoryRecord;
 import org.hibernate.Query;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.GregorianCalendar;
 import java.util.List;
-
+@Service
 public class DetailedLaborHourService {
+    @Autowired
+    private DetailedLaborHourDAO detailedLaborHourDAO;
     Session session;
 
     public void saveDetailedLaborHour(DetailedLaborHour detailedLaborHour) {
-        DetailedLaborHourDAO detailedLaborHourDAO = new DetailedLaborHourDAO();
+         detailedLaborHourDAO = new DetailedLaborHourDAO();
         detailedLaborHourDAO.saveDetailedLaborHour(detailedLaborHour);
     }
 
     public List<DetailedLaborHour> getDetailedLaborByRecordId(int recordId){
-        DetailedLaborHourDAO detailedLaborDAO = new DetailedLaborHourDAO();
-        return detailedLaborDAO.getDetailedLaborByRecordId(recordId);
+         detailedLaborHourDAO = new DetailedLaborHourDAO();
+        return detailedLaborHourDAO.getDetailedLaborByRecordId(recordId);
     }
 
     public void deleteAllByHistoryRecordId(int historyRecordId) {

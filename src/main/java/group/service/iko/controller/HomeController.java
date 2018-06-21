@@ -16,15 +16,15 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.util.*;
 
-@Controller("/")
-public class MainController {
+@Controller()
+public class HomeController {
     @Autowired
     private CustomerService customerService;
 
     private MachineService machineService;
 
     @RequestMapping("/")
-        public ModelAndView index() {
+    public ModelAndView index() {
         ModelAndView modelAndView = new ModelAndView("index");
         return modelAndView;
 
@@ -55,7 +55,6 @@ public class MainController {
             (@RequestParam(value = "model", defaultValue = "") String model,
              @RequestParam(value = "serialNumber", defaultValue = "") String serialNumber) {
         ModelAndView modelAndView = new ModelAndView("allMachines");
-        MachineService machineService = new MachineService();
         List<Machine> machineList = machineService.getMachinesFiltered(model, serialNumber);
         modelAndView.addObject("machineList", DtoFactory.makeMachineDtoList(machineList));
         modelAndView.addObject("model", model);
@@ -67,8 +66,6 @@ public class MainController {
     public ModelAndView filteredCustomers
             (@RequestParam(value = "customerName", defaultValue = "") String customerName) {
         ModelAndView modelAndView = new ModelAndView("allCustomers");
-
-        CustomerService customerService = new CustomerService();
         List<Customer> customerList = customerService.getCustomersFiltered(customerName);
         modelAndView.addObject("customerList", DtoFactory.makeCustomerDtoList(customerList));
         modelAndView.addObject("customerName", customerName);

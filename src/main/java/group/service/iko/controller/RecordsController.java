@@ -1,6 +1,6 @@
 package group.service.iko.controller;
 
-import group.service.iko.Filters.HistoryRecordFilter;
+import group.service.iko.filters.HistoryRecordFilter;
 import group.service.iko.calendarAdapter.CalendarAdapter;
 import group.service.iko.dto.HistoryRecordDTO;
 import group.service.iko.dto.MachineDTO;
@@ -9,6 +9,7 @@ import group.service.iko.entities.HistoryRecord;
 import group.service.iko.entities.Machine;
 import group.service.iko.entities.RecordFile;
 import group.service.iko.service.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.*;
@@ -17,25 +18,32 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServletResponse;
-import javax.swing.plaf.basic.BasicInternalFrameTitlePane;
 import java.io.*;
 import java.net.URLConnection;
 import java.nio.charset.Charset;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
-@MultipartConfig
-@Controller("/customer/machine/historyRecord" )
-public class RecordsController {
 
-    @RequestMapping("/customer/machine/historyRecord/{recordId}")
+@MultipartConfig
+@Controller()
+@RequestMapping("/customer/machine/historyRecord")
+public class RecordsController {
+    @Autowired
+    private MachineService machineService;
+    @Autowired
+    private RecordFileService recordFileService;
+    @Autowired
+    private DetailedLaborHourService detailedLaborHourService;
+    @Autowired
+    private HistoryRecordService historyRecordService;
+    @Autowired
+    private StorageService storageService;
+
+    @RequestMapping("/{recordId}")
     public ModelAndView showHistoryRecord(@PathVariable("recordId") int recordId) {
         ModelAndView modelAndView = new ModelAndView("historyRecord");
-        HistoryRecordService historyRecordService = new HistoryRecordService();
         HistoryRecord historyRecord = historyRecordService.getHistoryRecordById(recordId);
-        RecordFileService recordFileService = new RecordFileService();
-        List<RecordFile> recordFileList  = recordFileService.getFilesByRecordId(recordId);
+        List<RecordFile> recordFileList = recordFileService.getFilesByRecordId(recordId);
         int machineId = historyRecordService.getMachineIdByRecordId(recordId);
         modelAndView.addObject("fileList", recordFileList);
         modelAndView.addObject("historyRecord", historyRecord);
@@ -44,30 +52,26 @@ public class RecordsController {
 
     }
 
-    @RequestMapping("/customer/machine/historyRecord/recordList/{machineId}")
+    @RequestMapping("/recordList/{machineId}")
     public ModelAndView recordListOfMachine(@PathVariable("machineId") int machineId,
                                             @RequestParam(value = "startDate", defaultValue = "") String startDate,
                                             @RequestParam(value = "endDate", defaultValue = "") String endDate) {
 
-        MachineService machineService = new MachineService();
         Machine machine = machineService.getMachineById(machineId);
-        List<HistoryRecord> recordList = machine.getHistoryRecordList();
-        List<HistoryRecord> filtered = HistoryRecordFilter.filterRecordsByDate(recordList, startDate, endDate);
+        List<HistoryRecord> recordList = historyRecordService.getRecordsFilteredByDate(machineId, startDate, endDate);
         ModelAndView modelAndView = new ModelAndView("recordList");
-        modelAndView.addObject("recordList", HistoryRecordDTO.transformIntoDTO(filtered));
+        modelAndView.addObject("recordList", HistoryRecordDTO.transformIntoDTO(recordList));
         modelAndView.addObject("machine", new MachineDTO(machine));
         modelAndView.addObject("startDate", startDate);
         modelAndView.addObject("endDate", endDate);
         return modelAndView;
     }
 
-    @RequestMapping("/customer/machine/historyRecord/createHistoryRecord/{machineId}")
+    @RequestMapping("/createHistoryRecord/{machineId}")
     public ModelAndView createHistoryRecord(@PathVariable("machineId") int machineId) {
-        MachineService machineService = new MachineService();
         Machine machine = machineService.getMachineById(machineId);
         String model = machine.getModel();
         String serialNumber = machine.getSerialNumber();
-
         ModelAndView modelAndView = new ModelAndView("createHistoryRecord");
         modelAndView.addObject("machineId", machineId);
         modelAndView.addObject("model", model);
@@ -76,7 +80,7 @@ public class RecordsController {
         return modelAndView;
     }
 
-    @RequestMapping("/customer/machine/historyRecord/newHistoryRecord/{machineId}")
+    @RequestMapping("/newHistoryRecord/{machineId}")
 
     public ModelAndView newHistoryRecord(@PathVariable("machineId") int machineId,
                                          @RequestParam("title") String title,
@@ -96,7 +100,6 @@ public class RecordsController {
 
     ) {
         ModelAndView modelAndView = new ModelAndView("historyRecord");
-        MachineService machineService = new MachineService();
         Machine machine = machineService.getMachineById(machineId);
         HistoryRecord historyRecord = new HistoryRecord();
         historyRecord.setMachine(machine);
@@ -106,7 +109,6 @@ public class RecordsController {
         historyRecord.setRecordInformation(recordInformation);
         historyRecord.setRecordDate(CalendarAdapter.getGregCalendar(date));
         historyRecord.setOtherInfo(otherInfo);
-        HistoryRecordService historyRecordService = new HistoryRecordService();
         historyRecordService.saveHistoryRecord(historyRecord);
         HistoryRecord savedHistoryRecord = historyRecordService.getLastRecord();
         int idOfSavedRecord = savedHistoryRecord.getId();
@@ -115,8 +117,6 @@ public class RecordsController {
         detailedLaborList.add(new DetailedLaborHour(workerName2, manHour2));
         detailedLaborList.add(new DetailedLaborHour(workerName3, manHour3));
         detailedLaborList.add(new DetailedLaborHour(workerName4, manHour4));
-        DetailedLaborHourService detailedLaborHourService = new DetailedLaborHourService();
-
         for (DetailedLaborHour detailedLabor : detailedLaborList) {
             if (!detailedLabor.getWorkerName().equals("")) {
                 detailedLabor.setHistoryRecord(savedHistoryRecord);
@@ -133,24 +133,21 @@ public class RecordsController {
     }
 
 
-    @RequestMapping("/customer/machine/historyRecord/updateHistoryRecord/{historyRecordId}")
+    @RequestMapping("/updateHistoryRecord/{historyRecordId}")
     public ModelAndView updateHistoryRecord(@PathVariable("historyRecordId") int historyRecordId) {
 
         ModelAndView modelAndView = new ModelAndView("updateHistoryRecord");
-        HistoryRecordService historyRecordService = new HistoryRecordService();
         HistoryRecord historyRecord = historyRecordService.getHistoryRecordById(historyRecordId);
-
         modelAndView.addObject("historyRecord", historyRecord);
         String recordDate = CalendarAdapter.getStringFormat(historyRecord.getRecordDate());
-        DetailedLaborHourService laborHourService = new DetailedLaborHourService();
-        List<DetailedLaborHour> laborHourList = laborHourService.getDetailedLaborByRecordId(historyRecordId);
+        List<DetailedLaborHour> laborHourList = detailedLaborHourService.getDetailedLaborByRecordId(historyRecordId);
         modelAndView.addObject("recordDate", recordDate);
         modelAndView.addObject("laborHourList", laborHourList);
         return modelAndView;
     }
 
 
-    @RequestMapping(value = "/customer/machine/historyRecord/updatedHistoryRecord/{historyRecordId}", method = RequestMethod.POST)
+    @RequestMapping(value = "/updatedHistoryRecord/{historyRecordId}", method = RequestMethod.POST)
     public ModelAndView showUpdatedHistoryRecord(@PathVariable("historyRecordId") int historyRecordId,
                                                  @RequestParam("title") String title,
                                                  @RequestParam(name = "SMR", defaultValue = "0") int SMR,
@@ -163,7 +160,6 @@ public class RecordsController {
 
     ) {
         ModelAndView modelAndView = new ModelAndView("historyRecord");
-        HistoryRecordService historyRecordService = new HistoryRecordService();
         HistoryRecord historyRecord = historyRecordService.getHistoryRecordById(historyRecordId);
         historyRecord.setTitle(title);
         historyRecord.setSMR(SMR);
@@ -174,8 +170,7 @@ public class RecordsController {
         historyRecordService.updateHistoryRecord(historyRecord);
 
         DetailedLaborHour detailedLaborHour;
-        DetailedLaborHourService laborHourService = new DetailedLaborHourService();
-        laborHourService.deleteAllByHistoryRecordId(historyRecordId);
+        detailedLaborHourService.deleteAllByHistoryRecordId(historyRecordId);
         for (int i = 0; i < workerNames.length; i++) {
             if (!workerNames[i].equals("")) {
                 detailedLaborHour = new DetailedLaborHour();
@@ -184,25 +179,24 @@ public class RecordsController {
                 if (!manHours[i].equals("")) {
                     detailedLaborHour.setJobDuration(Double.parseDouble(manHours[i]));
                 }
-                laborHourService.saveDetailedLaborHour(detailedLaborHour);
+                detailedLaborHourService.saveDetailedLaborHour(detailedLaborHour);
             }
         }
         HistoryRecord updatedHistoryRecord = historyRecordService.getHistoryRecordById(historyRecordId);
         modelAndView.addObject("historyRecord", updatedHistoryRecord);
         String recordDate = CalendarAdapter.getStringFormat(updatedHistoryRecord.getRecordDate());
-        List<DetailedLaborHour> laborHourList = laborHourService.getDetailedLaborByRecordId(historyRecordId);
+        List<DetailedLaborHour> laborHourList = detailedLaborHourService.getDetailedLaborByRecordId(historyRecordId);
         System.out.println(recordDate);
         modelAndView.addObject("recordDate", recordDate);
         modelAndView.addObject("laborHourList", laborHourList);
         return modelAndView;
     }
-    @RequestMapping("/customer/machine/historyRecord/deleteHistoryRecord/{historyRecordId}")
-    public ModelAndView deleteHistoryRecord(@PathVariable("historyRecordId") int recordId){
+
+    @RequestMapping("/deleteHistoryRecord/{historyRecordId}")
+    public ModelAndView deleteHistoryRecord(@PathVariable("historyRecordId") int recordId) {
         ModelAndView modelAndView = new ModelAndView("machine");
-        HistoryRecordService historyRecordService = new HistoryRecordService();
-        int machineId = historyRecordService.getMachineIdByRecordId(recordId);
-        MachineService machineService = new MachineService();
-        HistoryRecord historyRecord = new HistoryRecord();
+       int machineId = historyRecordService.getMachineIdByRecordId(recordId);
+         HistoryRecord historyRecord = new HistoryRecord();
         historyRecord.setId(recordId);
         historyRecordService.deleteHistoryRecord(historyRecord);
         Machine machine = machineService.getMachineById(machineId);
@@ -211,14 +205,12 @@ public class RecordsController {
         return modelAndView;
     }
 
-    @RequestMapping("/customer/machine/historyRecord/addFiles/{historyRecordId}")
+    @RequestMapping("/addFiles/{historyRecordId}")
     public ModelAndView addFiles(@PathVariable("historyRecordId") int historyRecordId) {
         ModelAndView modelAndView = new ModelAndView("filesPage");
-        HistoryRecordService historyRecordService = new HistoryRecordService();
         HistoryRecord historyRecord = historyRecordService.getHistoryRecordById(historyRecordId);
-        RecordFileService recordFileService = new RecordFileService();
         List<RecordFile> fileList = recordFileService.getFilesByRecordId(historyRecordId);
-         HistoryRecordDTO historyRecordDTO = new HistoryRecordDTO(historyRecord);
+        HistoryRecordDTO historyRecordDTO = new HistoryRecordDTO(historyRecord);
         modelAndView.addObject("historyRecord", historyRecordDTO);
         modelAndView.addObject("fileList", fileList);
         return modelAndView;
@@ -226,31 +218,29 @@ public class RecordsController {
     }
 
 
-    @RequestMapping(value = "/customer/machine/historyRecord/files/updatedList/{historyRecordId}",
-    method=RequestMethod.POST)
+    @RequestMapping(value = "/files/updatedList/{historyRecordId}",
+            method = RequestMethod.POST)
     public ModelAndView filesUpdated(@PathVariable("historyRecordId") int historyRecordId,
-                                  @RequestParam(value = "file1", required = false) MultipartFile file1,
-                                  @RequestParam(value = "fileDescription1", defaultValue = "") String fileDescription1,
-                                  @RequestParam(value = "file2", required = false) MultipartFile file2,
-                                  @RequestParam(value = "fileDescription2", defaultValue = "") String fileDescription2,
-                                  @RequestParam(value = "file3", required = false) MultipartFile file3,
-                                  @RequestParam(value = "fileDescription3", defaultValue = "") String fileDescription3,
-                                  @RequestParam(value = "file4", required = false) MultipartFile file4,
-                                  @RequestParam(value = "fileDescription4", defaultValue = "") String fileDescription4,
-                                  @RequestParam(value = "checkBox", required = false) int[] filesIdToDelete
+                                     @RequestParam(value = "file1", required = false) MultipartFile file1,
+                                     @RequestParam(value = "fileDescription1", defaultValue = "") String fileDescription1,
+                                     @RequestParam(value = "file2", required = false) MultipartFile file2,
+                                     @RequestParam(value = "fileDescription2", defaultValue = "") String fileDescription2,
+                                     @RequestParam(value = "file3", required = false) MultipartFile file3,
+                                     @RequestParam(value = "fileDescription3", defaultValue = "") String fileDescription3,
+                                     @RequestParam(value = "file4", required = false) MultipartFile file4,
+                                     @RequestParam(value = "fileDescription4", defaultValue = "") String fileDescription4,
+                                     @RequestParam(value = "checkBox", required = false) int[] filesIdToDelete
     ) {
         ModelAndView modelAndView = new ModelAndView("filesPage");
-        RecordFileService recordFileService = new RecordFileService();
-        if(filesIdToDelete!=null){
+           if (filesIdToDelete != null) {
 
-        for(int id :filesIdToDelete){
-            recordFileService.deleteFileById(id);
+            for (int id : filesIdToDelete) {
+                recordFileService.deleteFileById(id);
+            }
         }
-        }
-        StorageService storageService = new StorageService();
-        HistoryRecordService historyRecordService = new HistoryRecordService();
+
         HistoryRecord historyRecord = historyRecordService.getHistoryRecordById(historyRecordId);
-        List<MultipartFile>  files =new ArrayList<MultipartFile>();
+        List<MultipartFile> files = new ArrayList<MultipartFile>();
         files.add(file1);
         files.add(file2);
         files.add(file3);
@@ -260,10 +250,10 @@ public class RecordsController {
         descriptions.add(fileDescription2);
         descriptions.add(fileDescription3);
         descriptions.add(fileDescription4);
-        int i=-1;
-           for (MultipartFile file : files) {
-                if (!file.isEmpty()) {
-                System.out.println( "found file");
+        int i = -1;
+        for (MultipartFile file : files) {
+            if (!file.isEmpty()) {
+                System.out.println("found file");
                 storageService.storeFile(file, historyRecordId);
                 RecordFile recordFile = new RecordFile();
                 recordFile.setFilePath(storageService.getFilePath());
@@ -271,7 +261,7 @@ public class RecordsController {
                 recordFile.setFilename(storageService.getFileName());
                 recordFile.setHistoryRecord(historyRecord);
                 recordFileService.saveFile(recordFile);
-                             }
+            }
         }
         HistoryRecord updatedHistoryRecord = historyRecordService.getHistoryRecordById(historyRecordId);
         List<RecordFile> fileList = recordFileService.getFilesByRecordId(historyRecordId);
@@ -282,40 +272,37 @@ public class RecordsController {
     }
 
 
-    @RequestMapping(value="/customer/machine/historyRecord/downloadFile/{fileId}", method = RequestMethod.GET)
+    @RequestMapping(value = "/downloadFile/{fileId}", method = RequestMethod.GET)
     public void downloadFile(HttpServletResponse response,
                              @PathVariable("fileId") int fileId) throws IOException {
-RecordFileService recordFileService = new RecordFileService();
-RecordFile recordFile = recordFileService.getRecordFileById(fileId);
-String fileName = recordFile.getFileName();
-     StorageService storageService = new StorageService();
-
+        RecordFile recordFile = recordFileService.getRecordFileById(fileId);
+        String fileName = recordFile.getFileName();
         File file = new File(recordFile.getFilePath());
 
-        if(!file.exists()){
+        if (!file.exists()) {
             String errorMessage = "Sorry. The file you are looking for does not exist";
-                  OutputStream outputStream = response.getOutputStream();
+            OutputStream outputStream = response.getOutputStream();
             outputStream.write(errorMessage.getBytes(Charset.defaultCharset().toString()));
             outputStream.close();
             return;
         }
-        String mimeType= URLConnection.guessContentTypeFromName(recordFile.getFileName());
-              if(mimeType==null) {
-                  mimeType = storageService.getFileMimeType(recordFile);
-              }
-            if(mimeType ==null){
-                  System.out.println("mimetype is not detectable, will take default");
+        String mimeType = URLConnection.guessContentTypeFromName(recordFile.getFileName());
+        if (mimeType == null) {
+            mimeType = storageService.getFileMimeType(recordFile);
+        }
+        if (mimeType == null) {
+            System.out.println("mimetype is not detectable, will take default");
             mimeType = "application/octet-stream";
         }
 
         response.setContentType(mimeType);
         response.setHeader("Content-Disposition", String.format("inline; filename=\"" +
-                "Downloaded_From_Iko" + fileName.substring(fileName.lastIndexOf("."))+"\""));
-        response.setContentLength((int)file.length());
+                "Downloaded_From_Iko" + fileName.substring(fileName.lastIndexOf(".")) + "\""));
+        response.setContentLength((int) file.length());
         InputStream inputStream = new BufferedInputStream(new FileInputStream(file));
 
         FileCopyUtils.copy(inputStream, response.getOutputStream());
     }
 
 
-            }
+}

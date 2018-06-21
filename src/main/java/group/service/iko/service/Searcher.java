@@ -6,18 +6,22 @@ import group.service.iko.entities.Customer;
 import group.service.iko.entities.DetailedLaborHour;
 import group.service.iko.entities.HistoryRecord;
 import group.service.iko.entities.Machine;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class Searcher {
+    @Autowired
+    private DetailedLaborHourService detailedLaborHourService;
 
     private double totalWorkTime;
 
 
     public List<JobDTO> findJobsByWorker(String worker, String startDate, String endDate) {
-        DetailedLaborHourService service = new DetailedLaborHourService();
-        List<DetailedLaborHour> jobs = service.getJobListByWorkerName(worker, startDate, endDate);
+        List<DetailedLaborHour> jobs = detailedLaborHourService.getJobListByWorkerName(worker, startDate, endDate);
         totalWorkTime = 0;
         List<JobDTO> jobDTOList = new ArrayList<JobDTO>();
         JobDTO current = null;

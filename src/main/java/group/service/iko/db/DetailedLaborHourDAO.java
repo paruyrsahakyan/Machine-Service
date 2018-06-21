@@ -4,9 +4,11 @@ import group.service.iko.entities.DetailedLaborHour;
 import group.service.iko.entities.HistoryRecord;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class DetailedLaborHourDAO {
     private Session session;
     public void saveDetailedLaborHour(DetailedLaborHour detailedLaborHour){
