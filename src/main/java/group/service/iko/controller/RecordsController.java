@@ -38,6 +38,8 @@ public class RecordsController {
     private HistoryRecordService historyRecordService;
     @Autowired
     private StorageService storageService;
+    @Autowired
+    private WorkerService workerService;
 
     @RequestMapping("/{recordId}")
     public ModelAndView showHistoryRecord(@PathVariable("recordId") int recordId) {
@@ -76,7 +78,7 @@ public class RecordsController {
         modelAndView.addObject("machineId", machineId);
         modelAndView.addObject("model", model);
         modelAndView.addObject("serialNumber", serialNumber);
-        System.out.println(model + ":" + serialNumber);
+        modelAndView.addObject("workerList", workerService.getAllWorkers());
         return modelAndView;
     }
 
@@ -128,6 +130,7 @@ public class RecordsController {
         modelAndView.addObject("historyRecord", recordWithLaborHour);
         String recordDate = CalendarAdapter.getStringFormat(savedHistoryRecord.getRecordDate());
         modelAndView.addObject("recordDate", recordDate);
+
         return modelAndView;
 
     }
@@ -143,6 +146,7 @@ public class RecordsController {
         List<DetailedLaborHour> laborHourList = detailedLaborHourService.getDetailedLaborByRecordId(historyRecordId);
         modelAndView.addObject("recordDate", recordDate);
         modelAndView.addObject("laborHourList", laborHourList);
+        modelAndView.addObject("workerList", workerService.getAllWorkers());
         return modelAndView;
     }
 

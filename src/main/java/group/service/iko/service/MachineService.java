@@ -1,7 +1,7 @@
 package group.service.iko.service;
 
-import group.service.iko.db.MachineDAO;
-import group.service.iko.db.SessionFactoryImpl;
+import group.service.iko.entityDao.MachineDAO;
+import group.service.iko.entityDao.SessionFactoryImpl;
 import group.service.iko.entities.Machine;
 import org.hibernate.Query;
 import org.hibernate.Session;

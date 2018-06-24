@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>Создание записи  в истории</title>
@@ -37,26 +38,18 @@
     Имя работника:  Нормачасы:
     <select name="workerName1">
         <option value="" selected></option>
-        <option value="Саакян Паруйр">Саакян Паруйр</option>
-        <option value="Григорян Арсен">Григорян Арсен</option>
-        <option value="Чандырян Давид">Чандырян Давид</option>
-        <option value="Уклеин Павел">Уклеин Павел</option>
-        <option value="Рудометкин Василий">Рудометкин Василий</option>
-        <option value="Акобян Грачя">Акобян Грачя</option>
-        <option value="Харисов Марат">Харисов Марат</option>
+        <c:forEach items="${workerList}" var="worker">
+        <option value="${worker.name}"> ${worker.name}</option>
+        </c:forEach>
     </select>
      &nbsp; <input type="number" name="manHour1" step="0.25">
     <br><br>
     Имя раборника:   Нормачасы:
     <select name="workerName2">
         <option value="" selected></option>
-        <option value="Саакян Паруйр">Саакян Паруйр</option>
-        <option value="Григорян Арсен">Григорян Арсен</option>
-        <option value="Чандырян Давид">Чандырян Давид</option>
-        <option value="Уклеин Павел">Уклеин Павел</option>
-        <option value="Рудометкин Василий">Рудометкин Василий</option>
-        <option value="Акобян Грачя">Акобян Грачя</option>
-        <option value="Харисов Марат">Харисов Марат</option>
+           <c:forEach items="${workerList}" var="worker">
+            <option value="${worker.name}"> ${worker.name}</option>
+        </c:forEach>
     </select>
     &nbsp;
     <input type="number" name="manHour2" step="0.25" >
@@ -64,13 +57,9 @@
     Имя раборника: Нормачасы:
     <select name="workerName3">
         <option value="" selected></option>
-        <option value="Саакян Паруйр">Саакян Паруйр</option>
-        <option value="Григорян Арсен">Григорян Арсен</option>
-        <option value="Чандырян Давид">Чандырян Давид</option>
-        <option value="Уклеин Павел">Уклеин Павел</option>
-        <option value="Рудометкин Василий">Рудометкин Василий</option>
-        <option value="Акобян Грачя">Акобян Грачя</option>
-        <option value="Харисов Марат">Харисов Марат</option>
+        <c:forEach items="${workerList}" var="worker">
+            <option value="${worker.name}"> ${worker.name}</option>
+        </c:forEach>
     </select>
     &nbsp;
     <input type="number" name="manHour3" step="0.25" >
@@ -78,13 +67,9 @@
     Имя раборника: Нормачасы:
     <select name="workerName4">
         <option value="" selected></option>
-        <option value="Саакян Паруйр">Саакян Паруйр</option>
-        <option value="Григорян Арсен">Григорян Арсен</option>
-        <option value="Чандырян Давид">Чандырян Давид</option>
-        <option value="Уклеин Павел">Уклеин Павел</option>
-        <option value="Рудометкин Василий">Рудометкин Василий</option>
-        <option value="Акобян Грачя">Акобян Грачя</option>
-        <option value="Харисов Марат">Харисов Марат</option>
+        <c:forEach items="${workerList}" var="worker">
+            <option value="${worker.name}"> ${worker.name}</option>
+        </c:forEach>
     </select>
     &nbsp;
     <input type="number" name="manHour4" step="0.25">

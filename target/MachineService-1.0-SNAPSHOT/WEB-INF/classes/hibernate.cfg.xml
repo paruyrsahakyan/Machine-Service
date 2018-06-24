@@ -13,6 +13,7 @@
         <mapping class="group.service.iko.entities.HistoryRecord"/>
         <mapping class="group.service.iko.entities.RecordFile"/>
         <mapping class ="group.service.iko.entities.DetailedLaborHour"/>
+        <mapping class ="group.service.iko.entities.Worker"/>
 
 
 

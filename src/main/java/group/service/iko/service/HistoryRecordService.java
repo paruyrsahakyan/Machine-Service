@@ -1,8 +1,8 @@
 package group.service.iko.service;
 
 import group.service.iko.calendarAdapter.CalendarAdapter;
-import group.service.iko.db.HistoryRecordDAO;
-import group.service.iko.db.SessionFactoryImpl;
+import group.service.iko.entityDao.HistoryRecordDAO;
+import group.service.iko.entityDao.SessionFactoryImpl;
 import group.service.iko.entities.HistoryRecord;
 import org.hibernate.Query;
 import org.hibernate.Session;

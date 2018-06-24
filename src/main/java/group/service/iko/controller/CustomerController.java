@@ -1,18 +1,11 @@
 package group.service.iko.controller;
 
 import group.service.iko.entities.Customer;
-import group.service.iko.entities.User;
-import group.service.iko.security.TokenService;
 import group.service.iko.service.CustomerService;
-import group.service.iko.service.DetailedLaborHourService;
-import group.service.iko.service.MachineService;
-import group.service.iko.service.RecordFileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;

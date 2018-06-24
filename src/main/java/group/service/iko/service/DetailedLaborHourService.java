@@ -1,10 +1,9 @@
 package group.service.iko.service;
 
 import group.service.iko.calendarAdapter.CalendarAdapter;
-import group.service.iko.db.DetailedLaborHourDAO;
-import group.service.iko.db.SessionFactoryImpl;
+import group.service.iko.entityDao.DetailedLaborHourDAO;
+import group.service.iko.entityDao.SessionFactoryImpl;
 import group.service.iko.entities.DetailedLaborHour;
-import group.service.iko.entities.HistoryRecord;
 import org.hibernate.Query;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;

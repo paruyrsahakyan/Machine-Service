@@ -1,10 +1,9 @@
 package group.service.iko.service;
 
-import group.service.iko.db.RecordFileDAO;
-import group.service.iko.db.SessionFactoryImpl;
+import group.service.iko.entityDao.RecordFileDAO;
+import group.service.iko.entityDao.SessionFactoryImpl;
 import group.service.iko.entities.RecordFile;
 import org.hibernate.Query;
-import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
