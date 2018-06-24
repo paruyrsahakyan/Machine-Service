@@ -1,0 +1,87 @@
+
+ -------------------------- customer-----------------
+
+ CREATE TABLE `customer` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `contacts` varchar(255) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `otherInfo` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UK_6m4fuhxj4ckixi1vsb8osii7r` (`name`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+---------------------------- machine -----------------------
+ CREATE TABLE `machine` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `engineModel` varchar(255) DEFAULT NULL,
+  `engineSerialNumber` varchar(255) DEFAULT NULL,
+  `model` varchar(255) DEFAULT NULL,
+  `otherInfo` varchar(255) DEFAULT NULL,
+  `productionYear` int(11) DEFAULT NULL,
+  `serialNumber` varchar(255) DEFAULT NULL,
+  `customer_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FKior7iw8p1e18tirrwr162u5mn` (`customer_id`),
+  CONSTRAINT `FKior7iw8p1e18tirrwr162u5mn` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+---------------------------history_record------------------------------------------
+
+
+ CREATE TABLE `history_record` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `SMR` int(11) DEFAULT NULL,
+  `laborHour` double DEFAULT NULL,
+  `otherInfo` varchar(255) DEFAULT NULL,
+  `recordDate` datetime DEFAULT NULL,
+  `recordInformation` varchar(255) DEFAULT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `machine_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FKor9iysq8rvymhv4hg04ku78q7` (`machine_id`),
+  CONSTRAINT `FKor9iysq8rvymhv4hg04ku78q7` FOREIGN KEY (`machine_id`) REFERENCES `machine` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-------------------------- detailed_labor_hour -------------------------------------------------
+
+ CREATE TABLE `detailed_labor_hour` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `jobDuration` double DEFAULT NULL,
+  `workerName` varchar(255) DEFAULT NULL,
+  `history_record_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FKma3wl7n8npcrnq94k7n3bl9h7` (`history_record_id`),
+  CONSTRAINT `FKma3wl7n8npcrnq94k7n3bl9h7` FOREIGN KEY (`history_record_id`) REFERENCES `history_record` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--------------------------  record_file ----------------------------------
+
+CREATE TABLE `record_file` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `fileDescription` varchar(255) DEFAULT NULL,
+  `filePath` varchar(255) DEFAULT NULL,
+  `filename` varchar(255) DEFAULT NULL,
+  `history_record_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FKjgpev04m1xtovj9dv19w4trnf` (`history_record_id`),
+  CONSTRAINT `FKjgpev04m1xtovj9dv19w4trnf` FOREIGN KEY (`history_record_id`) REFERENCES `history_record` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ;
+
+-------------------------  worker -------------------------------
+
+
+ CREATE TABLE `worker` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+insert into worker (name) value ('Саакян Паруйр');
+insert into worker (name) value ('Григорян Арсен');
+insert into worker (name) value ('Уклеин Павел');
+insert into worker (name) value ('Рудометкин Василий');
+insert into worker (name) value ('Чандырян Давид');
+insert into worker (name) value ('Харисов Марат');
+insert into worker (name) value ('Арутюнян Армен');
+insert into worker (name) value ('Иванов Павел');
+insert into worker (name) value ('Минасян Артур');

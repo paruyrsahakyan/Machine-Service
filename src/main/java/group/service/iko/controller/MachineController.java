@@ -52,7 +52,7 @@ public class MachineController {
         machine.setEngineSerialNumber(engineSerialNumber);
         machine.setProductionYear(productonYear);
         machine.setOtherInfo(otherInfo);
-        machine.setCustomer(new CustomerService().getCustomerById(customerId));
+        machine.setCustomer( customerService.getCustomerById(customerId));
         machineService.saveMachine(machine);
         Machine createdMachine = machineService.getLastRecord();
          modelAndView.addObject("machine", new MachineDTO(createdMachine));

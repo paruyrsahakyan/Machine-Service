@@ -40,6 +40,7 @@ public class CustomerService {
      public List<Customer> getAllCustomers(){
         return customerDAO.getAllCustomers();
              }
+
              public  Customer getCustomerById(int id) {
          return customerDAO.getCustomerById(id);
 
