@@ -1,7 +1,5 @@
 package group.service.iko.entities;
 
-import com.sun.javafx.beans.IDProperty;
-
 import javax.persistence.*;
 
 @Entity(name = "record_file")
