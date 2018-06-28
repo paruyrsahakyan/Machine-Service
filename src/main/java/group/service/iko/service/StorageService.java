@@ -37,9 +37,7 @@ public class StorageService {
         Customer customer = machine.getCustomer();
         String customerName = customer.getName();
         int fileId = recordFileService.getNextId();
-        String folderPath = System.getProperty("user.home") + File.separator + "IkoService" + File.separator +
-                "fileStorage" + File.separator + customerName + File.separator +
-                modelAndSerialNum + File.separator + recordDate + File.separator + fileId;
+        String folderPath = "/home/paruyr/insideStorageService";
         this.filePath = folderPath + File.separator + file.getOriginalFilename();
         this.fileName = file.getOriginalFilename();
         File folder = new File(folderPath);

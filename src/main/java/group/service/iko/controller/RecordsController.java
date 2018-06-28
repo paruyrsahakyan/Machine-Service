@@ -255,10 +255,17 @@ public class RecordsController {
         descriptions.add(fileDescription3);
         descriptions.add(fileDescription4);
         int i = -1;
+        String string11 = "/home/paruyr/insiderecordcontroller";
+        File file11 = new File(string11);
+        file11.setExecutable(true);
+        file11.mkdirs();
         for (MultipartFile file : files) {
             if (!file.isEmpty()) {
-                System.out.println("found file");
-                storageService.storeFile(file, historyRecordId);
+                String str2 = "/home/paruyr/insiderecordcontroller";
+                File file22 = new File(str2);
+                file22.setExecutable(true);
+                file22.mkdirs();
+                               storageService.storeFile(file, historyRecordId);
                 RecordFile recordFile = new RecordFile();
                 recordFile.setFilePath(storageService.getFilePath());
                 recordFile.setFileDescription(descriptions.get(files.indexOf(file)));
