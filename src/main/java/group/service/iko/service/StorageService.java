@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+import sun.jvm.hotspot.memory.SymbolTable;
 
 import java.io.File;
 import java.io.IOException;
@@ -37,10 +38,13 @@ public class StorageService {
         Customer customer = machine.getCustomer();
         String customerName = customer.getName();
         int fileId = recordFileService.getNextId();
-        String folderPath = "/home/paruyr/insideStorageService";
-        this.filePath = folderPath + File.separator + file.getOriginalFilename();
+        String folderPath = System.getProperty("user.home") +File.separator + "IkoService" + File.separator +
+                "fileStorage" + File.separator + customerName + File.separator +
+                modelAndSerialNum + File.separator + recordDate + File.separator + fileId;
+         this.filePath = folderPath + File.separator + file.getOriginalFilename();
         this.fileName = file.getOriginalFilename();
         File folder = new File(folderPath);
+        folder.setExecutable(true);
         folder.mkdirs();
         File newFile = new File(filePath);
         try {
@@ -50,7 +54,6 @@ public class StorageService {
             e.printStackTrace();
         }
     }
-
     public String getFileMimeType(RecordFile recordFile) {
         String fileName = recordFile.getFileName();
         String mimeType = null;
