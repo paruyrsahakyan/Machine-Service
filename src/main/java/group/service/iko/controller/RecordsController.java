@@ -50,6 +50,7 @@ public class RecordsController {
         modelAndView.addObject("fileList", recordFileList);
         modelAndView.addObject("historyRecord", historyRecord);
         modelAndView.addObject("machineId", machineId);
+        modelAndView.addObject("recordDate", new HistoryRecordDTO(historyRecord).getRecordDate() );
         return modelAndView;
 
     }
