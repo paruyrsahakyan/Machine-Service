@@ -37,13 +37,12 @@ public class StorageService {
         Customer customer = machine.getCustomer();
         String customerName = customer.getName();
         int fileId = recordFileService.getNextId();
-        String folderPath ="home/paruyr" +File.separator + "IkoService" + File.separator +
+        String folderPath ="/home/paruyr" +File.separator + "IkoService" + File.separator +
                 "fileStorage" + File.separator + customerName + File.separator +
                 modelAndSerialNum + File.separator + recordDate + File.separator + fileId;
          this.filePath = folderPath + File.separator + file.getOriginalFilename();
         this.fileName = file.getOriginalFilename();
         File folder = new File(folderPath);
-        folder.setExecutable(true);
         folder.mkdirs();
         File newFile = new File(filePath);
         try {

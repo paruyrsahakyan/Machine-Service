@@ -300,7 +300,7 @@ public class RecordsController {
 
         response.setContentType(mimeType);
         response.setHeader("Content-Disposition", String.format("inline; filename=\"" +
-                "Downloaded_From_Iko" + fileName.substring(fileName.lastIndexOf(".")) + "\""));
+                "downloaded" +  "\""));
         response.setContentLength((int) file.length());
         InputStream inputStream = new BufferedInputStream(new FileInputStream(file));
 
