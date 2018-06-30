@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
-import sun.jvm.hotspot.memory.SymbolTable;
 
 import java.io.File;
 import java.io.IOException;
@@ -38,7 +37,7 @@ public class StorageService {
         Customer customer = machine.getCustomer();
         String customerName = customer.getName();
         int fileId = recordFileService.getNextId();
-        String folderPath = System.getProperty("user.home") +File.separator + "IkoService" + File.separator +
+        String folderPath ="home/paruyr" +File.separator + "IkoService" + File.separator +
                 "fileStorage" + File.separator + customerName + File.separator +
                 modelAndSerialNum + File.separator + recordDate + File.separator + fileId;
          this.filePath = folderPath + File.separator + file.getOriginalFilename();

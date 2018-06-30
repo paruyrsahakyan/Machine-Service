@@ -38,7 +38,7 @@
 <table>
 <tr>
     <th>Дата</th>
-    <td> ${recordDate}</td>
+    <td> ${historyRecord.recordDate}</td>
 </tr>
     <tr>
         <th>Описание Работы </th>
