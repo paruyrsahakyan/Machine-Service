@@ -284,9 +284,9 @@ public class RecordsController {
         File file = new File(recordFile.getFilePath());
 
         if (!file.exists()) {
-            String errorMessage = "Sorry. The file you are looking for does not exist";
+            String errorMessage = "Файл который вы загружаете не сушествует!!";
             OutputStream outputStream = response.getOutputStream();
-            outputStream.write(errorMessage.getBytes(Charset.defaultCharset().toString()));
+            outputStream.write(errorMessage.getBytes(Charset.forName("UTF-8")));
             outputStream.close();
             return;
         }
@@ -295,8 +295,7 @@ public class RecordsController {
             mimeType = storageService.getFileMimeType(recordFile);
         }
         if (mimeType == null) {
-            System.out.println("mimetype is not detectable, will take default");
-            mimeType = "application/octet-stream";
+               mimeType = "application/octet-stream";
         }
 
         response.setContentType(mimeType);
