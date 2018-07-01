@@ -11,6 +11,13 @@ public class Worker {
     @Column
     private String name;
 
+    @Override
+    public String toString() {
+        return "Worker{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
+    }
 
     public int getId() {
         return id;

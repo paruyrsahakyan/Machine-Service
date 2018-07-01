@@ -33,15 +33,11 @@
 <form action="/analysis/worker/jobs">
     Работник:
     <select name="workerName">
-        <option value="${workerName}" selected> ${workerName}</option>
-        <option value="Саакян Паруйр">Саакян Паруйр</option>
-        <option value="Григорян Арсен">Григорян Арсен</option>
-        <option value="Чандырян Давид">Чандырян Давид</option>
-        <option value="Уклеин Павел">Уклеин Павел</option>
-        <option value="Рудометкин Василий">Рудометкин Василий</option>
-        <option value="Акобян Грачя">Акобян Грачя</option>
-        <option value="Харисов Марат">Харисов Марат</option>
-    </select>
+        <option value="${selectedWorker}" selected> ${selectedWorker}</option>
+<c:forEach items="${allWorkers}" var="worker">
+        <option value="${worker.name}"> ${worker.name}</option>
+        </c:forEach>
+          </select>
     &nbsp; от:
     <input type="date" name="startDate" value="${startDate}" required>
     &nbsp; до:

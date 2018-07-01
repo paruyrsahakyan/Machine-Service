@@ -5,6 +5,7 @@ import group.service.iko.entityDao.SessionFactoryImpl;
 import group.service.iko.entityDao.WorkerDAO;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,9 +13,14 @@ import java.util.List;
 @Service
 public class WorkerService {
 
+    @Autowired
     private WorkerDAO workerDAO;
     Session session;
-    private List<Worker> allWorkers =null;
+    static private List<Worker> allWorkers =null;
+
+    public WorkerService(){
+
+    }
 
     public  void deleteWorker(Worker worker){
         workerDAO.deleteWorker(worker);
@@ -42,4 +48,9 @@ public class WorkerService {
         }
         return allWorkers;
                     }
+
+    public void saveWorker(Worker worker) {
+        workerDAO.saveWorker(worker);
+        allWorkers = null;
+    }
 }
