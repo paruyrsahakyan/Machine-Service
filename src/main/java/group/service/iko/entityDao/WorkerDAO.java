@@ -37,6 +37,7 @@ public class WorkerDAO {
         session.delete(worker);
         session.flush();
         session.close();
+
     }
 
 }

@@ -28,17 +28,16 @@
 
    <%= i++%>
 
-    <c:forEach items="${fileList}" var="file">
+    <c:forEach items="${allWorkers}" var="worker">
+        <%= i++%>
         <tr>
             <td>
-                    ${file.fileDescription}
+                <%= i++%>
             </td>
             <td>
-                <a href="/customer/machine/historyRecord/downloadFile/${file.id}" target="_blank" >
-                        ${file.fileName}
-                </a>
+                ${worker.name}
             </td>
-            <td><input type="checkbox" name="checkBox" value="${file.id}">
+            <td><input type="checkbox" name="checkBox" value="${worker.id}">
             </td>
         </tr>
     </c:forEach>

@@ -18,13 +18,19 @@ public class WorkerService {
 
     public  void deleteWorker(Worker worker){
         workerDAO.deleteWorker(worker);
+        allWorkers = null;
+
     }
+
     public   Worker getWorkerById(int id){
         return workerDAO.getWorkerById(id);
     }
+
     public  void updateWorker(Worker worker){
         workerDAO.updateWorker(worker);
+        allWorkers = null;
     }
+
     public  List<Worker> getAllWorkers(){
         if(allWorkers==null) {
             session = SessionFactoryImpl.getSessionFactory().openSession();
