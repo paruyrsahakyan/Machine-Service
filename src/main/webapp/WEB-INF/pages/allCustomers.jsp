@@ -45,7 +45,8 @@
     <tr>
         <th>N</th>
         <th>Название Компании</th>
-        <th>контакты </th>
+        <th>Kонтакты </th>
+        <th>Наличие договора </th>
     </tr>
     <% int i = 1;%>
     <c:forEach items="${customerList}" var="customer">
@@ -53,6 +54,7 @@
         <td><%=i++%></td>
         <td><a href="/customer/${customer.id}"> ${customer.name} </a></td>
         <td>${customer.contacts} </td>
+        <td>${customer.contract} </td>
 
     </tr>
 

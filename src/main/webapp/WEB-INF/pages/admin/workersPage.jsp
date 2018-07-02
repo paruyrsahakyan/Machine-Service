@@ -20,7 +20,7 @@
     </style>
 </head>
 <body>
-
+<h2 style="text-align: center">Работники</h2>
 <a href="/"> В главное меню</a> &nbsp;
 <a href="/admin/addWorker"> Добавить работника</a>
 <br>

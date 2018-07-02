@@ -13,6 +13,7 @@
 </head>
 <body>
 <H2 style="text-align: center"> Добавление работника </H2>
+<a href="/admin/workers"> Отменить создание нового работника </a>
 
 <form:form action="/admin/workers/workerAdded" method="post" >
     Имя фамиля: <br>

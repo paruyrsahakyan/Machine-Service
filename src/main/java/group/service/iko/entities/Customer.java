@@ -18,6 +18,8 @@ public class Customer {
     private String otherInfo;
     @OneToMany(mappedBy = "customer", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Machine> machineList;
+    @Column
+    private String contract;
 
 @Override
     public String toString() {
@@ -27,6 +29,14 @@ public class Customer {
                 ", contacts='" + contacts + '\'' +
                 ", otherInfo='" + otherInfo + '\'' +
                                 '}';
+    }
+
+    public String getContract() {
+        return contract;
+    }
+
+    public void setContract(String contract) {
+        this.contract = contract;
     }
 
     public int getId() {

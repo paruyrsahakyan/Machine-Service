@@ -21,6 +21,13 @@
     <textarea name="contacts" cols="40" rows="5"> ${customer.contacts}</textarea> <br><br>
     Другая информация: <br>
     <textarea name="otherInfo" cols="40" rows="5">${customer.otherInfo}</textarea> <br><br>
+    Наличие договора: <br>
+    <select name="contract" >
+        <option value="${customer.contract}" selected > ${customer.contract} </option>
+        <option value="Нет"> Нет </option>
+        <option value="Да"> Да </option>
+        <option value="Не задано">Не задано</option>
+    </select>
 
     <input type="submit" value="Сохранить">
 </form:form>

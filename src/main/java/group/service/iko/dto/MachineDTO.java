@@ -5,6 +5,7 @@ import group.service.iko.entities.HistoryRecord;
 import group.service.iko.entities.Machine;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class MachineDTO {
@@ -98,4 +99,11 @@ public class MachineDTO {
         this.customer = customer;
     }
 
+    public static List<MachineDTO> convertIntoDTO(List<Machine> machineList) {
+        List<MachineDTO> machineDTOList = new ArrayList<MachineDTO>();
+        for (Machine machine : machineList){
+            machineDTOList.add(new MachineDTO(machine));
+                    }
+        return  machineDTOList;
     }
+}

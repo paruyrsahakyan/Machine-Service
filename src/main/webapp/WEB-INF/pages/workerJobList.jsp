@@ -25,7 +25,7 @@
 
 <div>
 
-    <h2 style="text-align: center">Поиск по Работам</h2>
+    <h2 style="text-align: center">Детельность Работника В Периоде Времени</h2>
 
     <a href="/"> главное меню</a>
     <br>

@@ -14,6 +14,10 @@
 </head>
 <body>
 <h1 style="text-align: center"> IKO SERVICE </h1>
+<a href="/login"> Авторизация пользователя </a>
+<br>
+<br>
+<br>
 <a href="/allCustomers"> Все компании</a>
 <br>
 <br>

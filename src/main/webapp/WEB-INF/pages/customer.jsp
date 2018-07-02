@@ -48,7 +48,11 @@
         <td>${customer.contacts}</td>
     </tr>
     <tr>
-        <th>Другие информации</th>
+        <th>Наличие договора:</th>
+        <td>${customer.contract}</td>
+    </tr>
+    <tr>
+            <th>Другие информации</th>
         <td>${customer.otherInfo}</td>
 
     </tr>
@@ -60,10 +64,11 @@
             <th>N</th>
             <th>Модель</th>
             <th>Серийный номер</th>
+
               </tr>
 
         <% int i = 1; %>
-        <c:forEach items="${customer.machineList}" var="machine">
+        <c:forEach items="${machineList}" var="machine">
             <tr>
                 <td><%= i++%> </td>
                 <td>${machine.model}</td>

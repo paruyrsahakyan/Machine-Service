@@ -1,6 +1,7 @@
 package group.service.iko.controller;
 
 import group.service.iko.calendarAdapter.CalendarAdapter;
+import group.service.iko.dto.CustomerDTO;
 import group.service.iko.dto.DtoFactory;
 import group.service.iko.entities.DetailedLaborHour;
 import group.service.iko.entities.HistoryRecord;
@@ -35,7 +36,7 @@ public class HomeController {
     public ModelAndView allCustomers() {
         ModelAndView modelAndView = new ModelAndView("allCustomers");
         List<Customer> customers = customerService.getAllCustomers();
-        modelAndView.addObject("customerList", customers);
+        modelAndView.addObject("customerList", CustomerDTO.convertIntoDTO(customers));
         return modelAndView;
     }
 
