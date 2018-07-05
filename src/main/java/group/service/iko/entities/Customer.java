@@ -18,6 +18,9 @@ public class Customer {
     private String otherInfo;
     @OneToMany(mappedBy = "customer", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Machine> machineList;
+    @ManyToOne()
+    @JoinColumn(name = "worker_id")
+    private Worker responsible;
     @Column
     private String contract;
 
@@ -29,6 +32,15 @@ public class Customer {
                 ", contacts='" + contacts + '\'' +
                 ", otherInfo='" + otherInfo + '\'' +
                                 '}';
+    }
+
+
+    public Worker getResponsible() {
+        return responsible;
+    }
+
+    public void setResponsible(Worker responsible) {
+        this.responsible = responsible;
     }
 
     public String getContract() {

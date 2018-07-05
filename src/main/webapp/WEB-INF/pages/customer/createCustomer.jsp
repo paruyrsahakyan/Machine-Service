@@ -15,6 +15,7 @@
 </script>
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>Создание новой компании</title>
@@ -35,6 +36,15 @@
          <option value="Нет"> Нет </option>
          </select>
          <br><br>
+    Ответственный: <br>
+         <select name="responsible" >
+         <option value="-1" selected ></option>
+         <c:forEach items="${allWorkers}" var="worker">
+           <option value="${worker.id}"> ${worker.name} </option>
+             </c:forEach>
+         </select>
+         <br>
+         <br>
     <input type="submit" value="Сохранить">
 </form:form>
 </body>

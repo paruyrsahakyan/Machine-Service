@@ -1,6 +1,7 @@
 package group.service.iko.entities;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name="worker")
@@ -10,6 +11,17 @@ public class Worker {
     private int id;
     @Column
     private String name;
+    @OneToMany(mappedBy = "responsible", fetch = FetchType.EAGER)
+    private List<Customer> customerList;
+
+    public  Worker(){
+
+    }
+
+public Worker(String name){
+    this.name = name;
+}
+
 
     @Override
     public String toString() {
@@ -17,6 +29,14 @@ public class Worker {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 '}';
+    }
+
+    public List<Customer> getCustomerList() {
+        return customerList;
+    }
+
+    public void setCustomerList(List<Customer> customerList) {
+        this.customerList = customerList;
     }
 
     public int getId() {

@@ -1,8 +1,12 @@
 package group.service.iko.dto;
 
+import group.service.iko.calendarAdapter.CalendarAdapter;
 import group.service.iko.entities.Customer;
 import group.service.iko.entities.HistoryRecord;
 import group.service.iko.entities.Machine;
+import group.service.iko.service.HistoryRecordService;
+import group.service.iko.service.MachineService;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -18,11 +22,16 @@ public class MachineDTO {
     private int productionYear;
     private String otherInfo;
     private String customer;
+    private String lastInfo;
+    private int lastInfoId;
+    private String lastInfoDate;
+    private int lastSMR;
 
 
-    public  MachineDTO(){
+    public MachineDTO() {
 
     }
+
     public MachineDTO(Machine machine) {
         id = machine.getId();
         model = machine.getModel();
@@ -32,7 +41,44 @@ public class MachineDTO {
         productionYear = machine.getProductionYear();
         otherInfo = machine.getOtherInfo();
         customer = machine.getCustomer().getName();
+        HistoryRecordDTO historyRecordDTO = new MachineService().getLastInfoOfMachine(machine);
+        lastInfo = historyRecordDTO.getTitle();
+        lastInfoDate = historyRecordDTO.getRecordDate();
+        lastInfoId = historyRecordDTO.getId();
+        lastSMR = historyRecordDTO.getSMR();
+    }
 
+
+    public int getLastSMR() {
+        return lastSMR;
+    }
+
+    public void setLastSMR(int lastSMR) {
+        this.lastSMR = lastSMR;
+    }
+
+    public String getLastInfo() {
+        return lastInfo;
+    }
+
+    public void setLastInfo(String lastInfo) {
+        this.lastInfo = lastInfo;
+    }
+
+    public int getLastInfoId() {
+        return lastInfoId;
+    }
+
+    public void setLastInfoId(int lastInfoId) {
+        this.lastInfoId = lastInfoId;
+    }
+
+    public String getLastInfoDate() {
+        return lastInfoDate;
+    }
+
+    public void setLastInfoDate(String lastInfoDate) {
+        this.lastInfoDate = lastInfoDate;
     }
 
     public int getId() {
@@ -101,9 +147,11 @@ public class MachineDTO {
 
     public static List<MachineDTO> convertIntoDTO(List<Machine> machineList) {
         List<MachineDTO> machineDTOList = new ArrayList<MachineDTO>();
-        for (Machine machine : machineList){
-            machineDTOList.add(new MachineDTO(machine));
-                    }
-        return  machineDTOList;
+        if (machineList != null) {
+            for (Machine machine : machineList) {
+                machineDTOList.add(new MachineDTO(machine));
+            }
+        }
+        return machineDTOList;
     }
 }

@@ -9,6 +9,7 @@ import java.util.List;
 public class DtoFactory {
 
 
+
     static public List<MachineDTO> makeMachineDtoList(List<Machine> machineList) {
         List<MachineDTO> machineDTOList = new ArrayList<MachineDTO>();
         for (Machine machine : machineList) {

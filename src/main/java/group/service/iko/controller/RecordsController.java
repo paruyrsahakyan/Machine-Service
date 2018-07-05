@@ -1,6 +1,5 @@
 package group.service.iko.controller;
 
-import group.service.iko.filters.HistoryRecordFilter;
 import group.service.iko.calendarAdapter.CalendarAdapter;
 import group.service.iko.dto.HistoryRecordDTO;
 import group.service.iko.dto.MachineDTO;
@@ -43,7 +42,7 @@ public class RecordsController {
 
     @RequestMapping("/{recordId}")
     public ModelAndView showHistoryRecord(@PathVariable("recordId") int recordId) {
-        ModelAndView modelAndView = new ModelAndView("historyRecord");
+        ModelAndView modelAndView = new ModelAndView("historyRecord/historyRecord");
         HistoryRecord historyRecord = historyRecordService.getHistoryRecordById(recordId);
         List<RecordFile> recordFileList = recordFileService.getFilesByRecordId(recordId);
         int machineId = historyRecordService.getMachineIdByRecordId(recordId);
@@ -62,7 +61,7 @@ public class RecordsController {
 
         Machine machine = machineService.getMachineById(machineId);
         List<HistoryRecord> recordList = historyRecordService.getRecordsFilteredByDate(machineId, startDate, endDate);
-        ModelAndView modelAndView = new ModelAndView("recordList");
+        ModelAndView modelAndView = new ModelAndView("historyRecord/recordList");
         modelAndView.addObject("recordList", HistoryRecordDTO.transformIntoDTO(recordList));
         modelAndView.addObject("machine", new MachineDTO(machine));
         modelAndView.addObject("startDate", startDate);
@@ -75,7 +74,7 @@ public class RecordsController {
         Machine machine = machineService.getMachineById(machineId);
         String model = machine.getModel();
         String serialNumber = machine.getSerialNumber();
-        ModelAndView modelAndView = new ModelAndView("createHistoryRecord");
+        ModelAndView modelAndView = new ModelAndView("historyRecord/createHistoryRecord");
         modelAndView.addObject("machineId", machineId);
         modelAndView.addObject("model", model);
         modelAndView.addObject("serialNumber", serialNumber);
@@ -102,7 +101,7 @@ public class RecordsController {
                                          @RequestParam(name = "manHour4", defaultValue = "0") String manHour4
 
     ) {
-        ModelAndView modelAndView = new ModelAndView("historyRecord");
+        ModelAndView modelAndView = new ModelAndView("historyRecord/historyRecord");
         Machine machine = machineService.getMachineById(machineId);
         HistoryRecord historyRecord = new HistoryRecord();
         historyRecord.setMachine(machine);
@@ -140,7 +139,7 @@ public class RecordsController {
     @RequestMapping("/updateHistoryRecord/{historyRecordId}")
     public ModelAndView updateHistoryRecord(@PathVariable("historyRecordId") int historyRecordId) {
 
-        ModelAndView modelAndView = new ModelAndView("updateHistoryRecord");
+        ModelAndView modelAndView = new ModelAndView("historyRecord/updateHistoryRecord");
         HistoryRecord historyRecord = historyRecordService.getHistoryRecordById(historyRecordId);
         modelAndView.addObject("historyRecord", historyRecord);
         String recordDate = CalendarAdapter.getStringFormat(historyRecord.getRecordDate());
@@ -164,7 +163,7 @@ public class RecordsController {
                                                  @RequestParam(value = "manHour[]") String[] manHours
 
     ) {
-        ModelAndView modelAndView = new ModelAndView("historyRecord");
+        ModelAndView modelAndView = new ModelAndView("historyRecord/historyRecord");
         HistoryRecord historyRecord = historyRecordService.getHistoryRecordById(historyRecordId);
         historyRecord.setTitle(title);
         historyRecord.setSMR(SMR);
@@ -199,7 +198,7 @@ public class RecordsController {
 
     @RequestMapping("/deleteHistoryRecord/{historyRecordId}")
     public ModelAndView deleteHistoryRecord(@PathVariable("historyRecordId") int recordId) {
-        ModelAndView modelAndView = new ModelAndView("machine");
+        ModelAndView modelAndView = new ModelAndView("machine/machine");
        int machineId = historyRecordService.getMachineIdByRecordId(recordId);
          HistoryRecord historyRecord = new HistoryRecord();
         historyRecord.setId(recordId);
@@ -212,7 +211,7 @@ public class RecordsController {
 
     @RequestMapping("/addFiles/{historyRecordId}")
     public ModelAndView addFiles(@PathVariable("historyRecordId") int historyRecordId) {
-        ModelAndView modelAndView = new ModelAndView("filesPage");
+        ModelAndView modelAndView = new ModelAndView("recordFiles/filesPage");
         HistoryRecord historyRecord = historyRecordService.getHistoryRecordById(historyRecordId);
         List<RecordFile> fileList = recordFileService.getFilesByRecordId(historyRecordId);
         HistoryRecordDTO historyRecordDTO = new HistoryRecordDTO(historyRecord);
@@ -236,7 +235,7 @@ public class RecordsController {
                                      @RequestParam(value = "fileDescription4", defaultValue = "") String fileDescription4,
                                      @RequestParam(value = "checkBox", required = false) int[] filesIdToDelete
     ) {
-        ModelAndView modelAndView = new ModelAndView("filesPage");
+        ModelAndView modelAndView = new ModelAndView("recordFiles/filesPage");
            if (filesIdToDelete != null) {
 
             for (int id : filesIdToDelete) {

@@ -52,6 +52,11 @@
         <td>${customer.contract}</td>
     </tr>
     <tr>
+        <th>Ответственный</th>
+        <td>${customer.responsible.name}</td>
+
+    </tr>
+    <tr>
             <th>Другие информации</th>
         <td>${customer.otherInfo}</td>
 
@@ -64,6 +69,10 @@
             <th>N</th>
             <th>Модель</th>
             <th>Серийный номер</th>
+            <th>Год производства</th>
+            <th>Последняя инфо</th>
+            <th>Дата информации</th>
+            <th>Наработка</th>
 
               </tr>
 
@@ -73,7 +82,11 @@
                 <td><%= i++%> </td>
                 <td>${machine.model}</td>
                 <td><a href="/customer/machine/${machine.id}"> ${machine.serialNumber} </a></td>
-                            </tr>
+                <td>${machine.productionYear}</td>
+                <td>${machine.lastInfo}</td>
+                <td>${machine.lastInfoDate}</td>
+                <td>${machine.lastSMR}</td>
+            </tr>
         </c:forEach>
         </tr>
     </table>

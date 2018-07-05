@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>Редактировать</title>
@@ -18,7 +19,7 @@
     Название компании:<br>
     <input type="text" name="name" style="height: auto" value="${customer.name}"><br><br>
     Контактные данные:<br>
-    <textarea name="contacts" cols="40" rows="5"> ${customer.contacts}</textarea> <br><br>
+    <textarea name="contacts" cols="40" rows="5">${customer.contacts}</textarea> <br><br>
     Другая информация: <br>
     <textarea name="otherInfo" cols="40" rows="5">${customer.otherInfo}</textarea> <br><br>
     Наличие договора: <br>
@@ -28,6 +29,17 @@
         <option value="Да"> Да </option>
         <option value="Не задано">Не задано</option>
     </select>
+    <br>
+    <br>
+    Ответственный: <br>
+    <select name="responsible" >
+    <option value="${customer.responsible.id}" selected > ${customer.responsible.name} </option>
+    <c:forEach items="${allWorkers}" var="worker">
+        <option value="${worker.id}"> ${worker.name} </option>
+    </c:forEach>
+    </select>
+    <br>
+    <br>
 
     <input type="submit" value="Сохранить">
 </form:form>

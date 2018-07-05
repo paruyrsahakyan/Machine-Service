@@ -9,6 +9,7 @@
     <http auto-config="true" >
         <intercept-url pattern="/" access="permitAll()" />
         <intercept-url pattern="/*" access="hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')"/>
+        <intercept-url pattern="/favicon.ico" access="hasRole('ROLE_ADMIN') and hasRole('user')"/>
         <intercept-url pattern="/analysis/*" access="hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')"/>
         <intercept-url pattern="/customer/createCustomer*" access="hasRole('ROLE_ADMIN')"/>
         <intercept-url pattern="/customer/newCustomer*" access="hasRole('ROLE_ADMIN')"/>

@@ -1,5 +1,8 @@
 package group.service.iko.service;
 
+import group.service.iko.calendarAdapter.CalendarAdapter;
+import group.service.iko.dto.HistoryRecordDTO;
+import group.service.iko.entities.HistoryRecord;
 import group.service.iko.entityDao.MachineDAO;
 import group.service.iko.entityDao.SessionFactoryImpl;
 import group.service.iko.entities.Machine;
@@ -8,7 +11,11 @@ import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.Map;
+
 @Service
 public class MachineService {
     private Session session;
@@ -59,7 +66,7 @@ public class MachineService {
         machineDAO.updateMachine(machine);
     }
 
-    public Machine getLastRecord() {
+    public Machine getLastMachine() {
         session = SessionFactoryImpl.getSessionFactory().openSession();
         String hql = "from group.service.iko.entities.Machine" +
                 " order by id DESC";
@@ -131,4 +138,38 @@ public class MachineService {
         session.close();
         return machineList;
     }
+    public HistoryRecordDTO getLastInfoOfMachine(Machine machine){
+        HistoryRecordDTO historyRecord = new HistoryRecordDTO();
+                  if (machine.getHistoryRecordList().size()>0) {
+                             session = SessionFactoryImpl.getSessionFactory().openSession();
+                      String sql;
+                             if (machine.getHistoryRecordList().size()==1){
+                                 sql = "SELECT * FROM iko.history_record where machine_id = " + machine.getId();
+                             }
+                             else {
+                                 sql = "SELECT * FROM iko.history_record where machine_id = " + machine.getId() +
+                                         " and recordDate =(select max(recordDate) from iko.history_record) ;";
+                             }
+                Query query = session.createSQLQuery(sql);
+                List<Object[]> resultList =  query.list();
+                Object[] result = resultList.get(0);
+                historyRecord.setId(Integer.parseInt(result[0].toString()));
+                historyRecord.setTitle(result[6].toString());
+                historyRecord.setSMR(Integer.parseInt(result[1].toString()));
+                historyRecord.setRecordDate(result[4].toString().substring(0,10));
+                  session.close();
+//                String hql = "select max(recordDate) from group.service.iko.entities.HistoryRecord  where machine.id=:mID ";
+//                Query query = session.createQuery(hql);
+//                 query.setParameter("mID", machine.getId());
+//                GregorianCalendar gregorianCalendar = (GregorianCalendar) query.uniqueResult();
+//                String hql2 = "from group.service.iko.entities.HistoryRecord where machine.id = :M and recordDate = :date";
+//                Query query1 = session.createQuery(hql2);
+//                query1.setParameter("M", machine.getId());
+//                query1.setParameter("date", gregorianCalendar );
+//                HistoryRecord historyRecord1 = (HistoryRecord) query1.uniqueResult();
+//                session.close();
+            }
+        return  historyRecord;
+    }
+
 }

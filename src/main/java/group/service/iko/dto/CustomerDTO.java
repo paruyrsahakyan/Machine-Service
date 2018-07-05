@@ -1,6 +1,7 @@
 package group.service.iko.dto;
 
 import group.service.iko.entities.Customer;
+import group.service.iko.entities.Worker;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +13,7 @@ public class CustomerDTO {
     private String contacts;
     private String otherInfo;
     private String contract;
+    private Worker responsible;
 
 
     public CustomerDTO(Customer customer) {
@@ -20,6 +22,7 @@ public class CustomerDTO {
         contacts = customer.getContacts();
         otherInfo = customer.getOtherInfo();
         contract = customer.getContract();
+        responsible = customer.getResponsible();
 
     }
 
@@ -33,6 +36,13 @@ public class CustomerDTO {
         return  newCustomers;
             }
 
+    public Worker getResponsible() {
+        return responsible;
+    }
+
+    public void setResponsible(Worker responsible) {
+        this.responsible = responsible;
+    }
 
     public String getContract() {
         return contract;

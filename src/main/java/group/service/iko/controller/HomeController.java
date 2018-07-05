@@ -47,7 +47,7 @@ public class HomeController {
         machineService = new MachineService();
         List<Machine> machineList = machineService.getAllMachines();
         modelAndView.addObject("machineList", DtoFactory.makeMachineDtoList(machineList));
-        return modelAndView;
+         return modelAndView;
     }
 
     @RequestMapping("/allMachines/filtered")
@@ -71,5 +71,12 @@ public class HomeController {
         modelAndView.addObject("customerList", DtoFactory.makeCustomerDtoList(customerList));
         modelAndView.addObject("customerName", customerName);
         return modelAndView;
+    }
+
+    @RequestMapping("/favicon.ico")
+    public  ModelAndView showFavicon() {
+        ModelAndView modelAndView = new ModelAndView("index");
+        return  modelAndView;
+
     }
 }

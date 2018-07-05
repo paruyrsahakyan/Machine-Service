@@ -22,6 +22,9 @@ public class HistoryRecordDTO {
     private String otherInfo;
     private double laborHour;
 
+    public HistoryRecordDTO() {
+    }
+
     public HistoryRecordDTO(HistoryRecord historyRecord) {
         id = historyRecord.getId();
         title = historyRecord.getTitle();

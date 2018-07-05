@@ -52,41 +52,29 @@
         <select name="workerName[]">
         <option value="${laborHour.workerName}" selected>${laborHour.workerName}</option>
        <option value=""></option>
-        <option value="Саакян Паруйр">Саакян Паруйр</option>
-        <option value="Григорян Арсен">Григорян Арсен</option>
-        <option value="Чандырян Давид">Чандырян Давид</option>
-        <option value="Уклеин Павел">Уклеин Павел</option>
-        <option value="Рудометкин Василий">Рудометкин Василий</option>
-        <option value="Акобян Грачя">Акобян Грачя</option>
-        <option value="Харисов Марат">Харисов Марат</option>
+        <c:forEach items="${workerList}" var="worker">
+        <option value="${worker.name}"> ${worker.name}</option>
+    </c:forEach>
     </select>   &nbsp;
         <input type="number" name="manHour[]"  step="0.25" value="${laborHour.jobDuration}">
     <br>
     </c:forEach>
     Имя раборника:  Длительность работы:
     <select name="workerName[]">
+        <c:forEach items="${workerList}" var="worker">
         <option value="" selected></option>
-        <option value="Саакян Паруйр">Саакян Паруйр</option>
-        <option value="Григорян Арсен">Григорян Арсен</option>
-        <option value="Чандырян Давид">Чандырян Давид</option>
-        <option value="Уклеин Павел">Уклеин Павел</option>
-        <option value="Рудометкин Василий">Рудометкин Василий</option>
-        <option value="Акобян Грачя">Акобян Грачя</option>
-        <option value="Харисов Марат">Харисов Марат</option>
+        <option value="${worker.name}"> ${worker.name}</option>
+        </c:forEach>
     </select> &nbsp;
     <input type="number" name="manHour[]" step="0.25"  value="0">
     <br>
 
     Имя раборника:  Длительность работы:
     <select name="workerName[]">
+        <c:forEach items="${workerList}" var="worker">
         <option value="" selected></option>
-        <option value="Саакян Паруйр">Саакян Паруйр</option>
-        <option value="Григорян Арсен">Григорян Арсен</option>
-        <option value="Чандырян Давид">Чандырян Давид</option>
-        <option value="Уклеин Павел">Уклеин Павел</option>
-        <option value="Рудометкин Василий">Рудометкин Василий</option>
-        <option value="Акобян Грачя">Акобян Грачя</option>
-        <option value="Харисов Марат">Харисов Марат</option>
+        <option value="${worker.name}"> ${worker.name}</option>
+        </c:forEach>
     </select> &nbsp;
     <input type="number" name="manHour[]" step="0.25"  value="0">
 
