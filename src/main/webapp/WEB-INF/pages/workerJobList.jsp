@@ -22,8 +22,7 @@
     </style>
 </head>
 <body>
-
-<div>
+<div style="text-align: center">
 
     <h2 style="text-align: center">Детельность Работника В Периоде Времени</h2>
 
@@ -50,7 +49,7 @@
     <br>
     <h3>Суммарные часы в периоде: &nbsp; ${totalTime} </h3>
 
-    <table style="width: auto">
+    <table style="width: auto" align="center">
         <tr>
             <th>N</th>
             <th>дата</th>

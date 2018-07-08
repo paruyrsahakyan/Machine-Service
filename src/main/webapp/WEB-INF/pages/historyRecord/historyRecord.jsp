@@ -15,6 +15,7 @@
             font-family: arial, sans-serif;
             border-collapse: collapse;
             width: auto;
+
         }
 
         td, th {
@@ -29,13 +30,14 @@
     </style>
 </head>
 <body>
+<div style="text-align: center">
 <h2 style="text-align: center">Запись истории</h2>
 <a href="/"> главное меню</a>
 <br> <br>
 <a href="/customer/machine/${historyRecord.machine.id}" >
 <H3> ${historyRecord.machine.model} : sn${historyRecord.machine.serialNumber} </H3>
 </a>
-<table>
+<table align="center">
 <tr>
     <th>Дата</th>
     <td> ${recordDate}</td>
@@ -61,8 +63,8 @@
         <td>${historyRecord.otherInfo}</td>
     </tr>
 </table>
-<h4>Исполнители: </h4>
-<table>
+<h3>Исполнители: </h3>
+<table align="center">
        <c:forEach items="${historyRecord.laborHours}" var="laborHour">
         <tr>
             <th>${laborHour.workerName}</th>
@@ -89,6 +91,6 @@
 <a href="/customer/machine/historyRecord/deleteHistoryRecord/${historyRecord.id}"
    onclick="return confirm('!!!Вы уверены что хатите удалить запись!!!');"
 style="color: crimson">Удалить запись</a>
-
+</div>
 </body>
 </html>

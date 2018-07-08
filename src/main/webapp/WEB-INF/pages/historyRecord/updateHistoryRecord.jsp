@@ -15,10 +15,11 @@
     <title>Редактирование записи  в истории</title>
 </head>
 <body>
+<div style="text-align: center">
 <h2>Редактирование записи</h2>
 <h3> ${historyRecord.machine.model} :   ${historyRecord.machine.serialNumber}</h3>
 <form:form action="/customer/machine/historyRecord/updatedHistoryRecord/${historyRecord.id}" method="post" accept-charset="UTF-8">
-    <TABLE>
+    <TABLE align="center">
         <TR>
             <TD>Дата:</TD>
             <TD><input type="date" name="date"  value="${recordDate}"></TD>
@@ -77,9 +78,10 @@
         </c:forEach>
     </select> &nbsp;
     <input type="number" name="manHour[]" step="0.25"  value="0">
-
-
+    <br>
+    <br>
 <input type="submit" value="сохранить" >
 </form:form>
+</div >
 </body>
 </html>

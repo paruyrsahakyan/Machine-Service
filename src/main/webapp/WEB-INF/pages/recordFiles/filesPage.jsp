@@ -21,6 +21,7 @@
     </style>
 </head>
 <body>
+<div style="text-align: center">
 <a href="/"> главное меню</a>
 <br>
 <br>
@@ -39,7 +40,7 @@
 
 <h4>Прикрепленные файлы:</h4>
 
-                 <table>
+                 <table align="center">
                  <tr>
                      <th>Описание</th>
                      <th>Название файла</th>
@@ -66,6 +67,6 @@
         <input type="submit" value="Обновить">
 
     </form:form>
-
+</div>
 </body>
 </html>

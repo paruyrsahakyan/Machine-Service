@@ -13,6 +13,7 @@
     <title>Новая Машина</title>
 </head>
 <body>
+<div style="text-align: center">
 <h2>Регистрация новой машины</h2> <br>
 <h3>Влоделец: &nbsp; ${customerName}</h3>
 <form:form action="/customer/machine/newMachine/${customerId}" method="Post" >
@@ -33,6 +34,6 @@
 
     <input type="submit" value="Сохранить">
 </form:form>
-
+</div>
 </body>
 </html>

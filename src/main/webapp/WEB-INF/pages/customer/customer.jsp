@@ -22,12 +22,10 @@
     </style>
 </head>
 <body>
+<div style="text-align: center">
 <a href="/"> главное меню</a>
 
-<div>
-
 <h2>Информация о заказчике</h2>
-
 
     <a href="/customer/updateCustomer/${customer.id}" style="bottom: auto"> Редактировать</a>
     &nbsp; &nbsp;
@@ -38,7 +36,7 @@
        style="color: crimson;">Удалить компанию</a>
     <br> <br>
 
-<table style="width: auto">
+<table style="width: auto" align="center">
     <tr>
         <th>Название Компании: </th>
         <td>${customer.name}</td>
@@ -64,7 +62,7 @@
 
 </table>
     <h3>Парк машин</h3>
-    <table style="width: auto">
+    <table style="width: auto" align="center">
         <tr>
             <th>N</th>
             <th>Модель</th>

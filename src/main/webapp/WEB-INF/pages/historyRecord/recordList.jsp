@@ -22,6 +22,7 @@
     </style>
 </head>
 <body>
+<div style="text-align: center">
 <h2 style="text-align: center">История Машины</h2>
 
 <a href="/"> главное меню</a>
@@ -38,7 +39,7 @@
         <input type="submit" value="Фильтр по датам">
         <br>
     </form>
-    <table style="width: auto">
+    <table style="width: auto" align="center">
         <tr>
             <th>N</th>
             <th>Дата</th>
@@ -59,7 +60,7 @@
         </c:forEach>
         </tr>
     </table>
-
+    </div>
 </body>
 </html>
 

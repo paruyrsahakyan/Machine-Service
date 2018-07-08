@@ -12,6 +12,7 @@
     <title>Добовление Работника</title>
 </head>
 <body>
+<div style="text-align: center">
 <H2 style="text-align: center"> Добавление работника </H2>
 <a href="/admin/workers"> Отменить создание нового работника </a>
 
@@ -22,5 +23,6 @@
     <input type="submit" value="Сохранить">
 
 </form:form>
+</div>
 </body>
 </html>

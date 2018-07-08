@@ -14,6 +14,7 @@
     <meta>
 </head>
 <body>
+<div style="text-align: center">
 <h3>Редактирование информации заказчика</h3>
 <form:form action="/customer/updatedCustomer/${customer.id}" method="post" accept-charset="UTF-8">
     Название компании:<br>
@@ -43,6 +44,6 @@
 
     <input type="submit" value="Сохранить">
 </form:form>
-
+</div>
 </body>
 </html>

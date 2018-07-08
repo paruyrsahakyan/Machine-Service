@@ -12,6 +12,8 @@
 <head>
     <title>Создание записи  в истории</title>
 </head>
+<body>
+<div style="text-align: center">
 <h2>Новая запись</h2>
 <br>
     <h3>${model}:   ${serialNumber}</h3>
@@ -35,7 +37,7 @@
     <input type="text" name="otherInfo"> </input>
     <br><br>
 <h3> Часы по работникам</h3>
-    Имя работника:  Нормачасы:
+    Имя работника:  Длительность работы:
     <select name="workerName1">
         <option value="" selected></option>
         <c:forEach items="${workerList}" var="worker">
@@ -44,7 +46,7 @@
     </select>
      &nbsp; <input type="number" name="manHour1" step="0.25">
     <br><br>
-    Имя раборника:   Нормачасы:
+    Имя раборника:   Длительность работы:
     <select name="workerName2">
         <option value="" selected></option>
            <c:forEach items="${workerList}" var="worker">
@@ -54,7 +56,7 @@
     &nbsp;
     <input type="number" name="manHour2" step="0.25" >
     <br><br>
-    Имя раборника: Нормачасы:
+    Имя раборника: Длительность работы:
     <select name="workerName3">
         <option value="" selected></option>
         <c:forEach items="${workerList}" var="worker">
@@ -64,7 +66,7 @@
     &nbsp;
     <input type="number" name="manHour3" step="0.25" >
     <br><br>
-    Имя раборника: Нормачасы:
+    Имя раборника: Длительность работы:
     <select name="workerName4">
         <option value="" selected></option>
         <c:forEach items="${workerList}" var="worker">
@@ -77,6 +79,6 @@
 
 <input type="submit" value="сохранить" >
 </form:form>
-
+</div>
 </body>
 </html>

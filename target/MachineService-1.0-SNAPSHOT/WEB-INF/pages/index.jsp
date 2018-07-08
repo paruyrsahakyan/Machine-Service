@@ -19,13 +19,13 @@
 <br>
 <br>
 <br>
-<a href="/allCustomers" target="_blank" > Kомпании</a>
+<a href="/allCustomers"> Kомпании</a>
 <br>
 <br>
-<a href="/allMachines" target="_blank"> Mашины</a>
+<a href="/allMachines"> Mашины</a>
 <br>
 <br>
-<a href="/analysis/worker/jobs" target="_blank"> Анализ работ</a>
+<a href="/analysis/worker/jobs"> Анализ работ</a>
 <br>
 <br>
 <a href="/admin/workers"> Работники </a>

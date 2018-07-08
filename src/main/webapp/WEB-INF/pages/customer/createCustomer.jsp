@@ -21,6 +21,7 @@
     <title>Создание новой компании</title>
 </head>
 <body>
+<div style="text-align: center">
 <h2>Создание новой компании</h2> <br>
 <form:form action="/customer/newCustomer"  method="post" accept-charset="UTF-8"  >
     Название компании:<br>
@@ -47,5 +48,6 @@
          <br>
     <input type="submit" value="Сохранить">
 </form:form>
+</div>
 </body>
 </html>

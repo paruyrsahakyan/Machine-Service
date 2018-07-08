@@ -12,6 +12,7 @@
     <title>updateMachine</title>
 </head>
 <body>
+<div style="text-align: center">
 <h2>Редактирование машины</h2>
 <a href="/customer/machine/${machine.id}">Отменить редактирование</a>
 <br>
@@ -33,6 +34,6 @@
            <input type="submit" value="Сохранить">
 
 </form:form>
-
+</div>
 </body>
 </html>

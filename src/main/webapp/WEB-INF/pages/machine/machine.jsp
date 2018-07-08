@@ -25,13 +25,13 @@
 <body>
 
 
-<div>
+<div style="text-align: center">
 
     <h2>Информация о машине</h2>
 
     <a href="/"> главное меню</a>
     <br> <br>
-        <table style="width: auto">
+        <table style="width: auto" align="center" >
         <tr>
             <th>Модель:</th>
             <td>${machine.model}</td>
@@ -68,7 +68,7 @@
 
         </tr>
     </table>
-    </div>
+
 <br> <br>
 <a href="/customer/machine/updateMachine/${machine.id}" style="bottom: auto"> Редактировать</a>  &nbsp;<b>|</b>
 <a href="/customer/machine/historyRecord/createHistoryRecord/${machine.id}">Создать новую запись истории</a>  &nbsp;<b>|</b>
@@ -78,5 +78,6 @@
 <a href="/customer/machine/deleteMachine/${machine.id}"
    onclick="return confirm('!!!Вы уверены что хатите удалить машину!!!');"
 style="color: crimson;">Удалить машину</a>
+</div>
 </body>
 </html>

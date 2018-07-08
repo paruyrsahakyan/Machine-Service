@@ -24,9 +24,9 @@
 </head>
 <body>
 
-<div>
+<div style="text-align: center">
 
-    <h2 style="text-align: center">Все машины</h2>
+    <h2 style="text-align: center">Машины</h2>
 
     <a href="/"> главное меню</a>
     <br>
@@ -63,7 +63,7 @@
                 <td><a href="/customer/machine/${machine.id}"> ${machine.serialNumber} </a></td>
                 <td>${machine.customer}</td>
                 <td>${machine.productionYear}</td>
-                <td>${machine.lastInfo}</td>
+                <td> <a href="/customer/machine/historyRecord/${machine.lastInfoId}"> ${machine.lastInfo} </a> </td>
                 <td>${machine.lastInfoDate}</td>
                 <td>${machine.lastSMR}</td>
             </tr>
