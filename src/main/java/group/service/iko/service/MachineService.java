@@ -143,12 +143,15 @@ public class MachineService {
                   if (machine.getHistoryRecordList().size()>0) {
                              session = SessionFactoryImpl.getSessionFactory().openSession();
                       String sql;
+                      System.out.println(machine.getId());
                              if (machine.getHistoryRecordList().size()==1){
+
                                  sql = "SELECT * FROM iko.history_record where machine_id = " + machine.getId();
                              }
                              else {
                                  sql = "SELECT * FROM iko.history_record where machine_id = " + machine.getId() +
-                                         " and recordDate =(select max(recordDate) from iko.history_record) ;";
+                                         " and recordDate =(select max(recordDate) from iko.history_record where machine_id="+
+                                         machine.getId()+" );";
                              }
                 Query query = session.createSQLQuery(sql);
                 List<Object[]> resultList =  query.list();

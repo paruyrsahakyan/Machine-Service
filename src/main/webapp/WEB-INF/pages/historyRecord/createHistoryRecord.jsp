@@ -25,7 +25,7 @@
     <input type="number" name="SMR" >
     <br><br>
     Дата:<br>
-    <input type="date" name="date" required>
+    <input type="date" name="date" required >
     <br><br>
     Человекочасы: <br>
     <input type="number" name="laborHour" step="0.25">
