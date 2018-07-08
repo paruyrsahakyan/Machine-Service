@@ -9,6 +9,7 @@
             border-collapse: collapse;
             width: auto;
 
+
         }
 
         td, th {
@@ -23,8 +24,8 @@
     </style>
 </head>
 <body>
-
-<h2>Все Компании</h2>
+<div style="text-align: center">
+<h2> Компании</h2>
 
 <a href="/"> главное меню</a>
 <br>
@@ -41,7 +42,7 @@
 </form>
 <br>
 
-<table>
+<table align="center">
     <tr>
         <th>N</th>
         <th>Название Компании</th>
@@ -64,6 +65,6 @@
 
 
 </table>
-
+</div>
 </body>
 </html>

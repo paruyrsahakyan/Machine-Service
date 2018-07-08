@@ -13,6 +13,7 @@
     </style>
 </head>
 <body>
+<div style="text-align: center">
 <h1 style="text-align: center"> IKO SERVICE </h1>
 <a href="/login"> Авторизация пользователя </a>
 <br>
@@ -28,7 +29,7 @@
 <br>
 <br>
 <a href="/admin/workers"> Работники </a>
-
+</div>
 
 </body>
 </html>

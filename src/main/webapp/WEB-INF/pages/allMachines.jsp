@@ -4,6 +4,7 @@
 <html>
 <head>
     <style>
+
         table {
             font-family: arial, sans-serif;
             border-collapse: collapse;
@@ -40,7 +41,7 @@
     </form>
     <br>
 
-    <table style="width: auto">
+    <table style="width: auto" align="center">
         <tr>
             <th>N</th>
             <th>Модель</th>
