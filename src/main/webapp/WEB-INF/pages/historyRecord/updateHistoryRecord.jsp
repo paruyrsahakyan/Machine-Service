@@ -62,9 +62,9 @@
     </c:forEach>
     Имя раборника:  Длительность работы:
     <select name="workerName[]">
-        <c:forEach items="${workerList}" var="worker">
         <option value="" selected></option>
-        <option value="${worker.name}"> ${worker.name}</option>
+        <c:forEach items="${workerList}" var="worker">
+         <option value="${worker.name}"> ${worker.name}</option>
         </c:forEach>
     </select> &nbsp;
     <input type="number" name="manHour[]" step="0.25"  value="0">
@@ -72,8 +72,8 @@
 
     Имя раборника:  Длительность работы:
     <select name="workerName[]">
-        <c:forEach items="${workerList}" var="worker">
         <option value="" selected></option>
+        <c:forEach items="${workerList}" var="worker">
         <option value="${worker.name}"> ${worker.name}</option>
         </c:forEach>
     </select> &nbsp;

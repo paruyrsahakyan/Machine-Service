@@ -37,7 +37,7 @@
         <input type="date" name="startDate" value="${startDate}">
         <input type="date" name="endDate" value = "${endDate}">
         <input type="submit" value="Фильтр по датам">
-        <br>
+        <br> <br>
     </form>
     <table style="width: auto" align="center">
         <tr>

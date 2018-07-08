@@ -72,9 +72,8 @@
         </tr>
     </c:forEach>
 </table>
-<br>
-Прикрепленные файлы:
-<br>
+    <h3>Прикрепленные файлы: </h3>
+
 <c:forEach items="${fileList}" var="file">
     &nbsp;
     <a href="/customer/machine/historyRecord/downloadFile/${file.id}" target="_blank" >

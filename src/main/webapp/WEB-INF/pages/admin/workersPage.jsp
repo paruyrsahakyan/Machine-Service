@@ -27,7 +27,7 @@
 <br>
 <br>
 
-<table>
+<table align="center">
     <tr>
         <th>N</th>
         <th>Имя раборника</th>
