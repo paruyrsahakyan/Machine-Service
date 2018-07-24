@@ -28,7 +28,7 @@
 
     <h2 style="text-align: center">Машины</h2>
 
-    <a href="/"> главное меню</a>
+    <a href="/"> Главное меню</a>
     <br>
     <br>
 

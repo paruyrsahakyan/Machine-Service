@@ -26,7 +26,7 @@
 
     <h2 style="text-align: center">Деетельность Работника В Периоде Времени</h2>
 
-    <a href="/"> главное меню</a>
+    <a href="/"> Главное меню</a>
     <br>
     <br>
 <form action="/analysis/worker/jobs">

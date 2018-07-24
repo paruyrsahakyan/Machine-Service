@@ -27,7 +27,7 @@
 <div style="text-align: center">
 <h2> Компании</h2>
 
-<a href="/"> главное меню</a>
+<a href="/"> Главное меню</a>
 <br>
 <br>
 

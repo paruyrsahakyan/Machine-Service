@@ -22,7 +22,7 @@
 </head>
 <body>
 <div style="text-align: center">
-<a href="/"> главное меню</a>
+<a href="/"> Главное меню</a>
 <br>
 <br>
 <a href="/customer/machine/historyRecord/${historyRecord.id}"> Вернутся в страницу записи </a>

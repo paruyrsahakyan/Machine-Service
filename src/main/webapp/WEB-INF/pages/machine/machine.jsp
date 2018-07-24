@@ -29,7 +29,7 @@
 
     <h2>Информация о машине</h2>
 
-    <a href="/"> главное меню</a>
+    <a href="/"> Главное меню</a>
     <br> <br>
         <table style="width: auto" align="center" >
         <tr>

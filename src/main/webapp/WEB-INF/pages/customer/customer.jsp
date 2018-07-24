@@ -24,7 +24,8 @@
 <body>
 <div style="text-align: center">
 <h2>Информация о заказчике</h2>
-    <a href="/"> главное меню</a>
+    <a href="/"> Главное меню</a>
+    <br><br>
 
     <a href="/customer/updateCustomer/${customer.id}" style="bottom: auto"> Редактировать</a>
     &nbsp; &nbsp;
