@@ -143,8 +143,7 @@ public class MachineService {
                   if (machine.getHistoryRecordList().size()>0) {
                              session = SessionFactoryImpl.getSessionFactory().openSession();
                       String sql;
-                      System.out.println(machine.getId());
-                             if (machine.getHistoryRecordList().size()==1){
+                                   if (machine.getHistoryRecordList().size()==1){
 
                                  sql = "SELECT * FROM iko.history_record where machine_id = " + machine.getId();
                              }

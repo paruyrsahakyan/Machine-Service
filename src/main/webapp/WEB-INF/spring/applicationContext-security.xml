@@ -9,7 +9,7 @@
     <http auto-config="true" >
         <intercept-url pattern="/" access="permitAll()" />
         <intercept-url pattern="/*" access="hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')"/>
-        <intercept-url pattern="/favicon.ico" access="hasRole('ROLE_ADMIN') and hasRole('user')"/>
+        <intercept-url pattern="/favicon.ico" access="hasRole('ROLE_ADMIN') and hasRole('ROLE_USER')"/>
         <intercept-url pattern="/analysis/*" access="hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')"/>
         <intercept-url pattern="/customer/createCustomer*" access="hasRole('ROLE_ADMIN')"/>
         <intercept-url pattern="/customer/newCustomer*" access="hasRole('ROLE_ADMIN')"/>
@@ -35,10 +35,11 @@
         <authentication-provider>
             <password-encoder ref="encoder"/>
             <user-service>
-                <user authorities="ROLE_ADMIN" name="admin" password="$2a$10$nvEUgQFowvUzEWZ0goTqXuc9jk1Qd1v0aPgDnhIL/XWOw6nPjqwJ2"/>
+                <!-- <user authorities="ROLE_ADMIN" name="admin" password="$2a$10$nvEUgQFowvUzEWZ0goTqXuc9jk1Qd1v0aPgDnhIL/XWOw6nPjqwJ2"/> -->
+                 <user authorities="ROLE_ADMIN" name="admin" password="$2a$10$/UYA3k4/5dccTtB4ogzrkeH1.uR7xt9jUeruOH/jbE9TwaBf3b0I2"/>
                 <user authorities="ROLE_USER" name="user" password="$2a$10$v0oWOvfs7mBMUXT7m/BLNOLxYPRDujsteZv40ZY3K6Z4VtI8P3hmC"/>
             </user-service>
-        </authentication-provider>
-    </authentication-manager>
-    <bean:bean id="encoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
-</bean:beans>
+         </authentication-provider>
+     </authentication-manager>
+     <bean:bean id="encoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
+ </bean:beans>

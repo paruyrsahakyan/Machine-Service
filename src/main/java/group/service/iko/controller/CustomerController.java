@@ -96,7 +96,7 @@ public class CustomerController {
         customerService.updateCustomer(customer);
         Customer updatedCustomer = customerService.getCustomerById(customerId);
         modelAndView.addObject("customer", new CustomerDTO(updatedCustomer));
-        modelAndView.addObject("machineList", MachineDTO.convertIntoDTO(customer.getMachineList()));
+        modelAndView.addObject("machineList", MachineDTO.convertIntoDTO(updatedCustomer.getMachineList()));
         return modelAndView;
     }
 
