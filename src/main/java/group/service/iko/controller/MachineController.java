@@ -119,7 +119,8 @@ public class MachineController {
    public ModelAndView changeMachineCustomer( @PathVariable("machineId") int machineId){
         ModelAndView modelAndView = new ModelAndView("machine/changeCustomer");
     List<Customer> customerDTOList = customerService.getAllCustomers();
-    modelAndView.addObject("customers", dtoFactory.makeCustomerDtoList(customerDTOList));
+    modelAndView.addObject("customerList", dtoFactory.makeCustomerDtoList(customerDTOList));
+    modelAndView.addObject("machineId", machineId);
     return  modelAndView;
 
 }

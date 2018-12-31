@@ -8,9 +8,18 @@
 </head>
 <body>
 <div style="text-align: center">
-    <h2>Замена Владельца Машине</h2> <br>
+    <h2>Замена Владельца Машины</h2> <br>
 
+<table align="center">
+
+<% int i = 1;%>
+<c:forEach items="${customerList}" var="customer">
+
+    <td><a href="/customer/machine/${machineId}/updatedCustomer"> ${customer.name} </a></td>
+    </c:forEach>
+</table>
 
 </div>
 </body>
 </html>
+
