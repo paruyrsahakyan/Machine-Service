@@ -1,7 +1,11 @@
 package group.service.iko.controller;
 
+import group.service.iko.dto.CustomerDTO;
+import group.service.iko.dto.DtoFactory;
 import group.service.iko.dto.MachineDTO;
+import group.service.iko.entities.Customer;
 import group.service.iko.entities.Machine;
+import group.service.iko.entityDao.CustomerDAO;
 import group.service.iko.service.CustomerService;
 import group.service.iko.service.MachineService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.List;
+
 @Controller()
 @RequestMapping("/customer/machine")
 public class MachineController {
@@ -20,6 +26,7 @@ public class MachineController {
     private CustomerService customerService;
     @Autowired
     private MachineService machineService;
+    private DtoFactory dtoFactory;
 
     @RequestMapping(value = "/createMachine/{customerId}")
     public ModelAndView createMachine(@PathVariable("customerId") int customerId) {
@@ -108,5 +115,13 @@ public class MachineController {
 
         return modelAndView;
     }
+@RequestMapping("/{machineId}/changeCustomer/")
+   public ModelAndView changeMachineCustomer( @PathVariable("machineId") int machineId){
+        ModelAndView modelAndView = new ModelAndView("machine/changeCustomer");
+    List<Customer> customerDTOList = customerService.getAllCustomers();
+    modelAndView.addObject("customers", dtoFactory.makeCustomerDtoList(customerDTOList));
+    return  modelAndView;
+
+}
 }
 
