@@ -36,7 +36,7 @@
             <password-encoder ref="encoder"/>
             <user-service>
                 <!-- <user authorities="ROLE_ADMIN" name="admin" password="$2a$10$nvEUgQFowvUzEWZ0goTqXuc9jk1Qd1v0aPgDnhIL/XWOw6nPjqwJ2"/> -->
-                 <user authorities="ROLE_ADMIN" name="admin" password="$2a$10$/UYA3k4/5dccTtB4ogzrkeH1.uR7xt9jUeruOH/jbE9TwaBf3b0I2"/>
+                 <user authorities="ROLE_ADMIN" name="admin" password="$2a$10$9sHQ7UAfoGgDTQqYN4wkWuZkHVQHHGtJIeWDjvuaHWNX2RFsz3oIS"/>
                 <user authorities="ROLE_USER" name="user" password="$2a$10$v0oWOvfs7mBMUXT7m/BLNOLxYPRDujsteZv40ZY3K6Z4VtI8P3hmC"/>
             </user-service>
          </authentication-provider>
