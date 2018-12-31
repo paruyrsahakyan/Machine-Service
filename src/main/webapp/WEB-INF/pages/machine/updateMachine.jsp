@@ -13,29 +13,30 @@
 </head>
 <body>
 <div style="text-align: center">
-<h2>Редактирование машины</h2>
-<a href="/customer/machine/${machine.id}">Отменить редактирование</a>
-<br>
-<h4>Владелец: ${machine.customer}</h4>
+    <h2>Редактирование машины</h2>
+    <a href="/customer/machine/${machine.id}">Отменить редактирование</a> &nbsp;<b>|</b>
+    <a href="/customer/machine/${machine.id}/changeCustomer" style="bottom: auto"> Менять Влодельца</a>
+    <br>
+    <h4>Владелец: ${machine.customer}</h4>
     <a href="/customer/machine/${machine.id}/changeCustomer" style="bottom: auto"> Менять Влодельца</a>  &nbsp;<b>|</b>
 
-<form:form action="/customer/machine/updatedMachine/${machine.id}" method="post" accept-charset="UTF-8">
+    <form:form action="/customer/machine/updatedMachine/${machine.id}" method="post" accept-charset="UTF-8">
 
-    Модель  Машины:<br>
-    <input type="text" name="model" style="height: auto" value="${machine.model}"><br><br>
-    Серийный номер:<br>
-    <input type="text" name="serialNumber" style="height: auto" value="${machine.serialNumber}"><br><br>
-    Модель ДВС: <br>
-    <input type="text" name="engineModel" style="height: auto" value="${machine.engineModel}"><br><br>
-    Сер. номер ДВС: <br>
-    <input type="text" name="engineSerialNumber" style="height: auto" value="${machine.engineSerialNumber}"><br><br>
-     Год производства: <br>
-    <input type="number" name="productionYear" style="height: auto" value="${machine.productionYear}"><br><br>
-    Другая информация: <br>
-    <textarea name="otherInfo" cols="40" rows="5" >${machine.otherInfo}</textarea> <br><br>
-           <input type="submit" value="Сохранить">
+        Модель  Машины:<br>
+        <input type="text" name="model" style="height: auto" value="${machine.model}"><br><br>
+        Серийный номер:<br>
+        <input type="text" name="serialNumber" style="height: auto" value="${machine.serialNumber}"><br><br>
+        Модель ДВС: <br>
+        <input type="text" name="engineModel" style="height: auto" value="${machine.engineModel}"><br><br>
+        Сер. номер ДВС: <br>
+        <input type="text" name="engineSerialNumber" style="height: auto" value="${machine.engineSerialNumber}"><br><br>
+        Год производства: <br>
+        <input type="number" name="productionYear" style="height: auto" value="${machine.productionYear}"><br><br>
+        Другая информация: <br>
+        <textarea name="otherInfo" cols="40" rows="5" >${machine.otherInfo}</textarea> <br><br>
+        <input type="submit" value="Сохранить">
 
-</form:form>
+    </form:form>
 </div>
 </body>
 </html>

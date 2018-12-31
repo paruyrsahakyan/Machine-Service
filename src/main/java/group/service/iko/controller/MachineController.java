@@ -115,7 +115,7 @@ public class MachineController {
 
         return modelAndView;
     }
-@RequestMapping("/{machineId}/changeCustomer/")
+@RequestMapping("/{machineId}/changeCustomer")
    public ModelAndView changeMachineCustomer( @PathVariable("machineId") int machineId){
         ModelAndView modelAndView = new ModelAndView("machine/changeCustomer");
     List<Customer> customerDTOList = customerService.getAllCustomers();
