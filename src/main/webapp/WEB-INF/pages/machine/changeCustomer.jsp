@@ -60,7 +60,7 @@
                         break;
                     } else {
                         var td = tr.insertCell();
-                        td.appendChild(document.createTextNode(customers[i].name));
+                        td.appendChild(document.createTextNode(customers[1].name));
                         td.style.border = '1px solid black';
                         if(i == 1 && j == 1){
                             td.setAttribute('rowSpan', '2');
