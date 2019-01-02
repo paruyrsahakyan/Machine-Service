@@ -30,9 +30,11 @@
     <h2>Замена Владельца Машины</h2> <br>
 
     <p id="selected"> xxx </p>
+    <textarea rows="1" cols="15" onchange="refreshTheTable()">
+     </textarea>
     <form:form action="/customer/machine/${machineId}/updatedCustoemr">
-        <input id="search" type="text" size="20" name="фильтр списка" onchange="refreshTheTable()">
-        <input type="button" onclick="retestToDisplayInitList()">
+        <input id="search" type="text" size="20" name="фильтр списка" onchange="refreshTheTable() ">
+        <input type="button" >
     </form:form>
 
 </div>
