@@ -78,7 +78,7 @@ initialCustomerList.push("${customer.name}");
          }
        function  testToDisplayInitList() {
         for (var i=0; i<initialCustomerList.length; i++)
-          document.getElementById("selected").innerHTML.concat(initialCustomerList[i]);
+          document.getElementById("selected").innerHTML=document.getElementById("selected").innerHTML+initialCustomerList[i];
 
     }
 </script>
