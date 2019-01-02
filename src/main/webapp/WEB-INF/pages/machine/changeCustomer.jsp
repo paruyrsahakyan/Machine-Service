@@ -44,7 +44,7 @@
 
     }
        function  testToDisplayInitList(list) {
-           document.getElementById("selected").innerHTML = ${customerList.get(1).name};
+           document.getElementById("selected").innerHTML = "${customerList.get(1).name}";
            testToDisplayInitList(initialCustomerList);
        }
 </script>
