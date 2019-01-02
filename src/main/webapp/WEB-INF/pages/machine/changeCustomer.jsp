@@ -32,7 +32,7 @@
     <p id="selected"> xxx </p>
     <form:form action="/customer/machine/${machineId}/updatedCustoemr">
         <input type="text" size="20" name="фильтр списка" onchange="refreshList()">
-        <input type="button" onclick="testToDisplayInitList()"/>
+        <input type="button" onclick="testToDisplayInitList()">
     </form:form>
 </div>
 <script>
