@@ -34,7 +34,10 @@
         <input type="text" size="20" name="фильтр списка" onchange="refreshList()">
         <input type="button" onclick="testToDisplayInitList()">
     </form:form>
+
 </div>
+
+
 <script>
     function refreshList() {
 
@@ -43,6 +46,9 @@
     var refreshedList=[];
     var iterator =0;
 
+    <c:forEach items="${customerList}" var="customer">
+initialCustomerList.push("${customer.name}");
+    </c:forEach>
     function showList() {
     }
         function tableCreate(){
@@ -71,12 +77,10 @@
             body.appendChild(tbl);
          }
        function  testToDisplayInitList() {
-        var size = ${customerList.size()};
-           var customers = '${customerList}';
-         for(var i=1; i<${customerList.size()}; i++){
-          document.getElementById("selected").innerHTML= customers;
-       }
-       }
+        for (var i=0; i<initialCustomerList.length; i++)
+          document.getElementById("selected").innerHTML.concat(initialCustomerList[i]);
+
+    }
 </script>
 .
 
