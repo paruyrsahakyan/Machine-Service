@@ -52,7 +52,7 @@
             tbl.style.width  = '100px';
             tbl.style.border = '1px solid black';
 
-            for(var i = 0; i < 3; i++){
+            for(var i = 0; i < ; i++){
                 var tr = tbl.insertRow();
                 for(var j = 0; j < 2; j++){
                     if(i == 2 && j == 1){
@@ -60,7 +60,7 @@
                         break;
                     } else {
                         var td = tr.insertCell();
-                        td.appendChild(document.createTextNode(customers[1].name));
+                        td.appendChild(document.createTextNode(customers[i].name));
                         td.style.border = '1px solid black';
                         if(i == 1 && j == 1){
                             td.setAttribute('rowSpan', '2');
@@ -71,8 +71,9 @@
             body.appendChild(tbl);
          }
        function  testToDisplayInitList() {
-        var i = 1;
-        document.getElementById("selected").innerHTML="${customerList.get(i).name}";
+         for(var i=1; i<${customerList.size()}; i++){
+          document.getElementById("selected").innerHTML= document.getElementById("selected").innerHTML + "${customerList.get(i).name}";
+       }
        }
 </script>
 
