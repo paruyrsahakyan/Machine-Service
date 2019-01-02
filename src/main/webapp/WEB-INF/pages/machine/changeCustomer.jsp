@@ -31,34 +31,42 @@
 
     <p id="selected"> xxx </p>
     <form:form action="/customer/machine/${machineId}/updatedCustoemr">
-        <input type="text" size="20" name="фильтр списка" onchange="refreshList()">
-        <input type="button" onclick="testToDisplayInitList()">
+        <input id="search" type="text" size="20" name="фильтр списка" onchange="refreshTheTable()">
+        <input type="button" onclick="retestToDisplayInitList()">
     </form:form>
 
 </div>
 
 
 <script>
-    function refreshList() {
-
-    }
     var initialCustomerList =[];
-    var refreshedList=[];
-    var iterator =0;
+    var filteredList=[];
 
     <c:forEach items="${customerList}" var="customer">
-initialCustomerList.push("${customer.name}");
+    initialCustomerList.push("${customer.name}");
     </c:forEach>
-    function showList() {
+
+    function refreshTheTable() {
+        filterTheList();
+        tableCreate(filteredList);
     }
-        function tableCreate(){
+    function filterTheList(){
+        filteredList=[];
+        var searchInput=document.getElementById("search").innerText.toString();
+        for(var i=0; i<initialCustomerList.length; i++){
+            if(initialCustomerList[i].indexOf(searchInput)>0){
+                filteredList.push(initialCustomerList[i])
+                            }
+        }
+    }
+
+        function tableCreate(filteredList){
             var body = document.body,
                 tbl  = document.createElement('table');
-            var customers = '${customerList}';
-            tbl.style.width  = '100px';
+             tbl.style.width  = '100px';
             tbl.style.border = '1px solid black';
 
-            for(var i = 0; i <3 ; i++){
+            for(var i = 0; i <filteredList.length ; i++){
                 var tr = tbl.insertRow();
                 for(var j = 0; j < 2; j++){
                     if(i == 2 && j == 1){
@@ -66,7 +74,7 @@ initialCustomerList.push("${customer.name}");
                         break;
                     } else {
                         var td = tr.insertCell();
-                        td.appendChild(document.createTextNode(customers[i].name));
+                        td.appendChild(document.createTextNode(filteredList[i]));
                         td.style.border = '1px solid black';
                         if(i == 1 && j == 1){
                             td.setAttribute('rowSpan', '2');
@@ -76,13 +84,8 @@ initialCustomerList.push("${customer.name}");
             }
             body.appendChild(tbl);
          }
-       function  testToDisplayInitList() {
-        for (var i=0; i<initialCustomerList.length; i++)
-          document.getElementById("selected").innerHTML=document.getElementById("selected").innerHTML+initialCustomerList[i];
 
-    }
 </script>
-.
 
 </body>
 </html>
