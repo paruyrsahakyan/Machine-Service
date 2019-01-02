@@ -40,6 +40,7 @@
         <% i++; %>
             initialCustomerList.push(${customer});
        </c:forEach>
+        testToDisplayInitList();
               }
        function  testToDisplayInitList(refreshedList){
        document.getElementById("selected").innerHTML=refreshedList[1];
