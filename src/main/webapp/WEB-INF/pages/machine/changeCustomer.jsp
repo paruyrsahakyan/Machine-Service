@@ -25,7 +25,7 @@
         }
     </style>
 </head>
-<body onload="initList()" >
+<body >
 <div style="text-align: center">
     <h2>Замена Владельца Машины</h2> <br>
     <p id="selected"> xxx </p>
@@ -50,6 +50,7 @@
         testToDisplayInitList();
               }
        function  testToDisplayInitList(list){
+        initList();
        document.getElementById("selected").innerHTML=list[1];
        }
        testToDisplayInitList(initialCustomerList);
