@@ -50,9 +50,9 @@
 
 <div style="text-align: center">
     <h2>Замена Владельца Машины</h2> <br>
-    <p id="selected"> </p>
+    <p id="selected"> xxx </p>
 <form:form action="/customer/machine/${machineId}/updatedCustoemr">
-    <input type="text" onchange="refreshList()" >
+    <input type="button" onclick="testToDisplayInitList()" >
 </form:form>
 </div>
 </body>
