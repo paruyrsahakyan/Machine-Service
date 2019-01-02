@@ -47,8 +47,7 @@
         <% i++; %>
             initialCustomerList.push(${customer});
        </c:forEach>
-        testToDisplayInitList();
-              }
+                      }
        function  testToDisplayInitList(list){
         initList();
        document.getElementById("selected").innerHTML=list[1];
