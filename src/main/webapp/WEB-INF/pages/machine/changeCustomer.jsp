@@ -48,7 +48,7 @@
         function tableCreate(){
             var body = document.body,
                 tbl  = document.createElement('table');
-            var customers = ${customerList.get(1)};
+            var customers = ${customerList.get(1).name};
             tbl.style.width  = '100px';
             tbl.style.border = '1px solid black';
 
