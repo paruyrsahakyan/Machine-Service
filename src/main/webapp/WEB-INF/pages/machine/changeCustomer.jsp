@@ -42,9 +42,13 @@
 
     function initList() {
 
+        for(var i=0; i<initialCustomerList.size; i++){
+
+        }
+
     }
        function  testToDisplayInitList(list) {
-           document.getElementById("selected").innerHTML = "${customerList.get(1).name}";
+           document.getElementById("selected").innerHTML = ${customerList.size()};
            testToDisplayInitList(initialCustomerList);
        }
 </script>
