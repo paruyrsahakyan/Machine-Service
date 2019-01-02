@@ -30,7 +30,7 @@
     <h2>Замена Владельца Машины</h2> <br>
 
     <p id="selected"> xxx </p>
-    <textarea rows="1" cols="15" onchange="refreshTheTable()">
+    <textarea rows="1" cols="15" onkeypress="refreshTheTable()">
      </textarea>
     <form:form action="/customer/machine/${machineId}/updatedCustoemr">
         <input id="search" type="text" size="20" name="фильтр списка" onchange="refreshTheTable() ">
@@ -48,6 +48,7 @@
     initialCustomerList.push("${customer.name}");
     </c:forEach>
 
+    tableCreate(initialCustomerList);
     function refreshTheTable() {
         filterTheList();
         tableCreate(filteredList);
