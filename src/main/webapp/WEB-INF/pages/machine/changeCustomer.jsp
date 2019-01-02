@@ -32,7 +32,7 @@
     <p id="selected"> xxx </p>
     <form:form action="/customer/machine/${machineId}/updatedCustoemr">
         <input type="text" size="20" name="фильтр списка" onchange="refreshList()">
-        <input type="button" onclick="tableCreate" >
+        <input type="button" onclick="testToDisplayInitList()" >
     </form:form>
 </div>
 <script>
@@ -44,6 +44,7 @@
     var iterator =0;
 
     function showList() {
+    }
         function tableCreate(){
             var body = document.body,
                 tbl  = document.createElement('table');
@@ -55,6 +56,7 @@
                 var tr = tbl.insertRow();
                 for(var j = 0; j < 2; j++){
                     if(i == 2 && j == 1){
+
                         break;
                     } else {
                         var td = tr.insertCell();
@@ -67,10 +69,11 @@
                 }
             }
             body.appendChild(tbl);
-        }
-
-    }
+         }
        function  testToDisplayInitList(list) {
+        var i = 1;
+        document.getElementById("selected").innerHTML="${customerList.get(i)}
+       ${customerList}
 
        }
 </script>
