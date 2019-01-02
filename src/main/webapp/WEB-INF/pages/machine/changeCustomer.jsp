@@ -42,8 +42,8 @@
        </c:forEach>
         testToDisplayInitList();
               }
-       function  testToDisplayInitList(refreshedList){
-       document.getElementById("selected").innerHTML=refreshedList[1];
+       function  testToDisplayInitList(list){
+       document.getElementById("selected").innerHTML=list[1];
        }
        testToDisplayInitList(initialCustomerList);
 </script>
