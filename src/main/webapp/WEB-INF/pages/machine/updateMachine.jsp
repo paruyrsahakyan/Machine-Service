@@ -18,9 +18,7 @@
     <a href="/customer/machine/${machine.id}/changeCustomer" style="bottom: auto"> Менять Влодельца</a>
     <br>
     <h4>Владелец: ${machine.customer}</h4>
-    <a href="/customer/machine/${machine.id}/changeCustomer" style="bottom: auto"> Менять Влодельца</a>  &nbsp;<b>|</b>
-
-    <form:form action="/customer/machine/updatedMachine/${machine.id}" method="post" accept-charset="UTF-8">
+      <form:form action="/customer/machine/updatedMachine/${machine.id}" method="post" accept-charset="UTF-8">
 
         Модель  Машины:<br>
         <input type="text" name="model" style="height: auto" value="${machine.model}"><br><br>
