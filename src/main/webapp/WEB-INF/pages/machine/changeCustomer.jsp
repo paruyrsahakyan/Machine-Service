@@ -71,7 +71,8 @@
             body.appendChild(tbl);
          }
        function  testToDisplayInitList() {
-         for(var i=1; i<${customerList.size()}; i++){
+        var size = ${customerList.size()};
+         for(var i=1; i<size; i++){
           document.getElementById("selected").innerHTML= document.getElementById("selected").innerHTML + "${customerList.get(i).name}";
        }
        }
