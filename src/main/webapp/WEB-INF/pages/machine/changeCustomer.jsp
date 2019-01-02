@@ -28,28 +28,50 @@
 <body >
 <div style="text-align: center">
     <h2>Замена Владельца Машины</h2> <br>
+
     <p id="selected"> xxx </p>
     <form:form action="/customer/machine/${machineId}/updatedCustoemr">
+        <input type="text" size="20" name="фильтр списка" onchange="refreshList()">
         <input type="button" onclick="testToDisplayInitList()" >
     </form:form>
 </div>
 <script>
     function refreshList() {
-        alert("You pressed a key inside the input field");
+
     }
     var initialCustomerList =[];
     var refreshedList=[];
+    var iterator =0;
 
-    function initList() {
+    function showList() {
+        function tableCreate(){
+            var body = document.body,
+                tbl  = document.createElement('table');
+            var customers = ${customerList};
+            tbl.style.width  = '100px';
+            tbl.style.border = '1px solid black';
 
-        for(var i=0; i<initialCustomerList.size; i++){
-
+            for(var i = 0; i < 3; i++){
+                var tr = tbl.insertRow();
+                for(var j = 0; j < 2; j++){
+                    if(i == 2 && j == 1){
+                        break;
+                    } else {
+                        var td = tr.insertCell();
+                        td.appendChild(document.createTextNode(customers[i].name));
+                        td.style.border = '1px solid black';
+                        if(i == 1 && j == 1){
+                            td.setAttribute('rowSpan', '2');
+                        }
+                    }
+                }
+            }
+            body.appendChild(tbl);
         }
 
     }
        function  testToDisplayInitList(list) {
-           document.getElementById("selected").innerHTML = ${customerList.size()};
-           testToDisplayInitList(initialCustomerList);
+         
        }
 </script>
 
