@@ -72,8 +72,9 @@
          }
        function  testToDisplayInitList() {
         var size = ${customerList.size()};
+           var customers = '${customerList}';
          for(var i=1; i<${customerList.size()}; i++){
-          document.getElementById("selected").innerHTML= document.getElementById("selected").innerHTML + "${customerList.get(i).name}";
+          document.getElementById("selected").innerHTML= customers;
        }
        }
 </script>
