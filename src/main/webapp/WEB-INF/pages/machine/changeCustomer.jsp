@@ -26,6 +26,13 @@
     </style>
 </head>
 <body onload="initList()" >
+<div style="text-align: center">
+    <h2>Замена Владельца Машины</h2> <br>
+    <p id="selected"> xxx </p>
+    <form:form action="/customer/machine/${machineId}/updatedCustoemr">
+        <input type="button" onclick="testToDisplayInitList()" >
+    </form:form>
+</div>
 <script>
     function refreshList() {
         alert("You pressed a key inside the input field");
@@ -48,13 +55,7 @@
        testToDisplayInitList(initialCustomerList);
 </script>
 
-<div style="text-align: center">
-    <h2>Замена Владельца Машины</h2> <br>
-    <p id="selected"> xxx </p>
-<form:form action="/customer/machine/${machineId}/updatedCustoemr">
-    <input type="button" onclick="testToDisplayInitList()" >
-</form:form>
-</div>
+
 </body>
 </html>
 
