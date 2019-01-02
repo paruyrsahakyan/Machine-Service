@@ -70,7 +70,7 @@
             }
             body.appendChild(tbl);
          }
-       function  testToDisplayInitList(list) {
+       function  testToDisplayInitList() {
         var i = 1;
         document.getElementById("selected").innerHTML="${customerList.get(1)}";
        }
