@@ -42,17 +42,11 @@
 
     function initList() {
 
-       <% int i = 1; %>
-        <c:forEach items="${customerList}" var="customer">
-        <% i++; %>
-            initialCustomerList.push(${customer});
-       </c:forEach>
-                      }
-       function  testToDisplayInitList(list){
-        initList();
-       document.getElementById("selected").innerHTML=list[1];
+    }
+       function  testToDisplayInitList(list) {
+           document.getElementById("selected").innerHTML = ${customerList.get(1).name};
+           testToDisplayInitList(initialCustomerList);
        }
-       testToDisplayInitList(initialCustomerList);
 </script>
 
 
