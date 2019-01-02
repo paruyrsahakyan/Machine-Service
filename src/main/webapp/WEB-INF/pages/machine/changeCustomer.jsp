@@ -72,7 +72,7 @@
          }
        function  testToDisplayInitList() {
         var i = 1;
-        document.getElementById("selected").innerHTML='${customerList.get(1).name}';
+        document.getElementById("selected").innerHTML='${customerList.get(i).name}';
        }
 </script>
 
