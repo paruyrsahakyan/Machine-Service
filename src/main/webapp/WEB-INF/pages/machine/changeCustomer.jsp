@@ -52,7 +52,7 @@
             tbl.style.width  = '100px';
             tbl.style.border = '1px solid black';
 
-            for(var i = 0; i < ; i++){
+            for(var i = 0; i <3 ; i++){
                 var tr = tbl.insertRow();
                 for(var j = 0; j < 2; j++){
                     if(i == 2 && j == 1){
@@ -72,7 +72,7 @@
          }
        function  testToDisplayInitList() {
         var size = ${customerList.size()};
-         for(var i=1; i<size; i++){
+         for(var i=1; i<${customerList.size()}; i++){
           document.getElementById("selected").innerHTML= document.getElementById("selected").innerHTML + "${customerList.get(i).name}";
        }
        }
