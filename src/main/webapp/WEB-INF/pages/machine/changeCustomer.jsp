@@ -30,8 +30,7 @@
     <h2>Замена Владельца Машины</h2> <br>
 
     <p id="selected"> xxx </p>
-    <textarea id="search" rows="1" cols="15" onkeyup="refreshTheTable()">
-     </textarea>
+    <textarea id="search" rows="1" cols="15" onkeyup="refreshTheTable()"></textarea>
     <form:form action="/customer/machine/${machineId}/updatedCustoemr">
                 <input type="button" >
     </form:form>
@@ -66,9 +65,7 @@
         }
         else  {
             filteredList=[];
-
             for(var i=0; i<initialCustomerList.length; i++){
-
                 if(initialCustomerList[i].toLowerCase().indexOf(searchInput)>0){
                     filteredList.push(initialCustomerList[i])
                 }
