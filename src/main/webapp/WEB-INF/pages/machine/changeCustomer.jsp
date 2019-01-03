@@ -32,8 +32,8 @@
     <p id="selected"> xxx </p>
     <textarea id="search" rows="1" cols="15" onkeyup="refreshTheTable()"></textarea>
     <form:form action="/customer/machine/${machineId}/updatedCustoemr">
+                     <input type="submit" >
         <input name="selectedCustomerId" type="text" style="visibility: hidden">
-                <input type="submit" >
 
     </form:form>
     <table id="dynamicTable" style="width: auto" align="center">
@@ -91,6 +91,7 @@
                 var cell2 = row.insertCell(1);
                 cell1.innerHTML = (i + 1).toString();
                 cell2.innerHTML = filteredList[i].name;
+                cell2.innerHTML = filteredList[i].id;
                 cell2.addEventListener("click", copyToTextArea );
             }
         }
