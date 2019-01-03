@@ -35,7 +35,13 @@
     <form:form action="/customer/machine/${machineId}/updatedCustoemr">
                 <input type="button" >
     </form:form>
-
+    <table id="dynamicTable" style="width: auto" align="center">
+        <tr>
+            <td > N </td>
+            <td>Название</td>
+        </tr>
+           </table>
+    <br>
 </div>
 
 
@@ -50,6 +56,7 @@
     tableCreate(initialCustomerList);
     function refreshTheTable() {
         filterTheList();
+
         tableCreate(filteredList);
     }
     function filterTheList(){
@@ -63,29 +70,17 @@
     }
 
         function tableCreate(filteredList){
-            var body = document.body,
-                tbl  = document.createElement('table');
-             tbl.style.width  = '100px';
-            tbl.style.border = '1px solid black';
 
-
-            for(var i = 0; i <filteredList.length ; i++){
-                var tr = tbl.insertRow();
-                for(var j = 0; j < 1; j++){
-                    if(i == 2 && j == 1){
-
-                        break;
-                    } else {
-                        var td = tr.insertCell();
-                        td.appendChild(document.createTextNode(filteredList[i]));
-                        td.style.border = '1px solid black';
-                        if(i == 1 && j == 1){
-                            td.setAttribute('rowSpan', '2');
-                        }
-                    }
-                }
+            var table = document.getElementById("dynamicTable");
+            table.innerHTML="";
+            for(var i=0; i<filteredList.length; i++){
+                var row = table.insertRow();
+                var cell1 = row.insertCell(0);
+                var cell2 = row.insertCell(1);
+                cell1.innerHTML = i.toString();
+                cell2.innerHTML = filteredList[i];
             }
-            body.appendChild(tbl);
+                       
          }
 
 </script>
