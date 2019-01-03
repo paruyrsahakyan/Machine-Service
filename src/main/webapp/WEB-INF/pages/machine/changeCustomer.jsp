@@ -83,14 +83,13 @@
 
             var table = document.getElementById("dynamicTable");
             table.innerHTML="";
-            for(var i=0; i<filteredList.length; i++){
+            for(var i=0; i<filteredList.length; i++) {
                 var row = table.insertRow();
                 var cell1 = row.insertCell(0);
                 var cell2 = row.insertCell(1);
-                cell1.innerHTML = (i+1).toString();
+                cell1.innerHTML = (i + 1).toString();
                 cell2.innerHTML = filteredList[i];
-                cell2.addEventListener("onkeyup", function(){
-                    document.getElementById("search").innerHTML = filteredList[i]})
+                cell2.onclick = alert("ok");
             }
 
          }
