@@ -58,8 +58,9 @@
 
         tableCreate(filteredList);
     }
-    function copyToTextArea(cell){
-            document.getElementById("search").innerText=cell.value;
+
+    function copyToTextArea(event){
+            document.getElementById("search").innerText=event.target.innerText;
 
     }
     function filterTheList(){
@@ -73,27 +74,23 @@
                 if(initialCustomerList[i].toLowerCase().indexOf(searchInput)>0){
                     filteredList.push(initialCustomerList[i])
                 }
-
         }
-
         }
     }
 
-        function tableCreate(filteredList){
+        function tableCreate(filteredList) {
 
             var table = document.getElementById("dynamicTable");
-            table.innerHTML="";
-            for(var i=0; i<filteredList.length; i++) {
+            table.innerHTML = "";
+            for (var i = 0; i < filteredList.length; i++) {
                 var row = table.insertRow();
                 var cell1 = row.insertCell(0);
                 var cell2 = row.insertCell(1);
                 cell1.innerHTML = (i + 1).toString();
                 cell2.innerHTML = filteredList[i];
-                cell2.onclick = function(filteredList, i){alert(filteredList[i]);
-                document.getElementById("search").innerHTML=filteredList[i];};
+                cell2.addEventListener("click", copyToTextArea );
             }
-         }
-
+        }
 </script>
 
 </body>
