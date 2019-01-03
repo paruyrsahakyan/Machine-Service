@@ -53,14 +53,15 @@
     </c:forEach>
 
     tableCreate(initialCustomerList);
+
         function refreshTheTable() {
         filterTheList();
-
         tableCreate(filteredList);
     }
 
     function copyToTextArea(event){
             document.getElementById("search").innerText=event.target.innerText;
+
 
     }
     function filterTheList(){
@@ -81,8 +82,7 @@
         function tableCreate(filteredList) {
 
             var table = document.getElementById("dynamicTable");
-            table.innerHTML = "";
-            for (var i = 0; i < filteredList.length; i++) {
+                    for (var i = 0; i < filteredList.length; i++) {
                 var row = table.insertRow();
                 var cell1 = row.insertCell(0);
                 var cell2 = row.insertCell(1);
