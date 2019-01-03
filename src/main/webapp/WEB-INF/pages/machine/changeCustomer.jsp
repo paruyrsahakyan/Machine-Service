@@ -89,7 +89,7 @@
                 var cell2 = row.insertCell(1);
                 cell1.innerHTML = (i + 1).toString();
                 cell2.innerHTML = filteredList[i];
-                cell2.onclick = function(){alert("ok")};
+                cell2.onclick = function(){document.getElementById("search").innerText=cell2.value};
             }
 
          }
