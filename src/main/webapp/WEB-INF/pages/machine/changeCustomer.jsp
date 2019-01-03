@@ -32,7 +32,9 @@
     <p id="selected"> xxx </p>
     <textarea id="search" rows="1" cols="15" onkeyup="refreshTheTable()"></textarea>
     <form:form action="/customer/machine/${machineId}/updatedCustoemr">
-                <input type="button" >
+        <input name="selectedCustomerId" type="text" style="visibility: hidden">
+                <input type="submit" >
+
     </form:form>
     <table id="dynamicTable" style="width: auto" align="center">
         <tr>
@@ -49,8 +51,10 @@
     var filteredList=[];
 
     <c:forEach items="${customerList}" var="customer">
-    initialCustomerList.push("${customer.name}");
-    </c:forEach>
+    var customerName ="${customer.name}";
+    var customerId= "${customer.id}";
+    initialCustomerList.push({name:customerName, id:customerId});
+      </c:forEach>
 
     tableCreate(initialCustomerList);
 
@@ -62,7 +66,6 @@
     function copyToTextArea(event){
             document.getElementById("search").innerText=event.target.innerText;
 
-
     }
     function filterTheList(){
         var searchInput=document.getElementById("search").value;
@@ -72,7 +75,7 @@
         else  {
             filteredList=[];
             for(var i=0; i<initialCustomerList.length; i++){
-                if(initialCustomerList[i].toLowerCase().indexOf(searchInput)>0){
+                if(initialCustomerList[i].name.toLowerCase().indexOf(searchInput)>0){
                     filteredList.push(initialCustomerList[i])
                 }
         }
@@ -87,7 +90,7 @@
                 var cell1 = row.insertCell(0);
                 var cell2 = row.insertCell(1);
                 cell1.innerHTML = (i + 1).toString();
-                cell2.innerHTML = filteredList[i];
+                cell2.innerHTML = filteredList[i].name;
                 cell2.addEventListener("click", copyToTextArea );
             }
         }
