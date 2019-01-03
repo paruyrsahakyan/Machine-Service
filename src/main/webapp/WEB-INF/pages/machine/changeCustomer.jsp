@@ -53,10 +53,14 @@
     </c:forEach>
 
     tableCreate(initialCustomerList);
-    function refreshTheTable() {
+        function refreshTheTable() {
         filterTheList();
 
         tableCreate(filteredList);
+    }
+    function copyToTextArea(cell){
+            document.getElementById("search").innerText=cell.value;
+
     }
     function filterTheList(){
         var searchInput=document.getElementById("search").value;
@@ -85,6 +89,8 @@
                 var cell2 = row.insertCell(1);
                 cell1.innerHTML = (i+1).toString();
                 cell2.innerHTML = filteredList[i];
+                cell2.addEventListener("onkeyup", function(){
+                    document.getElementById("search").innerHTML = filteredList[i]})
             }
 
          }
