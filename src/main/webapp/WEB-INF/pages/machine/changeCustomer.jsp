@@ -60,12 +60,21 @@
         tableCreate(filteredList);
     }
     function filterTheList(){
-        filteredList=[];
         var searchInput=document.getElementById("search").value;
-        for(var i=0; i<initialCustomerList.length; i++){
-            if(initialCustomerList[i].indexOf(searchInput)>0){
-                filteredList.push(initialCustomerList[i])
-                            }
+        if(searchInput===""){
+            filteredList=initialCustomerList;
+        }
+        else  {
+            filteredList=[];
+
+            for(var i=0; i<initialCustomerList.length; i++){
+
+                if(initialCustomerList[i].toLowerCase().indexOf(searchInput.toLowerCase())>0){
+                    filteredList.push(initialCustomerList[i])
+                }
+
+        }
+
         }
     }
 
@@ -78,9 +87,9 @@
                 var cell1 = row.insertCell(0);
                 var cell2 = row.insertCell(1);
                 cell1.innerHTML = i.toString();
-                cell2.innerHTML = filteredList[i];
+                cell2.innerHTML = filteredList[i+1];
             }
-                       
+
          }
 
 </script>
