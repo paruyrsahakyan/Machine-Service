@@ -33,7 +33,7 @@
     <textarea rows="1" cols="15" onkeypress="refreshTheTable()">
      </textarea>
     <form:form action="/customer/machine/${machineId}/updatedCustoemr">
-        <input id="search" type="text" size="20" name="фильтр списка" onchange="refreshTheTable() ">
+        <input id="search" type="text" size="20" name="фильтр списка"  onkeyup="refreshTheTable() ">
         <input type="button" >
     </form:form>
 
@@ -69,9 +69,10 @@
              tbl.style.width  = '100px';
             tbl.style.border = '1px solid black';
 
+
             for(var i = 0; i <filteredList.length ; i++){
                 var tr = tbl.insertRow();
-                for(var j = 0; j < 2; j++){
+                for(var j = 0; j < 1; j++){
                     if(i == 2 && j == 1){
 
                         break;
