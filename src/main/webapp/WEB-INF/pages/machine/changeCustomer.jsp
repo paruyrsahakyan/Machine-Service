@@ -33,7 +33,7 @@
     <textarea rows="1" cols="15" onkeypress="refreshTheTable()">
      </textarea>
     <form:form action="/customer/machine/${machineId}/updatedCustoemr">
-        <input id="search" type="text" size="20" name="фильтр списка"  onkeyup="refreshTheTable() ">
+        <input id="search" type="text" size="20" name="фильтр списка"  onkeyup="refreshTheTable()">
         <input type="button" >
     </form:form>
 
@@ -55,7 +55,7 @@
     }
     function filterTheList(){
         filteredList=[];
-        var searchInput=document.getElementById("search").innerText.toString();
+        var searchInput=document.getElementById("search").value;
         for(var i=0; i<initialCustomerList.length; i++){
             if(initialCustomerList[i].indexOf(searchInput)>0){
                 filteredList.push(initialCustomerList[i])
