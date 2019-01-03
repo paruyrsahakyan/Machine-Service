@@ -29,11 +29,11 @@
 <div style="text-align: center">
     <h2>Замена Владельца Машины</h2> <br>
 
-    <p id="selected"> xxx </p>
-    <textarea id="search" rows="1" cols="15" onkeyup="refreshTheTable()"></textarea>
+       <textarea id="search" rows="1" cols="15" onkeyup="refreshTheTable()"></textarea>
     <form:form action="/customer/machine/${machineId}/updatedCustoemr">
                      <input type="submit" >
-        <input name="selectedCustomerId" type="text" style="visibility: hidden">
+                        <br>
+        <input name="selectedCustomerId" type="text" >
 
     </form:form>
     <table id="dynamicTable" style="width: auto" align="center">
@@ -64,7 +64,7 @@
     }
 
     function copyToTextArea(event){
-            document.getElementById("search").innerText=event.target.innerText;
+            document.getElementsByName("selectedCustomerId").innerText=event.target.innerText;
 
     }
     function filterTheList(){
@@ -87,7 +87,7 @@
             var table = document.getElementById("dynamicTable");
             table.innerText="";
                     for (var i = 0; i < filteredList.length; i++) {
-                var row = table.insertRow();
+                var row = table.insertRow();89
                 var cell1 = row.insertCell(0);
                 var cell2 = row.insertCell(1);
                 cell1.innerHTML = (i + 1).toString();
