@@ -86,6 +86,14 @@
 
             var table = document.getElementById("dynamicTable");
             table.innerText="";
+            var titleRow=table.insertRow();
+            var titleCell1 = titleRow.insertCell(0);
+            var titleCell2 = titleRow.insertCell(1);
+            var titleCell3 = titleRow.insertCell(2);
+                titleCell1.innerHTML = "N";
+                titleCell2.innerHTML = "Название";
+                titleCell3.innerHTML ="ИН";
+
                     for (var i = 0; i < customerList.length; i++) {
                 var row = table.insertRow();
                 var cell1 = row.insertCell(0);
