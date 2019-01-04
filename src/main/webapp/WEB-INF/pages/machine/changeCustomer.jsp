@@ -82,7 +82,7 @@
         }
     }
 
-        function tableCreate(filteredList) {
+        function tableCreate(customerList) {
 
             var table = document.getElementById("dynamicTable");
             table.innerText="";
@@ -92,8 +92,8 @@
                 var cell2 = row.insertCell(1);
                 var cell3 = row.insertCell(2);
                 cell1.innerHTML = (i + 1).toString();
-                cell2.innerHTML = filteredList[i].name;
-                cell3.innerHTML =filteredList[i].id;
+                cell2.innerHTML = customerList[i].name;
+                cell3.innerHTML =customerList[i].id;
                 cell2.addEventListener("click", copyToTextArea);
 
             }
