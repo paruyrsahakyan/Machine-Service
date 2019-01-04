@@ -33,7 +33,7 @@
     <form:form action="/customer/machine/${machineId}/updatedCustoemr">
                      <input type="submit" >
                         <br>
-        <input name="selectedCustomerId" type="text" >
+        <input id="selectedCustomerId" type="text" >
 
     </form:form>
     <table id="dynamicTable" style="width: auto" align="center">
@@ -63,8 +63,8 @@
         tableCreate(filteredList);
     }
 
-    var copyToTextArea = function(event){
-            document.getElementsByName("selectedCustomerId").value=event.target.innerText;
+    var copyToTextArea = function(){
+            document.getElementsByName("selectedCustomerId").value=event.target.innerHTML;
 
     }
     function filterTheList(){
@@ -90,9 +90,12 @@
                 var row = table.insertRow();
                 var cell1 = row.insertCell(0);
                 var cell2 = row.insertCell(1);
+                var cell3 = row.insertCell(1);
                 cell1.innerHTML = (i + 1).toString();
                 cell2.innerHTML = filteredList[i].name;
+                cell3.innerHTML =filteredList[i].id;
                 cell2.addEventListener("click", copyToTextArea);
+
             }
         }
 </script>
