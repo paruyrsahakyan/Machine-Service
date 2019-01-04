@@ -64,7 +64,7 @@
     }
 
     var copyToTextArea = function(event){
-            document.getElementsByName("selectedCustomerId").innerText=event.target.innerText;
+            document.getElementsByName("selectedCustomerId").value=event.target.innerHTML;
 
     }
     function filterTheList(){
