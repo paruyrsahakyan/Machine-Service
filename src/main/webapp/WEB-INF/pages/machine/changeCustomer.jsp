@@ -91,11 +91,11 @@
             var titleCell2 = titleRow.insertCell(1);
             var titleCell3 = titleRow.insertCell(2);
                 titleCell1.innerHTML = "N";
-                titleCell1.innerHTML.style.fontWeight = 'bold';
+                titleCell1.style.fontWeight = 'bold';
                 titleCell2.innerHTML = "Название";
-                titleCell2.innerHTML.style.fontWeight = 'bold';
+                titleCell2.style.fontWeight = 'bold';
                 titleCell3.innerHTML ="ИН";
-                titleCell3.innerHTML.style.fontWeight = 'bold';
+                titleCell3.style.fontWeight = 'bold';
 
                     for (var i = 0; i < customerList.length; i++) {
                 var row = table.insertRow();
