@@ -64,7 +64,7 @@
     }
 
     var copyToTextArea = function(){
-            alert(document.getElementsByName("selectedCustomerId").value);
+            alert(event.target.innerHTML);
             document.getElementsByName("selectedCustomerId").value=event.target.innerHTML;
 
     }
