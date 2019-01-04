@@ -63,8 +63,8 @@
         tableCreate(filteredList);
     }
 
-    var copyToTextArea = function(){
-            document.getElementsByName("selectedCustomerId").innerText=event.srcElement.innerHTML;
+    var copyToTextArea = function(event){
+            document.getElementsByName("selectedCustomerId").innerText=event.target.innerText;
 
     }
     function filterTheList(){
@@ -87,7 +87,7 @@
             var table = document.getElementById("dynamicTable");
             table.innerText="";
                     for (var i = 0; i < filteredList.length; i++) {
-                var row = table.insertRow();89
+                var row = table.insertRow();
                 var cell1 = row.insertCell(0);
                 var cell2 = row.insertCell(1);
                 cell1.innerHTML = (i + 1).toString();
