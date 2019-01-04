@@ -63,8 +63,8 @@
         tableCreate(filteredList);
     }
 
-    var copyToTextArea = function(event){
-            document.getElementsByName("selectedCustomerId").innerText=event.target.innerText;
+    var copyToTextArea = function(){
+            document.getElementsByName("selectedCustomerId").innerText=event.srcElement.innerHTML;
 
     }
     function filterTheList(){
