@@ -86,7 +86,7 @@
 
             var table = document.getElementById("dynamicTable");
             table.innerText="";
-                    for (var i = 0; i < filteredList.length; i++) {
+                    for (var i = 0; i < customerList.length; i++) {
                 var row = table.insertRow();
                 var cell1 = row.insertCell(0);
                 var cell2 = row.insertCell(1);
