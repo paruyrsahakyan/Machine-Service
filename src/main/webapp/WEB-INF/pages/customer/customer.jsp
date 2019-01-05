@@ -81,8 +81,8 @@
                 <td>${machine.model}</td>
                 <td><a href="/customer/machine/${machine.id}"> ${machine.serialNumber} </a></td>
                 <td>${machine.productionYear}</td>
-                <td>${machine.lastInfo}</td>
-                <td>${machine.lastInfoDate}</td>
+                <td> <a href="/customer/machine/historyRecord/${machine.lastInfoId}"> ${machine.lastInfo} </a> </td>
+                <td> ${machine.lastInfoDate}</td>
                 <td>${machine.lastSMR}</td>
             </tr>
         </c:forEach>

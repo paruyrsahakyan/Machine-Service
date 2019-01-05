@@ -33,11 +33,11 @@
     <br><br>
     <form:form action="/customer/machine/${machineId}/changedMachineCustomer" method="post">
         <input id="selectedCustomerId" name="newCustomerId" type="hidden">
-       Выбор из списка: <input id="selectedCustomerName" type="text" readonly style="font-weight: bold">
-        &nbsp <b>|<b> &nbsp Дата: <input type="date" name="date" required>
+       Выбран заказчик: <input id="selectedCustomerName" type="text" readonly style="font-weight: bold">
+        &nbsp <b>|</b> &nbsp Дата: <input type="date" name="date" required>
         &nbsp <input type="submit" value="Установить" >
        </form:form>
-
+    <br>
     <table id="dynamicTable" style="width: auto" align="center">
         <tr>
             <td> N </td>
