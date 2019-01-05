@@ -29,10 +29,10 @@
     <h2>Замена Владельца Машины</h2> <br>
 
     Поиск по названию:  <input id="search"  type="text" onkeyup="refreshTheTable()" >
-    <br>
+    <br><br>
     <form:form action="/customer/machine/${machineId}/updatedCustoemr">
-
-       Выбор из списка: <input id="selectedCustomerId" type="text" readonly style="font-weight: bold">   <input type="submit" value="Установить" >
+        <input name="selectedCustomerId" type="text">
+       Выбор из списка: <input id="selectedCustomerName" type="text" readonly style="font-weight: bold">   <input type="submit" value="Установить" >
        </form:form>
 
     <table id="dynamicTable" style="width: auto" align="center">
@@ -62,7 +62,10 @@
     }
 
     var copyToTextArea = function () {
-        document.getElementById("selectedCustomerId").value = event.target.innerHTML;
+        var selectedCustomerName= event.target.innerHTML;
+        document.getElementById("selectedCustomerName").value=selectedCustomerName;
+        var selectedCustomer = filteredList.find(list => {return list.name === selectedCustomerName})[0];
+        document.getElementsByName("selectedCustomerId").value=selectedCustomer.id;
 
     }
 
@@ -93,14 +96,14 @@
         titleCell1.style.fontWeight = 'bold';
         titleCell2.innerHTML = "Название";
         titleCell2.style.fontWeight = 'bold';
-        titleCell3.innerHTML = "ИН";
-        titleCell3.style.fontWeight = 'bold';
+       titleCell3.innerHTML = "ИН";
+       titleCell3.style.fontWeight = 'bold';
 
         for (var i = 0; i < customerList.length; i++) {
             var row = table.insertRow();
             var cell1 = row.insertCell(0);
             var cell2 = row.insertCell(1);
-            var cell3 = row.insertCell(2);
+           var cell3 = row.insertCell(2);
             cell1.innerHTML = (i + 1).toString();
             cell2.innerHTML = customerList[i].name;
             cell3.innerHTML = customerList[i].id;
