@@ -65,7 +65,6 @@
         var selectedCustomerName= event.target.innerHTML;
         document.getElementById("selectedCustomerName").value=selectedCustomerName;
         var selectedCustomer = filteredList.find(customer => {return customer.name === selectedCustomerName});
-        alert(selectedCustomer.id);
         document.getElementById("selectedCustomerId").value=selectedCustomer.id;
 
     }
@@ -92,13 +91,13 @@
         var titleRow = table.insertRow();
         var titleCell1 = titleRow.insertCell(0);
         var titleCell2 = titleRow.insertCell(1);
-        var titleCell3 = titleRow.insertCell(2);
+      //  var titleCell3 = titleRow.insertCell(2);
         titleCell1.innerHTML = "N";
         titleCell1.style.fontWeight = 'bold';
         titleCell2.innerHTML = "Название";
         titleCell2.style.fontWeight = 'bold';
-       titleCell3.innerHTML = "ИН";
-       titleCell3.style.fontWeight = 'bold';
+    //   titleCell3.innerHTML = "ИН";
+     //  titleCell3.style.fontWeight = 'bold';
 
         for (var i = 0; i < customerList.length; i++) {
             var row = table.insertRow();
@@ -107,7 +106,7 @@
            var cell3 = row.insertCell(2);
             cell1.innerHTML = (i + 1).toString();
             cell2.innerHTML = customerList[i].name;
-            cell3.innerHTML = customerList[i].id;
+          //  cell3.innerHTML = customerList[i].id;
             cell2.addEventListener("click", copyToTextArea);
 
         }
