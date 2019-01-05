@@ -142,6 +142,7 @@ public class MachineController {
        HistoryRecord historyRecord = new HistoryRecord();
        historyRecord.setMachine(updatedMachine);
        historyRecord.setRecordDate(CalendarAdapter.getGregCalendar(date));
+       historyRecord.setTitle("Замена Влодельца");
        historyRecordService.saveHistoryRecord(historyRecord);
        modelAndView.addObject("machine", new MachineDTO(updatedMachine));
        modelAndView.addObject("customerId", newCustomerId);
