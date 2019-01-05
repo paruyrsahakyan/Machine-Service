@@ -1,12 +1,15 @@
 package group.service.iko.controller;
 
+import group.service.iko.calendarAdapter.CalendarAdapter;
 import group.service.iko.dto.CustomerDTO;
 import group.service.iko.dto.DtoFactory;
 import group.service.iko.dto.MachineDTO;
 import group.service.iko.entities.Customer;
+import group.service.iko.entities.HistoryRecord;
 import group.service.iko.entities.Machine;
 import group.service.iko.entityDao.CustomerDAO;
 import group.service.iko.service.CustomerService;
+import group.service.iko.service.HistoryRecordService;
 import group.service.iko.service.MachineService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,6 +29,8 @@ public class MachineController {
     private CustomerService customerService;
     @Autowired
     private MachineService machineService;
+    @Autowired
+    private HistoryRecordService historyRecordService;
     private DtoFactory dtoFactory;
 
     @RequestMapping(value = "/createMachine/{customerId}")
@@ -123,9 +128,10 @@ public class MachineController {
     modelAndView.addObject("machineId", machineId);
     return modelAndView;
 }
-   @RequestMapping("/{machineId}/changedMachineCustomer")
+   @RequestMapping(value = "/{machineId}/changedMachineCustomer", method = RequestMethod.POST)
     public ModelAndView changedMachineCustomer( @PathVariable("machineId") int machineId,
-                                                @RequestParam("newCustomerId") int newCustomerId) {
+                                                @RequestParam("newCustomerId") int newCustomerId,
+                                                @RequestParam("date") String date) {
 
        ModelAndView modelAndView = new ModelAndView("machine/machine");
        Machine machine = machineService.getMachineById(machineId);
@@ -133,7 +139,12 @@ public class MachineController {
        machine.setCustomer(customer);
        machineService.updateMachine(machine);
        Machine updatedMachine = machineService.getMachineById(machineId);
+       HistoryRecord historyRecord = new HistoryRecord();
+       historyRecord.setMachine(updatedMachine);
+       historyRecord.setRecordDate(CalendarAdapter.getGregCalendar(date));
+       historyRecordService.saveHistoryRecord(historyRecord);
        modelAndView.addObject("machine", new MachineDTO(updatedMachine));
+       modelAndView.addObject("customerId", newCustomerId);
        return modelAndView;
 
    }

@@ -27,12 +27,14 @@
 <body>
 <div style="text-align: center">
     <h2>Замена Владельца Машины</h2> <br>
-
+      <a href="/customer/machine/${machineId}">Отменить Процедуру</a> &nbsp;<b> </b>
     Поиск по названию:  <input id="search"  type="text" onkeyup="refreshTheTable()" >
     <br><br>
-    <form:form action="/customer/machine/${machineId}/changedMachineCustomer" method="get">
+    <form:form action="/customer/machine/${machineId}/changedMachineCustomer" method="post">
         <input id="selectedCustomerId" name="newCustomerId" type="hidden">
-       Выбор из списка: <input id="selectedCustomerName" type="text" readonly style="font-weight: bold">   <input type="submit" value="Установить" >
+       Выбор из списка: <input id="selectedCustomerName" type="text" readonly style="font-weight: bold">
+        &nbsp|&nbsp Дата: <input type="date" name="date" required>
+        &nbsp <input type="submit" value="Установить" >
        </form:form>
 
     <table id="dynamicTable" style="width: auto" align="center">
@@ -77,7 +79,7 @@
         else {
             filteredList = [];
             for (var i = 0; i < initialCustomerList.length; i++) {
-                if (initialCustomerList[i].name.toLowerCase().indexOf(searchInput) > 0) {
+                if (initialCustomerList[i].name.toLowerCase().indexOf(searchInput) >= 0) {
                     filteredList.push(initialCustomerList[i])
                 }
             }
