@@ -123,7 +123,7 @@ public class MachineController {
     modelAndView.addObject("machineId", machineId);
     return modelAndView;
 }
-   @RequestMapping("/{machineId}/changedCustomer")
+   @RequestMapping("/{machineId}/changedMachineCustomer")
     public ModelAndView changedMachineCustomer( @PathVariable("machineId") int machineId,
                                                 @RequestParam("newCustomerId") int newCustomerId) {
 
@@ -135,7 +135,7 @@ public class MachineController {
        Machine updatedMachine = machineService.getMachineById(machineId);
        modelAndView.addObject("machine", new MachineDTO(updatedMachine));
        return modelAndView;
-       
+
    }
 }
 
