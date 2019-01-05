@@ -31,7 +31,7 @@
     Поиск по названию:  <input id="search"  type="text" onkeyup="refreshTheTable()" >
     <br><br>
     <form:form action="/customer/machine/${machineId}/updatedCustoemr" method="get">
-        <input name="selectedCustomerId" type="hidden">
+        <input id="selectedCustomerID" name="newCustomerId" type="hidden">
        Выбор из списка: <input id="selectedCustomerName" type="text" readonly style="font-weight: bold">   <input type="submit" value="Установить" >
        </form:form>
 
@@ -66,7 +66,7 @@
         document.getElementById("selectedCustomerName").value=selectedCustomerName;
         var selectedCustomer = filteredList.find(customer => {return customer.name === selectedCustomerName});
         alert(selectedCustomer.id);
-        document.getElementsByName("selectedCustomerId").value=selectedCustomer.id;
+        document.getElementById("selectedCustomerId").value=selectedCustomer.id;
 
     }
 
