@@ -30,7 +30,7 @@
 
     Поиск по названию:  <input id="search"  type="text" onkeyup="refreshTheTable()" >
     <br><br>
-    <form:form action="/customer/machine/${machineId}/updatedCustoemr" method="get">
+    <form:form action="/customer/machine/${machineId}/changedMachineCustomer" method="get">
         <input id="selectedCustomerId" name="newCustomerId" type="hidden">
        Выбор из списка: <input id="selectedCustomerName" type="text" readonly style="font-weight: bold">   <input type="submit" value="Установить" >
        </form:form>

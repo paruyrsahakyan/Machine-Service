@@ -116,13 +116,26 @@ public class MachineController {
         return modelAndView;
     }
 @RequestMapping("/{machineId}/changeCustomer")
-   public ModelAndView changeMachineCustomer( @PathVariable("machineId") int machineId){
-        ModelAndView modelAndView = new ModelAndView("machine/changeCustomer");
+   public ModelAndView changeMachineCustomer( @PathVariable("machineId") int machineId) {
+    ModelAndView modelAndView = new ModelAndView("machine/changeCustomer");
     List<Customer> customerDTOList = customerService.getAllCustomers();
     modelAndView.addObject("customerList", dtoFactory.makeCustomerDtoList(customerDTOList));
     modelAndView.addObject("machineId", machineId);
-    return  modelAndView;
-
+    return modelAndView;
 }
+   @RequestMapping("/{machineId}/changedCustomer")
+    public ModelAndView changedMachineCustomer( @PathVariable("machineId") int machineId,
+                                                @RequestParam("newCustomerId") int newCustomerId) {
+
+       ModelAndView modelAndView = new ModelAndView("machine/machine");
+       Machine machine = machineService.getMachineById(machineId);
+       Customer customer = customerService.getCustomerById(newCustomerId);
+       machine.setCustomer(customer);
+       machineService.updateMachine(machine);
+       Machine updatedMachine = machineService.getMachineById(machineId);
+       modelAndView.addObject("machine", new MachineDTO(updatedMachine));
+       return modelAndView;
+       
+   }
 }
 
