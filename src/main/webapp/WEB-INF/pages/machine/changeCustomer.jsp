@@ -65,6 +65,7 @@
         var selectedCustomerName= event.target.innerHTML;
         document.getElementById("selectedCustomerName").value=selectedCustomerName;
         var selectedCustomer = filteredList.find(list => {return list.name === selectedCustomerName})[0];
+        alert(selectedCustomer.id);
         document.getElementsByName("selectedCustomerId").value=selectedCustomer.id;
 
     }
