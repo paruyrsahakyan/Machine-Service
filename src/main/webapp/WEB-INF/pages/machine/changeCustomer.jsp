@@ -28,11 +28,11 @@
 <div style="text-align: center">
     <h2>Замена Владельца Машины</h2> <br>
 
-    <text id="search"  onkeyup="refreshTheTable()"> Поиск по названию։ </text>
+    Поиск по названию:  <input id="search"  type="text" onkeyup="refreshTheTable()" >
     <br>
     <form:form action="/customer/machine/${machineId}/updatedCustoemr">
 
-        <input id="selectedCustomerId" type="text" readonly>   <input type="submit" value="Установить" >
+       Выбор из списка: <input id="selectedCustomerId" type="text" readonly style="font-weight: bold">   <input type="submit" value="Установить" >
        </form:form>
 
     <table id="dynamicTable" style="width: auto" align="center">
