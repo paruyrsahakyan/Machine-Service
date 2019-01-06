@@ -5,14 +5,14 @@ import org.hibernate.annotations.Cascade;
 import javax.persistence.*;
 import java.util.List;
 @Entity
-@Table(name = "periodic_maintenence")
+@Table(name = "periodic_maintenance")
 public class PeriodicMaintenance {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column
     private int smr;
-    @OneToMany(mappedBy = "periodic_maintenance", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "maintenance_part", fetch = FetchType.EAGER)
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private List<MaintenancePart> maintenanceParts;
     @Column

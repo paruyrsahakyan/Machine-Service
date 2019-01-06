@@ -2,7 +2,7 @@ package group.service.iko.entities;
 
 import javax.persistence.*;
 @Entity
-@Table(name = "maintenance_Part")
+@Table(name = "maintenance_part")
 public class MaintenancePart {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
