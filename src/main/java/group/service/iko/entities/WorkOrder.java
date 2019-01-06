@@ -11,7 +11,7 @@ public class WorkOrder {
     private int id;
     @ManyToOne()
     @JoinColumn(name = "machine_id")
-    private String machine;
+    private Machine machine;
     @Column
     private GregorianCalendar orderDate;
     @Column
