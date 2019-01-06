@@ -14,8 +14,10 @@
         <mapping class="group.service.iko.entities.RecordFile"/>
         <mapping class ="group.service.iko.entities.DetailedLaborHour"/>
         <mapping class ="group.service.iko.entities.Worker"/>
-
-
-
+        <mapping class ="group.service.iko.entities.MachineType"/>
+        <mapping class ="group.service.iko.entities.PeriodicMaintenance"/>
+        <mapping class ="group.service.iko.entities.MaintenancePart"/>
+        <mapping class ="group.service.iko.entities.ServiceMachine"/>
+        <mapping class="group.service.iko.entities.WorkOrder"/>
     </session-factory>
 </hibernate-configuration>

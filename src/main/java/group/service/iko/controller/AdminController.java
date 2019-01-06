@@ -1,5 +1,7 @@
 package group.service.iko.controller;
+import group.service.iko.entities.ServiceMachine;
 import group.service.iko.entities.Worker;
+import group.service.iko.service.ServiceMachineService;
 import group.service.iko.service.WorkerService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +20,8 @@ public class AdminController {
 
     @Autowired
     private WorkerService workerService;
+    @Autowired
+    private ServiceMachineService serviceMachineService;
 
 
 
@@ -56,6 +60,28 @@ public class AdminController {
         workerService.deleteWorker(worker);
          modelAndView.addObject("allWorkers", workerService.getAllWorkers());
          return  modelAndView;
+    }
+    @RequestMapping("/allServiceMachines")
+    public  ModelAndView showAllServiceMachines(){
+        ModelAndView modelAndView = new ModelAndView("admin/serviceMachines");
+        modelAndView.addObject("allServiceMachines", serviceMachineService.getAllServiceMachines());
+        return  modelAndView;
+    }
 
+    @RequestMapping("/addServiceMachine")
+    public ModelAndView addServiceMachine() {
+        ModelAndView modelAndView  = new ModelAndView( "admin/addWorker");
+        return  modelAndView;
+    }
+
+    @RequestMapping(value = "/workers/serviceMachineAdded", method = RequestMethod.POST)
+    public ModelAndView addServiceWorker(@RequestParam("name") String name) {
+        ModelAndView modelAndView = new ModelAndView("admin/serviceMachines");
+        ServiceMachine serviceMachine = new ServiceMachine();
+        serviceMachine.setName(name);
+        serviceMachineService.saveServiceMachine(serviceMachine);
+        List<ServiceMachine> allServiceMachines = serviceMachineService.getAllServiceMachines();
+        modelAndView.addObject("allServiceMachines", allServiceMachines);
+        return  modelAndView;
     }
 }

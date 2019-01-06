@@ -23,6 +23,8 @@ public class HomeController {
     private CustomerService customerService;
 
     private MachineService machineService;
+    @Autowired
+    private ServiceMachineService serviceMachineService;
 
     @RequestMapping("/")
     public ModelAndView index() {
@@ -79,4 +81,6 @@ public class HomeController {
         return  modelAndView;
 
     }
+
+
 }

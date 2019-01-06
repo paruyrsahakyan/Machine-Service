@@ -29,6 +29,9 @@
 <br>
 <br>
 <a href="/admin/workers"> Работники </a>
+<br>
+<a href="/admin/allServiceMachines"> Сервисные Mашины</a>
+<br>
 </div>
 
 </body>

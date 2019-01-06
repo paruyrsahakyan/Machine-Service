@@ -85,3 +85,15 @@ insert into worker (name) value ('Харисов Марат');
 insert into worker (name) value ('Арутюнян Армен');
 insert into worker (name) value ('Иванов Павел');
 insert into worker (name) value ('Минасян Артур');
+
+------------------------- service_machine ------------------------
+
+ CREATE TABLE `service_machine` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+insert into service_machine (name) value ('Mitsubishi 888AF61');
+insert into service_machine (name) value ('Ford Transit 222LO61');
+

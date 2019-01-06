@@ -1,0 +1,51 @@
+package group.service.iko.controller;
+
+import group.service.iko.dto.CustomerDTO;
+import group.service.iko.dto.MachineDTO;
+import group.service.iko.entities.ServiceMachine;
+import group.service.iko.service.CustomerService;
+import group.service.iko.service.MachineService;
+import group.service.iko.service.ServiceMachineService;
+import group.service.iko.service.WorkerService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+@Controller()
+@RequestMapping("/workOrder")
+public class WorkOrderController {
+    @Autowired
+    private CustomerService customerService;
+    @Autowired
+    private MachineService machineService;
+    @Autowired
+    private WorkerService workerService;
+    @Autowired
+    private ServiceMachineService serviceMachineService;
+
+
+
+    public ModelAndView workOrderCreation() {
+        ModelAndView modelAndView = new ModelAndView("workOrderCreation");
+        modelAndView.addObject("machineList", MachineDTO.convertIntoDTO(machineService.getAllMachines()));
+        modelAndView.addObject("workerList", workerService.getAllWorkers() );
+        modelAndView.addObject("serviceMachines", serviceMachineService.getAllServiceMachines());
+        return modelAndView;
+    }
+    @RequestMapping("/allServiceMachines")
+    public  ModelAndView showAllServiceMachines(){
+        ModelAndView modelAndView = new ModelAndView("admin/serviceMachines");
+        modelAndView.addObject("serviceMachines", serviceMachineService.getAllServiceMachines());
+        return  modelAndView;
+    }
+
+
+    public ModelAndView machineTypeCreation() {
+        ModelAndView modelAndView = new ModelAndView("machineTypeCreation");
+
+        return modelAndView;
+    }
+
+
+}

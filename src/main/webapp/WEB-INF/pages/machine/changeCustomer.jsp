@@ -26,7 +26,7 @@
 </head>
 <body>
 <div style="text-align: center">
-    <h2>Замена Владельца Машины</h2> <br>
+    <h2>Замена Влaдельца Машины</h2> <br>
       <a href="/customer/machine/${machineId}">Отменить Процедуру</a>
     <br> <br>
     Поиск по названию:  <input id="search"  type="text" onkeyup="refreshTheTable()" >
@@ -35,7 +35,7 @@
         <input id="selectedCustomerId" name="newCustomerId" type="hidden">
        Выбран заказчик: <input id="selectedCustomerName" type="text" readonly style="font-weight: bold">
         &nbsp <b>|</b> &nbsp Дата: <input type="date" name="date" required>
-        &nbsp <input type="submit" value="Установить" >
+        &nbsp <input type="submit" value="Сохранить" >
        </form:form>
     <br>
     <table id="dynamicTable" style="width: auto" align="center">
