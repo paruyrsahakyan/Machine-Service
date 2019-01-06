@@ -48,11 +48,11 @@ public class WorkOrder {
         this.id = id;
     }
 
-    public String getMachine() {
+    public Machine getMachine() {
         return machine;
     }
 
-    public void setMachine(String machine) {
+    public void setMachine(Machine machine) {
         this.machine = machine;
     }
 
