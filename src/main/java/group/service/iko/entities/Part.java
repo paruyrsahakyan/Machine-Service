@@ -3,10 +3,9 @@ package group.service.iko.entities;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-@Entity
-@Table(name = "machine_type")
+
 public class Part {
-      private int id;
+    private int id;
     private String partNumber;
     private String Nomenclature;
     private String unit;

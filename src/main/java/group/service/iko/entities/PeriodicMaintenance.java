@@ -14,9 +14,49 @@ public class PeriodicMaintenance {
     private int smr;
     @OneToMany(mappedBy = "periodic_maintenence", fetch = FetchType.EAGER)
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
-    private List<Part> partList;
+    private List<MaintenancePart> maintenanceParts;
     @Column
     private String serviceMachine;
 
+    @Override
+    public String toString() {
+        return "PeriodicMaintenance{" +
+                "id=" + id +
+                ", smr=" + smr +
+                ", maintenanceParts=" + maintenanceParts +
+                ", serviceMachine='" + serviceMachine + '\'' +
+                '}';
+    }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getSmr() {
+        return smr;
+    }
+
+    public void setSmr(int smr) {
+        this.smr = smr;
+    }
+
+    public List<MaintenancePart> getMaintenanceParts() {
+        return maintenanceParts;
+    }
+
+    public void setMaintenanceParts(List<MaintenancePart> maintenanceParts) {
+        this.maintenanceParts = maintenanceParts;
+    }
+
+    public String getServiceMachine() {
+        return serviceMachine;
+    }
+
+    public void setServiceMachine(String serviceMachine) {
+        this.serviceMachine = serviceMachine;
+    }
 }

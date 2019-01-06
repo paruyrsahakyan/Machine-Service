@@ -19,13 +19,11 @@ public class WorkOrder {
     @ManyToOne()
     @JoinColumn(name = "periodic_maintenance_id")
     private PeriodicMaintenance periodicMaintenance;
-    @ManyToOne()
-    @JoinColumn(name = "worker_id")
+    @Column
     private Worker worker;
     @Column
     private String Workplace;
-    @ManyToOne()
-    @JoinColumn(name = "serviceMachine_id")
+    @Column
     private ServiceMachine serviceMachine;
 
     @Override

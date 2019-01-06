@@ -97,3 +97,42 @@ insert into worker (name) value ('Минасян Артур');
 insert into service_machine (name) value ('Mitsubishi 888AF61');
 insert into service_machine (name) value ('Ford Transit 222LO61');
 
+
+------------------------- work_order_machine ------------------------
+CREATE TABLE `work_order_machine` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `machine` varchar(255) DEFAULT NULL,
+  `SMR` int(11) DEFAULT NULL,
+  `date_to_work` datetime DEFAULT NULL,
+  `periodic_maintenance_id` int(11) DEFAULT NULL,
+  `worker` varchar(255) DEFAULT NULL,
+  `service_machine` varchar(255) DEFAULT NULL,
+  `work_place` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `foreignKeyPeriodicMaintenanceId` (`periodic_maintenance_id`),
+  CONSTRAINT `foreignKeyPeriodicMaintenanceId` FOREIGN KEY (`periodic_maintenance_id`) REFERENCES `periodic_maintenance` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+------------------------ periodic_maintenance --------------------------
+
+CREATE TABLE `periodic_maintenance` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `machine_id` int(11) DEFAULT NULL,
+  `SMR` int(11) DEFAULT NULL,
+  `date_to_work` datetime DEFAULT NULL,
+  `worker` varchar(255) DEFAULT NULL,
+  `service_machine` varchar(255) DEFAULT NULL,
+  `work_place` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `foreignKeyMachineId` (`machine_id`),
+  CONSTRAINT `foreignKeyMachineId` FOREIGN KEY (`machine_id`) REFERENCES `machine` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--------------------------- maintenance_part ----------------------------------------
+ CREATE TABLE `maintenance_part` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `part_name` varchar(255) DEFAULT NULL,
+  `nomenclature` varchar(255) DEFAULT NULL,
+  `unit` varchar(255) DEFAULT NULL,
+   PRIMARY KEY (`id`)
+ ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
