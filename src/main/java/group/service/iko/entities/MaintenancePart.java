@@ -8,6 +8,8 @@ public class MaintenancePart {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column
+    private String partType;
+    @Column
     private String partNumber;
     @Column
     private String Nomenclature;
@@ -23,12 +25,21 @@ public class MaintenancePart {
     public String toString() {
         return "MaintenancePart{" +
                 "id=" + id +
+                ", partType='" + partType + '\'' +
                 ", partNumber='" + partNumber + '\'' +
                 ", Nomenclature='" + Nomenclature + '\'' +
                 ", unit='" + unit + '\'' +
                 ", quantity=" + quantity +
                 ", periodicMaintenance=" + periodicMaintenance +
                 '}';
+    }
+
+    public String getPartType() {
+        return partType;
+    }
+
+    public void setPartType(String partType) {
+        this.partType = partType;
     }
 
     public int getId() {

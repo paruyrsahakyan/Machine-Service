@@ -131,7 +131,7 @@ CREATE TABLE `periodic_maintenance` (
 --------------------------- maintenance_part ----------------------------------------
  CREATE TABLE `maintenance_part` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `part_name` varchar(255) DEFAULT NULL,
+  `part_number` varchar(255) DEFAULT NULL,
   `nomenclature` varchar(255) DEFAULT NULL,
   `unit` varchar(255) DEFAULT NULL,
    PRIMARY KEY (`id`)
