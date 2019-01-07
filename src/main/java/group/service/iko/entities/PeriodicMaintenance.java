@@ -17,7 +17,7 @@ public class PeriodicMaintenance {
     @OneToMany(mappedBy = "periodicMaintenance", fetch = FetchType.EAGER)
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private Set<MaintenancePart> maintenanceParts;
-    @Column
+    @Column(name= "service_machine")
     private String serviceMachine;
 
     @Override
