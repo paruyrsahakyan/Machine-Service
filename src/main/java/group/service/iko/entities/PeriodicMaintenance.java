@@ -4,6 +4,8 @@ import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
+
 @Entity
 @Table(name = "periodic_maintenance")
 public class PeriodicMaintenance {
@@ -14,7 +16,7 @@ public class PeriodicMaintenance {
     private int smr;
     @OneToMany(mappedBy = "periodicMaintenance", fetch = FetchType.EAGER)
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
-    private List<MaintenancePart> maintenanceParts;
+    private Set<MaintenancePart> maintenanceParts;
     @Column
     private String serviceMachine;
 
@@ -44,11 +46,11 @@ public class PeriodicMaintenance {
         this.smr = smr;
     }
 
-    public List<MaintenancePart> getMaintenanceParts() {
+    public Set<MaintenancePart> getMaintenanceParts() {
         return maintenanceParts;
     }
 
-    public void setMaintenanceParts(List<MaintenancePart> maintenanceParts) {
+    public void setMaintenanceParts(Set<MaintenancePart> maintenanceParts) {
         this.maintenanceParts = maintenanceParts;
     }
 

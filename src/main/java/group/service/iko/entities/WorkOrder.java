@@ -39,7 +39,7 @@ public class WorkOrder {
                 ", serviceMachine='" + serviceMachine + '\'' +
                 '}';
     }
-    
+
     public int getId() {
         return id;
     }
