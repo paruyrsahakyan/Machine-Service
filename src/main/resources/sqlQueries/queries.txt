@@ -101,7 +101,7 @@ insert into service_machine (name) value ('Ford Transit 222LO61');
 
 CREATE TABLE `work_order` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `machine` varchar(255) DEFAULT NULL,
+  `machine_id` int(11) DEFAULT NULL,
   `SMR` int(11) DEFAULT NULL,
   `date_to_work` datetime DEFAULT NULL,
   `periodic_maintenance_id` int(11) DEFAULT NULL,
@@ -110,7 +110,9 @@ CREATE TABLE `work_order` (
   `work_place` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `foreignKeyPeriodicMaintenanceId` (`periodic_maintenance_id`),
-  CONSTRAINT `foreignKeyPeriodicMaintenanceId` FOREIGN KEY (`periodic_maintenance_id`) REFERENCES `periodic_maintenance` (`id`)
+  CONSTRAINT `foreignKeyPeriodicMaintenanceId` FOREIGN KEY (`periodic_maintenance_id`) REFERENCES `periodic_maintenance` (`id`),
+  KEY `foreignKeyMachineId2` (`machine_id`),
+    CONSTRAINT `foreignKeyMachineId2` FOREIGN KEY (`machine_id`) REFERENCES `machine` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 ------------------------ periodic_maintenance --------------------------
