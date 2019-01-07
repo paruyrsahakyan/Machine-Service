@@ -20,7 +20,7 @@ public class WorkOrder {
     @JoinColumn(name = "periodic_maintenance_id")
     private PeriodicMaintenance periodicMaintenance;
     @Column
-    private Worker worker;
+    private String worker;
     @Column
     private String Workplace;
     @Column
@@ -30,16 +30,16 @@ public class WorkOrder {
     public String toString() {
         return "WorkOrder{" +
                 "id=" + id +
-                ", machine='" + machine + '\'' +
+                ", machine=" + machine +
                 ", orderDate=" + orderDate +
                 ", orderSmr=" + orderSmr +
                 ", periodicMaintenance=" + periodicMaintenance +
-                ", worker=" + worker +
+                ", worker='" + worker + '\'' +
                 ", Workplace='" + Workplace + '\'' +
-                ", serviceMachine=" + serviceMachine +
+                ", serviceMachine='" + serviceMachine + '\'' +
                 '}';
     }
-
+    
     public int getId() {
         return id;
     }
@@ -80,11 +80,11 @@ public class WorkOrder {
         this.periodicMaintenance = periodicMaintenance;
     }
 
-    public Worker getWorker() {
+    public String getWorker() {
         return worker;
     }
 
-    public void setWorker(Worker worker) {
+    public void setWorker(String worker) {
         this.worker = worker;
     }
 
