@@ -7,7 +7,7 @@ public class MaintenancePart {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Column
+    @Column(name="part_type")
     private String partType;
     @Column(name = "part_number")
     private String partNumber;
