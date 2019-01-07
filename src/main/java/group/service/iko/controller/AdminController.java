@@ -76,7 +76,7 @@ public class AdminController {
 
     @RequestMapping(value = "/serviceMachine/serviceMachineAdded", method = RequestMethod.POST)
     public ModelAndView ServiceMachineAdded(@RequestParam("name") String name) {
-        ModelAndView modelAndView = new ModelAndView("admin/ServiceMachines");
+        ModelAndView modelAndView = new ModelAndView("admin/serviceMachines");
         ServiceMachine serviceMachine = new ServiceMachine();
         serviceMachine.setName(name);
         serviceMachineService.saveServiceMachine(serviceMachine);
