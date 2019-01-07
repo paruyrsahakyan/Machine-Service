@@ -121,7 +121,6 @@ CREATE TABLE `periodic_maintenance` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `machine_id` int(11) DEFAULT NULL,
   `SMR` int(11) DEFAULT NULL,
-  `date_to_work` datetime DEFAULT NULL,
   `worker` varchar(255) DEFAULT NULL,
   `service_machine` varchar(255) DEFAULT NULL,
   `work_place` varchar(255) DEFAULT NULL,

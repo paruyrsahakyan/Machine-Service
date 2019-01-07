@@ -16,14 +16,14 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <html>
 <head>
-    <title>Добавление Машины</title>
+    <title>Создание Сервисной Машины</title>
 </head>
 <body>
 <div style="text-align: center">
-    <H2 style="text-align: center"> Добавление Машины </H2>
-    <a href="/admin/serviceMachines/allServiceMachines"> Отменить создание новой машины </a>
+    <H2 style="text-align: center"> Создание Сервисной Машины </H2>
+    <a href="/admin/serviceMachine/serviceMachineAdded"> Отменить создание новой машины </a>
 
-    <form:form action="/admin/workers/workerAdded" method="post" >
+    <form:form action="/admin/serviceMachine/deletedServiceMachine" method="post" >
         Имя фамиля: <br>
         <input type="text" name="name" required="required">
         <br><br>

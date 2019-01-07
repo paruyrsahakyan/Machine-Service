@@ -70,16 +70,26 @@ public class AdminController {
 
     @RequestMapping("/addServiceMachine")
     public ModelAndView addServiceMachine() {
-        ModelAndView modelAndView  = new ModelAndView( "admin/addWorker");
+        ModelAndView modelAndView  = new ModelAndView( "admin/addServiceMachine");
         return  modelAndView;
     }
 
-    @RequestMapping(value = "/workers/serviceMachineAdded", method = RequestMethod.POST)
-    public ModelAndView addServiceWorker(@RequestParam("name") String name) {
-        ModelAndView modelAndView = new ModelAndView("admin/serviceMachines");
+    @RequestMapping(value = "/serviceMachine/serviceMachineAdded", method = RequestMethod.POST)
+    public ModelAndView ServiceMachineAdded(@RequestParam("name") String name) {
+        ModelAndView modelAndView = new ModelAndView("admin/ServiceMachines");
         ServiceMachine serviceMachine = new ServiceMachine();
         serviceMachine.setName(name);
         serviceMachineService.saveServiceMachine(serviceMachine);
+        List<ServiceMachine> allServiceMachines = serviceMachineService.getAllServiceMachines();
+        modelAndView.addObject("allServiceMachines", allServiceMachines);
+        return  modelAndView;
+    }
+    @RequestMapping(value = "/serviceMachine/serviceMachineDeleted", method = RequestMethod.POST)
+    public ModelAndView deleteServiceWorker(@RequestParam("id") int id) {
+        ModelAndView modelAndView = new ModelAndView("admin/serviceMachines");
+        ServiceMachine serviceMachine = new ServiceMachine();
+        serviceMachine.setId(id);
+        serviceMachineService.deleteServiceMachine(serviceMachine);
         List<ServiceMachine> allServiceMachines = serviceMachineService.getAllServiceMachines();
         modelAndView.addObject("allServiceMachines", allServiceMachines);
         return  modelAndView;

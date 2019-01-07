@@ -30,7 +30,7 @@
     <table align="center">
         <tr>
             <th>N</th>
-            <th>Машина/th>
+            <th>Машина</th>
             <th>Удаление</th>
         </tr>
         <% int i = 1; %>
@@ -40,7 +40,7 @@
                 <td> <%= i++%> </td>
                 <td>${serviceMachine.name}</td>
                 <td>
-                    <form:form action="/admin/workers/workerDeleted" method="post" >
+                    <form:form action="/admin/serviceMachineAdded/workerDeleted" method="post" >
                         <input type="hidden" name="id" value="${serviceMachine.id}">
                         <input type="submit"  value="Удалить"
                                onclick="return confirm('!!!Вы уверены что хатите удалить машину!!!');"
