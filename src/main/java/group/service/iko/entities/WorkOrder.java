@@ -12,18 +12,18 @@ public class WorkOrder {
     @ManyToOne()
     @JoinColumn(name = "machine_id")
     private Machine machine;
-    @Column
+    @Column(name="order_date")
     private GregorianCalendar orderDate;
-    @Column
+    @Column(name="SMR")
     private int orderSmr;
     @ManyToOne()
     @JoinColumn(name = "periodic_maintenance_id")
     private PeriodicMaintenance periodicMaintenance;
     @Column
     private String worker;
-    @Column
+    @Column(name = "work_place")
     private String Workplace;
-    @Column
+    @Column(name="service_machine")
     private String serviceMachine;
 
     @Override
