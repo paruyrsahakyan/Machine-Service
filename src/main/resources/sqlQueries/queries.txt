@@ -11,6 +11,7 @@
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 ---------------------------- machine -----------------------
+
  CREATE TABLE `machine` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `engineModel` varchar(255) DEFAULT NULL,
@@ -26,7 +27,6 @@
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 ---------------------------history_record------------------------------------------
-
 
  CREATE TABLE `history_record` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -69,7 +69,6 @@ CREATE TABLE `record_file` (
 
 -------------------------  worker -------------------------------
 
-
  CREATE TABLE `worker` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT NULL,
@@ -98,8 +97,9 @@ insert into service_machine (name) value ('Mitsubishi 888AF61');
 insert into service_machine (name) value ('Ford Transit 222LO61');
 
 
-------------------------- work_order_machine ------------------------
-CREATE TABLE `work_order_machine` (
+------------------------- work_order -------------------------------
+
+CREATE TABLE `work_order` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `machine` varchar(255) DEFAULT NULL,
   `SMR` int(11) DEFAULT NULL,
@@ -129,6 +129,7 @@ CREATE TABLE `periodic_maintenance` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --------------------------- maintenance_part ----------------------------------------
+
  CREATE TABLE `maintenance_part` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `part_type` varchar(255) DEFAULT NULL,
@@ -136,6 +137,8 @@ CREATE TABLE `periodic_maintenance` (
   `nomenclature` varchar(255) DEFAULT NULL,
   `unit` varchar(255) DEFAULT NULL,
   `quantity` int(11) DEFAULT NULL,
-
-   PRIMARY KEY (`id`)
- ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `periodic_maintenance_id` int(11) DEFAULT NULL,
+   PRIMARY KEY (`id`),
+   KEY `foreignKeyPeriodicMaintenanceId2` (`periodic_maintenance_id`),
+   CONSTRAINT `foreignKeyPeriodicMaintenanceId2` FOREIGN KEY (`periodic_maintenance_id`) REFERENCES `periodic_maintenance` (`id`)
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
