@@ -24,7 +24,7 @@ public class WorkOrder {
     @Column
     private String Workplace;
     @Column
-    private ServiceMachine serviceMachine;
+    private String serviceMachine;
 
     @Override
     public String toString() {
@@ -96,11 +96,11 @@ public class WorkOrder {
         Workplace = workplace;
     }
 
-    public ServiceMachine getServiceMachine() {
+    public String getServiceMachine() {
         return serviceMachine;
     }
 
-    public void setServiceMachine(ServiceMachine serviceMachine) {
+    public void setServiceMachine(String serviceMachine) {
         this.serviceMachine = serviceMachine;
     }
 }
