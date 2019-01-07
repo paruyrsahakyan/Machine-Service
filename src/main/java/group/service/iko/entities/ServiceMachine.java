@@ -3,7 +3,7 @@ package group.service.iko.entities;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "machine")
+@Table(name = "service_machine")
 public class ServiceMachine {
    @Id
    @GeneratedValue(strategy = GenerationType.IDENTITY)
