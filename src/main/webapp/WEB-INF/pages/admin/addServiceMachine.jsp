@@ -21,11 +21,12 @@
 <body>
 <div style="text-align: center">
     <H2 style="text-align: center"> Создание Сервисной Машины </H2>
-    <a href="/admin/serviceMachine/serviceMachineAdded"> Отменить создание новой машины </a>
+    <a href="/admin/serviceMachines"> Отменить создание новой машины </a>
     <br>
-    <form:form action="/admin/serviceMachine/serviceMachineDeleted" method="post" >
-        Имя фамиля: <br>
-        <input type="text" name="name" required="required">
+    <br>
+    <form:form action="/admin/serviceMachine/serviceMachineAdded" method="post" >
+        Машина: <br>
+        <input type="text" name="name" required="required" placeholder="Марка Гос.Ном.">
         <br><br>
         <input type="submit" value="Сохранить">
 
