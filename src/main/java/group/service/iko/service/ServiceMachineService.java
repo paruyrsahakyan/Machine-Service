@@ -13,19 +13,22 @@ import java.util.List;
 public class ServiceMachineService {
     @Autowired
     private ServiceMachineDAO serviceMachineDAO;
-    private List<ServiceMachine> allServiceMachines = null;
     private Session session;
+    private List<ServiceMachine> serviceMachineList=null;
 
     public void saveServiceMachine(ServiceMachine serviceMachine) {
         serviceMachineDAO.saveServiceMachine(serviceMachine);
+        serviceMachineList=null;
     }
 
     public void updateServiceMachine(ServiceMachine serviceMachine) {
         serviceMachineDAO.updateServiceMachine(serviceMachine);
+        serviceMachineList=null;
     }
 
     public void deleteServiceMachine(ServiceMachine serviceMachine) {
         serviceMachineDAO.deleteServiceMachine(serviceMachine);
+        serviceMachineList=null;
     }
 
     public void getServiceMachineById(int id) {
@@ -33,14 +36,14 @@ public class ServiceMachineService {
     }
 
     public  List<ServiceMachine> getAllServiceMachines() {
-        if (allServiceMachines == null) {
+        if (serviceMachineList == null) {
             session = SessionFactoryImpl.getSessionFactory().openSession();
             String hql = "from group.service.iko.entities.ServiceMachine";
             Query query = session.createQuery(hql);
             List<ServiceMachine> all = (List<ServiceMachine>) query.list();
             session.close();
-            allServiceMachines = all;
+            serviceMachineList = all;
         }
-        return allServiceMachines;
+        return serviceMachineList;
     }
 }

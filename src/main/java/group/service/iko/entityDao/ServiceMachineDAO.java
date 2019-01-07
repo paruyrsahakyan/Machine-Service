@@ -1,9 +1,12 @@
 package group.service.iko.entityDao;
 
+import group.service.iko.entities.Machine;
 import group.service.iko.entities.ServiceMachine;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.springframework.stereotype.Service;
+
+import java.util.Set;
 
 @Service
 public class ServiceMachineDAO {
@@ -24,18 +27,19 @@ public class ServiceMachineDAO {
         session.save(serviceMachine);
         session.flush();
         session.close();
-            }
+                   }
     public void updateServiceMachine(ServiceMachine serviceMachine){
         session = SessionFactoryImpl.getSessionFactory().openSession();
         session.update(serviceMachine);
         session.flush();
         session.close();
-            }
+                   }
     public void deleteServiceMachine(ServiceMachine serviceMachine){
         session= SessionFactoryImpl.getSessionFactory().openSession();
         session.delete(serviceMachine);
         session.flush();
         session.close();
+
             }
 
 }
