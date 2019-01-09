@@ -28,6 +28,9 @@
     <a href="/analysis/worker/jobs"> Анализ работ</a>
     <br>
     <br>
+    <a href="/workOrder"> Наряды </a>
+    <br>
+    <br>
     <a href="/admin/workers"> Работники </a>
     <br>
     <br>

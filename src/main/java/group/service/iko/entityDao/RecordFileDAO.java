@@ -3,8 +3,6 @@ package group.service.iko.entityDao;
 import group.service.iko.entities.RecordFile;
 import org.hibernate.Query;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -26,7 +24,7 @@ public class RecordFileDAO {
         session.flush();
         session.close();
     }
-   public  RecordFile getRecorFilById(int recorFileId){
+   public  RecordFile getRecordFileById(int recorFileId){
         String hql="From group.service.iko.entities.RecordFile where id = "+recorFileId;
         session= SessionFactoryImpl.getSessionFactory().openSession();
         Query query = session.createQuery(hql);

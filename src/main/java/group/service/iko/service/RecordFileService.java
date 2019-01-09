@@ -34,7 +34,7 @@ public class RecordFileService {
     }
 
     public RecordFile getRecordFileById(int recodFileId){
-        return recordFileDAO.getRecorFilById(recodFileId);
+        return recordFileDAO.getRecordFileById(recodFileId);
 
     }
     public void deleteFileById(int fileId){

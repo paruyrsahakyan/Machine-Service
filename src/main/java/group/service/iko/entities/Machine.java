@@ -20,6 +20,9 @@ public class Machine {
     private String engineSerialNumber;
     @Column
     private int productionYear;
+    @ManyToOne()
+    @JoinColumn(name = "machine_type_id")
+    private MachineType machineType;
     @Column
     private String otherInfo;
     @ManyToOne()
@@ -44,8 +47,19 @@ public class Machine {
                 ", engineModel='" + engineModel + '\'' +
                 ", engineSerialNumber='" + engineSerialNumber + '\'' +
                 ", productionYear=" + productionYear +
+                ", machineType=" + machineType +
                 ", otherInfo='" + otherInfo + '\'' +
-                                             '}';
+                ", customer=" + customer +
+                ", historyRecordList=" + historyRecordList +
+                '}';
+    }
+
+    public MachineType getMachineType() {
+        return machineType;
+    }
+
+    public void setMachineType(MachineType machineType) {
+        this.machineType = machineType;
     }
 
     public int getId() {

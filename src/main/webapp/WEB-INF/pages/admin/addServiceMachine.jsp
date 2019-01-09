@@ -1,12 +1,5 @@
 <%--
   Created by IntelliJ IDEA.
-  User: Paruyr
-  Date: 1/7/2019
-  Time: 12:02 AM
-  To change this template use File | Settings | File Templates.
---%>
-<%--
-  Created by IntelliJ IDEA.
   User: Admin
   Date: 7/1/2018
   Time: 11:53 AM

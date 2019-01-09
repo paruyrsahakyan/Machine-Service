@@ -23,7 +23,9 @@
   `customer_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FKior7iw8p1e18tirrwr162u5mn` (`customer_id`),
-  CONSTRAINT `FKior7iw8p1e18tirrwr162u5mn` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`id`)
+  CONSTRAINT `FKior7iw8p1e18tirrwr162u5mn` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`id`),
+  KEY `foreignKeyMachineTypeId` (`machine_type_id`),
+    CONSTRAINT `foreignKeyMachineTypeId` FOREIGN KEY (`machine_type_id`) REFERENCES `machine_type` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 ---------------------------history_record------------------------------------------
@@ -124,9 +126,12 @@ CREATE TABLE `periodic_maintenance` (
   `worker` varchar(255) DEFAULT NULL,
   `service_machine` varchar(255) DEFAULT NULL,
   `work_place` varchar(255) DEFAULT NULL,
+  `machine_type_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `foreignKeyMachineId` (`machine_id`),
-  CONSTRAINT `foreignKeyMachineId` FOREIGN KEY (`machine_id`) REFERENCES `machine` (`id`)
+  CONSTRAINT `foreignKeyMachineId` FOREIGN KEY (`machine_id`) REFERENCES `machine` (`id`),
+  KEY `foreignKeyMachineTypeId` (`machine_type_id`),
+  CONSTRAINT `foreignKeyMachineTypeId` FOREIGN KEY (`machine_type_id`) REFERENCES `machine_type` (`id`),
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --------------------------- maintenance_part ----------------------------------------
@@ -134,6 +139,20 @@ CREATE TABLE `periodic_maintenance` (
  CREATE TABLE `maintenance_part` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `part_type` varchar(255) DEFAULT NULL,
+  `part_number` varchar(255) DEFAULT NULL,
+  `unit` varchar(255) DEFAULT NULL,
+  `quantity` int(11) DEFAULT NULL,
+  `periodic_maintenance_id` int(11) DEFAULT NULL,
+   PRIMARY KEY (`id`),
+   KEY `foreignKeyPeriodicMaintenanceId2` (`periodic_maintenance_id`),
+   CONSTRAINT `foreignKeyPeriodicMaintenanceId2` FOREIGN KEY (`periodic_maintenance_id`) REFERENCES `periodic_maintenance` (`id`)
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--------------------------- machine_type  --------------------------------------------
+
+ CREATE TABLE `machine_type` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `machine_description` varchar(255) DEFAULT NULL,
   `part_number` varchar(255) DEFAULT NULL,
   `nomenclature` varchar(255) DEFAULT NULL,
   `unit` varchar(255) DEFAULT NULL,

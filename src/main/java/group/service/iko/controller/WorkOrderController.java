@@ -3,10 +3,8 @@ package group.service.iko.controller;
 import group.service.iko.dto.CustomerDTO;
 import group.service.iko.dto.MachineDTO;
 import group.service.iko.entities.ServiceMachine;
-import group.service.iko.service.CustomerService;
-import group.service.iko.service.MachineService;
-import group.service.iko.service.ServiceMachineService;
-import group.service.iko.service.WorkerService;
+import group.service.iko.entities.WorkOrder;
+import group.service.iko.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,14 +21,21 @@ public class WorkOrderController {
     private WorkerService workerService;
     @Autowired
     private ServiceMachineService serviceMachineService;
+    @Autowired
+    private WorkOrderService workOrderService;
 
+    public ModelAndView initialPage(){
+        ModelAndView modelAndView = new ModelAndView("workOrder");
+         return modelAndView;
 
+    }
 
     public ModelAndView workOrderCreation() {
-        ModelAndView modelAndView = new ModelAndView("workOrderCreation");
+        ModelAndView modelAndView = new ModelAndView("admin/workOrderCreation");
         modelAndView.addObject("machineList", MachineDTO.convertIntoDTO(machineService.getAllMachines()));
         modelAndView.addObject("workerList", workerService.getAllWorkers() );
-        modelAndView.addObject("serviceMachines", serviceMachineService.getAllServiceMachines());
+        modelAndView.addObject("machineList", serviceMachineService.getAllServiceMachines());
+        modelAndView.addObject("CustomerList", CustomerDTO.convertIntoDTO(customerService.getAllCustomers()));
         return modelAndView;
     }
     @RequestMapping("/allServiceMachines")

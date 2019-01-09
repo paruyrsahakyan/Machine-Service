@@ -12,8 +12,6 @@ public class MaintenancePart {
     @Column(name = "part_number")
     private String partNumber;
     @Column
-    private String nomenclature;
-    @Column
     private String unit;
     @Column
     private int quantity;
@@ -21,14 +19,12 @@ public class MaintenancePart {
     @JoinColumn(name = "periodic_maintenance_id")
     private PeriodicMaintenance periodicMaintenance;
 
-
     @Override
     public String toString() {
         return "MaintenancePart{" +
                 "id=" + id +
                 ", partType='" + partType + '\'' +
                 ", partNumber='" + partNumber + '\'' +
-                ", nomenclature='" + nomenclature + '\'' +
                 ", unit='" + unit + '\'' +
                 ", quantity=" + quantity +
                 ", periodicMaintenance=" + periodicMaintenance +
@@ -57,14 +53,6 @@ public class MaintenancePart {
 
     public void setPartNumber(String partNumber) {
         this.partNumber = partNumber;
-    }
-
-    public String getNomenclature() {
-        return nomenclature;
-    }
-
-    public void setNomenclature(String nomenclature) {
-        this.nomenclature = nomenclature;
     }
 
     public String getUnit() {

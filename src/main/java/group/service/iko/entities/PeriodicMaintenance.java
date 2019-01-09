@@ -19,6 +19,9 @@ public class PeriodicMaintenance {
     private Set<MaintenancePart> maintenanceParts;
     @Column(name= "service_machine")
     private String serviceMachine;
+    @ManyToOne()
+    @JoinColumn(name = "machine_type_id")
+    private MachineType machineType ;
 
     @Override
     public String toString() {
@@ -27,7 +30,16 @@ public class PeriodicMaintenance {
                 ", smr=" + smr +
                 ", maintenanceParts=" + maintenanceParts +
                 ", serviceMachine='" + serviceMachine + '\'' +
+                ", machineType=" + machineType +
                 '}';
+    }
+
+    public MachineType getMachineType() {
+        return machineType;
+    }
+
+    public void setMachineType(MachineType machineType) {
+        this.machineType = machineType;
     }
 
     public int getId() {

@@ -19,5 +19,6 @@
         <mapping class ="group.service.iko.entities.MaintenancePart"/>
         <mapping class ="group.service.iko.entities.ServiceMachine"/>
         <mapping class="group.service.iko.entities.WorkOrder"/>
+        <mapping class="group.service.iko.entities.MachineType"/>
     </session-factory>
 </hibernate-configuration>
