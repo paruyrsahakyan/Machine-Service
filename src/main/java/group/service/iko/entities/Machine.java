@@ -32,10 +32,7 @@ public class Machine {
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private List<HistoryRecord> historyRecordList;
 
-    public Machine() {
-
-    }
-
+   
     @Override
     public String toString() {
         return "Machine{" +
