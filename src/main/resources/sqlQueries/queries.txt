@@ -152,13 +152,6 @@ CREATE TABLE `periodic_maintenance` (
 
  CREATE TABLE `machine_type` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `machine_description` varchar(255) DEFAULT NULL,
-  `part_number` varchar(255) DEFAULT NULL,
-  `nomenclature` varchar(255) DEFAULT NULL,
-  `unit` varchar(255) DEFAULT NULL,
-  `quantity` int(11) DEFAULT NULL,
-  `periodic_maintenance_id` int(11) DEFAULT NULL,
-   PRIMARY KEY (`id`),
-   KEY `foreignKeyPeriodicMaintenanceId2` (`periodic_maintenance_id`),
-   CONSTRAINT `foreignKeyPeriodicMaintenanceId2` FOREIGN KEY (`periodic_maintenance_id`) REFERENCES `periodic_maintenance` (`id`)
-    ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `type_description` varchar(255) DEFAULT NULL,
+   PRIMARY KEY (`id`)
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

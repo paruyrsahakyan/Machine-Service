@@ -11,7 +11,7 @@ public class MachineType {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Column
+    @Column(name="type_description")
     private String typeDescription;
     @OneToMany(mappedBy = "periodic_maintenance", fetch = FetchType.EAGER)
     @Cascade(org.hibernate.annotations.CascadeType.ALL)

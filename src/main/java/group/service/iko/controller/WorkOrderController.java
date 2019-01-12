@@ -50,5 +50,5 @@ public class WorkOrderController {
         ModelAndView modelAndView = new ModelAndView("machineType/machineTypeCreation");
            return modelAndView;
     }
- 
+
 }
