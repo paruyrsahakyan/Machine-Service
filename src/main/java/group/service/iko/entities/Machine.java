@@ -20,8 +20,8 @@ public class Machine {
     private String engineSerialNumber;
     @Column
     private int productionYear;
-    @ManyToOne()
-    @JoinColumn(name = "machine_type_id")
+//    @ManyToOne()
+//    @JoinColumn(name = "machine_type_id")
     private MachineType machineType;
     @Column
     private String otherInfo;
@@ -31,6 +31,7 @@ public class Machine {
     @OneToMany(mappedBy = "machine", fetch = FetchType.EAGER)
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private List<HistoryRecord> historyRecordList;
+
     public Machine() {
 
     }
@@ -49,14 +50,6 @@ public class Machine {
                 ", customer=" + customer +
                 ", historyRecordList=" + historyRecordList +
                 '}';
-    }
-
-    public MachineType getMachineType() {
-        return machineType;
-    }
-
-    public void setMachineType(MachineType machineType) {
-        this.machineType = machineType;
     }
 
     public int getId() {
@@ -105,6 +98,14 @@ public class Machine {
 
     public void setProductionYear(int productionYear) {
         this.productionYear = productionYear;
+    }
+
+    public MachineType getMachineType() {
+        return machineType;
+    }
+
+    public void setMachineType(MachineType machineType) {
+        this.machineType = machineType;
     }
 
     public String getOtherInfo() {

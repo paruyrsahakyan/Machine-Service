@@ -1,13 +1,10 @@
 package group.service.iko.entities;
 
 import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.IndexColumn;
-
 import javax.persistence.*;
-import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
-import java.util.Set;
+
 
 @Entity
 @Table(name = "history_record")
