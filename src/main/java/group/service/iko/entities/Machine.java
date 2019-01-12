@@ -31,9 +31,6 @@ public class Machine {
     @OneToMany(mappedBy = "machine", fetch = FetchType.EAGER)
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private List<HistoryRecord> historyRecordList;
-//    @ManyToOne()
-//    @JoinColumn(name = "machine_type")
-//    private  MachineType machineType;
     public Machine() {
 
     }

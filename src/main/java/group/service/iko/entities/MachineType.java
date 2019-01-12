@@ -12,7 +12,7 @@ public class MachineType {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column
-    private String machineDescription;
+    private String typeDescription;
     @OneToMany(mappedBy = "periodic_maintenance", fetch = FetchType.EAGER)
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private List<PeriodicMaintenance> periodicMaintenanceList;
@@ -24,10 +24,18 @@ public class MachineType {
     public String toString() {
         return "MachineType{" +
                 "id=" + id +
-                ", machineDescription='" + machineDescription + '\'' +
+                ", typeDescription='" + typeDescription + '\'' +
                 ", periodicMaintenanceList=" + periodicMaintenanceList +
                 ", machineList=" + machineList +
                 '}';
+    }
+
+    public String getTypeDescription() {
+        return typeDescription;
+    }
+
+    public void setTypeDescription(String typeDescription) {
+        this.typeDescription = typeDescription;
     }
 
     public int getId() {
@@ -38,15 +46,7 @@ public class MachineType {
         this.id = id;
     }
 
-    public String getMachineDescription() {
-        return machineDescription;
-    }
-
-    public void setMachineDescription(String machineDescription) {
-        this.machineDescription = machineDescription;
-    }
-
-    public List<PeriodicMaintenance> getPeriodicMaintenanceList() {
+      public List<PeriodicMaintenance> getPeriodicMaintenanceList() {
         return periodicMaintenanceList;
     }
 

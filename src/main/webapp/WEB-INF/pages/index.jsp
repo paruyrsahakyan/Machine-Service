@@ -36,6 +36,9 @@
     <br>
     <a href="/admin/allServiceMachines"> Сервисные Mашины</a>
     <br>
+    <br>
+    <a href="/machineType/allMachineTypes"> Типы Машин</a>
+    <br>
 </div>
 
 </body>

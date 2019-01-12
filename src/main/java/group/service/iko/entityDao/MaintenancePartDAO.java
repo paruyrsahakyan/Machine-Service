@@ -11,7 +11,7 @@ public class MaintenancePartDAO {
 private Session session;
 
 
-public void saveMaintenancePartDAO(MaintenancePart maintenancePart){
+public void saveMaintenancePart(MaintenancePart maintenancePart){
     session= SessionFactoryImpl.getSessionFactory().openSession();
     session.save(maintenancePart);
     session.flush();

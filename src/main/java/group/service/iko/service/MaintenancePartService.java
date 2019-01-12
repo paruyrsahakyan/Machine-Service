@@ -1,5 +1,6 @@
 package group.service.iko.service;
 
+import group.service.iko.entities.MachineType;
 import group.service.iko.entities.MaintenancePart;
 import group.service.iko.entityDao.MaintenancePartDAO;
 import group.service.iko.entityDao.SessionFactoryImpl;
@@ -14,7 +15,7 @@ public class MaintenancePartService {
     Session session;
 
     public void saveMaintenancePart(MaintenancePart maintenancePart){
-        maintenancePartDAO.saveMaintenancePartDAO(maintenancePart);
+        maintenancePartDAO.saveMaintenancePart(maintenancePart);
     }
     public void updateMaintenancePart(MaintenancePart maintenancePart){
         maintenancePartDAO.updateMaintenancePart(maintenancePart);
@@ -28,4 +29,4 @@ public class MaintenancePartService {
         return  maintenancePartDAO.getMeintenancePartById(id);
     }
 
-    }
+   }

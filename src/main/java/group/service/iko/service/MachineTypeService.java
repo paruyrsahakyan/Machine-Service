@@ -5,13 +5,17 @@ import group.service.iko.entityDao.SessionFactoryImpl;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 
 import java.util.List;
 
+@Service
 public class MachineTypeService {
+
     @Autowired
     private MachineTypeDAO machineTypeDAO;
-    Session session;
+    private Session session;
 
     public void saveMachineType(MachineType machineType) {
         machineTypeDAO.saveMachineType(machineType);
@@ -38,6 +42,7 @@ public class MachineTypeService {
         session.close();
         return machineTypeList;
     }
+
 
 
 }

@@ -45,12 +45,16 @@ public class WorkOrderController {
         return  modelAndView;
     }
 
-
+     @RequestMapping("/machineType/Creation")
     public ModelAndView machineTypeCreation() {
-        ModelAndView modelAndView = new ModelAndView("machineTypeCreation");
-
-        return modelAndView;
+        ModelAndView modelAndView = new ModelAndView("machineType/machineTypeCreation");
+           return modelAndView;
     }
+    @RequestMapping("/machineType/created")
+    public ModelAndView createdMachineType(
+
+    ) {M
+
 
 
 }

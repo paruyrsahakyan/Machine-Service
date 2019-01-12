@@ -16,12 +16,11 @@
 <div style="text-align: center">
     <h2>Создание Нового Типа Машины</h2> <br>
 
-    <form:form action="/admin/machineType/machineTypeAddedcustomer}">
+    <form:form action="/admin/machineType/machineTypeCreated">
 
-        <input type="text"  name="model"  placeholder="модель, серийные номера" style="height: auto">Тип Машины</input>
+        <input type="typeDescription"  name="model"  placeholder="модель, серийные номера" style="height: auto">Тип Машины</input>
         <br><br>
-        Серийный номер:<br>
-         <input type="submit" value="Сохранить">
+          <input type="submit" value="Сохранить">
     </form:form>
 </div>
 </body>
