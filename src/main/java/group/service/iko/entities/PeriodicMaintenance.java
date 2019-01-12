@@ -18,8 +18,8 @@ public class PeriodicMaintenance {
     private Set<MaintenancePart> maintenanceParts;
     @Column(name= "service_machine")
     private String serviceMachine;
-    @ManyToOne()
-    @JoinColumn(name = "machine_type_id")
+//    @ManyToOne()
+//    @JoinColumn(name = "machine_type_id")
     private MachineType machineType ;
 
     @Override
