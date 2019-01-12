@@ -20,8 +20,8 @@ public class Machine {
     private String engineSerialNumber;
     @Column
     private int productionYear;
-//    @ManyToOne()
-//    @JoinColumn(name = "machine_type_id")
+    @ManyToOne()
+    @JoinColumn(name = "machine_type_id")
     private MachineType machineType;
     @Column
     private String otherInfo;

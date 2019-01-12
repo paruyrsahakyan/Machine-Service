@@ -6,8 +6,8 @@ import org.hibernate.annotations.Cascade;
 import javax.persistence.*;
 import java.util.List;
 
-//@Entity
-//@Table(name = "machine_type")
+@Entity
+@Table(name = "machine_type")
 public class MachineType {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
