@@ -27,7 +27,7 @@ public class MachineTypeController {
     @Autowired
 
 
-    @RequestMapping("/machineType/allMachineTypes")
+    @RequestMapping("/allMachineTypes")
     public ModelAndView allMachineTypes() {
         ModelAndView modelAndView = new ModelAndView("machineType/allMachineTypes");
         modelAndView.addObject("machineTypeList", machineTypeService.getAllMachineTypes());
@@ -35,7 +35,7 @@ public class MachineTypeController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/machineType/machineTypeCreated", method = RequestMethod.POST)
+    @RequestMapping(value = "/machineTypeCreated", method = RequestMethod.POST)
     public ModelAndView createMachineType(
             @RequestParam("typeDescription") String typeDescription) {
         MachineType machineType = new MachineType();
@@ -46,14 +46,14 @@ public class MachineTypeController {
         return modelAndView;
     }
 
-    @RequestMapping("machineType/{machineTypeId}/maintenance/newMaintenanceCreation")
+    @RequestMapping("/{machineTypeId}/maintenance/newMaintenanceCreation")
     public ModelAndView newMaintenanceCreation(@PathVariable("machineTypeId") int id) {
         ModelAndView modelAndView = new ModelAndView("machineType/periodicMaintenanceCreation");
         modelAndView.addObject("machineTypeId", id);
         return modelAndView;
     }
 
-    @RequestMapping(value = "machineType/{machineTypeId}/maintenance/createdNew", method = RequestMethod.POST)
+    @RequestMapping(value = "/{machineTypeId}/maintenance/createdNew", method = RequestMethod.POST)
     public ModelAndView maintenanceCreation(
             @PathVariable("machineTypeId") int id,
             @RequestParam("smr[]") int smr,
