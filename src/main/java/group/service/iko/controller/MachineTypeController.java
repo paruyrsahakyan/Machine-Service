@@ -68,7 +68,7 @@ public class MachineTypeController {
     @RequestMapping(value = "/{machineTypeId}/maintenance/createdNew", method = RequestMethod.POST)
     public ModelAndView maintenanceCreation(
             @PathVariable("machineTypeId") int id,
-            @RequestParam("smr[]") int smr,
+            @RequestParam("smr") int smr,
             @RequestParam("partNumber[]") String[] partNumberList,
             @RequestParam("description[]") String[] descriptionList,
             @RequestParam("unit[]") String[] unitList,
