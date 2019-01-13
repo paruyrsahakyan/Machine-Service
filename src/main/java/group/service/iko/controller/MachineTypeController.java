@@ -34,6 +34,12 @@ public class MachineTypeController {
         return modelAndView;
     }
 
+    @RequestMapping("/newTypeCreation")
+    public ModelAndView getNewTypeCreationPage(){
+        ModelAndView modelAndView = new ModelAndView("machineType/machineTypeCreation");
+        return  modelAndView;
+    }
+
     @RequestMapping(value = "/machineTypeCreated", method = RequestMethod.POST)
     public ModelAndView createMachineType(
             @RequestParam("typeDescription") String typeDescription) {
