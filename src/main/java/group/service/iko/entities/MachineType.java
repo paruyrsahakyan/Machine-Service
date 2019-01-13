@@ -18,8 +18,8 @@ public class MachineType {
     @OneToMany(mappedBy = "periodic_maintenance", fetch = FetchType.EAGER)
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private List<PeriodicMaintenance> periodicMaintenanceList;
-    @OneToMany(mappedBy = "machine", fetch = FetchType.LAZY)
-    @Cascade(org.hibernate.annotations.CascadeType.ALL)
+//    @OneToMany(mappedBy = "machine", fetch = FetchType.LAZY)
+//    @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private Set<Machine> machineList;
 
     @Override
