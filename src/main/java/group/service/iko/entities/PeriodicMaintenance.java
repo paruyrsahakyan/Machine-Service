@@ -12,13 +12,14 @@ public class PeriodicMaintenance {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
     @Column
     private int smr;
+
     @OneToMany(mappedBy = "periodicMaintenance", fetch = FetchType.EAGER)
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private List<MaintenancePart> maintenanceParts;
-    @Column(name= "service_machine")
-    private String serviceMachine;
+
     @ManyToOne()
     @JoinColumn(name = "machine_type_id")
     private MachineType machineType ;
@@ -29,7 +30,6 @@ public class PeriodicMaintenance {
                 "id=" + id +
                 ", smr=" + smr +
                 ", maintenanceParts=" + maintenanceParts +
-                ", serviceMachine='" + serviceMachine + '\'' +
                 ", machineType=" + machineType +
                 '}';
     }
@@ -66,11 +66,4 @@ public class PeriodicMaintenance {
         this.maintenanceParts = maintenanceParts;
     }
 
-    public String getServiceMachine() {
-        return serviceMachine;
-    }
-
-    public void setServiceMachine(String serviceMachine) {
-        this.serviceMachine = serviceMachine;
-    }
 }

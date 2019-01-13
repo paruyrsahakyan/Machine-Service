@@ -12,11 +12,14 @@ public class MachineType {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
     @Column(name="type_description")
     private String typeDescription;
-    @OneToMany(mappedBy = "machineType", fetch = FetchType.EAGER)
+
+    @OneToMany(mappedBy = "machineTddype", fetch = FetchType.EAGER)
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private List<PeriodicMaintenance> periodicMaintenanceList;
+
     @OneToMany(mappedBy = "machineType", fetch = FetchType.EAGER)
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private List<Machine> machineList;
