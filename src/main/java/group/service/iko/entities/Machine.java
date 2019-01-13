@@ -28,8 +28,8 @@ public class Machine {
     @ManyToOne()
     @JoinColumn(name = "customer_id")
     private Customer customer;
-//    @OneToMany(mappedBy = "machine", fetch = FetchType.EAGER)
-//    @Cascade(org.hibernate.annotations.CascadeType.ALL)
+    @OneToMany(mappedBy = "machine", fetch = FetchType.EAGER)
+    @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private List<HistoryRecord> historyRecordList;
 
 

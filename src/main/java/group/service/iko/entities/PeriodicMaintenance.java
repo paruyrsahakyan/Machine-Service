@@ -13,7 +13,7 @@ public class PeriodicMaintenance {
     private int id;
     @Column
     private int smr;
-    @OneToMany(mappedBy = "periodicMaintenance", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "periodic_maintenance", fetch = FetchType.EAGER)
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private Set<MaintenancePart> maintenanceParts;
     @Column(name= "service_machine")
