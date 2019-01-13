@@ -25,7 +25,7 @@
     <h3>Тип машины &nbsp; ${machineType.typeDescription}</h3>
 
             Периодичность То(мч)  <input name ="smr" type="number">
-   <button id ="addPart" type="button " onlick="addRow()" >Добавить строку</button>
+   <button id ="addPart"  onclick="addRow()" >Добавить строку</button>
     <form:form action="/machineType/${machineType.id}/maintenance/createdNew" method="post">
         <input type="submit" value="Сохранить">
 <br> <br>
