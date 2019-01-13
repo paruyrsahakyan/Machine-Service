@@ -25,30 +25,32 @@
     <h3>Тип машины &nbsp; ${machineType.typeDescription}</h3>
 
     <form:form action="/machineType/${machineType.id}/maintenance/createdNew" method="post">   Периодичность ТO(мч)  <input name ="smr" type="number">
-   <button id ="addPart"  onclick="addRow()" >Добавить строку</button>
-          <input type="submit" value="Сохранить">
-<br> <br>
+
+        <input type="submit" value="Сохранить">
+        <br> <br>
         <table id = "table" align="center">
-        <tr>
-            <th>Артикул</th>
-            <th>Описание</th>
-            <th>Единица</th>
-            <th>Количесто</th>
-             </tr>
+            <tr>
+                <th>Артикул</th>
+                <th>Описание</th>
+                <th>Единица</th>
+                <th>Количесто</th>
+            </tr>
         </table>
-        </form:form>
-     <script>
+    </form:form>
+    <br> <br>
+    <button id ="addPart"  onclick="addRow()" >Добавить строку</button>
+    <script>
         function addRow(){
-                    var table=document.getElementById("table");
-                    var row = table.insertRow();
-                    var partNumberCell =row.insertCell(0);
-                    var descriptionCell =row.insertCell(1);
-                    var unitCell =row.insertCell(2);
-                    var quantityCell =row.insertCell(3);
-                    partNumberCell.innerHTML ="<input type='text' name= 'partNumber[]'>";
-                    descriptionCell.innerHTML ="<input type='text' name= 'description[]'>";
-                    unitCell.innerHTML ="<input type='text' name= 'unit[]'>";
-                    quantityCell.innerHTML ="<input type='number' name= 'quantity[]'>";
+            var table=document.getElementById("table");
+            var row = table.insertRow();
+            var partNumberCell =row.insertCell(0);
+            var descriptionCell =row.insertCell(1);
+            var unitCell =row.insertCell(2);
+            var quantityCell =row.insertCell(3);
+            partNumberCell.innerHTML ="<input type='text' name= 'partNumber[]'>";
+            descriptionCell.innerHTML ="<input type='text' name= 'description[]'>";
+            unitCell.innerHTML ="<input type='text' name= 'unit[]'>";
+            quantityCell.innerHTML ="<input type='number' name= 'quantity[]'>";
         }
     </script>
 </div>
