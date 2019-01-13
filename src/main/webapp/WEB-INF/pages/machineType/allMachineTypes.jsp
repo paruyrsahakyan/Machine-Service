@@ -37,7 +37,7 @@
         <c:forEach items="${machineTypeList}" var="machineType">
             <tr>
                 <td> <%= i++%> </td>
-                <td> <a href="/admin/machineType/${machineType.id}"> ${machineType.typeDescription} </a> </td>
+                <td> <a href="/machineType/${machineType.id}"> ${machineType.typeDescription} </a> </td>
 
             </tr>
         </c:forEach>
