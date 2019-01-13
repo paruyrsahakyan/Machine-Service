@@ -29,7 +29,7 @@ public class MachineTypeController {
     @RequestMapping("/allMachineTypes")
     public ModelAndView allMachineTypes() {
         ModelAndView modelAndView = new ModelAndView("machineType/allMachineTypes");
-//       modelAndView.addObject("machineTypeList", machineTypeService.getAllMachineTypes());
+       modelAndView.addObject("machineTypeList", machineTypeService.getAllMachineTypes());
 
         return modelAndView;
     }

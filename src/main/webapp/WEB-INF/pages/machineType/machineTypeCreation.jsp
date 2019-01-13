@@ -16,7 +16,7 @@
 <div style="text-align: center">
     <h2>Создание Нового Типа Машины</h2> <br>
 
-    <form:form action="/admin/machineType/machineTypeCreated">
+    <form:form action="/machineType/machineTypeCreated" method="post">
 
         <input type="typeDescription"  name="model"  placeholder="модель, серийные номера" style="height: auto">Тип Машины</input>
         <br><br>
