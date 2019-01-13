@@ -5,6 +5,7 @@ import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "machine_type")
@@ -22,7 +23,7 @@ public class MachineType {
 
     @OneToMany(mappedBy = "machineType", fetch = FetchType.EAGER)
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
-    private List<Machine> machineList;
+    private Set<Machine> machineList;
 
     @Override
     public String toString() {
@@ -61,11 +62,11 @@ public class MachineType {
         this.periodicMaintenanceList = periodicMaintenanceList;
     }
 
-    public List<Machine> getMachineList() {
+    public Set<Machine> getMachineList() {
         return machineList;
     }
 
-    public void setMachineList(List<Machine> machineList) {
+    public void setMachineList(Set<Machine> machineList) {
         this.machineList = machineList;
     }
 }
