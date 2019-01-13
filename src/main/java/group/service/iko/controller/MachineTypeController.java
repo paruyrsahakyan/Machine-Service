@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.Set;
+
 @Controller()
 @RequestMapping("/machineType")
 public class MachineTypeController {
@@ -27,7 +29,10 @@ public class MachineTypeController {
     @RequestMapping("/{id}")
     public ModelAndView machine(@PathVariable("id") int id ){
         ModelAndView modelAndView = new ModelAndView("machineType/machineType");
-        modelAndView.addObject("machineType", machineTypeService.getMachineTypeById(id));
+        MachineType machineType = new MachineType();
+        Set<PeriodicMaintenance> maintenanceList = machineType.getPeriodicMaintenanceList();
+        modelAndView.addObject("machineType", machineType);
+        modelAndView.addObject("maintenanceList", maintenanceList);
         return modelAndView;
 
 
@@ -61,7 +66,10 @@ public class MachineTypeController {
     @RequestMapping("/{machineTypeId}/maintenance/newMaintenanceCreation")
     public ModelAndView newMaintenanceCreation(@PathVariable("machineTypeId") int id) {
         ModelAndView modelAndView = new ModelAndView("machineType/periodicMaintenanceCreation");
-        modelAndView.addObject("machineType", machineTypeService.getMachineTypeById(id));
+        MachineType machineType = new MachineType();
+        Set<PeriodicMaintenance> maintenanceList = machineType.getPeriodicMaintenanceList();
+        modelAndView.addObject("machineType", machineType);
+        modelAndView.addObject("maintenanceList", maintenanceList);
         return modelAndView;
     }
 
