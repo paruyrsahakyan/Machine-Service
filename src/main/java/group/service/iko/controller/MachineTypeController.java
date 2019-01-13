@@ -46,7 +46,7 @@ public class MachineTypeController {
         MachineType machineType = new MachineType();
         machineType.setTypeDescription(typeDescription);
         machineTypeService.saveMachineType(machineType);
-        ModelAndView modelAndView = new ModelAndView("machineType/MachineType");
+        ModelAndView modelAndView = new ModelAndView("machineType/machineType");
         modelAndView.addObject("machineTypeList", machineTypeService.getAllMachineTypes());
         return modelAndView;
     }
