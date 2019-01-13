@@ -18,7 +18,7 @@
 
     <form:form action="/machineType/machineTypeCreated" method="post">
 
-        <input type="typeDescription"  name="model"  placeholder="модель, серийные номера" style="height: auto">Тип Машины</input>
+        <input type="text"  name="typeDescription"  placeholder="модель, серийные номера" style="height: auto">Тип Машины</input>
         <br><br>
           <input type="submit" value="Сохранить">
     </form:form>
