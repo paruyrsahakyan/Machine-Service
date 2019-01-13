@@ -23,8 +23,15 @@ public class MachineTypeController {
     @Autowired
     private PeriodicMaintenanceService periodicMaintenanceService;
 
-    @Autowired
 
+    @RequestMapping("/{id}")
+    public ModelAndView machine(@PathVariable("id") int id ){
+        ModelAndView modelAndView = new ModelAndView("machineType/machineType");
+        modelAndView.addObject("machineType", machineTypeService.getMachineTypeById(id));
+        return modelAndView;
+
+
+    }
 
     @RequestMapping("/allMachineTypes")
     public ModelAndView allMachineTypes() {
