@@ -29,7 +29,8 @@ public class MachineTypeController {
     @RequestMapping("/allMachineTypes")
     public ModelAndView allMachineTypes() {
         ModelAndView modelAndView = new ModelAndView("machineType/allMachineTypes");
-        modelAndView.addObject("machineTypeList", machineTypeService.getAllMachineTypes());
+        MachineTypeService machineTypeService1 = new MachineTypeService();
+        modelAndView.addObject("machineTypeList", machineTypeService1.getAllMachineTypes());
 
         return modelAndView;
     }
