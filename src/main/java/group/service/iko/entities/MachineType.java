@@ -1,6 +1,8 @@
 package group.service.iko.entities;
 
 import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 
 import javax.persistence.*;
@@ -21,7 +23,8 @@ public class MachineType {
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private List<PeriodicMaintenance> periodicMaintenanceList;
 
-    @OneToMany(mappedBy = "machineType", fetch = FetchType.LAZY)
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @OneToMany(mappedBy = "machineType")
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private Set<Machine> machineList;
 
