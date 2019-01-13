@@ -15,9 +15,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.List;
-
-@Controller("/machineType")
+@Controller()
+@RequestMapping("/machineType")
 public class MachineTypeController {
     @Autowired
     private MachineTypeService machineTypeService;
