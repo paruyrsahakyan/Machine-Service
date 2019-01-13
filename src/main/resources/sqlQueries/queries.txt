@@ -130,8 +130,8 @@ CREATE TABLE `periodic_maintenance` (
   PRIMARY KEY (`id`),
   KEY `foreignKeyMachineId` (`machine_id`),
   CONSTRAINT `foreignKeyMachineId` FOREIGN KEY (`machine_id`) REFERENCES `machine` (`id`),
-  KEY `foreignKeyMachineTypeId` (`machine_type_id`),
-  CONSTRAINT `foreignKeyMachineTypeId` FOREIGN KEY (`machine_type_id`) REFERENCES `machine_type` (`id`),
+  KEY `foreignKeyMachineTypeId22` (`machine_type_id`),
+  CONSTRAINT `foreignKeyMachineTypeId22` FOREIGN KEY (`machine_type_id`) REFERENCES `machine_type` (`id`),
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --------------------------- maintenance_part ----------------------------------------

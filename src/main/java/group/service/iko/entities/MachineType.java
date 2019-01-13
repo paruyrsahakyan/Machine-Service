@@ -30,6 +30,9 @@ public class MachineType {
                 ", machineList=" + machineList +
                 '}';
     }
+    public MachineType(){
+        
+    }
 
     public String getTypeDescription() {
         return typeDescription;
