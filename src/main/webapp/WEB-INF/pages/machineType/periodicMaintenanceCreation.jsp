@@ -12,7 +12,9 @@
     <style>
         table, th, td {
             border: 1px solid black;
+            align-self: center;
         }
+
     </style>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>Создание нового ТО</title>
@@ -21,23 +23,21 @@
 <div style="text-align: center">
     <h2>Создание нового ТО</h2> <br>
     <h3>Тип машины &nbsp; ${machineType.typeDescription}</h3>
-    <div id = "dynList">
-        <form:form action="/machineType/${machineType.id}/maintenance/createdNew" method="post">
+           <form:form action="/machineType/${machineType.id}/maintenance/createdNew" method="post">
             Периодичность То(мч)  <input name ="smr" type="number">
-   <button id ="addPart" type="button " onclick="addRow">Добавить строку</button>
+   <button id ="addPart" type="button " onclick="addRow()">Добавить строку</button>
         <input type="submit" value="Сохранить">
-<br>
-        <table id = "table">
+<br> <br>
+        <table id = "table" align="center">
         <tr>
             <th>Артикул</th>
             <th>Описание</th>
             <th>Единица</th>
             <th>Количесто</th>
-             </tr> <>
+             </tr>
         </table>
         </form:form>
-    </div>
-    <script>
+     <script>
         function addRow(){
                     var table=document.getElementById("table");
                     var row = table.insertRow();
