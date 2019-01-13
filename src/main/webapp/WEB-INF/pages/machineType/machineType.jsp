@@ -30,24 +30,24 @@
 </head>
 <body>
 <div style="text-align: center">
-    <h2>Тип Машины: ${machineType.description} </h2>
+    <h2>Тип Машины: ${machineType.typeDescription} </h2>
     <a href="/"> Главное меню</a>
     <br><br>
 
-    <a href="/admin/machineType/{$machineType.id}/update" style="bottom: auto"> Редактировать</a>
+    <a href="/machineType/${machineType.id}/update" style="bottom: auto"> Редактировать</a>
     &nbsp; &nbsp;
-    <a href="/admin/machineType/{$machineType.id}/addPeriodicMaintenance" style="bottom: auto"> Добавить TO</a>
+    <a href="/machineType/${machineType.id}/addPeriodicMaintenance" style="bottom: auto"> Добавить TO</a>
     &nbsp; &nbsp;
-    <a href="/admin/machineType/{$machineType.id}/deleteMachineType"
+    <a href="/machineType/${machineType.id}/deleteMachineType"
        onclick="return confirm('!!!Вы уверены что хатите удалить тип машины!!!');"
        style="color: crimson;">Удалить Тип Машины</a>
     <br> <br>
 
-            <c:forEach items="${periodicMaintenanceList}" var="periodicMaintenance" >
+            <c:forEach items="${machineType.periodicMaintenanceList}" var="periodicMaintenance" >
             <table style="width: auto" align="center">
                 <tr>
                     <th colspan="4">
-                      <a href="/admin/machineType/${machineType.id}/periodicMaintenance/${periodicMainteance.id}">
+                      <a href="/machineType/${machineType.id}/periodicMaintenance/${periodicMaintenance.id}">
                                    ${periodicMaintenance.smr}
                       </a>
                     </th>
@@ -60,11 +60,11 @@
                     <td> Количество </td>
                 </tr>
             <% int i = 1; %>
-            <c:forEach items="${periodicMaintenance.maintenancePartList}" var="maintenancePart" >
+            <c:forEach items="${periodicMaintenance.maintenanceParts}" var="maintenancePart" >
 
             <tr>
                 <td><%= i++%> </td>
-                <td>${maintenancePart.description}</td>
+                <td>${maintenancePart.partType}</td>
                 <td>${maintenancePart.partNumber}</td>
                 <td>${maintenancePart.unit}</td>
                 <td>${maintenancePart.quantity}</td>
