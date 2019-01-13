@@ -23,7 +23,7 @@
 <div style="text-align: center">
     <h2 style="text-align: center">Типы Машин</h2>
     <a href="/"> В главное меню</a> &nbsp;
-    <a href="/machineType/addNew"> Добавить Новый Тип</a>
+    <a href="/machineType/newTypeCreation"> Добавить Новый Тип</a>
     <br>
     <br>
 
