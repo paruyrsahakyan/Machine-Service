@@ -29,12 +29,11 @@ public class MachineTypeController {
     @RequestMapping("/{id}")
     public ModelAndView machine(@PathVariable("id") int id ){
         ModelAndView modelAndView = new ModelAndView("machineType/machineType");
-        MachineType machineType = new MachineType();
+        MachineType machineType = machineTypeService.getMachineTypeById(id);
         Set<PeriodicMaintenance> maintenanceList = machineType.getPeriodicMaintenanceList();
         modelAndView.addObject("machineType", machineType);
         modelAndView.addObject("maintenanceList", maintenanceList);
         return modelAndView;
-
 
     }
 
