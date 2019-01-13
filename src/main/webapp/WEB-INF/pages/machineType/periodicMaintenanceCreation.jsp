@@ -23,9 +23,10 @@
 <div style="text-align: center">
     <h2>Создание нового ТО</h2> <br>
     <h3>Тип машины &nbsp; ${machineType.typeDescription}</h3>
-           <form:form action="/machineType/${machineType.id}/maintenance/createdNew" method="post">
+
             Периодичность То(мч)  <input name ="smr" type="number">
-   <button id ="addPart" type="button " onclick="addRow()">Добавить строку</button>
+   <button id ="addPart" type="button " onlick="addRow()" >Добавить строку</button>
+    <form:form action="/machineType/${machineType.id}/maintenance/createdNew" method="post">
         <input type="submit" value="Сохранить">
 <br> <br>
         <table id = "table" align="center">
