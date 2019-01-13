@@ -44,7 +44,7 @@ public class PeriodicMaintenanceService {
     ) {
         PeriodicMaintenance periodicMaintenance = new PeriodicMaintenance();
         periodicMaintenance.setSmr(smr);
-        List<MaintenancePart> maintenancePartSet = new ArrayList<MaintenancePart>();
+        Set<MaintenancePart> maintenancePartSet = new HashSet<MaintenancePart>();
 
         for (int i = 0; i < partNumber.length; i++) {
             MaintenancePart maintenancePart = new MaintenancePart();
