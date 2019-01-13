@@ -3,6 +3,7 @@ package group.service.iko.entities;
 import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -13,13 +14,13 @@ public class PeriodicMaintenance {
     private int id;
     @Column
     private int smr;
-    @OneToMany(mappedBy = "periodic_maintenance", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "periodicMaintenance", fetch = FetchType.EAGER)
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
-    private Set<MaintenancePart> maintenanceParts;
+    private List<MaintenancePart> maintenanceParts;
     @Column(name= "service_machine")
     private String serviceMachine;
-//    @ManyToOne()
-//    @JoinColumn(name = "machine_type_id")
+    @ManyToOne()
+    @JoinColumn(name = "machine_type_id")
     private MachineType machineType ;
 
     @Override
@@ -57,11 +58,11 @@ public class PeriodicMaintenance {
         this.smr = smr;
     }
 
-    public Set<MaintenancePart> getMaintenanceParts() {
+    public List<MaintenancePart> getMaintenanceParts() {
         return maintenanceParts;
     }
 
-    public void setMaintenanceParts(Set<MaintenancePart> maintenanceParts) {
+    public void setMaintenanceParts(List<MaintenancePart> maintenanceParts) {
         this.maintenanceParts = maintenanceParts;
     }
 
