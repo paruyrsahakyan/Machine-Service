@@ -21,7 +21,7 @@ public class MachineType {
 
     @OneToMany(mappedBy = "machineType", fetch = FetchType.EAGER)
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
-    private List<PeriodicMaintenance> periodicMaintenanceList;
+    private Set<PeriodicMaintenance> periodicMaintenanceList;
 
     @LazyCollection(LazyCollectionOption.FALSE)
     @OneToMany(mappedBy = "machineType")
@@ -57,12 +57,12 @@ public class MachineType {
         this.id = id;
     }
 
-      public List<PeriodicMaintenance> getPeriodicMaintenanceList() {
-        return periodicMaintenanceList;
+    public void setPeriodicMaintenanceList(Set<PeriodicMaintenance> periodicMaintenanceList) {
+        this.periodicMaintenanceList = periodicMaintenanceList;
     }
 
-    public void setPeriodicMaintenanceList(List<PeriodicMaintenance> periodicMaintenanceList) {
-        this.periodicMaintenanceList = periodicMaintenanceList;
+    public Set<PeriodicMaintenance> getPeriodicMaintenanceList() {
+        return periodicMaintenanceList;
     }
 
     public Set<Machine> getMachineList() {
