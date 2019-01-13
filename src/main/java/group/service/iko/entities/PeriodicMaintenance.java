@@ -18,7 +18,7 @@ public class PeriodicMaintenance {
 
     @OneToMany(mappedBy = "periodicMaintenance", fetch = FetchType.EAGER)
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
-    private List<MaintenancePart> maintenanceParts;
+    private Set<MaintenancePart> maintenanceParts;
 
     @ManyToOne()
     @JoinColumn(name = "machine_type_id")
@@ -58,12 +58,11 @@ public class PeriodicMaintenance {
         this.smr = smr;
     }
 
-    public List<MaintenancePart> getMaintenanceParts() {
+    public Set<MaintenancePart> getMaintenanceParts() {
         return maintenanceParts;
     }
 
-    public void setMaintenanceParts(List<MaintenancePart> maintenanceParts) {
+    public void setMaintenanceParts(Set<MaintenancePart> maintenanceParts) {
         this.maintenanceParts = maintenanceParts;
     }
-
 }
