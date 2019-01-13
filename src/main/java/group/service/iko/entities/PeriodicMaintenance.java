@@ -20,8 +20,8 @@ public class PeriodicMaintenance {
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private List<MaintenancePart> maintenanceParts;
 
-    @ManyToOne()
-    @JoinColumn(name = "machine_type_id")
+//    @ManyToOne()
+//    @JoinColumn(name = "machine_type_id")
     private MachineType machineType ;
 
     @Override
