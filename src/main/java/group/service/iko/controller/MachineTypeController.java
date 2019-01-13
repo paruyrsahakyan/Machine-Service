@@ -61,7 +61,7 @@ public class MachineTypeController {
     @RequestMapping("/{machineTypeId}/maintenance/newMaintenanceCreation")
     public ModelAndView newMaintenanceCreation(@PathVariable("machineTypeId") int id) {
         ModelAndView modelAndView = new ModelAndView("machineType/periodicMaintenanceCreation");
-        modelAndView.addObject("machineTypeId", id);
+        modelAndView.addObject("machineType", machineTypeService.getMachineTypeById(id));
         return modelAndView;
     }
 
@@ -82,4 +82,5 @@ public class MachineTypeController {
         machineTypeService.getMachineTypeById(id);
         return modelAndView;
     }
-}
+
+  }

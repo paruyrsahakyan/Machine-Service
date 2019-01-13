@@ -20,7 +20,7 @@
 <body>
 <div style="text-align: center">
     <h2>Создание нового ТО</h2> <br>
-    <h3>Тип машины &nbsp; ${machineType.machineDescription}</h3>
+    <h3>Тип машины &nbsp; ${machineType.typeDescription}</h3>
     <div id = "dynList">
         <form:form action="/machineType/${machineType.id}/maintenance/createdNew" method="post">
             Периодичность То(мч)  <input name ="smr" type="number">
