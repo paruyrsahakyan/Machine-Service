@@ -6,7 +6,10 @@ import group.service.iko.entityDao.MaintenancePartDAO;
 import group.service.iko.entityDao.PeriodicMaintenanceDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Service
@@ -41,7 +44,8 @@ public class PeriodicMaintenanceService {
     ) {
         PeriodicMaintenance periodicMaintenance = new PeriodicMaintenance();
         periodicMaintenance.setSmr(smr);
-        Set<MaintenancePart> maintenancePartSet = new HashSet<>();
+        List<MaintenancePart> maintenancePartSet = new ArrayList<MaintenancePart>();
+
         for (int i = 0; i < partNumber.length; i++) {
             MaintenancePart maintenancePart = new MaintenancePart();
             maintenancePart.setPartNumber(partNumber[i]);
