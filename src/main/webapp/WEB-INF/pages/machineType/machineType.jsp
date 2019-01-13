@@ -43,12 +43,12 @@
        style="color: crimson;">Удалить Тип Машины</a>
     <br> <br>
 
-            <c:forEach items="${machineType.periodicMaintenanceList}" var="periodicMaintenance" >
+            <c:forEach items="${maintenanceList}" var="maintenance" >
             <table style="width: auto" align="center">
                 <tr>
                     <th colspan="4">
-                      <a href="/machineType/${machineType.id}/periodicMaintenance/${periodicMaintenance.id}">
-                                   ${periodicMaintenance.smr}
+                      <a href="/machineType/${machineType.id}/periodicMaintenance/${maintenance.id}">
+                                   ${maintenance.smr}
                       </a>
                     </th>
                 </tr>
@@ -60,7 +60,7 @@
                     <td> Количество </td>
                 </tr>
             <% int i = 1; %>
-            <c:forEach items="${periodicMaintenance.maintenanceParts}" var="maintenancePart" >
+            <c:forEach items="${maintenance.maintenanceParts}" var="maintenancePart" >
 
             <tr>
                 <td><%= i++%> </td>
