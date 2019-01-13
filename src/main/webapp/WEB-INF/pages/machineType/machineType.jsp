@@ -36,7 +36,7 @@
 
     <a href="/machineType/${machineType.id}/update" style="bottom: auto"> Редактировать</a>
     &nbsp; &nbsp;
-    <a href="/machineType/${machineType.id}/newMaintenanceCreation" style="bottom: auto"> Добавить TO</a>
+    <a href="/machineType/${machineType.id}/maintenance/newMaintenanceCreation" style="bottom: auto"> Добавить TO</a>
     &nbsp; &nbsp;
     <a href="/machineType/${machineType.id}/deleteMachineType"
        onclick="return confirm('!!!Вы уверены что хатите удалить тип машины!!!');"
