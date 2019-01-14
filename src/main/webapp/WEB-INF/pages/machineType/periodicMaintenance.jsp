@@ -26,7 +26,7 @@
 <div style="text-align: center">
     <h2> Техническое Обслуживание</h2> <br>
 
-    <h3>Тип машины &nbsp; ${machineType.machineDescription}&nbsp; </h3>
+    <h3>Тип машины &nbsp; ${machineType.typeDescription}&nbsp; </h3>
 
     <a href="/"> Главное меню</a>
     <br><br>
@@ -53,10 +53,10 @@
             <td> Количество </td>
         </tr>
             <% int i = 1; %>
-        <c:forEach items="${periodicMaintenance.maintenancePartList}" var="maintenancePart" >
+        <c:forEach items="${periodicMaintenance.maintenanceParts}" var="maintenancePart" >
         <tr>
             <td><%= i++%> </td>
-            <td>${maintenancePart.description}</td>
+            <td>${maintenancePart.partType}</td>
             <td>${maintenancePart.partNumber}</td>
             <td>${maintenancePart.unit}</td>
             <td>${maintenancePart.quantity}</td>

@@ -1,10 +1,7 @@
 package group.service.iko.controller;
 
-import group.service.iko.entities.Machine;
 import group.service.iko.entities.MachineType;
-import group.service.iko.entities.MaintenancePart;
 import group.service.iko.entities.PeriodicMaintenance;
-import group.service.iko.service.MachineService;
 import group.service.iko.service.MachineTypeService;
 import group.service.iko.service.PeriodicMaintenanceService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -89,10 +86,20 @@ public class MachineTypeController {
         MachineType machineType = machineTypeService.getMachineTypeById(id);
         Set<PeriodicMaintenance> periodicMaintenanceList = machineType.getPeriodicMaintenanceList();
         Set<PeriodicMaintenance> sortedMaintenanceList = periodicMaintenanceList.stream().
-                sorted(Comparator.comparing(PeriodicMaintenance::getSmr)).collect(Collectors.toSet());
+        sorted(Comparator.comparing(PeriodicMaintenance::getSmr)).collect(Collectors.toSet());
         ModelAndView modelAndView = new ModelAndView("machineType/machineType");
         modelAndView.addObject("machineType", machineType);
         modelAndView.addObject("maintenanceList", sortedMaintenanceList);
         return modelAndView;
     }
+    @RequestMapping("/{machineTypeId}/periodicMaintenance/{maintenanceId}")
+    public ModelAndView  getPeriodicMaintenance(@PathVariable("machineTypeId") int machineTypeId,
+                                                @PathVariable("maintenanceId") int maintenanceId){
+
+    ModelAndView modelAndView = new ModelAndView("machineType/periodicMaintenance");
+    modelAndView.addObject("machineType", machineTypeService.getMachineTypeById(machineTypeId));
+   modelAndView.addObject("periodicMaintenance", periodicMaintenanceService.getMaintenanceById(maintenanceId));
+   return  modelAndView;
+    }
+
   }
