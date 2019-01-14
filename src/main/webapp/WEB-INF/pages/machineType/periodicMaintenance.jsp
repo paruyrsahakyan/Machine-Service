@@ -1,26 +1,15 @@
 
 <html>
 <head>
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
-<%--
-  Created by IntelliJ IDEA.
-  User: Paruyr
-  Date: 1/10/2019
-  Time: 12:41 AM
-  To change this template use File | Settings | File Templates.
---%>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<html>
-<head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title> Техническое Обслуживание</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            align-self: center;
+        }
+
+    </style>
 </head>
 <body>
 <div style="text-align: center">

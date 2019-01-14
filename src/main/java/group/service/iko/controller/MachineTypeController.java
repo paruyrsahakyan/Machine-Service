@@ -101,5 +101,19 @@ public class MachineTypeController {
    modelAndView.addObject("periodicMaintenance", periodicMaintenanceService.getMaintenanceById(maintenanceId));
    return  modelAndView;
     }
+    @RequestMapping("/{machineTypeId}/periodicMaintenance/{maintenanceId}/deleted")
+    public ModelAndView deletePeriodicMaintenance(@PathVariable("machineTypeId") int machineTypeId,
+                                                  @PathVariable("maintenanceId") int maintenanceId){
+     ModelAndView modelAndView= new ModelAndView("machineType/machineType");
+     MachineType machineType = machineTypeService.getMachineTypeById(maintenanceId);
+     Set<PeriodicMaintenance> periodicMaintenance = machineType.getPeriodicMaintenanceList().stream().
+             sorted(Comparator.comparing(PeriodicMaintenance::getSmr)).collect(Collectors.toSet());
+     modelAndView.addObject("machineType", machineType);
+     modelAndView.addObject("periodicMaintenance", periodicMaintenance);
+     return modelAndView;
+
+    }
+
+    
 
   }
