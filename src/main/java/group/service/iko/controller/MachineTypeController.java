@@ -26,7 +26,7 @@ public class MachineTypeController {
 
 
     @RequestMapping("/{id}")
-    public ModelAndView getMachineType(@PathVariable("id") int id ){
+    public ModelAndView getMachineType(@PathVariable("id") int id) {
         MachineType machineType = machineTypeService.getMachineTypeById(id);
         Set<PeriodicMaintenance> maintenanceList = machineType.getPeriodicMaintenanceList();
         Set<PeriodicMaintenance> sortedMaintenanceList = maintenanceList.stream().
@@ -41,15 +41,15 @@ public class MachineTypeController {
     @RequestMapping("/allMachineTypes")
     public ModelAndView allMachineTypes() {
         ModelAndView modelAndView = new ModelAndView("machineType/allMachineTypes");
-       modelAndView.addObject("machineTypeList", machineTypeService.getAllMachineTypes());
+        modelAndView.addObject("machineTypeList", machineTypeService.getAllMachineTypes());
 
         return modelAndView;
     }
 
     @RequestMapping("/newTypeCreation")
-    public ModelAndView getNewTypeCreationPage(){
+    public ModelAndView getNewTypeCreationPage() {
         ModelAndView modelAndView = new ModelAndView("machineType/machineTypeCreation");
-        return  modelAndView;
+        return modelAndView;
     }
 
     @RequestMapping(value = "/machineTypeCreated", method = RequestMethod.POST)
@@ -68,7 +68,8 @@ public class MachineTypeController {
             @PathVariable("machineTypeId") int id) {
         MachineType machineType = new MachineType();
         ModelAndView modelAndView = new ModelAndView("machineType/machineType");
-       return modelAndView;
+        modelAndView.addObject("machineType", machineType);
+        return modelAndView;
     }
 
 
@@ -96,34 +97,35 @@ public class MachineTypeController {
         MachineType machineType = machineTypeService.getMachineTypeById(id);
         Set<PeriodicMaintenance> periodicMaintenanceList = machineType.getPeriodicMaintenanceList();
         Set<PeriodicMaintenance> sortedMaintenanceList = periodicMaintenanceList.stream().
-        sorted(Comparator.comparing(PeriodicMaintenance::getSmr)).collect(Collectors.toSet());
+                sorted(Comparator.comparing(PeriodicMaintenance::getSmr)).collect(Collectors.toSet());
         ModelAndView modelAndView = new ModelAndView("machineType/machineType");
         modelAndView.addObject("machineType", machineType);
         modelAndView.addObject("maintenanceList", sortedMaintenanceList);
         return modelAndView;
     }
-    @RequestMapping("/{machineTypeId}/periodicMaintenance/{maintenanceId}")
-    public ModelAndView  getPeriodicMaintenance(@PathVariable("machineTypeId") int machineTypeId,
-                                                @PathVariable("maintenanceId") int maintenanceId){
 
-    ModelAndView modelAndView = new ModelAndView("machineType/periodicMaintenance");
-    modelAndView.addObject("machineType", machineTypeService.getMachineTypeById(machineTypeId));
-   modelAndView.addObject("periodicMaintenance", periodicMaintenanceService.getMaintenanceById(maintenanceId));
-   return  modelAndView;
+    @RequestMapping("/{machineTypeId}/periodicMaintenance/{maintenanceId}")
+    public ModelAndView getPeriodicMaintenance(@PathVariable("machineTypeId") int machineTypeId,
+                                               @PathVariable("maintenanceId") int maintenanceId) {
+
+        ModelAndView modelAndView = new ModelAndView("machineType/periodicMaintenance");
+        modelAndView.addObject("machineType", machineTypeService.getMachineTypeById(machineTypeId));
+        modelAndView.addObject("periodicMaintenance", periodicMaintenanceService.getMaintenanceById(maintenanceId));
+        return modelAndView;
     }
+
     @RequestMapping("/{machineTypeId}/periodicMaintenance/{maintenanceId}/deleted")
     public ModelAndView deletePeriodicMaintenance(@PathVariable("machineTypeId") int machineTypeId,
-                                                  @PathVariable("maintenanceId") int maintenanceId){
-     ModelAndView modelAndView= new ModelAndView("machineType/machineType");
-     MachineType machineType = machineTypeService.getMachineTypeById(maintenanceId);
-     Set<PeriodicMaintenance> periodicMaintenance = machineType.getPeriodicMaintenanceList().stream().
-             sorted(Comparator.comparing(PeriodicMaintenance::getSmr)).collect(Collectors.toSet());
-     modelAndView.addObject("machineType", machineType);
-     modelAndView.addObject("periodicMaintenance", periodicMaintenance);
-     return modelAndView;
+                                                  @PathVariable("maintenanceId") int maintenanceId) {
+        ModelAndView modelAndView = new ModelAndView("machineType/machineType");
+        MachineType machineType = machineTypeService.getMachineTypeById(maintenanceId);
+        Set<PeriodicMaintenance> periodicMaintenance = machineType.getPeriodicMaintenanceList().stream().
+                sorted(Comparator.comparing(PeriodicMaintenance::getSmr)).collect(Collectors.toSet());
+        modelAndView.addObject("machineType", machineType);
+        modelAndView.addObject("periodicMaintenance", periodicMaintenance);
+        return modelAndView;
 
     }
 
 
-
-  }
+}

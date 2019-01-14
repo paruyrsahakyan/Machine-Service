@@ -15,8 +15,8 @@
 <body>
 <div style="text-align: center">
     <h2>Редактирование  ТО</h2> <br>
-    <h3>Тип машины &nbsp; ${machineType.machineDescription}</h3>
-        <form:form action="/machineType/${machineType.id}/periodicMaintenance/${periodicMaintenance.id}/Updated"
+    <h3>Тип машины &nbsp; ${mamachineType.machineDescription}</h3>
+        <form:form action="/machineType/${machineType.id}/periodicMaintenance/${periodicMaintenance.id}/updated"
                method="post">
         <input type="number" name="smr" value="${periodicMaintenance.smr}"> &nbsp; периодичность
         <br><br>
