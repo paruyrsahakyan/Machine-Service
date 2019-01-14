@@ -63,6 +63,15 @@ public class MachineTypeController {
         return modelAndView;
     }
 
+    @RequestMapping(value = "/{machineTypeId}/update", method = RequestMethod.POST)
+    public ModelAndView machineTypeUpdatePage(
+            @PathVariable("machineTypeId") int id) {
+        MachineType machineType = new MachineType();
+        ModelAndView modelAndView = new ModelAndView("machineType/machineType");
+       return modelAndView;
+    }
+
+
     @RequestMapping("/{machineTypeId}/maintenance/newMaintenanceCreation")
     public ModelAndView newMaintenanceCreation(@PathVariable("machineTypeId") int id) {
         ModelAndView modelAndView = new ModelAndView("machineType/periodicMaintenanceCreation");
@@ -72,6 +81,7 @@ public class MachineTypeController {
         modelAndView.addObject("maintenanceList", maintenanceList);
         return modelAndView;
     }
+
 
     @RequestMapping(value = "/{machineTypeId}/maintenance/createdNew", method = RequestMethod.POST)
     public ModelAndView maintenanceCreation(
@@ -114,6 +124,6 @@ public class MachineTypeController {
 
     }
 
-    
+
 
   }

@@ -34,7 +34,7 @@
     <a href="/"> Главное меню</a>
     <br><br>
 
-    <a href="/machineType/${machineType.id}/update" style="bottom: auto"> Редактировать</a>
+    <a href="/machineType/${machineType.id}/modify" style="bottom: auto"> Редактировать</a>
     &nbsp; &nbsp;
     <a href="/machineType/${machineType.id}/maintenance/newMaintenanceCreation" style="bottom: auto"> Добавить TO</a>
     &nbsp; &nbsp;
