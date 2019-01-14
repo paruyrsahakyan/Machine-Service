@@ -49,7 +49,11 @@ public class PeriodicMaintenanceService {
                 " order by id DESC";
         Query query = session.createQuery(hql);
         query.setMaxResults(1);
-        return (PeriodicMaintenance) query.uniqueResult();
+        PeriodicMaintenance periodicMaintenance = (PeriodicMaintenance) query.uniqueResult();
+        session.flush();
+        session.close();
+        return periodicMaintenance;
+
     }
 
     public void savePeriodicMaintenance(int machineId,
@@ -76,8 +80,6 @@ public class PeriodicMaintenanceService {
             maintenancePartDAO.saveMaintenancePart(maintenancePart);
         }
     }
-
-
 }
 
 
