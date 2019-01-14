@@ -38,7 +38,7 @@
     &nbsp; &nbsp;
     <a href="/machineType/${machineType.id}/maintenance/newMaintenanceCreation" style="bottom: auto"> Добавить TO</a>
     &nbsp; &nbsp;
-    <a href="/machineType/${machineType.id}/deleteMachineType"
+    <a href="/machineType/${machineType.id}/deleted"
        onclick="return confirm('!!!Вы уверены что хатите удалить тип машины!!!');"
        style="color: crimson;">Удалить Тип Машины</a>
     <br> <br>
