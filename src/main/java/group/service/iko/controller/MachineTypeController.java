@@ -82,11 +82,10 @@ public class MachineTypeController {
             @RequestParam("quantity[]") int[] quantityList) {
 
         MachineType machineType = machineTypeService.getMachineTypeById(id);
-        PeriodicMaintenance periodicMaintenance = periodicMaintenanceService.makePeriodicMaintenance(partNumberList, smr, descriptionList, unitList, quantityList);
-        periodicMaintenance.setMachineType(machineType);
-        periodicMaintenanceService.savePeriodicMaintenance(periodicMaintenance);
+        periodicMaintenanceService.savePeriodicMaintenance(id, partNumberList, smr, descriptionList, unitList, quantityList);
         ModelAndView modelAndView = new ModelAndView("machineType/machineType");
-        machineTypeService.getMachineTypeById(id);
+        modelAndView.addObject("machineType", machineType);
+        modelAndView.addObject("periodicMaintenance", periodicMaintenanceService.getLastSavedMaintenance());
         return modelAndView;
     }
 

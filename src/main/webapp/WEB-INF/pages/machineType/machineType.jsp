@@ -47,8 +47,8 @@
             <table style="width: auto" align="center">
                 <tr>
                     <th colspan="5">
-                      <a href="/machineType/${machineType.id}/periodicMaintenance/${maintenance.id}" style="align-self: center">
-                               TO &nbsp; ${maintenance.smr} &nbsp;мч
+                      <a href="/machineType/${machineType.id}/periodicMaintenance/${maintenance.id}" style="alignment: center">
+                               TO ${maintenance.smr} мч
                       </a>
                     </th>
                 </tr>

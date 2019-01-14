@@ -1,9 +1,14 @@
 package group.service.iko.service;
 
+import group.service.iko.entities.Machine;
+import group.service.iko.entities.MachineType;
 import group.service.iko.entities.MaintenancePart;
 import group.service.iko.entities.PeriodicMaintenance;
 import group.service.iko.entityDao.MaintenancePartDAO;
 import group.service.iko.entityDao.PeriodicMaintenanceDAO;
+import group.service.iko.entityDao.SessionFactoryImpl;
+import org.hibernate.Query;
+import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +23,9 @@ public class PeriodicMaintenanceService {
     PeriodicMaintenanceDAO periodicMaintenanceDAO;
     @Autowired
     MaintenancePartDAO maintenancePartDAO;
+    @Autowired
+    MachineTypeService machineTypeService;
+    Session session;
 
     public void savePeriodicMaintenance(PeriodicMaintenance periodicMaintenance) {
         periodicMaintenanceDAO.savePeriodicMaintenance(periodicMaintenance);
@@ -35,7 +43,17 @@ public class PeriodicMaintenanceService {
         return periodicMaintenanceDAO.getPeriodicMaintenanceById(id);
     }
 
-    public PeriodicMaintenance makePeriodicMaintenance(String[] partNumber,
+    public PeriodicMaintenance getLastSavedMaintenance() {
+        session = SessionFactoryImpl.getSessionFactory().openSession();
+        String hql = "from group.service.iko.entities.PeriodicMaintenance" +
+                " order by id DESC";
+        Query query = session.createQuery(hql);
+        query.setMaxResults(1);
+        return (PeriodicMaintenance) query.uniqueResult();
+    }
+
+    public void savePeriodicMaintenance(int machineId,
+                                                       String[] partNumber,
                                                        int smr,
                                                        String[] description,
                                                        String unit[],
@@ -44,23 +62,22 @@ public class PeriodicMaintenanceService {
     ) {
         PeriodicMaintenance periodicMaintenance = new PeriodicMaintenance();
         periodicMaintenance.setSmr(smr);
-        Set<MaintenancePart> maintenancePartSet = new HashSet<MaintenancePart>();
-
+        MachineType machineType = machineTypeService.getMachineTypeById(machineId);
+        periodicMaintenance.setMachineType(machineType);
+        periodicMaintenanceDAO.savePeriodicMaintenance(periodicMaintenance);
+        PeriodicMaintenance savedMaintenance = getLastSavedMaintenance();
         for (int i = 0; i < partNumber.length; i++) {
             MaintenancePart maintenancePart = new MaintenancePart();
             maintenancePart.setPartNumber(partNumber[i]);
             maintenancePart.setPartType(description[i]);
             maintenancePart.setUnit(unit[i]);
             maintenancePart.setQuantity(quantity[i]);
-            maintenancePartSet.add(maintenancePart);
-
-            periodicMaintenance.setMaintenanceParts(maintenancePartSet);
-            periodicMaintenance.setSmr(smr);
-            periodicMaintenance.setMaintenanceParts(maintenancePartSet);
+            maintenancePart.setPeriodicMaintenance(savedMaintenance);
+            maintenancePartDAO.saveMaintenancePart(maintenancePart);
         }
-        periodicMaintenance.setMaintenanceParts(maintenancePartSet);
-        return periodicMaintenance;
     }
+
+
 }
 
 
