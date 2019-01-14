@@ -26,7 +26,7 @@ public class MaintenancePartService {
     }
 
     public MaintenancePart getMaintenancePartById(int id){
-        return  maintenancePartDAO.getMeintenancePartById(id);
+        return  maintenancePartDAO.getMaintenancePartById(id);
     }
 
    }

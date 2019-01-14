@@ -31,7 +31,7 @@ public void updateMaintenancePart(MaintenancePart maintenancePart){
         session.flush();
         session.close();
 }
-public MaintenancePart getMeintenancePartById(int id){
+public MaintenancePart getMaintenancePartById(int id){
     session= SessionFactoryImpl.getSessionFactory().openSession();
     String hql ="From group.service.iko.entities.MaintenancePart where id = " + id;
     Query query = session.createQuery(hql);
