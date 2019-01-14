@@ -16,7 +16,7 @@ public class PeriodicMaintenance {
     @Column
     private int smr;
 
-    @OneToMany(mappedBy = "periodicMaintenance", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "periodicMaintenance", fetch = FetchType.EAGER)
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private Set<MaintenancePart> maintenanceParts;
 

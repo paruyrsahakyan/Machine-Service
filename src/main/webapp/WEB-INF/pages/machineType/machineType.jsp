@@ -63,7 +63,7 @@
             <c:forEach items="${maintenance.maintenanceParts}" var="maintenancePart" >
 
             <tr>
-                <td><%= i++%> </td>
+                <td><%= i++%> </td>W
                 <td>${maintenancePart.partType}</td>
                 <td>${maintenancePart.partNumber}</td>
                 <td>${maintenancePart.unit}</td>
