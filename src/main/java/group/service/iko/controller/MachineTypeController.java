@@ -65,7 +65,7 @@ public class MachineTypeController {
     @RequestMapping("/{machineTypeId}/maintenance/newMaintenanceCreation")
     public ModelAndView newMaintenanceCreation(@PathVariable("machineTypeId") int id) {
         ModelAndView modelAndView = new ModelAndView("machineType/periodicMaintenanceCreation");
-        MachineType machineType = new MachineType();
+        MachineType machineType = machineTypeService.getMachineTypeById(id);
         Set<PeriodicMaintenance> maintenanceList = machineType.getPeriodicMaintenanceList();
         modelAndView.addObject("machineType", machineType);
         modelAndView.addObject("maintenanceList", maintenanceList);

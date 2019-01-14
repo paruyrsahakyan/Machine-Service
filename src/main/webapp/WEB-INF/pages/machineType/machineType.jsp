@@ -46,9 +46,9 @@
             <c:forEach items="${maintenanceList}" var="maintenance" >
             <table style="width: auto" align="center">
                 <tr>
-                    <th colspan="4">
-                      <a href="/machineType/${machineType.id}/periodicMaintenance/${maintenance.id}">
-                                   ${maintenance.smr}
+                    <th colspan="5">
+                      <a href="/machineType/${machineType.id}/periodicMaintenance/${maintenance.id}" style="align-self: center">
+                               TO &nbsp; ${maintenance.smr} &nbsp;мч
                       </a>
                     </th>
                 </tr>
