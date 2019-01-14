@@ -63,7 +63,7 @@ public class MachineTypeController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/{machineTypeId}/update", method = RequestMethod.POST)
+    @RequestMapping("/{machineTypeId}/modify")
     public ModelAndView machineTypeUpdatePage(
             @PathVariable("machineTypeId") int id) {
         MachineType machineType = new MachineType();
@@ -71,7 +71,16 @@ public class MachineTypeController {
         modelAndView.addObject("machineType", machineType);
         return modelAndView;
     }
-
+    
+    @RequestMapping(value = "/{machineTypeId}/deleted")
+    public ModelAndView deleteMachineType(@PathVariable("machineTypeId") int id) {
+        MachineType machineType = new MachineType();
+        machineType.setId(id);
+        machineTypeService.deleteMachineType(machineType);
+        ModelAndView modelAndView = new ModelAndView("machineType/allMachineTypes");
+        modelAndView.addObject("machineTypeList", machineTypeService.getAllMachineTypes());
+        return modelAndView;
+    }
 
     @RequestMapping("/{machineTypeId}/maintenance/newMaintenanceCreation")
     public ModelAndView newMaintenanceCreation(@PathVariable("machineTypeId") int id) {
