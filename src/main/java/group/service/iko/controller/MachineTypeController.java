@@ -63,8 +63,20 @@ public class MachineTypeController {
     public ModelAndView machineTypeUpdatePage(
             @PathVariable("machineTypeId") int id) {
         MachineType machineType = new MachineType();
-        ModelAndView modelAndView = new ModelAndView("machineType/machineType");
+        ModelAndView modelAndView = new ModelAndView("machineType/machineTypeUpdate");
         modelAndView.addObject("machineType", machineType);
+        return modelAndView;
+    }
+
+    @RequestMapping("/{machineTypeId}/modify")
+    public ModelAndView modifyMachineType(
+            @PathVariable("machineTypeId") int id,
+            @RequestParam("typeDescription") String typeDescription) {
+        MachineType machineType = machineTypeService.getMachineTypeById(id);
+        machineType.setTypeDescription(typeDescription);
+        machineTypeService.updateMachineType(machineType);
+        ModelAndView modelAndView = new ModelAndView("machineType/machineType");
+        modelAndView.addObject("machineType", machineTypeService.getMachineTypeById(id));
         return modelAndView;
     }
 
@@ -128,6 +140,7 @@ public class MachineTypeController {
         List<PeriodicMaintenance> maintenanceList = machineType.getSortedMaintenanceList();
         modelAndView.addObject("machineType", machineType);
         modelAndView.addObject("maintenanceList", maintenanceList);
-        return modelAndView;                  }
+        return modelAndView;
+    }
 
 }
