@@ -68,7 +68,7 @@ public class MachineTypeController {
         return modelAndView;
     }
 
-    @RequestMapping("/{machineTypeId}/updated")
+    @RequestMapping(value = "/{machineTypeId}/updated", method = RequestMethod.POST)
     public ModelAndView modifyMachineType(
             @PathVariable("machineTypeId") int id,
             @RequestParam("typeDescription") String typeDescription) {
