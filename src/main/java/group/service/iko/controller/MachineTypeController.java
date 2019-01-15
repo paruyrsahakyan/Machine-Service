@@ -62,7 +62,7 @@ public class MachineTypeController {
     @RequestMapping("/{machineTypeId}/update")
     public ModelAndView machineTypeUpdatePage(
             @PathVariable("machineTypeId") int id) {
-        MachineType machineType = new MachineType();
+        MachineType machineType = machineTypeService.getMachineTypeById(id);
         ModelAndView modelAndView = new ModelAndView("machineType/machineTypeUpdate");
         modelAndView.addObject("machineType", machineType);
         return modelAndView;
