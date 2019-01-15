@@ -26,8 +26,7 @@
 
     <form:form action="/machineType/${machineType.id}/maintenance/createdNew" method="post">   Периодичность ТO(мч)  <input name ="smr" type="number">
 
-        <input type="submit" value="Сохранить">
-        <br> <br>
+                <br> <br>
         <table id = "table" align="center">
             <tr>
                 <th>Артикул</th>
@@ -37,8 +36,9 @@
             </tr>
         </table>
     </form:form>
-    <br> <br>
     <button id ="addPart"  onclick="addRow()" >Добавить строку</button>
+    <input type="submit" value="Сохранить">
+    <br> <br>
     <script>
         function addRow(){
             var table=document.getElementById("table");
