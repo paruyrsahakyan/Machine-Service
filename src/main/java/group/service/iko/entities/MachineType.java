@@ -6,8 +6,10 @@ import org.hibernate.annotations.LazyCollectionOption;
 
 
 import javax.persistence.*;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Entity
 @Table(name = "machine_type")
@@ -71,5 +73,11 @@ public class MachineType {
 
     public void setMachineList(Set<Machine> machineList) {
         this.machineList = machineList;
+    }
+
+    public List<PeriodicMaintenance> getSortedMaintenanceList(){
+
+       return getPeriodicMaintenanceList().stream().
+                sorted(Comparator.comparing(PeriodicMaintenance::getSmr)).collect(Collectors.toList());
     }
 }

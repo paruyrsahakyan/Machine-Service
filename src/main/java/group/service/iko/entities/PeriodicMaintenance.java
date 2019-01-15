@@ -65,4 +65,6 @@ public class PeriodicMaintenance {
     public void setMaintenanceParts(Set<MaintenancePart> maintenanceParts) {
         this.maintenanceParts = maintenanceParts;
     }
+
 }
+

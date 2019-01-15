@@ -12,10 +12,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 @Controller()
 @RequestMapping("/machineType")
@@ -29,14 +27,11 @@ public class MachineTypeController {
     @RequestMapping("/{id}")
     public ModelAndView getMachineType(@PathVariable("id") int id) {
         MachineType machineType = machineTypeService.getMachineTypeById(id);
-        Set<PeriodicMaintenance> maintenanceList = machineType.getPeriodicMaintenanceList();
-        Set<PeriodicMaintenance> sortedMaintenanceList = maintenanceList.stream().
-                sorted(Comparator.comparing(PeriodicMaintenance::getSmr)).collect(Collectors.toSet());
+        List<PeriodicMaintenance> maintenanceList = machineType.getSortedMaintenanceList();
         ModelAndView modelAndView = new ModelAndView("machineType/machineType");
         modelAndView.addObject("machineType", machineType);
         modelAndView.addObject("maintenanceList", maintenanceList);
         return modelAndView;
-
     }
 
     @RequestMapping("/allMachineTypes")
@@ -105,9 +100,7 @@ public class MachineTypeController {
 
         periodicMaintenanceService.savePeriodicMaintenance(id, partNumberList, smr, descriptionList, unitList, quantityList);
         MachineType machineType = machineTypeService.getMachineTypeById(id);
-        Set<PeriodicMaintenance> periodicMaintenanceList = machineType.getPeriodicMaintenanceList();
-        List<PeriodicMaintenance> sortedMaintenanceList = periodicMaintenanceList.stream().
-                sorted(Comparator.comparing(PeriodicMaintenance::getSmr)).collect(Collectors.toList());
+        List<PeriodicMaintenance> sortedMaintenanceList = machineType.getSortedMaintenanceList();
         ModelAndView modelAndView = new ModelAndView("machineType/machineType");
         modelAndView.addObject("machineType", machineType);
         modelAndView.addObject("maintenanceList", sortedMaintenanceList);
@@ -129,13 +122,13 @@ public class MachineTypeController {
                                                   @PathVariable("maintenanceId") int maintenanceId) {
         ModelAndView modelAndView = new ModelAndView("machineType/machineType");
         MachineType machineType = machineTypeService.getMachineTypeById(maintenanceId);
-        List<PeriodicMaintenance> periodicMaintenance = machineType.getPeriodicMaintenanceList().stream().
-                sorted(Comparator.comparing(PeriodicMaintenance::getSmr)).collect(Collectors.toList());
+        PeriodicMaintenance periodicMaintenance = new PeriodicMaintenance();
+        periodicMaintenance.setId(maintenanceId);
+        periodicMaintenanceService.deletePeriodicMaintenance(periodicMaintenance);
+        List<PeriodicMaintenance> maintenanceList = machineType.getSortedMaintenanceList();
         modelAndView.addObject("machineType", machineType);
-        modelAndView.addObject("periodicMaintenance", periodicMaintenance);
+        modelAndView.addObject("maintenanceList", maintenanceList);
         return modelAndView;
-
     }
-
 
 }
