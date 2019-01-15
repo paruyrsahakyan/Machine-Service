@@ -59,7 +59,7 @@ public class MachineTypeController {
         return modelAndView;
     }
 
-    @RequestMapping("/{machineTypeId}/modify")
+    @RequestMapping("/{machineTypeId}/update")
     public ModelAndView machineTypeUpdatePage(
             @PathVariable("machineTypeId") int id) {
         MachineType machineType = new MachineType();
@@ -68,7 +68,7 @@ public class MachineTypeController {
         return modelAndView;
     }
 
-    @RequestMapping("/{machineTypeId}/modify")
+    @RequestMapping("/{machineTypeId}/updated")
     public ModelAndView modifyMachineType(
             @PathVariable("machineTypeId") int id,
             @RequestParam("typeDescription") String typeDescription) {

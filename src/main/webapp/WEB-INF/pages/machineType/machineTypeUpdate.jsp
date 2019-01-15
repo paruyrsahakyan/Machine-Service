@@ -17,7 +17,7 @@
 <div style="text-align: center">
     <h2>Редактирование Типа Машины</h2> <br>
 
-    <form:form action="/machineType/${machineType.id}/modified" method="post">
+    <form:form action="/machineType/${machineType.id}/updated" method="post">
 
         <input type="text"  name="typeDescription"  placeholder="модель,
         серийные номера" style="height: auto"> ${machineType.typeDescription}</input>
