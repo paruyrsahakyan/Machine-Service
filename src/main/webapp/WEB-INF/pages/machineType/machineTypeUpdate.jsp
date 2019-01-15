@@ -19,8 +19,7 @@
 
     <form:form action="/machineType/${machineType.id}/updated" method="post">
 
-        <input type="text"  name="typeDescription"  placeholder="модель,
-        серийные номера" style="height: auto"> ${machineType.typeDescription}</input>
+        <input type="text"  name="typeDescription"  value="${machineType.typeDescription}"> </input>
         <br><br>
         <input type="submit" value="Сохранить">
     </form:form>
