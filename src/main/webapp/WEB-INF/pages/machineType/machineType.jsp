@@ -17,7 +17,12 @@
             width: auto;
         }
 
-        td, th {
+        th {
+            border: 1px solid #dddddd;
+            text-align: center;
+            padding: 8px;
+        }
+        td {
             border: 1px solid #dddddd;
             text-align: left;
             padding: 8px;
@@ -53,11 +58,11 @@
                     </th>
                 </tr>
                 <tr>
-                    <td> N </td>
-                    <td> Описание </td>
-                    <td> Артикул </td>
-                    <td> Единица </td>
-                    <td> Количество </td>
+                    <td><b> N </b>  </td>
+                    <td><b> Описание </b> </td>
+                    <td><b> Артикул </b> </td>
+                    <td><b> Единица </b> </td>
+                    <td><b> Количество </b> </td>
                 </tr>
             <% int i = 1; %>
             <c:forEach items="${maintenance.maintenanceParts}" var="maintenancePart" >

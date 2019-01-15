@@ -121,14 +121,13 @@ public class MachineTypeController {
     public ModelAndView deletePeriodicMaintenance(@PathVariable("machineTypeId") int machineTypeId,
                                                   @PathVariable("maintenanceId") int maintenanceId) {
         ModelAndView modelAndView = new ModelAndView("machineType/machineType");
-        MachineType machineType = machineTypeService.getMachineTypeById(maintenanceId);
         PeriodicMaintenance periodicMaintenance = new PeriodicMaintenance();
         periodicMaintenance.setId(maintenanceId);
         periodicMaintenanceService.deletePeriodicMaintenance(periodicMaintenance);
+        MachineType machineType = machineTypeService.getMachineTypeById(machineTypeId);
         List<PeriodicMaintenance> maintenanceList = machineType.getSortedMaintenanceList();
         modelAndView.addObject("machineType", machineType);
         modelAndView.addObject("maintenanceList", maintenanceList);
-        return modelAndView;
-    }
+        return modelAndView;                  }
 
 }

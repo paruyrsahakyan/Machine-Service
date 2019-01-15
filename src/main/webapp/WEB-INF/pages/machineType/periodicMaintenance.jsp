@@ -22,11 +22,10 @@
     <a href="/"> Главное меню</a>
     <a href="/machineType/allMachineTypes"> Главное меню</a>
     <br><br>
-    <a href="/machineType/${machineType.id}/periodicMaintenance/${periodicMaintenance.id}"
-       style="bottom: auto" > Редактировать</a>
+    <a href="/machineType/${machineType.id}/periodicMaintenance/${periodicMaintenance.id}"> Редактировать</a>
     &nbsp; &nbsp;
     <a href="/machineType/${machineType.id}/periodicMaintenance/${periodicMaintenance.id}/deleted"
-       onclick="!!!! Вы уверяны что хатите удалить? !!!" style="bottom: auto"> Удалить </a>
+       onclick="!!!! Вы уверяны что хатите удалить? !!!" > Удалить </a>
        <br> <br>
 
     <table style="width: auto" align="center">
