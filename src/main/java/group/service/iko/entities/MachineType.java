@@ -27,7 +27,6 @@ public class MachineType {
 
     @OneToMany(mappedBy = "machineType", fetch = FetchType.EAGER)
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
-
     private Set<Machine> machineList;
 
 
