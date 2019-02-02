@@ -44,7 +44,7 @@ public class MachineType {
     }
 
     public String getTypeDescription() {
-        return typeDescription;
+                return typeDescription;
     }
 
     public void setTypeDescription(String typeDescription) {

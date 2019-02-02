@@ -48,8 +48,13 @@ public class MachineDTO {
         lastInfoDate = historyRecordDTO.getRecordDate();
         lastInfoId = historyRecordDTO.getId();
         lastSMR = historyRecordDTO.getSMR();
-        machineType= machine.getMachineType().getTypeDescription();
-        machineTypeId= machine.getMachineType().getId();
+        if (machine.getMachineType() == null) {
+            machineType = "Не указан";
+            machineTypeId = -1;
+        } else {
+            machineType = machine.getMachineType().getTypeDescription();
+            machineTypeId = machine.getMachineType().getId();
+        }
     }
 
     public int getMachineTypeId() {
