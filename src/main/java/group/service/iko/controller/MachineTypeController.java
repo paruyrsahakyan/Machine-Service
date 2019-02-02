@@ -109,7 +109,6 @@ public class MachineTypeController {
             @RequestParam("description[]") String[] descriptionList,
             @RequestParam("unit[]") String[] unitList,
             @RequestParam("quantity[]") int[] quantityList) {
-
         periodicMaintenanceService.savePeriodicMaintenance(id, partNumberList, smr, descriptionList, unitList, quantityList);
         MachineType machineType = machineTypeService.getMachineTypeById(id);
         List<PeriodicMaintenance> sortedMaintenanceList = machineType.getSortedMaintenanceList();
@@ -129,13 +128,33 @@ public class MachineTypeController {
         return modelAndView;
     }
 
-    @RequestMapping("/{machineTypeId}/periodicMaintenance/{maintenanceId}/update")
-    public ModelAndView getUpdatePage(@PathVariable("machineTypeId") int machineTypeId,
+    @RequestMapping("/{machineTypeId}/periodicMaintenance/{maintenanceId}/updated")
+    public ModelAndView getMaintenanceUpdatePage(@PathVariable("machineTypeId") int machineTypeId,
                                       @PathVariable("maintenanceId") int maintenanceId) {
 
         ModelAndView modelAndView = new ModelAndView("machineType/periodicMaintenanceUpdate");
         modelAndView.addObject("machineType", machineTypeService.getMachineTypeById(machineTypeId));
         modelAndView.addObject("periodicMaintenance", periodicMaintenanceService.getMaintenanceById(maintenanceId));
+        return modelAndView;
+
+
+    }
+
+    @RequestMapping("/{machineTypeId}/periodicMaintenance/{maintenanceId}/updatedMaintenance")
+    public ModelAndView UpdatePeriodicMaintenance(@PathVariable("machineTypeId") int machineTypeId,
+                                      @PathVariable("maintenanceId") int maintenanceId,
+                                      @RequestParam("smr") int smr,
+                                      @RequestParam("partNumber[]") String[] partNumberList,
+                                      @RequestParam("description[]") String[] descriptionList,
+                                      @RequestParam("unit[]") String[] unitList,
+                                      @RequestParam("quantity[]") int[] quantityList) {
+
+        periodicMaintenanceService.updatePeriodicMaintenance(maintenanceId, partNumberList, smr, descriptionList, unitList, quantityList);
+        MachineType machineType = machineTypeService.getMachineTypeById(machineTypeId);
+        List<PeriodicMaintenance> sortedMaintenanceList = machineType.getSortedMaintenanceList();
+        ModelAndView modelAndView = new ModelAndView("machineType/periodicMaintenance");
+        modelAndView.addObject("machineType", machineType);
+        modelAndView.addObject("maintenanceList", sortedMaintenanceList);
         return modelAndView;
     }
 

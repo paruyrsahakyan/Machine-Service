@@ -19,10 +19,10 @@
 
     <h3>Тип машины &nbsp; ${machineType.typeDescription}&nbsp; </h3>
 
-    <a href="/"> Главное меню</a>
+    <a href="/"> Главное меню</a>    &nbsp; &nbsp;
     <a href="/machineType/allMachineTypes">   Типы машин</a>
     <br><br>
-    <a href="/machineType/${machineType.id}/periodicMaintenance/${periodicMaintenance.id}/update"> Редактировать</a>
+    <a href="/machineType/${machineType.id}/periodicMaintenance/${periodicMaintenance.id}/updatePage"> Редактировать</a>
     &nbsp; &nbsp;
     <a href="/machineType/${machineType.id}/periodicMaintenance/${periodicMaintenance.id}/deleted"
        onclick="!!!! Вы уверяны что хатите удалить? !!!" > Удалить </a>

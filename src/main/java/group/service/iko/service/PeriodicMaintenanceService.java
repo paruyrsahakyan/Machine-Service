@@ -57,11 +57,11 @@ public class PeriodicMaintenanceService {
     }
 
     public void savePeriodicMaintenance(int machineId,
-                                                       String[] partNumber,
-                                                       int smr,
-                                                       String[] description,
-                                                       String unit[],
-                                                       int[] quantity
+                                          String[] partNumber,
+                                          int smr,
+                                          String[] description,
+                                          String unit[],
+                                          int[] quantity
 
     ) {
         PeriodicMaintenance periodicMaintenance = new PeriodicMaintenance();
@@ -70,18 +70,42 @@ public class PeriodicMaintenanceService {
         periodicMaintenance.setMachineType(machineType);
         periodicMaintenanceDAO.savePeriodicMaintenance(periodicMaintenance);
         PeriodicMaintenance savedMaintenance = getLastSavedMaintenance();
+       createAndSetMaintenanceParts(savedMaintenance,partNumber,description,unit,quantity);
+    }
+
+    public void updatePeriodicMaintenance(int maintenanceId,
+                                        String[] partNumber,
+                                        int smr,
+                                        String[] description,
+                                        String unit[],
+                                        int[] quantity
+    ) {
+       PeriodicMaintenance periodicMaintenance = getMaintenanceById(maintenanceId);
+        periodicMaintenance.setSmr(smr);
+         for(MaintenancePart maintenancePart : periodicMaintenance.getMaintenanceParts())
+        maintenancePartDAO.deleteMaintenancePart(maintenancePart);
+         periodicMaintenance.setMaintenanceParts(null);
+        periodicMaintenanceDAO.updatePeriodicMaintenance(periodicMaintenance);
+         PeriodicMaintenance updatedPeriodicMaintenance = getMaintenanceById(maintenanceId );
+     createAndSetMaintenanceParts(updatedPeriodicMaintenance, partNumber, description, unit, quantity);
+    }
+
+    private void createAndSetMaintenanceParts(  PeriodicMaintenance periodicMaintenance,
+                                                String[] partNumber,
+                                                String[] description,
+                                              String unit[],
+                                              int[] quantity) {
         for (int i = 0; i < partNumber.length; i++) {
             MaintenancePart maintenancePart = new MaintenancePart();
             maintenancePart.setPartNumber(partNumber[i]);
             maintenancePart.setPartType(description[i]);
             maintenancePart.setUnit(unit[i]);
             maintenancePart.setQuantity(quantity[i]);
-            maintenancePart.setPeriodicMaintenance(savedMaintenance);
+            maintenancePart.setPeriodicMaintenance(periodicMaintenance);
             maintenancePartDAO.saveMaintenancePart(maintenancePart);
         }
     }
 
-
-}
+    }
 
 
