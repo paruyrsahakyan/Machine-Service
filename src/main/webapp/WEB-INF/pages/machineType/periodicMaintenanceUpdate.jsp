@@ -11,8 +11,17 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>Создание нового ТО</title>
-</head>
+
+        <style>
+            table, th, td {
+                border: 1px solid black;
+                align-self: center;
+            }
+
+        </style>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Редактирование ТО</title>
+
 <body>
 <div style="text-align: center">
     <h2>Редактирование  ТО</h2> <br>
