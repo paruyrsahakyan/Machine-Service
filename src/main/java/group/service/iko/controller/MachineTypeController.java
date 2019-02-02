@@ -140,7 +140,7 @@ public class MachineTypeController {
 
     }
 
-    @RequestMapping(value = "/{machineTypeId}/periodicMaintenance/{maintenanceId}/updatedMaintenance", method = RequestMethod.POST)
+    @RequestMapping(value = "/{machineTypeId}/periodicMaintenance/{maintenanceId}/updated", method = RequestMethod.POST)
     public ModelAndView UpdatePeriodicMaintenance(@PathVariable("machineTypeId") int machineTypeId,
                                       @PathVariable("maintenanceId") int maintenanceId,
                                       @RequestParam("smr") int smr,
