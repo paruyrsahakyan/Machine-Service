@@ -25,10 +25,11 @@ public class MachineType {
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private Set<PeriodicMaintenance> periodicMaintenanceList;
 
-    @LazyCollection(LazyCollectionOption.FALSE)
-    @OneToMany(mappedBy = "machineType")
+    @OneToMany(mappedBy = "machineType", fetch = FetchType.EAGER)
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
+
     private Set<Machine> machineList;
+
 
     @Override
     public String toString() {
