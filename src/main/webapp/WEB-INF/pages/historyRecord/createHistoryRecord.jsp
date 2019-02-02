@@ -39,11 +39,11 @@
 <h3> Часы по работникам</h3>
     Имя работника:  Длительность работы:
     <select name="workerName1">
-        <option value="" selected></option>
-        <c:forEach items="${workerList}" var="worker">
+    <option value="" selected></option>
+    <c:forEach items="${workerList}" var="worker">
         <option value="${worker.name}"> ${worker.name}</option>
-        </c:forEach>
-    </select>
+    </c:forEach>
+</select>
      &nbsp; <input type="number" name="manHour1" step="0.25">
     <br><br>
     Имя раборника:   Длительность работы:

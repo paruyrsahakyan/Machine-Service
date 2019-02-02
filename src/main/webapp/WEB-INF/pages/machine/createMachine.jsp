@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <html>
 <head>
@@ -30,7 +31,11 @@
     <input type="number" name="productionYear" style="height: auto"><br><br>
     Другая информация: <br>
     <textarea name="otherInfo" cols="40" rows="5"></textarea> <br><br>
-
+    <select name="machineType" required >
+            <c:forEach items="${machineTypeList}" var="machineType">
+            <option value=${machineType.id}> ${machineType}</option>
+        </c:forEach>
+    </select>
 
     <input type="submit" value="Сохранить">
 </form:form>

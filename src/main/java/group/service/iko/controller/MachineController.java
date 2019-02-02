@@ -11,6 +11,7 @@ import group.service.iko.entityDao.CustomerDAO;
 import group.service.iko.service.CustomerService;
 import group.service.iko.service.HistoryRecordService;
 import group.service.iko.service.MachineService;
+import group.service.iko.service.MachineTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -31,7 +32,8 @@ public class MachineController {
     private MachineService machineService;
     @Autowired
     private HistoryRecordService historyRecordService;
-    private DtoFactory dtoFactory;
+    @Autowired
+    private MachineTypeService machineTypeService;
 
     @RequestMapping(value = "/createMachine/{customerId}")
     public ModelAndView createMachine(@PathVariable("customerId") int customerId) {
@@ -39,16 +41,19 @@ public class MachineController {
        String customerName = customerService.getCustomerById(customerId).getName();
         modelAndView.addObject("customerName", customerName);
         modelAndView.addObject("customerId", customerId);
+        modelAndView.addObject("machineTypeList", machineTypeService.getAllMachineTypes());
         return modelAndView;
     }
 
     @RequestMapping(value = "/newMachine/{customerName}", method = RequestMethod.POST)
-    public ModelAndView newMachine(@RequestParam("model") String model,                                 @RequestParam("serialNumber") String serialNumber,
+    public ModelAndView newMachine(@PathVariable("customerName") int customerId,
+                                   @RequestParam("model") String model,
+                                   @RequestParam("serialNumber") String serialNumber,
                                    @RequestParam("engineModel") String engineModel,
                                    @RequestParam("engineSerialNumber") String engineSerialNumber,
                                    @RequestParam(name = "productionYear", defaultValue = "0") int productonYear,
-                                   @PathVariable("customerName") int customerId,
-                                   @RequestParam("otherInfo") String otherInfo
+                                   @RequestParam("otherInfo") String otherInfo,
+                                   @RequestParam("machineType") int machineTypeId
     ) {
         ModelAndView modelAndView = new ModelAndView("machine/machine");
         Machine machine = new Machine();
@@ -59,11 +64,12 @@ public class MachineController {
         machine.setProductionYear(productonYear);
         machine.setOtherInfo(otherInfo);
         machine.setCustomer( customerService.getCustomerById(customerId));
+        machine.setMachineType(machineTypeService.getMachineTypeById(machineTypeId));
         machineService.saveMachine(machine);
         Machine createdMachine = machineService.getLastMachine();
          modelAndView.addObject("machine", new MachineDTO(createdMachine));
          modelAndView.addObject("customerId", createdMachine.getCustomer().getId());
-        return modelAndView;
+                 return modelAndView;
     }
 
     @RequestMapping("/{machine.Id}")
@@ -80,6 +86,7 @@ public class MachineController {
         ModelAndView modelAndView = new ModelAndView("machine/updateMachine");
         Machine machine = machineService.getMachineById(id);
         modelAndView.addObject("machine", new MachineDTO(machine));
+        modelAndView.addObject("machineTypeList", machineTypeService.getAllMachineTypes());
         return modelAndView;
     }
 
@@ -90,7 +97,8 @@ public class MachineController {
                                        @RequestParam("engineModel") String engineModel,
                                        @RequestParam("engineSerialNumber") String engineSerialNumber,
                                        @RequestParam(name = "productionYear", defaultValue = "0") int productonYear,
-                                       @RequestParam("otherInfo") String otherInfo
+                                       @RequestParam("otherInfo") String otherInfo,
+                                       @RequestParam("machineType") int machineTypeId
     ) {
         ModelAndView modelAndView = new ModelAndView("machine/machine");
          Machine machine = machineService.getMachineById(machineId);
@@ -101,6 +109,7 @@ public class MachineController {
         machine.setEngineSerialNumber(engineSerialNumber);
         machine.setOtherInfo(otherInfo);
         machine.setProductionYear(productonYear);
+        machine.setMachineType(machineTypeService.getMachineTypeById(machineTypeId));
         machineService.updateMachine(machine);
         System.out.println(machineId);
         Machine updatedMachine = machineService.getMachineById(machineId);
@@ -124,7 +133,7 @@ public class MachineController {
    public ModelAndView changeMachineCustomer( @PathVariable("machineId") int machineId) {
     ModelAndView modelAndView = new ModelAndView("machine/changeCustomer");
     List<Customer> customerDTOList = customerService.getAllCustomers();
-    modelAndView.addObject("customerList", dtoFactory.makeCustomerDtoList(customerDTOList));
+    modelAndView.addObject("customerList", DtoFactory.makeCustomerDtoList(customerDTOList));
     modelAndView.addObject("machineId", machineId);
     return modelAndView;
 }

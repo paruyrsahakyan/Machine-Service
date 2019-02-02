@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <html>
 <head>
@@ -19,8 +20,14 @@
     <br>
     <h4>Владелец: ${machine.customer}</h4>
       <form:form action="/customer/machine/updatedMachine/${machine.id}" method="post" accept-charset="UTF-8">
-
-        Модель  Машины:<br>
+          Тип Машины<br>
+          <select name="machineType" required >
+              <option value="${machine.machineTypeId}" selected> ${machine.machineType}</option>
+              <c:forEach items="${machineTypeList}" var="machineType">
+                  <option value=${machineType.id}> ${machineType}</option>
+              </c:forEach>
+          </select>
+          Модель  Машины:<br>
         <input type="text" name="model" style="height: auto" value="${machine.model}"><br><br>
         Серийный номер:<br>
         <input type="text" name="serialNumber" style="height: auto" value="${machine.serialNumber}"><br><br>

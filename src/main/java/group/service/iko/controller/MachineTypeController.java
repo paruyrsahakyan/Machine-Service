@@ -151,10 +151,9 @@ public class MachineTypeController {
 
         periodicMaintenanceService.updatePeriodicMaintenance(maintenanceId, partNumberList, smr, descriptionList, unitList, quantityList);
         MachineType machineType = machineTypeService.getMachineTypeById(machineTypeId);
-        List<PeriodicMaintenance> sortedMaintenanceList = machineType.getSortedMaintenanceList();
         ModelAndView modelAndView = new ModelAndView("machineType/periodicMaintenance");
         modelAndView.addObject("machineType", machineType);
-        modelAndView.addObject("maintenanceList", sortedMaintenanceList);
+        modelAndView.addObject("periodicMaintenance", periodicMaintenanceService.getMaintenanceById(maintenanceId));
         return modelAndView;
     }
 

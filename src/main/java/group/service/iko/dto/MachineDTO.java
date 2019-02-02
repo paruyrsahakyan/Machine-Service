@@ -15,6 +15,7 @@ import java.util.List;
 public class MachineDTO {
 
     private int id;
+    private String machineType;
     private String model;
     private String serialNumber;
     private String engineModel;
@@ -26,6 +27,7 @@ public class MachineDTO {
     private int lastInfoId;
     private String lastInfoDate;
     private int lastSMR;
+    private int machineTypeId;
 
 
     public MachineDTO() {
@@ -46,8 +48,25 @@ public class MachineDTO {
         lastInfoDate = historyRecordDTO.getRecordDate();
         lastInfoId = historyRecordDTO.getId();
         lastSMR = historyRecordDTO.getSMR();
+        machineType= machine.getMachineType().getTypeDescription();
+        machineTypeId= machine.getMachineType().getId();
     }
 
+    public int getMachineTypeId() {
+        return machineTypeId;
+    }
+
+    public void setMachineTypeId(int machineTypeId) {
+        this.machineTypeId = machineTypeId;
+    }
+
+    public String getMachineType() {
+        return machineType;
+    }
+
+    public void setMachineType(String machineType) {
+        this.machineType = machineType;
+    }
 
     public int getLastSMR() {
         return lastSMR;

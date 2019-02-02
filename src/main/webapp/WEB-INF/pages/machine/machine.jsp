@@ -33,6 +33,10 @@
     <br> <br>
     <table style="width: auto" align="center">
         <tr>
+            <th>Тип Машины:</th>
+            <td>${machine.machineType}</td>
+        </tr>
+        <tr>
             <th>Модель:</th>
             <td>${machine.model}</td>
         </tr>
