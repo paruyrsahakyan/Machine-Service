@@ -128,7 +128,7 @@ public class MachineTypeController {
         return modelAndView;
     }
 
-    @RequestMapping("/{machineTypeId}/periodicMaintenance/{maintenanceId}/updated")
+    @RequestMapping("/{machineTypeId}/periodicMaintenance/{maintenanceId}/updatePage")
     public ModelAndView getMaintenanceUpdatePage(@PathVariable("machineTypeId") int machineTypeId,
                                       @PathVariable("maintenanceId") int maintenanceId) {
 
