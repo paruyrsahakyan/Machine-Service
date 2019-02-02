@@ -129,6 +129,16 @@ public class MachineTypeController {
         return modelAndView;
     }
 
+    @RequestMapping("/{machineTypeId}/periodicMaintenance/{maintenanceId}/update")
+    public ModelAndView getUpdatePage(@PathVariable("machineTypeId") int machineTypeId,
+                                      @PathVariable("maintenanceId") int maintenanceId) {
+
+        ModelAndView modelAndView = new ModelAndView("machineType/periodicMaintenanceUpdate");
+        modelAndView.addObject("machineType", machineTypeService.getMachineTypeById(machineTypeId));
+        modelAndView.addObject("periodicMaintenance", periodicMaintenanceService.getMaintenanceById(maintenanceId));
+        return modelAndView;
+    }
+
     @RequestMapping("/{machineTypeId}/periodicMaintenance/{maintenanceId}/deleted")
     public ModelAndView deletePeriodicMaintenance(@PathVariable("machineTypeId") int machineTypeId,
                                                   @PathVariable("maintenanceId") int maintenanceId) {

@@ -26,7 +26,7 @@ public class MachineTypeService {
     }
 
     public void updateMachineType(MachineType machineType) {
-        machineTypeDAO.saveMachineType(machineType);
+        machineTypeDAO.updateMachineType(machineType);
     }
 
     public void deleteMachineType(MachineType machineType) {

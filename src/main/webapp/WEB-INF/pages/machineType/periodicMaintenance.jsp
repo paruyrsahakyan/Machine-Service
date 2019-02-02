@@ -20,9 +20,9 @@
     <h3>Тип машины &nbsp; ${machineType.typeDescription}&nbsp; </h3>
 
     <a href="/"> Главное меню</a>
-    <a href="/machineType/allMachineTypes"> Главное меню</a>
+    <a href="/machineType/allMachineTypes">   Типы машин</a>
     <br><br>
-    <a href="/machineType/${machineType.id}/periodicMaintenance/${periodicMaintenance.id}"> Редактировать</a>
+    <a href="/machineType/${machineType.id}/periodicMaintenance/${periodicMaintenance.id}/update"> Редактировать</a>
     &nbsp; &nbsp;
     <a href="/machineType/${machineType.id}/periodicMaintenance/${periodicMaintenance.id}/deleted"
        onclick="!!!! Вы уверяны что хатите удалить? !!!" > Удалить </a>
@@ -31,10 +31,8 @@
     <table style="width: auto" align="center">
         <tr>
             <th colspan="5">
-                <a href="/admin/machineType/${machineType.id}/periodicMaintenance/${periodicMaintenance.id}">
-                  TO &nbsp; ${periodicMaintenance.smr}
-                </a>
-            </th>
+                   TO &nbsp; ${periodicMaintenance.smr}
+                           </th>
         </tr>
         <tr>
             <td> N </td>
