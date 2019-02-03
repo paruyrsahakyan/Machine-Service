@@ -20,8 +20,8 @@
     <div id = "test"> </div>
        <form:form action="/workOrder/new" method="post" accept-charset="UTF-8">
         Заказчик:  <br>
-        <input list="customers" name="customer" >
-        <datalist id="customers" onselect="getMachineList()">
+        <input list="customers" name="customer" onchange="getMachineList()" >
+        <datalist id="customers" >
             <c:forEach items="${customerList}" var="customer">
             <option value="${customer.id}"> ${customer.name}</option>
             </c:forEach>
@@ -81,6 +81,7 @@
     }
 
         function getMachineList(){
+        alert("selcted");
           initSelectedCustomersMachines();
                     var machineInput = document.getElementById("machineOptions");
             document.getElementById("test").innerHTML="<b>" + machineInput + "</b>";
