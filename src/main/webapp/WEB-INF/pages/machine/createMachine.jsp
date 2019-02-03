@@ -36,6 +36,7 @@
             <option value=${machineType.id}> ${machineType.typeDescription}</option>
         </c:forEach>
     </select>
+    <br><br>
 
     <input type="submit" value="Сохранить">
 </form:form>

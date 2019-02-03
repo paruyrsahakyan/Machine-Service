@@ -113,7 +113,6 @@ public class MachineController {
         machineService.updateMachine(machine);
         System.out.println(machineId);
         Machine updatedMachine = machineService.getMachineById(machineId);
-        System.out.println(updatedMachine);
         modelAndView.addObject("machine", new MachineDTO(updatedMachine));
         return modelAndView;
 

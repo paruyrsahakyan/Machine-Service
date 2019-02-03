@@ -27,6 +27,7 @@
                   <option value=${machineType.id}> ${machineType.typeDescription}</option>
               </c:forEach>
           </select>
+          <br><br>
           Модель  Машины:<br>
         <input type="text" name="model" style="height: auto" value="${machine.model}"><br><br>
         Серийный номер:<br>
