@@ -75,7 +75,7 @@
     </c:forEach>
 
     function initSelectedCustomersMachines() {
-        var selectedCustomer = document.getElementById("customers").options.selectedIndex.toString();
+        var selectedCustomer = document.getElementById("customers").options.selectedIndex;
         alert(selectedCustomer);
              for (var i = 0; i < initialMachineList.length; i++) {
                 if (initialMachineList[i].customerName === selectedCustomer) {
