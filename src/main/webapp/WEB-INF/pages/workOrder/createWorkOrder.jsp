@@ -28,8 +28,8 @@
         </datalist>
         <br><br>
         Машина:  <br>
-        <select name="machineId">
-              <div id="machineOptions"> &nbsp; </div>
+        <select name="machineId" id="machineOptions">
+
         </select>
         <br><br>
         Моточасы:<br>
@@ -83,7 +83,7 @@
         function getMachineList(){
         alert("selcted");
           initSelectedCustomersMachines();
-                    var machineInput = document.getElementById("machineOptions");
+                    var machineInput = document.getElementById("machineOptions") ;
             document.getElementById("test").innerHTML="<b>" + machineInput + "</b>";
             for (var i=0; i<selectedCustomersMachines.length; i++) {
             machineInput.innerHTML += "<option value='"+
