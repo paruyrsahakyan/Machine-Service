@@ -19,7 +19,7 @@
     <br>
     <div id = "test"> </div>
        <form:form action="/workOrder/new" method="post" accept-charset="UTF-8">
-           <button onclick="getMachineList()">
+           <button onclick="getMachineList()"> </button>
         Заказчик:  <br>
         <input list="customers" name="customer" oninput=alert("ok") >
         <datalist id="customers" onselect="alert(ok)">
