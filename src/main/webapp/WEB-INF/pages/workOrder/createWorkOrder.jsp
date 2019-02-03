@@ -23,7 +23,7 @@
         <input list="customers" name="customer" oninput=alert("ok") >
         <datalist id="customers" onselect="alert(ok)">
             <c:forEach items="${customerList}" var="customer">
-            <option value="${customer.id}"> ${customer.name}</option>
+            <option value="${customer.name}">
             </c:forEach>
         </datalist>
         <br><br>
