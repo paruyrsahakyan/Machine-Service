@@ -27,7 +27,7 @@ public class MaintenancePart {
                 ", partNumber='" + partNumber + '\'' +
                 ", unit='" + unit + '\'' +
                 ", quantity=" + quantity +
-                ", periodicMaintenance=" + periodicMaintenance +
+                ", periodicMaintenance=" + "TO"+periodicMaintenance.getSmr() +
                 '}';
     }
 
