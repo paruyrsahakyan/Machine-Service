@@ -53,7 +53,9 @@
             <c:forEach items="${serviceMachineList}" var="serviceMachine">
                 <option value="${serviceMachine.id}"> ${serviceMachine.name}</option>
             </c:forEach>
-        </select>
+                    </select>
+           <br> <br>
+           <input type="submit" value="Сохранить">
     </form:form>
 </div>
 <script>
@@ -73,7 +75,7 @@
     </c:forEach>
 
     function initSelectedCustomersMachines() {
-        var selectedCustomer = document.getElementById("customers").innerText;
+        var selectedCustomer = document.getElementById("customers").value;
         alert(selectedCustomer);
              for (var i = 0; i < initialMachineList.length; i++) {
                 if (initialMachineList[i].customerName === selectedCustomer) {
