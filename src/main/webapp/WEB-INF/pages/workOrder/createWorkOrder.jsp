@@ -73,7 +73,7 @@
 
     function initSelectedCustomersMachines() {
         var selectedCustomer = document.getElementById("customers").value;
-        alert("selectedCustomer");
+        alert(selectedCustomer);
              for (var i = 0; i < initialMachineList.length; i++) {
                 if (initialMachineList[i].customerName === selectedCustomer) {
                     selectedCustomersMachines.push(initialMachineList[i])
