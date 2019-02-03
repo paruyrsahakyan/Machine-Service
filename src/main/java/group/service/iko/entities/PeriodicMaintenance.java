@@ -30,7 +30,7 @@ public class PeriodicMaintenance {
                 "id=" + id +
                 ", smr=" + smr +
                 ", maintenanceParts=" + maintenanceParts +
-                ", machineType=" + machineType +
+                ", machineType=" + machineType.getTypeDescription() +
                 '}';
     }
 
