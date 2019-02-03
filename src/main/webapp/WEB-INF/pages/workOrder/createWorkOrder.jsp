@@ -19,9 +19,10 @@
     <br>
     <div id = "test"> </div>
        <form:form action="/workOrder/new" method="post" accept-charset="UTF-8">
+           <button onclick="getMachineList()">
         Заказчик:  <br>
-        <input list="customers" name="customer" oninput="getMachineList()" >
-        <datalist id="customers" >
+        <input list="customers" name="customer" oninput=alert("ok") >
+        <datalist id="customers" onselect="alert(ok)">
             <c:forEach items="${customerList}" var="customer">
             <option value="${customer.id}"> ${customer.name}</option>
             </c:forEach>
@@ -83,7 +84,8 @@
 
         function getMachineList(){
             initSelectedCustomersMachines();
-                    var machineInput = document.getElementById("machineOptions") ;
+                    var machineInput = document.getElementById("machineOptions").innerText ;
+                    alert(machineInput);
             document.getElementById("test").innerHTML="<b>" + machineInput + "</b>";
             for (var i=0; i<selectedCustomersMachines.length; i++) {
             machineInput.innerHTML += "<option value='"+
