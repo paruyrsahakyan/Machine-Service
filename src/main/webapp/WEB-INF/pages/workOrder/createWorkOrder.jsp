@@ -20,7 +20,7 @@
     <div id = "test"> </div>
        <form:form action="/workOrder/new" method="post" accept-charset="UTF-8">
         Заказчик:  <br>
-        <input list="customers" name="customer" onchange="getMachineList()" >
+        <input list="customers" name="customer" oninput="getMachineList()" >
         <datalist id="customers" >
             <c:forEach items="${customerList}" var="customer">
             <option value="${customer.id}"> ${customer.name}</option>
