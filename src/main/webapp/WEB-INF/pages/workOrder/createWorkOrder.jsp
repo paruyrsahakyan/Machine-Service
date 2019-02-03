@@ -29,7 +29,7 @@
         <br><br>
         Машина:  <br>
         <select name="machineId">
-              <div id="machineOptions"></div>
+              <div id="machineOptions"> &nbsp; </div>
         </select>
         <br><br>
         Моточасы:<br>
