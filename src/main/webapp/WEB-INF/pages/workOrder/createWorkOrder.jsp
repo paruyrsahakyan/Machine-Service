@@ -81,9 +81,10 @@
     }
 
         function getMachineList(){
-        initSelectedCustomersMachines();
-        var machineInput = document.getElementById("machineOptions");
-        for (var i=0; i<selectedCustomersMachines.length; i++) {
+          initSelectedCustomersMachines();
+                    var machineInput = document.getElementById("machineOptions");
+            document.getElementById("test").innerHTML="<b>" + machineInput + "</b>";
+            for (var i=0; i<selectedCustomersMachines.length; i++) {
             machineInput.innerHTML += "<option value='"+
                 selectedCustomersMachines[i].id + "'>" +
                 selectedCustomersMachines[i].model+ "; sn" +
