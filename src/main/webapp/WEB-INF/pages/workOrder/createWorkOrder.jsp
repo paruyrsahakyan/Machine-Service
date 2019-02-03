@@ -73,16 +73,16 @@
 
     function initSelectedCustomersMachines() {
         var selectedCustomer = document.getElementById("customers").value;
+        alert("selectedCustomer");
              for (var i = 0; i < initialMachineList.length; i++) {
-                if (initialMachineList[i].customerName.e === selectedCustomer) {
+                if (initialMachineList[i].customerName === selectedCustomer) {
                     selectedCustomersMachines.push(initialMachineList[i])
                            }
             }
     }
 
         function getMachineList(){
-        alert("selcted");
-          initSelectedCustomersMachines();
+            initSelectedCustomersMachines();
                     var machineInput = document.getElementById("machineOptions") ;
             document.getElementById("test").innerHTML="<b>" + machineInput + "</b>";
             for (var i=0; i<selectedCustomersMachines.length; i++) {
