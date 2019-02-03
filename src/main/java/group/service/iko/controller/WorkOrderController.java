@@ -29,13 +29,13 @@ public class WorkOrderController {
          return modelAndView;
 
     }
-
+   @RequestMapping("/new")
     public ModelAndView workOrderCreation() {
-        ModelAndView modelAndView = new ModelAndView("admin/workOrderCreation");
+        ModelAndView modelAndView = new ModelAndView("workOrder/createWorkOrder");
         modelAndView.addObject("machineList", MachineDTO.convertIntoDTO(machineService.getAllMachines()));
         modelAndView.addObject("workerList", workerService.getAllWorkers() );
-        modelAndView.addObject("machineList", serviceMachineService.getAllServiceMachines());
-        modelAndView.addObject("CustomerList", CustomerDTO.convertIntoDTO(customerService.getAllCustomers()));
+        modelAndView.addObject("serviceMachineList", serviceMachineService.getAllServiceMachines());
+        modelAndView.addObject("customerList", CustomerDTO.convertIntoDTO(customerService.getAllCustomers()));
         return modelAndView;
     }
     @RequestMapping("/allServiceMachines")
