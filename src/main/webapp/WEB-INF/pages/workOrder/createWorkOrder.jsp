@@ -19,7 +19,7 @@
     <br>
     <div id = "test"> </div>
        <form:form action="/workOrder/new" method="post" accept-charset="UTF-8">
-           <button onclick="getMachineList()"> </button>
+           <button onclick="initialMachineList"> </button>
         Заказчик:  <br>
         <input list="customers" name="customer" oninput=alert("ok") >
         <datalist id="customers" onselect="alert(ok)">
@@ -86,9 +86,8 @@
 
         function getMachineList(){
             initSelectedCustomersMachines();
-                    var machineInput = document.getElementById("machineOptions").innerText ;
-                    alert(machineInput);
-            document.getElementById("test").innerHTML="<b>" + machineInput + "</b>";
+                    var machineInput = document.getElementById("machineOptions");
+
             for (var i=0; i<selectedCustomersMachines.length; i++) {
             machineInput.innerHTML += "<option value='"+
                 selectedCustomersMachines[i].id + "'>" +
