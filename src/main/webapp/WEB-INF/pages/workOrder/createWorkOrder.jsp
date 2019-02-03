@@ -17,8 +17,8 @@
 <div style="text-align: center">
     <h2>Новый Наряд</h2>
     <br>
-    <h3>${model}:   ${serialNumber}</h3>
-    <form:form action="/workOrder/new" method="post" accept-charset="UTF-8">
+    <div id = "test"> </div>
+       <form:form action="/workOrder/new" method="post" accept-charset="UTF-8">
         Заказчик:  <br>
         <input list="customers" name="customer" >
         <datalist id="customers" onselect="getMachineList()">
@@ -85,7 +85,10 @@
         var machineInput = document.getElementById("machineOptions");
         for (var i=0; i<selectedCustomersMachines.length; i++) {
             machineInput.innerHTML += "<option value='"+
-                selectedCustomersMachines[i].id + "'>" ;
+                selectedCustomersMachines[i].id + "'>" +
+                selectedCustomersMachines[i].model+ "; sn" +
+                selectedCustomersMachines[i].serialNumber + "</option>";
+
         }
                 }
 

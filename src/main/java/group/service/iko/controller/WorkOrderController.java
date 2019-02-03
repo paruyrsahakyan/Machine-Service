@@ -30,7 +30,7 @@ public class WorkOrderController {
 
     }
    @RequestMapping("/new")
-    public ModelAndView workOrderCreation() {
+    public ModelAndView getWorkOrderCreationPage() {
         ModelAndView modelAndView = new ModelAndView("workOrder/createWorkOrder");
         modelAndView.addObject("machineList", MachineDTO.convertIntoDTO(machineService.getAllMachines()));
         modelAndView.addObject("workerList", workerService.getAllWorkers() );
@@ -38,8 +38,8 @@ public class WorkOrderController {
         modelAndView.addObject("customerList", CustomerDTO.convertIntoDTO(customerService.getAllCustomers()));
         return modelAndView;
     }
-    @RequestMapping("/allServiceMachines")
-    public  ModelAndView showAllServiceMachines(){
+    @RequestMapping("/createdWorkOrder")
+    public  ModelAndView cre(){
         ModelAndView modelAndView = new ModelAndView("admin/serviceMachines");
         modelAndView.addObject("serviceMachines", serviceMachineService.getAllServiceMachines());
         return  modelAndView;
