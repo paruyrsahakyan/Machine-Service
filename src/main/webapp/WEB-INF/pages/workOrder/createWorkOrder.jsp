@@ -17,10 +17,9 @@
 <div style="text-align: center">
     <h2>Новый Наряд</h2>
     <br>
-    <div id = "test"> </div>
+        <button onclick="initialMachineList"> </button>
        <form:form action="/workOrder/new" method="post" accept-charset="UTF-8">
-           <button onclick="initialMachineList"> </button>
-        Заказчик:  <br>
+                 Заказчик:  <br>
         <input list="customers" name="customer" oninput=alert("ok") >
         <datalist id="customers" onselect="alert(ok)">
             <c:forEach items="${customerList}" var="customer">
