@@ -24,7 +24,7 @@
           <select name="machineType" required >
               <option value="${machine.machineTypeId}" selected> ${machine.machineType}</option>
               <c:forEach items="${machineTypeList}" var="machineType">
-                  <option value=${machineType.id}> ${machineType}</option>
+                  <option value=${machineType.id}> ${machineType.typeDescription}</option>
               </c:forEach>
           </select>
           Модель  Машины:<br>
