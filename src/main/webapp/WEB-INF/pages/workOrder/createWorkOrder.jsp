@@ -22,7 +22,7 @@
         <input list="customers" name="customer" id="selectedCustomer" oninput="getMachineList()" >
         <datalist id="customers" >
             <c:forEach items="${customerList}" var="customer">
-                <option value="${customer.id}" hidden> ${customer.name} </option>
+                <option value="${customer.name}" hidden> ${customer.name} </option>
             </c:forEach>
         </datalist>
         <br><br>
@@ -74,8 +74,7 @@
 
     function initSelectedCustomersMachines() {
            var selectedCustomer = document.getElementById("selectedCustomer").value;
-           alert(selectedCustomer);
-        machinesOfSelectedCustomer=[];
+              machinesOfSelectedCustomer=[];
                for (var i = 0; i < initialMachineList.length; i++) {
                 if (initialMachineList[i].customerName === selectedCustomer) {
                     machinesOfSelectedCustomer.push(initialMachineList[i])
