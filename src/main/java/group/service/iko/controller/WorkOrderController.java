@@ -42,7 +42,7 @@ public class WorkOrderController {
         return modelAndView;
     }
     @RequestMapping(value = "/createdWorkOrder", method = RequestMethod.POST)
-    public  ModelAndView createWorkOrder(@RequestParam("customer") int customerId,
+    public  ModelAndView createWorkOrder(@RequestParam("customer") String customerId,
                                          @RequestParam("machineId") int machineId,
                                          @RequestParam("smr") int smr,
                                          @RequestParam("date") String date,
