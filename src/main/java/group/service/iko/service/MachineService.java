@@ -72,8 +72,9 @@ public class MachineService {
                 " order by id DESC";
         Query query = session.createQuery(hql);
         query.setMaxResults(1);
-        return (Machine) query.uniqueResult();
-
+        Machine machine = (Machine) query.uniqueResult();
+        session.close();
+        return  machine;
     }
 
     public void deleteMachineById(int machineId) {

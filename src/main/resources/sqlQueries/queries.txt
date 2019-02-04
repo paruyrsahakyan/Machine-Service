@@ -109,7 +109,7 @@ CREATE TABLE `work_order` (
   `periodic_maintenance_id` int(11) DEFAULT NULL,
   `worker` varchar(255) DEFAULT NULL,
   `service_machine` varchar(255) DEFAULT NULL,
-  `work_place` varchar(255) DEFAULT NULL,
+  `location` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `foreignKeyPeriodicMaintenanceId` (`periodic_maintenance_id`),
   CONSTRAINT `foreignKeyPeriodicMaintenanceId` FOREIGN KEY (`periodic_maintenance_id`) REFERENCES `periodic_maintenance` (`id`),

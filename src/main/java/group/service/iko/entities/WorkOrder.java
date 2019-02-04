@@ -21,8 +21,8 @@ public class WorkOrder {
     private PeriodicMaintenance periodicMaintenance;
     @Column
     private String worker;
-    @Column(name = "work_place")
-    private String Workplace;
+    @Column(name = "locaton")
+    private String location;
     @Column(name="service_machine")
     private String serviceMachine;
 
@@ -35,7 +35,7 @@ public class WorkOrder {
                 ", orderSmr=" + orderSmr +
                 ", periodicMaintenance=" + periodicMaintenance +
                 ", worker='" + worker + '\'' +
-                ", Workplace='" + Workplace + '\'' +
+                ", location='" + location + '\'' +
                 ", serviceMachine='" + serviceMachine + '\'' +
                 '}';
     }
@@ -88,12 +88,12 @@ public class WorkOrder {
         this.worker = worker;
     }
 
-    public String getWorkplace() {
-        return Workplace;
+    public String getLocation() {
+        return location;
     }
 
-    public void setWorkplace(String workplace) {
-        Workplace = workplace;
+    public void setLocation(String location) {
+        this.location = location;
     }
 
     public String getServiceMachine() {

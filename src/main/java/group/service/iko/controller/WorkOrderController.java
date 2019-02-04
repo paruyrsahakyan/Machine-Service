@@ -1,5 +1,6 @@
 package group.service.iko.controller;
 
+import group.service.iko.calendarAdapter.CalendarAdapter;
 import group.service.iko.dto.CustomerDTO;
 import group.service.iko.dto.MachineDTO;
 import group.service.iko.entities.ServiceMachine;
@@ -8,6 +9,7 @@ import group.service.iko.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller()
@@ -39,9 +41,24 @@ public class WorkOrderController {
         return modelAndView;
     }
     @RequestMapping("/createdWorkOrder")
-    public  ModelAndView cre(){
-        ModelAndView modelAndView = new ModelAndView("admin/serviceMachines");
-        modelAndView.addObject("serviceMachines", serviceMachineService.getAllServiceMachines());
+    public  ModelAndView createWorkOrder(@RequestParam("customer") int customerId,
+                                         @RequestParam("machineId") int machineId,
+                                         @RequestParam("smr") int smr,
+                                         @RequestParam("date") String date,
+                                         @RequestParam("location") String location,
+                                         @RequestParam("worker") String worker,
+                                         @RequestParam("serviceMachine") String serviceMachine
+                                          ){
+        WorkOrder workOrder = new WorkOrder();
+        workOrder.setMachine( machineService.getMachineById(machineId));
+        workOrder.setOrderSmr(smr);
+        workOrder.setOrderDate(CalendarAdapter.getGregCalendar(date));
+        workOrder.setLocation(location);
+        workOrder.setWorker(worker);
+        workOrder.setWorker(serviceMachine);
+        workOrderService.saveWorkOrder(workOrder);
+        ModelAndView modelAndView = new ModelAndView("workOrder/workOrder");
+        modelAndView.addObject("workOrder", workOrderService.getLastSavedWorkOrder());
         return  modelAndView;
     }
 

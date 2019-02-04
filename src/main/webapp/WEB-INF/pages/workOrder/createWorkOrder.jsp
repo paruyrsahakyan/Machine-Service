@@ -22,7 +22,7 @@
         <input list="customers" name="customer" id="selectedCustomer" oninput="getMachineList()" >
         <datalist id="customers" >
             <c:forEach items="${customerList}" var="customer">
-            <option value="${customer.name}">
+                <option value="${customer.id}" hidden> ${customer.name} </option>
             </c:forEach>
         </datalist>
         <br><br>
@@ -32,7 +32,7 @@
         </select>
         <br><br>
         Моточасы:<br>
-        <input type="number" name="SMR" >
+        <input type="number" name="smr" >
         <br><br>
         Дата:<br>
         <input type="date" name="date" required >
@@ -49,7 +49,7 @@
         Сервисная Машина: <br>
         <select name="serviceMachine">
             <c:forEach items="${serviceMachineList}" var="serviceMachine">
-                <option value="${serviceMachine.id}"> ${serviceMachine.name}</option>
+                <option value="${serviceMachine.name}"> ${serviceMachine.name}</option>
             </c:forEach>
                     </select>
            <br> <br>
@@ -73,7 +73,8 @@
     </c:forEach>
 
     function initSelectedCustomersMachines() {
-        var selectedCustomer = document.getElementById("selectedCustomer").value;
+           var selectedCustomer = document.getElementById("selectedCustomer").value;
+           alert(selectedCustomer);
         machinesOfSelectedCustomer=[];
                for (var i = 0; i < initialMachineList.length; i++) {
                 if (initialMachineList[i].customerName === selectedCustomer) {
