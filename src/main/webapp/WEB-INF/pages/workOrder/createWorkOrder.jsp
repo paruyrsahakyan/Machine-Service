@@ -20,7 +20,7 @@
         <button onclick="initSelectedCustomersMachines()"> </button>
        <form:form action="/workOrder/new" method="post" accept-charset="UTF-8">
                  Заказчик:  <br>
-        <input list="customers" name="customer" oninput=alert("ok") >
+        <input list="customers" name="customer" id="selectedCustomer" oninput=alert("ok") >
         <datalist id="customers" onselect="alert(ok)">
             <c:forEach items="${customerList}" var="customer">
             <option value="${customer.name}">
@@ -74,7 +74,7 @@
     </c:forEach>
 
     function initSelectedCustomersMachines() {
-        var selectedCustomer = document.getElementById("customers").options.selectedIndex;
+        var selectedCustomer = document.getElementById("selectedCustomers").value;
         alert(selectedCustomer);
              for (var i = 0; i < initialMachineList.length; i++) {
                 if (initialMachineList[i].customerName === selectedCustomer) {
