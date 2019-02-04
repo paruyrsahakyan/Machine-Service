@@ -17,11 +17,10 @@
 <div style="text-align: center">
     <h2>Новый Наряд</h2>
     <br>
-        <button onclick="initSelectedCustomersMachines()"> </button>
-       <form:form action="/workOrder/new" method="post" accept-charset="UTF-8">
+        <form:form action="/workOrder/new" method="post" accept-charset="UTF-8">
                  Заказчик:  <br>
-        <input list="customers" name="customer" id="selectedCustomer" oninput=alert("ok") >
-        <datalist id="customers" onselect="alert(ok)">
+        <input list="customers" name="customer" id="selectedCustomer" oninput="getMachineList()" >
+        <datalist id="customers" >
             <c:forEach items="${customerList}" var="customer">
             <option value="${customer.name}">
             </c:forEach>
