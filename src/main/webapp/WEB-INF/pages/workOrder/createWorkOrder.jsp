@@ -74,7 +74,7 @@
     </c:forEach>
 
     function initSelectedCustomersMachines() {
-        var selectedCustomer = document.getElementById("selectedCustomers").value;
+        var selectedCustomer = document.getElementById("selectedCustomer").value;
         alert(selectedCustomer);
              for (var i = 0; i < initialMachineList.length; i++) {
                 if (initialMachineList[i].customerName === selectedCustomer) {
