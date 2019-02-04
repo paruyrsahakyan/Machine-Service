@@ -21,7 +21,7 @@ public class WorkOrder {
     private PeriodicMaintenance periodicMaintenance;
     @Column
     private String worker;
-    @Column(name = "locaton")
+    @Column(name = "location")
     private String location;
     @Column(name="service_machine")
     private String serviceMachine;
