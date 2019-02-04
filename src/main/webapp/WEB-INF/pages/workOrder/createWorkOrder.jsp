@@ -74,8 +74,7 @@
 
     function initSelectedCustomersMachines() {
         var selectedCustomer = document.getElementById("selectedCustomer").value;
-        alert(selectedCustomer);
-             for (var i = 0; i < initialMachineList.length; i++) {
+               for (var i = 0; i < initialMachineList.length; i++) {
                 if (initialMachineList[i].customerName === selectedCustomer) {
                     selectedCustomersMachines.push(initialMachineList[i])
                            }
@@ -85,10 +84,10 @@
         function getMachineList(){
             initSelectedCustomersMachines();
                     var machineInput = document.getElementById("machineOptions");
+            machineInput.innerHTML = " "
 
             for (var i=0; i<selectedCustomersMachines.length; i++) {
-                machineInput.innerHTML = " "
-            machineInput.innerHTML += "<option value='"+
+                machineInput.innerHTML += "<option value='"+
                 selectedCustomersMachines[i].id + "'>" +
                 selectedCustomersMachines[i].model+ "; sn" +
                 selectedCustomersMachines[i].serialNumber + "</option>";
