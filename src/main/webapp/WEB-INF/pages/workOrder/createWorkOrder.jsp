@@ -58,7 +58,7 @@
 </div>
 <script>
     var initialMachineList = [];
-    var selectedCustomersMachines = [];
+    var machinesOfSelectedCustomer = [];
 
     <c:forEach items="${machineList}" var="machine">
     var machineModel = "${machine.model}";
@@ -74,27 +74,24 @@
 
     function initSelectedCustomersMachines() {
         var selectedCustomer = document.getElementById("selectedCustomer").value;
+        machinesOfSelectedCustomer=[];
                for (var i = 0; i < initialMachineList.length; i++) {
                 if (initialMachineList[i].customerName === selectedCustomer) {
-                    selectedCustomersMachines.push(initialMachineList[i])
+                    machinesOfSelectedCustomer.push(initialMachineList[i])
                            }
             }
     }
-
         function getMachineList(){
             initSelectedCustomersMachines();
                     var machineInput = document.getElementById("machineOptions");
             machineInput.innerHTML = " "
-
-            for (var i=0; i<selectedCustomersMachines.length; i++) {
+            for (var i=0; i<machinesOfSelectedCustomer.length; i++) {
                 machineInput.innerHTML += "<option value='"+
-                selectedCustomersMachines[i].id + "'>" +
-                selectedCustomersMachines[i].model+ "; sn" +
-                selectedCustomersMachines[i].serialNumber + "</option>";
-
+                machinesOfSelectedCustomer[i].id + "'>" +
+                machinesOfSelectedCustomer[i].model+ "; sn" +
+                machinesOfSelectedCustomer[i].serialNumber + "</option>";
         }
                 }
-
 </script>
 </body>
 </html>
