@@ -27,7 +27,7 @@
         </datalist>
         <br><br>
         Машина:  <br>
-        <select name="machineId" id="machineOptions">
+        <select name="machineId" id="machineOptions" >
 
         </select>
         <br><br>
@@ -87,6 +87,7 @@
                     var machineInput = document.getElementById("machineOptions");
 
             for (var i=0; i<selectedCustomersMachines.length; i++) {
+                machineInput.innerHTML = " "
             machineInput.innerHTML += "<option value='"+
                 selectedCustomersMachines[i].id + "'>" +
                 selectedCustomersMachines[i].model+ "; sn" +
