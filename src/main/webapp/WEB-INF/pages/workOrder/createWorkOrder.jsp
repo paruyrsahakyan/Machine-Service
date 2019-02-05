@@ -27,7 +27,7 @@
         </datalist>
         <br><br>
         Машина:  <br>
-            <select name="machineId" id="machineOptions" >
+            <select name="machineId" id="machineOptions" oninput="setMaintenanceList()">
 
             </select>
             <br><br>
