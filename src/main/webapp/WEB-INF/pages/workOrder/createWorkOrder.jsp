@@ -67,6 +67,7 @@
       <c:forEach items="${machineList}" var="machine">
     var machineModel = "${machine.model}";
     var machineSerialNumber = "${machine.serialNumber}";
+    var customerName = "${machine.customer}";
     var machineId = "${machine.id}";
     var periodicMaintenanceList =[];
     <c:forEach items="${machine.machineType.periodicMaintenanceList}" var="periodicMaintenance">
@@ -77,6 +78,7 @@
     </c:forEach>
       initialMachineList.push({model: machineModel,
         serialNumber: machineSerialNumber,
+        customerName: customerName,
         id: machineId,
         maintenanceList: periodicMaintenanceList});
     </c:forEach>
