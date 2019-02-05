@@ -34,7 +34,7 @@
     <table style="width: auto" align="center">
         <tr>
             <th>Тип Машины:</th>
-            <td>${machine.machineType}</td>
+            <td>${machine.machineType.typeDescription}</td>
         </tr>
         <tr>
             <th>Модель:</th>

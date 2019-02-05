@@ -22,7 +22,7 @@
       <form:form action="/customer/machine/updatedMachine/${machine.id}" method="post" accept-charset="UTF-8">
           Тип Машины<br>
           <select name="machineType" required >
-              <option value="${machine.machineTypeId}" selected> ${machine.machineType}</option>
+              <option value="${machine.machineType.id}" selected> ${machine.machineType.typeDescription}</option>
               <c:forEach items="${machineTypeList}" var="machineType">
                   <option value=${machineType.id}> ${machineType.typeDescription}</option>
               </c:forEach>
