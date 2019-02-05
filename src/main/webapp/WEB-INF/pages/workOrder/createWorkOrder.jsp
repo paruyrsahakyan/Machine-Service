@@ -107,7 +107,7 @@
             var selectedMachineId = document.getElementById("machineOptions").value;
             maintenanceList = [];
             for (var i = 0; i < initialMachineList.length; i++) {
-                    if (xxx.toString()=== selectedMachineId) {
+                    if (initialMachineList[i].id.toString()=== selectedMachineId) {
                     maintenanceList.push(initialMachineList[i].maintenanceList);
                 }
             }
