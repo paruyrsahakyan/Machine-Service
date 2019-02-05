@@ -73,8 +73,8 @@
     <c:forEach items="${machine.machineType.periodicMaintenanceList}" var="periodicMaintenance">
         var maintenanceSmr ="${periodicMaintenance.smr}";
         var maintenanceId= "${periodicMaintenance.id}";
-        periodicMaintenanceList.push({smr: maintenanceSmr,
-                                      id: maintenanceId});
+        periodicMaintenanceList.push({actualSmr: maintenanceSmr,
+                                      maintenanceId: maintenanceId});
     </c:forEach>
       initialMachineList.push({model: machineModel,
         serialNumber: machineSerialNumber,
@@ -107,8 +107,7 @@
             var selectedMachineId = document.getElementById("machineOptions").value;
             maintenanceList = [];
             for (var i = 0; i < initialMachineList.length; i++) {
-                var xxx= initialMachineList[i].id
-                 if (xxx.toString()=== selectedMachineId) {
+                    if (xxx.toString()=== selectedMachineId) {
                     maintenanceList.push(initialMachineList[i].maintenanceList);
                 }
             }
@@ -118,8 +117,8 @@
               var maintenanceInput=document.getElementById("periodicMaintenance");
               maintenanceInput.innerHTML=" ";
               for(var i=0; i<maintenanceList.length; i++){
-                  var a =maintenanceList[i].id;
-                  var b=maintenanceList[i].smr;
+                  var a=maintenanceList[i].maintenanceId;
+                  var b=maintenanceList[i].actualSmr;
                   maintenanceInput.innerHTML +="<option value='"+
                           a + "'> TO" +
                           b + "</option>";
