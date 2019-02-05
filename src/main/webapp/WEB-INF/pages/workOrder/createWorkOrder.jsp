@@ -120,7 +120,7 @@
               for(var i=1; i<maintenanceList.length; i++){
                   maintenanceInput.innerHTML +="<option value='"+
                           maintenanceList[i].id + "'> TO" +
-                          maintenanceList[i]. + "</option>";
+                          maintenanceList[i].smr + "</option>";
               }
            }
 </script>
