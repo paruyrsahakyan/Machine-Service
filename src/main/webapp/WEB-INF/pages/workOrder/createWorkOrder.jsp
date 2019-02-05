@@ -102,11 +102,11 @@
                 machinesOfSelectedCustomer[i].model+ "; sn" +
                 machinesOfSelectedCustomer[i].serialNumber + "</option>";
         }
-                }
+    }
         function initMaintenanceList() {
             var selectedMachineId = document.getElementById("machineOptions").value;
             alert(selectedMachineId);
-            alert(initialMachineList[selectedMachineId].maintenanceList.length);
+            alert(initialMachineList[selectedMachineId].model);
             maintenanceList = [];
             for (var i = 0; i < initialMachineList.length; i++) {
                  if (initialMachineList[i].id == selectedMachineId) {
@@ -117,7 +117,7 @@
            function setMaintenanceList() {
               initMaintenanceList();
               var maintenanceInput=document.getElementById("periodicMaintenance");
-              maintenanceInput.innerHTML=" ";
+              maintenanceInput.innerHTML +="<option> &nbsp; </option>";
               for(var i=1; i<maintenanceList.length; i++){
                   maintenanceInput.innerHTML +="<option value='"+
                           maintenanceList[i].id + "'> TO" +
