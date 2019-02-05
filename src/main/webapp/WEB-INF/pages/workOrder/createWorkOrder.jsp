@@ -95,7 +95,7 @@
         function setMachineList(){
             initSelectedCustomersMachines();
                     var machineInput = document.getElementById("machineOptions");
-            machineInput.innerHTML = " "
+            machineInput.innerHTML = "<option> &nbsp; </option> "
             for (var i=0; i<machinesOfSelectedCustomer.length; i++) {
                 machineInput.innerHTML += "<option value='"+
                 machinesOfSelectedCustomer[i].id + "'>" +
@@ -117,7 +117,7 @@
            function setMaintenanceList() {
               initMaintenanceList();
               var maintenanceInput=document.getElementById("periodicMaintenance");
-              maintenanceInput.innerHTML +="<option> &nbsp; </option>";
+              maintenanceInput.innerHTML=" ";
               for(var i=1; i<maintenanceList.length; i++){
                   maintenanceInput.innerHTML +="<option value='"+
                           maintenanceList[i].id + "'> TO" +
