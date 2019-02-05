@@ -67,7 +67,6 @@
       <c:forEach items="${machineList}" var="machine">
     var machineModel = "${machine.model}";
     var machineSerialNumber = "${machine.serialNumber}";
-    var customerName = "${machine.customer}";
     var machineId = "${machine.id}";
     var periodicMaintenanceList =[];
     <c:forEach items="${machine.machineType.periodicMaintenanceList}" var="periodicMaintenance">
@@ -78,7 +77,6 @@
     </c:forEach>
       initialMachineList.push({model: machineModel,
         serialNumber: machineSerialNumber,
-        customerName: customerName,
         id: machineId,
         maintenanceList: periodicMaintenanceList});
     </c:forEach>
@@ -105,7 +103,7 @@
                 }
         function initMaintenanceList() {
             var selectedMachineId = document.getElementById("machineOptions").value;
-            alert(initialMachineList[selectedMachineId].maintenanceList);
+            alert(initialMachineList[selectedMachineId].maintenanceList.length);
             maintenanceList = [];
             for (var i = 0; i < initialMachineList.length; i++) {
                  if (initialMachineList[i].id == selectedMachineId) {
