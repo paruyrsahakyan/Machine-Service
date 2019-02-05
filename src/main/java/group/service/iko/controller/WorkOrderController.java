@@ -56,7 +56,7 @@ public class WorkOrderController {
         workOrder.setOrderDate(CalendarAdapter.getGregCalendar(date));
         workOrder.setLocation(location);
         workOrder.setWorker(worker);
-        workOrder.setWorker(serviceMachine);
+        workOrder.setServiceMachine(serviceMachine);
         workOrderService.saveWorkOrder(workOrder);
         ModelAndView modelAndView = new ModelAndView("workOrder/workOrder");
         modelAndView.addObject("workOrder", workOrderService.getLastSavedWorkOrder());

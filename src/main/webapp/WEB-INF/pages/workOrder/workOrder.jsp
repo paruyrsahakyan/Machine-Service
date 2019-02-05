@@ -41,6 +41,7 @@
             <td>${workOrder.machine.model} &nbsp; sn ${workOrder.machine.serialNumber}</td>
         </tr>
         <tr>
+
             <th>Наработка:</th>
             <td>${workOrder.orderSmr}</td>
         </tr>

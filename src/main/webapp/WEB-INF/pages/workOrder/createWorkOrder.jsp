@@ -19,7 +19,7 @@
     <br>
         <form:form action="/workOrder/createdWorkOrder" method="post" accept-charset="UTF-8">
                  Заказчик:  <br>
-        <input list="customers" name="customer" id="selectedCustomer" oninput="getMachineList()" >
+        <input list="customers" name="customer" id="selectedCustomer" oninput="setMachineList()" >
         <datalist id="customers" >
             <c:forEach items="${customerList}" var="customer">
                 <option value="${customer.name}" hidden> ${customer.name} </option>
@@ -27,10 +27,15 @@
         </datalist>
         <br><br>
         Машина:  <br>
-        <select name="machineId" id="machineOptions" >
+            <select name="machineId" id="machineOptions" >
 
-        </select>
-        <br><br>
+            </select>
+            <br><br>
+        Планируемая ТО:  <br>
+            <select name="periodicMaintenance" id="periodicMaintenance" >
+
+            </select>
+            <br><br>
         Моточасы:<br>
         <input type="number" name="smr" >
         <br><br>
@@ -59,17 +64,24 @@
 <script>
     var initialMachineList = [];
     var machinesOfSelectedCustomer = [];
-
-    <c:forEach items="${machineList}" var="machine">
+    var maintenanceList=[];
+      <c:forEach items="${machineList}" var="machine">
     var machineModel = "${machine.model}";
     var machineSerialNumber = "${machine.serialNumber}";
     var customerName = "${machine.customer}";
     var machineId = "${machine.id}";
-
-    initialMachineList.push({model: machineModel,
+    var periodicMaintenanceList =[];
+    <c:forEach items="${machine.machineType.periodicMaintenanceList}" var="periodicMaintenance">
+        var maintenanceSmr ="${periodicMaintenance.smr}";
+        var maintenanceId= "${periodicMaintenance.id}";
+        periodicMaintenanceList.push({smr: maintenanceSmr,
+                                      id: maintenanceId});
+    </c:forEach>
+      initialMachineList.push({model: machineModel,
         serialNumber: machineSerialNumber,
         customerName: customerName,
-        id: machineId});
+        id: machineId,
+        maintenanceList: periodicMaintenanceList});
     </c:forEach>
 
     function initSelectedCustomersMachines() {
@@ -81,7 +93,7 @@
                            }
             }
     }
-        function getMachineList(){
+        function setMachineList(){
             initSelectedCustomersMachines();
                     var machineInput = document.getElementById("machineOptions");
             machineInput.innerHTML = " "
@@ -92,6 +104,25 @@
                 machinesOfSelectedCustomer[i].serialNumber + "</option>";
         }
                 }
+        function initMaintenanceList() {
+        var selectedMachineId = document.getElementById("machineOptions").value;
+          for (var i =0; i<initialMachineList.length; i++) {
+              maintenanceList=[];
+            if(initialMachineList[i].machineId= selectedMachineId) {
+                maintenanceList.push(initialMachineList[i]);
+            }
+        }
+           function setMaintenanceList() {
+              initMaintenanceList();
+              var maintenanceInput=document.getElementById("periodicMaintenance");
+              maintenanceInput.innerHTML=" ";
+              for(var i=1; i<maintenanceList.length; i++){
+                  maintenanceInput.innerHTML +="<option value='"+
+                          maintenanceList[i].id + "'> TO" +
+                          maintenanceInput[i].smr + "</option>";
+              }
+           }
+        }
 </script>
 </body>
 </html>

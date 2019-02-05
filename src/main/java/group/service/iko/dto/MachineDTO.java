@@ -4,6 +4,7 @@ import group.service.iko.calendarAdapter.CalendarAdapter;
 import group.service.iko.entities.Customer;
 import group.service.iko.entities.HistoryRecord;
 import group.service.iko.entities.Machine;
+import group.service.iko.entities.MachineType;
 import group.service.iko.service.HistoryRecordService;
 import group.service.iko.service.MachineService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,7 @@ import java.util.List;
 public class MachineDTO {
 
     private int id;
-    private String machineType;
+    private MachineType machineType;
     private String model;
     private String serialNumber;
     private String engineModel;
@@ -27,8 +28,6 @@ public class MachineDTO {
     private int lastInfoId;
     private String lastInfoDate;
     private int lastSMR;
-    private int machineTypeId;
-
 
     public MachineDTO() {
 
@@ -49,28 +48,19 @@ public class MachineDTO {
         lastInfoId = historyRecordDTO.getId();
         lastSMR = historyRecordDTO.getSMR();
         if (machine.getMachineType() == null) {
-            machineType = "Не указан";
-            machineTypeId = -1;
-        } else {
-            machineType = machine.getMachineType().getTypeDescription();
-            machineTypeId = machine.getMachineType().getId();
+            machineType = new MachineType();
+             } else {
+            machineType = machine.getMachineType();
+
         }
     }
 
-    public int getMachineTypeId() {
-        return machineTypeId;
-    }
-
-    public void setMachineTypeId(int machineTypeId) {
-        this.machineTypeId = machineTypeId;
-    }
-
-    public String getMachineType() {
-        return machineType;
-    }
-
-    public void setMachineType(String machineType) {
+    public void setMachineType(MachineType machineType) {
         this.machineType = machineType;
+    }
+
+    public MachineType getMachineType() {
+        return machineType;
     }
 
     public int getLastSMR() {
