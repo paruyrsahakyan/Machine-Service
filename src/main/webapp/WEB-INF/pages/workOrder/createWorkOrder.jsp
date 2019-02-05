@@ -33,8 +33,7 @@
             <br><br>
         Планируемая ТО:  <br>
             <select name="periodicMaintenance" id="periodicMaintenance" >
-
-            </select>
+                  </select>
             <br><br>
         Моточасы:<br>
         <input type="number" name="smr" >
@@ -110,7 +109,7 @@
             maintenanceList = [];
             for (var i = 0; i < initialMachineList.length; i++) {
                  if (initialMachineList[i].machineId.toString() === selectedMachineId.toString()) {
-                    maintenanceList.push(initialMachineList[i]);
+                    maintenanceList.push(initialMachineList[i].maintenanceList);
                 }
             }
         }
@@ -121,7 +120,7 @@
               for(var i=1; i<maintenanceList.length; i++){
                   maintenanceInput.innerHTML +="<option value='"+
                           maintenanceList[i].id + "'> TO" +
-                          maintenanceInput[i].smr + "</option>";
+                          maintenanceList[i]. + "</option>";
               }
            }
 </script>
