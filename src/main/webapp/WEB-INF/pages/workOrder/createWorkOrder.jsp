@@ -117,7 +117,7 @@
               initMaintenanceList();
               var maintenanceInput=document.getElementById("periodicMaintenance");
               maintenanceInput.innerHTML=" ";
-              for(var i=1; i<maintenanceList.length; i++){
+              for(var i=0; i<maintenanceList.length; i++){
                   var a =maintenanceList[i].id;
                   var b=maintenanceList[i].smr;
                   maintenanceInput.innerHTML +="<option value='"+
