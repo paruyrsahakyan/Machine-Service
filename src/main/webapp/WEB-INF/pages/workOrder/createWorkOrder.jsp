@@ -105,11 +105,12 @@
         }
                 }
         function initMaintenanceList() {
-        var selectedMachineId = document.getElementById("machineOptions").value;
-          for (var i =0; i<initialMachineList.length; i++) {
-              maintenanceList=[];
-            if(initialMachineList[i].machineId= selectedMachineId) {
-                maintenanceList.push(initialMachineList[i]);
+            var selectedMachineId = document.getElementById("machineOptions").value;
+            for (var i = 0; i < initialMachineList.length; i++) {
+                maintenanceList = [];
+                if (initialMachineList[i].machineId = selectedMachineId) {
+                    maintenanceList.push(initialMachineList[i]);
+                }
             }
         }
            function setMaintenanceList() {
@@ -122,7 +123,6 @@
                           maintenanceInput[i].smr + "</option>";
               }
            }
-        }
 </script>
 </body>
 </html>
