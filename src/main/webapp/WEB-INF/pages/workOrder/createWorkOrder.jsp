@@ -105,10 +105,10 @@
                 }
         function initMaintenanceList() {
             var selectedMachineId = document.getElementById("machineOptions").value;
-            alert(initialMachineList[selectedMachineId]);
+            alert(initialMachineList[selectedMachineId].maintenanceList);
             maintenanceList = [];
             for (var i = 0; i < initialMachineList.length; i++) {
-                 if (initialMachineList[i].id.toString() === selectedMachineId.toString()) {
+                 if (initialMachineList[i].id == selectedMachineId) {
                     maintenanceList.push(initialMachineList[i].maintenanceList);
                 }
             }
