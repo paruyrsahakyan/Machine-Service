@@ -107,9 +107,9 @@
         function initMaintenanceList() {
             var selectedMachineId = document.getElementById("machineOptions").value;
             alert(selectedMachineId);
+            maintenanceList = [];
             for (var i = 0; i < initialMachineList.length; i++) {
-                maintenanceList = [];
-                if (initialMachineList[i].machineId === selectedMachineId) {
+                 if (initialMachineList[i].machineId === selectedMachineId) {
                     maintenanceList.push(initialMachineList[i]);
                 }
             }
