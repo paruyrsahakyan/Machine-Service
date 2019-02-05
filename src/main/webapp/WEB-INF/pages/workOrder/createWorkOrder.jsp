@@ -109,7 +109,8 @@
             alert(initialMachineList[selectedMachineId].model);
             maintenanceList = [];
             for (var i = 0; i < initialMachineList.length; i++) {
-                 if (initialMachineList[i].id == selectedMachineId) {
+                var xxx= initialMachineList[i].id
+                 if (xxx.toString()=== selectedMachineId) {
                     maintenanceList.push(initialMachineList[i].maintenanceList);
                 }
             }
