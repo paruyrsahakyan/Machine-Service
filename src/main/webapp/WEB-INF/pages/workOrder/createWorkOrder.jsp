@@ -105,8 +105,6 @@
     }
         function initMaintenanceList() {
             var selectedMachineId = document.getElementById("machineOptions").value;
-            alert(selectedMachineId);
-            alert(initialMachineList[selectedMachineId].model);
             maintenanceList = [];
             for (var i = 0; i < initialMachineList.length; i++) {
                 var xxx= initialMachineList[i].id
@@ -120,9 +118,11 @@
               var maintenanceInput=document.getElementById("periodicMaintenance");
               maintenanceInput.innerHTML=" ";
               for(var i=1; i<maintenanceList.length; i++){
+                  var a =maintenanceList[i].id;
+                  var b=maintenanceList[i].smr;
                   maintenanceInput.innerHTML +="<option value='"+
-                          maintenanceList[i].id + "'> TO" +
-                          maintenanceList[i].smr + "</option>";
+                          a + "'> TO" +
+                          b + "</option>";
               }
            }
 </script>
