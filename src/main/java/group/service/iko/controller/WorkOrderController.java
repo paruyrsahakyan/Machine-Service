@@ -29,9 +29,11 @@ public class WorkOrderController {
     @Autowired
     private WorkOrderService workOrderService;
 
-    public ModelAndView initialPage(){
-        ModelAndView modelAndView = new ModelAndView("workOrder");
-         return modelAndView;
+    @RequestMapping("/{id}")
+    public ModelAndView getWorkOrder(@PathVariable("id") int id){
+                ModelAndView modelAndView = new ModelAndView("workOrder/workOrder");
+                modelAndView.addObject("workOrder", new WorkOrderDTO(workOrderService.getWorkOrderById(id)));
+                   return modelAndView;
 
     }
    @RequestMapping("/new")

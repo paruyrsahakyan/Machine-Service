@@ -16,7 +16,7 @@
 <body>
 <div style="text-align: center">
     <h2>Редактирование Наряда</h2>
-    <a href="/workOrder/${workOrder.id}"> Отменить </a>">
+    <a href="/workOrder/${workOrder.id}"> Отменить </a>
     <br>
     <br>
     <form:form action="/workOrder/${workOrder.id}/upadated" method="post" accept-charset="UTF-8">
