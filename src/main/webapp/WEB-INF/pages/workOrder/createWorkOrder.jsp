@@ -108,7 +108,7 @@
             maintenanceList = [];
             for (var i = 0; i < initialMachineList.length; i++) {
                     if (initialMachineList[i].id.toString()=== selectedMachineId) {
-                        for(var j=0; j<initialMachineList[i].maintenanceList; j++){
+                        for(var j=0; j<initialMachineList[i].maintenanceList.length; j++){
                             maintenanceList.push({maintenanceId:initialMachineList[i].maintenanceList[j].maintenanceId,
                                 actualSmr:initialMachineList[i].maintenanceList[j].actualSmr});
                         }
