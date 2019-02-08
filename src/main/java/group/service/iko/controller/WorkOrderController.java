@@ -68,6 +68,41 @@ public class WorkOrderController {
         return  modelAndView;
     }
 
+    @RequestMapping("/{id}/update")
+    public  ModelAndView getUpdatePage(@PathVariable("id") int id){
+        WorkOrder workOrder = workOrderService.getWorkOrderById(id);
+        ModelAndView modelAndView = new ModelAndView("workOrder/updateWorkOrder");
+        modelAndView.addObject("workOrder", new WorkOrderDTO(workOrder));
+        modelAndView.addObject("customerList", CustomerDTO.convertIntoDTO(customerService.getAllCustomers()));
+        modelAndView.addObject("serviceMachineList", serviceMachineService.getAllServiceMachines());
+        modelAndView.addObject("workerList", workerService.getAllWorkers());
+        return  modelAndView;
+    }
+
+    @RequestMapping(value = "/{id}/updated", method = RequestMethod.POST)
+    public  ModelAndView updateWorkOrder(@PathVariable("id") int id,
+                                         @RequestParam("machineId") int machineId,
+                                         @RequestParam("smr") int smr,
+                                         @RequestParam("date") String date,
+                                         @RequestParam("location") String location,
+                                         @RequestParam("worker") String worker,
+                                         @RequestParam("serviceMachine") String serviceMachine
+    ){
+        WorkOrder workOrder = new WorkOrder();
+        workOrder.setId(id);
+        workOrder.setMachine( machineService.getMachineById(machineId));
+        workOrder.setOrderSmr(smr);
+        workOrder.setOrderDate(CalendarAdapter.getGregCalendar(date));
+        workOrder.setLocation(location);
+        workOrder.setWorker(worker);
+        workOrder.setServiceMachine(serviceMachine);
+        workOrderService.updateWorkOrder(workOrder);
+        ModelAndView modelAndView = new ModelAndView("workOrder/workOrder");
+        WorkOrderDTO workOrderDTO = new WorkOrderDTO(workOrderService.getWorkOrderById(id));
+        modelAndView.addObject("workOrder", workOrderDTO);
+        return  modelAndView;
+    }
+
      @RequestMapping("/{id}/deleted")
     public ModelAndView deleteWorkOrder(@PathVariable("id") int id){
         WorkOrder workOrder = new WorkOrder();
@@ -77,13 +112,5 @@ public class WorkOrderController {
           return modelAndView;
               }
 
-     @RequestMapping("/{id}/update")
-    public  ModelAndView getUpdatePage(@PathVariable("id") int id){
-        WorkOrder workOrder = workOrderService.getWorkOrderById(id);
-        ModelAndView modelAndView = new ModelAndView("workOrder/updateWorkOrder");
-        modelAndView.addObject("workOrder", new WorkOrderDTO(workOrder));
-        modelAndView.addObject("customerList", CustomerDTO.convertIntoDTO(customerService.getAllCustomers()));
-        modelAndView.addObject("serviceMachineList", serviceMachineService.getAllServiceMachines());
-        return  modelAndView;
-             }
+
 }
