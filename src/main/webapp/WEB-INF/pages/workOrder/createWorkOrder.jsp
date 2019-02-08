@@ -108,7 +108,8 @@
             maintenanceList = [];
             for (var i = 0; i < initialMachineList.length; i++) {
                     if (initialMachineList[i].id.toString()=== selectedMachineId) {
-                    maintenanceList.push(initialMachineList[i].maintenanceList);
+                    maintenanceList.push({maintenanceId:initialMachineList[i].maintenanceList.maintenanceId,
+                                          actualSmr:initialMachineList[i].maintenanceList.actualSmr});
                 }
             }
         }
@@ -117,8 +118,8 @@
               var maintenanceInput=document.getElementById("periodicMaintenance");
               maintenanceInput.innerHTML=" ";
               for(var i=0; i<maintenanceList.length; i++){
-                  var a=maintenanceList[i].maintenanceId;
-                  var b=maintenanceList[i].actualSmr;
+                  var a = maintenanceList[i].maintenanceId;
+                  var b = maintenanceList[i].actualSmr;
                   maintenanceInput.innerHTML +="<option value='"+
                           a + "'> TO" +
                           b + "</option>";
