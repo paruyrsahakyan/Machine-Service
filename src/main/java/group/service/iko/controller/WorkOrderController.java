@@ -3,11 +3,13 @@ package group.service.iko.controller;
 import group.service.iko.calendarAdapter.CalendarAdapter;
 import group.service.iko.dto.CustomerDTO;
 import group.service.iko.dto.MachineDTO;
+import group.service.iko.dto.WorkOrderDTO;
 import group.service.iko.entities.ServiceMachine;
 import group.service.iko.entities.WorkOrder;
 import group.service.iko.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -59,14 +61,29 @@ public class WorkOrderController {
         workOrder.setServiceMachine(serviceMachine);
         workOrderService.saveWorkOrder(workOrder);
         ModelAndView modelAndView = new ModelAndView("workOrder/workOrder");
-        modelAndView.addObject("workOrder", workOrderService.getLastSavedWorkOrder());
+        modelAndView.addObject("workOrder", new WorkOrderDTO(workOrderService.getLastSavedWorkOrder()));
         return  modelAndView;
     }
 
-     @RequestMapping("/machineType/Creation")
-    public ModelAndView machineTypeCreation() {
-        ModelAndView modelAndView = new ModelAndView("machineType/machineTypeCreation");
-           return modelAndView;
-    }
+     @RequestMapping("/workOrder/{id}/deleted")
+    public ModelAndView deleteWorkOrder(@PathVariable("id") int id){
+        WorkOrder workOrder = new WorkOrder();
+        workOrder.setId(id);
+        workOrderService.deleteWorkOrder(workOrder);
+         ModelAndView modelAndView = new ModelAndView("index");
+          return modelAndView;
+              }
+
+     @RequestMapping("/workOrder/{id}/update")
+    public  ModelAndView getUpdatePage(@PathVariable("id") int id){
+        WorkOrder workOrder = workOrderService.getWorkOrderById(id);
+        ModelAndView modelAndView = new ModelAndView("workOrder/updateWorkOrder");
+        modelAndView.addObject("workOrder", new WorkOrderDTO(workOrder));
+        modelAndView.addObject("customerList", CustomerDTO.convertIntoDTO(customerService.getAllCustomers()));
+        modelAndView.addObject("serviceMachineList", serviceMachineService.getAllServiceMachines());
+        return  modelAndView;
+             }
+
+
 
 }

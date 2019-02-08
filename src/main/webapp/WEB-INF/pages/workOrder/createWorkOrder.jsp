@@ -11,11 +11,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>Создание записи  в истории</title>
+    <title>Создание Наряда</title>
 </head>
 <body>
 <div style="text-align: center">
     <h2>Новый Наряд</h2>
+    <a href="/"> Отменить </a>">
+    <br>
     <br>
         <form:form action="/workOrder/createdWorkOrder" method="post" accept-charset="UTF-8">
                  Заказчик:  <br>
@@ -41,8 +43,8 @@
         Дата:<br>
         <input type="date" name="date" required >
         <br><br>
-        Местанахождение Машины:<br>
-        <input type="text" name="location" >
+        Местoнахождение Машины:<br>
+        <input type="text" name="location"  required>
         <br><br>
          Ответсвенный: <br>
         <select name="worker">

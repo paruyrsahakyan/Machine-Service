@@ -23,8 +23,8 @@ public void updateWorkOrder(WorkOrder workOrder){
 public void deleteWorkOrder(WorkOrder workOrder){
         workOrderDAO.deleteWorkOrder(workOrder);
 }
-public  void  getWorkOrderById(int id){
-        workOrderDAO.getWorkOrderById(id);
+public  WorkOrder  getWorkOrderById(int id){
+        return  workOrderDAO.getWorkOrderById(id);
 }
 
 public WorkOrder getLastSavedWorkOrder() {

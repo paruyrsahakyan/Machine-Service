@@ -26,6 +26,7 @@ public class WorkOrder {
     @Column(name="service_machine")
     private String serviceMachine;
 
+
     @Override
     public String toString() {
         return "WorkOrder{" +

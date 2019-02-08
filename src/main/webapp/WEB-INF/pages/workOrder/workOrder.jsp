@@ -34,7 +34,7 @@
     <table style="width: auto" align="center">
         <tr>
             <th>Заказчик:</th>
-            <td>${workOrder.machine.customer.name}</td>
+            <td>${workOrder.machine.customer}</td>
         </tr>
         <tr>
             <th>Машина:</th>
@@ -43,7 +43,7 @@
         <tr>
 
             <th>Наработка:</th>
-            <td>${workOrder.orderSmr}</td>
+            <td>${workOrder.smr}</td>
         </tr>
         <tr>
             <th>Дата:</th>
@@ -62,7 +62,7 @@
 
     <br> <br>
     <a href="/workOrder/${workOrder.id}/update" style="bottom: auto"> Редактировать</a> &nbsp;<b>|</b>
-    <a href="/customer/machine/yRecord/${machine.id}">Закрыть Наряд</a>
+    <a href="/workOrder/${workOrder.id}/createHistoryRecord/">Закрыть Наряд</a>
     &nbsp;<b>|</b>
        <a href="/WorkOrder/${workOrder.id}/deleted"
        onclick="return confirm('!!!Вы уверены что хатите удалить машину!!!');"
