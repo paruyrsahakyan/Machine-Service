@@ -35,6 +35,7 @@ public class WorkOrderDTO {
         this.periodicMaintenance=workOrder.getPeriodicMaintenance();
         this.location=workOrder.getLocation();
         this.worker=workOrder.getWorker();
+        this.serviceMachine=workOrder.getServiceMachine();
     }
 
     @Override

@@ -34,8 +34,8 @@ public class WorkOrderController {
                 ModelAndView modelAndView = new ModelAndView("workOrder/workOrder");
                 modelAndView.addObject("workOrder", new WorkOrderDTO(workOrderService.getWorkOrderById(id)));
                    return modelAndView;
-
     }
+
    @RequestMapping("/new")
     public ModelAndView getWorkOrderCreationPage() {
         ModelAndView modelAndView = new ModelAndView("workOrder/createWorkOrder");
@@ -45,6 +45,7 @@ public class WorkOrderController {
         modelAndView.addObject("customerList", CustomerDTO.convertIntoDTO(customerService.getAllCustomers()));
         return modelAndView;
     }
+
     @RequestMapping(value = "/createdWorkOrder", method = RequestMethod.POST)
     public  ModelAndView createWorkOrder(@RequestParam("customer") String customerId,
                                          @RequestParam("machineId") int machineId,
@@ -67,7 +68,7 @@ public class WorkOrderController {
         return  modelAndView;
     }
 
-     @RequestMapping("/workOrder/{id}/deleted")
+     @RequestMapping("/{id}/deleted")
     public ModelAndView deleteWorkOrder(@PathVariable("id") int id){
         WorkOrder workOrder = new WorkOrder();
         workOrder.setId(id);
@@ -76,7 +77,7 @@ public class WorkOrderController {
           return modelAndView;
               }
 
-     @RequestMapping("/workOrder/{id}/update")
+     @RequestMapping("/{id}/update")
     public  ModelAndView getUpdatePage(@PathVariable("id") int id){
         WorkOrder workOrder = workOrderService.getWorkOrderById(id);
         ModelAndView modelAndView = new ModelAndView("workOrder/updateWorkOrder");
@@ -85,7 +86,4 @@ public class WorkOrderController {
         modelAndView.addObject("serviceMachineList", serviceMachineService.getAllServiceMachines());
         return  modelAndView;
              }
-
-
-
 }
