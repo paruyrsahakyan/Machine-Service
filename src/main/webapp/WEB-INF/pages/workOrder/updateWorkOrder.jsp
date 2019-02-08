@@ -58,7 +58,7 @@
         </select>  <br> <br>
         Сервисная Машина: <br>
         <select name="serviceMachine" >
-            <option value="${workOrder.machine}"> ${workOrder.machine}</option>
+            <option value="${workOrder.serviceMachine}"> ${workOrder.serviceMachine}</option>
             <c:forEach items="${serviceMachineList}" var="serviceMachine">
                 <option value="${serviceMachine.name}"> ${serviceMachine.name}</option>
             </c:forEach>

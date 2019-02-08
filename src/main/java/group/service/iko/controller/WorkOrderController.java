@@ -76,6 +76,7 @@ public class WorkOrderController {
         modelAndView.addObject("customerList", CustomerDTO.convertIntoDTO(customerService.getAllCustomers()));
         modelAndView.addObject("serviceMachineList", serviceMachineService.getAllServiceMachines());
         modelAndView.addObject("workerList", workerService.getAllWorkers());
+        modelAndView.addObject("machineList", MachineDTO.convertIntoDTO(machineService.getAllMachines()));
         return  modelAndView;
     }
 
@@ -111,6 +112,5 @@ public class WorkOrderController {
          ModelAndView modelAndView = new ModelAndView("index");
           return modelAndView;
               }
-
 
 }
