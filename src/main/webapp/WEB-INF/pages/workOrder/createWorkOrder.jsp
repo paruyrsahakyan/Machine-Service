@@ -108,9 +108,11 @@
             maintenanceList = [];
             for (var i = 0; i < initialMachineList.length; i++) {
                     if (initialMachineList[i].id.toString()=== selectedMachineId) {
-                    maintenanceList.push({maintenanceId:initialMachineList[i].maintenanceList.maintenanceId,
-                                          actualSmr:initialMachineList[i].maintenanceList.actualSmr});
-                }
+                        for(var j=0; j<initialMachineList[i].maintenanceList; j++){
+                            maintenanceList.push({maintenanceId:initialMachineList[i].maintenanceList[j].maintenanceId,
+                                actualSmr:initialMachineList[i].maintenanceList[j].actualSmr});
+                        }
+                                    }
             }
         }
            function setMaintenanceList() {
