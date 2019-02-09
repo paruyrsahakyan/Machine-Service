@@ -19,7 +19,7 @@
     <a href="/workOrder/${workOrder.id}"> Отменить </a>
     <br>
     <br>
-    <form:form action="/workOrder/${workOrder.id}/upadated" method="post" accept-charset="UTF-8">
+    <form:form action="/workOrder/${workOrder.id}/updated" method="post" accept-charset="UTF-8">
         Заказчик:  <br>
         <input list="customers" value="${workOrder.machine.customer}" id="selectedCustomer" onchange="setMachineList()" >
         <datalist id="customers" >

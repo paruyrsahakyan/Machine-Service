@@ -16,7 +16,7 @@
 <body>
 <div style="text-align: center">
     <h2>Новый Наряд</h2>
-    <a href="/"> Отменить </a>">
+    <a href="/"> Отменить </a>
     <br>
     <br>
         <form:form action="/workOrder/createdWorkOrder" method="post" accept-charset="UTF-8">
