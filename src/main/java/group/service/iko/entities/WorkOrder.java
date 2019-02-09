@@ -26,7 +26,7 @@ public class WorkOrder {
     @Column(name="service_machine")
     private String serviceMachine;
     @Column(name="condition")
-    private int condition;
+    private String condition;
 
     @Override
     public String toString() {
@@ -39,7 +39,7 @@ public class WorkOrder {
                 ", worker='" + worker + '\'' +
                 ", location='" + location + '\'' +
                 ", serviceMachine='" + serviceMachine + '\'' +
-                ", condition=" + condition +
+                ", condition='" + condition + '\'' +
                 '}';
     }
 
@@ -107,11 +107,11 @@ public class WorkOrder {
         this.serviceMachine = serviceMachine;
     }
 
-    public int getCondition() {
+    public String getCondition() {
         return condition;
     }
 
-    public void setCondition(int condition) {
+    public void setCondition(String condition) {
         this.condition = condition;
     }
 }
