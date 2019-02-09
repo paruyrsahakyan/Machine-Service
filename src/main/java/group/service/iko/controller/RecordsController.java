@@ -125,7 +125,7 @@ public class RecordsController {
         }
         HistoryRecord recordWithLaborHour = historyRecordService.getHistoryRecordById(idOfSavedRecord);
 
-        modelAndView.addObject("historyRecord", recordWithLaborHour);
+        modelAndView.addObject("historyRecord", new HistoryRecordDTO(recordWithLaborHour));
         String recordDate = CalendarAdapter.getStringFormat(savedHistoryRecord.getRecordDate());
         modelAndView.addObject("recordDate", recordDate);
 
