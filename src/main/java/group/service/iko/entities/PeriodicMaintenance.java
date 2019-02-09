@@ -19,7 +19,6 @@ public class PeriodicMaintenance {
     @OneToMany(mappedBy = "periodicMaintenance", fetch = FetchType.EAGER)
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private Set<MaintenancePart> maintenanceParts;
-
     @ManyToOne()
     @JoinColumn(name = "machine_type_id")
     private MachineType machineType ;

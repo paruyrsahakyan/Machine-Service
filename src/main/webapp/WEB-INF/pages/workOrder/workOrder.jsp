@@ -37,8 +37,13 @@
             <td>${workOrder.machine.customer}</td>
         </tr>
         <tr>
-            <th>Машина:</th>
-            <td>${workOrder.machine.model} &nbsp; sn ${workOrder.machine.serialNumber}</td>
+        <th>Машина:</th>
+        <td>${workOrder.machine.model} &nbsp; sn ${workOrder.machine.serialNumber}</td>
+    </tr>
+        <tr>
+        <tr>
+            <th>Работа:</th>
+            <td>ТО &nbsp; ${workOrder.periodicMaintenance.smr}</td>
         </tr>
         <tr>
 
@@ -62,7 +67,7 @@
 
     <br> <br>
     <a href="/workOrder/${workOrder.id}/update" style="bottom: auto"> Редактировать</a> &nbsp;<b>|</b>
-    <a href="/workOrder/${workOrder.id}/completedWorkOrder/">Закрыть Наряд</a>
+    <a href="/workOrder/${workOrder.id}/completeWorkOrder">Закрыть Наряд</a>
     &nbsp;<b>|</b>
        <a href="/workOrder/${workOrder.id}/deleted"
        onclick="return confirm('!!!Вы уверены что хатите удалить машину!!!');"

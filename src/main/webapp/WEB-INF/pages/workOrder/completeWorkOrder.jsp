@@ -20,7 +20,7 @@
     <h3>${workOrder.machine.model}:   ${workOrder.machine.serialNumber}</h3>
     <form:form action="/workOrder/${workOrder.id}/completedWorkOrder" method="post" accept-charset="UTF-8">
         Описание работы:  <br>
-        <input type="text" name="title" value="'TO'${workOrder.periodicMaintenance.smr}" required >
+        <input type="text" name="title" value="TO ${workOrder.periodicMaintenance.smr}" required >
         <br><br>
         Моточасы:<br>
         <input type="number" name="smr" value="${workOrder.smr}" >
@@ -29,7 +29,7 @@
         <input type="date" name="date" required  value="${workOrder.orderDate}">
         <br><br>
         Человекочасы: <br>
-        <input type="number" name="laborHour"   step="0.25" >">
+        <input type="number" name="laborHour"   step="0.25" >"
         <br><br>
         Детальная информация о работе: <br>
         <textarea name="recordInformation" cols="50" rows="6"> </textarea>
@@ -40,7 +40,7 @@
         <h3> Часы по работникам</h3>
         Имя работника:  Длительность работы:
         <select name="workerName1">
-            <option value="${workOrder.worker}" selected></option>
+            <option value="${workOrder.worker}" selected> ${workOrder.worker} </option>
             <c:forEach items="${workerList}" var="worker">
                 <option value="${worker.name}"> ${worker.name}</option>
             </c:forEach>
@@ -49,7 +49,6 @@
         <br><br>
         Имя раборника:   Длительность работы:
         <select name="workerName2">
-            <option value="" selected></option>
             <c:forEach items="${workerList}" var="worker">
                 <option value="${worker.name}"> ${worker.name}</option>
             </c:forEach>
