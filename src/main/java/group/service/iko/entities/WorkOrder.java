@@ -26,8 +26,7 @@ public class WorkOrder {
     @Column(name="service_machine")
     private String serviceMachine;
     @Column (name = "condition")
-    private int condition;
-    //id completed condition = 1, if not int = 0;
+    private int condition;   //if completed - condition = 1, if not conditon = 0;
 
 
     @Override
@@ -116,4 +115,5 @@ public class WorkOrder {
     public void setCondition(int condition) {
         this.condition = condition;
     }
+
 }
