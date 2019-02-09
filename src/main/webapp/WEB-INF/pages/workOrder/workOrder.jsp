@@ -64,7 +64,7 @@
     <a href="/workOrder/${workOrder.id}/update" style="bottom: auto"> Редактировать</a> &nbsp;<b>|</b>
     <a href="/workOrder/${workOrder.id}/createHistoryRecord/">Закрыть Наряд</a>
     &nbsp;<b>|</b>
-       <a href="/WorkOrder/${workOrder.id}/deleted"
+       <a href="/workOrder/${workOrder.id}/deleted"
        onclick="return confirm('!!!Вы уверены что хатите удалить машину!!!');"
        style="color: crimson;">Удалить Наряд</a>
 </div>

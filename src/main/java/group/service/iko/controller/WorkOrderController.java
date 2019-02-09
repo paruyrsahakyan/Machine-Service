@@ -4,8 +4,7 @@ import group.service.iko.calendarAdapter.CalendarAdapter;
 import group.service.iko.dto.CustomerDTO;
 import group.service.iko.dto.MachineDTO;
 import group.service.iko.dto.WorkOrderDTO;
-import group.service.iko.entities.ServiceMachine;
-import group.service.iko.entities.WorkOrder;
+import group.service.iko.entities.*;
 import group.service.iko.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,6 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller()
 @RequestMapping("/workOrder")
@@ -28,6 +30,10 @@ public class WorkOrderController {
     private ServiceMachineService serviceMachineService;
     @Autowired
     private WorkOrderService workOrderService;
+    @Autowired
+    private HistoryRecordService historyRecordService;
+    @Autowired
+    private DetailedLaborHourService detailedLaborHourService;
 
     @RequestMapping("/{id}")
     public ModelAndView getWorkOrder(@PathVariable("id") int id){
@@ -105,12 +111,70 @@ public class WorkOrderController {
     }
 
      @RequestMapping("/{id}/deleted")
-    public ModelAndView deleteWorkOrder(@PathVariable("id") int id){
-        WorkOrder workOrder = new WorkOrder();
-        workOrder.setId(id);
-        workOrderService.deleteWorkOrder(workOrder);
+    public ModelAndView deleteWorkOrder(@PathVariable("id") int id) {
+         WorkOrder workOrder = new WorkOrder();
+         workOrder.setId(id);
+         workOrderService.deleteWorkOrder(workOrder);
          ModelAndView modelAndView = new ModelAndView("index");
-          return modelAndView;
-              }
+         return modelAndView;
+     }
+     @RequestMapping("/{id}/completeWorkOrder")
+    public  ModelAndView getOrderCompletePage(@PathVariable("id") int id) {
+        WorkOrder workOrder = workOrderService.getWorkOrderById(id);
+        ModelAndView modelAndView = new ModelAndView("workOrder/completeWorkOrder");
+        modelAndView.addObject("workOrder", new WorkOrderDTO(workOrder));
+        modelAndView.addObject("workerList", workerService.getAllWorkers() );
+        return  modelAndView;
+     }
+     @RequestMapping("/{id}/completedWorOrder")
+    public ModelAndView completeWorkOrder(@PathVariable("id") int id,
+                                          @RequestParam("title") String title,
+                                          @RequestParam(name = "smr", defaultValue = "0") int smr,
+                                          @RequestParam("date") String date,
+                                          @RequestParam(name = "laborHour", defaultValue = "0") String laborhour,
+                                          @RequestParam("recordInformation") String recordInformation,
+                                          @RequestParam("otherInfo") String otherInfo,
+                                          @RequestParam("workerName1") String workerName1,
+                                          @RequestParam(name = "manHour1", defaultValue = "0") String manHour1,
+                                          @RequestParam("workerName2") String workerName2,
+                                          @RequestParam(name = "manHour2", defaultValue = "0") String manHour2,
+                                          @RequestParam("workerName3") String workerName3,
+                                          @RequestParam(name = "manHour3", defaultValue = "0") String manHour3,
+                                          @RequestParam("workerName4") String workerName4,
+                                          @RequestParam(name = "manHour4", defaultValue = "0") String manHour4) {
+         WorkOrder workOrder = workOrderService.getWorkOrderById(id);
+         workOrder.setCondition(1);
+         workOrderService.updateWorkOrder(workOrder);
+         Machine machine = workOrder.getMachine();
+         HistoryRecord historyRecord = new HistoryRecord();
+         historyRecord.setMachine(machine);
+         historyRecord.setTitle(title);
+         historyRecord.setSMR(smr);
+         historyRecord.setLaborHour(Double.parseDouble(laborhour));
+         historyRecord.setRecordInformation(recordInformation);
+         historyRecord.setRecordDate(CalendarAdapter.getGregCalendar(date));
+         historyRecord.setOtherInfo(otherInfo);
+         historyRecordService.saveHistoryRecord(historyRecord);
+         HistoryRecord savedHistoryRecord = historyRecordService.getLastRecord();
+         int idOfSavedRecord = savedHistoryRecord.getId();
+         List<DetailedLaborHour> detailedLaborList = new ArrayList<DetailedLaborHour>();
+         detailedLaborList.add(new DetailedLaborHour(workerName1, manHour1));
+         detailedLaborList.add(new DetailedLaborHour(workerName2, manHour2));
+         detailedLaborList.add(new DetailedLaborHour(workerName3, manHour3));
+         detailedLaborList.add(new DetailedLaborHour(workerName4, manHour4));
+         for (DetailedLaborHour detailedLabor : detailedLaborList) {
+             if (!detailedLabor.getWorkerName().equals("")) {
+                 detailedLabor.setHistoryRecord(savedHistoryRecord);
+                 detailedLaborHourService.saveDetailedLaborHour(detailedLabor);
+             }
+         }
+         HistoryRecord recordWithLaborHour = historyRecordService.getHistoryRecordById(idOfSavedRecord);
+         ModelAndView modelAndView = new ModelAndView("historyRecord/historyRecord");
+         modelAndView.addObject("historyRecord", recordWithLaborHour);
+         String recordDate = CalendarAdapter.getStringFormat(savedHistoryRecord.getRecordDate());
+         modelAndView.addObject("recordDate", recordDate);
+         return modelAndView;
+
+     }
 
 }
