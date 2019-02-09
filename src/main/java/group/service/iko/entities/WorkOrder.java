@@ -25,8 +25,8 @@ public class WorkOrder {
     private String location;
     @Column(name="service_machine")
     private String serviceMachine;
-    @Column (name = "condition")
-    private int condition;   //if completed - condition = 1, if not conditon = 0;
+   // @Column (name = "condition")
+   // private int condition;   //if completed - condition = 1, if not -condition = 0;
 
 
     @Override
@@ -40,7 +40,6 @@ public class WorkOrder {
                 ", worker='" + worker + '\'' +
                 ", location='" + location + '\'' +
                 ", serviceMachine='" + serviceMachine + '\'' +
-                ", condition=" + condition +
                 '}';
     }
 
@@ -108,12 +107,6 @@ public class WorkOrder {
         this.serviceMachine = serviceMachine;
     }
 
-    public int getCondition() {
-        return condition;
-    }
-
-    public void setCondition(int condition) {
-        this.condition = condition;
-    }
+   
 
 }
