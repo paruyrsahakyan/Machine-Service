@@ -68,7 +68,7 @@ public class WorkOrderController {
         workOrder.setLocation(location);
         workOrder.setWorker(worker);
         workOrder.setServiceMachine(serviceMachine);
-//        int condition = 1;
+        int condition = 0;
 //        workOrder.setCondition(condition);
         workOrderService.saveWorkOrder(workOrder);
                 ModelAndView modelAndView = new ModelAndView("workOrder/workOrder");
