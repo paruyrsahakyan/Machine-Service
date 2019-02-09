@@ -34,6 +34,8 @@ public class WorkOrderController {
     private HistoryRecordService historyRecordService;
     @Autowired
     private DetailedLaborHourService detailedLaborHourService;
+    @Autowired
+    private PeriodicMaintenanceService periodicMaintenanceService;
 
     @RequestMapping("/{id}")
     public ModelAndView getWorkOrder(@PathVariable("id") int id){
@@ -55,6 +57,7 @@ public class WorkOrderController {
     @RequestMapping(value = "/createdWorkOrder", method = RequestMethod.POST)
     public  ModelAndView createWorkOrder(@RequestParam("customer") String customerId,
                                          @RequestParam("machineId") int machineId,
+                                         @RequestParam("periodicMaintenance") int maintenanceId,
                                          @RequestParam("smr") int smr,
                                          @RequestParam("date") String date,
                                          @RequestParam("location") String location,
@@ -62,6 +65,8 @@ public class WorkOrderController {
                                          @RequestParam("serviceMachine") String serviceMachine
                                           ){
         WorkOrder workOrder = new WorkOrder();
+        PeriodicMaintenance maintenance = periodicMaintenanceService.getMaintenanceById(machineId);
+        workOrder.setPeriodicMaintenance(maintenance);
         workOrder.setMachine( machineService.getMachineById(machineId));
         workOrder.setOrderSmr(smr);
         workOrder.setOrderDate(CalendarAdapter.getGregCalendar(date));
