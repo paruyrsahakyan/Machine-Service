@@ -18,9 +18,11 @@ public class HistoryRecordDTO {
     private String recordDate;
     private int SMR;
     private String recordInformation;
-    private String machine;
+    private MachineDTO machine;
     private String otherInfo;
     private double laborHour;
+    private List<DetailedLaborHour> detailedLaborHours;
+
 
     public HistoryRecordDTO() {
     }
@@ -31,10 +33,10 @@ public class HistoryRecordDTO {
         recordDate = CalendarAdapter.getStringFormat(historyRecord.getRecordDate());
         SMR = historyRecord.getSMR();
         recordInformation = historyRecord.getRecordInformation();
-        Machine machineOfRecord = historyRecord.getMachine();
-        machine = machineOfRecord.getModel() + "; sn " + machineOfRecord.getSerialNumber();
+        machine = new MachineDTO(historyRecord.getMachine());
         otherInfo = historyRecord.getOtherInfo();
         laborHour = historyRecord.getLaborHour();
+        detailedLaborHours =historyRecord.getLaborHours();
     }
 
     public static List<HistoryRecordDTO> transformIntoDTO(List<HistoryRecord> recordList) {
@@ -100,11 +102,11 @@ public class HistoryRecordDTO {
         this.recordInformation = recordInformation;
     }
 
-    public String getMachine() {
+    public MachineDTO getMachine() {
         return machine;
     }
 
-    public void setMachine(String machine) {
+    public void setMachine(MachineDTO machine) {
         this.machine = machine;
     }
 
@@ -122,5 +124,13 @@ public class HistoryRecordDTO {
 
     public void setLaborHour(double laborHour) {
         this.laborHour = laborHour;
+    }
+
+    public List<DetailedLaborHour> getDetailedLaborHours() {
+        return detailedLaborHours;
+    }
+
+    public void setDetailedLaborHours(List<DetailedLaborHour> detailedLaborHours) {
+        this.detailedLaborHours = detailedLaborHours;
     }
 }

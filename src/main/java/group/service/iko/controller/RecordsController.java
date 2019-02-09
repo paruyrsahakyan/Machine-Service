@@ -45,10 +45,8 @@ public class RecordsController {
         ModelAndView modelAndView = new ModelAndView("historyRecord/historyRecord");
         HistoryRecord historyRecord = historyRecordService.getHistoryRecordById(recordId);
         List<RecordFile> recordFileList = recordFileService.getFilesByRecordId(recordId);
-        int machineId = historyRecordService.getMachineIdByRecordId(recordId);
         modelAndView.addObject("fileList", recordFileList);
-        modelAndView.addObject("historyRecord", historyRecord);
-        modelAndView.addObject("machineId", machineId);
+        modelAndView.addObject("historyRecord", new HistoryRecordDTO(historyRecord));
         modelAndView.addObject("recordDate", new HistoryRecordDTO(historyRecord).getRecordDate() );
         return modelAndView;
 

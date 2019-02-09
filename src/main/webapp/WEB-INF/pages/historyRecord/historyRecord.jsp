@@ -66,10 +66,10 @@
 </table>
 <h3>Исполнители: </h3>
 <table align="center">
-       <c:forEach items="${historyRecord.laborHours}" var="laborHour">
+       <c:forEach items="${historyRecord.detailedLaborHours}" var="detailedLaborHour">
         <tr>
-            <th>${laborHour.workerName}</th>
-            <td>${laborHour.jobDuration}</td>
+            <th>${detailedLaborHour.workerName}</th>
+            <td>${detailedLaborHour.jobDuration}</td>
         </tr>
     </c:forEach>
 </table>
