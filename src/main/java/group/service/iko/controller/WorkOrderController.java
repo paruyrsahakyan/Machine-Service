@@ -127,7 +127,7 @@ public class WorkOrderController {
         modelAndView.addObject("workerList", workerService.getAllWorkers() );
         return  modelAndView;
      }
-     @RequestMapping("/{id}/completedWorOrder")
+     @RequestMapping("/{id}/completedWorkOrder")
     public ModelAndView completeWorkOrder(@PathVariable("id") int id,
                                           @RequestParam("title") String title,
                                           @RequestParam(name = "smr", defaultValue = "0") int smr,
