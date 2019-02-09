@@ -29,7 +29,7 @@
         <input type="date" name="date" required  value="${workOrder.orderDate}">
         <br><br>
         Человекочасы: <br>
-        <input type="number" name="laborHour"   step="0.25" >"
+        <input type="number" name="laborHour"   step="0.25" >
         <br><br>
         Детальная информация о работе: <br>
         <textarea name="recordInformation" cols="50" rows="6"> </textarea>
@@ -49,6 +49,7 @@
         <br><br>
         Имя раборника:   Длительность работы:
         <select name="workerName2">
+            <option value="" selected></option>
             <c:forEach items="${workerList}" var="worker">
                 <option value="${worker.name}"> ${worker.name}</option>
             </c:forEach>

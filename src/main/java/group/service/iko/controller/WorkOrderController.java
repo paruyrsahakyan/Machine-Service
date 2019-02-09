@@ -149,6 +149,7 @@ public class WorkOrderController {
                                           @RequestParam("workerName4") String workerName4,
                                           @RequestParam(name = "manHour4", defaultValue = "0") String manHour4) {
          WorkOrder workOrder = workOrderService.getWorkOrderById(id);
+         workOrder.setCondition("completed");
          workOrderService.updateWorkOrder(workOrder);
          Machine machine = workOrder.getMachine();
          HistoryRecord historyRecord = new HistoryRecord();
