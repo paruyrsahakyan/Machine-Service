@@ -25,7 +25,7 @@ public class WorkOrder {
     private String location;
     @Column(name="service_machine")
     private String serviceMachine;
-    @Column(name="condition")
+    @Column(name="state1")
     private String condition;
 
     @Override
