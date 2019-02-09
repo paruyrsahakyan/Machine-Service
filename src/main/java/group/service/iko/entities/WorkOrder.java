@@ -25,10 +25,6 @@ public class WorkOrder {
     private String location;
     @Column(name="service_machine")
     private String serviceMachine;
-   // @Column (name = "condition")
-   // private int condition;   //if completed - condition = 1, if not -condition = 0;
-
-
     @Override
     public String toString() {
         return "WorkOrder{" +
