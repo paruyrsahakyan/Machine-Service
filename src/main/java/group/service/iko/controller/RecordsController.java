@@ -47,6 +47,7 @@ public class RecordsController {
         List<RecordFile> recordFileList = recordFileService.getFilesByRecordId(recordId);
         modelAndView.addObject("fileList", recordFileList);
         modelAndView.addObject("historyRecord", new HistoryRecordDTO(historyRecord));
+        modelAndView.addObject("lenght", historyRecord.getDetailedLaborHours().size());
         return modelAndView;
 
     }
