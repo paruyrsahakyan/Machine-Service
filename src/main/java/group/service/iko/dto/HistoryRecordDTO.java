@@ -6,6 +6,7 @@ import group.service.iko.entities.HistoryRecord;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 public class HistoryRecordDTO {
 
@@ -17,7 +18,7 @@ public class HistoryRecordDTO {
     private MachineDTO machine;
     private String otherInfo;
     private double laborHour;
-    private List<DetailedLaborHour> detailedLaborHours;
+    private Set<DetailedLaborHour> detailedLaborHours;
 
 
     public HistoryRecordDTO() {
@@ -122,11 +123,11 @@ public class HistoryRecordDTO {
         this.laborHour = laborHour;
     }
 
-    public List<DetailedLaborHour> getDetailedLaborHours() {
+    public Set<DetailedLaborHour> getDetailedLaborHours() {
         return detailedLaborHours;
     }
 
-    public void setDetailedLaborHours(List<DetailedLaborHour> detailedLaborHours) {
+    public void setDetailedLaborHours(Set<DetailedLaborHour> detailedLaborHours) {
         this.detailedLaborHours = detailedLaborHours;
     }
 }
