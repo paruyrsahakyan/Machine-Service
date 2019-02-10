@@ -38,9 +38,9 @@
 
     <a href="/"> Главное меню</a>
     <br> <br>
-    <h5 style="color: #dc161c"> ${workOrderList.size()} невыполненных нарядов  &nbsp;&nbsp;&nbsp;&nbsp;
+    <h3 style="color: #dc161c"> ${workOrderList.size()} невыполненных нарядов  &nbsp;&nbsp;&nbsp;&nbsp;
     <a href="/workOrder/new"> Создать Новый наряд </a>
-    </h5>
+    </h3>
     <br>
     <H3 Невыполненные нарады>
 
@@ -60,6 +60,7 @@
     </th>
     <td> ${workOrder.machine.customer}</td>
     <td>${workOrder.machine.model} &nbsp; sn ${workOrder.machine.serialNumber}</td>
+    <td> TO${workOrder.periodicMaintenance.smr} </td>
     <td>${workOrder.worker}</td>
     </tr>
     </c:forEach>
