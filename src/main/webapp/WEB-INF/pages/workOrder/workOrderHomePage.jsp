@@ -37,10 +37,11 @@
     <h2>Наряды</h2>
 
     <a href="/"> Главное меню</a>
+    <br> <br>
     <a href="/workOrder/new"> Создать Новый наряд </a>
         <h3 style="color: #dc161c"> ${workOrderList.size()} невыполненных нарядов  &nbsp;&nbsp;&nbsp;&nbsp;
     </h3>
-    <br>
+
    <table style="width: auto" align="center">
 <tr>
     <th>N</th>

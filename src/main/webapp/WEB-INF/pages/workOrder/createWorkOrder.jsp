@@ -58,7 +58,7 @@
             <option value=" "> </option>
             <c:forEach items="${serviceMachineList}" var="serviceMachine">
                 <option value="${serviceMachine.name}"> ${serviceMachine.name}</option>
-            </c:forEach>
+            </c:forEach>+
                     </select>
            <br> <br>
            <input type="submit" value="Сохранить">
@@ -83,8 +83,8 @@
       initialMachineList.push({model: machineModel,
         serialNumber: machineSerialNumber,
         customerName: customerName,
-        id: machineId,
-        selectedMaintenanceList: periodicMaintenanceList});
+        machineId: machineId,
+        periodicMaintenanceList: periodicMaintenanceList});
     </c:forEach>
 
     function initSelectedCustomersMachines() {
@@ -109,10 +109,11 @@
     }
         function initMaintenanceList() {
             var selectedMachineId = document.getElementById("machineOptions").value;
-            maintenanceList = [];
+             maintenanceList = [];
             for (var i = 0; i < initialMachineList.length; i++) {
-                    if (initialMachineList[i].id.toString()=== selectedMachineId) {
-                        maintenanceList = initialMachineList[i].selectedMaintenanceList;
+                var machine=initialMachineList[i];
+                    if (machine.machineId.toString()=== selectedMachineId) {
+                        maintenanceList=machine.periodicMaintenanceList;
                     }
                          }
         }

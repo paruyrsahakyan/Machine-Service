@@ -65,7 +65,7 @@ public class WorkOrderController {
                                          @RequestParam("serviceMachine") String serviceMachine
                                           ){
         WorkOrder workOrder = new WorkOrder();
-        PeriodicMaintenance maintenance = periodicMaintenanceService.getMaintenanceById(machineId);
+        PeriodicMaintenance maintenance = periodicMaintenanceService.getMaintenanceById(maintenanceId);
         workOrder.setPeriodicMaintenance(maintenance);
         workOrder.setMachine( machineService.getMachineById(machineId));
         workOrder.setOrderSmr(smr);
