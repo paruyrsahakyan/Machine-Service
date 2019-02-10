@@ -185,7 +185,7 @@ public class WorkOrderController {
     public  ModelAndView getUncompletedWorkOrders() {
         List<WorkOrder> workOrderList = workOrderService.getUncompletedOrders();
         ModelAndView modelAndView = new ModelAndView("workOrder/workOrderHomePage");
-        modelAndView.addObject("workOrderList", workOrderList);
+        modelAndView.addObject("workOrderList", WorkOrderDTO.transformDtoList(workOrderList));
          return  modelAndView;
     }
 

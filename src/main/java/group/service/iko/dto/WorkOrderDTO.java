@@ -6,7 +6,9 @@ import group.service.iko.entities.PeriodicMaintenance;
 import group.service.iko.entities.WorkOrder;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.GregorianCalendar;
+import java.util.List;
 
 public class WorkOrderDTO {
 
@@ -37,7 +39,13 @@ public class WorkOrderDTO {
         this.worker=workOrder.getWorker();
         this.serviceMachine=workOrder.getServiceMachine();
     }
-
+    public static List<WorkOrderDTO> transformDtoList(List<WorkOrder> workOrderList) {
+        List<WorkOrderDTO> workOrderDTOList = new ArrayList<WorkOrderDTO>();
+        for (WorkOrder workOrder : workOrderList) {
+            workOrderDTOList.add(new WorkOrderDTO(workOrder));
+        }
+        return workOrderDTOList;
+    }
     @Override
     public String toString() {
         return "WorkOrderDTO{" +

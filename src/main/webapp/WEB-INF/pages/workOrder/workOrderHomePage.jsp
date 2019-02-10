@@ -38,8 +38,12 @@
 
     <a href="/"> Главное меню</a>
     <br> <br>
-    <h5 style="color: #dc161c"> ${workOrderList.size()} невыполненных нарядов </h5> &nbsp;
+    <h5 style="color: #dc161c"> ${workOrderList.size()} невыполненных нарядов  &nbsp;&nbsp;&nbsp;&nbsp;
     <a href="/workOrder/new"> Создать Новый наряд </a>
+    </h5>
+    <br>
+    <H3 Невыполненные нарады>
+
 <table style="width: auto" align="center">
 <tr>
     <th>N</th>
@@ -52,7 +56,7 @@
 <% int i = 1; %>
 <c:forEach items="${workOrderList}" var="workOrder">
     <tr>
-    <th><a href="workOrder/${workOrder.id}}"> <%= i++%> </a>
+    <th><a href="/workOrder/${workOrder.id}}"> <%= i++%> </a>
     </th>
     <td> ${workOrder.machine.customer}</td>
     <td>${workOrder.machine.model} &nbsp; sn ${workOrder.machine.serialNumber}</td>
