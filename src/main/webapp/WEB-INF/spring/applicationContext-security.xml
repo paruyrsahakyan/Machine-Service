@@ -26,6 +26,8 @@
         <intercept-url pattern="/customer/machine/historyRecord/deleteHistoryRecord/*" access="hasRole('ROLE_ADMIN')"/>
         <intercept-url pattern="/customer/machine/historyRecord/addFiles/*"  access="hasRole('ROLE_ADMIN')"/>
         <intercept-url pattern="/customer/machine/historyRecord/files/updatedList/*"  access="hasRole('ROLE_ADMIN')" />
+        <intercept-url pattern="/workOrder/*"  access="hasRole('ROLE_ADMIN')" />
+        <intercept-url pattern="/machineType/*"  access="hasRole('ROLE_ADMIN')" />
         <intercept-url pattern="/admin/workers"  access="hasRole('ROLE_ADMIN')" />
         <intercept-url pattern="/admin/addWorker"  access="hasRole('ROLE_ADMIN')" />
         <intercept-url pattern="/admin/workers/workerAdded"  access="hasRole('ROLE_ADMIN')" />
