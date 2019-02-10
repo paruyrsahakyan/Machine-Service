@@ -44,7 +44,7 @@ public WorkOrder getLastSavedWorkOrder() {
 
     public List<WorkOrder> getUncompletedOrders() {
         session = SessionFactoryImpl.getSessionFactory().openSession();
-        String hql = "from group.service.iko.entities.WorkOrder where state='uncompleted'" ;
+        String hql = "from group.service.iko.entities.WorkOrder where condition='uncompleted'" ;
         Query query = session.createQuery(hql);
         List<WorkOrder> workOrderList= (List<WorkOrder>) query.list();
         session.flush();
