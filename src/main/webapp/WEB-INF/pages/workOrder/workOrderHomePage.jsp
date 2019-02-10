@@ -38,7 +38,8 @@
 
     <a href="/"> Главное меню</a>
     <br> <br>
-    <p> ${workOrderList.size()} невыполненных нарядов </p>
+    <h5 style="color: #dc161c"> ${workOrderList.size()} невыполненных нарядов </h5> &nbsp;
+    <a href="/workOrder/new"> Создать Новый наряд </a>
 <table style="width: auto" align="center">
 <tr>
     <th>N</th>
