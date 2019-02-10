@@ -38,8 +38,7 @@
 <a href="/customer/machine/${historyRecord.machine.id}" >
 <H3> ${historyRecord.machine.model} : sn${historyRecord.machine.serialNumber} </H3>
 </a>
-    <p>${lenght}<p>
-<table align="center">
+   <table align="center">
 <tr>
     <th>Дата</th>
     <td> ${historyRecord.recordDate}</td>

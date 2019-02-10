@@ -21,7 +21,7 @@
     <br>
         <form:form action="/workOrder/createdWorkOrder" method="post" accept-charset="UTF-8">
                  Заказчик:  <br>
-        <input list="customers" name="customer" id="selectedCustomer" oninput="setMachineList()" >
+        <input list="customers" name="customer" id="selectedCustomer" onchange="setMachineList()" >
         <datalist id="customers" >
             <c:forEach items="${customerList}" var="customer">
                 <option value="${customer.name}" hidden> ${customer.name} </option>
@@ -47,13 +47,15 @@
         <input type="text" name="location"  required>
         <br><br>
          Ответсвенный: <br>
-        <select name="worker">
+        <select name="worker" required>
+            <option  value=" ">
             <c:forEach items="${workerList}" var="worker">
                 <option value="${worker.name}"> ${worker.name}</option>
             </c:forEach>
         </select>  <br> <br>
         Сервисная Машина: <br>
-        <select name="serviceMachine">
+        <select name="serviceMachine" required>
+            <option value=" "> </option>
             <c:forEach items="${serviceMachineList}" var="serviceMachine">
                 <option value="${serviceMachine.name}"> ${serviceMachine.name}</option>
             </c:forEach>

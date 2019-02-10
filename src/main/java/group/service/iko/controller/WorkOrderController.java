@@ -73,7 +73,7 @@ public class WorkOrderController {
         workOrder.setLocation(location);
         workOrder.setWorker(worker);
         workOrder.setServiceMachine(serviceMachine);
-        workOrder.setCondition("completed");
+        workOrder.setCondition("uncompleted");
         workOrderService.saveWorkOrder(workOrder);
                 ModelAndView modelAndView = new ModelAndView("workOrder/workOrder");
         modelAndView.addObject("workOrder", new WorkOrderDTO(workOrderService.getLastSavedWorkOrder()));
@@ -180,7 +180,14 @@ public class WorkOrderController {
          String recordDate = CalendarAdapter.getStringFormat(savedHistoryRecord.getRecordDate());
          modelAndView.addObject("recordDate", recordDate);
          return modelAndView;
-
      }
+    @RequestMapping("/home")
+    public  ModelAndView getUncompletedWorkOrders() {
+        List<WorkOrder> workOrderList = workOrderService.getUncompletedOrders();
+        ModelAndView modelAndView = new ModelAndView("workOrder/workOrderHomePage");
+        modelAndView.addObject("workOrderList", workOrderList);
+         return  modelAndView;
+    }
+
 
 }

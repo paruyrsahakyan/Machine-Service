@@ -8,6 +8,8 @@ import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class WorkOrderService {
     @Autowired
@@ -39,4 +41,14 @@ public WorkOrder getLastSavedWorkOrder() {
     return workOrder;
 
 }
+
+    public List<WorkOrder> getUncompletedOrders() {
+        session = SessionFactoryImpl.getSessionFactory().openSession();
+        String hql = "from group.service.iko.entities.Work.Order where state='uncompleted'" ;
+        Query query = session.createQuery(hql);
+        List<WorkOrder> workOrderList= (List<WorkOrder>) query.list();
+        session.flush();
+        session.close();
+        return workOrderList;
+    }
 }
