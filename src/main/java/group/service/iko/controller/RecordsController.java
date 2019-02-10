@@ -47,7 +47,6 @@ public class RecordsController {
         List<RecordFile> recordFileList = recordFileService.getFilesByRecordId(recordId);
         modelAndView.addObject("fileList", recordFileList);
         modelAndView.addObject("historyRecord", new HistoryRecordDTO(historyRecord));
-        modelAndView.addObject("recordDate", new HistoryRecordDTO(historyRecord).getRecordDate() );
         return modelAndView;
 
     }

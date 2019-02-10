@@ -32,7 +32,7 @@ public class HistoryRecord {
     private double laborHour;
     @OneToMany(mappedBy = "historyRecord", fetch = FetchType.EAGER)
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
-    private List<DetailedLaborHour> laborHours;
+    private List<DetailedLaborHour> detailedLaborHours;
 
     public HistoryRecord() {
     }
@@ -45,12 +45,12 @@ public class HistoryRecord {
         this.laborHour = laborHour;
     }
 
-    public List<DetailedLaborHour> getLaborHours() {
-        return laborHours;
+    public List<DetailedLaborHour> getDetailedLaborHours() {
+        return detailedLaborHours;
     }
 
-    public void setLaborHours(List<DetailedLaborHour> laborHours) {
-        this.laborHours = laborHours;
+    public void setDetailedLaborHours(List<DetailedLaborHour> laborHours) {
+        this.detailedLaborHours = laborHours;
     }
 
     public int getId() {

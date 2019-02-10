@@ -3,12 +3,8 @@ package group.service.iko.dto;
 import group.service.iko.calendarAdapter.CalendarAdapter;
 import group.service.iko.entities.DetailedLaborHour;
 import group.service.iko.entities.HistoryRecord;
-import group.service.iko.entities.Machine;
-import group.service.iko.entities.RecordFile;
 
-import javax.persistence.*;
 import java.util.ArrayList;
-import java.util.GregorianCalendar;
 import java.util.List;
 
 public class HistoryRecordDTO {
@@ -36,7 +32,7 @@ public class HistoryRecordDTO {
         machine = new MachineDTO(historyRecord.getMachine());
         otherInfo = historyRecord.getOtherInfo();
         laborHour = historyRecord.getLaborHour();
-        detailedLaborHours =historyRecord.getLaborHours();
+        detailedLaborHours =historyRecord.getDetailedLaborHours();
     }
 
     public static List<HistoryRecordDTO> transformIntoDTO(List<HistoryRecord> recordList) {

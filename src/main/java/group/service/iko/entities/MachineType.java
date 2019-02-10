@@ -25,7 +25,7 @@ public class MachineType {
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private Set<PeriodicMaintenance> periodicMaintenanceList;
 
-    @OneToMany(mappedBy = "machineType", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "machineType", fetch = FetchType.LAZY)
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private Set<Machine> machineList;
 
