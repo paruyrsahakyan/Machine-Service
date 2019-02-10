@@ -4,6 +4,7 @@ import org.hibernate.annotations.Cascade;
 import javax.persistence.*;
 import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.Set;
 
 
 @Entity
@@ -21,7 +22,7 @@ public class HistoryRecord {
     @Column
     private String recordInformation;
     @ManyToOne()
-    @JoinColumn(name="machine_id")
+    @JoinColumn(name=" machine_id")
     private Machine machine;
     @Column
     private String otherInfo;
@@ -32,7 +33,7 @@ public class HistoryRecord {
     private double laborHour;
     @OneToMany(mappedBy = "historyRecord", fetch = FetchType.EAGER)
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
-    private List<DetailedLaborHour> detailedLaborHours;
+    private Set<DetailedLaborHour> detailedLaborHours;
 
     public HistoryRecord() {
     }
@@ -45,12 +46,12 @@ public class HistoryRecord {
         this.laborHour = laborHour;
     }
 
-    public List<DetailedLaborHour> getDetailedLaborHours() {
+    public Set<DetailedLaborHour> getDetailedLaborHours() {
         return detailedLaborHours;
     }
 
-    public void setDetailedLaborHours(List<DetailedLaborHour> laborHours) {
-        this.detailedLaborHours = laborHours;
+    public void setDetailedLaborHours(Set<DetailedLaborHour> detailedLaborHours) {
+        this.detailedLaborHours = detailedLaborHours;
     }
 
     public int getId() {
