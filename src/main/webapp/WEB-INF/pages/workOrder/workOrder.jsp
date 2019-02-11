@@ -43,7 +43,7 @@
         <tr>
         <tr>
             <th>Работа:</th>
-            <td>ТО &nbsp; ${workOrder.periodicMaintenance.smr}</td>
+            <td>ТО ${workOrder.periodicMaintenance.smr}</td>
         </tr>
         <tr>
 

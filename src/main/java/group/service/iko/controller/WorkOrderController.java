@@ -2,18 +2,24 @@ package group.service.iko.controller;
 
 import group.service.iko.calendarAdapter.CalendarAdapter;
 import group.service.iko.dto.CustomerDTO;
+import group.service.iko.dto.HistoryRecordDTO;
 import group.service.iko.dto.MachineDTO;
 import group.service.iko.dto.WorkOrderDTO;
 import group.service.iko.entities.*;
 import group.service.iko.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.*;
+import java.net.URLConnection;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -176,10 +182,8 @@ public class WorkOrderController {
          }
          HistoryRecord recordWithLaborHour = historyRecordService.getHistoryRecordById(idOfSavedRecord);
          ModelAndView modelAndView = new ModelAndView("historyRecord/historyRecord");
-         modelAndView.addObject("historyRecord", recordWithLaborHour);
-         String recordDate = CalendarAdapter.getStringFormat(savedHistoryRecord.getRecordDate());
-         modelAndView.addObject("recordDate", recordDate);
-         return modelAndView;
+         modelAndView.addObject("historyRecord", new HistoryRecordDTO(recordWithLaborHour));
+           return modelAndView;
      }
     @RequestMapping("/home")
     public  ModelAndView getUncompletedWorkOrders() {
@@ -187,6 +191,22 @@ public class WorkOrderController {
         ModelAndView modelAndView = new ModelAndView("workOrder/workOrderHomePage");
         modelAndView.addObject("workOrderList", WorkOrderDTO.transformDtoList(workOrderList));
          return  modelAndView;
+    }
+
+
+    @RequestMapping(value = "/{id}/downloadWareHouseRequest", method = RequestMethod.GET)
+    public void downloadFile(HttpServletResponse response,
+                             @PathVariable("id") int workOrderId) throws IOException {
+        WorkOrder workOrder = workOrderService.getWorkOrderById(workOrderId);
+        File file = new File("file path");
+        String mimeType;
+//      mimeType = URLConnection.guessContentTypeFromName(recordFile.getFileName());
+        mimeType = "application/vnd.ms-excel";
+        response.setContentType(mimeType);
+        response.setHeader("Content-Disposition", String.format("inline; filename=\"TOParts.xls\""));
+        response.setContentLength((int) file.length());
+        InputStream inputStream = new BufferedInputStream(new FileInputStream(file));
+        FileCopyUtils.copy(inputStream, response.getOutputStream());
     }
 
 
