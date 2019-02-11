@@ -102,7 +102,7 @@
             machineInput.innerHTML = "<option> &nbsp; </option> "
             for (var i=0; i<machinesOfSelectedCustomer.length; i++) {
                 machineInput.innerHTML += "<option value='"+
-                machinesOfSelectedCustomer[i].id + "'>" +
+                machinesOfSelectedCustomer[i].machineId + "'>" +
                 machinesOfSelectedCustomer[i].model+ "; sn" +
                 machinesOfSelectedCustomer[i].serialNumber + "</option>";
         }
