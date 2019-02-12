@@ -93,10 +93,9 @@ public class WorkOrderController {
         WorkOrder workOrder = workOrderService.getWorkOrderById(id);
         ModelAndView modelAndView = new ModelAndView("workOrder/updateWorkOrder");
         modelAndView.addObject("workOrder", new WorkOrderDTO(workOrder));
-        modelAndView.addObject("customerList", CustomerDTO.convertIntoDTO(customerService.getAllCustomers()));
+        modelAndView.addObject("periodicMaintenanceList", workOrder.getMachine().getMachineType().getPeriodicMaintenanceList());
         modelAndView.addObject("serviceMachineList", serviceMachineService.getAllServiceMachines());
         modelAndView.addObject("workerList", workerService.getAllWorkers());
-        modelAndView.addObject("machineList", MachineDTO.convertIntoDTO(machineService.getAllMachines()));
         return  modelAndView;
     }
 
@@ -109,8 +108,7 @@ public class WorkOrderController {
                                          @RequestParam("worker") String worker,
                                          @RequestParam("serviceMachine") String serviceMachine
     ){
-        WorkOrder workOrder = new WorkOrder();
-        workOrder.setId(id);
+        WorkOrder workOrder = workOrderService.getWorkOrderById(id);
         workOrder.setMachine( machineService.getMachineById(machineId));
         workOrder.setOrderSmr(smr);
         workOrder.setOrderDate(CalendarAdapter.getGregCalendar(date));
@@ -205,7 +203,7 @@ public class WorkOrderController {
 //      mimeType = URLConnection.guessContentTypeFromName(recordFile.getFileName());
         mimeType = "application/vnd.ms-excel";
         response.setContentType(mimeType);
-        response.setHeader("Content-Disposition", String.format("inline; filename=\"TOParts.xls\""));
+        response.setHeader("Content-Disposition", String.format("inline; filename=\"Отчет.xlsx\""));
         response.setContentLength((int) file.length());
         InputStream inputStream = new BufferedInputStream(new FileInputStream(file));
         FileCopyUtils.copy(inputStream, response.getOutputStream());

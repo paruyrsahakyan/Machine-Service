@@ -19,26 +19,18 @@
     <a href="/workOrder/${workOrder.id}"> Отменить </a>
     <br>
     <br>
+    <h3> Заказчик: &nbsp; ${workOrder.machine.customer}  </h3>
+    <h3> Машина: &nbsp; ${workOrder.machine.model} &nbsp; sn ${workOrder.machine.serialNumber} </h3>
     <form:form action="/workOrder/${workOrder.id}/updated" method="post" accept-charset="UTF-8">
-        Заказчик:  <br>
-        <input list="customers" value="${workOrder.machine.customer}" id="selectedCustomer" onchange="setMachineList()" >
-        <datalist id="customers" >
-              <c:forEach items="${customerList}" var="customer">
-                <option value="${customer.name}">
-            </c:forEach>
-        </datalist>
-        <br><br>
-        Машина:  <br>
-        <select name="machineId"  id="machineOptions" oninput="setMaintenanceList()">
-            <option selected value="${workOrder.machine.id}">
-                    ${workOrder.machine.model} &nbsp; sn ${workOrder.machine.serialNumber}</option>
-        </select>
-        <br><br>
+
         Планируемая ТО:  <br>
         <select name="periodicMaintenance" id="periodicMaintenance" >
             <option selected value="${workOrder.periodicMaintenance.id}">
               TO ${workOrder.periodicMaintenance.smr}
             </option>
+                <c:forEach items="${periodicMaintenanceList}" var="periodicMaintenance">
+                    <option value="${periodicMaintenance.id}"> TO ${periodicMaintenance.smr} </option>
+                </c:forEach>
         </select>
         <br><br>
         Моточасы:<br>
