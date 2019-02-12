@@ -70,7 +70,7 @@ public class ExcelReaderWriter {
         String engineSerialNumber = workOrder.getMachine().getEngineSerialNumber();
         String customer = workOrder.getMachine().getCustomer().getName();
         String location = workOrder.getLocation();
-        String reportType = "Комерция";
+        String reportType = "Коммерция";
         String workType = "ТО";
         String maintenance ="TO"+workOrder.getPeriodicMaintenance().getSmr();
         Cell cellMachineModel = datatypeSheet.getRow(4).getCell(8);
