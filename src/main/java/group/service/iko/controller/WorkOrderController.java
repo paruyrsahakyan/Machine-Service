@@ -42,6 +42,8 @@ public class WorkOrderController {
     private DetailedLaborHourService detailedLaborHourService;
     @Autowired
     private PeriodicMaintenanceService periodicMaintenanceService;
+    @Autowired
+    private ExcelReaderWriter excelReaderWriter;
 
     @RequestMapping("/{id}")
     public ModelAndView getWorkOrder(@PathVariable("id") int id){
@@ -194,11 +196,11 @@ public class WorkOrderController {
     }
 
 
-    @RequestMapping(value = "/{id}/downloadWareHouseRequest", method = RequestMethod.GET)
+    @RequestMapping(value = "/{id}/serviceReport", method = RequestMethod.GET)
     public void downloadFile(HttpServletResponse response,
                              @PathVariable("id") int workOrderId) throws IOException {
         WorkOrder workOrder = workOrderService.getWorkOrderById(workOrderId);
-        File file = new File("file path");
+        File file = excelReaderWriter.getReport(workOrder);
         String mimeType;
 //      mimeType = URLConnection.guessContentTypeFromName(recordFile.getFileName());
         mimeType = "application/vnd.ms-excel";

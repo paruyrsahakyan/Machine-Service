@@ -40,8 +40,7 @@
         <th>Машина:</th>
         <td>${workOrder.machine.model} &nbsp; sn ${workOrder.machine.serialNumber}</td>
     </tr>
-        <tr>
-        <tr>
+         <tr>
             <th>Работа:</th>
             <td>ТО ${workOrder.periodicMaintenance.smr}</td>
         </tr>
@@ -72,6 +71,8 @@
        <a href="/workOrder/${workOrder.id}/deleted"
        onclick="return confirm('!!!Вы уверены что хатите удалить машину!!!');"
        style="color: crimson;">Удалить Наряд</a>
+    <br><br>
+    <a href="/workOrder/${workOrder.id}/" style="color: darkgreen"> сервисный отчет</a> &nbsp;<b>|</b>
 </div>
 </body>
 </html>

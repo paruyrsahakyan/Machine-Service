@@ -3,18 +3,25 @@ package group.service.iko.service;
 import group.service.iko.entities.MaintenancePart;
 import group.service.iko.entities.Part;
 import group.service.iko.entities.WorkOrder;
+import org.apache.commons.io.FileUtils;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.springframework.stereotype.Service;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class ExcelReaderWriter {
     private List partsInStock;
     private int partsQuantity;
-    private final String reportFilePath = File.separator + "home" +File.separator + "paruyr" + File.separator + "IkoService" + File.separator +
-            "reportFile" + File.separator + "report.xlsx";
+    private final String reportFileSource = File.separator + "home" +File.separator + "paruyr" +
+            "Machine-Service"+File.separator + "src" + File.separator +"main"+File.separator+
+            "resources" + File.separator + "templates"+File.separator+"serviceReport.xlsx";
+    private final String folderToCopyServiceReport=  File.separator + "home" +File.separator + "paruyr" +
+            "IkoService"+File.separator + "templates";
+
 
     public ExcelReaderWriter() {
         this.partsInStock = new ArrayList<Part>();
@@ -46,8 +53,13 @@ public class ExcelReaderWriter {
         }
     }
 
-    public void createReport(WorkOrder workOrder) throws IOException {
-        File file = new File(reportFilePath);
+    public File getReport(WorkOrder workOrder) throws IOException {
+        File sourceFile = new File(reportFileSource);
+        File fileFolder = new File(folderToCopyServiceReport);
+        File file = new File( folderToCopyServiceReport+File.separator+"serviceReport.xlsx");
+        fileFolder.mkdir();
+        if (file.exists()) file.delete();
+        FileUtils.copyFile(sourceFile, file);
         System.out.println(file.exists());
         FileInputStream fileInputStream = new FileInputStream(file);
         Workbook workbook = new XSSFWorkbook(fileInputStream);
@@ -93,10 +105,10 @@ public class ExcelReaderWriter {
 
         fileInputStream.close();
 
-       FileOutputStream fileOutputStream =new FileOutputStream(new File(reportFilePath));
-                //write changes
-         workbook.write(fileOutputStream);
+       FileOutputStream fileOutputStream =new FileOutputStream(file);
+        workbook.write(fileOutputStream);
         fileInputStream.close();
+        return file;
     }
 
     public List<Part> getPartsInStock() {
@@ -107,4 +119,7 @@ public class ExcelReaderWriter {
         this.partsInStock = partsInStock;
     }
 
+    public String getFolderToCopyServiceReport() {
+        return folderToCopyServiceReport;
+    }
 }
