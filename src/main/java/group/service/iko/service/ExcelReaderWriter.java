@@ -89,10 +89,13 @@ public class ExcelReaderWriter {
         cellReportType.setCellValue(reportType);
         cellWorkType.setCellValue(workType);
         int partRow = 21;
+        int i = 1;
         for(MaintenancePart maintenancePart: workOrder.getPeriodicMaintenance().getMaintenanceParts()) {
+            Cell position = datatypeSheet.getRow(partRow).getCell(0);
             Cell partNumber = datatypeSheet.getRow(partRow).getCell(1);
             Cell partUnit = datatypeSheet.getRow(partRow).getCell(9);
             Cell partQuantity = datatypeSheet.getRow(partRow).getCell(10);
+            position.setCellValue(i);
             partNumber.setCellValue(maintenancePart.getPartNumber());
             partUnit.setCellValue(maintenancePart.getUnit());
             partQuantity.setCellValue(maintenancePart.getQuantity());

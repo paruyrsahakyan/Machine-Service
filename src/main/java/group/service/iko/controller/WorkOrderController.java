@@ -203,7 +203,7 @@ public class WorkOrderController {
 //      mimeType = URLConnection.guessContentTypeFromName(recordFile.getFileName());
         mimeType = "application/vnd.ms-excel";
         response.setContentType(mimeType);
-        response.setHeader("Content-Disposition", String.format("inline; filename=\"Отчет.xlsx\""));
+        response.setHeader("Content-Disposition", String.format("inline; filename=\"Report.xlsx\""));
         response.setContentLength((int) file.length());
         InputStream inputStream = new BufferedInputStream(new FileInputStream(file));
         FileCopyUtils.copy(inputStream, response.getOutputStream());
