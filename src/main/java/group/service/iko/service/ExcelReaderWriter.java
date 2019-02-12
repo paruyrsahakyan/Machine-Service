@@ -16,7 +16,7 @@ import java.util.List;
 public class ExcelReaderWriter {
     private List partsInStock;
     private int partsQuantity;
-    private final String reportFileSource = File.separator + "home" +File.separator + "paruyr" +
+    private final String reportFileSource = File.separator + "home" +File.separator + "paruyr" + File.separator +
             "Machine-Service"+File.separator + "src" + File.separator +"main"+File.separator+
             "resources" + File.separator + "templates"+File.separator+"serviceReport.xlsx";
     private final String folderToCopyServiceReport=  File.separator + "home" +File.separator + "paruyr" +
