@@ -72,6 +72,7 @@ public class ExcelReaderWriter {
         String location = workOrder.getLocation();
         String reportType = "Комерция";
         String workType = "ТО";
+        String maintenance ="TO"+workOrder.getPeriodicMaintenance().getSmr();
         Cell cellMachineModel = datatypeSheet.getRow(4).getCell(8);
         Cell cellMachineSerialNumber = datatypeSheet.getRow(4).getCell(10);
         Cell cellEngineModel = datatypeSheet.getRow(5).getCell(7);
@@ -80,6 +81,8 @@ public class ExcelReaderWriter {
         Cell cellLocation = datatypeSheet.getRow(6).getCell(10);
         Cell cellReportType = datatypeSheet.getRow(9).getCell(2);
         Cell cellWorkType = datatypeSheet.getRow(9).getCell(7);
+        Cell cellMaintenace = datatypeSheet.getRow(14).getCell(1);
+        Cell cellWorkNumber = datatypeSheet.getRow(14).getCell(0);
         cellMachineModel.setCellValue(machineModel);
         cellMachineSerialNumber.setCellValue(machineSerialNumber);
         cellEngineModel.setCellValue(engineModel);
@@ -88,9 +91,12 @@ public class ExcelReaderWriter {
         cellLocation.setCellValue(location);
         cellReportType.setCellValue(reportType);
         cellWorkType.setCellValue(workType);
+        cellWorkNumber.setCellValue("1");
+        cellMaintenace.setCellValue(maintenance);
         int partRow = 21;
-        int i = 1;
+        int i = 0;
         for(MaintenancePart maintenancePart: workOrder.getPeriodicMaintenance().getMaintenanceParts()) {
+            i++;
             Cell position = datatypeSheet.getRow(partRow).getCell(0);
             Cell partNumber = datatypeSheet.getRow(partRow).getCell(1);
             Cell partUnit = datatypeSheet.getRow(partRow).getCell(9);

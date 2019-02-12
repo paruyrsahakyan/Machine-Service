@@ -30,10 +30,11 @@
     <h2>Наряд</h2>
 
     <a href="/"> Главное меню</a>
+    &nbsp; <a href="/workOrder/home"> Наряды</a>
     <br> <br>
     <table style="width: auto" align="center">
         <tr>
-            <th>Заказчик:</th>
+             <th>Заказчик:</th>
             <td>${workOrder.machine.customer}</td>
         </tr>
         <tr>
