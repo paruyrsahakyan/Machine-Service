@@ -101,20 +101,20 @@ public class WorkOrderController {
 
     @RequestMapping(value = "/{id}/updated", method = RequestMethod.POST)
     public  ModelAndView updateWorkOrder(@PathVariable("id") int id,
-                                         @RequestParam("machineId") int machineId,
                                          @RequestParam("smr") int smr,
                                          @RequestParam("date") String date,
                                          @RequestParam("location") String location,
                                          @RequestParam("worker") String worker,
-                                         @RequestParam("serviceMachine") String serviceMachine
+                                         @RequestParam("serviceMachine") String serviceMachine,
+                                         @RequestParam("periodicMaintenance") int maintenanceId
     ){
         WorkOrder workOrder = workOrderService.getWorkOrderById(id);
-        workOrder.setMachine( machineService.getMachineById(machineId));
         workOrder.setOrderSmr(smr);
         workOrder.setOrderDate(CalendarAdapter.getGregCalendar(date));
         workOrder.setLocation(location);
         workOrder.setWorker(worker);
         workOrder.setServiceMachine(serviceMachine);
+        workOrder.setPeriodicMaintenance( periodicMaintenanceService.getMaintenanceById(maintenanceId));
         workOrderService.updateWorkOrder(workOrder);
         ModelAndView modelAndView = new ModelAndView("workOrder/workOrder");
         WorkOrderDTO workOrderDTO = new WorkOrderDTO(workOrderService.getWorkOrderById(id));
