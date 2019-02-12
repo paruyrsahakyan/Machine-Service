@@ -15,7 +15,7 @@ public class Test {
         machine.setModel("PC300");
         machine.setSerialNumber("serialNumber");
         workOrder.setMachine(machine);
-        excelReaderWriter.createReport(workOrder);
+//        excelReaderWriter.createReport(workOrder);
 //        excelReader.readInStockParts(filePath);
     }
 }
