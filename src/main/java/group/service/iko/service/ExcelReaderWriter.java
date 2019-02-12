@@ -20,7 +20,7 @@ public class ExcelReaderWriter {
             "Machine-Service"+File.separator + "src" + File.separator +"main"+File.separator+
             "resources" + File.separator + "templates"+File.separator+"serviceReport.xlsx";
     private final String folderToCopyServiceReport=  File.separator + "home" +File.separator + "paruyr" +
-            "IkoService"+File.separator + "templates";
+            File.separator + "IkoService"+File.separator + "templates";
 
 
     public ExcelReaderWriter() {
