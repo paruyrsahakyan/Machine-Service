@@ -93,7 +93,7 @@ public class ExcelReaderWriter {
         cellWorkType.setCellValue(workType);
         cellWorkNumber.setCellValue("1");
         cellMaintenace.setCellValue(maintenance);
-        int partRow = 21;
+        int partRow = 19;
         int i = 0;
         for(MaintenancePart maintenancePart: workOrder.getPeriodicMaintenance().getMaintenanceParts()) {
             i++;
