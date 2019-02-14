@@ -60,7 +60,6 @@ public class ExcelReaderWriter {
         fileFolder.mkdir();
         if (file.exists()) file.delete();
         FileUtils.copyFile(sourceFile, file);
-        System.out.println(file.exists());
         FileInputStream fileInputStream = new FileInputStream(file);
         Workbook workbook = new XSSFWorkbook(fileInputStream);
         Sheet datatypeSheet = workbook.getSheetAt(0);

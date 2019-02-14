@@ -18,7 +18,8 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.*;
 
 @Controller()
-public class HomeController {
+public class
+HomeController {
     @Autowired
     private CustomerService customerService;
 

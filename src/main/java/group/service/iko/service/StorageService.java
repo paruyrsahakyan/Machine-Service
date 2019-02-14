@@ -23,6 +23,9 @@ public class StorageService {
 
     private String filePath;
     private String fileName;
+    private final String wareHouseFileFolder=  File.separator + "home" +File.separator + "paruyr" +
+            File.separator + "IkoService"+File.separator + "wareHouse";
+    private final String wareHouseFileName="wareHouse.xlsx";
 
     public StorageService() {
 
@@ -75,20 +78,18 @@ public class StorageService {
         return mimeType;
     }
 
-    public String getFilePath() {
-        return filePath;
+    public void saveWareHouseFile(MultipartFile file) {
+        File wareHousefolder = new File(wareHouseFileFolder);
+        wareHousefolder.mkdirs();
+        File wareHouseFile = new File(wareHousefolder + File.separator + wareHouseFileName);
+        wareHouseFile.delete();
+          try {
+            wareHouseFile.createNewFile();
+            file.transferTo(wareHouseFile);
+        } catch (IOException e1) {
+            e1.printStackTrace();
+        }
     }
 
-    public void setFilePath(String filePath) {
-        this.filePath = filePath;
     }
 
-    public String getFileName() {
-        return fileName;
-    }
-
-    public void setFileName(String fileName) {
-        this.fileName = fileName;
-    }
-
-}
