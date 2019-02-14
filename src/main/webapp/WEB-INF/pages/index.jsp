@@ -16,12 +16,11 @@
 <body>
 <div style="text-align: center">
     <h1 style="text-align: center"> IKO SERVICE </h1>
-    <a href="/login"> Авторизация пользователя </a> &nbsp; | Загрузить склад:
-    <form:form action="/warHouse/saved" method="post"  accept-charset="UTF-8"
-               enctype="multipart/form-data">
-        <input type="file" name="wareHouseFile">
-        <input  type="submit" value="загрузить">
-    </form:form>
+    <a href="/login"> Авторизация пользователя </a> &nbsp; | &nbsp; Загрузить склад: <form:form action="/wareHouse/saved" method="post"  accept-charset="UTF-8"
+                                                                                 enctype="multipart/form-data">
+    <input type="file" name="wareHouseFile">
+    <input  type="submit" value="загрузить">
+</form:form>
     <br> <br>
 
 
@@ -49,6 +48,7 @@
     <br>
     <a href="/machineType/allMachineTypes"> Типы Машин</a>
     <br>
+
 </div>
 
 </body>
