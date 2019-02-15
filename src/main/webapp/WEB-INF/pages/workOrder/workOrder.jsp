@@ -73,7 +73,9 @@
        onclick="return confirm('!!!Вы уверены что хатите удалить машину!!!');"
        style="color: crimson;">Удалить Наряд</a>
     <br><br>
-    <a href="/workOrder/${workOrder.id}/serviceReport" style="color: darkgreen"> Сервисный отчет</a> &nbsp;<b>|</b>
-</div>
+     <a href="/workOrder/${workOrder.id}/serviceReport" style="color: darkgreen"> Сервисный отчет</a> &nbsp;<b>|</b>
+    <a href="/workOrder/${workOrder.id}/workOrderRequest" style="color: sienna"> Заявка На Склад</a>
+
+ </div>
 </body>
 </html>
