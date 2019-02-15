@@ -122,7 +122,7 @@ public class ExcelReaderWriter {
     }
 
     public File getWareHouseRequest(WorkOrder workOrder) throws IOException {
-        File sourceFile = new File(reportFileSource);
+        File sourceFile = new File(wareHouseRequestSourceFile);
         File fileFolder = new File(templatesFolder);
         File wareHouseRequestFile = new File(templatesFolder + File.separator + "warehouseRequest.xlsx");
         fileFolder.mkdir();
