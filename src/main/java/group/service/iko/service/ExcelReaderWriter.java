@@ -1,11 +1,13 @@
 package group.service.iko.service;
 
+import group.service.iko.calendarAdapter.CalendarAdapter;
 import group.service.iko.entities.MaintenancePart;
 import group.service.iko.entities.Part;
 import group.service.iko.entities.WorkOrder;
 import org.apache.commons.io.FileUtils;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.*;
@@ -14,22 +16,28 @@ import java.util.List;
 
 @Service
 public class ExcelReaderWriter {
-    private List partsInStock;
+    @Autowired
+    private StorageService storageService;
+    private List<Part> parts;
     private int partsQuantity;
-    private final String reportFileSource = File.separator + "home" +File.separator + "paruyr" + File.separator +
-            "Machine-Service"+File.separator + "src" + File.separator +"main"+File.separator+
-            "resources" + File.separator + "templates"+File.separator+"serviceReport.xlsx";
-    private final String folderToCopyServiceReport=  File.separator + "home" +File.separator + "paruyr" +
-            File.separator + "IkoService"+File.separator + "templates";
-
+    private final String reportFileSource = File.separator + "home" + File.separator + "paruyr" + File.separator +
+            "Machine-Service" + File.separator + "src" + File.separator + "main" + File.separator +
+            "resources" + File.separator + "templates" + File.separator + "serviceReport.xlsx";
+    private final String wareHouseRequestSourceFile = File.separator + "home" + File.separator + "paruyr" + File.separator +
+            "Machine-Service" + File.separator + "src" + File.separator + "main" + File.separator +
+            "resources" + File.separator + "templates" + File.separator + "wareHouseRequest.xlsx";
+    private final String templatesFolder = File.separator + "home" + File.separator + "paruyr" +
+            File.separator + "IkoService" + File.separator + "templates";
 
     public ExcelReaderWriter() {
-        this.partsInStock = new ArrayList<Part>();
+        this.parts = new ArrayList<Part>();
     }
 
-    public void readInStockParts(String filePath) {
+    public void setPartsFromWareHouseFile() {
+        this.parts = new ArrayList<Part>();
         try {
-            FileInputStream excelFile = new FileInputStream(new File(filePath));
+            File wareHouseFile = new File(storageService.getWarHouseFilePath());
+            FileInputStream excelFile = new FileInputStream(wareHouseFile);
             Workbook workbook = new XSSFWorkbook(excelFile);
             Sheet datatypeSheet = workbook.getSheetAt(0);
             partsQuantity = datatypeSheet.getLastRowNum() - 8;
@@ -42,8 +50,7 @@ public class ExcelReaderWriter {
                 part.setNomenclature(row.getCell(3).toString());
                 part.setUnit(row.getCell(6).getStringCellValue());
                 part.setQuantity(row.getCell(7).getNumericCellValue());
-                partsInStock.add(part);
-                System.out.println(partsInStock);
+                parts.add(part);
             }
 
         } catch (FileNotFoundException e1) {
@@ -55,8 +62,8 @@ public class ExcelReaderWriter {
 
     public File getReport(WorkOrder workOrder) throws IOException {
         File sourceFile = new File(reportFileSource);
-        File fileFolder = new File(folderToCopyServiceReport);
-        File file = new File( folderToCopyServiceReport+File.separator+"serviceReport.xlsx");
+        File fileFolder = new File(templatesFolder);
+        File file = new File(templatesFolder + File.separator + "serviceReport.xlsx");
         fileFolder.mkdir();
         if (file.exists()) file.delete();
         FileUtils.copyFile(sourceFile, file);
@@ -71,7 +78,7 @@ public class ExcelReaderWriter {
         String location = workOrder.getLocation();
         String reportType = "Коммерция";
         String workType = "ТО";
-        String maintenance ="TO"+workOrder.getPeriodicMaintenance().getSmr();
+        String maintenance = "TO" + workOrder.getPeriodicMaintenance().getSmr();
         Cell cellMachineModel = datatypeSheet.getRow(4).getCell(8);
         Cell cellMachineSerialNumber = datatypeSheet.getRow(4).getCell(10);
         Cell cellEngineModel = datatypeSheet.getRow(5).getCell(7);
@@ -94,7 +101,7 @@ public class ExcelReaderWriter {
         cellMaintenace.setCellValue(maintenance);
         int partRow = 19;
         int i = 0;
-        for(MaintenancePart maintenancePart: workOrder.getPeriodicMaintenance().getMaintenanceParts()) {
+        for (MaintenancePart maintenancePart : workOrder.getPeriodicMaintenance().getMaintenanceParts()) {
             i++;
             Cell position = datatypeSheet.getRow(partRow).getCell(0);
             Cell partNumber = datatypeSheet.getRow(partRow).getCell(1);
@@ -107,27 +114,66 @@ public class ExcelReaderWriter {
             partRow++;
         }
 
-         String model= workOrder.getMachine().getModel();
-        System.out.println(model);
-        cellMachineModel.setCellValue(workOrder.getMachine().getModel());
-
         fileInputStream.close();
-
-       FileOutputStream fileOutputStream =new FileOutputStream(file);
+        FileOutputStream fileOutputStream = new FileOutputStream(file);
         workbook.write(fileOutputStream);
         fileInputStream.close();
         return file;
     }
 
-    public List<Part> getPartsInStock() {
-        return partsInStock;
+    public File getWareHouseRequest(WorkOrder workOrder) throws IOException {
+        File sourceFile = new File(reportFileSource);
+        File fileFolder = new File(templatesFolder);
+        File wareHouseRequestFile = new File(templatesFolder + File.separator + "warehouseRequest.xlsx");
+        fileFolder.mkdir();
+        if (wareHouseRequestFile.exists()) wareHouseRequestFile.delete();
+        FileUtils.copyFile(sourceFile, wareHouseRequestFile);
+        FileInputStream fileInputStream = new FileInputStream(wareHouseRequestFile);
+        Workbook workbook = new XSSFWorkbook(fileInputStream);
+        Sheet datatypeSheet = workbook.getSheetAt(0);
+        String machineModel = workOrder.getMachine().getModel();
+        String machineSerialNumber = workOrder.getMachine().getSerialNumber();
+        String customer = workOrder.getMachine().getCustomer().getName();
+        String location = workOrder.getLocation();
+        String worker = workOrder.getWorker();
+        String date = CalendarAdapter.getStringFormat(workOrder.getOrderDate());
+        String maintenance = "TO" + workOrder.getPeriodicMaintenance().getSmr();
+        Cell cellWorker = datatypeSheet.getRow(23).getCell(2);
+        Cell cellCustomer =datatypeSheet.getRow(24).getCell(2);
+        Cell cellWorkToDo = datatypeSheet.getRow(25).getCell(2);
+        Cell cellLocation = datatypeSheet.getRow(26).getCell(2);
+        Cell cellDate = datatypeSheet.getRow(1).getCell(4);
+        cellWorker.setCellValue(worker);
+        cellCustomer.setCellValue(customer);
+        cellWorkToDo.setCellValue(machineModel+" sn" +machineSerialNumber +" " + maintenance);
+        cellLocation.setCellValue(location);
+        cellDate.setCellValue(date);
+        int partRow = 6;
+        int i = 0;
+        for (MaintenancePart maintenancePart : workOrder.getPeriodicMaintenance().getMaintenanceParts()) {
+            Cell cellPartNumber = datatypeSheet.getRow(partRow).getCell(1);
+            Cell cellPartDescription = datatypeSheet.getRow(partRow).getCell(2);
+            Cell cellPartUnit = datatypeSheet.getRow(partRow).getCell(3);
+            Cell cellPartQuantity = datatypeSheet.getRow(partRow).getCell(4);
+
+            cellPartNumber.setCellValue(maintenancePart.getPartNumber());
+            cellPartDescription.setCellValue(maintenancePart.getPartType());
+            cellPartUnit.setCellValue(maintenancePart.getUnit());
+            cellPartQuantity.setCellValue(maintenancePart.getQuantity());
+            partRow++;
+        }
+
+        fileInputStream.close();
+        FileOutputStream fileOutputStream = new FileOutputStream(wareHouseRequestFile);
+        workbook.write(fileOutputStream);
+        fileInputStream.close();
+        return wareHouseRequestFile;
+
     }
 
-    public void setPartsInStock(List<Part> partsInStock) {
-        this.partsInStock = partsInStock;
+    public List<Part> getParts() {
+        setPartsFromWareHouseFile();
+        return parts;
     }
 
-    public String getFolderToCopyServiceReport() {
-        return folderToCopyServiceReport;
-    }
 }

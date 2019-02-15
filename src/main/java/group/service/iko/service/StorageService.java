@@ -26,6 +26,7 @@ public class StorageService {
     private final String wareHouseFileFolder=  File.separator + "home" +File.separator + "paruyr" +
             File.separator + "IkoService"+File.separator + "wareHouse";
     private final String wareHouseFileName="wareHouse.xlsx";
+    private final String warHouseFilePath =wareHouseFileFolder+File.separator+wareHouseFileName;
 
     public StorageService() {
 
@@ -81,7 +82,7 @@ public class StorageService {
     public void saveWareHouseFile(MultipartFile file) {
         File wareHousefolder = new File(wareHouseFileFolder);
         wareHousefolder.mkdirs();
-        File wareHouseFile = new File(wareHousefolder + File.separator + wareHouseFileName);
+        File wareHouseFile = new File(warHouseFilePath);
         wareHouseFile.delete();
           try {
             wareHouseFile.createNewFile();
@@ -113,6 +114,10 @@ public class StorageService {
 
     public String getWareHouseFileName() {
         return wareHouseFileName;
+    }
+
+    public String getWarHouseFilePath() {
+        return warHouseFilePath;
     }
 }
 
