@@ -16,7 +16,7 @@
 <h3>Создание Заменаемой запчасти </h3>
 <a href="/workOrder/home"> Отмена </a>
 <br> <br>
- <form:form action="/workOrder/interChangeableParts/createdNewInterChangeable" method="post">
+ <form:form action="/wareHouse/interChangeableParts/createdNewInterChangeable" method="post">
      Основной артикул <input type="text" name="basicPartNumber">  &nbsp; | &nbsp;
      Артикул замены <input type="text"   name="partNumber" >
      <input type="submit" value="сохранить">
