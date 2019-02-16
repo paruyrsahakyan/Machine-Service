@@ -6,9 +6,11 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table( name="exchangeable_part")
+@Table( name="interchangeable_part")
 public class InterChangeablePart {
     @Id
+    private int id;
+    @Column (name = "basic_part_number");
     private String basicPartNumber;
     @Column(name = "part_number")
     public String partNumber;

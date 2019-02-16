@@ -160,7 +160,7 @@ CREATE TABLE `periodic_maintenance` (
 
 -------------------------- exchangeable_part ------------------------------------------
 
-CREATE TABLE `exchangeable_part` (
+CREATE TABLE `interchangeable_part` (
 `id` int(11) NOT NULL AUTO_INCREMENT,
 `basic_part_number` varchar(255) DEFAULT NULL,
 `part_number` varchar(255) DEFAULT NULL,

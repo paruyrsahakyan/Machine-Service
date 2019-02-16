@@ -18,10 +18,10 @@
 <a href="/"> Главное меню</a>
 <br>
 <a href="/wareHouse/interChangeableParts" > Взаимозаменяемые запчасти </a>
-<br>
+<br> <br>
 <a href="/wareHouse/interchangeableParts/createNew"> Создать заменяемую зачасть </a>
-<br>
-<p> дата обновления склада ${updateDate}
+<br> <br>
+<p style="color: #dc161c"> дата обновления склада ${updateDate}
     <form:form action="/wareHouse/saved" method="post"  accept-charset="UTF-8"
                enctype="multipart/form-data">
     Загрузить склад:
