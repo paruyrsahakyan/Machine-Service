@@ -5,8 +5,6 @@ import group.service.iko.entities.InterChangeablePart;
 import group.service.iko.entities.Part;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -34,7 +32,7 @@ public class WareHouseService {
     }
 
     public Set<InterChangeableGroup> getInterChangeableGroupList() {
-        Set<InterChangeablePart> interChangeablePartList = interChangeablePartService.getAllInterChangeableParts();
+        List<InterChangeablePart> interChangeablePartList = interChangeablePartService.getAllInterChangeableParts();
         Set<InterChangeableGroup> interChangeableGroupList = new HashSet<>();
         for (InterChangeablePart interChangeablePart : interChangeablePartList) {
             InterChangeableGroup interChangeableGroup = new InterChangeableGroup();
