@@ -12,6 +12,7 @@
     <title> Склад</title>
 </head>
 <body>
+<div style="text-align: center">
 <h2>Склад</h2>
 
 <a href="/"> Главное меню</a>
@@ -28,5 +29,6 @@
     <input  type="submit" value="загрузить">
     </form:form>
 </p>
+</div>
 </body>
 </html>

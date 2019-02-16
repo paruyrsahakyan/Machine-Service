@@ -33,13 +33,20 @@ public class WareHouseController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/saved", method = RequestMethod.POST)
+    @RequestMapping(value = "/updated", method = RequestMethod.POST)
     public ModelAndView filesUpdated(@RequestParam(value = "wareHouseFile", required = false) MultipartFile multipartFile
     ) {
         storageService.saveWareHouseFile(multipartFile);
-        ModelAndView modelAndView = new ModelAndView("index");
+        ModelAndView modelAndView = new ModelAndView("wareHouse/wareHouseHome");
         return modelAndView;
     }
+    @RequestMapping(value = "/interChangeableParts")
+    public ModelAndView getInterChangeableParts() {
+        ModelAndView modelAndView = new ModelAndView("wareHouse/interChangeableParts");
+        modelAndView.addObject("interChangeableGroupList", wareHouseService.getInterChangeableGroupList());
+        return modelAndView;
+    }
+
 
     @RequestMapping(value = "/interChangeableParts/createNew")
     public ModelAndView getCreationPage() {
