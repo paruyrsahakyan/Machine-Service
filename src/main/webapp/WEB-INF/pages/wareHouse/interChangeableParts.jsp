@@ -21,6 +21,7 @@
     </style>
 </head>
 <body>
+<div style="text-align: center">
 <h3>Взаимозаменяемые детали</h3>
 <a href="/">Главное Меню</a>
 <a href="/wareHouse"> Склад </a>
@@ -47,6 +48,6 @@
             </c:forEach>
         </tr>
     </c:forEach>
-
+    </div>
 </body>
 </html>

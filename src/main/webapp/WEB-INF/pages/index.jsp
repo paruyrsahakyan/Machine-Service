@@ -41,7 +41,7 @@
     <a href="/machineType/allMachineTypes"> Типы Машин</a>
     <br>
     <br>
-    <a href="/wareHouse"> Типы Машин</a>
+    <a href="/wareHouse"> Склад </a>
     <br>
     <br>
 

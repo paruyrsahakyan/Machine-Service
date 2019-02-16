@@ -12,12 +12,15 @@
     <title>Создание Заменаемой запчасти</title>
 </head>
 <body>
+<div style="text-align: center">
 <h3>Создание Заменаемой запчасти </h3>
 <a href="/workOrder/home"> Отмена </a>
 <br> <br>
  <form:form action="/workOrder/createdNewInterChangeable" method="post">
      Основной артикул <input type="text" name="basicPartNumber">  &nbsp; | &nbsp;
      Артикул замены <input type="text"   name="partNumber" >
+     <input type="submit" value="сохранить">
  </form:form>
+    </div>
 </body>
 </html>
