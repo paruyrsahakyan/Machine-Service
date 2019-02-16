@@ -1,8 +1,6 @@
 package group.service.iko.service;
 
-import group.service.iko.calendarAdapter.CalendarAdapter;
 import group.service.iko.dto.HistoryRecordDTO;
-import group.service.iko.entities.HistoryRecord;
 import group.service.iko.entityDao.MachineDAO;
 import group.service.iko.entityDao.SessionFactoryImpl;
 import group.service.iko.entities.Machine;
@@ -11,10 +9,7 @@ import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Calendar;
-import java.util.GregorianCalendar;
 import java.util.List;
-import java.util.Map;
 
 @Service
 public class MachineService {
@@ -74,7 +69,7 @@ public class MachineService {
         query.setMaxResults(1);
         Machine machine = (Machine) query.uniqueResult();
         session.close();
-        return  machine;
+        return machine;
     }
 
     public void deleteMachineById(int machineId) {
@@ -94,17 +89,17 @@ public class MachineService {
     }
 
     public List<Machine> getMachinesFiltered(String model, String serialNumber) {
-        if(model.equals("")){
+        if (model.equals("")) {
             return getMachinesFilteredBySerialNumber(model);
         }
-        if (serialNumber.equals("")){
+        if (serialNumber.equals("")) {
             return getMachinesFilteredByModel(model);
         }
         session = SessionFactoryImpl.getSessionFactory().openSession();
         String hql = "from group.service.iko.entities.Machine " +
                 "where model like :M  and serialNumber=:S";
         Query query = session.createQuery(hql);
-        query.setParameter("M", "%"+model+"%");
+        query.setParameter("M", "%" + model + "%");
         query.setParameter("S", serialNumber);
         List<Machine> machineList = (List<Machine>) query.list();
         session.close();
@@ -114,20 +109,21 @@ public class MachineService {
     }
 
     public List<Machine> getMachinesFilteredByModel(String model) {
-        if (model.equals("")){
+        if (model.equals("")) {
             return getAllMachines();
         }
         session = SessionFactoryImpl.getSessionFactory().openSession();
         String hql = "from group.service.iko.entities.Machine " +
                 "where model like:M";
         Query query = session.createQuery(hql);
-        query.setParameter("M", "%"+ model+"%");
+        query.setParameter("M", "%" + model + "%");
         List<Machine> machineList = (List<Machine>) query.list();
         session.close();
         return machineList;
     }
+
     public List<Machine> getMachinesFilteredBySerialNumber(String serialNumber) {
-        if(serialNumber.equals("")){
+        if (serialNumber.equals("")) {
             return getAllMachines();
         }
         session = SessionFactoryImpl.getSessionFactory().openSession();
@@ -139,28 +135,28 @@ public class MachineService {
         session.close();
         return machineList;
     }
-    public HistoryRecordDTO getLastInfoOfMachine(Machine machine){
-        HistoryRecordDTO historyRecord = new HistoryRecordDTO();
-                  if (machine.getHistoryRecordList().size()>0) {
-                             session = SessionFactoryImpl.getSessionFactory().openSession();
-                      String sql;
-                                   if (machine.getHistoryRecordList().size()==1){
 
-                                 sql = "SELECT * FROM iko.history_record where machine_id = " + machine.getId();
-                             }
-                             else {
-                                 sql = "SELECT * FROM iko.history_record where machine_id = " + machine.getId() +
-                                         " and recordDate =(select max(recordDate) from iko.history_record where machine_id="+
-                                         machine.getId()+" );";
-                             }
-                Query query = session.createSQLQuery(sql);
-                List<Object[]> resultList =  query.list();
-                Object[] result = resultList.get(0);
-                historyRecord.setId(Integer.parseInt(result[0].toString()));
-                historyRecord.setTitle(result[6].toString());
-                historyRecord.setSMR(Integer.parseInt(result[1].toString()));
-                historyRecord.setRecordDate(result[4].toString().substring(0,10));
-                  session.close();
+    public HistoryRecordDTO getLastInfoOfMachine(Machine machine) {
+        HistoryRecordDTO historyRecord = new HistoryRecordDTO();
+        if (machine.getHistoryRecordList().size() > 0) {
+            session = SessionFactoryImpl.getSessionFactory().openSession();
+            String sql;
+            if (machine.getHistoryRecordList().size() == 1) {
+
+                sql = "SELECT * FROM iko.history_record where machine_id = " + machine.getId();
+            } else {
+                sql = "SELECT * FROM iko.history_record where machine_id = " + machine.getId() +
+                        " and recordDate =(select max(recordDate) from iko.history_record where machine_id=" +
+                        machine.getId() + " );";
+            }
+            Query query = session.createSQLQuery(sql);
+            List<Object[]> resultList = query.list();
+            Object[] result = resultList.get(0);
+            historyRecord.setId(Integer.parseInt(result[0].toString()));
+            historyRecord.setTitle(result[6].toString());
+            historyRecord.setSMR(Integer.parseInt(result[1].toString()));
+            historyRecord.setRecordDate(result[4].toString().substring(0, 10));
+            session.close();
 //                String hql = "select max(recordDate) from group.service.iko.entities.HistoryRecord  where machine.id=:mID ";
 //                Query query = session.createQuery(hql);
 //                 query.setParameter("mID", machine.getId());
@@ -171,8 +167,8 @@ public class MachineService {
 //                query1.setParameter("date", gregorianCalendar );
 //                HistoryRecord historyRecord1 = (HistoryRecord) query1.uniqueResult();
 //                session.close();
-            }
-        return  historyRecord;
+        }
+        return historyRecord;
     }
 
 }

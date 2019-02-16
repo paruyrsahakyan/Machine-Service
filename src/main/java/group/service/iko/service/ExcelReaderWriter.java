@@ -145,7 +145,7 @@ public class ExcelReaderWriter {
         Cell cellDate = datatypeSheet.getRow(1).getCell(4);
         cellWorker.setCellValue(worker);
         cellCustomer.setCellValue(customer);
-        cellWorkToDo.setCellValue(machineModel+" sn" +machineSerialNumber +" " + maintenance);
+        cellWorkToDo.setCellValue(machineModel+" sn" +machineSerialNumber +"; " + maintenance);
         cellLocation.setCellValue(location);
         cellDate.setCellValue(date);
         int partRow = 6;

@@ -31,8 +31,8 @@
     <table style="width: auto" align="center">
         <tr>
             <th colspan="5">
-                   TO &nbsp; ${periodicMaintenance.smr}
-                           </th>
+                TO &nbsp; ${periodicMaintenance.smr}
+            </th>
         </tr>
         <tr>
             <td> N </td>

@@ -41,12 +41,6 @@
     <a href="/machineType/allMachineTypes"> Типы Машин</a>
     <br>
     <br>
-     <form:form action="/wareHouse/saved" method="post"  accept-charset="UTF-8"
-                                enctype="multipart/form-data">
-      Загрузить склад:
-    <input type="file" name="wareHouseFile">
-    <input  type="submit" value="загрузить">
-</form:form>
 
 </div>
 
