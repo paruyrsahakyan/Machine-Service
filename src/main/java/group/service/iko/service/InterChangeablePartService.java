@@ -38,11 +38,11 @@ public class InterChangeablePartService {
         session.close();
         return  interChangeablePartList;
     }
-    public Set<InterChangeablePart> getAllInterChangeableParts(){
+    public List<InterChangeablePart> getAllInterChangeableParts(){
         Session session = SessionFactoryImpl.getSessionFactory().openSession();
         String hql = "from group.service.iko.entities.InterChangeablePart";
         Query query = session.createQuery(hql);
-        Set<InterChangeablePart> interChangeablePartList = (Set<InterChangeablePart>) query.list();
+        List<InterChangeablePart> interChangeablePartList = (List<InterChangeablePart>) query.list();
         session.flush();
         session.close();
         return  interChangeablePartList;

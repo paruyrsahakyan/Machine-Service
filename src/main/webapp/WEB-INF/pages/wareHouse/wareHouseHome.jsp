@@ -16,7 +16,7 @@
 <h2>Склад</h2>
 
 <a href="/"> Главное меню</a>
-<br>
+ <br> <br>
 <a href="/wareHouse/interChangeableParts" > Взаимозаменяемые запчасти </a>
 <br> <br>
 <a href="/wareHouse/interchangeableParts/createNew"> Создать заменяемую зачасть </a>
