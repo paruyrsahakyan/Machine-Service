@@ -43,8 +43,16 @@ public class WareHouseService {
                     interChangeableGroup.getInterChangeablePartsList().add(interChangeablePart1.getPartNumber());
                 }
             }
-            interChangeableGroupList.add(interChangeableGroup);
-        }
+            boolean exist = false;
+            for(InterChangeableGroup interChangeableGroup2: interChangeableGroupList) {
+                if (interChangeableGroup2.getBasicPartNumber().equals(basicPartNumber)) {
+                    exist = true;
+                }
+            }
+            if(!exist) {
+                interChangeableGroupList.add(interChangeableGroup)};
+            }
+        
         return interChangeableGroupList;
     }
 }

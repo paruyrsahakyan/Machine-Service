@@ -24,19 +24,21 @@
 <div style="text-align: center">
 <h3>Взаимозаменяемые детали</h3>
 <a href="/">Главное Меню</a>
+    <br> <br>
 <a href="/wareHouse"> Склад </a>
+    <br> <br>
 <a href="/wareHouse/interChangeableParts/createNew"> Создать взаимозаменяемую запчасть </a>
-
+    <br> <br>
 <table style="width: auto" align="center">
        <tr>
-        <td> N </td>
-        <td> Основной артикул </td>
-        <td> Замена1 </td>
-        <td> Замена2 </td>
-        <td> Замена3 </td>
-        <td> Замена4 </td>
-        <td> Замена5 </td>
-        <td> Замена6 </td>
+        <th> N </th>
+        <th> Основной артикул </th>
+        <th> Замена1 </th>
+        <th> Замена2 </th>
+        <th> Замена3 </th>
+        <th> Замена4 </th>
+        <th> Замена5 </th>
+        <th> Замена6 </th>
     </tr>
     <% int i = 1; %>
     <c:forEach items="${interChangeableGroupList}" var="interChangeableGroup" >
