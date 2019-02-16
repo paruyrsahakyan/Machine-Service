@@ -10,7 +10,7 @@ import javax.persistence.Table;
 public class InterChangeablePart {
     @Id
     private int id;
-    @Column (name = "basic_part_number");
+    @Column (name = "basic_part_number")
     private String basicPartNumber;
     @Column(name = "part_number")
     public String partNumber;
