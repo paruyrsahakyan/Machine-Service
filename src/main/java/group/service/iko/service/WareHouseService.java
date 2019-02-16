@@ -50,9 +50,9 @@ public class WareHouseService {
                 }
             }
             if(!exist) {
-                interChangeableGroupList.add(interChangeableGroup)};
+                interChangeableGroupList.add(interChangeableGroup);};
             }
-        
+
         return interChangeableGroupList;
     }
 }
