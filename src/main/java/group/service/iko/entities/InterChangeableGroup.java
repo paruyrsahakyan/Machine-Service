@@ -1,12 +1,13 @@
 package group.service.iko.entities;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 public class InterChangeableGroup {
 
   private  String basicPartNumber;
-  private  Set<String> interChangeablePartsList;
+  private  Set<String> interChangeablePartsList = new HashSet<>();
 
     public String getBasicPartNumber() {
         return basicPartNumber;
