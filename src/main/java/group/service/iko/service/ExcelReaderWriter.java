@@ -37,9 +37,7 @@ public class ExcelReaderWriter {
             Workbook workbook = new XSSFWorkbook(excelFile);
             Sheet datatypeSheet = workbook.getSheetAt(0);
             partsQuantity = datatypeSheet.getLastRowNum() - 8;
-            System.out.println(datatypeSheet.getLastRowNum());
-
-            for (int i = 8; i < partsQuantity + 8; i++) {
+                for (int i = 8; i < partsQuantity + 8; i++) {
                 Part part = new Part();
                 Row row = datatypeSheet.getRow(i);
                 String partNumber =row.getCell(0).toString();

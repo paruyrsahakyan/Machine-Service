@@ -39,7 +39,7 @@ public class WareHouseController {
     ) {
         wareHouseService.updateWareHouse(multipartFile);
         ModelAndView modelAndView = new ModelAndView("wareHouse/wareHouseHome");
-        modelAndView.addObject("updatedDate", WareHouseService.getUpdateDate());
+        modelAndView.addObject("updateDate", WareHouseService.getUpdateDate());
         return modelAndView;
     }
     @RequestMapping(value = "/interChangeableParts")
