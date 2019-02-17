@@ -42,12 +42,11 @@ public class WareHouseController {
         return modelAndView;
     }
     @RequestMapping(value = "/interChangeableParts")
-    public ModelAndView getInterChangeableParts() {
+    public ModelAndView getAllInterChangeableParts() {
         ModelAndView modelAndView = new ModelAndView("wareHouse/interChangeableParts");
         modelAndView.addObject("interChangeableGroupList", wareHouseService.getInterChangeableGroupList());
         return modelAndView;
     }
-
 
     @RequestMapping(value = "/interChangeableParts/createNew")
     public ModelAndView getCreationPage() {
@@ -69,7 +68,7 @@ public class WareHouseController {
     }
 
     @RequestMapping(value = "/interChangeableGroup/{basicPartNumber}" )
-    public ModelAndView createNewInterChangeable(@PathVariable("basicPartNumber") String basicPartNumber){
+    public ModelAndView getInterchangeableGroup(@PathVariable("basicPartNumber") String basicPartNumber){
         ModelAndView modelAndView= new ModelAndView("wareHouse/interChangeableGroup");
         modelAndView.addObject("interChangeablePartList", interChangeablePartService.getInterChangeableGroupParts(basicPartNumber));
         modelAndView.addObject("basicPartNumber", basicPartNumber );
@@ -91,6 +90,7 @@ public class WareHouseController {
         interChangeablePartService.deleteInterchangeableGroup(basicPartNumber);
         ModelAndView modelAndView = new ModelAndView("wareHouse/interChangeableParts");
         modelAndView.addObject("interChangeablePartList", interChangeablePartService.getInterChangeableGroupParts(basicPartNumber));
+        modelAndView.addObject("basicPartNumber", basicPartNumber);
         return  modelAndView;
     }
 }
