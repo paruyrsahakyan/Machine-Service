@@ -29,6 +29,9 @@ public class ExcelReaderWriter {
             "resources" + File.separator + "templates" + File.separator + "wareHouseRequest.xlsx";
     private final String templatesFolder = File.separator + "home" + File.separator + "paruyr" +
             File.separator + "IkoService" + File.separator + "templates";
+    private final String maintenanceRequestFileSource =File.separator + "home" + File.separator + "paruyr" + File.separator +
+            "Machine-Service" + File.separator + "src" + File.separator + "main" + File.separator +
+            "resources" + File.separator + "templates" + File.separator + "maintenanceReport.xlsx";
 
 
     public void setPartsFromWareHouseFile() {
@@ -59,6 +62,46 @@ public class ExcelReaderWriter {
         }
     }
 
+    public File getMaintenanceRequest(WorkOrder workOrder) throws IOException {
+        File sourceFile = new File(maintenanceRequestFileSource);
+        File fileFolder = new File(templatesFolder);
+        File file = new File(templatesFolder + File.separator + "maintenanceRequest.xlsx");
+        fileFolder.mkdir();
+        if (file.exists()) file.delete();
+        FileUtils.copyFile(sourceFile, file);
+        FileInputStream fileInputStream = new FileInputStream(file);
+        Workbook workbook = new XSSFWorkbook(fileInputStream);
+        Sheet datatypeSheet = workbook.getSheetAt(0);
+        String machineModel = workOrder.getMachine().getModel();
+        String machineSerialNumber = workOrder.getMachine().getSerialNumber();
+        String customer = workOrder.getMachine().getCustomer().getName();
+        String location = workOrder.getLocation();
+        String palanedDate = CalendarAdapter.getStringFormat(workOrder.getOrderDate());
+
+        int smr = workOrder.getOrderSmr();
+        String maintenance = "TO" + workOrder.getPeriodicMaintenance().getSmr();
+
+        Cell cellCustomer = datatypeSheet.getRow(4).getCell(3);
+        Cell cellMachineModel = datatypeSheet.getRow(6).getCell(4);
+        Cell cellMachineSerialNumber = datatypeSheet.getRow(7).getCell(5);
+        Cell cellSMR = datatypeSheet.getRow(8).getCell(6);
+        Cell cellPlanedDate = datatypeSheet.getRow(9).getCell(5);
+        Cell cellMaintenace = datatypeSheet.getRow(10).getCell(9);
+        Cell cellLocation = datatypeSheet.getRow(22).getCell(5);
+
+        cellCustomer.setCellValue(customer);
+        cellMachineModel.setCellValue(machineModel);
+        cellMachineSerialNumber.setCellValue(machineSerialNumber);
+        cellSMR.setCellValue(smr);
+        cellPlanedDate.setCellValue(palanedDate);
+        cellLocation.setCellValue(location);
+        cellMaintenace.setCellValue(maintenance);
+        fileInputStream.close();
+        FileOutputStream fileOutputStream = new FileOutputStream(file);
+        workbook.write(fileOutputStream);
+        fileInputStream.close();
+        return file;
+    }
     public File getReport(WorkOrder workOrder) throws IOException {
         File sourceFile = new File(reportFileSource);
         File fileFolder = new File(templatesFolder);
@@ -119,6 +162,9 @@ public class ExcelReaderWriter {
         fileInputStream.close();
         return file;
     }
+
+
+
 
     public File getWareHouseRequest(WorkOrder workOrder) throws IOException {
         File sourceFile = new File(wareHouseRequestSourceFile);

@@ -218,10 +218,23 @@ public class WorkOrderController {
         WorkOrder workOrder = workOrderService.getWorkOrderById(workOrderId);
         File file = excelReaderWriter.getWareHouseRequest(workOrder);
         String mimeType;
-//      mimeType = URLConnection.guessContentTypeFromName(recordFile.getFileName());
         mimeType = "application/vnd.ms-excel";
         response.setContentType(mimeType);
         response.setHeader("Content-Disposition", String.format("inline; filename=\"Ware house request.xlsx\""));
+        response.setContentLength((int) file.length());
+        InputStream inputStream = new BufferedInputStream(new FileInputStream(file));
+        FileCopyUtils.copy(inputStream, response.getOutputStream());
+    }
+
+    @RequestMapping(value = "/{id}/maintenanceRequest", method = RequestMethod.GET)
+    public void downloadMaintenanceRequest(HttpServletResponse response,
+                                         @PathVariable("id") int workOrderId) throws IOException {
+        WorkOrder workOrder = workOrderService.getWorkOrderById(workOrderId);
+        File file = excelReaderWriter.getMaintenanceRequest(workOrder);
+        String mimeType;
+        mimeType = "application/vnd.ms-excel";
+        response.setContentType(mimeType);
+        response.setHeader("Content-Disposition", String.format("inline; filename=\"Maintenance Request.xlsx\""));
         response.setContentLength((int) file.length());
         InputStream inputStream = new BufferedInputStream(new FileInputStream(file));
         FileCopyUtils.copy(inputStream, response.getOutputStream());
