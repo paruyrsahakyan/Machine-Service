@@ -22,7 +22,7 @@
 <a href="/wareHouse/interChangeableParts/createNew"> Создать заменяемую зачасть </a>
 <br> <br>
 <p style="color: #dc161c"> дата обновления склада ${updateDate}
-    <form:form action="/wareHouse/saved" method="post"  accept-charset="UTF-8"
+    <form:form action="/wareHouse/updated" method="post"  accept-charset="UTF-8"
                enctype="multipart/form-data">
     Загрузить склад:
     <input type="file" name="wareHouseFile">
