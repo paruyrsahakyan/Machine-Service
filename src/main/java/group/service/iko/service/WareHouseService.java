@@ -40,7 +40,7 @@ public class WareHouseService {
     }
 
     public Set<InterChangeableGroup> getInterChangeableGroupList() {
-        List<InterChangeablePart> interChangeablePartList = interChangeablePartService.getAllInterChangeableParts();
+        List<InterChangeablePart> interChangeablePartList = interChangeablePartService.getInterChangeablePartsByBasicPart();
         Set<InterChangeableGroup> interChangeableGroupList = new HashSet<>();
         for (InterChangeablePart interChangeablePart : interChangeablePartList) {
             InterChangeableGroup interChangeableGroup = new InterChangeableGroup();
