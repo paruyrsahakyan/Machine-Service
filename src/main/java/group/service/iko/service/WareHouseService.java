@@ -92,7 +92,7 @@ public class WareHouseService {
         }
         for (InterChangeablePart interChangeablePart : interChangeablePartList) {
             String partNumber1 = interChangeablePart.getPartNumber();
-            if (availablePartList.containsKey(partNumber1)) return availablePartList.get(partNumber);
+            if (availablePartList.containsKey(partNumber1)) return availablePartList.get(partNumber1);
         }
         return null;
     }
