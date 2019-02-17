@@ -39,6 +39,7 @@ public class WareHouseController {
     ) {
         storageService.saveWareHouseFile(multipartFile);
         ModelAndView modelAndView = new ModelAndView("wareHouse/wareHouseHome");
+        modelAndView.addObject("updatedDate", WareHouseService.getUpdateDate());
         return modelAndView;
     }
     @RequestMapping(value = "/interChangeableParts")
