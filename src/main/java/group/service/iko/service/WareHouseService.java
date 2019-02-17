@@ -6,6 +6,8 @@ import group.service.iko.entities.Part;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -17,6 +19,10 @@ public class WareHouseService {
     public static Map<String, Part> availablePartList;
     @Autowired
     private InterChangeablePartService interChangeablePartService;
+    @Autowired
+    private ExcelReaderWriter excelReaderWriter;
+    @Autowired
+    StorageService storageService;
 
     @Override
     public String toString() {
@@ -70,4 +76,9 @@ public class WareHouseService {
     }
 
 
+    public void updateWareHouse(MultipartFile multipartFile) {
+        storageService.saveWareHouseFile(multipartFile);
+        excelReaderWriter.setPartsFromWareHouseFile();
+
+    }
 }

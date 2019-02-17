@@ -28,8 +28,9 @@ public class ExcelReaderWriter {
     private final String templatesFolder = File.separator + "home" + File.separator + "paruyr" +
             File.separator + "IkoService" + File.separator + "templates";
 
+
     public void setPartsFromWareHouseFile() {
-        this.partMap = new HashMap<>();
+        partMap = new HashMap<>();
         try {
             File wareHouseFile = new File(storageService.getWarHouseFilePath());
             FileInputStream excelFile = new FileInputStream(wareHouseFile);

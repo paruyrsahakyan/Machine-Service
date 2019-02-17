@@ -37,7 +37,7 @@ public class WareHouseController {
     @RequestMapping(value = "/updated", method = RequestMethod.POST)
     public ModelAndView filesUpdated(@RequestParam(value = "wareHouseFile", required = false) MultipartFile multipartFile
     ) {
-        storageService.saveWareHouseFile(multipartFile);
+        wareHouseService.updateWareHouse(multipartFile);
         ModelAndView modelAndView = new ModelAndView("wareHouse/wareHouseHome");
         modelAndView.addObject("updatedDate", WareHouseService.getUpdateDate());
         return modelAndView;
