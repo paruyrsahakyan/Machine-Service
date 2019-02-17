@@ -162,7 +162,7 @@ public class ExcelReaderWriter {
             String partNumber = maintenancePart.getPartNumber();
             double available = 0;
             if (partMap.containsKey(partNumber)){
-                Part part = partMap.get(partNumber);
+                available = partMap.get(partNumber).getQuantity();
             }
             else {
                 Part availableInterChangeablePart = WareHouseService.getAvailableInterchangeablePart(partNumber);
