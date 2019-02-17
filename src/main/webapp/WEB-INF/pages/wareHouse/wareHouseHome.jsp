@@ -19,7 +19,7 @@
  <br> <br>
 <a href="/wareHouse/interChangeableParts" > Взаимозаменяемые запчасти </a>
 <br> <br>
-<a href="/wareHouse/interchangeableParts/createNew"> Создать заменяемую зачасть </a>
+<a href="/wareHouse/interChangeableParts/createNew"> Создать заменяемую зачасть </a>
 <br> <br>
 <p style="color: #dc161c"> дата обновления склада ${updateDate}
     <form:form action="/wareHouse/saved" method="post"  accept-charset="UTF-8"
