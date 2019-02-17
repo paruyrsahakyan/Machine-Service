@@ -43,7 +43,7 @@ public class WareHouseController {
         return modelAndView;
     }
     @RequestMapping(value = "/interChangeableParts")
-    public ModelAndView getAllInterChangeableParts() {
+    public ModelAndView getAllInterChangeableGroupsParts() {
         ModelAndView modelAndView = new ModelAndView("wareHouse/interChangeableParts");
         modelAndView.addObject("interChangeableGroupList", wareHouseService.getInterChangeableGroupList());
         return modelAndView;
@@ -82,7 +82,7 @@ public class WareHouseController {
         String basicPart = interChangeablePart.getBasicPartNumber();
          interChangeablePartService.deleteInterchangeablePart(interChangeablePart);
           ModelAndView modelAndView = new ModelAndView("wareHouse/interChangeableGroup");
-          modelAndView.addObject("interChangeable", basicPart);
+          modelAndView.addObject("basicPartNumber", basicPart);
           modelAndView.addObject("interChangeablePartList", interChangeablePartService.getInterChangeableGroupParts(basicPart));
           return  modelAndView;
             }

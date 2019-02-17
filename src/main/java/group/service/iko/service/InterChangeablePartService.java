@@ -29,9 +29,6 @@ public class InterChangeablePartService {
     }
 
     public List<InterChangeablePart> getApplicablePartsByInterChangeablePart(InterChangeablePart interChangeablePart) {
-        if(getInterChangeablePartsByBasicPart()!=null){
-            return getInterChangeablePartsByBasicPart();
-        }
         session = SessionFactoryImpl.getSessionFactory().openSession();
         String hql = "FROM group.service.iko.entities.InterChangeablePart WHERE basicPart='"
                 + interChangeablePart.getBasicPartNumber()+"'";
@@ -41,7 +38,7 @@ public class InterChangeablePartService {
         session.close();
         return  interChangeablePartList;
     }
-    public List<InterChangeablePart> getInterChangeablePartsByBasicPart(){
+    public List<InterChangeablePart> getAllInterChangeableParts(){
          session = SessionFactoryImpl.getSessionFactory().openSession();
         String hql = "from group.service.iko.entities.InterChangeablePart";
         Query query = session.createQuery(hql);
@@ -88,13 +85,16 @@ public class InterChangeablePartService {
               String hql = "from group.service.iko.entities.InterChangeablePart where partNumber = '"+
                     partNumber + "'";
             Query query = session.createQuery(hql);
-             InterChangeablePart interChangeableGroupPart = (InterChangeablePart) query.uniqueResult();
+             InterChangeablePart interChangeablePart = (InterChangeablePart) query.uniqueResult();
             session.flush();
             session.close();
-            return  interChangeableGroupPart;
+            return  interChangeablePart;
         }
 
         public List<InterChangeablePart> getApplicablePartsListByPartNumber (String partNumber) {
+         if (getInterChangeableGroupParts(partNumber)!=null){
+             return getInterChangeableGroupParts(partNumber);
+            }
         InterChangeablePart interChangeablePart = getInterChangeablePartByPartNumber(partNumber);
         if (interChangeablePart!=null) {
             return getApplicablePartsByInterChangeablePart(interChangeablePart);
