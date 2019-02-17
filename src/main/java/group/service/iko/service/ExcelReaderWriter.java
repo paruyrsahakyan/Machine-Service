@@ -31,7 +31,7 @@ public class ExcelReaderWriter {
             File.separator + "IkoService" + File.separator + "templates";
     private final String maintenanceRequestFileSource =File.separator + "home" + File.separator + "paruyr" + File.separator +
             "Machine-Service" + File.separator + "src" + File.separator + "main" + File.separator +
-            "resources" + File.separator + "templates" + File.separator + "maintenanceReport.xlsx";
+            "resources" + File.separator + "templates" + File.separator + "maintenanceRequest.xlsx";
 
 
     public void setPartsFromWareHouseFile() {
