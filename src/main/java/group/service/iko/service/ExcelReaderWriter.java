@@ -17,7 +17,7 @@ import java.util.*;
 public class ExcelReaderWriter {
     @Autowired
     private StorageService storageService;
-    private static Map<String, Part> partMap;
+    public static Map<String, Part> partMap;
     private int partsQuantity;
     private final String reportFileSource = File.separator + "home" + File.separator + "paruyr" + File.separator +
             "Machine-Service" + File.separator + "src" + File.separator + "main" + File.separator +
