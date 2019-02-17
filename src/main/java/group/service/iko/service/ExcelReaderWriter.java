@@ -155,8 +155,13 @@ public class ExcelReaderWriter {
             Cell cellAvailable  = datatypeSheet.getRow(partRow).getCell(5);
 
             String partNumber = maintenancePart.getPartNumber();
-            Double available =partMap.get(partNumber).getQuantity();
-
+            double available;
+            if(partMap.get(partNumber)==null){
+                available = 0;
+            }
+            else {
+                available= partMap.get(partNumber).getQuantity();
+                   }
             cellPartNumber.setCellValue(partNumber);
             cellPartDescription.setCellValue(maintenancePart.getPartType());
             cellPartUnit.setCellValue(maintenancePart.getUnit());
