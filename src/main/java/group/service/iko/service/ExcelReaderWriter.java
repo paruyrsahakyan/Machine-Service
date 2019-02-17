@@ -145,14 +145,25 @@ public class ExcelReaderWriter {
         int i = 0;
         for (MaintenancePart maintenancePart : workOrder.getPeriodicMaintenance().getMaintenanceParts()) {
             i++;
-            Cell position = datatypeSheet.getRow(partRow).getCell(0);
-            Cell partNumber = datatypeSheet.getRow(partRow).getCell(1);
-            Cell partUnit = datatypeSheet.getRow(partRow).getCell(9);
-            Cell partQuantity = datatypeSheet.getRow(partRow).getCell(10);
-            position.setCellValue(i);
-            partNumber.setCellValue(maintenancePart.getPartNumber());
-            partUnit.setCellValue(maintenancePart.getUnit());
-            partQuantity.setCellValue(maintenancePart.getQuantity());
+            Cell cellPosition = datatypeSheet.getRow(partRow).getCell(0);
+            Cell cellPartNumber = datatypeSheet.getRow(partRow).getCell(1);
+            Cell cellPartUnit = datatypeSheet.getRow(partRow).getCell(9);
+            Cell cellPartQuantity = datatypeSheet.getRow(partRow).getCell(10);
+
+            String partNumber = maintenancePart.getPartNumber();
+            if (partMap.containsKey(partNumber)){
+                           }
+            else {
+                Part availableInterChangeablePart = WareHouseService.getAvailableInterchangeablePart(partNumber);
+                if (availableInterChangeablePart != null) {
+                    partNumber = availableInterChangeablePart.getPartNumber();
+                                   }
+            }
+
+            cellPosition.setCellValue(i);
+            cellPartNumber.setCellValue(partNumber);
+            cellPartUnit.setCellValue(maintenancePart.getUnit());
+            cellPartQuantity.setCellValue(maintenancePart.getQuantity());
             partRow++;
         }
 
