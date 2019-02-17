@@ -50,7 +50,7 @@ public class InterChangeablePartService {
 
     public  List<InterChangeablePart> getInterChangeableGroupParts(String basicPartNumber) {
      session =SessionFactoryImpl.getSessionFactory().openSession();
-     String hql = "from group.service.iko.entities.InterChangeablePart where basic_part_number = '"+
+     String hql = "from group.service.iko.entities.InterChangeablePart where basicPartNumber = '"+
              basicPartNumber + "'";
      Query query = session.createQuery(hql);
      List<InterChangeablePart> interChangeableGroupParts = (List<InterChangeablePart>) query.list();
@@ -96,7 +96,7 @@ public class InterChangeablePartService {
              return getInterChangeableGroupParts(partNumber);
             }
         InterChangeablePart interChangeablePart = getInterChangeablePartByPartNumber(partNumber);
-        if (interChangeablePart!=null) {
+        if (interChangeablePart == null) {
             return getApplicablePartsByInterChangeablePart(interChangeablePart);
         }
         return null;
