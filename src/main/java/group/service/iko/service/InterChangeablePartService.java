@@ -62,7 +62,7 @@ public class InterChangeablePartService {
 
     public InterChangeablePart getInterChangeablePartById(int id) {
         session = SessionFactoryImpl.getSessionFactory().openSession();
-        String hql = "from group.service.iko.entities.InterChangeable where id= :partId";
+        String hql = "from group.service.iko.entities.InterChangeablePart where id= :partId";
         Query query = session.createQuery(hql);
         query.setParameter("partId", id);
         InterChangeablePart interChangeablePart  = (InterChangeablePart) query.uniqueResult();
@@ -73,7 +73,7 @@ public class InterChangeablePartService {
 
     public void deleteInterchangeableGroup(String basicPartNumber) {
         session = SessionFactoryImpl.getSessionFactory().openSession();
-        Query query = session.createQuery("delete group.service.iko.entities.InterChangeable where basicPartNumber = :partNumber");
+        Query query = session.createQuery("delete group.service.iko.entities.InterChangeablePart where basicPartNumber = :partNumber");
         query.setParameter("partNumber", basicPartNumber);
         query.executeUpdate();
         session.flush();
