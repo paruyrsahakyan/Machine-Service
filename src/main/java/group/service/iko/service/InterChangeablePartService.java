@@ -93,6 +93,9 @@ public class InterChangeablePartService {
 
         public List<InterChangeablePart> getApplicablePartsListByPartNumber (String partNumber) {
         InterChangeablePart interChangeablePart = getInterChangeablePartByPartNumber(partNumber);
-        return getApplicablePartsByInterChangeablePart(interChangeablePart);
+        if (interChangeablePart!=null) {
+            return getApplicablePartsByInterChangeablePart(interChangeablePart);
+        }
+        return null;
     }
 }

@@ -87,10 +87,14 @@ public class WareHouseService {
     public static Part getAvailableInterchangeablePart(String partNumber) {
         InterChangeablePartService interChangeablePartService = new InterChangeablePartService();
         List<InterChangeablePart> interChangeablePartList = interChangeablePartService.getApplicablePartsListByPartNumber(partNumber);
+        if (interChangeablePartList == null) {
+            return null;
+        }
         for (InterChangeablePart interChangeablePart : interChangeablePartList) {
             String partNumber1 = interChangeablePart.getPartNumber();
             if (availablePartList.containsKey(partNumber1)) return availablePartList.get(partNumber);
         }
         return null;
     }
+
 }
