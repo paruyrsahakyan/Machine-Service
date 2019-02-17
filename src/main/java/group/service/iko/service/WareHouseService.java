@@ -52,26 +52,28 @@ public class WareHouseService {
                 }
             }
             boolean exist = false;
-            for(InterChangeableGroup interChangeableGroup2: interChangeableGroupList) {
+            for (InterChangeableGroup interChangeableGroup2 : interChangeableGroupList) {
                 if (interChangeableGroup2.getBasicPartNumber().equals(basicPartNumber)) {
                     exist = true;
                 }
             }
-            if(!exist) {
-                interChangeableGroupList.add(interChangeableGroup);};
+            if (!exist) {
+                interChangeableGroupList.add(interChangeableGroup);
             }
+            ;
+        }
 
         return interChangeableGroupList;
     }
 
     public InterChangeableGroup getInterChangeableGroupByBasic(String basicPartNumber) {
-       List<InterChangeablePart> interChangeablePartList = interChangeablePartService.getInterChangeableGroupParts(basicPartNumber);
-           InterChangeableGroup interChangeableGroup = new InterChangeableGroup();
-           interChangeableGroup.setBasicPartNumber(basicPartNumber);
-            for(InterChangeablePart interChangeablePart: interChangeablePartList){
+        List<InterChangeablePart> interChangeablePartList = interChangeablePartService.getInterChangeableGroupParts(basicPartNumber);
+        InterChangeableGroup interChangeableGroup = new InterChangeableGroup();
+        interChangeableGroup.setBasicPartNumber(basicPartNumber);
+        for (InterChangeablePart interChangeablePart : interChangeablePartList) {
             interChangeableGroup.getInterChangeablePartsList().add(interChangeablePart.getPartNumber());
-             }
-             return  interChangeableGroup;
+        }
+        return interChangeableGroup;
 
     }
 
@@ -80,5 +82,15 @@ public class WareHouseService {
         storageService.saveWareHouseFile(multipartFile);
         excelReaderWriter.setPartsFromWareHouseFile();
 
+    }
+
+    public static Part getAvailableInterchangeablePart(String partNumber) {
+        InterChangeablePartService interChangeablePartService = new InterChangeablePartService();
+        List<InterChangeablePart> interChangeablePartList = interChangeablePartService.getApplicablePartsListByPartNumber(partNumber);
+        for (InterChangeablePart interChangeablePart : interChangeablePartList) {
+            String partNumber1 = interChangeablePart.getPartNumber();
+            if (availablePartList.containsKey(partNumber1)) return availablePartList.get(partNumber);
+        }
+        return null;
     }
 }

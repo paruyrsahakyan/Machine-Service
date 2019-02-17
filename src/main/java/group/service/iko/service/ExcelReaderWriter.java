@@ -17,6 +17,8 @@ import java.util.*;
 public class ExcelReaderWriter {
     @Autowired
     private StorageService storageService;
+    @Autowired
+    private InterChangeablePartService interChangeablePartServicel;
     public static Map<String, Part> partMap;
     private int partsQuantity;
     private final String reportFileSource = File.separator + "home" + File.separator + "paruyr" + File.separator +
@@ -37,10 +39,10 @@ public class ExcelReaderWriter {
             Workbook workbook = new XSSFWorkbook(excelFile);
             Sheet datatypeSheet = workbook.getSheetAt(0);
             partsQuantity = datatypeSheet.getLastRowNum() - 8;
-                for (int i = 8; i < partsQuantity + 8; i++) {
+            for (int i = 8; i < partsQuantity + 8; i++) {
                 Part part = new Part();
                 Row row = datatypeSheet.getRow(i);
-                String partNumber =row.getCell(0).toString();
+                String partNumber = row.getCell(0).toString();
                 part.setPartNumber(partNumber);
                 part.setNomenclature(row.getCell(3).toString());
                 part.setUnit(row.getCell(6).getStringCellValue());
@@ -48,8 +50,8 @@ public class ExcelReaderWriter {
                 partMap.put(partNumber, part);
             }
             GregorianCalendar now = new GregorianCalendar();
-               WareHouseService.updateDate= CalendarAdapter.getStringFormat(now);
-               WareHouseService.availablePartList=partMap;
+            WareHouseService.updateDate = CalendarAdapter.getStringFormat(now);
+            WareHouseService.availablePartList = partMap;
         } catch (FileNotFoundException e1) {
             e1.printStackTrace();
         } catch (IOException e1) {
@@ -131,18 +133,21 @@ public class ExcelReaderWriter {
         String machineModel = workOrder.getMachine().getModel();
         String machineSerialNumber = workOrder.getMachine().getSerialNumber();
         String customer = workOrder.getMachine().getCustomer().getName();
+        String serviceMachine = workOrder.getServiceMachine();
         String location = workOrder.getLocation();
         String worker = workOrder.getWorker();
         String date = CalendarAdapter.getStringFormat(workOrder.getOrderDate());
         String maintenance = "TO" + workOrder.getPeriodicMaintenance().getSmr();
         Cell cellWorker = datatypeSheet.getRow(23).getCell(2);
-        Cell cellCustomer =datatypeSheet.getRow(24).getCell(2);
-        Cell cellWorkToDo = datatypeSheet.getRow(25).getCell(2);
-        Cell cellLocation = datatypeSheet.getRow(26).getCell(2);
+        Cell cellServiceMachine = datatypeSheet.getRow(24).getCell(2);
+        Cell cellCustomer = datatypeSheet.getRow(25).getCell(2);
+        Cell cellWorkToDo = datatypeSheet.getRow(26).getCell(2);
+        Cell cellLocation = datatypeSheet.getRow(27).getCell(2);
         Cell cellDate = datatypeSheet.getRow(1).getCell(4);
         cellWorker.setCellValue(worker);
+        cellServiceMachine.setCellValue(serviceMachine);
         cellCustomer.setCellValue(customer);
-        cellWorkToDo.setCellValue(machineModel+" sn" +machineSerialNumber +"; " + maintenance);
+        cellWorkToDo.setCellValue(machineModel + " sn" + machineSerialNumber + "; " + maintenance);
         cellLocation.setCellValue(location);
         cellDate.setCellValue(date);
         int partRow = 6;
@@ -152,37 +157,48 @@ public class ExcelReaderWriter {
             Cell cellPartDescription = datatypeSheet.getRow(partRow).getCell(2);
             Cell cellPartUnit = datatypeSheet.getRow(partRow).getCell(3);
             Cell cellPartQuantity = datatypeSheet.getRow(partRow).getCell(4);
-            Cell cellAvailable  = datatypeSheet.getRow(partRow).getCell(5);
+            Cell cellAvailable = datatypeSheet.getRow(partRow).getCell(5);
 
             String partNumber = maintenancePart.getPartNumber();
-            double available;
-            if(partMap.get(partNumber)==null){
-                available = 0;
+            double available = 0;
+            if (!partMap.containsKey(partNumber)) {
+                Part availableInterChangeablePart = WareHouseService.getAvailableInterchangeablePart(partNumber);
+                if (availableInterChangeablePart != null) {
+                    partNumber = availableInterChangeablePart.getPartNumber();
+                    available = availableInterChangeablePart.getQuantity();
+                }
             }
-            else {
-                available= partMap.get(partNumber).getQuantity();
-                   }
-            cellPartNumber.setCellValue(partNumber);
-            cellPartDescription.setCellValue(maintenancePart.getPartType());
-            cellPartUnit.setCellValue(maintenancePart.getUnit());
-            cellPartQuantity.setCellValue(maintenancePart.getQuantity());
-            cellAvailable.setCellValue(available);
-            partRow++;
+                cellPartNumber.setCellValue(partNumber);
+                cellPartDescription.setCellValue(maintenancePart.getPartType());
+                cellPartUnit.setCellValue(maintenancePart.getUnit());
+                cellPartQuantity.setCellValue(maintenancePart.getQuantity());
+                cellAvailable.setCellValue(available);
+                partRow++;
+            }
+
+            fileInputStream.close();
+            FileOutputStream fileOutputStream = new FileOutputStream(wareHouseRequestFile);
+            workbook.write(fileOutputStream);
+            fileInputStream.close();
+            return wareHouseRequestFile;
+
         }
 
-        fileInputStream.close();
-        FileOutputStream fileOutputStream = new FileOutputStream(wareHouseRequestFile);
-        workbook.write(fileOutputStream);
-        fileInputStream.close();
-        return wareHouseRequestFile;
-
-    }
-
-    public Map<String, Part> getPartMap() {
+    public static Map<String, Part> getPartMap() {
         return partMap;
     }
 
-    public void setPartMap(Map<String, Part> partMap) {
-        this.partMap = partMap;
+    public static void setPartMap(Map<String, Part> partMap) {
+        ExcelReaderWriter.partMap = partMap;
+    }
+
+    public int getPartsQuantity() {
+        return partsQuantity;
+    }
+
+    public void setPartsQuantity(int partsQuantity) {
+        this.partsQuantity = partsQuantity;
     }
 }
+
+

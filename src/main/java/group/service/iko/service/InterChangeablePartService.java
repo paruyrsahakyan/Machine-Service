@@ -28,7 +28,7 @@ public class InterChangeablePartService {
         interChangeablePartDAO.deleteInterChangeablePart(interChangeablePart);
     }
 
-    public List<InterChangeablePart> getApplicableParts(InterChangeablePart interChangeablePart) {
+    public List<InterChangeablePart> getApplicablePartsByInterChangeablePart(InterChangeablePart interChangeablePart) {
         session = SessionFactoryImpl.getSessionFactory().openSession();
         String hql = "FROM group.service.iko.entities.InterChangeablePart WHERE basicPart='"
                 + interChangeablePart.getBasicPartNumber()+"'";
@@ -79,4 +79,20 @@ public class InterChangeablePartService {
         session.flush();
         session.close();
             }
+
+    public InterChangeablePart getInterChangeablePartByPartNumber(String partNumber) {
+            session =SessionFactoryImpl.getSessionFactory().openSession();
+              String hql = "from group.service.iko.entities.InterChangeablePart where partNumber = '"+
+                    partNumber + "'";
+            Query query = session.createQuery(hql);
+             InterChangeablePart interChangeableGroupPart = (InterChangeablePart) query.uniqueResult();
+            session.flush();
+            session.close();
+            return  interChangeableGroupPart;
+        }
+
+        public List<InterChangeablePart> getApplicablePartsListByPartNumber (String partNumber) {
+        InterChangeablePart interChangeablePart = getInterChangeablePartByPartNumber(partNumber);
+        return getApplicablePartsByInterChangeablePart(interChangeablePart);
+    }
 }
