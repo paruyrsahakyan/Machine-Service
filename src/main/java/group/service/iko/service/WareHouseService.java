@@ -3,18 +3,18 @@ package group.service.iko.service;
 import group.service.iko.entities.InterChangeableGroup;
 import group.service.iko.entities.InterChangeablePart;
 import group.service.iko.entities.Part;
-import group.service.iko.entityDao.SessionFactoryImpl;
-import org.hibernate.Session;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 @Service
 public class WareHouseService {
     public static String updateDate;
-    private List<Part> availablePartList;
+    public static Map<String, Part> availablePartList;
     @Autowired
     private InterChangeablePartService interChangeablePartService;
 
@@ -68,4 +68,6 @@ public class WareHouseService {
              return  interChangeableGroup;
 
     }
- }
+
+
+}

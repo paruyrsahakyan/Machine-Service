@@ -11,14 +11,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class ExcelReaderWriter {
     @Autowired
     private StorageService storageService;
-    private List<Part> parts;
+    private Map<String, Part> partMap;
     private int partsQuantity;
     private final String reportFileSource = File.separator + "home" + File.separator + "paruyr" + File.separator +
             "Machine-Service" + File.separator + "src" + File.separator + "main" + File.separator +
@@ -29,12 +28,8 @@ public class ExcelReaderWriter {
     private final String templatesFolder = File.separator + "home" + File.separator + "paruyr" +
             File.separator + "IkoService" + File.separator + "templates";
 
-    public ExcelReaderWriter() {
-        this.parts = new ArrayList<Part>();
-    }
-
     public void setPartsFromWareHouseFile() {
-        this.parts = new ArrayList<Part>();
+        this.partMap = new HashMap<>();
         try {
             File wareHouseFile = new File(storageService.getWarHouseFilePath());
             FileInputStream excelFile = new FileInputStream(wareHouseFile);
@@ -46,13 +41,16 @@ public class ExcelReaderWriter {
             for (int i = 8; i < partsQuantity + 8; i++) {
                 Part part = new Part();
                 Row row = datatypeSheet.getRow(i);
-                part.setPartNumber(row.getCell(0).toString());
+                String partNumber =row.getCell(0).toString();
+                part.setPartNumber(partNumber);
                 part.setNomenclature(row.getCell(3).toString());
                 part.setUnit(row.getCell(6).getStringCellValue());
                 part.setQuantity(row.getCell(7).getNumericCellValue());
-                parts.add(part);
+                partMap.put(partNumber, part);
             }
-
+            GregorianCalendar now = new GregorianCalendar();
+               WareHouseService.updateDate= CalendarAdapter.getStringFormat(now);
+               WareHouseService.availablePartList=partMap;
         } catch (FileNotFoundException e1) {
             e1.printStackTrace();
         } catch (IOException e1) {
@@ -155,11 +153,16 @@ public class ExcelReaderWriter {
             Cell cellPartDescription = datatypeSheet.getRow(partRow).getCell(2);
             Cell cellPartUnit = datatypeSheet.getRow(partRow).getCell(3);
             Cell cellPartQuantity = datatypeSheet.getRow(partRow).getCell(4);
+            Cell cellAvailable  = datatypeSheet.getRow(partRow).getCell(5);
 
-            cellPartNumber.setCellValue(maintenancePart.getPartNumber());
+            String partNumber = maintenancePart.getPartNumber();
+            Double available =partMap.get(partNumber).getQuantity();
+
+            cellPartNumber.setCellValue(partNumber);
             cellPartDescription.setCellValue(maintenancePart.getPartType());
             cellPartUnit.setCellValue(maintenancePart.getUnit());
             cellPartQuantity.setCellValue(maintenancePart.getQuantity());
+            cellAvailable.setCellValue(available);
             partRow++;
         }
 
@@ -171,9 +174,11 @@ public class ExcelReaderWriter {
 
     }
 
-    public List<Part> getParts() {
-        setPartsFromWareHouseFile();
-        return parts;
+    public Map<String, Part> getPartMap() {
+        return partMap;
     }
 
+    public void setPartMap(Map<String, Part> partMap) {
+        this.partMap = partMap;
+    }
 }
