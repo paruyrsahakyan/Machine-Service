@@ -65,8 +65,8 @@ public class ExcelReaderWriter {
     public File getMaintenanceRequest(WorkOrder workOrder) throws IOException {
         File sourceFile = new File(maintenanceRequestFileSource);
         File fileFolder = new File(templatesFolder);
-        File file = new File(templatesFolder + File.separator + "maintenanceRequest.xlsx");
         fileFolder.mkdir();
+        File file = new File(templatesFolder + File.separator + "maintenanceRequest.xlsx");
         if (file.exists()) file.delete();
         FileUtils.copyFile(sourceFile, file);
         FileInputStream fileInputStream = new FileInputStream(file);

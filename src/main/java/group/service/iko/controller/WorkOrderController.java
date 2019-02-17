@@ -240,5 +240,4 @@ public class WorkOrderController {
         FileCopyUtils.copy(inputStream, response.getOutputStream());
     }
 
-
 }
