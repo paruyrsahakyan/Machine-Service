@@ -4,6 +4,7 @@ import group.service.iko.entities.InterChangeablePart;
 import group.service.iko.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -65,6 +66,32 @@ public class WareHouseController {
         interChangeablePartService.saveInterChangeablePart(interChangeablePart);
        modelAndView.addObject("interChangeableGroupList", wareHouseService.getInterChangeableGroupList());
       return modelAndView;
+    }
+
+    @RequestMapping(value = "/interChangeableGroup/{basicPartNumber}" )
+    public ModelAndView createNewInterChangeable(@PathVariable("basicPartNumber") String basicPartNumber){
+        ModelAndView modelAndView= new ModelAndView("wareHouse/interChangeableGroup");
+        modelAndView.addObject("interChangeablePartList", interChangeablePartService.getInterChangeableGroupParts(basicPartNumber));
+        modelAndView.addObject("basicPartNumber", basicPartNumber );
+        return  modelAndView;
+    }
+
+    @RequestMapping (value = "/interChangeablePart/{id}/deleted")
+    public ModelAndView deleteInterChangeablePart (@PathVariable("id") int id){
+        InterChangeablePart interChangeablePart = interChangeablePartService.getInterChangeablePartById(id);
+        String basicPart = interChangeablePart.getBasicPartNumber();
+         interChangeablePartService.deleteInterchangeablePart(interChangeablePart);
+          ModelAndView modelAndView = new ModelAndView("wareHouse/interChangeableGroup");
+          modelAndView.addObject("interChangeable", basicPart);
+          modelAndView.addObject("interChangeablePartList", interChangeablePartService.getInterChangeableGroupParts(basicPart));
+          return  modelAndView;
+            }
+    @RequestMapping (value = "/interChangeableGroup/{basicPartNumber}/deleted")
+    public ModelAndView deleteInterChangeableGroup(@PathVariable("basicPartNumber") String basicPartNumber){
+        interChangeablePartService.deleteInterchangeableGroup(basicPartNumber);
+        ModelAndView modelAndView = new ModelAndView("wareHouse/interChangeableParts");
+        modelAndView.addObject("interChangeablePartList", interChangeablePartService.getInterChangeableGroupParts(basicPartNumber));
+        return  modelAndView;
     }
 }
 

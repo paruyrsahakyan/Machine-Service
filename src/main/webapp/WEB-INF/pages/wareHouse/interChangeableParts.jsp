@@ -44,7 +44,11 @@
     <c:forEach items="${interChangeableGroupList}" var="interChangeableGroup" >
         <tr>
             <td><%= i++%> </td>
-            <th>${interChangeableGroup.basicPartNumber}</th>
+            <th>
+                <a href="/wareHouse/interChangeableGroup/${interChangeableGroup.basicPartNumber}">
+                        ${interChangeableGroup.basicPartNumber}
+                            </a>
+            </th>
             <c:forEach items="${interChangeableGroup.interChangeablePartsList}" var="interChangeablePart">
             <td>${interChangeablePart}</td>
             </c:forEach>

@@ -39,7 +39,7 @@ public class InterChangeablePartService {
         return  interChangeablePartList;
     }
     public List<InterChangeablePart> getAllInterChangeableParts(){
-        Session session = SessionFactoryImpl.getSessionFactory().openSession();
+         session = SessionFactoryImpl.getSessionFactory().openSession();
         String hql = "from group.service.iko.entities.InterChangeablePart";
         Query query = session.createQuery(hql);
         List<InterChangeablePart> interChangeablePartList = (List<InterChangeablePart>) query.list();
@@ -47,4 +47,36 @@ public class InterChangeablePartService {
         session.close();
         return  interChangeablePartList;
         }
+
+    public  List<InterChangeablePart> getInterChangeableGroupParts(String basicPartNumber) {
+     session =SessionFactoryImpl.getSessionFactory().openSession();
+     String hql = "from group.service.iko.entities.InterChangeablePart where basic_part_number = '"+
+             basicPartNumber + "'";
+     Query query = session.createQuery(hql);
+     List<InterChangeablePart> interChangeableGroupParts = (List<InterChangeablePart>) query.list();
+     session.flush();
+     session.close();
+     return  interChangeableGroupParts;
+
+    }
+
+    public InterChangeablePart getInterChangeablePartById(int id) {
+        session = SessionFactoryImpl.getSessionFactory().openSession();
+        String hql = "from group.service.iko.entities.InterChangeable where id= :partId";
+        Query query = session.createQuery(hql);
+        query.setParameter("partId", id);
+        InterChangeablePart interChangeablePart  = (InterChangeablePart) query.uniqueResult();
+        session.close();
+        return interChangeablePart;
+
+    }
+
+    public void deleteInterchangeableGroup(String basicPartNumber) {
+        session = SessionFactoryImpl.getSessionFactory().openSession();
+        Query query = session.createQuery("delete group.service.iko.entities.InterChangeable where basicPartNumber = :partNumber");
+        query.setParameter("partNumber", basicPartNumber);
+        query.executeUpdate();
+        session.flush();
+        session.close();
+            }
 }

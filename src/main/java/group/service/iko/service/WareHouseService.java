@@ -3,6 +3,8 @@ package group.service.iko.service;
 import group.service.iko.entities.InterChangeableGroup;
 import group.service.iko.entities.InterChangeablePart;
 import group.service.iko.entities.Part;
+import group.service.iko.entityDao.SessionFactoryImpl;
+import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.HashSet;
@@ -55,4 +57,15 @@ public class WareHouseService {
 
         return interChangeableGroupList;
     }
-}
+
+    public InterChangeableGroup getInterChangeableGroupByBasic(String basicPartNumber) {
+       List<InterChangeablePart> interChangeablePartList = interChangeablePartService.getInterChangeableGroupParts(basicPartNumber);
+           InterChangeableGroup interChangeableGroup = new InterChangeableGroup();
+           interChangeableGroup.setBasicPartNumber(basicPartNumber);
+            for(InterChangeablePart interChangeablePart: interChangeablePartList){
+            interChangeableGroup.getInterChangeablePartsList().add(interChangeablePart.getPartNumber());
+             }
+             return  interChangeableGroup;
+
+    }
+ }

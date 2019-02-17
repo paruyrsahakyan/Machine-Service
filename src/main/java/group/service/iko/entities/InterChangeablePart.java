@@ -30,4 +30,12 @@ public class InterChangeablePart {
     public void setPartNumber(String partNumber) {
         this.partNumber = partNumber;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 }
