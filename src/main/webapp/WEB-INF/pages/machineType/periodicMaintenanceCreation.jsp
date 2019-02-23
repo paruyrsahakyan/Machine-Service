@@ -27,6 +27,7 @@
     <form:form action="/machineType/${machineType.id}/maintenance/createdNew" method="post">
         Периодичность ТO(мч)  <input name ="smr" type="number">
         <input type="submit" value="Сохранить">
+        <a  href="/machineType/${machineType.id}"> <button> Отменить </button> </a>
                 <br> <br>
         <table id = "table" align="center">
             <tr>

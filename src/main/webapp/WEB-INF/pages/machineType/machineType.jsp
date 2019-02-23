@@ -59,8 +59,8 @@
                 </tr>
                 <tr>
                     <td><b> N </b>  </td>
-                    <td><b> Описание </b> </td>
                     <td><b> Артикул </b> </td>
+                    <td><b> Описание </b> </td>
                     <td><b> Единица </b> </td>
                     <td><b> Количество </b> </td>
                 </tr>
@@ -69,8 +69,8 @@
 
             <tr>
                 <td><%= i++%> </td>
-                <td>${maintenancePart.partType}</td>
                 <td>${maintenancePart.partNumber}</td>
+                <td>${maintenancePart.partType}</td>
                 <td>${maintenancePart.unit}</td>
                 <td>${maintenancePart.quantity}</td>
                 </tr>

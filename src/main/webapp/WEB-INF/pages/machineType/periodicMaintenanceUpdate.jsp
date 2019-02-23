@@ -21,7 +21,7 @@
         </style>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <title>Редактирование ТО</title>
-
+    </head>
 <body>
 <div style="text-align: center">
     <h2>Редактирование  ТО</h2> <br>
@@ -32,6 +32,7 @@
         <br> <br>
         <table id = "table" align="center">
             <tr>
+                <th>N</th>
                 <th>Артикул</th>
                 <th>Описание</th>
                 <th>Единица</th>
@@ -39,16 +40,36 @@
             </tr>
             <% int i = 1; %>
             <c:forEach items="${periodicMaintenance.maintenanceParts}" var="maintenancePart" >
-                <tr>
+                <tr id="${maintenancePart.id}">
                     <td><%= i++%> </td>
                     <td> <input type='text' name= 'partNumber[]' value="${maintenancePart.partNumber}"> </td>
                     <td> <input type='text' name= 'description[]' value="${maintenancePart.partType}"> </td>
                     <td> <input type='text' name= 'unit[]' value="${maintenancePart.unit}"> </td>
                     <td> <input type='number' name= 'quantity[]' value="${maintenancePart.quantity}"> </td>
-
+                    <td> <button onclick="deleteRow(${maintenancePart.id})"> Удалить строку </button></td>
+                </tr>
             </c:forEach>
                 </table>
     </form:form>
+        <button id ="addPart"  onclick="addRow()">Добавить строку</button>
 </div>
+<script>
+    function deleteRow(rowId) {
+        document.getElementById(rowId).innerHTML="";
+    }
+        function addRow(){
+        var table=document.getElementById("table");
+        var row = table.insertRow();
+        var partNumberCell =row.insertCell(0);
+        var descriptionCell =row.insertCell(1);
+        var unitCell =row.insertCell(2);
+        var quantityCell =row.insertCell(3);
+        partNumberCell.innerHTML ="<input type='text' name= 'partNumber[]'>";
+        descriptionCell.innerHTML ="<input type='text' name= 'description[]'>";
+        unitCell.innerHTML ="<input type='text' name= 'unit[]'>";
+        quantityCell.innerHTML ="<input type='number' name= 'quantity[]'>";
+        }
+
+</script>
 </body>
 </html>
