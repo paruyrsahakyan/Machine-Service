@@ -20,7 +20,7 @@
     <h3>Тип машины &nbsp; ${machineType.typeDescription}&nbsp; </h3>
 
     <a href="/"> Главное меню</a>    &nbsp; &nbsp;
-    <a href="/machineType/allMachineTypes">   Типы машин</a>
+    <a href="/machineType/${machineType.id}"> Тип машины</a>
     <br><br>
     <a href="/machineType/${machineType.id}/periodicMaintenance/${periodicMaintenance.id}/updatePage"> Редактировать</a>
     &nbsp; &nbsp;
