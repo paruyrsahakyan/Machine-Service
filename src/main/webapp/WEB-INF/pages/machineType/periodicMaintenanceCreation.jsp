@@ -43,10 +43,11 @@
 
     <br> <br>
     <script>
-        var rowId = 1;
+        var rowId = 0;
         function addRow(){
             var table=document.getElementById("table");
             var row = table.insertRow();
+            rowId++;
              row.id=rowId.toString();
             var partNumberCell =row.insertCell(0);
             var descriptionCell =row.insertCell(1);
@@ -57,12 +58,11 @@
             descriptionCell.innerHTML ="<input type='text' name= 'description[]'>";
             unitCell.innerHTML ="<input type='text' name= 'unit[]'>";
             quantityCell.innerHTML ="<input type='number' name= 'quantity[]'>";
-            deleteCell.innerHTML ="<button onclick='deleteRow()'>";
+            deleteCell.innerHTML ="<button onclick='deleteRow()'>Удалить стоку</button>";
         }
         function deleteRow() {
             document.getElementById(rowId.toString()).innerHTML="";
-            rowId++;
-        }
+                  }
     </script>
 </div>
 </body>

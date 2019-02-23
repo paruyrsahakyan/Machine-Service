@@ -71,7 +71,6 @@
         unitCell.innerHTML ="<input type='text' name= 'unit[]'>";
         quantityCell.innerHTML ="<input type='number' name= 'quantity[]'>";
                }
-
     </script>
 </body>
 </html>
