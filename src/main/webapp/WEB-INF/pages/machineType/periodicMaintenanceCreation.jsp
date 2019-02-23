@@ -24,10 +24,11 @@
     <h2>Создание нового ТО</h2> <br>
     <h3>Тип машины &nbsp; ${machineType.typeDescription}</h3>
 
-    <form:form action="/machineType/${machineType.id}/maintenance/createdNew" method="post" onkeypress="return event.keyCode != 13;">
+    <form:form action="/machineType/${machineType.id}/maintenance/createdNew" method="post"
+               onkeypress="return event.keyCode != 13;">
         Периодичность ТO(мч)  <input name ="smr" type="number">
         <input type="submit" value="Сохранить">
-         <button> <a href="/machineType/${machineType.id}">Отменить </a> </button>
+         <button> <a href="/machineType/${machineType.id}" style="text-decoration:none">Отменить </a> </button>
                 <br> <br>
         <table id = "table" align="center">
             <tr>
@@ -46,8 +47,7 @@
         function addRow(){
             var table=document.getElementById("table");
             var row = table.insertRow();
-            var localRowId= rowId.toString();
-            row.id=localRowId;
+             row.id=rowId.toString();
             var partNumberCell =row.insertCell(0);
             var descriptionCell =row.insertCell(1);
             var unitCell =row.insertCell(2);
@@ -57,10 +57,10 @@
             descriptionCell.innerHTML ="<input type='text' name= 'description[]'>";
             unitCell.innerHTML ="<input type='text' name= 'unit[]'>";
             quantityCell.innerHTML ="<input type='number' name= 'quantity[]'>";
-            deleteCell.innerHTML ="<button onclick='deleteRow(localRowId)'>";
+            deleteCell.innerHTML ="<button onclick='deleteRow()'>";
         }
-        function deleteRow(rowId) {
-            document.getElementById(rowId).innerHTML="";
+        function deleteRow() {
+            document.getElementById(rowId.toString()).innerHTML="";
             rowId++;
         }
     </script>
