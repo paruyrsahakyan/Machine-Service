@@ -1,5 +1,6 @@
 package group.service.iko.controller;
 
+import group.service.iko.dto.PeriodicMaintenanceDTO;
 import group.service.iko.entities.MachineType;
 import group.service.iko.entities.PeriodicMaintenance;
 import group.service.iko.service.MachineTypeService;
@@ -124,7 +125,8 @@ public class MachineTypeController {
 
         ModelAndView modelAndView = new ModelAndView("machineType/periodicMaintenance");
         modelAndView.addObject("machineType", machineTypeService.getMachineTypeById(machineTypeId));
-        modelAndView.addObject("periodicMaintenance", periodicMaintenanceService.getMaintenanceById(maintenanceId));
+        PeriodicMaintenance periodicMaintenance= periodicMaintenanceService.getMaintenanceById(maintenanceId);
+        modelAndView.addObject("periodicMaintenance", new PeriodicMaintenanceDTO(periodicMaintenance));
         return modelAndView;
     }
 

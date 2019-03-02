@@ -6,24 +6,24 @@ import javax.persistence.*;
 import java.util.List;
 import java.util.Set;
 
-@Entity
-@Table(name = "periodic_maintenance")
-public class PeriodicMaintenance {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    @Entity
+    @Table(name = "periodic_maintenance")
+    public class PeriodicMaintenance {
+        @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        private int id;
 
-    @Column
-    private int smr;
+        @Column
+        private int smr;
 
-    @OneToMany(mappedBy = "periodicMaintenance", fetch = FetchType.EAGER)
-    @Cascade(org.hibernate.annotations.CascadeType.ALL)
-    private Set<MaintenancePart> maintenanceParts;
-    @ManyToOne()
-    @JoinColumn(name = "machine_type_id")
-    private MachineType machineType ;
+        @OneToMany(mappedBy = "periodicMaintenance", fetch = FetchType.EAGER)
+        @Cascade(org.hibernate.annotations.CascadeType.ALL)
+        private Set<MaintenancePart> maintenanceParts;
+        @ManyToOne()
+        @JoinColumn(name = "machine_type_id")
+        private MachineType machineType ;
 
-    @Override
+        @Override
     public String toString() {
         return "PeriodicMaintenance{" +
                 "id=" + id +
