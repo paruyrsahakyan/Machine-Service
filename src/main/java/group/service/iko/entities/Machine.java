@@ -25,7 +25,7 @@ public class Machine {
     private MachineType machineType;
     @Column
     private String otherInfo;
-    @Column (name = "")
+    @Column (name = "maintained_by_iko")
     private String maintainedByIko;
     @ManyToOne()
     @JoinColumn(name = "customer_id")

@@ -26,8 +26,10 @@
               <c:forEach items="${machineTypeList}" var="machineType">
                   <option value=${machineType.id}> ${machineType.typeDescription}</option>
               </c:forEach>
-          </select> &nbsp; | &nbsp; Обслуживает ДБ
-          <input type="checkbox" name="maintainedByIKO" value="V">
+              &nbsp; | &nbsp; &nbsp; Обслуживает ДБ?
+              <input type="radio"  id="radioYes" name="maintainedByIko" value="Да" checked> Да|
+              &nbsp; &nbsp;
+              <input type="radio" id="radioNo"name="maintainedByIko" value="Нет" > Нет
           <br><br>
           Модель  Машины:<br>
         <input type="text" name="model" style="height: auto" value="${machine.model}"><br><br>
@@ -44,6 +46,15 @@
         <input type="submit" value="Сохранить">
 
     </form:form>
+    <script>
+        var radio= ${machine.maintainedByIko};
+        if (radio==="Да"){
+            document.getElementById("radioYes").checked=true;
+        }
+        else document.getElementById("radioNo").checked=false;
+
+    </script>
+
 </div>
 </body>
 </html>

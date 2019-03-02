@@ -161,6 +161,14 @@ public class MachineDTO {
         this.customer = customer;
     }
 
+    public String getMaintainedByIko() {
+        return maintainedByIko;
+    }
+
+    public void setMaintainedByIko(String maintainedByIko) {
+        this.maintainedByIko = maintainedByIko;
+    }
+
     public static List<MachineDTO> convertIntoDTO(List<Machine> machineList) {
         List<MachineDTO> machineDTOList = new ArrayList<MachineDTO>();
         if (machineList != null) {
