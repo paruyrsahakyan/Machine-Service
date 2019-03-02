@@ -49,7 +49,7 @@
 
     </form:form>
     <script>
-        var radio= ${machine.maintainedByIko};
+        var radio= "${machine.maintainedByIko}";
         if (radio==="Да"){
             document.getElementById("radioYes").checked=true;
         }

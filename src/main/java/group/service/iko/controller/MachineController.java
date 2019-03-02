@@ -101,7 +101,7 @@ public class MachineController {
                                        @RequestParam(name = "productionYear", defaultValue = "0") int productonYear,
                                        @RequestParam("otherInfo") String otherInfo,
                                        @RequestParam("machineType") int machineTypeId,
-                                       @RequestParam("maintainedByIko") String maintainedByIko
+                                       @RequestParam(name = "maintainedByIko", defaultValue = "Нет") String maintainedByIko
     ) {
         ModelAndView modelAndView = new ModelAndView("machine/machine");
          Machine machine = machineService.getMachineById(machineId);
