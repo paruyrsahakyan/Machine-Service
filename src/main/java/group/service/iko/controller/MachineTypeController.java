@@ -28,7 +28,7 @@ public class MachineTypeController {
     @RequestMapping("/{id}")
     public ModelAndView getMachineType(@PathVariable("id") int id) {
         MachineType machineType = machineTypeService.getMachineTypeById(id);
-        List<PeriodicMaintenance> maintenanceList = machineType.getSortedMaintenanceList();
+        List<PeriodicMaintenanceDTO> maintenanceList = machineType.getSortedMaintenanceList();
         ModelAndView modelAndView = new ModelAndView("machineType/machineType");
         modelAndView.addObject("machineType", machineType);
         modelAndView.addObject("maintenanceList", maintenanceList);
@@ -112,7 +112,7 @@ public class MachineTypeController {
             @RequestParam("quantity[]") int[] quantityList) {
         periodicMaintenanceService.savePeriodicMaintenance(id, partNumberList, smr, descriptionList, unitList, quantityList);
         MachineType machineType = machineTypeService.getMachineTypeById(id);
-        List<PeriodicMaintenance> sortedMaintenanceList = machineType.getSortedMaintenanceList();
+        List<PeriodicMaintenanceDTO> sortedMaintenanceList = machineType.getSortedMaintenanceList();
         ModelAndView modelAndView = new ModelAndView("machineType/machineType");
         modelAndView.addObject("machineType", machineType);
         modelAndView.addObject("maintenanceList", sortedMaintenanceList);
@@ -169,7 +169,7 @@ public class MachineTypeController {
         periodicMaintenance.setId(maintenanceId);
         periodicMaintenanceService.deletePeriodicMaintenance(periodicMaintenance);
         MachineType machineType = machineTypeService.getMachineTypeById(machineTypeId);
-        List<PeriodicMaintenance> maintenanceList = machineType.getSortedMaintenanceList();
+        List<PeriodicMaintenanceDTO> maintenanceList = machineType.getSortedMaintenanceList();
         modelAndView.addObject("machineType", machineType);
         modelAndView.addObject("maintenanceList", maintenanceList);
         return modelAndView;
