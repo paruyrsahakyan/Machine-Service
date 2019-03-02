@@ -1,15 +1,18 @@
 package group.service.iko.entities;
 
-import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
+        import group.service.iko.dto.PeriodicMaintenanceDTO;
+        import org.hibernate.annotations.Cascade;
+        import org.hibernate.annotations.LazyCollection;
+        import org.hibernate.annotations.LazyCollectionOption;
+        import org.springframework.security.core.parameters.P;
 
 
-import javax.persistence.*;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
+        import javax.persistence.*;
+        import java.util.ArrayList;
+        import java.util.Comparator;
+        import java.util.List;
+        import java.util.Set;
+        import java.util.stream.Collectors;
 
 @Entity
 @Table(name = "machine_type")
@@ -44,7 +47,7 @@ public class MachineType {
     }
 
     public String getTypeDescription() {
-                return typeDescription;
+        return typeDescription;
     }
 
     public void setTypeDescription(String typeDescription) {
@@ -75,9 +78,14 @@ public class MachineType {
         this.machineList = machineList;
     }
 
-    public List<PeriodicMaintenance> getSortedMaintenanceList(){
+    public List<PeriodicMaintenanceDTO> getSortedMaintenanceList(){
 
-       return getPeriodicMaintenanceList().stream().
+        List<PeriodicMaintenance> periodicMaintenanceList=getPeriodicMaintenanceList().stream().
                 sorted(Comparator.comparing(PeriodicMaintenance::getSmr)).collect(Collectors.toList());
+        List<PeriodicMaintenanceDTO> periodicMaintenanceDTOList = new ArrayList<>();
+        for (PeriodicMaintenance periodicMaintenance: periodicMaintenanceList){
+            periodicMaintenanceDTOList.add(new PeriodicMaintenanceDTO(periodicMaintenance));
+        }
+        return periodicMaintenanceDTOList;
     }
 }
