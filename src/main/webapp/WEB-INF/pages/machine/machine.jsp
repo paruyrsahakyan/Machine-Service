@@ -36,6 +36,10 @@
             <td>${machine.machineType.typeDescription}</td>
         </tr>
         <tr>
+            <th>Обслуживает ДБ:</th>
+            <td>${machine.maintainedByIko}</td>
+        </tr>
+        <tr>
             <th>Модель:</th>
             <td>${machine.model}</td>
         </tr>

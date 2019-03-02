@@ -26,6 +26,7 @@
               <c:forEach items="${machineTypeList}" var="machineType">
                   <option value=${machineType.id}> ${machineType.typeDescription}</option>
               </c:forEach>
+          </select>
               &nbsp; | &nbsp; &nbsp; Обслуживает ДБ?
               <input type="radio"  id="radioYes" name="maintainedByIko" value="Да" checked> Да|
               &nbsp; &nbsp;

@@ -49,8 +49,9 @@
             <th>Владелец</th>
             <th>Год производства</th>
             <th>Последняя инфо</th>
-            <th>Дата информации</th>
+            <th>Дата инфо</th>
             <th>Наработка</th>
+            <th>Обслуж. ДБ</th>
 
         </tr>
 
@@ -66,6 +67,7 @@
                 <td> <a href="/customer/machine/historyRecord/${machine.lastInfoId}"> ${machine.lastInfo} </a> </td>
                 <td>${machine.lastInfoDate}</td>
                 <td>${machine.lastSMR}</td>
+                <td>${machine.maintainedByIko}</td>
             </tr>
         </c:forEach>
         </tr>

@@ -37,9 +37,9 @@
         </c:forEach>
     </select>
     &nbsp; | &nbsp; &nbsp; Обслуживает ДБ?
-    <input type="radio" name="maintainedByIko" value="Да" checked> Да|
+    <input type="radio" name="maintainedByIko" value="Да" > Да|
     &nbsp; &nbsp;
-    <input type="radio" name="maintainedByIko" value="Нет" > Нет
+    <input type="radio" name="maintainedByIko" value="Нет" checked> Нет
 
     <br><br>
 
