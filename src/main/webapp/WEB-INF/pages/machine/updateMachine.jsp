@@ -28,8 +28,8 @@
               </c:forEach>
           </select>
           <br><br>
-            Обслуживает ДБ?
-              <input type="radio"  id="radioYes" name="maintainedByIko" value="Да" > Да|
+            Обслуживает ДБ? &nbsp;
+              <input type="radio"  id="radioYes" name="maintainedByIko" value="Да" > Да
               &nbsp; &nbsp;
               <input type="radio" id="radioNo"name="maintainedByIko" value="Нет" > Нет
           <br><br>
@@ -53,7 +53,7 @@
         if (radio==="Да"){
             document.getElementById("radioYes").checked=true;
         }
-        else document.getElementById("radioNo").checked=false;
+        else document.getElementById("radioNo").checked=true;
 
     </script>
 
