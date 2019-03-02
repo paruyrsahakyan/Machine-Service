@@ -36,8 +36,8 @@
         </tr>
         <tr>
             <td> N </td>
-            <td> Описание </td>
             <td> Артикул </td>
+            <td> Описание </td>
             <td> Единица </td>
             <td> Количество </td>
         </tr>
@@ -45,8 +45,8 @@
         <c:forEach items="${periodicMaintenance.maintenanceParts}" var="maintenancePart" >
         <tr>
             <td><%= i++%> </td>
-            <td>${maintenancePart.partType}</td>
             <td>${maintenancePart.partNumber}</td>
+            <td>${maintenancePart.partType}</td>
             <td>${maintenancePart.unit}</td>
             <td>${maintenancePart.quantity}</td>
         </tr>

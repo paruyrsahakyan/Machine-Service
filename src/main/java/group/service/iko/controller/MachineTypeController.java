@@ -136,7 +136,8 @@ public class MachineTypeController {
 
         ModelAndView modelAndView = new ModelAndView("machineType/periodicMaintenanceUpdate");
         modelAndView.addObject("machineType", machineTypeService.getMachineTypeById(machineTypeId));
-        modelAndView.addObject("periodicMaintenance", periodicMaintenanceService.getMaintenanceById(maintenanceId));
+        PeriodicMaintenance periodicMaintenance= periodicMaintenanceService.getMaintenanceById(maintenanceId);
+        modelAndView.addObject("periodicMaintenance", new PeriodicMaintenanceDTO(periodicMaintenance));
         return modelAndView;
 
 
@@ -155,8 +156,9 @@ public class MachineTypeController {
         MachineType machineType = machineTypeService.getMachineTypeById(machineTypeId);
         ModelAndView modelAndView = new ModelAndView("machineType/periodicMaintenance");
         modelAndView.addObject("machineType", machineType);
-        modelAndView.addObject("periodicMaintenance", periodicMaintenanceService.getMaintenanceById(maintenanceId));
-        return modelAndView;
+        PeriodicMaintenance periodicMaintenance= periodicMaintenanceService.getMaintenanceById(maintenanceId);
+        modelAndView.addObject("periodicMaintenance", new PeriodicMaintenanceDTO(periodicMaintenance));
+         return modelAndView;
     }
 
     @RequestMapping("/{machineTypeId}/periodicMaintenance/{maintenanceId}/deleted")
