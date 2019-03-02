@@ -26,7 +26,8 @@
 <br>
 <br>
 <a href="/customer/machine/historyRecord/${historyRecord.id}"> Вернутся в страницу записи </a>
-<H3>${historyRecord.machine} &nbsp; | &nbsp;${historyRecord.title} &nbsp; |&nbsp; ${historyRecord.recordDate} </H3>
+<H3>${historyRecord.machine.model}&nbsp;sn${historyRecord.machine.serialNumber} |
+    &nbsp;${historyRecord.title} &nbsp; |&nbsp; ${historyRecord.recordDate} </H3>
 <form:form action="/customer/machine/historyRecord/files/updatedList/${historyRecordId}"
            method="post"  accept-charset="UTF-8" enctype="multipart/form-data">
     описание файла: <input type="text" name="fileDescription1" maxlength="24" > <input type="file" name="file1">

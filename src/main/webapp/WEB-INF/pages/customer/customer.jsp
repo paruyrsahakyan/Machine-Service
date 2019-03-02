@@ -49,12 +49,7 @@
         <th>Наличие договора:</th>
         <td>${customer.contract}</td>
     </tr>
-    <tr>
-        <th>Ответственный</th>
-        <td>${customer.responsible.name}</td>
-
-    </tr>
-    <tr>
+       <tr>
             <th>Другие информации</th>
         <td>${customer.otherInfo}</td>
 

@@ -37,16 +37,7 @@
          <option value="Нет"> Нет </option>
          </select>
          <br><br>
-    Ответственный: <br>
-         <select name="responsible" >
-         <option value="-1" selected ></option>
-         <c:forEach items="${allWorkers}" var="worker">
-           <option value="${worker.id}"> ${worker.name} </option>
-             </c:forEach>
-         </select>
-         <br>
-         <br>
-    <input type="submit" value="Сохранить">
+       <input type="submit" value="Сохранить">
 </form:form>
 </div>
 </body>

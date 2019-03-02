@@ -139,7 +139,7 @@ public class RecordsController {
 
         ModelAndView modelAndView = new ModelAndView("historyRecord/updateHistoryRecord");
         HistoryRecord historyRecord = historyRecordService.getHistoryRecordById(historyRecordId);
-        modelAndView.addObject("historyRecord", historyRecord);
+        modelAndView.addObject("historyRecord", new HistoryRecordDTO(historyRecord));
         String recordDate = CalendarAdapter.getStringFormat(historyRecord.getRecordDate());
         List<DetailedLaborHour> laborHourList = detailedLaborHourService.getDetailedLaborByRecordId(historyRecordId);
         modelAndView.addObject("recordDate", recordDate);

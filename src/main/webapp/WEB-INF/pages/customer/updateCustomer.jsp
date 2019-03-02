@@ -32,17 +32,7 @@
     </select>
     <br>
     <br>
-    Ответственный: <br>
-    <select name="responsible" >
-    <option value="${customer.responsible.id}" selected > ${customer.responsible.name} </option>
-    <c:forEach items="${allWorkers}" var="worker">
-        <option value="${worker.id}"> ${worker.name} </option>
-    </c:forEach>
-    </select>
-    <br>
-    <br>
-
-    <input type="submit" value="Сохранить">
+        <input type="submit" value="Сохранить">
 </form:form>
 </div>
 </body>
