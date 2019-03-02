@@ -26,7 +26,8 @@
               <c:forEach items="${machineTypeList}" var="machineType">
                   <option value=${machineType.id}> ${machineType.typeDescription}</option>
               </c:forEach>
-          </select>
+          </select> &nbsp; | &nbsp; Обслуживает ДБ
+          <input type="checkbox" name="maintainedByIKO" value="V">
           <br><br>
           Модель  Машины:<br>
         <input type="text" name="model" style="height: auto" value="${machine.model}"><br><br>

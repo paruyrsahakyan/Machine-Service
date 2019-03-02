@@ -28,6 +28,7 @@ public class MachineDTO {
     private int lastInfoId;
     private String lastInfoDate;
     private int lastSMR;
+    private String maintainedByIko;
 
     public MachineDTO() {
 
@@ -47,6 +48,7 @@ public class MachineDTO {
         lastInfoDate = historyRecordDTO.getRecordDate();
         lastInfoId = historyRecordDTO.getId();
         lastSMR = historyRecordDTO.getSMR();
+        maintainedByIko = machine.getMaintainedByIko();
         if (machine.getMachineType() == null) {
             machineType = new MachineType();
              } else {

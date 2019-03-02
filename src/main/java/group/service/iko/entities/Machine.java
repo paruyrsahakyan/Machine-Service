@@ -25,6 +25,8 @@ public class Machine {
     private MachineType machineType;
     @Column
     private String otherInfo;
+    @Column (name = "")
+    private String maintainedByIko;
     @ManyToOne()
     @JoinColumn(name = "customer_id")
     private Customer customer;
@@ -44,6 +46,7 @@ public class Machine {
                 ", productionYear=" + productionYear +
                 ", machineType=" + machineType +
                 ", otherInfo='" + otherInfo + '\'' +
+                ", maintainedByIko='" + maintainedByIko + '\'' +
                 ", customer=" + customer +
                 ", historyRecordList=" + historyRecordList +
                 '}';
@@ -127,5 +130,13 @@ public class Machine {
 
     public void setHistoryRecordList(List<HistoryRecord> historyRecordList) {
         this.historyRecordList = historyRecordList;
+    }
+
+    public String getMaintainedByIko() {
+        return maintainedByIko;
+    }
+
+    public void setMaintainedByIko(String maintainedByIko) {
+        this.maintainedByIko = maintainedByIko;
     }
 }

@@ -21,6 +21,7 @@
   `productionYear` int(11) DEFAULT NULL,
   `serialNumber` varchar(255) DEFAULT NULL,
   `customer_id` int(11) DEFAULT NULL,
+  `maintained_by_iko` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FKior7iw8p1e18tirrwr162u5mn` (`customer_id`),
   CONSTRAINT `FKior7iw8p1e18tirrwr162u5mn` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`id`),

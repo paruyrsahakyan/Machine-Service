@@ -53,7 +53,8 @@ public class MachineController {
                                    @RequestParam("engineSerialNumber") String engineSerialNumber,
                                    @RequestParam(name = "productionYear", defaultValue = "0") int productonYear,
                                    @RequestParam("otherInfo") String otherInfo,
-                                   @RequestParam("machineType") int machineTypeId
+                                   @RequestParam("machineType") int machineTypeId,
+                                   @RequestParam("maintainedByIko") String maintainedByIko
     ) {
         ModelAndView modelAndView = new ModelAndView("machine/machine");
         Machine machine = new Machine();
@@ -65,6 +66,7 @@ public class MachineController {
         machine.setOtherInfo(otherInfo);
         machine.setCustomer( customerService.getCustomerById(customerId));
         machine.setMachineType(machineTypeService.getMachineTypeById(machineTypeId));
+        machine.setMaintainedByIko(maintainedByIko);
         machineService.saveMachine(machine);
         Machine createdMachine = machineService.getLastMachine();
          modelAndView.addObject("machine", new MachineDTO(createdMachine));
@@ -98,7 +100,8 @@ public class MachineController {
                                        @RequestParam("engineSerialNumber") String engineSerialNumber,
                                        @RequestParam(name = "productionYear", defaultValue = "0") int productonYear,
                                        @RequestParam("otherInfo") String otherInfo,
-                                       @RequestParam("machineType") int machineTypeId
+                                       @RequestParam("machineType") int machineTypeId,
+                                       @RequestParam("maintainedByIko") String maintainedByIko
     ) {
         ModelAndView modelAndView = new ModelAndView("machine/machine");
          Machine machine = machineService.getMachineById(machineId);
@@ -110,6 +113,7 @@ public class MachineController {
         machine.setOtherInfo(otherInfo);
         machine.setProductionYear(productonYear);
         machine.setMachineType(machineTypeService.getMachineTypeById(machineTypeId));
+        machine.setMaintainedByIko(maintainedByIko);
         machineService.updateMachine(machine);
         System.out.println(machineId);
         Machine updatedMachine = machineService.getMachineById(machineId);

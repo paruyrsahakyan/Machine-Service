@@ -17,7 +17,7 @@
 <div style="text-align: center">
 <h2>Регистрация новой машины</h2> <br>
 <h3>Влоделец: &nbsp; ${customerName}</h3>
-<form:form action="/customer/machine/newMachine/${customerId}" method="Post" >
+<form:form faction="/customer/machine/newMachine/${customerId}" method="Post" >
 
     Модель Машины:<br>
     <input type="text" name="model" style="height: auto"><br><br>
@@ -36,6 +36,8 @@
             <option value=${machineType.id}> ${machineType.typeDescription}</option>
         </c:forEach>
     </select>
+    &nbsp; &nbsp; <input type="checkbox" name="maintainedByIko" value="V"> Обслуживает ДБ
+
     <br><br>
 
     <input type="submit" value="Сохранить">
