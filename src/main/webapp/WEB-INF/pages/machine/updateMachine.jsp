@@ -27,8 +27,9 @@
                   <option value=${machineType.id}> ${machineType.typeDescription}</option>
               </c:forEach>
           </select>
-              &nbsp; | &nbsp; &nbsp; Обслуживает ДБ?
-              <input type="radio"  id="radioYes" name="maintainedByIko" value="Да" checked> Да|
+          <br><br>
+            Обслуживает ДБ?
+              <input type="radio"  id="radioYes" name="maintainedByIko" value="Да" > Да|
               &nbsp; &nbsp;
               <input type="radio" id="radioNo"name="maintainedByIko" value="Нет" > Нет
           <br><br>
