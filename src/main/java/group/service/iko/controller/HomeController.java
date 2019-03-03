@@ -66,6 +66,15 @@ HomeController {
         return modelAndView;
     }
 
+    @RequestMapping("/allMachines/maintainedByIKO")
+     public ModelAndView getMachinesMaintainedByIKO() {
+        ModelAndView modelAndView = new ModelAndView("allMachines");
+        List<Machine> machineList = machineService.getMachinesMaintainedByIKO();
+        modelAndView.addObject("machineList", DtoFactory.makeMachineDtoList(machineList));
+        return modelAndView;
+    }
+
+
     @RequestMapping("/allCustomers/filtered")
     public ModelAndView filteredCustomers
             (@RequestParam(value = "customerName", defaultValue = "") String customerName) {

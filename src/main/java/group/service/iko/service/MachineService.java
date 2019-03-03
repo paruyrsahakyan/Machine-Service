@@ -171,4 +171,15 @@ public class MachineService {
         return historyRecord;
     }
 
+   public List<Machine> getMachinesMaintainedByIKO(){
+        session= SessionFactoryImpl.getSessionFactory().openSession();
+        String hql ="from group.service.iko.entities.Machine where maintainedByIko=ДА" +
+       " order by model DESC";
+        Query query = session.createQuery(hql);
+       List<Machine> machineList = (List<Machine>) query.list();
+       session.flush();
+       session.close();
+       return machineList;
+   }
 }
+

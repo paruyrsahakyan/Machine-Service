@@ -37,8 +37,8 @@
         <B>Фильтры | </B> модел: <input type="text" name="model" value="${model}"> &nbsp;&nbsp;
         серийный номер։ <input type="text" name="serialNumber" value="${serialNumber}">
         <input type="submit" value="обновить список">
-
     </form>
+    <a href="/allMachines/maintainedNyIKO"> Обслуживаемые Дистрибютором</a>
     <br>
 
     <table style="width: auto" align="center">
