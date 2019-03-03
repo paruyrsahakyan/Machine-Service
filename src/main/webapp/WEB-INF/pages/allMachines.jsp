@@ -38,9 +38,10 @@
         серийный номер։ <input type="text" name="serialNumber" value="${serialNumber}">
         <input type="submit" value="обновить список">
     </form>
-    <a href="/allMachines/maintainedNyIKO"> Обслуживаемые Дистрибютором</a>
     <br>
-
+    <a href="/allMachines/maintainedByIKO"> Обслуживаемые Дистрибютором</a>
+    <br>
+    <br>
     <table style="width: auto" align="center">
         <tr>
             <th>N</th>
