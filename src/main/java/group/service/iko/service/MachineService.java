@@ -1,15 +1,20 @@
 package group.service.iko.service;
 
 import group.service.iko.dto.HistoryRecordDTO;
+import group.service.iko.entities.HistoryRecord;
 import group.service.iko.entityDao.MachineDAO;
 import group.service.iko.entityDao.SessionFactoryImpl;
 import group.service.iko.entities.Machine;
+import javafx.print.Collation;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class MachineService {
@@ -137,26 +142,30 @@ public class MachineService {
     }
 
     public HistoryRecordDTO getLastInfoOfMachine(Machine machine) {
-        HistoryRecordDTO historyRecord = new HistoryRecordDTO();
+        HistoryRecordDTO historyRecordDTO = new HistoryRecordDTO();
         if (machine.getHistoryRecordList().size() > 0) {
-            session = SessionFactoryImpl.getSessionFactory().openSession();
-            String sql;
-            if (machine.getHistoryRecordList().size() == 1) {
+            HistoryRecord historyRecord = Collections.max(machine.getHistoryRecordList(), Comparator.comparing(histRec -> histRec.getRecordDate()));
+            return new HistoryRecordDTO(historyRecord);
+        } else return historyRecordDTO;
 
-                sql = "SELECT * FROM iko.history_record where machine_id = " + machine.getId();
-            } else {
-                sql = "SELECT * FROM iko.history_record where machine_id = " + machine.getId() +
-                        " and recordDate =(select max(recordDate) from iko.history_record where machine_id=" +
-                        machine.getId() + " );";
-            }
-            Query query = session.createSQLQuery(sql);
-            List<Object[]> resultList = query.list();
-            Object[] result = resultList.get(0);
-            historyRecord.setId(Integer.parseInt(result[0].toString()));
-            historyRecord.setTitle(result[6].toString());
-            historyRecord.setSMR(Integer.parseInt(result[1].toString()));
-            historyRecord.setRecordDate(result[4].toString().substring(0, 10));
-            session.close();
+//     session = SessionFactoryImpl.getSessionFactory().openSession();
+//            String sql;
+//            if (machine.getHistoryRecordList().size() == 1) {
+//
+//                sql = "SELECT * FROM iko.history_record where machine_id = " + machine.getId();
+//            } else {
+//                sql = "SELECT * FROM iko.history_record where machine_id = " + machine.getId() +
+//                        " and recordDate =(select max(recordDate) from iko.history_record where machine_id=" +
+//                        machine.getId() + " );";
+//            }
+//            Query query = session.createSQLQuery(sql);
+//            List<Object[]> resultList = query.list();
+//            Object[] result = resultList.get(0);
+//            historyRecord.setId(Integer.parseInt(result[0].toString()));
+//            historyRecord.setTitle(result[6].toString());
+//            historyRecord.setSMR(Integer.parseInt(result[1].toString()));
+//            historyRecord.setRecordDate(result[4].toString().substring(0, 10));
+//            session.close();
 //                String hql = "select max(recordDate) from group.service.iko.entities.HistoryRecord  where machine.id=:mID ";
 //                Query query = session.createQuery(hql);
 //                 query.setParameter("mID", machine.getId());
@@ -167,8 +176,6 @@ public class MachineService {
 //                query1.setParameter("date", gregorianCalendar );
 //                HistoryRecord historyRecord1 = (HistoryRecord) query1.uniqueResult();
 //                session.close();
-        }
-        return historyRecord;
     }
 
    public List<Machine> getMachinesMaintainedByIKO(){
