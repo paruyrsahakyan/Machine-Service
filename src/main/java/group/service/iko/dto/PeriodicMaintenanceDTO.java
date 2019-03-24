@@ -16,6 +16,9 @@ public class PeriodicMaintenanceDTO {
         private List<MaintenancePart> maintenanceParts;
         private MachineType machineType ;
 
+public  PeriodicMaintenanceDTO(){
+
+}
   public  PeriodicMaintenanceDTO(PeriodicMaintenance periodicMaintenance){
       id = periodicMaintenance.getId();
       smr = periodicMaintenance.getSmr();

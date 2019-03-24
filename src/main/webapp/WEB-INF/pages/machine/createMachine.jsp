@@ -17,7 +17,7 @@
 <div style="text-align: center">
 <h2>Регистрация новой машины</h2> <br>
 <h3>Влоделец: &nbsp; ${customerName}</h3>
-<form:form faction="/customer/machine/newMachine/${customerId}" method="Post" >
+<form:form action="/customer/machine/newMachine/${customerId}" method="Post" >
 
     Модель Машины:<br>
     <input type="text" name="model" style="height: auto"><br><br>
