@@ -42,7 +42,7 @@ public class MachineDTO {
         productionYear = machine.getProductionYear();
         otherInfo = machine.getOtherInfo();
         customer = machine.getCustomer().getName();
-        HistoryRecord historyRecord = machineService.getLastInfoOfMachine(machine);
+        HistoryRecord historyRecord = new MachineService().getLastInfoOfMachine(machine);
         lastInfo = historyRecord.getTitle();
         lastInfoDate = CalendarAdapter.getStringFormat(historyRecord.getRecordDate());
         lastInfoId = historyRecord.getId();
