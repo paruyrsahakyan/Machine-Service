@@ -35,9 +35,7 @@ public class HistoryRecord {
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private Set<DetailedLaborHour> detailedLaborHours;
 
-    public HistoryRecord() {
-    }
-
+  
     public double getLaborHour() {
         return laborHour;
     }

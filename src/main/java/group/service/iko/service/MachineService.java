@@ -146,35 +146,6 @@ public class MachineService {
             return Collections.max(machine.getHistoryRecordList(), Comparator.comparing(histRec -> histRec.getRecordDate()));
               }
               else return new HistoryRecord();
-
-//     session = SessionFactoryImpl.getSessionFactory().openSession();
-//            String sql;
-//            if (machine.getHistoryRecordList().size() == 1) {
-//
-//                sql = "SELECT * FROM iko.history_record where machine_id = " + machine.getId();
-//            } else {
-//                sql = "SELECT * FROM iko.history_record where machine_id = " + machine.getId() +
-//                        " and recordDate =(select max(recordDate) from iko.history_record where machine_id=" +
-//                        machine.getId() + " );";
-//            }
-//            Query query = session.createSQLQuery(sql);
-//            List<Object[]> resultList = query.list();
-//            Object[] result = resultList.get(0);
-//            historyRecord.setId(Integer.parseInt(result[0].toString()));
-//            historyRecord.setTitle(result[6].toString());
-//            historyRecord.setSMR(Integer.parseInt(result[1].toString()));
-//            historyRecord.setRecordDate(result[4].toString().substring(0, 10));
-//            session.close();
-//                String hql = "select max(recordDate) from group.service.iko.entities.HistoryRecord  where machine.id=:mID ";
-//                Query query = session.createQuery(hql);
-//                 query.setParameter("mID", machine.getId());
-//                GregorianCalendar gregorianCalendar = (GregorianCalendar) query.uniqueResult();
-//                String hql2 = "from group.service.iko.entities.HistoryRecord where machine.id = :M and recordDate = :date";
-//                Query query1 = session.createQuery(hql2);
-//                query1.setParameter("M", machine.getId());
-//                query1.setParameter("date", gregorianCalendar );
-//                HistoryRecord historyRecord1 = (HistoryRecord) query1.uniqueResult();
-//                session.close();
     }
 
    public List<Machine> getMachinesMaintainedByIKO(){
