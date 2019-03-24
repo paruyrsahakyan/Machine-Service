@@ -29,6 +29,8 @@ public class MachineDTO {
     private String lastInfoDate;
     private int lastSMR;
     private String maintainedByIko;
+    @Autowired
+    private MachineService machineService;
 
     public MachineDTO() {
 
@@ -43,7 +45,7 @@ public class MachineDTO {
         productionYear = machine.getProductionYear();
         otherInfo = machine.getOtherInfo();
         customer = machine.getCustomer().getName();
-        HistoryRecordDTO historyRecordDTO = new MachineService().getLastInfoOfMachine(machine);
+        HistoryRecordDTO historyRecordDTO = machineService.getLastInfoOfMachine(machine);
         lastInfo = historyRecordDTO.getTitle();
         lastInfoDate = historyRecordDTO.getRecordDate();
         lastInfoId = historyRecordDTO.getId();
