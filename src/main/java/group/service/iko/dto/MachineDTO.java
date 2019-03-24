@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 public class MachineDTO {
@@ -44,7 +46,9 @@ public class MachineDTO {
         customer = machine.getCustomer().getName();
         HistoryRecord historyRecord = new MachineService().getLastInfoOfMachine(machine);
         lastInfo = historyRecord.getTitle();
-        lastInfoDate = CalendarAdapter.getStringFormat(historyRecord.getRecordDate());
+        GregorianCalendar gregLastInfoDate= historyRecord.getRecordDate();
+        if (gregLastInfoDate ==null) lastInfoDate = "";
+        else lastInfoDate = CalendarAdapter.getStringFormat(gregLastInfoDate);
         lastInfoId = historyRecord.getId();
         lastSMR = historyRecord.getSMR();
         maintainedByIko = machine.getMaintainedByIko();
