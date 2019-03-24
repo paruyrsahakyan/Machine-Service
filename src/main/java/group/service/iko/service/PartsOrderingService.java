@@ -16,18 +16,16 @@ public class PartsOrderingService {
     private MachineService machineService;
 
 
-    public List<Part> countParts(int days) {
-List<Machine> machineList = machineService.getMachinesMaintainedByIKO();
-       List<MachineDTO> machineDTOList=  MachineDTO.convertIntoDTO(machineList);
-       for(MachineDTO machineDTO: machineDTOList){
-           List<PeriodicMaintenance>  periodicMaintenancelist = ServiceManager.redictedMaintenances(days);
-
-       }
-
-
-return ;
-    }
-
-
+//    public List<Part> countParts(int days) {
+////List<Machine> machineList = machineService.getMachinesMaintainedByIKO();
+////       List<MachineDTO> machineDTOList=  MachineDTO.convertIntoDTO(machineList);
+////       for(MachineDTO machineDTO: machineDTOList){
+////           List<PeriodicMaintenance>  periodicMaintenancelist = ServiceManager.predictedMaintenances(days);
+////
+////       }
+////
+////
+////return ;
+//    }
 
 }
