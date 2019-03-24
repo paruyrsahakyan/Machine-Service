@@ -32,9 +32,6 @@ public class MachineDTO {
     @Autowired
     private MachineService machineService;
 
-    public MachineDTO() {
-
-    }
 
     public MachineDTO(Machine machine) {
         id = machine.getId();
