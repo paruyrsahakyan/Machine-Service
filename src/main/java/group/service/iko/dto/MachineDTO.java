@@ -45,11 +45,11 @@ public class MachineDTO {
         productionYear = machine.getProductionYear();
         otherInfo = machine.getOtherInfo();
         customer = machine.getCustomer().getName();
-        HistoryRecordDTO historyRecordDTO = machineService.getLastInfoOfMachine(machine);
-        lastInfo = historyRecordDTO.getTitle();
-        lastInfoDate = historyRecordDTO.getRecordDate();
-        lastInfoId = historyRecordDTO.getId();
-        lastSMR = historyRecordDTO.getSMR();
+        HistoryRecord historyRecord = machineService.getLastInfoOfMachine(machine);
+        lastInfo = historyRecord.getTitle();
+        lastInfoDate = CalendarAdapter.getStringFormat(historyRecord.getRecordDate());
+        lastInfoId = historyRecord.getId();
+        lastSMR = historyRecord.getSMR();
         maintainedByIko = machine.getMaintainedByIko();
         if (machine.getMachineType() == null) {
             machineType = new MachineType();

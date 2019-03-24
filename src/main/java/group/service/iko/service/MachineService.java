@@ -141,12 +141,11 @@ public class MachineService {
         return machineList;
     }
 
-    public HistoryRecordDTO getLastInfoOfMachine(Machine machine) {
-        HistoryRecordDTO historyRecordDTO = new HistoryRecordDTO();
-        if (machine.getHistoryRecordList().size() > 0) {
-            HistoryRecord historyRecord = Collections.max(machine.getHistoryRecordList(), Comparator.comparing(histRec -> histRec.getRecordDate()));
-            return new HistoryRecordDTO(historyRecord);
-        } else return historyRecordDTO;
+    public HistoryRecord getLastInfoOfMachine(Machine machine) {
+            if (machine.getHistoryRecordList().size() > 0) {
+            return Collections.max(machine.getHistoryRecordList(), Comparator.comparing(histRec -> histRec.getRecordDate()));
+              }
+              else return new HistoryRecord();
 
 //     session = SessionFactoryImpl.getSessionFactory().openSession();
 //            String sql;
