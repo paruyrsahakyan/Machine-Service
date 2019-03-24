@@ -1,5 +1,6 @@
 package group.service.iko.service;
 
+import group.service.iko.dto.DtoFactory;
 import group.service.iko.dto.MachineDTO;
 import group.service.iko.dto.PeriodicMaintenanceDTO;
 import group.service.iko.entities.*;
@@ -20,7 +21,7 @@ public class ServiceManager {
         Map<String, Integer> partsMap = new HashMap<>();
         java.util.List<Machine> machineList = machineService.getMachinesMaintainedByIKO();
         for (Machine machine : machineList) {
-            List<PeriodicMaintenance> periodicMaintenanceList = ServiceManager.predictMaintenances(machine, days);
+            List<PeriodicMaintenanceDTO> periodicMaintenanceList = ServiceManager.predictMaintenances(machine, days);
             periodicMaintenanceList.forEach(maintenance -> partList.addAll(maintenance.getMaintenanceParts()));
         }
         for (MaintenancePart maintenancePart : partList) {
@@ -35,13 +36,13 @@ public class ServiceManager {
         return partsMap;
     }
 
-    private static List<PeriodicMaintenance> predictMaintenances(Machine machine, int days) {
-   List<PeriodicMaintenanceDTO> result = new ArrayList<>();
+    private static List<PeriodicMaintenanceDTO> predictMaintenances(Machine machine, int days) {
+        List<PeriodicMaintenanceDTO> result = new ArrayList<>();
         MachineDTO machineDTO = new MachineDTO(machine);
         int lastSmrOfMachine = machineDTO.getLastSMR();
         List<PeriodicMaintenanceDTO> periodicMaintenancesOfMachine= machine.getMachineType().getSortedMaintenanceList();
-         for(int i=lastSmrOfMachine; i<lastSmrOfMachine+days; i++){
-             PeriodicMaintenanceDTO periodicMaintenanceDTO = null;
+        for(int i=lastSmrOfMachine; i<lastSmrOfMachine+days; i++){
+            PeriodicMaintenanceDTO periodicMaintenanceDTO = null;
             for (PeriodicMaintenanceDTO perMaintDTO: periodicMaintenancesOfMachine) {
                 if (i % perMaintDTO.getSmr() == 0 ) {
                     periodicMaintenanceDTO = perMaintDTO;
@@ -50,7 +51,7 @@ public class ServiceManager {
             if(periodicMaintenanceDTO!=null) {
                 result.add(periodicMaintenanceDTO);
             }
-               }
-               return result;
-                }
+        }
+        return result;
+    }
 }
