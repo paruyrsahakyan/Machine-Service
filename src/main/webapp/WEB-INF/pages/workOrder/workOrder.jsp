@@ -75,7 +75,7 @@
     <br><br>
      <a href="/workOrder/${workOrder.id}/serviceReport" style="color: darkgreen"> Сервисный отчет</a> &nbsp;<b>|</b>
     <a href="/workOrder/${workOrder.id}/wareHouseRequest" style="color: sienna"> Заявка на склад</a> &nbsp;<b>|</b>
-    <a href="/workOrder/${workOrder.id}/maintenanceRequest" style="color: darkblue"> Заявка на склад</a>
+    <a href="/workOrder/${workOrder.id}/maintenanceRequest" style="color: darkblue"> Заявка на TO</a>
 
 
  </div>
