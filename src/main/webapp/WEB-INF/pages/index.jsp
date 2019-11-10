@@ -4,15 +4,8 @@
 <html>
 <head>
     <title>IKO SERVICE</title>
-    <link rel="stylesheet" type="text/css" href="../CSS/mainMenue.css">
-    <style type="text/css">
-        .center {
-            margin: auto;
-            width: 50%;
-            border: 3px solid green;
-            padding: 10px;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="CSS/mainMenue.css">
+
 </head>
 <body>
 <div style="text-align: center">
