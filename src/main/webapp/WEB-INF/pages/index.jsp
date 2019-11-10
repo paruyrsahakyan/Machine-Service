@@ -4,7 +4,7 @@
 <html>
 <head>
     <title>IKO SERVICE</title>
-    <link rel="stylesheet" type="text/css" href="CSS/mainMenue.css">
+    <link rel=stylesheet" href="${pageContext.request.contextPath}/CSS/mainMenue.css"  type="text/css" >
 
 </head>
 <body>

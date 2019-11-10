@@ -24,7 +24,7 @@
 <body>
 <div style="text-align: center">
 
-    <h2 style="text-align: center">Деетельность Работника В Периоде Времени</h2>
+    <h2 style="text-align: center">Деятельность Работника В Периоде Времени</h2>
 
     <a href="/"> Главное меню</a>
     <br>
