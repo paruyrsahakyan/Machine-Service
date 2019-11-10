@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel=stylesheet" href="${pageContext.request.contextPath}/WEB-INF/pages/CSS/allCustomersPageStyle.css"  type="text/css" >
     <style>
         table {
             font-family: arial, sans-serif;
