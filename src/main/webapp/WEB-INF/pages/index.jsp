@@ -4,8 +4,7 @@
 <html>
 <head>
     <title>IKO SERVICE</title>
-    <link rel="stylesheet" href="CSS/mainMenue.css" type="text/css" >
-
+    <style><%@include file="/WEB-INF/pages/CSS/mainMenue.css"%></style>
 </head>
 <body>
 <div style="text-align: center">
