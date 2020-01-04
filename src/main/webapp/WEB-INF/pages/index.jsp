@@ -19,7 +19,7 @@
         <a href="/wareHouse"> Склад </a>
 </div>
 <div class="image">
-    <img src='<c:url value="/images/komatsu.jpg"> </c:url>' />
+    <img src='<c:url value="/images/komatsu.jpg"> </c:url>' height="100%" width="100%"/>
 </div>
 
 </body>
