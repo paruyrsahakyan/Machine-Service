@@ -4,6 +4,8 @@
 <html>
 <head>
     <style><%@include file="/WEB-INF/pages/CSS/topNavigation.css"%></style>
+    <style><%@include file="/WEB-INF/pages/CSS/tables.css"%></style>
+
 </head>
 <body>
 <div class="topnav">
@@ -19,7 +21,6 @@
 </div>
 
 <div class="mainContent">
-
 <h2>Информация о заказчике</h2>
 
     <br><br>
@@ -33,7 +34,7 @@
        style="color: crimson;">Удалить компанию</a>
     <br> <br>
 
-<table>
+<table class="mainTables">
     <tr>
         <th>Название Компании: </th>
         <td>${customer.name}</td>

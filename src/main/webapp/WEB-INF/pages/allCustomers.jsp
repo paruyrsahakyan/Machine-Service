@@ -5,7 +5,7 @@
 <head>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/WEB-INF/pages/CSS/allCustomersPageStyle.css"  type="text/css" >
     <style><%@include file="/WEB-INF/pages/CSS/topNavigation.css"%></style>
-    <style><%@include file="/WEB-INF/pages/CSS/tables.css"%></style>
+
 
 </head>
 <body>
