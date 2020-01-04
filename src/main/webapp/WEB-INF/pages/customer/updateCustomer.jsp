@@ -14,7 +14,18 @@
     <meta>
 </head>
 <body>
-<div style="text-align: center">
+<div class="topnav">
+    <a href="/"> Главное меню</a>
+    <a href="/allCustomers"> Компании </a>
+    <a href="/allMachines"> Mашины </a>
+    <a href="/analysis/worker/jobs"> Анализ работ</a>
+    <a href="/workOrder/home"> Наряды </a>
+    <a href="/admin/workers"> Работники </a>
+    <a href="/admin/allServiceMachines"> Сервисные Mашины</a>
+    <a href="/machineType/allMachineTypes"> Типы Машин</a>
+    <a href="/wareHouse"> Склад </a>
+</div>
+<div class="mainContent" >
 <h3>Редактирование информации заказчика</h3>
 <form:form action="/customer/updatedCustomer/${customer.id}" method="post" accept-charset="UTF-8">
     Название компании:<br>

@@ -11,8 +11,8 @@
 <body>
 
     <div class="topnav">
-        <a class="active" href="/"> Главное меню</a>
-        <a href="/allCustomers"> Компании </a>
+        <a href="/"> Главное меню</a>
+        <a class="active" href="/allCustomers"> Компании </a>
         <a href="/allMachines"> Mашины </a>
         <a href="/analysis/worker/jobs"> Анализ работ</a>
         <a href="/workOrder/home"> Наряды </a>
@@ -21,7 +21,9 @@
         <a href="/machineType/allMachineTypes"> Типы Машин</a>
         <a href="/wareHouse"> Склад </a>
     </div>
-    
+
+    <div class="mainContent">
+
     <h2> Компании</h2>
 
 <br>
@@ -59,5 +61,6 @@
 
 
 </table>
+        </div>
 </body>
 </html>
