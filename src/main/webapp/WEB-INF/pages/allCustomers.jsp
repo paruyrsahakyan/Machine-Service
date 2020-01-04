@@ -4,31 +4,26 @@
 <html>
 <head>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/WEB-INF/pages/CSS/allCustomersPageStyle.css"  type="text/css" >
-    <style>
-        table {
-            font-family: arial, sans-serif;
-            border-collapse: collapse;
-            width: auto;
+    <style><%@include file="/WEB-INF/pages/CSS/topNavigation.css"%></style>
+    <style><%@include file="/WEB-INF/pages/CSS/tables.css"%></style>
 
-
-        }
-
-        td, th {
-            border: 1px solid black;
-            text-align: left;
-            padding: 8px;
-        }
-
-        tr:nth-child(even) {
-            background-color: #dddddd;
-        }
-    </style>
 </head>
 <body>
-<div style="text-align: center">
-<h2> Компании</h2>
 
-<a href="/"> Главное меню</a>
+    <div class="topnav">
+        <a class="active" href="/"> Главное меню</a>
+        <a href="/allCustomers"> Компании </a>
+        <a href="/allMachines"> Mашины </a>
+        <a href="/analysis/worker/jobs"> Анализ работ</a>
+        <a href="/workOrder/home"> Наряды </a>
+        <a href="/admin/workers"> Работники </a>
+        <a href="/admin/allServiceMachines"> Сервисные Mашины</a>
+        <a href="/machineType/allMachineTypes"> Типы Машин</a>
+        <a href="/wareHouse"> Склад </a>
+    </div>
+    
+    <h2> Компании</h2>
+
 <br>
 <br>
 
@@ -43,7 +38,7 @@
 </form>
 <br>
 
-<table align="center">
+<table class="mainTables" align="center">
     <tr>
         <th>N</th>
         <th>Название Компании</th>
@@ -64,6 +59,5 @@
 
 
 </table>
-</div>
 </body>
 </html>

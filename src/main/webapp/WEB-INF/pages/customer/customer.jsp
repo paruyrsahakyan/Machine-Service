@@ -3,23 +3,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <style>
-        table {
-            font-family: arial, sans-serif;
-            border-collapse: collapse;
-            width: auto;
-        }
-
-        td, th {
-            border: 1px solid #dddddd;
-            text-align: left;
-            padding: 8px;
-        }
-
-        tr:nth-child(even) {
-            background-color: #dddddd;
-        }
-    </style>
 </head>
 <body>
 <div style="text-align: center">
@@ -36,7 +19,7 @@
        style="color: crimson;">Удалить компанию</a>
     <br> <br>
 
-<table style="width: auto" align="center">
+<table>
     <tr>
         <th>Название Компании: </th>
         <td>${customer.name}</td>

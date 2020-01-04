@@ -4,7 +4,7 @@
 <html>
 <head>
     <title>IKO SERVICE</title>
-    <style><%@include file="/WEB-INF/pages/CSS/mainMenu.css"%></style>
+    <style><%@include file="/WEB-INF/pages/CSS/topNavigation.css"%></style>
 </head>
 <body>
 <div class="topnav">
