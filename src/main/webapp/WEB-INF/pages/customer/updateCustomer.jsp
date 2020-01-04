@@ -11,12 +11,13 @@
 <html>
 <head>
     <title>Редактировать</title>
-    <meta>
+    <style><%@include file="/WEB-INF/pages/CSS/topNavigation.css"%></style>
+    <style><%@include file="/WEB-INF/pages/CSS/tables.css"%></style>
 </head>
 <body>
 <div class="topnav">
     <a href="/"> Главное меню</a>
-    <a href="/allCustomers"> Компании </a>
+    <a class="active" href="/allCustomers"> Компании </a>
     <a href="/allMachines"> Mашины </a>
     <a href="/analysis/worker/jobs"> Анализ работ</a>
     <a href="/workOrder/home"> Наряды </a>

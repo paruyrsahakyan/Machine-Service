@@ -10,6 +10,8 @@
 <html>
 <head>
     <title>Добовление Работника</title>
+    <style><%@include file="/WEB-INF/pages/CSS/topNavigation.css"%></style>
+    <style><%@include file="/WEB-INF/pages/CSS/tables.css"%></style>
 </head>
 <body>
 <div style="text-align: center">

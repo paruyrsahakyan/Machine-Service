@@ -10,7 +10,7 @@
 <body>
 <div class="topnav">
     <a href="/"> Главное меню</a>
-    <a href="/allCustomers"> Компании </a>
+    <a class="active" href="/allCustomers"> Компании </a>
     <a href="/allMachines"> Mашины </a>
     <a href="/analysis/worker/jobs"> Анализ работ</a>
     <a href="/workOrder/home"> Наряды </a>
@@ -55,7 +55,7 @@
 
 </table>
     <h3>Парк машин</h3>
-    <table style="width: auto" align="center">
+    <table class="mainTables">
         <tr>
             <th>N</th>
             <th>Модель</th>

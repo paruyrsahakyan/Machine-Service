@@ -10,6 +10,8 @@
 <html>
 <head>
     <title>Создание Сервисной Машины</title>
+    <style><%@include file="/WEB-INF/pages/CSS/topNavigation.css"%></style>
+    <style><%@include file="/WEB-INF/pages/CSS/tables.css"%></style>
 </head>
 <body>
 <div class="topnav">
@@ -19,7 +21,7 @@
     <a href="/analysis/worker/jobs"> Анализ работ</a>
     <a href="/workOrder/home"> Наряды </a>
     <a href="/admin/workers"> Работники </a>
-    <a href="/admin/allServiceMachines"> Сервисные Mашины</a>
+    <a class="active" href="/admin/allServiceMachines"> Сервисные Mашины</a>
     <a href="/machineType/allMachineTypes"> Типы Машин</a>
     <a href="/wareHouse"> Склад </a>
 </div>

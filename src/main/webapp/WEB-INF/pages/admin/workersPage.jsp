@@ -12,22 +12,18 @@
 <html>
 <head>
     <title>Работники</title>
-        <style>
-        table, th, td {
-            border: 1px solid black;
-
-                 }
-    </style>
+    <style><%@include file="/WEB-INF/pages/CSS/topNavigation.css"%></style>
+    <style><%@include file="/WEB-INF/pages/CSS/tables.css"%></style>
 </head>
 <body>
-<div style="text-align: center">
+<div class="mainContent">
 <h2 style="text-align: center">Работники</h2>
 <a href="/"> В главное меню</a> &nbsp;
 <a href="/admin/addWorker"> Добавить работника</a>
 <br>
 <br>
 
-<table align="center">
+<table class="mainTables">
     <tr>
         <th>N</th>
         <th>Имя раборника</th>

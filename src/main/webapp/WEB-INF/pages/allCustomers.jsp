@@ -5,6 +5,7 @@
 <head>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/WEB-INF/pages/CSS/allCustomersPageStyle.css"  type="text/css" >
     <style><%@include file="/WEB-INF/pages/CSS/topNavigation.css"%></style>
+    <style><%@include file="/WEB-INF/pages/CSS/tables.css"%></style>
 
 
 </head>
@@ -40,7 +41,7 @@
 </form>
 <br>
 
-<table class="mainTables" align="center">
+<table class="mainTables" >
     <tr>
         <th>N</th>
         <th>Название Компании</th>
