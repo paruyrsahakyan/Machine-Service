@@ -7,7 +7,7 @@
 <body>
 <div class="topnav">
     <a class="active" href="/"> Главное меню</a>
-    <a href="/allCustomers"> Kомпании </a>
+    <a href="/allCustomers"> Компании </a>
         <a href="/allMachines"> Mашины </a>
         <a href="/analysis/worker/jobs"> Анализ работ</a>
         <a href="/workOrder/home"> Наряды </a>
@@ -17,7 +17,7 @@
         <a href="/wareHouse"> Склад </a>
 </div>
 <div class="image">
-    <img src="CSS/komatsu.jpg"  height="100%" width="100%">
+    <img src="/WEB-INF/pages/CSS/komatsu.jpg"  height="100%" width="100%">
 </div>
 
 </body>
