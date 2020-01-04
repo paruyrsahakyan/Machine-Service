@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<mvc:resources location="/images/" mapping="/images/**">
-
-</mvc:resources>
 
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -16,6 +13,9 @@
        http://www.springframework.org/schema/context/spring-context.xsd">
 
     <mvc:annotation-driven/>
+    <mvc:resources location="/images/" mapping="/images/**">
+            </mvc:resources>
+
 
     <context:component-scan base-package="group.service.iko" />
 
