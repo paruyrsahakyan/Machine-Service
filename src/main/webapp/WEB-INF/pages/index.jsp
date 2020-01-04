@@ -16,7 +16,9 @@
       <a href="/machineType/allMachineTypes"> Типы Машин</a>
         <a href="/wareHouse"> Склад </a>
 </div>
-
+<div class="image">
+    <img src="CSS/komatsu.jpg"  height="100%" width="100%">
+</div>
 
 </body>
 </html>
