@@ -167,3 +167,16 @@ CREATE TABLE `interchangeable_part` (
 `part_number` varchar(255) DEFAULT NULL,
 PRIMARY KEY (`id`)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+------------------------- work_order -------------------------------
+
+CREATE TABLE `price_for_customer` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `article` varchar(255) DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `price` int(11) DEFAULT NULL,
+  `customer_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `foreignKeyCustomerId` (`customer_id`),
+  CONSTRAINT `foreignKeyCustomerId` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

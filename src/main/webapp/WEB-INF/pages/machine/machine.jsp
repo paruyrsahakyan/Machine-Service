@@ -22,8 +22,7 @@
 
 <div class="mainContent">
     <h2>Информация о машине</h2>
-    <a href="/"> Главное меню</a>
-    <br> <br>
+        <br>
     <table class="mainTables">
         <tr>
             <th>Тип Машины:</th>

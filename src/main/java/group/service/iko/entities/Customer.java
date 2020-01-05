@@ -23,6 +23,9 @@ public class Customer {
     private Worker responsible;
     @Column
     private String contract;
+    @OneToMany (mappedBy = "customer", fetch =FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<PriceForCustomer> priceForCustomerList;
+
 
 @Override
     public String toString() {

@@ -14,9 +14,10 @@
         <a href="/analysis/worker/jobs"> Анализ работ</a>
         <a href="/workOrder/home"> Наряды </a>
         <a href="/admin/workers"> Работники </a>
-       <a href="/admin/allServiceMachines"> Сервисные Mашины</a>
-      <a href="/machineType/allMachineTypes"> Типы Машин</a>
+        <a href="/admin/allServiceMachines"> Сервисные Mашины</a>
+        <a href="/machineType/allMachineTypes"> Типы Машин</a>
         <a href="/wareHouse"> Склад </a>
+        <a href="/price"> Парайс </a>
 </div>
 <div class="image">
     <img src='<c:url value="/images/komatsu.jpg"> </c:url>'  width="100%"/>
