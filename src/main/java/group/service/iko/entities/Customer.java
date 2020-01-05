@@ -94,4 +94,11 @@ public class Customer {
         this.machineList = machineList;
     }
 
+    public List<PriceForCustomer> getPriceForCustomerList() {
+        return priceForCustomerList;
+    }
+
+    public void setPriceForCustomerList(List<PriceForCustomer> priceForCustomerList) {
+        this.priceForCustomerList = priceForCustomerList;
+    }
 }

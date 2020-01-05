@@ -16,8 +16,6 @@ public class PriceForCustomer {
     @Column
     private String description;
     @Column
-    private String unit;
-    @Column
     private int price;
 
     public int getId() {
@@ -51,15 +49,6 @@ public class PriceForCustomer {
     public void setDescription(String description) {
         this.description = description;
     }
-
-    public String getUnit() {
-        return unit;
-    }
-
-    public void setUnit(String unit) {
-        this.unit = unit;
-    }
-
     public int getPrice() {
         return price;
     }
