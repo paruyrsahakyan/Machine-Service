@@ -24,9 +24,11 @@ public class PriceController {
   @Autowired
   private  PriceForCustomerService priceForCustomerService;
 
+
     @RequestMapping(value = "/mainPage")
   public ModelAndView showPricePage(){
         ModelAndView modelAndView = new ModelAndView("price/priceForCustomer");
+        modelAndView.addObject("customerList", CustomerDTO.convertIntoDTO(customerService.getAllCustomers()));
         modelAndView.addObject( modelAndView.addObject("priceList", priceForCustomerService.getAllPriceForCustomer()));
         return modelAndView;
 
@@ -44,9 +46,10 @@ public class PriceController {
     priceForCustomer.setCustomer(customerService.getCustomerById(customerId));
     priceForCustomer.setArticle(article);
     priceForCustomer.setDescription(description);
-     priceForCustomer.setPrice(price);
-     priceForCustomerService.savePriceForCustomer(priceForCustomer);
-     modelAndView.addObject("priceList", priceForCustomerService.getAllPriceForCustomer());
+    priceForCustomer.setPrice(price);
+    priceForCustomerService.savePriceForCustomer(priceForCustomer);
+    modelAndView.addObject("priceList", priceForCustomerService.getAllPriceForCustomer());
+    modelAndView.addObject(CustomerDTO.convertIntoDTO(customerService.getAllCustomers()));
       return modelAndView;
   }
 
