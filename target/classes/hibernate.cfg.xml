@@ -20,5 +20,6 @@
         <mapping class="group.service.iko.entities.ServiceMachine"/>
         <mapping class="group.service.iko.entities.WorkOrder"/>
         <mapping class="group.service.iko.entities.InterChangeablePart"/>
+        <mapping class="group.service.iko.entities.PriceForCustomer"/>
     </session-factory>
 </hibernate-configuration>
