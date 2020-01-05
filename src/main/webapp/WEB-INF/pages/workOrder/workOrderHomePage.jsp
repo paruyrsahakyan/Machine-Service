@@ -9,40 +9,34 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
+
     <title>Наряды</title>
-    <head>
-        <style>
-            table {
-                font-family: arial, sans-serif;
-                border-collapse: collapse;
-                width: auto;
+    <style><%@include file="/WEB-INF/pages/CSS/topNavigation.css"%></style>
+    <style><%@include file="/WEB-INF/pages/CSS/tables.css"%></style>
 
-            }
-
-            td, th {
-                border: 1px solid #dddddd;
-                text-align: left;
-                padding: 8px;
-            }
-
-            tr:nth-child(even) {
-                background-color: #dddddd;
-            }
-        </style>
     </head>
 </head>
 <body>
-<div style="text-align: center">
+<div class="topnav">
+    <a href="/"> Главное меню</a>
+    <a href="/allCustomers"> Компании </a>
+    <a href="/allMachines"> Mашины </a>
+    <a href="/analysis/worker/jobs"> Анализ работ</a>
+    <a class="active" href="/workOrder/home"> Наряды </a>
+    <a href="/admin/workers"> Работники </a>
+    <a href="/admin/allServiceMachines"> Сервисные Mашины</a>
+    <a href="/machineType/allMachineTypes"> Типы Машин</a>
+    <a href="/wareHouse"> Склад </a>
+</div>
+<div class="mainContent">
 
     <h2>Наряды</h2>
-
-    <a href="/"> Главное меню</a>
     <br> <br>
     <a href="/workOrder/new"> Создать Новый наряд </a>
         <h3 style="color: #dc161c"> ${workOrderList.size()} невыполненных нарядов  &nbsp;&nbsp;&nbsp;&nbsp;
     </h3>
 
-   <table style="width: auto" align="center">
+   <table class="mainTables">
 <tr>
     <th>N</th>
     <th>Заказчик</th>

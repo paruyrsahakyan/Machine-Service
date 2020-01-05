@@ -11,9 +11,23 @@
 <html>
 <head>
     <title>updateMachine</title>
+    <style><%@include file="/WEB-INF/pages/CSS/topNavigation.css"%></style>
+    <style><%@include file="/WEB-INF/pages/CSS/tables.css"%></style>
 </head>
 <body>
-<div style="text-align: center">
+
+<div class="topnav">
+    <a href="/"> Главное меню</a>
+    <a class="active" href="/allCustomers"> Компании </a>
+    <a href="/allMachines"> Mашины </a>
+    <a href="/analysis/worker/jobs"> Анализ работ</a>
+    <a href="/workOrder/home"> Наряды </a>
+    <a href="/admin/workers"> Работники </a>
+    <a href="/admin/allServiceMachines"> Сервисные Mашины</a>
+    <a href="/machineType/allMachineTypes"> Типы Машин</a>
+    <a href="/wareHouse"> Склад </a>
+</div>
+<div class="mainContent">
     <h2>Редактирование машины</h2>
     <a href="/customer/machine/${machine.id}">Отменить редактирование</a> &nbsp;<b>|</b>
     <a href="/customer/machine/${machine.id}/changeCustomer" style="bottom: auto"> Менять Влодельца</a>

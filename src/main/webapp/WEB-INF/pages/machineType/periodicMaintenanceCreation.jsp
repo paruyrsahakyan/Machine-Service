@@ -9,6 +9,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <html>
 <head>
+    <style><%@include file="/WEB-INF/pages/CSS/topNavigation.css"%></style>
+    <style><%@include file="/WEB-INF/pages/CSS/tables.css"%></style>
     <style>
         table, th, td {
             border: 1px solid black;
@@ -20,7 +22,18 @@
     <title>Создание нового ТО</title>
 </head>
 <body>
-<div style="text-align: center">
+<div class="topnav">
+    <a href="/"> Главное меню</a>
+    <a  href="/allCustomers"> Компании </a>
+    <a href="/allMachines"> Mашины </a>
+    <a href="/analysis/worker/jobs"> Анализ работ</a>
+    <a href="/workOrder/home"> Наряды </a>
+    <a href="/admin/workers"> Работники </a>
+    <a href="/admin/allServiceMachines"> Сервисные Mашины</a>
+    <a class="active" href="/machineType/allMachineTypes"> Типы Машин</a>
+    <a href="/wareHouse"> Склад </a>
+</div>
+<div class="mainContent">
     <h2>Создание нового ТО</h2> <br>
     <h3>Тип машины &nbsp; ${machineType.typeDescription}</h3>
 

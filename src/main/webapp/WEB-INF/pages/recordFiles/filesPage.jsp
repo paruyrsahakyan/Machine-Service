@@ -13,6 +13,9 @@
 <%@page contentType="text/html; charset=Windows-1251" %>
 <html>
 <head>
+    <style><%@include file="/WEB-INF/pages/CSS/topNavigation.css"%></style>
+    <style><%@include file="/WEB-INF/pages/CSS/tables.css"%></style>
+
     <title>Title</title>
     <style>
         table, th, td {
@@ -21,6 +24,18 @@
     </style>
 </head>
 <body>
+<div class="topnav">
+    <a href="/"> Главное меню</a>
+    <a href="/allCustomers"> Компании </a>
+    <a href="/allMachines"> Mашины </a>
+    <a href="/analysis/worker/jobs"> Анализ работ</a>
+    <a href="/workOrder/home"> Наряды </a>
+    <a href="/admin/workers"> Работники </a>
+    <a href="/admin/allServiceMachines"> Сервисные Mашины</a>
+    <a href="/machineType/allMachineTypes"> Типы Машин</a>
+    <a href="/wareHouse"> Склад </a>
+</div>
+
 <div style="text-align: center">
 <a href="/"> Главное меню</a>
 <br>

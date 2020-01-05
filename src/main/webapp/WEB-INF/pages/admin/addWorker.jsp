@@ -14,8 +14,21 @@
     <style><%@include file="/WEB-INF/pages/CSS/tables.css"%></style>
 </head>
 <body>
-<div style="text-align: center">
-<H2 style="text-align: center"> Добавление работника </H2>
+<div class="topnav">
+    <a href="/"> Главное меню</a>
+    <a  href="/allCustomers"> Компании </a>
+    <a href="/allMachines"> Mашины </a>
+    <a href="/analysis/worker/jobs"> Анализ работ</a>
+    <a href="/workOrder/home"> Наряды </a>
+    <a class="active" href="/admin/workers"> Работники </a>
+    <a href="/admin/allServiceMachines"> Сервисные Mашины</a>
+    <a href="/machineType/allMachineTypes"> Типы Машин</a>
+    <a href="/wareHouse"> Склад </a>
+</div>
+<div class="mainContent">
+<H2> Добавление работника </H2>
+    <br>
+    <br>
 <a href="/admin/workers"> Отменить создание нового работника </a>
 
 <form:form action="/admin/workers/workerAdded" method="post" >

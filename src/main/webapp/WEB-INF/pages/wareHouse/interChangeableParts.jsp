@@ -12,6 +12,8 @@
 <html>
 <head>
     <title>Взаимозаменяемые детали</title>
+    <style><%@include file="/WEB-INF/pages/CSS/topNavigation.css"%></style>
+    <style><%@include file="/WEB-INF/pages/CSS/tables.css"%></style>
     <style>
         table, th, td {
             border: 1px solid black;
@@ -21,12 +23,20 @@
     </style>
 </head>
 <body>
+<div class="topnav">
+    <a href="/"> Главное меню</a>
+    <a  href="/allCustomers"> Компании </a>
+    <a href="/allMachines"> Mашины </a>
+    <a href="/analysis/worker/jobs"> Анализ работ</a>
+    <a href="/workOrder/home"> Наряды </a>
+    <a href="/admin/workers"> Работники </a>
+    <a href="/admin/allServiceMachines"> Сервисные Mашины</a>
+    <a href="/machineType/allMachineTypes"> Типы Машин</a>
+    <a class="active" href="/wareHouse"> Склад </a>
+</div>
 <div style="text-align: center">
 <h3>Взаимозаменяемые детали</h3>
-<a href="/">Главное Меню</a>
-    <br> <br>
-<a href="/wareHouse"> Склад </a>
-    <br> <br>
+    <br>
 <a href="/wareHouse/interChangeableParts/createNew"> Создать взаимозаменяемую запчасть </a>
     <br> <br>
 <table style="width: auto" align="center">

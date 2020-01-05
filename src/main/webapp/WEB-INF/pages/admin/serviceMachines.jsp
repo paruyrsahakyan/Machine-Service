@@ -16,13 +16,23 @@
     <style><%@include file="/WEB-INF/pages/CSS/tables.css"%></style>
 </head>
 <body>
+<div class="topnav">
+    <a href="/"> Главное меню</a>
+    <a  href="/allCustomers"> Компании </a>
+    <a href="/allMachines"> Mашины </a>
+    <a href="/analysis/worker/jobs"> Анализ работ</a>
+    <a href="/workOrder/home"> Наряды </a>
+    <a href="/admin/workers"> Работники </a>
+    <a class="active" href="/admin/allServiceMachines"> Сервисные Mашины</a>
+    <a href="/machineType/allMachineTypes"> Типы Машин</a>
+    <a href="/wareHouse"> Склад </a>
+</div>
 <div class="mainContent">
-    <h2 style="text-align: center">Сервисные Машины</h2>
-    <a href="/"> В главное меню</a> &nbsp;
+    <h2>Сервисные Машины</h2>
+    <br>
     <a href="/admin/addServiceMachine"> Добавить Машину</a>
     <br>
     <br>
-
     <table class="mainTables">
         <tr>
             <th>N</th>

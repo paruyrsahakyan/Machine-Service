@@ -15,10 +15,19 @@
     <style><%@include file="/WEB-INF/pages/CSS/topNavigation.css"%></style>
     <style><%@include file="/WEB-INF/pages/CSS/tables.css"%></style>
 </head>
+<div class="topnav">
+    <a href="/"> Главное меню</a>
+    <a  href="/allCustomers"> Компании </a>
+    <a href="/allMachines"> Mашины </a>
+    <a href="/analysis/worker/jobs"> Анализ работ</a>
+    <a href="/workOrder/home"> Наряды </a>
+    <a class="active" href="/admin/workers"> Работники </a>
+    <a href="/admin/allServiceMachines"> Сервисные Mашины</a>
+    <a href="/machineType/allMachineTypes"> Типы Машин</a>
+    <a href="/wareHouse"> Склад </a>
+</div>
 <body>
 <div class="mainContent">
-<h2 style="text-align: center">Работники</h2>
-<a href="/"> В главное меню</a> &nbsp;
 <a href="/admin/addWorker"> Добавить работника</a>
 <br>
 <br>

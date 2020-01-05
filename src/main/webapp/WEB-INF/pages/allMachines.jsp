@@ -3,35 +3,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <style>
+    <style><%@include file="/WEB-INF/pages/CSS/topNavigation.css"%></style>
+    <style><%@include file="/WEB-INF/pages/CSS/tables.css"%></style>
 
-        table {
-            font-family: arial, sans-serif;
-            border-collapse: collapse;
-            width: auto;
-        }
-
-        td, th {
-            border: 1px solid #dddddd;
-            text-align: left;
-            padding: 8px;
-        }
-
-        tr:nth-child(even) {
-            background-color: #dddddd;
-        }
-    </style>
 </head>
 <body>
+<div class="topnav">
+    <a href="/"> Главное меню</a>
+    <a href="/allCustomers"> Компании </a>
+    <a class="active" href="/allMachines"> Mашины </a>
+    <a href="/analysis/worker/jobs"> Анализ работ</a>
+    <a href="/workOrder/home"> Наряды </a>
+    <a href="/admin/workers"> Работники </a>
+    <a href="/admin/allServiceMachines"> Сервисные Mашины</a>
+    <a href="/machineType/allMachineTypes"> Типы Машин</a>
+    <a href="/wareHouse"> Склад </a>
+</div>
 
-<div style="text-align: center">
+<div class="mainContent">
 
     <h2 style="text-align: center">Машины</h2>
-
-    <a href="/"> Главное меню</a>
-    <br>
-    <br>
-
 
     <form action="/allMachines/filtered" method="get">
         <B>Фильтры | </B> модел: <input type="text" name="model" value="${model}"> &nbsp;&nbsp;
@@ -42,7 +33,7 @@
     <a href="/allMachines/maintainedByIKO"> Обслуживаемые Дистрибютором</a>
     <br>
     <br>
-    <table style="width: auto" align="center">
+    <table class="mainTables">
         <tr>
             <th>N</th>
             <th>Модель</th>

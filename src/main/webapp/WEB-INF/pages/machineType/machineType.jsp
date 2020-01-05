@@ -10,31 +10,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <style>
-        table {
-            font-family: arial, sans-serif;
-            border-collapse: collapse;
-            width: auto;
-        }
-
-        th {
-            border: 1px solid #dddddd;
-            text-align: center;
-            padding: 8px;
-        }
-        td {
-            border: 1px solid #dddddd;
-            text-align: left;
-            padding: 8px;
-        }
-
-        tr:nth-child(even) {
-            background-color: #dddddd;
-        }
-    </style>
-</head>
+    <style><%@include file="/WEB-INF/pages/CSS/topNavigation.css"%></style>
+    <style><%@include file="/WEB-INF/pages/CSS/tables.css"%></style>
+    </head>
 <body>
-<div style="text-align: center">
+<div class="topnav">
+    <a href="/"> Главное меню</a>
+    <a href="/allCustomers"> Компании </a>
+    <a href="/allMachines"> Mашины </a>
+    <a href="/analysis/worker/jobs"> Анализ работ</a>
+    <a href="/workOrder/home"> Наряды </a>
+    <a href="/admin/workers"> Работники </a>
+    <a href="/admin/allServiceMachines"> Сервисные Mашины</a>
+    <a class="active"  href="/machineType/allMachineTypes"> Типы Машин</a>
+    <a href="/wareHouse"> Склад </a>
+</div>
+
+<div class="mainContent">
     <h2>Тип Машины: ${machineType.typeDescription} </h2>
     <a href="/"> Главное меню</a>
     <br><br>
@@ -49,7 +41,7 @@
     <br> <br>
 
             <c:forEach items="${maintenanceList}" var="maintenance" >
-            <table style="width: auto" align="center">
+            <table class="mainTables">
                 <tr>
                     <th colspan="5">
                       <a href="/machineType/${machineType.id}/periodicMaintenance/${maintenance.id}" style="text-align: center">

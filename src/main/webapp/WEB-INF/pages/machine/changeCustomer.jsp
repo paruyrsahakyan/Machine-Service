@@ -5,27 +5,23 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>Новая Машина</title>
-    <style>
-
-        table {
-            font-family: arial, sans-serif;
-            border-collapse: collapse;
-            width: auto;
-        }
-
-        td, th {
-            border: 1px solid #dddddd;
-            text-align: left;
-            padding: 8px;
-        }
-
-        tr:nth-child(even) {
-            background-color: #dddddd;
-        }
-    </style>
-</head>
+    <style><%@include file="/WEB-INF/pages/CSS/topNavigation.css"%></style>
+    <style><%@include file="/WEB-INF/pages/CSS/tables.css"%></style>
+    </head>
 <body>
-<div style="text-align: center">
+<div class="topnav">
+    <a href="/"> Главное меню</a>
+    <a href="/allCustomers"> Компании </a>
+    <a class="active" href="/allMachines"> Mашины </a>
+    <a href="/analysis/worker/jobs"> Анализ работ</a>
+    <a href="/workOrder/home"> Наряды </a>
+    <a href="/admin/workers"> Работники </a>
+    <a href="/admin/allServiceMachines"> Сервисные Mашины</a>
+    <a href="/machineType/allMachineTypes"> Типы Машин</a>
+    <a href="/wareHouse"> Склад </a>
+</div>
+
+<div class="mainContent">
     <h2>Замена Влaдельца Машины</h2> <br>
       <a href="/customer/machine/${machineId}">Отменить Процедуру</a>
     <br> <br>
@@ -38,7 +34,7 @@
         &nbsp <input type="submit" value="Сохранить" >
        </form:form>
     <br>
-    <table id="dynamicTable" style="width: auto" align="center">
+    <table class="mainTables" id="dynamicTable" style="width: auto" align="center">
         <tr>
             <td> N </td>
             <td>Название</td>

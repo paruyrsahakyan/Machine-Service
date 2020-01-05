@@ -10,35 +10,30 @@
 
 <html>
 <head>
-    <title>historyRecord</title>
-        <style>
-        table {
-            font-family: arial, sans-serif;
-            border-collapse: collapse;
-            width: auto;
-
-        }
-
-        td, th {
-            border: 1px solid #dddddd;
-            text-align: left;
-            padding: 8px;
-        }
-
-        tr:nth-child(even) {
-            background-color: #dddddd;
-        }
-    </style>
+    <title>Создание новой компании</title>
+    <style><%@include file="/WEB-INF/pages/CSS/topNavigation.css"%></style>
+    <style><%@include file="/WEB-INF/pages/CSS/tables.css"%></style>
 </head>
 <body>
-<div style="text-align: center">
-<h2 style="text-align: center">Запись истории</h2>
-<a href="/"> Главное меню</a>
-<br> <br>
+<div class="topnav">
+    <a href="/"> Главное меню</a>
+    <a href="/allCustomers"> Компании </a>
+    <a href="/allMachines"> Mашины </a>
+    <a href="/analysis/worker/jobs"> Анализ работ</a>
+    <a href="/workOrder/home"> Наряды </a>
+    <a href="/admin/workers"> Работники </a>
+    <a href="/admin/allServiceMachines"> Сервисные Mашины</a>
+    <a href="/machineType/allMachineTypes"> Типы Машин</a>
+    <a href="/wareHouse"> Склад </a>
+</div>
+
+<div class="mainContent">
+<h2 >Запись истории</h2>
+<br>
 <a href="/customer/machine/${historyRecord.machine.id}" >
 <H3> ${historyRecord.machine.model} : sn${historyRecord.machine.serialNumber} </H3>
 </a>
-   <table align="center">
+   <table class="mainTables">
 <tr>
     <th>Дата</th>
     <td> ${historyRecord.recordDate}</td>
@@ -65,7 +60,7 @@
     </tr>
 </table>
 <h3>Исполнители: </h3>
-<table align="center">
+<table class="mainTables">
        <c:forEach items="${historyRecord.detailedLaborHours}" var="detailedLaborHour">
         <tr>
             <th>${detailedLaborHour.workerName}</th>
