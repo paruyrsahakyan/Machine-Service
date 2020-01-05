@@ -6,6 +6,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>Прайс Лист</title>
@@ -27,7 +29,6 @@
    </div>
 
    <div class="mainContent">
-       <form:form action="/priceForCustomer" method="post" accept-charset="UTF-8">
            <br>
            <br>
            <B>Клиент </B>
@@ -44,6 +45,7 @@
            &nbsp;&nbsp;&nbsp;&nbsp;
            <button type="button" onclick="showHiddenForm()"> Добавить </button>
            <br><br>
+       <form:form action="/price/createdNewPrice" method="post" accept-charset="UTF-8">
            <div id="hiddenForm" style="display: none;">
                <input name="article" type="text" placeholder="Введите  Артикул">
                <input type="text" name="description" placeholder="Введите Название">
@@ -68,14 +70,14 @@
        var initialPriceList = [];
        var priceListForSelectedCustomer = [];
 
-       //  <c:forEach items="${priceList}" var="priceForCustomer">
-       // var article = "${priceForCustomer.article}";
-       // var description = "${priceForCustomer.description}";
-       // var price = "${priceForCustomer.price}";
-       // initialPriceList.push({article: article,
-       // description:description,
-       //  price:price});
-       //  </c:forEach>
+         <c:forEach items="${priceList}" var="priceForCustomer">
+        var article = "${priceForCustomer.article}";
+        var description = "${priceForCustomer.description}";
+        var price = "${priceForCustomer.price}";
+        initialPriceList.push({article: article,
+        description:description,
+        price:price});
+        </c:forEach>
 
        function initPriceListForSelectedCustomer() {
            var selectedCustomer = document.getElementById("selectedCustomer").value;
