@@ -50,8 +50,9 @@
                <input name="article" type="text" placeholder="Введите  Артикул">
                <input type="text" name="description" placeholder="Введите Название">
                <input type="nuber" name="price" placeholder="Введите Цену">
-               <input type="submit" value="сохранить">
                <input id="customerId" name="newCustomerId" type="hidden">
+               <input type="submit" value="сохранить">
+
            </div>
            <br>
 
@@ -100,14 +101,15 @@
            var titleCell1 = titleRow.insertCell(0);
            var titleCell2 = titleRow.insertCell(1);
            var titleCell3 = titleRow.insertCell(2);
-           var titleCell3 = titleRow.insertCell(3);
+           var titleCell4 = titleRow.insertCell(3);
            titleCell1.innerHTML = "N";
-           titleCell1.innerHTML = "Артикул";
            titleCell1.style.fontWeight = 'bold';
-           titleCell2.innerHTML = "Название";
+           titleCell2.innerHTML = "Артикул";
            titleCell2.style.fontWeight = 'bold';
-           titleCell3.innerHTML = "Цена Без НДС";
+           titleCell3.innerHTML = "Название";
            titleCell3.style.fontWeight = 'bold';
+           titleCell4.innerHTML = "Цена Без НДС";
+           titleCell4.style.fontWeight = 'bold';
 
            for (var i = 0; i < priceListForSelectedCustomer.length; i++) {
                var row   = table.insertRow();
