@@ -24,7 +24,7 @@ public class PriceController {
   @Autowired
   private  PriceForCustomerService priceForCustomerService;
 
-    @RequestMapping(value = "/price")
+    @RequestMapping(value = "/mainPage")
   public ModelAndView showPricePage(){
         ModelAndView modelAndView = new ModelAndView("price/priceForCustomer");
         modelAndView.addObject( modelAndView.addObject("priceList", priceForCustomerService.getAllPriceForCustomer()));
@@ -33,7 +33,7 @@ public class PriceController {
     }
 
 
-  @RequestMapping(value = "/Price/CreatedNewPrice", method = RequestMethod.POST)
+  @RequestMapping(value = "/createdNewPrice", method = RequestMethod.POST)
   public ModelAndView addNewPrice(@RequestParam("newCustomerId") int customerId,
                                  @RequestParam("article") String article,
                                  @RequestParam("description") String description,
