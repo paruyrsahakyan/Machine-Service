@@ -17,7 +17,7 @@
         <a href="/admin/allServiceMachines"> Сервисные Mашины</a>
         <a href="/machineType/allMachineTypes"> Типы Машин</a>
         <a href="/wareHouse"> Склад </a>
-        <a href="/price"> Парайс </a>
+        <a href="/price/mainPage"> Парайс </a>
 </div>
 <div class="image">
     <img src='<c:url value="/images/komatsu.jpg"> </c:url>'  width="100%"/>

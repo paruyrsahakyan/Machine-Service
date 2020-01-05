@@ -7,20 +7,12 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-           import org.hibernate.Query;
-        import org.hibernate.Session;
-        import org.hibernate.SessionFactory;
-        import org.springframework.stereotype.Service;
-
-        import java.util.List;
 @Service
 public class EntityDAO<T> {
 
     private SessionFactory sessionFactory;
     private Session session;
-    public EntityDAO() {
 
-    }
 
     public void saveEntity(T t) {
         session = SessionFactoryImpl.getSessionFactory().openSession();
@@ -53,16 +45,5 @@ public class EntityDAO<T> {
         return t;
 
     }
-
-    public List<T> getAllEntitys() {
-        session = SessionFactoryImpl.getSessionFactory().openSession();
-        String hql = "from group.service.iko.entities.Entity";
-        Query query = session.createQuery(hql);
-        List<T> EntityList= (List<T>) query.list();
-        session.flush();
-        session.close();
-        return EntityList;
-    }
-
 
 }
