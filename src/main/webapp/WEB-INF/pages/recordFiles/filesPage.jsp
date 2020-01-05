@@ -37,8 +37,6 @@
 </div>
 
 <div style="text-align: center">
-<a href="/"> Главное меню</a>
-<br>
 <br>
 <a href="/customer/machine/historyRecord/${historyRecord.id}"> Вернутся в страницу записи </a>
 <H3>${historyRecord.machine.model}&nbsp;sn${historyRecord.machine.serialNumber} |

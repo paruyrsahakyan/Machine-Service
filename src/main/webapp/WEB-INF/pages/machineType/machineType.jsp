@@ -28,8 +28,6 @@
 
 <div class="mainContent">
     <h2>Тип Машины: ${machineType.typeDescription} </h2>
-    <a href="/"> Главное меню</a>
-    <br><br>
 
     <a href="/machineType/${machineType.id}/update" style="bottom: auto"> Редактировать</a>
     &nbsp; &nbsp;
@@ -43,7 +41,7 @@
             <c:forEach items="${maintenanceList}" var="maintenance" >
             <table class="mainTables">
                 <tr>
-                    <th colspan="5">
+                    <th class="table-head" colspan="5" >
                       <a href="/machineType/${machineType.id}/periodicMaintenance/${maintenance.id}" style="text-align: center">
                                TO ${maintenance.smr} мч
                       </a>

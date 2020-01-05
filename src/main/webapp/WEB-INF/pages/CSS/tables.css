@@ -7,6 +7,7 @@
 
 }
 
+
 td, th {
     border: 1px solid black;
     text-align: left;
@@ -15,4 +16,8 @@ td, th {
 
 tr:nth-child(even) {
     background-color: #dddddd;
+}
+.mainTable th.table-head{
+    text-align: center;
+
 }
