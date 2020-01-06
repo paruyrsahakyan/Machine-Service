@@ -103,18 +103,17 @@
 
     function initPriceListForSelectedCustomer() {
         var selectedCustomerName = document.getElementById("selectedCustomerName").value;
-        var selectedCustomer = customerList.find(customer => {return customer.name === selectedCustomerName});
-        document.getElementById("customerId").value = selectedCustomer.id;
 
-        for (var i = 0; i < initialPriceList.length; i++) {
+           for (var i = 0; i < initialPriceList.length; i++) {
             if (initialPriceList[i].customerName === selectedCustomerName) {
                 priceListForSelectedCustomer.push(initialPriceList[i]);
             }
+               alert(selectedCustomerName);
         }
     }
 
     function tableCreate() {
-        initPriceListForSelectedCustomer();
+                initPriceListForSelectedCustomer();
         var table = document.getElementById("dynamicTable");
         table.innerText = "";
         var titleRow = table.insertRow();
