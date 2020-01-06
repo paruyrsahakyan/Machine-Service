@@ -32,10 +32,10 @@
            <br>
            <br>
            <B>Клиент </B>
-           <input list="customers" name="customer" id="selectedCustomer" onchange="tableCreate()" >
+           <input list="customers" name="customerId" id="selectedCustomerId" onchange="tableCreate()" >
            <datalist id="customers" >
                <c:forEach items="${customerList}" var="customer">
-                   <option value="${customer.name}" hidden> ${customer.name} </option>
+                   <option value="${customer.id}" hidden> ${customer.name} </option>
                </c:forEach>
            </datalist>
            &nbsp;&nbsp;&nbsp;&nbsp;
@@ -50,7 +50,7 @@
                <input name="article" type="text" placeholder="Введите  Артикул">
                <input type="text" name="description" placeholder="Введите Название">
                <input type="nuber" name="price" placeholder="Введите Цену">
-               <input id="customerId" name="newCustomerId" type="hidden">
+               <input id="customerId" name="customerId" type="hidden">
                <input type="submit" value="сохранить">
 
            </div>
@@ -70,31 +70,31 @@
    <script>
        var initialPriceList = [];
        var priceListForSelectedCustomer = [];
+       var selectedCustomerId;
 
          <c:forEach items="${priceList}" var="priceForCustomer">
         var article = "${priceForCustomer.article}";
         var description = "${priceForCustomer.description}";
         var price = "${priceForCustomer.price}";
+        var customerId = "${priceForCustomer.price}";
         initialPriceList.push({article: article,
         description:description,
-        price:price});
+        price:price,
+        customerId:customerId})  ;
         </c:forEach>
 
        function initPriceListForSelectedCustomer() {
-           var selectedCustomer = document.getElementById("selectedCustomer").value;
-           priceListOfSelectedCustomer=[];
-           for (var i = 0; i < initialPriceList.length; i++) {
-               if (initialMachineList[i].customerName === selectedCustomer) {
-                   priceListOfSelectedCustomer.push(initialPriceList[i])
-               }
-           }
+             selectedCustomerId = document.getElementById("selectedCustomerId").value;
+             document.getElementById("customerId").value=selectedCustomerId;
+              for (var i = 0; i < initialPriceList.length; i++) {
+               if (initialPriceList[i].customerId === selectedCustomerId) {
+                   priceListForSelectedCustomer.push(initialPriceList[i]);
+                                     }
+                                                }
        }
 
-       function tableCreate(customerList) {
-
-           document.getElementById("customerId").value=selectedCustomer.id;
-
-           initPriceListForSelectedCustomer
+       function tableCreate() {
+           initPriceListForSelectedCustomer();
            var table = document.getElementById("dynamicTable");
            table.innerText = "";
            var titleRow = table.insertRow();
@@ -121,12 +121,8 @@
                cell2.innerHTML = priceListForSelectedCustomer[i].article;
                cell3.innerHTML = priceListForSelectedCustomer[i].description;
                cell4.innerHTML = priceListForSelectedCustomer[i].price;
-               // cell2.addEventListener("click", copyToTextArea);
-
            }
-
        }
-
        function showHiddenForm() {
            document.getElementById("hiddenForm").style.display = "block";
            // body...

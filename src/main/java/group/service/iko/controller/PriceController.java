@@ -2,6 +2,7 @@ package group.service.iko.controller;
 
 import group.service.iko.dto.CustomerDTO;
 import group.service.iko.dto.MachineDTO;
+import group.service.iko.dto.PriceForCustomerDTO;
 import group.service.iko.entities.Customer;
 import group.service.iko.entities.Machine;
 import group.service.iko.entities.PriceForCustomer;
@@ -16,6 +17,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Controller()
 @RequestMapping("/price")
 public class PriceController {
@@ -29,14 +33,14 @@ public class PriceController {
   public ModelAndView showPricePage(){
         ModelAndView modelAndView = new ModelAndView("price/priceForCustomer");
         modelAndView.addObject("customerList", CustomerDTO.convertIntoDTO(customerService.getAllCustomers()));
-        modelAndView.addObject( modelAndView.addObject("priceList", priceForCustomerService.getAllPriceForCustomer()));
+        modelAndView.addObject( "priceList", PriceForCustomerDTO.convertIntoDTO(priceForCustomerService.getAllPriceForCustomer()));
         return modelAndView;
 
     }
 
 
   @RequestMapping(value = "/createdNewPrice", method = RequestMethod.POST)
-  public ModelAndView addNewPrice(@RequestParam("newCustomerId") int customerId,
+  public ModelAndView addNewPrice(@RequestParam("customerId") int customerId,
                                  @RequestParam("article") String article,
                                  @RequestParam("description") String description,
                                  @RequestParam("price") int price)
