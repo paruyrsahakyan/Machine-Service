@@ -40,14 +40,15 @@ public class PriceController {
 
 
   @RequestMapping(value = "/createdNewPrice", method = RequestMethod.POST)
-  public ModelAndView addNewPrice(@RequestParam("customerId") String customerId,
+  public ModelAndView addNewPrice(@RequestParam("customerName") String customerName,
                                   @RequestParam("article") String article,
                                   @RequestParam("description") String description,
                                   @RequestParam("price") int price)
   {
     ModelAndView modelAndView = new ModelAndView("price/priceForCustomer");
     PriceForCustomer priceForCustomer = new PriceForCustomer();
-    priceForCustomer.setCustomer(customerService.getCustomerById(Integer.parseInt(customerId)));
+    customerService.getCustomerByName(customerName);
+    priceForCustomer.setCustomer(customerService.getCustomerByName(customerName));
     priceForCustomer.setArticle(article);
     priceForCustomer.setDescription(description);
     priceForCustomer.setPrice(price);

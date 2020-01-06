@@ -35,6 +35,7 @@
     <br>
     <br>
     <B>Клиент </B>
+<form:form action="/price/createdNewPrice" method="post" accept-charset="UTF-8">
     <input list="customers" id="selectedCustomerName" onchange="tableCreate()">
     <datalist id="customers">
         <c:forEach items="${customerList}" var="customer">
@@ -47,12 +48,12 @@
     &nbsp;&nbsp;&nbsp;&nbsp;
     <button type="button" onclick="showHiddenForm()"> Добавить</button>
     <br><br>
-    <form:form action="/price/createdNewPrice" method="post" accept-charset="UTF-8">
+    <%--<form:form action="/price/createdNewPrice" method="post" accept-charset="UTF-8">--%>
         <div id="hiddenForm" style="display: none;">
             <input type="text" name="article" placeholder="Введите  Артикул">
             <input type="text" name="description" placeholder="Введите Название">
             <input type="nuber" name="price" placeholder="Введите Цену">
-            <input type="hidden" name="customerId" id="customerId" >
+            <%--<input type="hidden" name="customerId" id="customerId" >--%>
             <input type="submit" value="сохранить">
         </div>
         <br>
