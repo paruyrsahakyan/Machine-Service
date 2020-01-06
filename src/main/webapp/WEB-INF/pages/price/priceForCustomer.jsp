@@ -108,8 +108,8 @@
             if (initialPriceList[i].customerName === selectedCustomerName) {
                 priceListForSelectedCustomer.push(initialPriceList[i]);
             }
-               alert(selectedCustomerName);
-        }
+            alert(priceListForSelectedCustomer.length.toString())
+                       }
     }
 
     function tableCreate() {
