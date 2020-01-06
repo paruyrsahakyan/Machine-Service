@@ -5,9 +5,13 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>Новая Машина</title>
-    <style><%@include file="/WEB-INF/pages/CSS/topNavigation.css"%></style>
-    <style><%@include file="/WEB-INF/pages/CSS/tables.css"%></style>
-    </head>
+    <style>
+        <%@include file="/WEB-INF/pages/CSS/topNavigation.css" %>
+    </style>
+    <style>
+        <%@include file="/WEB-INF/pages/CSS/tables.css" %>
+    </style>
+</head>
 <body>
 <div class="topnav">
     <a href="/"> Главное меню</a>
@@ -23,20 +27,20 @@
 
 <div class="mainContent">
     <h2>Замена Влaдельца Машины</h2> <br>
-      <a href="/customer/machine/${machineId}">Отменить Процедуру</a>
+    <a href="/customer/machine/${machineId}">Отменить Процедуру</a>
     <br> <br>
-    Поиск по названию:  <input id="search"  type="text" onkeyup="refreshTheTable()" >
+    Поиск по названию: <input id="search" type="text" onkeyup="refreshTheTable()">
     <br><br>
     <form:form action="/customer/machine/${machineId}/changedMachineCustomer" method="post">
         <input id="selectedCustomerId" name="newCustomerId" type="hidden">
-       Выбран заказчик: <input id="selectedCustomerName" type="text" readonly style="font-weight: bold">
+        Выбран заказчик: <input id="selectedCustomerName" type="text" readonly style="font-weight: bold">
         &nbsp <b>|</b> &nbsp Дата: <input type="date" name="date" required>
-        &nbsp <input type="submit" value="Сохранить" >
-       </form:form>
+        &nbsp <input type="submit" value="Сохранить">
+    </form:form>
     <br>
     <table class="mainTables" id="dynamicTable" style="width: auto" align="center">
         <tr>
-            <td> N </td>
+            <td> N</td>
             <td>Название</td>
         </tr>
     </table>
@@ -61,10 +65,12 @@
     }
 
     var copyToTextArea = function () {
-        var selectedCustomerName= event.target.innerHTML;
-        document.getElementById("selectedCustomerName").value=selectedCustomerName;
-        var selectedCustomer = filteredList.find(customer => {return customer.name === selectedCustomerName});
-        document.getElementById("selectedCustomerId").value=selectedCustomer.id;
+        var selectedCustomerName = event.target.innerHTML;
+        document.getElementById("selectedCustomerName").value = selectedCustomerName;
+        var selectedCustomer = filteredList.find(customer = > {return customer.name === selectedCustomerName}
+    )
+        ;
+        document.getElementById("selectedCustomerId").value = selectedCustomer.id;
 
     }
 
@@ -90,22 +96,22 @@
         var titleRow = table.insertRow();
         var titleCell1 = titleRow.insertCell(0);
         var titleCell2 = titleRow.insertCell(1);
-      //  var titleCell3 = titleRow.insertCell(2);
+        //  var titleCell3 = titleRow.insertCell(2);
         titleCell1.innerHTML = "N";
         titleCell1.style.fontWeight = 'bold';
         titleCell2.innerHTML = "Название";
         titleCell2.style.fontWeight = 'bold';
-    //   titleCell3.innerHTML = "ИН";
-     //  titleCell3.style.fontWeight = 'bold';
+        //   titleCell3.innerHTML = "ИН";
+        //  titleCell3.style.fontWeight = 'bold';
 
         for (var i = 0; i < customerList.length; i++) {
             var row = table.insertRow();
             var cell1 = row.insertCell(0);
             var cell2 = row.insertCell(1);
-         // var cell3 = row.insertCell(2);
+            // var cell3 = row.insertCell(2);
             cell1.innerHTML = (i + 1).toString();
             cell2.innerHTML = customerList[i].name;
-          //  cell3.innerHTML = customerList[i].id;
+            //  cell3.innerHTML = customerList[i].id;
             cell2.addEventListener("click", copyToTextArea);
 
         }
