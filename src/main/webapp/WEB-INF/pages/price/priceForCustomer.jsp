@@ -50,7 +50,7 @@
         <button type="button" onclick="showHiddenForm()"> Добавить позицию</button>
         <br><br>
         <div id="hiddenForm" style="display: none;">
-            <input type="text" name="article" placeholder="Введите  Артикул">
+            <input id="newArticle" type="text" name="article" placeholder="Введите  Артикул" onchange="checkTheArticle()">
             <input type="text" name="description" placeholder="Введите Название">
             <input type="nuber" name="price" placeholder="Введите Цену">
             <input type="submit" value="сохранить">
@@ -163,12 +163,22 @@
             }
             priceListForTableCreation=priceListFilteredByArticle;
         }
+        createTable();
     }
     function createTableForSelectedCustomer() {
         initPriceListForSelectedCustomer();
         priceListForTableCreation=priceListForSelectedCustomer;
-        tableCreate();
+        createTable();
                     }
+   function checkTheArticle() {
+       var newArticle = document.getElementById("newArticle").value;
+       for (var i = 0; i < priceListForSelectedCustomer.length; i++) {
+           if (priceListForSelectedCustomer[i].article.toLowerCase().indexOf(newArticle) >= 0) {
+               alert("Введенный яртикул сушествует");
+                }
+
+       }
+   }
 
 
 
