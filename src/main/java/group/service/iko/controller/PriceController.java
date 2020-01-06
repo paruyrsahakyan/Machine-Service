@@ -53,7 +53,7 @@ public class PriceController {
     priceForCustomer.setDescription(description);
     priceForCustomer.setPrice(price);
     priceForCustomerService.savePriceForCustomer(priceForCustomer);
-    modelAndView.addObject("priceList", priceForCustomerService.getAllPriceForCustomer());
+    modelAndView.addObject("priceList", PriceForCustomerDTO.convertIntoDTO(priceForCustomerService.getAllPriceForCustomer()));
     modelAndView.addObject("customerList", CustomerDTO.convertIntoDTO(customerService.getAllCustomers()));
       return modelAndView;
 

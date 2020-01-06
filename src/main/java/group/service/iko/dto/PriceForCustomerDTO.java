@@ -20,6 +20,7 @@ customerId=priceForCustomer.getCustomer().getId();
 customerName=priceForCustomer.getCustomer().getName();
 article = priceForCustomer.getArticle();
 description= priceForCustomer.getDescription();
+price= priceForCustomer.getPrice();
 }
 
     public static List<PriceForCustomerDTO> convertIntoDTO(List<PriceForCustomer> priceForCustomers){
