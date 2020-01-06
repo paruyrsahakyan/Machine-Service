@@ -49,15 +49,13 @@
                <input type="text"  name="article" placeholder="Введите  Артикул">
                <input type="text" name="description" placeholder="Введите Название">
                <input type="nuber" name="price" placeholder="Введите Цену">
-
+               <input type="hidden" id="customerId" name="customerId" >
                <input type="submit" value="сохранить">
-
            </div>
            <br>
 
        </form:form>
-       <input type="hidden" id="customerId" name="customerId" >
-       
+
        <table class="mainTables" id="dynamicTable" style="width: auto" align="center">
            <tr>
                <td>N</td>
