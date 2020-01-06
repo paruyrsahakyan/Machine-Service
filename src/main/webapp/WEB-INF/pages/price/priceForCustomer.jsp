@@ -81,7 +81,7 @@
     var article = "${priceForCustomer.article}";
     var description = "${priceForCustomer.description}";
     var price = "${priceForCustomer.price}";
-    var customerId = "${priceForCustomer.price}";
+    var customerId = "${priceForCustomer.customerId}";
     var customerName= "${priceForCustomer.customerName}";
     initialPriceList.push({
         article: article,
