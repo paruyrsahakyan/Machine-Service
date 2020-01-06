@@ -45,7 +45,7 @@
         </datalist>
         &nbsp;&nbsp;&nbsp;&nbsp;
         <B>Артикул </B>
-        <input type="text" id="articleSearch" onchange="updateTableByArticle()">
+        <input type="text" id="articleSearch" oninput="updateTableByArticle()">
         &nbsp;&nbsp;&nbsp;&nbsp;
         <button type="button" onclick="showHiddenForm()"> Добавить позицию</button>
         <br><br>
@@ -176,7 +176,6 @@
            if (priceListForSelectedCustomer[i].article.toLowerCase().indexOf(newArticle) >= 0) {
                alert("Введенный яртикул сушествует");
                 }
-
        }
    }
 
