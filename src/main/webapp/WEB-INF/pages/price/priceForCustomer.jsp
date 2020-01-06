@@ -101,7 +101,7 @@
 
     function initPriceListForSelectedCustomer() {
         var selectedCustomerName = document.getElementById("selectedCustomerName").value;
-        var selectedCustomer = customerList.find(customer = > {return customer.name === selectedCustomerName});
+        var selectedCustomer = customerList.find(customer => {return customer.name === selectedCustomerName});
         document.getElementById("customerId").value = selectedCustomer.id;
 
         for (var i = 0; i < initialPriceList.length; i++) {
