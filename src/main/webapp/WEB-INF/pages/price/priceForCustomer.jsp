@@ -11,121 +11,141 @@
 <html>
 <head>
     <title>Прайс Лист</title>
-          <style><%@include file="/WEB-INF/pages/CSS/topNavigation.css"%></style>
-        <style><%@include file="/WEB-INF/pages/CSS/tables.css"%></style>
+    <style>
+        <%@include file="/WEB-INF/pages/CSS/topNavigation.css" %>
+    </style>
+    <style>
+        <%@include file="/WEB-INF/pages/CSS/tables.css" %>
+    </style>
 </head>
-   <body>
-   <body>
-   <div class="topnav">
-       <a href="/"> Главное меню</a>
-       <a href="/allCustomers"> Компании </a>
-       <a  href="/allMachines"> Mашины </a>
-       <a href="/analysis/worker/jobs"> Анализ работ</a>
-       <a href="/workOrder/home"> Наряды </a>
-       <a href="/admin/workers"> Работники </a>
-       <a href="/admin/allServiceMachines"> Сервисные Mашины</a>
-       <a href="/machineType/allMachineTypes"> Типы Машин</a>
-       <a href="/wareHouse"> Склад </a>
-   </div>
+<body>
+<div class="topnav">
+    <a href="/"> Главное меню</a>
+    <a href="/allCustomers"> Компании </a>
+    <a href="/allMachines"> Mашины </a>
+    <a href="/analysis/worker/jobs"> Анализ работ</a>
+    <a href="/workOrder/home"> Наряды </a>
+    <a href="/admin/workers"> Работники </a>
+    <a href="/admin/allServiceMachines"> Сервисные Mашины</a>
+    <a href="/machineType/allMachineTypes"> Типы Машин</a>
+    <a href="/wareHouse"> Склад </a>
+</div>
 
-   <div class="mainContent">
-           <br>
-           <br>
-           <B>Клиент </B>
-           <input list="customers" name="customerId" id="selectedCustomerId" onchange="tableCreate()" >
-           <datalist id="customers" >
-               <c:forEach items="${customerList}" var="customer">
-                   <option value="${customer.id}" hidden> ${customer.name} </option>
-               </c:forEach>
-           </datalist>
-           &nbsp;&nbsp;&nbsp;&nbsp;
-           <B>Артикул </B>
-           <input type="text" name="article" id="articleSearch" onchange="tableCreate()" >
-            &nbsp;&nbsp;&nbsp;&nbsp;
-           <button type="button" onclick="showHiddenForm()"> Добавить </button>
-           <br><br>
-       <form:form action="/price/createdNewPrice" method="post" accept-charset="UTF-8">
-           <div id="hiddenForm" style="display: none;">
-               <input type="text"  name="article" placeholder="Введите  Артикул">
-               <input type="text" name="description" placeholder="Введите Название">
-               <input type="nuber" name="price" placeholder="Введите Цену">
-               <input type="hidden" id="customerId" name="customerId" >
-               <input type="submit" value="сохранить">
-           </div>
-           <br>
-
-       </form:form>
-
-       <table class="mainTables" id="dynamicTable" style="width: auto" align="center">
-           <tr>
-               <td>N</td>
-               <td>Артиикул</td>
-               <td>Название</td>
-               <td>Цена без НДС</td>
-           </tr>
-       </table>
-   </div>
-   <script>
-       var initialPriceList = [];
-       var priceListForSelectedCustomer = [];
-       var selectedCustomerId;
-
-         <c:forEach items="${priceList}" var="priceForCustomer">
-        var article = "${priceForCustomer.article}";
-        var description = "${priceForCustomer.description}";
-        var price = "${priceForCustomer.price}";
-        var customerId = "${priceForCustomer.price}";
-        initialPriceList.push({article: article,
-        description:description,
-        price:price,
-        customerId:customerId})  ;
+<div class="mainContent">
+    <br>
+    <br>
+    <B>Клиент </B>
+    <input list="customers" id="selectedCustomerName" onchange="tableCreate()">
+    <datalist id="customers">
+        <c:forEach items="${customerList}" var="customer">
+            <option value="${customer.name}" hidden> ${customer.name} </option>
         </c:forEach>
+    </datalist>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <B>Артикул </B>
+    <input type="text" name="article" id="articleSearch" onchange="tableCreate()">
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <button type="button" onclick="showHiddenForm()"> Добавить</button>
+    <br><br>
+    <form:form action="/price/createdNewPrice" method="post" accept-charset="UTF-8">
+        <div id="hiddenForm" style="display: none;">
+            <input type="text" name="article" placeholder="Введите  Артикул">
+            <input type="text" name="description" placeholder="Введите Название">
+            <input type="nuber" name="price" placeholder="Введите Цену">
+            <input type="hidden" name="customerId" id="customerId" >
+            <input type="submit" value="сохранить">
+        </div>
+        <br>
 
-       function initPriceListForSelectedCustomer() {
-             selectedCustomerId = document.getElementById("selectedCustomerId").value;
-             document.getElementById("customerId").value=selectedCustomerId;
-              for (var i = 0; i < initialPriceList.length; i++) {
-               if (initialPriceList[i].customerId === selectedCustomerId) {
-                   priceListForSelectedCustomer.push(initialPriceList[i]);
-                                     }
-                                                }
-       }
+    </form:form>
 
-       function tableCreate() {
-           initPriceListForSelectedCustomer();
-           var table = document.getElementById("dynamicTable");
-           table.innerText = "";
-           var titleRow = table.insertRow();
-           var titleCell1 = titleRow.insertCell(0);
-           var titleCell2 = titleRow.insertCell(1);
-           var titleCell3 = titleRow.insertCell(2);
-           var titleCell4 = titleRow.insertCell(3);
-           titleCell1.innerHTML = "N";
-           titleCell1.style.fontWeight = 'bold';
-           titleCell2.innerHTML = "Артикул";
-           titleCell2.style.fontWeight = 'bold';
-           titleCell3.innerHTML = "Название";
-           titleCell3.style.fontWeight = 'bold';
-           titleCell4.innerHTML = "Цена Без НДС";
-           titleCell4.style.fontWeight = 'bold';
+    <table class="mainTables" id="dynamicTable" style="width: auto" align="center">
+        <tr>
+            <td>N</td>
+            <td>Артиикул</td>
+            <td>Название</td>
+            <td>Цена без НДС</td>
+        </tr>
+    </table>
+</div>
+<script>
+    var initialPriceList = [];
+    var priceListForSelectedCustomer = [];
+    var customerList = [];
+    var selectedCustomerId;
+    var selectedCustomerName;
 
-           for (var i = 0; i < priceListForSelectedCustomer.length; i++) {
-               var row   = table.insertRow();
-               var cell1 = row.insertCell(0);
-               var cell2 = row.insertCell(1);
-               var cell3 = row.insertCell(2);
-               var cell4 = row.insertCell(3);
-               cell1.innerHTML = (i + 1).toString();
-               cell2.innerHTML = priceListForSelectedCustomer[i].article;
-               cell3.innerHTML = priceListForSelectedCustomer[i].description;
-               cell4.innerHTML = priceListForSelectedCustomer[i].price;
-           }
-       }
-       function showHiddenForm() {
-           document.getElementById("hiddenForm").style.display = "block";
-           // body...
-       }
-   </script>
-   </body>
+    <c:forEach items="${priceList}" var="priceForCustomer">
+    var article = "${priceForCustomer.article}";
+    var description = "${priceForCustomer.description}";
+    var price = "${priceForCustomer.price}";
+    var customerId = "${priceForCustomer.price}";
+    initialPriceList.push({
+        article: article,
+        description: description,
+        price: price,
+        customerId: customerId
+    });
+    </c:forEach>
+
+    <c:forEach items="${customerList}" var="customer">
+    var id = "${customer.id}"
+    var customerName = "${customer.name}";
+    customerList.push({
+        id: id,
+        customerName: customerName
+    });
+    </c:forEach>
+
+
+
+    function initPriceListForSelectedCustomer() {
+        var selectedCustomerName = document.getElementById("selectedCustomerName").value;
+        var selectedCustomer = customerList.find(customer = > {return customer.name === selectedCustomerName});
+        document.getElementById("customerId").value = selectedCustomer.id;
+
+        for (var i = 0; i < initialPriceList.length; i++) {
+            if (initialPriceList[i].customerName === selectedCustomerName) {
+                priceListForSelectedCustomer.push(initialPriceList[i]);
+            }
+        }
+    }
+
+    function tableCreate() {
+        initPriceListForSelectedCustomer();
+        var table = document.getElementById("dynamicTable");
+        table.innerText = "";
+        var titleRow = table.insertRow();
+        var titleCell1 = titleRow.insertCell(0);
+        var titleCell2 = titleRow.insertCell(1);
+        var titleCell3 = titleRow.insertCell(2);
+        var titleCell4 = titleRow.insertCell(3);
+        titleCell1.innerHTML = "N";
+        titleCell1.style.fontWeight = 'bold';
+        titleCell2.innerHTML = "Артикул";
+        titleCell2.style.fontWeight = 'bold';
+        titleCell3.innerHTML = "Название";
+        titleCell3.style.fontWeight = 'bold';
+        titleCell4.innerHTML = "Цена Без НДС";
+        titleCell4.style.fontWeight = 'bold';
+
+        for (var i = 0; i < priceListForSelectedCustomer.length; i++) {
+            var row = table.insertRow();
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            var cell3 = row.insertCell(2);
+            var cell4 = row.insertCell(3);
+            cell1.innerHTML = (i + 1).toString();
+            cell2.innerHTML = priceListForSelectedCustomer[i].article;
+            cell3.innerHTML = priceListForSelectedCustomer[i].description;
+            cell4.innerHTML = priceListForSelectedCustomer[i].price;
+        }
+    }
+    function showHiddenForm() {
+        document.getElementById("hiddenForm").style.display = "block";
+        // body...
+    }
+</script>
+</body>
 
 </html>
