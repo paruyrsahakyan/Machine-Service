@@ -82,11 +82,13 @@
     var description = "${priceForCustomer.description}";
     var price = "${priceForCustomer.price}";
     var customerId = "${priceForCustomer.price}";
+    var customerName= "${priceForCustomer.customerName}";
     initialPriceList.push({
         article: article,
         description: description,
         price: price,
-        customerId: customerId
+        customerId: customerId,
+        customerName: customerName
     });
     </c:forEach>
 
