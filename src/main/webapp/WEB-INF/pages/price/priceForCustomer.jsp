@@ -46,17 +46,18 @@
            <br><br>
        <form:form action="/price/createdNewPrice" method="post" accept-charset="UTF-8">
            <div id="hiddenForm" style="display: none;">
-               <input name="article" type="text" placeholder="Введите  Артикул">
+               <input type="text"  name="article" placeholder="Введите  Артикул">
                <input type="text" name="description" placeholder="Введите Название">
                <input type="nuber" name="price" placeholder="Введите Цену">
-               <input id="customerId" name="customerId" type="hidden">
+
                <input type="submit" value="сохранить">
 
            </div>
            <br>
 
        </form:form>
-
+       <input type="hidden" id="customerId" name="customerId" >
+       
        <table class="mainTables" id="dynamicTable" style="width: auto" align="center">
            <tr>
                <td>N</td>
