@@ -40,9 +40,8 @@
            </datalist>
            &nbsp;&nbsp;&nbsp;&nbsp;
            <B>Артикул </B>
-           <input list="article" name="article" id="articleSearch" onchange="tableCreate()" >
-           </select>
-           &nbsp;&nbsp;&nbsp;&nbsp;
+           <input type="text" name="article" id="articleSearch" onchange="tableCreate()" >
+            &nbsp;&nbsp;&nbsp;&nbsp;
            <button type="button" onclick="showHiddenForm()"> Добавить </button>
            <br><br>
        <form:form action="/price/createdNewPrice" method="post" accept-charset="UTF-8">
