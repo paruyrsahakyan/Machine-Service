@@ -157,7 +157,7 @@
         else {
             priceListFilteredByArticle = [];
             for (var i = 0; i < priceListForSelectedCustomer.length; i++) {
-                if (initialCustomerList[i].name.toLowerCase().indexOf(searchInput) >= 0) {
+                if (priceListForSelectedCustomer[i].article.toLowerCase().indexOf(searchInput) >= 0) {
                     priceListFilteredByArticle.push(priceListForSelectedCustomer[i])
                 }
             }
