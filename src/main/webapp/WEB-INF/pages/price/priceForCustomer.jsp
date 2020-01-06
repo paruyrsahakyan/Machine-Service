@@ -35,26 +35,24 @@
 
 <div class="mainContent">
 
-<form:form action="/price/createdNewPrice" method="post" accept-charset="UTF-8">
-    <B>Клиент </B>
-    <input list="customers" name="customerName" id="selectedCustomerName" onchange="tableCreate()">
-    <datalist id="customers">
-        <c:forEach items="${customerList}" var="customer">
-            <option value="${customer.name}" hidden> ${customer.name} </option>
-        </c:forEach>
-    </datalist>
-    &nbsp;&nbsp;&nbsp;&nbsp;
-    <B>Артикул </B>
-    <input type="text" name="searchedArticle" id="articleSearch" onchange="tableCreate()">
-    &nbsp;&nbsp;&nbsp;&nbsp;
-    <button type="button" onclick="showHiddenForm()"> Добавить</button>
-    <br><br>
-    <%--<form:form action="/price/createdNewPrice" method="post" accept-charset="UTF-8">--%>
+    <form:form action="/price/createdNewPrice" method="post" accept-charset="UTF-8">
+        <B>Клиент </B>
+        <input list="customers" name="customerName" id="selectedCustomerName" onchange="createTableForSelectedCustomer()">
+        <datalist id="customers">
+            <c:forEach items="${customerList}" var="customer">
+                <option value="${customer.name}" hidden> ${customer.name} </option>
+            </c:forEach>
+        </datalist>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <B>Артикул </B>
+        <input type="text" id="articleSearch" onchange="updateTableByArticle()">
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <button type="button" onclick="showHiddenForm()"> Добавить позицию</button>
+        <br><br>
         <div id="hiddenForm" style="display: none;">
             <input type="text" name="article" placeholder="Введите  Артикул">
             <input type="text" name="description" placeholder="Введите Название">
             <input type="nuber" name="price" placeholder="Введите Цену">
-            <%--<input type="hidden" name="customerId" id="customerId" >--%>
             <input type="submit" value="сохранить">
         </div>
         <br>
@@ -72,8 +70,11 @@
 </div>
 <script>
     var initialPriceList = [];
-    var priceListForSelectedCustomer = [];
     var customerList = [];
+    var priceListForSelectedCustomer = [];
+    var priceListFilteredByArticle = [];
+    var priceListForTableCreation = [];
+
     var selectedCustomerId;
     var selectedCustomerName;
 
@@ -82,7 +83,7 @@
     var description = "${priceForCustomer.description}";
     var price = "${priceForCustomer.price}";
     var customerId = "${priceForCustomer.customerId}";
-    var customerName= "${priceForCustomer.customerName}";
+    var customerName = "${priceForCustomer.customerName}";
     initialPriceList.push({
         article: article,
         description: description,
@@ -102,20 +103,18 @@
     </c:forEach>
 
 
-
     function initPriceListForSelectedCustomer() {
         var selectedCustomerName = document.getElementById("selectedCustomerName").value;
 
-           for (var i = 0; i < initialPriceList.length; i++) {
+        for (var i = 0; i < initialPriceList.length; i++) {
             if (initialPriceList[i].customerName === selectedCustomerName) {
                 priceListForSelectedCustomer.push(initialPriceList[i]);
             }
-            alert(priceListForSelectedCustomer.length.toString())
-                       }
+        }
     }
 
-    function tableCreate() {
-                initPriceListForSelectedCustomer();
+    function createTable() {
+
         var table = document.getElementById("dynamicTable");
         table.innerText = "";
         var titleRow = table.insertRow();
@@ -144,10 +143,35 @@
             cell4.innerHTML = priceListForSelectedCustomer[i].price;
         }
     }
+
     function showHiddenForm() {
         document.getElementById("hiddenForm").style.display = "block";
         // body...
     }
+
+    function updateTableByArticle() {
+        var searchInput = document.getElementById("articleSearch").value;
+        if (searchInput === "") {
+            priceListFilteredByArticle = priceListForSelectedCustomer;
+        }
+        else {
+            priceListFilteredByArticle = [];
+            for (var i = 0; i < priceListForSelectedCustomer.length; i++) {
+                if (initialCustomerList[i].name.toLowerCase().indexOf(searchInput) >= 0) {
+                    priceListFilteredByArticle.push(priceListForSelectedCustomer[i])
+                }
+            }
+            priceListForTableCreation=priceListFilteredByArticle;
+        }
+    }
+    function createTableForSelectedCustomer() {
+        initPriceListForSelectedCustomer();
+        priceListForTableCreation=priceListForSelectedCustomer;
+        tableCreate();
+                    }
+
+
+
 </script>
 </body>
 

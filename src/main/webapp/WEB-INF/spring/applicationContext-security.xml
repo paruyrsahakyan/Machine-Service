@@ -32,6 +32,8 @@
         <intercept-url pattern="/admin/addWorker"  access="hasRole('ROLE_ADMIN')" />
         <intercept-url pattern="/admin/workers/workerAdded"  access="hasRole('ROLE_ADMIN')" />
         <intercept-url pattern="/admin/workers/workerDeleted"  access="hasRole('ROLE_ADMIN')" />
+        <intercept-url pattern="/price/mainPage"  access="hasRole('ROLE_ADMIN')" />
+        <intercept-url pattern="/price/createdNewPrice"  access="hasRole('ROLE_ADMIN')" />
             </http>
     <authentication-manager>
         <authentication-provider>
