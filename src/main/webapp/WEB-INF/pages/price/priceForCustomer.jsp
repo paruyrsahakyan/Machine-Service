@@ -36,7 +36,7 @@
     <br>
     <B>Клиент </B>
 <form:form action="/price/createdNewPrice" method="post" accept-charset="UTF-8">
-    <input list="customers" id="selectedCustomerName" onchange="tableCreate()">
+    <input list="customers" name="customerName" id="selectedCustomerName" onchange="tableCreate()">
     <datalist id="customers">
         <c:forEach items="${customerList}" var="customer">
             <option value="${customer.name}" hidden> ${customer.name} </option>
