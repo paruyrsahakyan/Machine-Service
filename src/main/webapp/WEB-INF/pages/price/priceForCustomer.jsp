@@ -30,12 +30,13 @@
     <a href="/machineType/allMachineTypes"> Типы Машин</a>
     <a href="/wareHouse"> Склад </a>
 </div>
+<br>
+<br>
 
 <div class="mainContent">
-    <br>
-    <br>
-    <B>Клиент </B>
+
 <form:form action="/price/createdNewPrice" method="post" accept-charset="UTF-8">
+    <B>Клиент </B>
     <input list="customers" name="customerName" id="selectedCustomerName" onchange="tableCreate()">
     <datalist id="customers">
         <c:forEach items="${customerList}" var="customer">
@@ -44,7 +45,7 @@
     </datalist>
     &nbsp;&nbsp;&nbsp;&nbsp;
     <B>Артикул </B>
-    <input type="text" name="article" id="articleSearch" onchange="tableCreate()">
+    <input type="text" name="searchedArticle" id="articleSearch" onchange="tableCreate()">
     &nbsp;&nbsp;&nbsp;&nbsp;
     <button type="button" onclick="showHiddenForm()"> Добавить</button>
     <br><br>
