@@ -35,7 +35,7 @@
 
         <div class="mainContent">
 
-        <form:form action="/price/createdNewPrice" method="post" accept-charset="UTF-8">
+        <form:form id="toCreateNewItem" action="/price/createdNewPrice" method="post" accept-charset="UTF-8">
             <B>Клиент </B>
             <input list="customers" name="customerName" id="selectedCustomerName"
                    onchange="createTableForSelectedCustomer()">
@@ -62,7 +62,7 @@
 
 
         <div  class="mainContent" id="hiddenFormForItemEdit" style="display: none;">
-        <form:form action="/price/ItemEdited" method="post" accept-charset="UTF-8">
+        <form:form for  action="/price/ItemEdited" method="post" accept-charset="UTF-8">
             <input id="articleToEdit" type="text" name="articleToEdit" required>
             <input id="descriptionToEdit" type="text" name="description" required>
             <input id="priceToEdit" type="nuber" name="price" required>
@@ -148,15 +148,6 @@
         titleCell5.style.fontWeight = 'bold';
         titleCell5.innerHTML = "Изменить";
         titleCell6.style.fontWeight = 'bold';
-
-
-        var button= '<form:form action="/price/deleteItem" method="post">'+
-            '<input type="hidden" name="id" value="${serviceMachine.id}">'+
-            '<input type="submit" value="Удалить"'+
-            'onclick="return confirm('+"'"+'!!!Вы уверены что хатите удалить машину!!!'+"'"+');"'+
-            'style="color: #dc161c;"'+
-            'style="align-items: center"'+
-            '</form:form>';
 
                 for (var i = 0; i < priceListForTableCreation.length; i++) {
                 var row = table.insertRow();
