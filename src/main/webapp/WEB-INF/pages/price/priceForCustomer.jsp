@@ -37,7 +37,7 @@
 
     <form:form action="/price/createdNewPrice" method="post" accept-charset="UTF-8">
         <B>Клиент </B>
-        <input list="customers" name="customerName" id="selectedCustomerName" onkeyup="createTableForSelectedCustomer()">
+        <input list="customers" name="customerName" id="selectedCustomerName" onchange="createTableForSelectedCustomer()">
         <datalist id="customers">
             <c:forEach items="${customerList}" var="customer">
                 <option value="${customer.name}" hidden> ${customer.name} </option>
@@ -45,12 +45,12 @@
         </datalist>
         &nbsp;&nbsp;&nbsp;&nbsp;
         <B>Артикул </B>
-        <input type="text" id="articleSearch" oninput="updateTableByArticle()">
+        <input type="text" id="articleSearch" onkeyup="updateTableByArticle()">
         &nbsp;&nbsp;&nbsp;&nbsp;
         <button type="button" onclick="showHiddenForm()"> Добавить позицию</button>
         <br><br>
         <div id="hiddenForm" style="display: none;">
-            <input id="newArticle" type="text" name="article" placeholder="Введите  Артикул" onchange="checkTheArticle()">
+            <input id="newArticle" type="text" name="article" placeholder="Введите  Артикул" onkeyup="checkTheArticle()">
             <input type="text" name="description" placeholder="Введите Название">
             <input type="nuber" name="price" placeholder="Введите Цену">
             <input type="submit" value="сохранить">
@@ -173,7 +173,7 @@
    function checkTheArticle() {
        var newArticle = document.getElementById("newArticle").value;
        for (var i = 0; i < priceListForSelectedCustomer.length; i++) {
-           if (newArticle==priceListForSelectedCustomer.article) {
+           if (newArticle==priceListForSelectedCustomer[i].article) {
                alert("Введенный яртикул сушествует");
                 }
        }
