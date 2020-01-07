@@ -151,7 +151,6 @@
 
     function updateTableByArticle() {
         var searchInput = document.getElementById("articleSearch").value;
-        alert(searchInput);
         if (searchInput ==="") {
             priceListForTableCreation = priceListForSelectedCustomer;
         }
