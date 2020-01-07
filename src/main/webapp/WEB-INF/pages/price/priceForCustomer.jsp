@@ -170,7 +170,7 @@
                     'style="align-items: center">'+
                     '</form>';
                 cell5.innerHTML = buttonDelete;
-                var buttonEdit= '<input type="button" onclick="showHiddenFormForItemEdit()">';
+                var buttonEdit= '<input type="button" value="редактировать" onclick="showHiddenFormForItemEdit(i)">';
                 cell6.innerHTML = buttonEdit;
                 }
                 }
@@ -178,7 +178,7 @@
                 document.getElementById("hiddenForm").style.display = "block";
                 }
 
-                function showHiddenFormForItemEdit() {
+                function showHiddenFormForItemEdit(i) {
                 document.getElementById("hiddenFormForItemEdit").style.display = "block";
                 document.getElementById("articleToEdit").value=priceListForTableCreation[i].article;
                 document.getElementById("descriptionToEdit").value=priceListForTableCreation[i].description;
