@@ -62,7 +62,7 @@
 
 
         <div  class="mainContent" id="hiddenFormForItemEdit" style="display: none;">
-        <form:form for  action="/price/ItemEdited" method="post" accept-charset="UTF-8">
+        <form:form action="/price/ItemEdited" method="post" accept-charset="UTF-8">
             <input id="articleToEdit" type="text" name="articleToEdit" required>
             <input id="descriptionToEdit" type="text" name="description" required>
             <input id="priceToEdit" type="nuber" name="price" required>
@@ -162,13 +162,13 @@
                 cell2.innerHTML = priceListForTableCreation[i].article;
                 cell3.innerHTML = priceListForTableCreation[i].description;
                 cell4.innerHTML = priceListForTableCreation[i].price;
-                var buttonDelete= '<form:form action="/price/deleteItem" method="post">'+
+                var buttonDelete= '<form action="/price/deleteItem" method="post">'+
                     '<input type="hidden" name="id" value='+priceListForTableCreation[i].id+'>'+
                     '<input type="submit" value="Удалить"'+
-                    'onclick="return confirm('+"'"+'!!!Вы уверены что хатите удалить машину!!!'+"'"+');"'+
+                    'onclick="return confirm('+"'"+'!!!Вы уверены что хатите удалить Позицию!!!'+"'"+');"'+
                     'style="color: #dc161c;"'+
                     'style="align-items: center">'+
-                    '</form:form>';
+                    '</form>';
                 cell5.innerHTML = buttonDelete;
                 var buttonEdit= '<input type="button" onclick="showHiddenFormForItemEdit()">';
                 cell6.innerHTML = buttonEdit;
@@ -213,7 +213,7 @@
                 var newArticle = document.getElementById("newArticle").value;
                 for (var i = 0; i < priceListForSelectedCustomer.length; i++) {
                 if (newArticle==priceListForSelectedCustomer[i].article) {
-                alert("Введенный aртикул уже внесен");
+                alert("Aртикул уже внесен");
                 }
                 }
                 }
