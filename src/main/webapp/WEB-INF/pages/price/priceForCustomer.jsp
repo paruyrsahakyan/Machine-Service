@@ -146,7 +146,7 @@
         titleCell4.style.fontWeight = 'bold';
         titleCell5.innerHTML = "Удаление";
         titleCell5.style.fontWeight = 'bold';
-        titleCell5.innerHTML = "Изменить";
+        titleCell6.innerHTML = "Изменить";
         titleCell6.style.fontWeight = 'bold';
 
                 for (var i = 0; i < priceListForTableCreation.length; i++) {
@@ -166,8 +166,6 @@
                     '<input type="hidden" name="id" value='+priceListForTableCreation[i].id+'>'+
                     '<input type="submit" value="Удалить"'+
                     'onclick="return confirm('+"'"+'!!!Вы уверены что хатите удалить Позицию!!!'+"'"+');"'+
-                    'style="color: #dc161c;"'+
-                    'style="align-items: center">'+
                     '</form>';
                 cell5.innerHTML = buttonDelete;
                 var buttonEdit= '<input type="button" value="редактировать" onclick="showHiddenFormForItemEdit('+i+')">';
