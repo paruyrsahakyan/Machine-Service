@@ -153,7 +153,7 @@
         var searchInput = document.getElementById("articleSearch").value;
         alert(searchInput);
         if (searchInput ==="") {
-            priceListFilteredByArticle = priceListForSelectedCustomer;
+            priceListForTableCreation = priceListForSelectedCustomer;
         }
         else {
             priceListFilteredByArticle = [];
@@ -175,7 +175,7 @@
        var newArticle = document.getElementById("newArticle").value;
        for (var i = 0; i < priceListForSelectedCustomer.length; i++) {
            if (newArticle==priceListForSelectedCustomer[i].article) {
-               alert("Введенный яртикул сушествует");
+               alert("Введенный aртикул сушествует");
                 }
        }
    }
