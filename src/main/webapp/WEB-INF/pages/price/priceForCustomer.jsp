@@ -50,7 +50,7 @@
         <button type="button" onclick="showHiddenForm()"> Добавить позицию</button>
         <br><br>
         <div id="hiddenForm" style="display: none;">
-            <input id="newArticle" type="text" name="article" placeholder="Введите  Артикул" onkeyup="checkTheArticle()">
+            <input id="newArticle" type="text" name="article" placeholder="Введите  Артикул" onchange="checkTheArticle()">
             <input type="text" name="description" placeholder="Введите Название">
             <input type="nuber" name="price" placeholder="Введите Цену">
             <input type="submit" value="сохранить">
