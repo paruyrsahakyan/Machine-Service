@@ -170,7 +170,7 @@
                     'style="align-items: center">'+
                     '</form>';
                 cell5.innerHTML = buttonDelete;
-                var buttonEdit= '<input type="button" value="редактировать" onclick="showHiddenFormForItemEdit(i)">';
+                var buttonEdit= '<input type="button" value="редактировать" onclick="showHiddenFormForItemEdit('+i+')">';
                 cell6.innerHTML = buttonEdit;
                 }
                 }
