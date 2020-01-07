@@ -52,7 +52,7 @@
                                onclick="return confirm('!!!Вы уверены что хатите удалить машину!!!');"
                                style="color: #dc161c;"
                                style="align-items: center"
-                    </form:form>
+                        </form:form>
                 </td>
 
             </tr>

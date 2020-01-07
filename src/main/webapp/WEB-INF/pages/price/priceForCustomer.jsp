@@ -122,6 +122,8 @@
         var titleCell2 = titleRow.insertCell(1);
         var titleCell3 = titleRow.insertCell(2);
         var titleCell4 = titleRow.insertCell(3);
+        var titleCell5 = titleRow.insertCell(4);
+        var titleCell6 = titleRow.insertCell(5);
         titleCell1.innerHTML = "N";
         titleCell1.style.fontWeight = 'bold';
         titleCell2.innerHTML = "Артикул";
@@ -130,6 +132,20 @@
         titleCell3.style.fontWeight = 'bold';
         titleCell4.innerHTML = "Цена Без НДС";
         titleCell4.style.fontWeight = 'bold';
+        titleCell5.innerHTML = "Удаление";
+        titleCell5.style.fontWeight = 'bold';
+        titleCell5.innerHTML = "Изменить";
+        titleCell6.style.fontWeight = 'bold';
+
+
+
+        var button= '<form action="/price/deleteItem" method="post" >'+
+            '<input type="hidden" name="id" value="${serviceMachine.id}">'+
+            '<input type="submit"  value="Удалить"'+
+            'onclick="return confirm('+"'"+'!!!Вы уверены что хатите удалить машину!!!'+"'"+');"'+
+            'style="color: #dc161c;"'+
+            'style="align-items: center"'+
+            '<form>';
 
         for (var i = 0; i < priceListForTableCreation.length; i++) {
             var row = table.insertRow();
@@ -137,10 +153,31 @@
             var cell2 = row.insertCell(1);
             var cell3 = row.insertCell(2);
             var cell4 = row.insertCell(3);
+            var cell5 = row.insertCell(4);
+            var cell6 = row.insertCell(5);
+
             cell1.innerHTML = (i + 1).toString();
             cell2.innerHTML = priceListForTableCreation[i].article;
             cell3.innerHTML = priceListForTableCreation[i].description;
             cell4.innerHTML = priceListForTableCreation[i].price;
+            var buttonDelete= '<form:form action="/price/deleteItem" method="post" >'+
+                '<input type="hidden" name="id" value='+priceListForTableCreation[i].id+'>'+
+                '<input type="submit"  value="Удалить"'+
+                'onclick="return confirm('+"'"+'!!!Вы уверены что хатите удалить машину!!!'+"'"+');"'+
+                'style="color: #dc161c;"'+
+                'style="align-items: center">'+
+                '<form:form>';
+            cell5.innerHTML = buttonDelete;
+        var buttonEdit= '<form:form action="/price/editItem" method="post" >'+
+            '<input type="hidden" name="id" value='+priceListForTableCreation[i].id+'>'+
+            '<input type="submit"  value="Редактировать"'+
+            'onclick="return confirm('+"'"+'!!!Вы уверены что хатите удалить машину!!!'+"'"+');"'+
+            'style="color: #dc161c;"'+
+            'style="align-items: center">'+
+            '<form:form>';
+
+            cell6.innerHTML = buttonEdit;
+
         }
     }
 
