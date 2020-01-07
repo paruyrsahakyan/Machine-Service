@@ -37,7 +37,7 @@
 
     <form:form action="/price/createdNewPrice" method="post" accept-charset="UTF-8">
         <B>Клиент </B>
-        <input list="customers" name="customerName" id="selectedCustomerName" onchange="createTableForSelectedCustomer()">
+        <input list="customers" name="customerName" id="selectedCustomerName" onkeyup="createTableForSelectedCustomer()">
         <datalist id="customers">
             <c:forEach items="${customerList}" var="customer">
                 <option value="${customer.name}" hidden> ${customer.name} </option>
@@ -173,7 +173,7 @@
    function checkTheArticle() {
        var newArticle = document.getElementById("newArticle").value;
        for (var i = 0; i < priceListForSelectedCustomer.length; i++) {
-           if (priceListForSelectedCustomer[i].article.toLowerCase().indexOf(newArticle) >= 0) {
+           if (newArticle==priceListForSelectedCustomer.article) {
                alert("Введенный яртикул сушествует");
                 }
        }
