@@ -131,16 +131,16 @@
         titleCell4.innerHTML = "Цена Без НДС";
         titleCell4.style.fontWeight = 'bold';
 
-        for (var i = 0; i < priceListForSelectedCustomer.length; i++) {
+        for (var i = 0; i < priceListForTableCreation.length; i++) {
             var row = table.insertRow();
             var cell1 = row.insertCell(0);
             var cell2 = row.insertCell(1);
             var cell3 = row.insertCell(2);
             var cell4 = row.insertCell(3);
             cell1.innerHTML = (i + 1).toString();
-            cell2.innerHTML = priceListForSelectedCustomer[i].article;
-            cell3.innerHTML = priceListForSelectedCustomer[i].description;
-            cell4.innerHTML = priceListForSelectedCustomer[i].price;
+            cell2.innerHTML = priceListForTableCreation[i].article;
+            cell3.innerHTML = priceListForTableCreation[i].description;
+            cell4.innerHTML = priceListForTableCreation[i].price;
         }
     }
 
@@ -151,7 +151,8 @@
 
     function updateTableByArticle() {
         var searchInput = document.getElementById("articleSearch").value;
-        if (searchInput === "") {
+        alert(searchInput);
+        if (searchInput ==="") {
             priceListFilteredByArticle = priceListForSelectedCustomer;
         }
         else {
