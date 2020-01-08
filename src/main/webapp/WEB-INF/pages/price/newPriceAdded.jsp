@@ -41,8 +41,6 @@
                    onchange="createTableForSelectedCustomer()">
 
             <datalist id="customers">
-                <option  value="${selectedCustomer.name}" > ${selectedCustomer.name}  </option>>
-
                 <c:forEach items="${customerList}" var="customer">
                     <option value="${customer.name}" hidden> ${customer.name} </option>
                 </c:forEach>
