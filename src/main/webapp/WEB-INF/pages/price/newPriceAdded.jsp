@@ -37,7 +37,7 @@
 
         <form:form id="toCreateNewItem" action="/price/createdNewPrice" method="post" accept-charset="UTF-8">
             <B>Клиент </B>
-            <input list="customers" name="customerName" id="selectedCustomerName" value="${selectedCustomer}"
+            <input list="customers" name="customerName" id="selectedCustomerName" value="${selectedCustomer.name}"
                    onchange="createTableForSelectedCustomer()">
             <datalist id="customers">
                 <c:forEach items="${customerList}" var="customer">
