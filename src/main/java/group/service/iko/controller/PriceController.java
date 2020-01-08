@@ -58,5 +58,32 @@ public class PriceController {
     modelAndView.addObject("customerList", CustomerDTO.convertIntoDTO(customerService.getAllCustomers()));
     modelAndView.addObject("selectedCustomer", new CustomerDTO(customer));
       return modelAndView;
+
+
   }
+
+  @RequestMapping(value = "/ItemDeleted", method = RequestMethod.POST)
+  public ModelAndView deleteTheItem(@RequestParam("customerName") String customerName,
+                                  @RequestParam("article") String article,
+                                  @RequestParam("description") String description,
+                                  @RequestParam("price") int price)
+  {
+    ModelAndView modelAndView = new ModelAndView("price/newPriceAdded");
+    PriceForCustomer priceForCustomer = new PriceForCustomer();
+    customerService.getCustomerByName(customerName);
+    Customer customer = customerService.getCustomerByName(customerName);
+    priceForCustomer.setCustomer(customerService.getCustomerByName(customerName));
+    priceForCustomer.setArticle(article);
+    priceForCustomer.setDescription(description);
+    priceForCustomer.setPrice(price);
+    priceForCustomerService.deletePriceForCustomer(priceForCustomer);
+    modelAndView.addObject("priceList", PriceForCustomerDTO.convertIntoDTO(priceForCustomerService.getAllPriceForCustomer()));
+    modelAndView.addObject("customerList", CustomerDTO.convertIntoDTO(customerService.getAllCustomers()));
+    modelAndView.addObject("selectedCustomer", new CustomerDTO(customer));
+    return modelAndView;
+
+
+  }
+
+
     }
