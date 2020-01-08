@@ -115,7 +115,7 @@
             });
         </c:forEach>
 
-        createTable();
+        createTableForSelectedCustomer();
 
         function initPriceListForSelectedCustomer() {
         var selectedCustomerName = document.getElementById("selectedCustomerName").value;
