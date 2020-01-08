@@ -45,9 +45,10 @@ public class PriceController {
                                   @RequestParam("description") String description,
                                   @RequestParam("price") int price)
   {
-    ModelAndView modelAndView = new ModelAndView("price/priceForCustomer");
+    ModelAndView modelAndView = new ModelAndView("price/newPriceAdded");
     PriceForCustomer priceForCustomer = new PriceForCustomer();
     customerService.getCustomerByName(customerName);
+    Customer customer = customerService.getCustomerByName(customerName);
     priceForCustomer.setCustomer(customerService.getCustomerByName(customerName));
     priceForCustomer.setArticle(article);
     priceForCustomer.setDescription(description);
@@ -55,9 +56,7 @@ public class PriceController {
     priceForCustomerService.savePriceForCustomer(priceForCustomer);
     modelAndView.addObject("priceList", PriceForCustomerDTO.convertIntoDTO(priceForCustomerService.getAllPriceForCustomer()));
     modelAndView.addObject("customerList", CustomerDTO.convertIntoDTO(customerService.getAllCustomers()));
+    modelAndView.addObject("selectedCustomer", new CustomerDTO(customer));
       return modelAndView;
-
   }
-
-
-  }
+    }

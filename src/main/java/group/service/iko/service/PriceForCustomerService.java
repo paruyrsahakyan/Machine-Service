@@ -6,6 +6,7 @@ import group.service.iko.entityDao.SessionFactoryImpl;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.method.P;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -44,5 +45,16 @@ public class PriceForCustomerService {
         return EntityList;
     }
 
+    public PriceForCustomer getPriceForCustomerByArticle(String article) {
+        session = SessionFactoryImpl.getSessionFactory().openSession();
+        String hql = "from group.service.iko.entities.PriceForCustomer where article= :article";
+        Query query = session.createQuery(hql);
+        query.setParameter("article", article);
+        PriceForCustomer priceForCustomer = (PriceForCustomer) query.uniqueResult();
+        session.close();
+        return priceForCustomer;
+
+
     }
+}
 

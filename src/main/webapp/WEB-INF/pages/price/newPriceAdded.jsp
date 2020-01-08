@@ -37,8 +37,8 @@
 
         <form:form id="toCreateNewItem" action="/price/createdNewPrice" method="post" accept-charset="UTF-8">
             <B>Клиент </B>
-            <input list="customers" name="customerName" id="selectedCustomerName"
-                   onchange="createTableForSelectedCustomer()" >
+            <input list="customers" name="customerName" id="selectedCustomerName" value="${selectedCustomer}"
+                   onchange="createTableForSelectedCustomer()">
             <datalist id="customers">
                 <c:forEach items="${customerList}" var="customer">
                     <option value="${customer.name}" hidden> ${customer.name} </option>
@@ -90,7 +90,7 @@
         var selectedCustomerId;
         var selectedCustomerName;
 
-        <c:forEach items="${priceList}" var="priceForCustomer">
+         <c:forEach items="${priceList}" var="priceForCustomer">
             var article = "${priceForCustomer.article}";
             var description = "${priceForCustomer.description}";
             var price = "${priceForCustomer.price}";
@@ -114,6 +114,7 @@
             });
         </c:forEach>
 
+        createTable();
 
         function initPriceListForSelectedCustomer() {
         var selectedCustomerName = document.getElementById("selectedCustomerName").value;
