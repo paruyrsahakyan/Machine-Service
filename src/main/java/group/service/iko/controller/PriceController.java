@@ -1,24 +1,17 @@
 package group.service.iko.controller;
 
 import group.service.iko.dto.CustomerDTO;
-import group.service.iko.dto.MachineDTO;
 import group.service.iko.dto.PriceForCustomerDTO;
 import group.service.iko.entities.Customer;
-import group.service.iko.entities.Machine;
 import group.service.iko.entities.PriceForCustomer;
 import group.service.iko.service.CustomerService;
 import group.service.iko.service.PriceForCustomerService;
-import group.service.iko.service.WorkerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Controller()
 @RequestMapping("/price")
@@ -31,7 +24,7 @@ public class PriceController {
 
     @RequestMapping(value = "/mainPage")
   public ModelAndView showPricePage(){
-        ModelAndView modelAndView = new ModelAndView("price/newPriceAdded");
+        ModelAndView modelAndView = new ModelAndView("price/priceMainPage");
         modelAndView.addObject("customerList", CustomerDTO.convertIntoDTO(customerService.getAllCustomers()));
         modelAndView.addObject( "priceList", PriceForCustomerDTO.convertIntoDTO(priceForCustomerService.getAllPriceForCustomer()));
         return modelAndView;
@@ -45,7 +38,7 @@ public class PriceController {
                                   @RequestParam("description") String description,
                                   @RequestParam("price") int price)
   {
-    ModelAndView modelAndView = new ModelAndView("price/newPriceAdded");
+    ModelAndView modelAndView = new ModelAndView("price/priceMainPage");
     PriceForCustomer priceForCustomer = new PriceForCustomer();
     customerService.getCustomerByName(customerName);
     Customer customer = customerService.getCustomerByName(customerName);
