@@ -45,7 +45,7 @@ public class PriceController {
                                   @RequestParam("description") String description,
                                   @RequestParam("price") int price)
   {
-    ModelAndView modelAndView = new ModelAndView("price/newPriceAdded");
+    ModelAndView modelAndView = new ModelAndView("price/priceForCustomer");
     PriceForCustomer priceForCustomer = new PriceForCustomer();
     customerService.getCustomerByName(customerName);
     Customer customer = customerService.getCustomerByName(customerName);
@@ -68,7 +68,7 @@ public class PriceController {
                                   @RequestParam("description") String description,
                                   @RequestParam("price") int price)
   {
-    ModelAndView modelAndView = new ModelAndView("price/newPriceAdded");
+    ModelAndView modelAndView = new ModelAndView("price/priceForCustomer");
     PriceForCustomer priceForCustomer = new PriceForCustomer();
     customerService.getCustomerByName(customerName);
     Customer customer = customerService.getCustomerByName(customerName);
