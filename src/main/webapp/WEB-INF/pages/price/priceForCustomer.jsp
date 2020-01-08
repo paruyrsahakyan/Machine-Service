@@ -172,6 +172,8 @@
                 cell6.innerHTML = buttonEdit;
                 }
                 }
+
+
                 function showHiddenForm() {
                 document.getElementById("hiddenForm").style.display = "block";
                 }

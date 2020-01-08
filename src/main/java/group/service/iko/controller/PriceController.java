@@ -31,7 +31,7 @@ public class PriceController {
 
     @RequestMapping(value = "/mainPage")
   public ModelAndView showPricePage(){
-        ModelAndView modelAndView = new ModelAndView("price/priceForCustomer");
+        ModelAndView modelAndView = new ModelAndView("price/newPriceAdded");
         modelAndView.addObject("customerList", CustomerDTO.convertIntoDTO(customerService.getAllCustomers()));
         modelAndView.addObject( "priceList", PriceForCustomerDTO.convertIntoDTO(priceForCustomerService.getAllPriceForCustomer()));
         return modelAndView;
@@ -45,7 +45,7 @@ public class PriceController {
                                   @RequestParam("description") String description,
                                   @RequestParam("price") int price)
   {
-    ModelAndView modelAndView = new ModelAndView("price/priceForCustomer");
+    ModelAndView modelAndView = new ModelAndView("price/newPriceAdded");
     PriceForCustomer priceForCustomer = new PriceForCustomer();
     customerService.getCustomerByName(customerName);
     Customer customer = customerService.getCustomerByName(customerName);
