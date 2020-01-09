@@ -86,12 +86,14 @@
         var selectedCustomerName;
 
          <c:forEach items="${priceList}" var="priceForCustomer">
+            var id ="${priceForCustomer.id}"
             var article = "${priceForCustomer.article}";
             var description = "${priceForCustomer.description}";
             var price = "${priceForCustomer.price}";
             var customerId = "${priceForCustomer.customerId}";
             var customerName = "${priceForCustomer.customerName}";
             initialPriceList.push({
+             id:id,
             article: article,
             description: description,
             price: price,
