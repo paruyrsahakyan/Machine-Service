@@ -158,15 +158,15 @@
                 cell2.innerHTML = priceListForTableCreation[i].article;
                 cell3.innerHTML = priceListForTableCreation[i].description;
                 cell4.innerHTML = priceListForTableCreation[i].price;
-                var buttonDelete= '<form:form action="/price/itemDeleted" method="post">'+
-                    '<input type="hidden" name="id" value='+priceListForTableCreation[i].id+'>'+
+                var buttonDelete= '<input type="hidden" name="id" value='+priceListForTableCreation[i].id+'>'+
                     '<input type="submit" value="Удалить"'+
                     'onclick="return confirm('+"'"+'!!!Вы уверены что хатите удалить Позицию!!!'+
                     "'"+
-                    ')">'+
-                    '</form:form>';
+                    ')">';
 
-                cell5.innerHTML = buttonDelete;
+
+                cell5.innerHTML = '<form:form action="/price/itemDeleted" method="post">' +buttonDelete+
+                    '</form:form>';
                 var buttonEdit= '<input type="button" value="редактировать" onclick="showHiddenFormForItemEdit('+i+')">';
                 cell6.innerHTML = buttonEdit;
                 }
