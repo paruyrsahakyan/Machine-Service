@@ -161,7 +161,10 @@
                 var buttonDelete= '<form:form action="/price/itemDeleted" method="post">'+
                     '<input type="hidden" name="id" value='+priceListForTableCreation[i].id+'>'+
                     '<input type="submit" value="Удалить"'+
-                    'onclick="return confirm('+"'"+'!!!Вы уверены что хатите удалить Позицию!!!'+"'"+')">'+'</form:form>';
+                    'onclick="return confirm('+"'"+'!!!Вы уверены что хатите удалить Позицию!!!'+
+                    "'"+
+                    ')">'+
+                    '</form:form>';
 
                 cell5.innerHTML = buttonDelete;
                 var buttonEdit= '<input type="button" value="редактировать" onclick="showHiddenFormForItemEdit('+i+')">';
