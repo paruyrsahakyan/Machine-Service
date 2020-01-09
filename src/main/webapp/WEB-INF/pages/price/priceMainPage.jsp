@@ -93,7 +93,7 @@
             var customerId = "${priceForCustomer.customerId}";
             var customerName = "${priceForCustomer.customerName}";
             initialPriceList.push({
-             id:id,
+            id: id,
             article: article,
             description: description,
             price: price,
@@ -161,7 +161,7 @@
                 cell3.innerHTML = priceListForTableCreation[i].description;
                 cell4.innerHTML = priceListForTableCreation[i].price;
                 var buttonDelete= '<form action="/price/itemDeleted" method="get">'+
-                    '<input type="hidden" name="id" value='+priceListForTableCreation[i].id+'>'+
+                    '<input type="hidden" name="id" value="'+priceListForTableCreation[i].id+'">'+
                     '<input type="submit" value="Удалить"'+
                     'onclick="return confirm('+"'"+'!!!Вы уверены что хатите удалить Позицию!!!'+
                     "'"+
