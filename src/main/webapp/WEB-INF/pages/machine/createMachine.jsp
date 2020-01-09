@@ -45,7 +45,7 @@
     Другая информация: <br>
     <textarea name="otherInfo" cols="40" rows="5"></textarea> <br><br>
     <select name="machineType" required >
-            <c:forEach items="${machineTypeList}" var="machineType">
+                <c:forEach items="${machineTypeList}" var="machineType">
             <option value=${machineType.id}> ${machineType.typeDescription}</option>
         </c:forEach>
     </select>

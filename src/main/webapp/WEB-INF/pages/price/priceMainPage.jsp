@@ -1,10 +1,4 @@
-<%--
-          Created by IntelliJ IDEA.
-          User: IKO
-          Date: 1/5/2020
-          Time: 7:14 PM
-          To change this template use File | Settings | File Templates.
-        --%>
+
         <%@ page contentType="text/html;charset=UTF-8" language="java" %>
         <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
         <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -164,11 +158,11 @@
                 cell2.innerHTML = priceListForTableCreation[i].article;
                 cell3.innerHTML = priceListForTableCreation[i].description;
                 cell4.innerHTML = priceListForTableCreation[i].price;
-                var buttonDelete= '<form action="/price/deleteItem" method="post">'+
+                var buttonDelete= '<form:form action="/price/itemDeleted" method="post">'+
                     '<input type="hidden" name="id" value='+priceListForTableCreation[i].id+'>'+
                     '<input type="submit" value="Удалить"'+
                     'onclick="return confirm('+"'"+'!!!Вы уверены что хатите удалить Позицию!!!'+"'"+');"'+
-                    '</form>';
+                    '</form:form>';
                 cell5.innerHTML = buttonDelete;
                 var buttonEdit= '<input type="button" value="редактировать" onclick="showHiddenFormForItemEdit('+i+')">';
                 cell6.innerHTML = buttonEdit;
