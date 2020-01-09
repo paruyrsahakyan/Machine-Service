@@ -35,15 +35,5 @@ public class EntityDAO<T> {
         session.close();
     }
 
-    public T getEntityById(int id) {
-        session = SessionFactoryImpl.getSessionFactory().openSession();
-        String hql = "FROM group.service.iko.entities.Entity WHERE id=" + id;
-        Query query = session.createQuery(hql);
-        T t = (T) query.uniqueResult();
-        session.flush();
-        session.close();
-        return t;
-
-    }
 
 }

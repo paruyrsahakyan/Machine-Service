@@ -34,6 +34,15 @@ public class PriceForCustomerService {
     public PriceForCustomer getPriceForCustomerById(int id) {
         return entityDAO.getEntityById(id);
     }
+    public PriceForCustomer getEntityById(int id) {
+        session = SessionFactoryImpl.getSessionFactory().openSession();
+        String hql = "FROM group.service.iko.entities.PriceForCustomer WHERE id=" + id;
+        Query query = session.createQuery(hql);
+        PriceForCustomer t = (PriceForCustomer) query.uniqueResult();
+        session.flush();
+        session.close();
+        return t;
+    }
 
     public List<PriceForCustomer> getAllPriceForCustomer() {
         session = SessionFactoryImpl.getSessionFactory().openSession();
