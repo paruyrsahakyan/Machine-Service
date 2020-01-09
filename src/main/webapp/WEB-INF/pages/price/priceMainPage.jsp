@@ -165,8 +165,8 @@
                     ')">';
 
 
-                cell5.innerHTML = '<form:form action="/price/itemDeleted" method="post">' +buttonDelete+
-                    '</form:form>';
+                cell5.innerHTML = '<form action="/price/itemDeleted" method="post">' +buttonDelete+
+                    '</form>';
                 var buttonEdit= '<input type="button" value="редактировать" onclick="showHiddenFormForItemEdit('+i+')">';
                 cell6.innerHTML = buttonEdit;
                 }
