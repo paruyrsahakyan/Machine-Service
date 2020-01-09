@@ -48,7 +48,7 @@
                 <form:form action="/admin/workers/workerDeleted" method="post" >
                     <input type="hidden" name="id" value="${worker.id}">
                     <input type="submit"  value="Удалить"
-                           onclick="return confirm('!!!Вы уверены что хатите удалить Работнка!!!');"
+                           onclick="return confirm('!!!Вы уверены что хатите удалить Работника!!!');"
                            style="color: #dc161c;"
                            style="align-items: center"
                                     </form:form>

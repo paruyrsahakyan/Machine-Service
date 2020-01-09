@@ -55,7 +55,7 @@ public class PriceController {
 
   }
 
-  @RequestMapping(value = "/itemDeleted", method = RequestMethod.POST)
+  @RequestMapping(value = "/itemDeleted", method = RequestMethod.GET)
   public ModelAndView deleteTheItem(@RequestParam("id") int id)
   {
     ModelAndView modelAndView = new ModelAndView("price/priceMainPage");
