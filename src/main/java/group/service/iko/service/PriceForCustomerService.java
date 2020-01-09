@@ -32,9 +32,6 @@ public class PriceForCustomerService {
     }
 
     public PriceForCustomer getPriceForCustomerById(int id) {
-        return entityDAO.getEntityById(id);
-    }
-    public PriceForCustomer getEntityById(int id) {
         session = SessionFactoryImpl.getSessionFactory().openSession();
         String hql = "FROM group.service.iko.entities.PriceForCustomer WHERE id=" + id;
         Query query = session.createQuery(hql);
