@@ -25,8 +25,8 @@ description= priceForCustomer.getDescription();
 price= priceForCustomer.getPrice();
 }
 
-    public static Set<PriceForCustomerDTO> convertIntoDTO(Set<PriceForCustomer> priceForCustomers){
-        Set<PriceForCustomerDTO> priceForCustomerDTOS = new HashSet<>();
+    public static List<PriceForCustomerDTO> convertIntoDTO(List<PriceForCustomer> priceForCustomers){
+        List<PriceForCustomerDTO> priceForCustomerDTOS = new ArrayList<>();
 
         for (PriceForCustomer priceForCustomer:priceForCustomers){
             priceForCustomerDTOS.add(new PriceForCustomerDTO(priceForCustomer));
