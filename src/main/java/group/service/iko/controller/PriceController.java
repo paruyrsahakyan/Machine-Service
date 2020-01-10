@@ -59,8 +59,7 @@ public class PriceController {
   }
 
   @RequestMapping(value = "/itemDeleted", method = RequestMethod.GET)
-  public ModelAndView deleteTheItem(@RequestParam("id") int id,
-                                    ModelMap modelMap)
+  public ModelAndView deleteTheItem(@RequestParam("id") int id)
   {
 
     PriceForCustomer priceForCustomer = priceForCustomerService.getPriceForCustomerById(id);
