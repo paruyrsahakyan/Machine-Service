@@ -62,8 +62,13 @@ public class PriceController {
     PriceForCustomer priceForCustomer = priceForCustomerService.getPriceForCustomerById(id);
     Customer customer = priceForCustomer.getCustomer();
     PriceForCustomer priceForCustomerToDelete = new PriceForCustomer();
-    priceForCustomer.setId(id);
+     priceForCustomer.setId(id);
     priceForCustomerService.deletePriceForCustomer(priceForCustomerToDelete);
+    try {
+      wait(100);
+    } catch (InterruptedException e) {
+      e.printStackTrace();
+    }
     modelAndView.addObject("customerList", CustomerDTO.convertIntoDTO(customerService.getAllCustomers()));
     modelAndView.addObject( "priceList", PriceForCustomerDTO.convertIntoDTO(priceForCustomerService.getAllPriceForCustomer()));
     modelAndView.addObject("selectedCustomer", new CustomerDTO(customer));
