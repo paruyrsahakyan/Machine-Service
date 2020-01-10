@@ -113,7 +113,9 @@
 
         createTableForSelectedCustomer();
 
+
         function initPriceListForSelectedCustomer() {
+            priceListForSelectedCustomer=[];
         var selectedCustomerName = document.getElementById("selectedCustomerName").value;
 
         for (var i = 0; i < initialPriceList.length; i++) {

@@ -61,7 +61,9 @@ public class PriceController {
     ModelAndView modelAndView = new ModelAndView("price/priceMainPage");
     PriceForCustomer priceForCustomer = priceForCustomerService.getPriceForCustomerById(id);
     Customer customer = priceForCustomer.getCustomer();
-    priceForCustomerService.deletePriceForCustomer(priceForCustomer);
+    PriceForCustomer priceForCustomerToDelete = new PriceForCustomer();
+    priceForCustomer.setId(id);
+    priceForCustomerService.deletePriceForCustomer(priceForCustomerToDelete);
     modelAndView.addObject("customerList", CustomerDTO.convertIntoDTO(customerService.getAllCustomers()));
     modelAndView.addObject( "priceList", PriceForCustomerDTO.convertIntoDTO(priceForCustomerService.getAllPriceForCustomer()));
     modelAndView.addObject("selectedCustomer", new CustomerDTO(customer));

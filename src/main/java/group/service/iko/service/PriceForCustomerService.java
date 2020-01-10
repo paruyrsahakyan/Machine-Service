@@ -1,5 +1,6 @@
 package group.service.iko.service;
 
+import group.service.iko.entities.Machine;
 import group.service.iko.entities.PriceForCustomer;
 import group.service.iko.entityDao.EntityDAO;
 import group.service.iko.entityDao.SessionFactoryImpl;
@@ -30,7 +31,9 @@ public class PriceForCustomerService {
     }
 
     public void deletePriceForCustomer(PriceForCustomer priceForCustomer) {
-        entityDAO.deleteEntity(priceForCustomer);
+
+    entityDAO.deleteEntity(priceForCustomer);
+
     }
 
     public PriceForCustomer getPriceForCustomerById(int id) {
