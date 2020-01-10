@@ -43,11 +43,11 @@ public class PriceForCustomerService {
         return t;
     }
 
-    public Set<PriceForCustomer> getAllPriceForCustomer() {
+    public List<PriceForCustomer> getAllPriceForCustomer() {
         session = SessionFactoryImpl.getSessionFactory().openSession();
         String hql = "from group.service.iko.entities.PriceForCustomer";
         Query query = session.createQuery(hql);
-        Set<PriceForCustomer> EntityList= (Set<PriceForCustomer>) query.list();
+        List<PriceForCustomer> EntityList= (List<PriceForCustomer>) query.list();
         session.flush();
         session.close();
         return EntityList;
