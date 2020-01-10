@@ -68,7 +68,6 @@ public class PriceController {
     PriceForCustomer priceForCustomerToDelete = new PriceForCustomer();
      priceForCustomer.setId(id);
     priceForCustomerService.deletePriceForCustomer(priceForCustomerToDelete);
-    modelMap.addAttribute("attribute", "forwardWithForwardPrefix" );
     modelMap.addAttribute("customerList", CustomerDTO.convertIntoDTO(customerService.getAllCustomers()));
     modelMap.addAttribute( "priceList", PriceForCustomerDTO.convertIntoDTO(priceForCustomerService.getAllPriceForCustomer()));
     modelMap.addAttribute("selectedCustomer", new CustomerDTO(customer));
