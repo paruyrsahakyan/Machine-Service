@@ -26,11 +26,12 @@ public class PriceController {
 
 
     @RequestMapping(value = "/mainPage")
-  public ModelAndView showPricePage(){
+  public ModelAndView showPricePage(ModelMap modelMap){
         ModelAndView modelAndView = new ModelAndView("price/priceMainPage");
         modelAndView.addObject("customerList", CustomerDTO.convertIntoDTO(customerService.getAllCustomers()));
         modelAndView.addObject( "priceList", PriceForCustomerDTO.convertIntoDTO(priceForCustomerService.getAllPriceForCustomer()));
-        return modelAndView;
+        modelAndView.addObject("selectedCustomer", modelMap.get("selectedCustomer"));
+       return modelAndView;
 
     }
 
@@ -59,7 +60,8 @@ public class PriceController {
   }
 
   @RequestMapping(value = "/itemDeleted", method = RequestMethod.GET)
-  public ModelAndView deleteTheItem(@RequestParam("id") int id)
+  public ModelAndView deleteTheItem(@RequestParam("id") int id,
+                                    ModelMap modelMap)
   {
 
     PriceForCustomer priceForCustomer = priceForCustomerService.getPriceForCustomerById(id);
@@ -67,7 +69,7 @@ public class PriceController {
     PriceForCustomer priceForCustomerToDelete = new PriceForCustomer();
      priceForCustomer.setId(id);
     priceForCustomerService.deletePriceForCustomer(priceForCustomerToDelete);
-        modelMap.addAttribute("customerList", CustomerDTO.convertIntoDTO(customerService.getAllCustomers()));
+    modelMap.addAttribute("customerList", CustomerDTO.convertIntoDTO(customerService.getAllCustomers()));
     modelMap.addAttribute( "priceList", PriceForCustomerDTO.convertIntoDTO(priceForCustomerService.getAllPriceForCustomer()));
     modelMap.addAttribute("selectedCustomer", new CustomerDTO(customer));
      priceForCustomerService.deletePriceForCustomer(priceForCustomer);
