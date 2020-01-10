@@ -30,7 +30,7 @@ public class PriceController {
         ModelAndView modelAndView = new ModelAndView("price/priceMainPage");
         modelAndView.addObject("customerList", CustomerDTO.convertIntoDTO(customerService.getAllCustomers()));
         modelAndView.addObject( "priceList", PriceForCustomerDTO.convertIntoDTO(priceForCustomerService.getAllPriceForCustomer()));
-        modelAndView.addObject("selectedCustomer", modelMap.get("selectedCustomer"));
+        modelAndView.addObject("selectedCustomer", (CustomerDTO) modelMap.get("selectedCustomer"));
        return modelAndView;
 
     }
@@ -72,7 +72,6 @@ public class PriceController {
     modelMap.addAttribute("customerList", CustomerDTO.convertIntoDTO(customerService.getAllCustomers()));
     modelMap.addAttribute( "priceList", PriceForCustomerDTO.convertIntoDTO(priceForCustomerService.getAllPriceForCustomer()));
     modelMap.addAttribute("selectedCustomer", new CustomerDTO(customer));
-     priceForCustomerService.deletePriceForCustomer(priceForCustomer);
     ModelAndView modelAndView = new ModelAndView("redirect:/price/mainPage", modelMap);
      return modelAndView;
     }
