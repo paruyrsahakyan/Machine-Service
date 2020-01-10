@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.concurrent.TimeUnit;
+
 @Controller()
 @RequestMapping("/price")
 public class PriceController {
@@ -65,7 +67,7 @@ public class PriceController {
      priceForCustomer.setId(id);
     priceForCustomerService.deletePriceForCustomer(priceForCustomerToDelete);
     try {
-      wait(100);
+      TimeUnit.SECONDS.sleep(1);
     } catch (InterruptedException e) {
       e.printStackTrace();
     }
