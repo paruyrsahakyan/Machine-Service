@@ -8,6 +8,7 @@ import group.service.iko.service.CustomerService;
 import group.service.iko.service.PriceForCustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -58,23 +59,21 @@ public class PriceController {
   }
 
   @RequestMapping(value = "/itemDeleted", method = RequestMethod.GET)
-  public ModelAndView deleteTheItem(@RequestParam("id") int id)
+  public ModelAndView deleteTheItem(@RequestParam("id") int id,
+                                     ModelMap modelMap)
   {
-    ModelAndView modelAndView = new ModelAndView("price/priceMainPage");
+
     PriceForCustomer priceForCustomer = priceForCustomerService.getPriceForCustomerById(id);
     Customer customer = priceForCustomer.getCustomer();
     PriceForCustomer priceForCustomerToDelete = new PriceForCustomer();
      priceForCustomer.setId(id);
     priceForCustomerService.deletePriceForCustomer(priceForCustomerToDelete);
-    try {
-      TimeUnit.SECONDS.sleep(1);
-    } catch (InterruptedException e) {
-      e.printStackTrace();
-    }
-    modelAndView.addObject("customerList", CustomerDTO.convertIntoDTO(customerService.getAllCustomers()));
-    modelAndView.addObject( "priceList", PriceForCustomerDTO.convertIntoDTO(priceForCustomerService.getAllPriceForCustomer()));
-    modelAndView.addObject("selectedCustomer", new CustomerDTO(customer));
-    priceForCustomerService.deletePriceForCustomer(priceForCustomer);
+    modelMap.addAttribute("attribute", "forwardWithForwardPrefix" );
+    modelMap.addAttribute("customerList", CustomerDTO.convertIntoDTO(customerService.getAllCustomers()));
+    modelMap.addAttribute( "priceList", PriceForCustomerDTO.convertIntoDTO(priceForCustomerService.getAllPriceForCustomer()));
+    modelMap.addAttribute("selectedCustomer", new CustomerDTO(customer));
+     priceForCustomerService.deletePriceForCustomer(priceForCustomer);
+    ModelAndView modelAndView = new ModelAndView("redirect:/createdNewPrice", modelMap);
      return modelAndView;
     }
 
