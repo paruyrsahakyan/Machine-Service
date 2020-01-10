@@ -3,7 +3,9 @@ package group.service.iko.dto;
 import group.service.iko.entities.PriceForCustomer;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class PriceForCustomerDTO {
     private int id;
@@ -23,8 +25,8 @@ description= priceForCustomer.getDescription();
 price= priceForCustomer.getPrice();
 }
 
-    public static List<PriceForCustomerDTO> convertIntoDTO(List<PriceForCustomer> priceForCustomers){
-        List<PriceForCustomerDTO> priceForCustomerDTOS = new ArrayList<PriceForCustomerDTO>();
+    public static Set<PriceForCustomerDTO> convertIntoDTO(Set<PriceForCustomer> priceForCustomers){
+        Set<PriceForCustomerDTO> priceForCustomerDTOS = new HashSet<>();
 
         for (PriceForCustomer priceForCustomer:priceForCustomers){
             priceForCustomerDTOS.add(new PriceForCustomerDTO(priceForCustomer));

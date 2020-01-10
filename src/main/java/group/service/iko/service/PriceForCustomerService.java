@@ -10,6 +10,8 @@ import org.springframework.security.access.method.P;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Set;
+
 @Service
 public class PriceForCustomerService {
     @Autowired
@@ -41,11 +43,11 @@ public class PriceForCustomerService {
         return t;
     }
 
-    public List<PriceForCustomer> getAllPriceForCustomer() {
+    public Set<PriceForCustomer> getAllPriceForCustomer() {
         session = SessionFactoryImpl.getSessionFactory().openSession();
         String hql = "from group.service.iko.entities.PriceForCustomer";
         Query query = session.createQuery(hql);
-        List<PriceForCustomer> EntityList= (List<PriceForCustomer>) query.list();
+        Set<PriceForCustomer> EntityList= (Set<PriceForCustomer>) query.list();
         session.flush();
         session.close();
         return EntityList;

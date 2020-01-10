@@ -2,6 +2,7 @@ package group.service.iko.entities;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name="customer")
@@ -24,7 +25,8 @@ public class Customer {
     @Column
     private String contract;
     @OneToMany (mappedBy = "customer", fetch =FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<PriceForCustomer> priceForCustomerList;
+    private Set<PriceForCustomer> priceForCustomerList;
+
 
 
 @Override
@@ -94,11 +96,12 @@ public class Customer {
         this.machineList = machineList;
     }
 
-    public List<PriceForCustomer> getPriceForCustomerList() {
+    public Set<PriceForCustomer> getPriceForCustomerList() {
         return priceForCustomerList;
     }
 
-    public void setPriceForCustomerList(List<PriceForCustomer> priceForCustomerList) {
+    public void setPriceForCustomerList(Set<PriceForCustomer> priceForCustomerList) {
         this.priceForCustomerList = priceForCustomerList;
     }
 }
+
