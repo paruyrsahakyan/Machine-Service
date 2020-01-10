@@ -60,7 +60,7 @@ public class PriceController {
 
   @RequestMapping(value = "/itemDeleted", method = RequestMethod.GET)
   public ModelAndView deleteTheItem(@RequestParam("id") int id,
-                                     ModelMap modelMap)
+                                    ModelMap modelMap)
   {
 
     PriceForCustomer priceForCustomer = priceForCustomerService.getPriceForCustomerById(id);
@@ -68,11 +68,11 @@ public class PriceController {
     PriceForCustomer priceForCustomerToDelete = new PriceForCustomer();
      priceForCustomer.setId(id);
     priceForCustomerService.deletePriceForCustomer(priceForCustomerToDelete);
-    modelMap.addAttribute("customerList", CustomerDTO.convertIntoDTO(customerService.getAllCustomers()));
+        modelMap.addAttribute("customerList", CustomerDTO.convertIntoDTO(customerService.getAllCustomers()));
     modelMap.addAttribute( "priceList", PriceForCustomerDTO.convertIntoDTO(priceForCustomerService.getAllPriceForCustomer()));
     modelMap.addAttribute("selectedCustomer", new CustomerDTO(customer));
      priceForCustomerService.deletePriceForCustomer(priceForCustomer);
-    ModelAndView modelAndView = new ModelAndView("redirect:/mainPage", modelMap);
+    ModelAndView modelAndView = new ModelAndView("redirect:/price/mainPage", modelMap);
      return modelAndView;
     }
 
