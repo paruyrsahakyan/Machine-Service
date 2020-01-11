@@ -32,8 +32,10 @@ public class PriceController {
         ModelAndView modelAndView = new ModelAndView("price/priceMainPage");
         modelAndView.addObject("customerList", CustomerDTO.convertIntoDTO(customerService.getAllCustomers()));
         modelAndView.addObject( "priceList", PriceForCustomerDTO.convertIntoDTO(priceForCustomerService.getAllPriceForCustomer()));
-        modelAndView.addObject("selectedCustomer", new CustomerDTO(customerService.getCustomerById(customerId)));
-       return modelAndView;
+        if(customerId!=0){
+         modelAndView.addObject("selectedCustomer", new CustomerDTO(customerService.getCustomerById(customerId)));
+        }
+               return modelAndView;
 
     }
 
