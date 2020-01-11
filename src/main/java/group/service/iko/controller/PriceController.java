@@ -71,7 +71,7 @@ public class PriceController {
     PriceForCustomer priceForCustomer = priceForCustomerService.getPriceForCustomerById(id);
     Customer customer = priceForCustomer.getCustomer();
     PriceForCustomer priceForCustomerToDelete = new PriceForCustomer();
-     priceForCustomer.setId(id);
+     priceForCustomerToDelete.setId(id);
     priceForCustomerService.deletePriceForCustomer(priceForCustomerToDelete);
 //    modelMap.addAttribute("customerList", CustomerDTO.convertIntoDTO(customerService.getAllCustomers()));
 //    modelMap.addAttribute( "priceList", PriceForCustomerDTO.convertIntoDTO(priceForCustomerService.getAllPriceForCustomer()));
