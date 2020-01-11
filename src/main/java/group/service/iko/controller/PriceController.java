@@ -28,7 +28,7 @@ public class PriceController {
 
     @RequestMapping(value = "/mainPage" )
   public ModelAndView showPricePage(ModelMap modelMap,
-                                    @RequestParam(value ="selectedCustomer", required = false) int customerId ){
+                                    @RequestParam(value ="selectedCustomer", required = false, defaultValue = "0") int customerId ){
         ModelAndView modelAndView = new ModelAndView("price/priceMainPage");
         modelAndView.addObject("customerList", CustomerDTO.convertIntoDTO(customerService.getAllCustomers()));
         modelAndView.addObject( "priceList", PriceForCustomerDTO.convertIntoDTO(priceForCustomerService.getAllPriceForCustomer()));
