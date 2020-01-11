@@ -109,7 +109,7 @@
             });
         </c:forEach>
 
-        if(customerNameAfterDeleteOrEdit){
+        if(customerNameAfterDeleteOrEdit===""){
             createTableAfterDeletingOrEditing();
         }
 
