@@ -27,7 +27,8 @@ public class PriceController {
 
 
     @RequestMapping(value = "/mainPage" )
-  public ModelAndView showPricePage(@RequestParam(value ="selectedCustomer", required = false, defaultValue = "0") int customerId ){
+  public ModelAndView showPricePage(ModelMap modelMap,
+                                    @RequestParam(value ="selectedCustomer", required = false, defaultValue = "0") int customerId ){
         ModelAndView modelAndView = new ModelAndView("price/priceMainPage");
         modelAndView.addObject("customerList", CustomerDTO.convertIntoDTO(customerService.getAllCustomers()));
         modelAndView.addObject( "priceList", PriceForCustomerDTO.convertIntoDTO(priceForCustomerService.getAllPriceForCustomer()));
@@ -47,7 +48,6 @@ public class PriceController {
                                   ModelMap modelMap)
   {
     PriceForCustomer priceForCustomer = new PriceForCustomer();
-    customerService.getCustomerByName(customerName);
     Customer customer = customerService.getCustomerByName(customerName);
     priceForCustomer.setCustomer(customerService.getCustomerByName(customerName));
     priceForCustomer.setArticle(article);
