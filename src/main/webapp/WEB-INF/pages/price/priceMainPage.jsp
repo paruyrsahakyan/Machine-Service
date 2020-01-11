@@ -31,8 +31,7 @@
 
         <form:form id="toCreateNewItem" action="/price/createdNewPrice" method="post" accept-charset="UTF-8">
             <B>Клиент </B>
-            <input list="customers" name="customerName" id="selectedCustomerName" value="${selectedCustomer.name}"
-                   onchange="createTableForSelectedCustomer()">
+            <input list="customers" name="customerName" id="selectedCustomerName" onchange="createTableOnCustomerSelection()">
 
             <datalist id="customers">
                 <c:forEach items="${customerList}" var="customer">
@@ -81,9 +80,8 @@
         var priceListForSelectedCustomer = [];
         var priceListFilteredByArticle = [];
         var priceListForTableCreation = [];
-
-        var selectedCustomerId;
-        var selectedCustomerName;
+        var customerNameAfterDeleteOrEdit="${selectedCustomer.name}";
+        var customerNameForTableCreation;
 
          <c:forEach items="${priceList}" var="priceForCustomer">
             var id ="${priceForCustomer.id}"
@@ -111,19 +109,19 @@
             });
         </c:forEach>
 
-        createTableForSelectedCustomer();
+        if(customerNameAfterDeleteOrEdit>0){
+            createTableAfterDeletingOrEditing();
+        }
 
-
-        function initPriceListForSelectedCustomer() {
-            priceListForSelectedCustomer=[];
-        var selectedCustomerName = document.getElementById("selectedCustomerName").value;
-
-        for (var i = 0; i < initialPriceList.length; i++) {
-        if (initialPriceList[i].customerName === selectedCustomerName) {
-        priceListForSelectedCustomer.push(initialPriceList[i]);
+        function initPriceListForCustomer() {
+            priceListForTableCreation=[];
+            var customerName = customerNameForTableCreation;
+            for (var i = 0; i < initialPriceList.length; i++) {
+        if (initialPriceList[i].customerName === customerName) {
+            priceListForTableCreation.push(initialPriceList[i]);
         }
         }
-        }
+                }
 
         function createTable() {
 
@@ -162,14 +160,14 @@
                 cell2.innerHTML = priceListForTableCreation[i].article;
                 cell3.innerHTML = priceListForTableCreation[i].description;
                 cell4.innerHTML = priceListForTableCreation[i].price;
-                var buttonDelete= '<form action="/price/itemDeleted" method="get">'+
+                var buttonDeleteInnerHTML= '<form action="/price/itemDeleted" method="get">'+
                     '<input type="hidden" name="id" value="'+priceListForTableCreation[i].id+'">'+
                     '<input type="submit" value="Удалить"'+
                     'onclick="return confirm('+"'"+'!!!Вы уверены что хатите удалить Позицию!!!'+
                     "'"+
                     ')">'+
                     '</form>';
-                cell5.innerHTML =  buttonDelete;
+                cell5.innerHTML =  buttonDeleteInnerHTML;
                 var buttonEdit= '<input type="button" value="редактировать" onclick="showHiddenFormForItemEdit('+i+')">';
                 cell6.innerHTML = buttonEdit;
                 }
@@ -190,12 +188,12 @@
                 function updateTableByArticle() {
                 var searchInput = document.getElementById("articleSearch").value;
                 if (searchInput ==="") {
-                priceListForTableCreation = priceListForSelectedCustomer;
+                createTableOnCustomerSelection();
                 }
                 else {
                 priceListFilteredByArticle = [];
-                for (var i = 0; i < priceListForSelectedCustomer.length; i++) {
-                if (priceListForSelectedCustomer[i].article.toLowerCase().indexOf(searchInput) >= 0) {
+                for (var i = 0; i <priceListForSelectedCustomer.length; i++) {
+                      if (priceListForSelectedCustomer[i].article.toLowerCase().indexOf(searchInput) >= 0) {
                 priceListFilteredByArticle.push(priceListForSelectedCustomer[i])
                 }
                 }
@@ -204,9 +202,10 @@
                 createTable();
                 }
 
-                function createTableForSelectedCustomer() {
-                initPriceListForSelectedCustomer();
-                priceListForTableCreation=priceListForSelectedCustomer;
+                function createTableOnCustomerSelection() {
+                customerNameForTableCreation=document.getElementById("selectedCustomerName").value;
+                initPriceListForCustomer();
+                priceListForSelectedCustomer= priceListForTableCreation;
                 createTable();
                 }
 
@@ -218,6 +217,11 @@
                 }
                 }
                 }
+                function createTableAfterDeletingOrEditing(){
+               customerNameForTableCreation=customerNameAfterDeleteOrEdit;
+               initPriceListForCustomer();
+               createTable();
+                   }
 
                 </script>
                 </body>
