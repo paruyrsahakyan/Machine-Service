@@ -74,7 +74,7 @@ public class PriceController {
     priceForCustomerService.deletePriceForCustomer(priceForCustomerToDelete);
 //    modelMap.addAttribute("customerList", CustomerDTO.convertIntoDTO(customerService.getAllCustomers()));
 //    modelMap.addAttribute( "priceList", PriceForCustomerDTO.convertIntoDTO(priceForCustomerService.getAllPriceForCustomer()));
-    modelMap.addAttribute("selectedCustomer", customer.getContract());
+    modelMap.addAttribute("selectedCustomer", customer.getId());
     ModelAndView modelAndView = new ModelAndView("redirect:/price/mainPage", modelMap);
      return modelAndView;
     }
