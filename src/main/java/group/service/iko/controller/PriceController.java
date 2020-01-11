@@ -27,8 +27,7 @@ public class PriceController {
 
 
     @RequestMapping(value = "/mainPage" )
-  public ModelAndView showPricePage(ModelMap modelMap,
-                                    @RequestParam(value ="selectedCustomer", required = false, defaultValue = "0") int customerId ){
+  public ModelAndView showPricePage(@RequestParam(value ="selectedCustomer", required = false, defaultValue = "0") int customerId ){
         ModelAndView modelAndView = new ModelAndView("price/priceMainPage");
         modelAndView.addObject("customerList", CustomerDTO.convertIntoDTO(customerService.getAllCustomers()));
         modelAndView.addObject( "priceList", PriceForCustomerDTO.convertIntoDTO(priceForCustomerService.getAllPriceForCustomer()));
@@ -44,9 +43,9 @@ public class PriceController {
   public ModelAndView addNewPrice(@RequestParam("customerName") String customerName,
                                   @RequestParam("article") String article,
                                   @RequestParam("description") String description,
-                                  @RequestParam("price") int price)
+                                  @RequestParam("price") int price,
+                                  ModelMap modelMap)
   {
-    ModelAndView modelAndView = new ModelAndView("price/priceMainPage");
     PriceForCustomer priceForCustomer = new PriceForCustomer();
     customerService.getCustomerByName(customerName);
     Customer customer = customerService.getCustomerByName(customerName);
@@ -55,9 +54,8 @@ public class PriceController {
     priceForCustomer.setDescription(description);
     priceForCustomer.setPrice(price);
     priceForCustomerService.savePriceForCustomer(priceForCustomer);
-    modelAndView.addObject("priceList", PriceForCustomerDTO.convertIntoDTO(priceForCustomerService.getAllPriceForCustomer()));
-    modelAndView.addObject("customerList", CustomerDTO.convertIntoDTO(customerService.getAllCustomers()));
-    modelAndView.addObject("selectedCustomer", new CustomerDTO(customer));
+    modelMap.addAttribute("selectedCustomer", customer.getId());
+    ModelAndView modelAndView = new ModelAndView("redirect:/price/mainPage", modelMap);
       return modelAndView;
 
 
@@ -68,13 +66,10 @@ public class PriceController {
                                     ModelMap modelMap)
   {
 
-    PriceForCustomer priceForCustomer = priceForCustomerService.getPriceForCustomerById(id);
-    Customer customer = priceForCustomer.getCustomer();
+    Customer customer=  priceForCustomerService.getPriceForCustomerById(id).getCustomer();
     PriceForCustomer priceForCustomerToDelete = new PriceForCustomer();
-     priceForCustomerToDelete.setId(id);
+    priceForCustomerToDelete.setId(id);
     priceForCustomerService.deletePriceForCustomer(priceForCustomerToDelete);
-//    modelMap.addAttribute("customerList", CustomerDTO.convertIntoDTO(customerService.getAllCustomers()));
-//    modelMap.addAttribute( "priceList", PriceForCustomerDTO.convertIntoDTO(priceForCustomerService.getAllPriceForCustomer()));
     modelMap.addAttribute("selectedCustomer", customer.getId());
     ModelAndView modelAndView = new ModelAndView("redirect:/price/mainPage", modelMap);
      return modelAndView;
