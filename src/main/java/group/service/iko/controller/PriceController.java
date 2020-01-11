@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.concurrent.TimeUnit;
 
@@ -25,12 +26,13 @@ public class PriceController {
   private  PriceForCustomerService priceForCustomerService;
 
 
-    @RequestMapping(value = "/mainPage")
-  public ModelAndView showPricePage(ModelMap modelMap){
+    @RequestMapping(value = "/mainPage" )
+  public ModelAndView showPricePage(ModelMap modelMap,
+                                    @RequestParam("selectedCustomer") int customerId){
         ModelAndView modelAndView = new ModelAndView("price/priceMainPage");
         modelAndView.addObject("customerList", CustomerDTO.convertIntoDTO(customerService.getAllCustomers()));
         modelAndView.addObject( "priceList", PriceForCustomerDTO.convertIntoDTO(priceForCustomerService.getAllPriceForCustomer()));
-        modelAndView.addObject("selectedCustomer", (CustomerDTO) modelMap.get("selectedCustomer"));
+        modelAndView.addObject("selectedCustomer",customerService.getCustomerById(customerId));
        return modelAndView;
 
     }
@@ -61,7 +63,8 @@ public class PriceController {
 
   @RequestMapping(value = "/itemDeleted", method = RequestMethod.GET)
   public ModelAndView deleteTheItem(@RequestParam("id") int id,
-                                    ModelMap modelMap)
+                                    ModelMap modelMap,
+                                    RedirectAttributes redirectAttributes)
   {
 
     PriceForCustomer priceForCustomer = priceForCustomerService.getPriceForCustomerById(id);
@@ -69,9 +72,9 @@ public class PriceController {
     PriceForCustomer priceForCustomerToDelete = new PriceForCustomer();
      priceForCustomer.setId(id);
     priceForCustomerService.deletePriceForCustomer(priceForCustomerToDelete);
-    modelMap.addAttribute("customerList", CustomerDTO.convertIntoDTO(customerService.getAllCustomers()));
-    modelMap.addAttribute( "priceList", PriceForCustomerDTO.convertIntoDTO(priceForCustomerService.getAllPriceForCustomer()));
-    modelMap.addAttribute("selectedCustomer", new CustomerDTO(customer));
+//    modelMap.addAttribute("customerList", CustomerDTO.convertIntoDTO(customerService.getAllCustomers()));
+//    modelMap.addAttribute( "priceList", PriceForCustomerDTO.convertIntoDTO(priceForCustomerService.getAllPriceForCustomer()));
+    modelMap.addAttribute("selectedCustomer", customer.getContract());
     ModelAndView modelAndView = new ModelAndView("redirect:/price/mainPage", modelMap);
      return modelAndView;
     }
