@@ -31,7 +31,7 @@ public class PriceForCustomerDTO {
         if (partInStock != null) {
             quantityInStock = partInStock.getQuantity();
             netCost = WareHouseService.availablePartList.get(article).getNetCost();
-            profit =  (int) (price - netCost) / price * 100;
+            profit =  (int) ((price - netCost)/price*100);
         }
     }
 
