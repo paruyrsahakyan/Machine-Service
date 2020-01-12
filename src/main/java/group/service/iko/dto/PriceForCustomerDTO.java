@@ -14,8 +14,8 @@ public class PriceForCustomerDTO {
     private int price;
     private String customerName;
     private double quantityInStock;
-    private int netCost;
-    private int profit;
+    private double netCost;
+    private double profit;
 
 
     public PriceForCustomerDTO(PriceForCustomer priceForCustomer) {
@@ -101,19 +101,19 @@ public class PriceForCustomerDTO {
             this.quantityInStock = quantityInStock;
         }
 
-        public int getNetCost () {
-            return netCost;
-        }
+    public double getNetCost() {
+        return netCost;
+    }
 
-        public void setNetCost ( int netCost){
-            this.netCost = netCost;
-        }
+    public void setNetCost(double netCost) {
+        this.netCost = netCost;
+    }
 
-    public int getProfit() {
+    public double getProfit() {
         return profit;
     }
 
-    public void setProfit(int profit) {
+    public void setProfit(double profit) {
         this.profit = profit;
     }
 }
