@@ -6,6 +6,7 @@ import group.service.iko.entities.Customer;
 import group.service.iko.entities.PriceForCustomer;
 import group.service.iko.service.CustomerService;
 import group.service.iko.service.PriceForCustomerService;
+import group.service.iko.service.WareHouseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;

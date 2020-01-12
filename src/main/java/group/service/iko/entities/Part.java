@@ -10,6 +10,7 @@ public class Part {
     private String Nomenclature;
     private String unit;
     private double quantity;
+    private int netCost;
 
     public String getPartNumber() {
         return partNumber;
@@ -43,13 +44,32 @@ public class Part {
         this.quantity = quantity;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getNetCost() {
+        return netCost;
+    }
+
+    public void setNetCost(int netCost) {
+        this.netCost = netCost;
+    }
+
     @Override
     public String toString() {
         return "Part{" +
-                "partNumber='" + partNumber + '\'' +
+                "id=" + id +
+                ", partNumber='" + partNumber + '\'' +
                 ", Nomenclature='" + Nomenclature + '\'' +
                 ", unit='" + unit + '\'' +
                 ", quantity=" + quantity +
+                ", netCost=" + netCost +
                 '}';
     }
 }
+

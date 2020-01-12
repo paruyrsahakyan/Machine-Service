@@ -50,7 +50,7 @@
                        required>
                 <input type="text" name="description" placeholder="Вводите Название" required>
                 <input type="nuber" name="price" placeholder="Вводите Цену" required>
-                <input type="submit" value="сохранить">
+                <input type="submit" value="Сохранить">
             </div>
         </form:form>
         </div>
@@ -91,13 +91,18 @@
             var price = "${priceForCustomer.price}";
             var customerId = "${priceForCustomer.customerId}";
             var customerName = "${priceForCustomer.customerName}";
+            var quantityInStock = "${priceForCustomer.quantityInStock}";
+            var profit = "${priceForCustomer.profit}";
             initialPriceList.push({
             id: id,
             article: article,
             description: description,
             price: price,
             customerId: customerId,
-            customerName: customerName
+            customerName: customerName,
+            quantityInStock: quantityInStock,
+            profit: profit,
+
             });
         </c:forEach>
 
@@ -136,6 +141,9 @@
         var titleCell4 = titleRow.insertCell(3);
         var titleCell5 = titleRow.insertCell(4);
         var titleCell6 = titleRow.insertCell(5);
+        var titleCell7 = titleRow.insertCell(6);
+        var titleCell8 = titleRow.insertCell(7);
+
         titleCell1.innerHTML = "N";
         titleCell1.style.fontWeight = 'bold';
         titleCell2.innerHTML = "Артикул";
@@ -144,10 +152,15 @@
         titleCell3.style.fontWeight = 'bold';
         titleCell4.innerHTML = "Цена Без НДС";
         titleCell4.style.fontWeight = 'bold';
-        titleCell5.innerHTML = "Удаление";
+        titleCell5.innerHTML = "Кол. на складе";
         titleCell5.style.fontWeight = 'bold';
-        titleCell6.innerHTML = "Редактирование";
+        titleCell6.innerHTML = "МП %";
         titleCell6.style.fontWeight = 'bold';
+        titleCell7.innerHTML = "Удаление";
+        titleCell7.style.fontWeight = 'bold';
+        titleCell8.innerHTML = "Редактирование";
+        titleCell8.style.fontWeight = 'bold';
+
 
                 for (var i = 0; i < priceListForTableCreation.length; i++) {
                 var row = table.insertRow();
@@ -157,11 +170,16 @@
                 var cell4 = row.insertCell(3);
                 var cell5 = row.insertCell(4);
                 var cell6 = row.insertCell(5);
+                var cell7 = row.insertCell(6);
+                var cell8 = row.insertCell(7);
 
                 cell1.innerHTML = (i + 1).toString();
                 cell2.innerHTML = priceListForTableCreation[i].article;
                 cell3.innerHTML = priceListForTableCreation[i].description;
                 cell4.innerHTML = priceListForTableCreation[i].price;
+                cell5.innerHTML = priceListForTableCreation[i].quantityInStock;
+                cell6.innerHTML = priceListForTableCreation[i].profit;
+
                 var buttonDeleteInnerHTML= '<form action="/price/itemDeleted" method="get">'+
                     '<input type="hidden" name="id" value="'+priceListForTableCreation[i].id+'">'+
                     '<input type="submit" value="Удалить"'+
@@ -169,9 +187,9 @@
                     "'"+
                     ')">'+
                     '</form>';
-                cell5.innerHTML =  buttonDeleteInnerHTML;
-                var buttonEdit= '<input type="button" value="редактировать" onclick="showHiddenFormForItemEdit('+i+')">';
-                cell6.innerHTML = buttonEdit;
+                cell7.innerHTML =  buttonDeleteInnerHTML;
+                var buttonEdit= '<input type="button" value="Редактировать" onclick="showHiddenFormForItemEdit('+i+')">';
+                cell8.innerHTML = buttonEdit;
                 }
                 }
                 function showHiddenForm() {

@@ -50,6 +50,7 @@ public class ExcelReaderWriter {
                 part.setNomenclature(row.getCell(3).toString());
                 part.setUnit(row.getCell(6).getStringCellValue());
                 part.setQuantity(row.getCell(7).getNumericCellValue());
+                part.setNetCost(row.getCell(8).getNumericCellValue());
                 partMap.put(partNumber, part);
             }
             GregorianCalendar now = new GregorianCalendar();
