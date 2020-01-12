@@ -46,10 +46,10 @@
             <button type="button" onclick="showHiddenForm()"> Добавить позицию</button>
             <br><br>
             <div id="hiddenForm" style="display: none;">
-                <input id="newArticle" type="text" name="article" placeholder="Введите  Артикул" onkeyup="checkTheArticle()"
+                <input id="newArticle" type="text" name="article" placeholder="Вводите  Артикул" onkeyup="checkTheArticle()"
                        required>
-                <input type="text" name="description" placeholder="Введите Название" required>
-                <input type="nuber" name="price" placeholder="Введите Цену" required>
+                <input type="text" name="description" placeholder="Вводите Название" required>
+                <input type="nuber" name="price" placeholder="Вводите Цену" required>
                 <input type="submit" value="сохранить">
             </div>
         </form:form>
@@ -115,11 +115,12 @@
         }
 
         function initPriceListForCustomer() {
-            priceListForTableCreation=[];
+            priceListForSelectedCustomer=[];
             var customerName = customerNameForTableCreation;
             for (var i = 0; i < initialPriceList.length; i++) {
         if (initialPriceList[i].customerName === customerName) {
-            priceListForTableCreation.push(initialPriceList[i]);
+            priceListForSelectedCustomer.push(initialPriceList[i]);
+            priceListForTableCreation=priceListForSelectedCustomer;
         }
         }
                 }
@@ -206,7 +207,7 @@
                 function createTableOnCustomerSelection() {
                 customerNameForTableCreation=document.getElementById("selectedCustomerName").value;
                 initPriceListForCustomer();
-                priceListForSelectedCustomer= priceListForTableCreation;
+                priceListForSelectedCustomer=priceListForTableCreation;
                 createTable();
                 }
 
