@@ -10,7 +10,7 @@ public class Part {
     private String Nomenclature;
     private String unit;
     private double quantity;
-    private int netCost;
+    private double netCost;
 
     public String getPartNumber() {
         return partNumber;
@@ -52,11 +52,11 @@ public class Part {
         this.id = id;
     }
 
-    public int getNetCost() {
+    public double getNetCost() {
         return netCost;
     }
 
-    public void setNetCost(int netCost) {
+    public void setNetCost(double netCost) {
         this.netCost = netCost;
     }
 
