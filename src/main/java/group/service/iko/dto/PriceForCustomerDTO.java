@@ -15,7 +15,7 @@ public class PriceForCustomerDTO {
     private String customerName;
     private double quantityInStock;
     private double netCost;
-    private double profit;
+    private int profit;
 
 
     public PriceForCustomerDTO(PriceForCustomer priceForCustomer) {
@@ -31,7 +31,7 @@ public class PriceForCustomerDTO {
         if (partInStock != null) {
             quantityInStock = partInStock.getQuantity();
             netCost = WareHouseService.availablePartList.get(article).getNetCost();
-            profit = (price - netCost) / price * 100;
+            profit =  (int) (price - netCost) / price * 100;
         }
     }
 
@@ -109,11 +109,11 @@ public class PriceForCustomerDTO {
         this.netCost = netCost;
     }
 
-    public double getProfit() {
+    public int getProfit() {
         return profit;
     }
 
-    public void setProfit(double profit) {
+    public void setProfit(int profit) {
         this.profit = profit;
     }
 }
