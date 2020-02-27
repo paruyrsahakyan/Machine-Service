@@ -86,8 +86,8 @@ public class ExcelReaderWriter {
                 part.setNomenclature(row.getCell(nomenclatureColumn).toString());
 //                part.setUnit(row.getCell(6).getStringCellValue());
                 Cell quantityCell = row.getCell(quantityColumn);
-                if (quantityCell.getCellTypeEnum() == CellType.NUMERIC) {
-                    part.setQuantity(cell.getNumericCellValue());
+                if (quantityCell.getCellTypeEnum()==CellType.NUMERIC) {
+                    part.setQuantity(quantityCell.getNumericCellValue());
                 }
                 Cell netCostCell = row.getCell(netCostColumn);
                 if(netCostCell.getCellTypeEnum()==CellType.NUMERIC){
