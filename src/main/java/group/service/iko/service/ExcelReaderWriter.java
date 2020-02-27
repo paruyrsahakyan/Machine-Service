@@ -49,30 +49,30 @@ public class ExcelReaderWriter {
             int unitColumn = 0;
             int quantityColumn = 0;
             int netCostColumn = 0;
-            for (int i = 0; i <30; i++) {
+            for (int i = 0; i < 30; i++) {
                 Row row = datatypeSheet.getRow(i);
-                         for (int j = 0; j <= row.getLastCellNum(); j++) {
-                              Cell cell = row.getCell(j);
-                              if (cell==null) continue;
-                    if (cell.getCellTypeEnum()!=CellType.STRING)
+                for (int j = 0; j <= row.getLastCellNum(); j++) {
+                    Cell cell = row.getCell(j);
+                    if (cell == null) continue;
+                    if (cell.getCellTypeEnum() != CellType.STRING)
                         continue;
                     String cellText = cell.getStringCellValue();
                     if (cellText.equals("Артикул")) {
-                        partNumberColumn =j;
-                        firstPartRow=i+2;
-                                           }
+                        partNumberColumn = j;
+                        firstPartRow = i + 2;
+                    }
                     if (cellText.equals("Номенклатура")) {
                         nomenclatureColumn = j;
-                                         }
+                    }
                     if (cellText.equals("Количество")) {
                         quantityColumn = j;
 
                     }
                     if (cellText.equals("Себестоимость ЕД.")) {
                         netCostColumn = j;
-                                           }
+                    }
                 }
-                if (netCostColumn!=0) break;
+                if (netCostColumn != 0) break;
             }
 
 
@@ -85,8 +85,14 @@ public class ExcelReaderWriter {
                 part.setPartNumber(partNumber);
                 part.setNomenclature(row.getCell(nomenclatureColumn).toString());
 //                part.setUnit(row.getCell(6).getStringCellValue());
-                part.setQuantity(row.getCell(quantityColumn).getNumericCellValue());
-                part.setNetCost(row.getCell(netCostColumn).getNumericCellValue());
+                Cell quantityCell = row.getCell(quantityColumn);
+                if (quantityCell.getCellTypeEnum() == CellType.NUMERIC) {
+                    part.setQuantity(cell.getNumericCellValue());
+                }
+                Cell netCostCell = row.getCell(netCostColumn);
+                if(netCostCell.getCellTypeEnum()==CellType.NUMERIC){
+                    part.setNetCost(netCostCell.getNumericCellValue());
+                }
                 partMap.put(partNumber, part);
             }
             GregorianCalendar now = new GregorianCalendar();
