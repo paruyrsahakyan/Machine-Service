@@ -48,12 +48,13 @@ public class ExcelReaderWriter {
             int unitColumn = 0;
             int quantityColumn = 0;
             int netCostColumn = 0;
-
             for (int i = 0; i <30; i++) {
                 Row row = datatypeSheet.getRow(i);
                          for (int j = 0; j <= row.getLastCellNum(); j++) {
                     Cell cell = row.getCell(j);
-                    String cellText = cell.toString();
+                    if (cell.getCellTypeEnum()!=CellType.STRING)
+                        break;
+                    String cellText = cell.getStringCellValue();
                     if (cellText.equals("Артикул")) {
                         partNumberColumn = cell.getColumnIndex();
                                            }

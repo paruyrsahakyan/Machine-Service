@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.io.IOException;
+
 
 @Controller
 @RequestMapping("/wareHouse")
@@ -36,7 +38,7 @@ public class WareHouseController {
 
     @RequestMapping(value = "/updated", method = RequestMethod.POST)
     public ModelAndView filesUpdated(@RequestParam(value = "wareHouseFile", required = false) MultipartFile multipartFile
-    ) {
+    ) throws IOException {
         wareHouseService.updateWareHouse(multipartFile);
         ModelAndView modelAndView = new ModelAndView("wareHouse/wareHouseHome");
         modelAndView.addObject("updateDate", WareHouseService.getUpdateDate());
