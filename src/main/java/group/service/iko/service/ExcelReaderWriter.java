@@ -43,6 +43,7 @@ public class ExcelReaderWriter {
             FileInputStream excelFile = new FileInputStream(wareHouseFile);
             Workbook workbook = new XSSFWorkbook(excelFile);
             Sheet datatypeSheet = workbook.getSheetAt(0);
+            int firstPartRow = 0;
             int partNumberColumn = 0;
             int nomenclatureColumn = 0;
             int unitColumn = 0;
@@ -57,7 +58,8 @@ public class ExcelReaderWriter {
                         break;
                     String cellText = cell.getStringCellValue();
                     if (cellText.equals("Артикул")) {
-                        partNumberColumn = cell.getColumnIndex();
+                        partNumberColumn =j;
+                        firstPartRow=i+2;
                                            }
 
                     if (cellText.equals("Номенклатура")) {
@@ -76,7 +78,7 @@ public class ExcelReaderWriter {
 
 
             partsQuantity = datatypeSheet.getLastRowNum() - 8;
-            for (int i = 8; i < partsQuantity + 8; i++) {
+            for (int i = firstPartRow; i < partsQuantity + 8; i++) {
                 Part part = new Part();
                 Row row = datatypeSheet.getRow(i);
                 String partNumber = row.getCell(partNumberColumn).toString();
