@@ -51,7 +51,8 @@ public class ExcelReaderWriter {
             for (int i = 0; i <30; i++) {
                 Row row = datatypeSheet.getRow(i);
                          for (int j = 0; j <= row.getLastCellNum(); j++) {
-                    Cell cell = row.getCell(j);
+                              Cell cell = row.getCell(j);
+                              if (cell==null) continue;
                     if (cell.getCellTypeEnum()!=CellType.STRING)
                         break;
                     String cellText = cell.getStringCellValue();
