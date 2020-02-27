@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.*;
+import java.io.FileInputStream;
+
 import java.util.*;
 
 @Service
@@ -29,28 +31,58 @@ public class ExcelReaderWriter {
             "resources" + File.separator + "templates" + File.separator + "wareHouseRequest.xlsx";
     private final String templatesFolder = File.separator + "home" + File.separator + "paruyr" +
             File.separator + "IkoService" + File.separator + "templates";
-    private final String maintenanceRequestFileSource =File.separator + "home" + File.separator + "paruyr" + File.separator +
+    private final String maintenanceRequestFileSource = File.separator + "home" + File.separator + "paruyr" + File.separator +
             "Machine-Service" + File.separator + "src" + File.separator + "main" + File.separator +
             "resources" + File.separator + "templates" + File.separator + "maintenanceRequest.xlsx";
 
 
-    public void setPartsFromWareHouseFile() {
+    public void setPartsFromWareHouseFile() throws IOException {
         partMap = new HashMap<>();
         try {
             File wareHouseFile = new File(storageService.getWarHouseFilePath());
             FileInputStream excelFile = new FileInputStream(wareHouseFile);
             Workbook workbook = new XSSFWorkbook(excelFile);
             Sheet datatypeSheet = workbook.getSheetAt(0);
+            int partNumberColumn = 0;
+            int nomenclatureColumn = 0;
+            int unitColumn = 0;
+            int quantityColumn = 0;
+            int netCostColumn = 0;
+
+            for (int i = 0; i <30; i++) {
+                Row row = datatypeSheet.getRow(i);
+                         for (int j = 0; j <= row.getLastCellNum(); j++) {
+                    Cell cell = row.getCell(j);
+                    String cellText = cell.toString();
+                    if (cellText.equals("Артикул")) {
+                        partNumberColumn = cell.getColumnIndex();
+                                           }
+
+                    if (cellText.equals("Номенклатура")) {
+                        nomenclatureColumn = cell.getColumnIndex();
+                                         }
+                    if (cellText.equals("Количество")) {
+                        quantityColumn = cell.getColumnIndex();
+
+                    }
+                    if (cellText.equals("Себестоимость ЕД.")) {
+                        netCostColumn = cell.getColumnIndex();
+                                           }
+                }
+                if (netCostColumn!=0) break;
+            }
+
+
             partsQuantity = datatypeSheet.getLastRowNum() - 8;
             for (int i = 8; i < partsQuantity + 8; i++) {
                 Part part = new Part();
                 Row row = datatypeSheet.getRow(i);
-                String partNumber = row.getCell(0).toString();
+                String partNumber = row.getCell(partNumberColumn).toString();
                 part.setPartNumber(partNumber);
-                part.setNomenclature(row.getCell(3).toString());
+                part.setNomenclature(row.getCell(nomenclatureColumn).toString());
                 part.setUnit(row.getCell(6).getStringCellValue());
-                part.setQuantity(row.getCell(7).getNumericCellValue());
-                part.setNetCost(row.getCell(8).getNumericCellValue());
+                part.setQuantity(row.getCell(quantityColumn).getNumericCellValue());
+                part.setNetCost(row.getCell(netCostColumn).getNumericCellValue());
                 partMap.put(partNumber, part);
             }
             GregorianCalendar now = new GregorianCalendar();
@@ -103,6 +135,7 @@ public class ExcelReaderWriter {
         fileInputStream.close();
         return file;
     }
+
     public File getReport(WorkOrder workOrder) throws IOException {
         File sourceFile = new File(reportFileSource);
         File fileFolder = new File(templatesFolder);
@@ -152,13 +185,12 @@ public class ExcelReaderWriter {
             Cell cellPartQuantity = datatypeSheet.getRow(partRow).getCell(10);
 
             String partNumber = maintenancePart.getPartNumber();
-            if (partMap.containsKey(partNumber)){
-                           }
-            else {
+            if (partMap.containsKey(partNumber)) {
+            } else {
                 Part availableInterChangeablePart = WareHouseService.getAvailableInterchangeablePart(partNumber);
                 if (availableInterChangeablePart != null) {
                     partNumber = availableInterChangeablePart.getPartNumber();
-                                   }
+                }
             }
 
             cellPosition.setCellValue(i);
@@ -174,8 +206,6 @@ public class ExcelReaderWriter {
         fileInputStream.close();
         return file;
     }
-
-
 
 
     public File getWareHouseRequest(WorkOrder workOrder) throws IOException {
@@ -219,31 +249,30 @@ public class ExcelReaderWriter {
 
             String partNumber = maintenancePart.getPartNumber();
             double available = 0;
-            if (partMap.containsKey(partNumber)){
+            if (partMap.containsKey(partNumber)) {
                 available = partMap.get(partNumber).getQuantity();
-            }
-            else {
+            } else {
                 Part availableInterChangeablePart = WareHouseService.getAvailableInterchangeablePart(partNumber);
                 if (availableInterChangeablePart != null) {
                     partNumber = availableInterChangeablePart.getPartNumber();
                     available = availableInterChangeablePart.getQuantity();
                 }
             }
-                cellPartNumber.setCellValue(partNumber);
-                cellPartDescription.setCellValue(maintenancePart.getPartType());
-                cellPartUnit.setCellValue(maintenancePart.getUnit());
-                cellPartQuantity.setCellValue(maintenancePart.getQuantity());
-                cellAvailable.setCellValue(available);
-                partRow++;
-            }
-
-            fileInputStream.close();
-            FileOutputStream fileOutputStream = new FileOutputStream(wareHouseRequestFile);
-            workbook.write(fileOutputStream);
-            fileInputStream.close();
-            return wareHouseRequestFile;
-
+            cellPartNumber.setCellValue(partNumber);
+            cellPartDescription.setCellValue(maintenancePart.getPartType());
+            cellPartUnit.setCellValue(maintenancePart.getUnit());
+            cellPartQuantity.setCellValue(maintenancePart.getQuantity());
+            cellAvailable.setCellValue(available);
+            partRow++;
         }
+
+        fileInputStream.close();
+        FileOutputStream fileOutputStream = new FileOutputStream(wareHouseRequestFile);
+        workbook.write(fileOutputStream);
+        fileInputStream.close();
+        return wareHouseRequestFile;
+
+    }
 
     public static Map<String, Part> getPartMap() {
         return partMap;

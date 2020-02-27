@@ -67,7 +67,7 @@
     var copyToTextArea = function () {
         var selectedCustomerName = event.target.innerHTML;
         document.getElementById("selectedCustomerName").value = selectedCustomerName;
-        var selectedCustomer = filteredList.find(customer = > {return customer.name === selectedCustomerName}
+        var selectedCustomer = filteredList.find(customer => {return customer.name === selectedCustomerName}
     )
         ;
         document.getElementById("selectedCustomerId").value = selectedCustomer.id;

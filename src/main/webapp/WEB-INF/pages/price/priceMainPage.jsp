@@ -75,6 +75,7 @@
         </tr>
         </table>
         </div>
+
         <script>
         var initialPriceList = [];
         var customerList = [];
