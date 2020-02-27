@@ -36,7 +36,7 @@ public class ExcelReaderWriter {
             "resources" + File.separator + "templates" + File.separator + "maintenanceRequest.xlsx";
 
 
-    public void setPartsFromWareHouseFile() throws IOException {
+    public void setPartsFromWareHouseFile() {
         partMap = new HashMap<>();
         try {
             File wareHouseFile = new File(storageService.getWarHouseFilePath());
@@ -63,14 +63,14 @@ public class ExcelReaderWriter {
                                            }
 
                     if (cellText.equals("Номенклатура")) {
-                        nomenclatureColumn = cell.getColumnIndex();
+                        nomenclatureColumn = j;
                                          }
                     if (cellText.equals("Количество")) {
-                        quantityColumn = cell.getColumnIndex();
+                        quantityColumn = j;
 
                     }
                     if (cellText.equals("Себестоимость ЕД.")) {
-                        netCostColumn = cell.getColumnIndex();
+                        netCostColumn = j;
                                            }
                 }
                 if (netCostColumn!=0) break;
@@ -81,6 +81,7 @@ public class ExcelReaderWriter {
             for (int i = firstPartRow; i < partsQuantity + 8; i++) {
                 Part part = new Part();
                 Row row = datatypeSheet.getRow(i);
+                Cell cell = row.getCell(partNumberColumn);
                 String partNumber = row.getCell(partNumberColumn).toString();
                 part.setPartNumber(partNumber);
                 part.setNomenclature(row.getCell(nomenclatureColumn).toString());
