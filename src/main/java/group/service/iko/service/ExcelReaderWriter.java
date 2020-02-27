@@ -55,13 +55,12 @@ public class ExcelReaderWriter {
                               Cell cell = row.getCell(j);
                               if (cell==null) continue;
                     if (cell.getCellTypeEnum()!=CellType.STRING)
-                        break;
+                        continue;
                     String cellText = cell.getStringCellValue();
                     if (cellText.equals("Артикул")) {
                         partNumberColumn =j;
                         firstPartRow=i+2;
                                            }
-
                     if (cellText.equals("Номенклатура")) {
                         nomenclatureColumn = j;
                                          }
