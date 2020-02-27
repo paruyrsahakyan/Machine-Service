@@ -82,7 +82,7 @@ public class ExcelReaderWriter {
                 String partNumber = row.getCell(partNumberColumn).toString();
                 part.setPartNumber(partNumber);
                 part.setNomenclature(row.getCell(nomenclatureColumn).toString());
-                part.setUnit(row.getCell(6).getStringCellValue());
+//                part.setUnit(row.getCell(6).getStringCellValue());
                 part.setQuantity(row.getCell(quantityColumn).getNumericCellValue());
                 part.setNetCost(row.getCell(netCostColumn).getNumericCellValue());
                 partMap.put(partNumber, part);
