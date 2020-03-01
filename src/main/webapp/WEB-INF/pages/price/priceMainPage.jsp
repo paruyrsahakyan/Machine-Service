@@ -57,10 +57,12 @@
 
 
         <div  class="mainContent" id="hiddenFormForItemEdit" style="display: none;">
-        <form:form action="/price/ItemEdited" method="post" accept-charset="UTF-8">
+        <form:form action="/price/ItemUpdated" method="post" accept-charset="UTF-8">
             <input id="articleToEdit" type="text" name="articleToEdit" required>
             <input id="descriptionToEdit" type="text" name="description" required>
             <input id="priceToEdit" type="nuber" name="price" required>
+            <input id="priceIdToEdit"  type="hidden" name="id" >
+
             <input type="submit" value="Записать Изменение">
         </form:form>
         </div>
@@ -203,6 +205,7 @@
                 document.getElementById("articleToEdit").value=priceListForTableCreation[i].article;
                 document.getElementById("descriptionToEdit").value=priceListForTableCreation[i].description;
                 document.getElementById("priceToEdit").value=priceListForTableCreation[i].price;
+                document.getElementById("priceIdToEdit").value=priceListForTableCreation[i].id;
                 // body...
                 }
 

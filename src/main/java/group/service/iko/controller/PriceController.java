@@ -76,4 +76,24 @@ public class PriceController {
      return modelAndView;
     }
 
+
+    @RequestMapping(value = "/itemUpdated", method = RequestMethod.GET)
+    public ModelAndView deleteTheItem(@RequestParam("id") int id,
+                                      @RequestParam("partNumber") String article,
+                                      @RequestParam("namenclature") String description,
+                                      @RequestParam("namenclature") int price,
+                                      ModelMap modelMap)
+    {
+
+        Customer customer=  priceForCustomerService.getPriceForCustomerById(id).getCustomer();
+        PriceForCustomer priceForCustomerToUpdate = priceForCustomerService.getPriceForCustomerById(id);
+        priceForCustomerToUpdate.setArticle(article);
+        priceForCustomerToUpdate.setDescription(description);
+        priceForCustomerToUpdate.setPrice(price);
+        priceForCustomerService.updatePriceForCustomer(priceForCustomerToUpdate);
+        modelMap.addAttribute("selectedCustomer", customer.getId());
+        ModelAndView modelAndView = new ModelAndView("redirect:/price/mainPage", modelMap);
+        return modelAndView;
+    }
+
     }
