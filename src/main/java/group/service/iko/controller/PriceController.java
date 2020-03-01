@@ -79,9 +79,9 @@ public class PriceController {
 
     @RequestMapping(value = "/itemUpdated", method = RequestMethod.POST)
     public ModelAndView deleteTheItem(@RequestParam("id") int id,
-                                      @RequestParam("partNumber") String article,
-                                      @RequestParam("namenclature") String description,
-                                      @RequestParam("namenclature") int price,
+                                      @RequestParam("article") String article,
+                                      @RequestParam("description") String description,
+                                      @RequestParam("price") int price,
                                       ModelMap modelMap)
     {
 
