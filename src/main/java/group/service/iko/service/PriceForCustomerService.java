@@ -27,7 +27,7 @@ public class PriceForCustomerService {
     }
 
     public void updatePriceForCustomer(PriceForCustomer priceForCustomer) {
-        entityDAO.saveEntity(priceForCustomer);
+        entityDAO.updateEntity(priceForCustomer);
     }
 
     public void deletePriceForCustomer(PriceForCustomer priceForCustomer) {
