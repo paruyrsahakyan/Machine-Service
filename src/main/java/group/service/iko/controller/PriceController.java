@@ -97,7 +97,7 @@ public class PriceController {
     }
 
 
-    @RequestMapping(value = "/allCustomersPrices/{articleId}", method = RequestMethod.GET)
+    @RequestMapping(value = "/pricesByArticleForAllCustomers/{articleId}", method = RequestMethod.GET)
     public ModelAndView showArticlePricesForAllCustomers(@PathVariable("article") String article)
 
     {
@@ -109,7 +109,7 @@ public class PriceController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/allCustomersPrices", method = RequestMethod.GET)
+    @RequestMapping(value = "/pricesByArticleForAllCustomers", method = RequestMethod.GET)
     public ModelAndView showArticlePricesForAllCustomersBySearchInput(@RequestParam("article") String article) {
         ModelAndView modelAndView = new ModelAndView("price/pricesByArticleForAllCustomers");
         List<PriceForCustomer> priceList = priceForCustomerService.getPriceForCustomerByArticle(article);
