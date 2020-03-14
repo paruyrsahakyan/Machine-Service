@@ -38,8 +38,8 @@
 <div class="mainContent">
     <B>Артикул</B>
     <form:form id="searchByArticle" action="/price/pricesByArticleForAllCustomers" method="get" accept-charset="UTF-8">
-        <input list="article" name="article" id="articleToSearch"  value="${selectedArticle.name}">
-                       <datalist id="article">
+        <input list="article" name="article" id="articleToSearch" >
+         <datalist id="article">
             <c:forEach items="${articleList}" var="article">
                 <option value="${article}" > ${article} </option>
             </c:forEach>
