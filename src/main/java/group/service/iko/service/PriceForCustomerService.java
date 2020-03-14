@@ -68,14 +68,14 @@ public class PriceForCustomerService {
 
     }
 
-    public Set<String> getArticlesSet() {
+    public List<String> getArticlesSet() {
 
         List<String> articleList = new ArrayList<>();
         List<PriceForCustomer> listOfPriceForCustomer =getAllPriceForCustomer();
         for (PriceForCustomer priceForCustomer : listOfPriceForCustomer) {
             articleList.add(priceForCustomer.getArticle());
         }
-           return articleList.stream().sorted().collect(Collectors.toSet());
+           return new HashSet<>(articleList).stream().sorted().collect(Collectors.toList());
     }
 
 }
