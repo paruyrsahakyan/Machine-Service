@@ -36,9 +36,9 @@
 <br>
 
 <div class="mainContent">
-    <B>Артикул</B>
+
     <form:form id="searchByArticle" action="/price/pricesByArticleForAllCustomers" method="get" accept-charset="UTF-8">
-        <input list="article" name="article" id="articleToSearch" >
+         <input list="article" name="article" id="articleToSearch" placeholder="поиск по артикулу">
          <datalist id="article">
             <c:forEach items="${articleList}" var="article">
                 <option value="${article}" > ${article} </option>
