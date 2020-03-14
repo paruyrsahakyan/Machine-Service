@@ -64,7 +64,7 @@ public class PriceForCustomerService {
         List<PriceForCustomer> pricesByArticleForAllCustomers = (List<PriceForCustomer>) query.list();
         session.flush();
         session.close();
-        return pricesByArticleForAllCustomers;
+        return pricesByArticleForAllCustomers.stream().sorted(Comparator.comparingInt(PriceForCustomer::getPrice)).collect(Collectors.toList());
 
     }
 
