@@ -10,8 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.method.P;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Set;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class PriceForCustomerService {
@@ -32,7 +32,7 @@ public class PriceForCustomerService {
 
     public void deletePriceForCustomer(PriceForCustomer priceForCustomer) {
 
-    entityDAO.deleteEntity(priceForCustomer);
+        entityDAO.deleteEntity(priceForCustomer);
 
     }
 
@@ -50,22 +50,34 @@ public class PriceForCustomerService {
         session = SessionFactoryImpl.getSessionFactory().openSession();
         String hql = "from group.service.iko.entities.PriceForCustomer";
         Query query = session.createQuery(hql);
-        List<PriceForCustomer> EntityList= (List<PriceForCustomer>) query.list();
+        List<PriceForCustomer> EntityList = (List<PriceForCustomer>) query.list();
         session.flush();
         session.close();
         return EntityList;
     }
 
-    public PriceForCustomer getPriceForCustomerByArticle(String article) {
+    public List<PriceForCustomer> getPriceForCustomerByArticle(String article) {
         session = SessionFactoryImpl.getSessionFactory().openSession();
         String hql = "from group.service.iko.entities.PriceForCustomer where article= :article";
         Query query = session.createQuery(hql);
         query.setParameter("article", article);
-        PriceForCustomer priceForCustomer = (PriceForCustomer) query.uniqueResult();
+        List<PriceForCustomer> pricesByArticleForAllCustomers = (List<PriceForCustomer>) query.list();
+        session.flush();
         session.close();
-        return priceForCustomer;
-
+        return pricesByArticleForAllCustomers;
 
     }
+
+    public List<String> getArticlesSet() {
+
+        List<String> articleList = new ArrayList<>();
+        List<PriceForCustomer> listOfPriceForCustomer =getAllPriceForCustomer();
+        for (PriceForCustomer priceForCustomer : listOfPriceForCustomer) {
+            articleList.add(priceForCustomer.getArticle());
+        }
+        articleList.stream().sorted().collect(Collectors.toSet());
+        return articleList;
+    }
+
 }
 

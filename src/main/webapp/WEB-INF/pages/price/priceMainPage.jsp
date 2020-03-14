@@ -145,6 +145,7 @@
         var titleCell6 = titleRow.insertCell(5);
         var titleCell7 = titleRow.insertCell(6);
         var titleCell8 = titleRow.insertCell(7);
+        var titleCell9 = titleRow.insertCell(8);
 
         titleCell1.innerHTML = "N";
         titleCell1.style.fontWeight = 'bold';
@@ -162,6 +163,8 @@
         titleCell7.style.fontWeight = 'bold';
         titleCell8.innerHTML = "Редактирование";
         titleCell8.style.fontWeight = 'bold';
+        titleCell9.innerHTML = "Все клиенты";
+        titleCell9.style.fontWeight = 'bold';
 
 
                 for (var i = 0; i < priceListForTableCreation.length; i++) {
@@ -174,6 +177,7 @@
                 var cell6 = row.insertCell(5);
                 var cell7 = row.insertCell(6);
                 var cell8 = row.insertCell(7);
+                var cell9 = row.insertCell(8);
 
                 cell1.innerHTML = (i + 1).toString();
                 cell2.innerHTML = priceListForTableCreation[i].article;
@@ -190,8 +194,14 @@
                     ')">'+
                     '</form>';
                 cell7.innerHTML =  buttonDeleteInnerHTML;
+
                 var buttonEdit= '<input type="button" value="Редактировать" onclick="showHiddenFormForItemEdit('+i+')">';
                 cell8.innerHTML = buttonEdit;
+
+                var buttonShowAllCustomersPrice='<a href="/price/pricesByArticleForAllCustomers/'+priceListForTableCreation[i].id+
+                      '"> Все клиенты </a>';
+                 cell9.innerHTML = buttonShowAllCustomersPrice;
+
                 }
                 }
                 function showHiddenForm() {
