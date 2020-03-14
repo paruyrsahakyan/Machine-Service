@@ -198,7 +198,7 @@
                 var buttonEdit= '<input type="button" value="Редактировать" onclick="showHiddenFormForItemEdit('+i+')">';
                 cell8.innerHTML = buttonEdit;
 
-                var buttonShowAllCustomersPrice='<a href="/price/pricesByArticleForAllCustomers/'+priceListForTableCreation[i].id+
+                var buttonShowAllCustomersPrice='<a href="/price/pricesByArticleForAllCustomers/'+priceListForTableCreation[i].article+
                       '"> Все клиенты </a>';
                  cell9.innerHTML = buttonShowAllCustomersPrice;
 

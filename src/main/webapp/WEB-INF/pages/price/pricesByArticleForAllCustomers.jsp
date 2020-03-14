@@ -46,7 +46,7 @@
         </datalist>
      <input type="submit" value="Поиск">
     </form:form>
-   
+
     <H3> Артикул ${selectedArticle}  </H3>
 
     <div class="mainContent">

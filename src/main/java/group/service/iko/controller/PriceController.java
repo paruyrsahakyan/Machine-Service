@@ -97,7 +97,7 @@ public class PriceController {
     }
 
 
-    @RequestMapping(value = "/allCustomersPrices/{article}", method = RequestMethod.GET)
+    @RequestMapping(value = "/allCustomersPrices/{articleId}", method = RequestMethod.GET)
     public ModelAndView showArticlePricesForAllCustomers(@PathVariable("article") String article)
 
     {
