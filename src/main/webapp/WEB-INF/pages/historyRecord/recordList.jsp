@@ -17,10 +17,10 @@
     <a href="/admin/allServiceMachines"> Сервисные Mашины</a>
     <a href="/machineType/allMachineTypes"> Типы Машин</a>
     <a href="/wareHouse"> Склад </a>
+    <a href="/price/mainPage"> Прайс </a>
 </div>
 <div class="mainContent">
 <h2>История Машины</h2>
-<br>
 <br>
 
     <a href="/customer/machine/${machine.id}" >
@@ -31,8 +31,10 @@
         <input type="date" name="startDate" value="${startDate}">
         <input type="date" name="endDate" value = "${endDate}">
         <input type="submit" value="Фильтр по датам">
-        <br> <br>
-    </form>
+        <input type="button" onclick="location.href='/customer/machine/historyRecord/createHistoryRecord/${machine.id}';" value="Создать Новый" />
+           </form>
+
+    <br> <br>
     <table class="mainTables">
         <tr>
             <th>N</th>

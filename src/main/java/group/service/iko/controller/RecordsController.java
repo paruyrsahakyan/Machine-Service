@@ -47,7 +47,7 @@ public class RecordsController {
         List<RecordFile> recordFileList = recordFileService.getFilesByRecordId(recordId);
         modelAndView.addObject("fileList", recordFileList);
         modelAndView.addObject("historyRecord", new HistoryRecordDTO(historyRecord));
-        modelAndView.addObject("lenght", historyRecord.getDetailedLaborHours().size());
+
         return modelAndView;
 
     }
@@ -185,11 +185,9 @@ public class RecordsController {
             }
         }
         HistoryRecord updatedHistoryRecord = historyRecordService.getHistoryRecordById(historyRecordId);
-        modelAndView.addObject("historyRecord", updatedHistoryRecord);
+        modelAndView.addObject("historyRecord",  new HistoryRecordDTO(updatedHistoryRecord));
         String recordDate = CalendarAdapter.getStringFormat(updatedHistoryRecord.getRecordDate());
         List<DetailedLaborHour> laborHourList = detailedLaborHourService.getDetailedLaborByRecordId(historyRecordId);
-        System.out.println(recordDate);
-        modelAndView.addObject("recordDate", recordDate);
         modelAndView.addObject("laborHourList", laborHourList);
         return modelAndView;
     }

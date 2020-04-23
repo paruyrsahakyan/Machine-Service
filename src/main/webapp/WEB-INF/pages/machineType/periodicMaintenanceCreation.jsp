@@ -32,6 +32,7 @@
     <a href="/admin/allServiceMachines"> Сервисные Mашины</a>
     <a class="active" href="/machineType/allMachineTypes"> Типы Машин</a>
     <a href="/wareHouse"> Склад </a>
+    <a href="/price/mainPage"> Прайс </a>
 </div>
 <div class="mainContent">
     <h2>Создание нового ТО</h2> <br>
