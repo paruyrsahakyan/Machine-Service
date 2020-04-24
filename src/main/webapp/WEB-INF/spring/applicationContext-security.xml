@@ -45,7 +45,7 @@
             <user-service>
                 <user authorities="ROLE_ADMIN" name="admin" password="$2a$10$7YtlQkeW7xBYbu841fLKDO/FLSf64bskVx3DplzG4qJp9LVmouc2G"/>
                 <user authorities="ROLE_USER" name="user" password="$2a$10$D5O1il7sEwnJZ.gqtWrToOEkfQMBQoq0MpGfNcynlZ/BDOLz2pCra"/>
-                <user authorities="ROLE_COORDINATOR" name="user" password="$$2a$10$ANbvetcm3BV6tt29wKdEPeEyieIQ0kSs77qSe8nQ33VShQCs20pD6"/>
+                <user authorities="ROLE_COORDINATOR" name="coordinator" password="$$2a$10$ANbvetcm3BV6tt29wKdEPeEyieIQ0kSs77qSe8nQ33VShQCs20pD6"/>
             </user-service>
          </authentication-provider>
      </authentication-manager>
