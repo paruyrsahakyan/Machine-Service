@@ -8,6 +8,7 @@ import group.service.iko.service.CustomerService;
 import group.service.iko.service.PriceForCustomerService;
 import group.service.iko.service.WareHouseService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -45,6 +46,7 @@ public class PriceController {
 
 
     @RequestMapping(value = "/createdNewPrice", method = RequestMethod.POST)
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ModelAndView addNewPrice(@RequestParam("customerName") String customerName,
                                     @RequestParam("article") String article,
                                     @RequestParam("description") String description,
@@ -65,6 +67,7 @@ public class PriceController {
     }
 
     @RequestMapping(value = "/itemDeleted", method = RequestMethod.GET)
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ModelAndView deleteTheItem(@RequestParam("id") int id,
                                       ModelMap modelMap) {
 
@@ -79,6 +82,7 @@ public class PriceController {
 
 
     @RequestMapping(value = "/itemUpdated", method = RequestMethod.POST)
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ModelAndView updateTheItem(@RequestParam("id") int id,
                                       @RequestParam("article") String article,
                                       @RequestParam("description") String description,
@@ -98,6 +102,7 @@ public class PriceController {
 
 
     @RequestMapping(value = "/pricesByArticleForAllCustomers/{article}", method = RequestMethod.GET)
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ModelAndView showArticlePricesForAllCustomers(@PathVariable("article") String article)
 
     {
@@ -110,6 +115,7 @@ public class PriceController {
     }
 
     @RequestMapping(value = "/pricesByArticleForAllCustomers", method = RequestMethod.GET)
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ModelAndView showArticlePricesForAllCustomersBySearchInput(@RequestParam("article") String article) {
         ModelAndView modelAndView = new ModelAndView("price/pricesByArticleForAllCustomers");
         List<PriceForCustomer> priceList = priceForCustomerService.getPriceForCustomerByArticle(article);

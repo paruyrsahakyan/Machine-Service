@@ -67,6 +67,7 @@ HomeController {
     }
 
     @RequestMapping("/allMachines/maintainedByIKO")
+    @PreAuthorize("hasRole('ROLE_USER')")
      public ModelAndView getMachinesMaintainedByIKO() {
         ModelAndView modelAndView = new ModelAndView("allMachines");
         List<Machine> machineList = machineService.getMachinesMaintainedByIKO();

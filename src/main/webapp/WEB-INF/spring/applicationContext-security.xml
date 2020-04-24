@@ -9,7 +9,7 @@
     <http auto-config="true" >
         <intercept-url pattern="/" access="permitAll()" />
         <intercept-url pattern="/*" access="hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')"/>
-        <intercept-url pattern="/favicon.ico" access="hasRole('ROLE_ADMIN') and hasRole('ROLE_USER')"/>
+        <intercept-url pattern="/favicon.ico" access="hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')"/>
         <intercept-url pattern="/analysis/*" access="hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')"/>
         <intercept-url pattern="/customer/createCustomer*" access="hasRole('ROLE_ADMIN')"/>
         <intercept-url pattern="/customer/newCustomer*" access="hasRole('ROLE_ADMIN')"/>
@@ -32,16 +32,19 @@
         <intercept-url pattern="/admin/addWorker"  access="hasRole('ROLE_ADMIN')" />
         <intercept-url pattern="/admin/workers/workerAdded"  access="hasRole('ROLE_ADMIN')" />
         <intercept-url pattern="/admin/workers/workerDeleted"  access="hasRole('ROLE_ADMIN')" />
+        <intercept-url pattern="/admin/allServiceMachines"  access="hasRole('ROLE_ADMIN')" />
+        <intercept-url pattern="/admin/serviceMachineAdded"  access="hasRole('ROLE_ADMIN')" />
+        <intercept-url pattern="/admin/serviceMachineDeleted"  access="hasRole('ROLE_ADMIN')" />
         <intercept-url pattern="/price/mainPage"  access="hasRole('ROLE_ADMIN')" />
         <intercept-url pattern="/price/createdNewPrice"  access="hasRole('ROLE_ADMIN')" />
+
             </http>
     <authentication-manager>
         <authentication-provider>
             <password-encoder ref="encoder"/>
             <user-service>
-                <!-- <user authorities="ROLE_ADMIN" name="admin" password="$2a$10$nvEUgQFowvUzEWZ0goTqXuc9jk1Qd1v0aPgDnhIL/XWOw6nPjqwJ2"/> -->
-                 <user authorities="ROLE_ADMIN" name="admin" password="$2a$10$9sHQ7UAfoGgDTQqYN4wkWuZkHVQHHGtJIeWDjvuaHWNX2RFsz3oIS"/>
-                <user authorities="ROLE_USER" name="user" password="$2a$10$v0oWOvfs7mBMUXT7m/BLNOLxYPRDujsteZv40ZY3K6Z4VtI8P3hmC"/>
+                <user authorities="ROLE_ADMIN" name="admin" password="$2a$10$9sHQ7UAfoGgDTQqYN4wkWuZkHVQHHGtJIeWDjvuaHWNX2RFsz3oIS"/>
+                <user authorities="ROLE_USER" name="user" password="$2a$10$D5O1il7sEwnJZ.gqtWrToOEkfQMBQoq0MpGfNcynlZ/BDOLz2pCra"/>
             </user-service>
          </authentication-provider>
      </authentication-manager>
