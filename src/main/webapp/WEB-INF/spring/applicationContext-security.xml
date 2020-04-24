@@ -8,7 +8,7 @@
         http://www.springframework.org/schema/security/spring-security-4.2.xsd">
     <http auto-config="true" >
         <intercept-url pattern="/" access="permitAll()" />
-        <intercept-url pattern="/*" access="hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')"/>
+        <intercept-url pattern="/*" access="hasRole('ROLE_ADMIN') or hasRole('ROLE_USER') or hasRole('ROLE_COORDINATOR')"/>
         <intercept-url pattern="/favicon.ico" access="hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')"/>
         <intercept-url pattern="/analysis/*" access="hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')"/>
         <intercept-url pattern="/customer/createCustomer*" access="hasRole('ROLE_ADMIN')"/>
@@ -26,7 +26,6 @@
         <intercept-url pattern="/customer/machine/historyRecord/deleteHistoryRecord/*" access="hasRole('ROLE_ADMIN')"/>
         <intercept-url pattern="/customer/machine/historyRecord/addFiles/*"  access="hasRole('ROLE_ADMIN')"/>
         <intercept-url pattern="/customer/machine/historyRecord/files/updatedList/*"  access="hasRole('ROLE_ADMIN')" />
-        <intercept-url pattern="/workOrder/*"  access="hasRole('ROLE_ADMIN')" />
         <intercept-url pattern="/machineType/*"  access="hasRole('ROLE_ADMIN')" />
         <intercept-url pattern="/admin/workers"  access="hasRole('ROLE_ADMIN')" />
         <intercept-url pattern="/admin/addWorker"  access="hasRole('ROLE_ADMIN')" />
