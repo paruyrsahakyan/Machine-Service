@@ -45,15 +45,13 @@ public class WorkOrderController {
     private ExcelReaderWriter excelReaderWriter;
 
     @RequestMapping("/{id}")
-    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_COORDINATOR')or hasRole('ROLE_USER') ")
-    public ModelAndView getWorkOrder(@PathVariable("id") int id) {
+       public ModelAndView getWorkOrder(@PathVariable("id") int id) {
         ModelAndView modelAndView = new ModelAndView("workOrder/workOrder");
         modelAndView.addObject("workOrder", new WorkOrderDTO(workOrderService.getWorkOrderById(id)));
         return modelAndView;
     }
 
     @RequestMapping("/new")
-    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_COORDINATOR')or hasRole('ROLE_USER')")
     public ModelAndView getWorkOrderCreationPage() {
         ModelAndView modelAndView = new ModelAndView("workOrder/createWorkOrder");
         modelAndView.addObject("machineList", MachineDTO.convertIntoDTO(machineService.getAllMachines()));
@@ -64,7 +62,6 @@ public class WorkOrderController {
     }
 
     @RequestMapping(value = "/createdWorkOrder", method = RequestMethod.POST)
-    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_COORDINATOR')")
     public ModelAndView createWorkOrder(@RequestParam("customer") String customerId,
                                         @RequestParam("machineId") int machineId,
                                         @RequestParam("periodicMaintenance") int maintenanceId,
@@ -91,7 +88,6 @@ public class WorkOrderController {
     }
 
     @RequestMapping("/{id}/update")
-    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_COORDINATOR')")
     public ModelAndView getUpdatePage(@PathVariable("id") int id) {
         WorkOrder workOrder = workOrderService.getWorkOrderById(id);
         ModelAndView modelAndView = new ModelAndView("workOrder/updateWorkOrder");
@@ -103,7 +99,6 @@ public class WorkOrderController {
     }
 
     @RequestMapping(value = "/{id}/updated", method = RequestMethod.POST)
-    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_COORDINATOR')")
     public ModelAndView updateWorkOrder(@PathVariable("id") int id,
                                         @RequestParam("smr") int smr,
                                         @RequestParam("date") String date,
@@ -127,7 +122,6 @@ public class WorkOrderController {
     }
 
     @RequestMapping("/{id}/deleted")
-    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_COORDINATOR')")
     public ModelAndView deleteWorkOrder(@PathVariable("id") int id) {
         WorkOrder workOrder = new WorkOrder();
         workOrder.setId(id);
@@ -137,8 +131,7 @@ public class WorkOrderController {
     }
 
     @RequestMapping("/{id}/completeWorkOrder")
-    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_COORDINATOR')")
-    public ModelAndView getOrderCompletePage(@PathVariable("id") int id) {
+     public ModelAndView getOrderCompletePage(@PathVariable("id") int id) {
         WorkOrder workOrder = workOrderService.getWorkOrderById(id);
         ModelAndView modelAndView = new ModelAndView("workOrder/completeWorkOrder");
         modelAndView.addObject("workOrder", new WorkOrderDTO(workOrder));
@@ -147,7 +140,6 @@ public class WorkOrderController {
     }
 
     @RequestMapping("/{id}/completedWorkOrder")
-    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_COORDINATOR')")
     public ModelAndView completeWorkOrder(@PathVariable("id") int id,
                                           @RequestParam("title") String title,
                                           @RequestParam(name = "smr", defaultValue = "0") int smr,
@@ -196,7 +188,6 @@ public class WorkOrderController {
     }
 
     @RequestMapping("/home")
-    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_COORDINATOR')or hasRole('ROLE_USER')")
     public ModelAndView getUncompletedWorkOrders() {
         List<WorkOrder> workOrderList = workOrderService.getUncompletedOrders();
         ModelAndView modelAndView = new ModelAndView("workOrder/workOrderHomePage");
@@ -206,7 +197,6 @@ public class WorkOrderController {
 
 
     @RequestMapping(value = "/{id}/serviceReport", method = RequestMethod.GET)
-    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_COORDINATOR')or hasRole('ROLE_USER')")
     public void downloadReportFile(HttpServletResponse response,
                              @PathVariable("id") int workOrderId) throws IOException {
         WorkOrder workOrder = workOrderService.getWorkOrderById(workOrderId);
@@ -222,7 +212,6 @@ public class WorkOrderController {
     }
 
     @RequestMapping(value = "/{id}/wareHouseRequest", method = RequestMethod.GET)
-    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_COORDINATOR')or hasRole('ROLE_USER')")
     public void downloadWareHouseRequest(HttpServletResponse response,
                                          @PathVariable("id") int workOrderId) throws IOException {
         WorkOrder workOrder = workOrderService.getWorkOrderById(workOrderId);
@@ -237,7 +226,6 @@ public class WorkOrderController {
     }
 
     @RequestMapping(value = "/{id}/maintenanceRequest", method = RequestMethod.GET)
-    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_COORDINATOR')or hasRole('ROLE_USER')")
     public void downloadMaintenanceRequest(HttpServletResponse response,
                                          @PathVariable("id") int workOrderId) throws IOException {
         WorkOrder workOrder = workOrderService.getWorkOrderById(workOrderId);
