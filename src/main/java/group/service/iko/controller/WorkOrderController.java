@@ -24,7 +24,6 @@ import java.util.List;
 
 @Controller()
 @RequestMapping("/workOrder")
-@PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_USER') or hasRole('ROLE_COORDINATOR')")
 public class WorkOrderController {
     @Autowired
     private CustomerService customerService;
