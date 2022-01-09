@@ -130,7 +130,7 @@ public class PriceController {
 
     @RequestMapping(value = "/setPriceListFromFile", method =RequestMethod.POST)
     public  ModelAndView setPriceListForCustomerFromFile(@RequestParam("customerId") int customerId,
-                                                         @RequestParam(value = "wareHouseFile", required = false) MultipartFile uploadedFile,
+                                                         @RequestParam(value = "priceFile", required = false) MultipartFile uploadedFile,
                                                          ModelMap modelMap) throws IOException {
 
         new PriceForCustomerService().setPriceListForCustomerFromFile(customerId, uploadedFile);

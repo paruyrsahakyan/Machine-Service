@@ -46,6 +46,14 @@
             &nbsp;&nbsp;&nbsp;&nbsp;
             <button type="button" onclick="showHiddenForm()"> Добавить позицию</button>
             <br><br>
+              <p id="fileUploadForm">
+                             <form:form action="/price/setPriceListFromFile" method="post"  accept-charset="UTF-8"
+                                           enctype="multipart/form-data">
+                                Загрузить Файл :
+                                <input type="file" name="priceFile">
+                                <input  type="submit" value="загрузить">
+                                </form:form>
+                        </p>
             <div id="hiddenForm" style="display: none;">
                 <input id="newArticle" type="text" name="article" placeholder="Вводите  Артикул" onkeyup="checkTheArticle()"
                        required>
