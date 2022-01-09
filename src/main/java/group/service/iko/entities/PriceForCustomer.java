@@ -1,5 +1,7 @@
 package group.service.iko.entities;
 
+import org.springframework.web.multipart.*;
+
 import javax.persistence.*;
 
 @Entity
@@ -56,4 +58,6 @@ public class PriceForCustomer {
     public void setPrice(int price) {
         this.price = price;
     }
+
+
 }

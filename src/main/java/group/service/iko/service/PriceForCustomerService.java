@@ -1,7 +1,6 @@
 package group.service.iko.service;
 
-import group.service.iko.entities.Machine;
-import group.service.iko.entities.PriceForCustomer;
+import group.service.iko.entities.*;
 import group.service.iko.entityDao.EntityDAO;
 import group.service.iko.entityDao.SessionFactoryImpl;
 import org.hibernate.Query;
@@ -9,7 +8,11 @@ import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.method.P;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.*;
+import org.springframework.web.multipart.*;
+import org.springframework.web.servlet.*;
 
+import java.io.*;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -76,6 +79,17 @@ public class PriceForCustomerService {
             articleList.add(priceForCustomer.getArticle());
         }
            return new HashSet<>(articleList).stream().sorted().collect(Collectors.toList());
+    }
+
+    public void setPriceListForCustomerFromFile(int customerId, MultipartFile uploadedFile) throws IOException {
+        new StorageService().savePriceListFile(uploadedFile);
+        Customer customer = new CustomerService().getCustomerById(customerId);
+        PriceForCustomerService priceForCustomerService = new PriceForCustomerService();
+        Set<PriceForCustomer> set = new ExcelReaderWriter().getPriceListFromTheFile();
+        set.forEach(priceForCustomer -> priceForCustomer.setCustomer(customer));
+        set.forEach(priceForCustomerService::savePriceForCustomer);
+
+
     }
 
 }

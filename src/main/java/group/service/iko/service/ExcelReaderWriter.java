@@ -1,9 +1,7 @@
 package group.service.iko.service;
 
 import group.service.iko.calendarAdapter.CalendarAdapter;
-import group.service.iko.entities.MaintenancePart;
-import group.service.iko.entities.Part;
-import group.service.iko.entities.WorkOrder;
+import group.service.iko.entities.*;
 import org.apache.commons.io.FileUtils;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -86,11 +84,11 @@ public class ExcelReaderWriter {
                 part.setNomenclature(row.getCell(nomenclatureColumn).toString());
 //                part.setUnit(row.getCell(6).getStringCellValue());
                 Cell quantityCell = row.getCell(quantityColumn);
-                if (quantityCell.getCellTypeEnum()==CellType.NUMERIC) {
+                if (quantityCell.getCellTypeEnum() == CellType.NUMERIC) {
                     part.setQuantity(quantityCell.getNumericCellValue());
                 }
                 Cell netCostCell = row.getCell(netCostColumn);
-                if(netCostCell.getCellTypeEnum()==CellType.NUMERIC){
+                if (netCostCell.getCellTypeEnum() == CellType.NUMERIC) {
                     part.setNetCost(netCostCell.getNumericCellValue());
                 }
                 partMap.put(partNumber, part);
@@ -299,6 +297,29 @@ public class ExcelReaderWriter {
     public void setPartsQuantity(int partsQuantity) {
         this.partsQuantity = partsQuantity;
     }
+
+    public Set<PriceForCustomer> getPriceListFromTheFile() throws IOException {
+        File priceListFile = new File(storageService.getCurrentPriceListFilePath());
+        FileInputStream excelFile = new FileInputStream(priceListFile);
+        Workbook workbook = new XSSFWorkbook(excelFile);
+        Sheet datatypeSheet = workbook.getSheetAt(0);
+        Set<PriceForCustomer> priceListForCustomer  = new HashSet<>();
+       int linesQuantityInTheFile = datatypeSheet.getLastRowNum();
+        for (int i = 0; i < linesQuantityInTheFile; i++) {
+            PriceForCustomer priceForCustomer = new PriceForCustomer();
+            Row row = datatypeSheet.getRow(i);
+            Cell articleCell = row.getCell(0);
+            String partArticle = articleCell.getStringCellValue();
+            priceForCustomer.setArticle(partArticle);
+            Cell priceCell = row.getCell(1);
+            if (priceCell.getCellTypeEnum() == CellType.NUMERIC) {
+                priceForCustomer.setPrice((int) priceCell.getNumericCellValue());
+            }
+            priceListForCustomer.add(priceForCustomer);
+        }
+        return priceListForCustomer;
+    }
 }
+
 
 

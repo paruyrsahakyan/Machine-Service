@@ -28,6 +28,12 @@ public class StorageService {
     private final String wareHouseFileName="wareHouse.xlsx";
     private final String warHouseFilePath =wareHouseFileFolder+File.separator+wareHouseFileName;
 
+    private final String priceListFileFolder=  File.separator + "home" +File.separator + "paruyr" +
+            File.separator + "IkoService"+File.separator + "priceList";
+    private final String currentPriceListFileName="uploadedPriceList.xlsx";
+
+    private final String currentPriceListFilePath=priceListFileFolder+File.separator+currentPriceListFileName;
+
     public StorageService() {
 
     }
@@ -90,8 +96,19 @@ public class StorageService {
         } catch (IOException e1) {
             e1.printStackTrace();
         }
+              }
+    public void savePriceListFile(MultipartFile file) {
+        File priceListFolder = new File(priceListFileFolder);
+        priceListFolder.mkdirs();
+        File priceListFile = new File(currentPriceListFilePath);
+        priceListFile.delete();
+        try {
+            priceListFile.createNewFile();
+            file.transferTo(priceListFile);
+        } catch (IOException e1) {
+            e1.printStackTrace();
+        }
     }
-
     public String getFilePath() {
         return filePath;
     }
@@ -118,6 +135,9 @@ public class StorageService {
 
     public String getWarHouseFilePath() {
         return warHouseFilePath;
+    }
+    public String getCurrentPriceListFilePath() {
+        return currentPriceListFilePath;
     }
 }
 
