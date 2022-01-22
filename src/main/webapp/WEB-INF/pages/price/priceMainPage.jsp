@@ -46,26 +46,26 @@
             &nbsp;&nbsp;&nbsp;&nbsp;
             <button type="button" onclick="showHiddenForm()"> Добавить позицию</button>
             <br><br>
-              <p id="fileUploadForm">
-                             <form:form action="/price/setPriceListFromFile" method="post"  accept-charset="UTF-8"
-                                           enctype="multipart/form-data">
-                                Загрузить Файл :
-                                <input type="file" name="priceFile">
-                                <input  type="submit" value="загрузить">
-                                </form:form>
-                        </p>
-            <div id="hiddenForm" style="display: none;">
+             <div id="hiddenForm" style="display: none;">
                 <input id="newArticle" type="text" name="article" placeholder="Вводите  Артикул" onkeyup="checkTheArticle()"
                        required>
                 <input type="text" name="description" placeholder="Вводите Название" required>
                 <input type="nuber" name="price" placeholder="Вводите Цену" required>
                 <input type="submit" value="Сохранить">
-            </div>
         </form:form>
         </div>
 
+            <div  class="mainContent" id="fileUploadForm"  style="display: none;">
+                   <form:form action="/price/setPriceListFromFile" method="post"  accept-charset="UTF-8"   enctype="multipart/form-data">
+                    Загрузка прайса с Файла :
+                    <input type="file" name="priceFile">
+                    <input id="customerNameInUploadForm"  type="hidden" name="customerName">
+                    <input  type="submit" value="загрузить">
+                   </form:form>
+        </div>
 
-        <div  class="mainContent" id="hiddenFormForItemEdit" style="display: none;">
+
+        <div  class="mainContent" id="hiddenFormForItemEdit" >
         <form:form action="/price/itemUpdated" method="post" accept-charset="UTF-8">
             <input id="articleToEdit" type="text" name="article" required>
             <input id="descriptionToEdit" type="text" name="description" required>
@@ -246,6 +246,7 @@
 
                 function createTableOnCustomerSelection() {
                 customerNameForTableCreation=document.getElementById("selectedCustomerName").value;
+                document.getElementById("customerNameInUploadForm").value=customerNameForTableCreation;
                 initPriceListForCustomer();
                 priceListForSelectedCustomer=priceListForTableCreation;
                 createTable();
