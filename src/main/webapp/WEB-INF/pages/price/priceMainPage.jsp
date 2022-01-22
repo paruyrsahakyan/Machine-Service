@@ -28,34 +28,34 @@
         <br>
         <br>
 
-        <div class="mainContent">
-
-        <form:form id="toCreateNewItem" action="/price/createdNewPrice" method="post" accept-charset="UTF-8">
-            <B>Клиент </B>
-            <input list="customers" name="customerName" id="selectedCustomerName"  value="${selectedCustomer.name}"
-                   onchange="createTableOnCustomerSelection()">
-
-            <datalist id="customers">
-                <c:forEach items="${customerList}" var="customer">
-                    <option value="${customer.name}" hidden> ${customer.name} </option>
-                </c:forEach>
-            </datalist>
-            &nbsp;&nbsp;&nbsp;&nbsp;
-            <B>Артикул </B>
-            <input type="text" id="articleSearch" onkeyup="updateTableByArticle()">
-            &nbsp;&nbsp;&nbsp;&nbsp;
-            <button type="button" onclick="showHiddenForm()"> Добавить позицию</button>
-            <br><br>
-             <div id="hiddenForm" style="display: none;">
-                <input id="newArticle" type="text" name="article" placeholder="Вводите  Артикул" onkeyup="checkTheArticle()"
-                       required>
-                <input type="text" name="description" placeholder="Вводите Название" required>
-                <input type="nuber" name="price" placeholder="Вводите Цену" required>
-                <input type="submit" value="Сохранить">
-        </form:form>
+          <div class="mainContent">
+               <form:form id="toCreateNewItem" action="/price/createdNewPrice" method="post" accept-charset="UTF-8">
+                   <B>Клиент </B>
+                   <input list="customers" name="customerName" id="selectedCustomerName"  value="${selectedCustomer.name}"
+                          onchange="createTableOnCustomerSelection()">
+                   <datalist id="customers">
+                       <c:forEach items="${customerList}" var="customer">
+                           <option value="${customer.name}" hidden> ${customer.name} </option>
+                       </c:forEach>
+                   </datalist>
+                   &nbsp;&nbsp;&nbsp;&nbsp;
+                   <B>Артикул </B>
+                   <input type="text" id="articleSearch" onkeyup="updateTableByArticle()">
+                   &nbsp;&nbsp;&nbsp;&nbsp;
+                   <button type="button" onclick="showHiddenForm()"> Добавить позицию</button>
+                   <br><br>
+                   <div id="hiddenForm" style="display: none;">
+                       <input id="newArticle" type="text" name="article" placeholder="Вводите  Артикул" onkeyup="checkTheArticle()"
+                              required>
+                       <input type="text" name="description" placeholder="Вводите Название" required>
+                       <input type="nuber" name="price" placeholder="Вводите Цену" required>
+                       <input type="submit" value="Сохранить">
+                   </div>
+               </form:form>
+               </div>
         </div>
 
-            <div  class="mainContent" id="fileUploadForm"  style="display: none;">
+            <div  class="mainContent" id="fileUploadForm" >
                    <form:form action="/price/setPriceListFromFile" method="post"  accept-charset="UTF-8"   enctype="multipart/form-data">
                     Загрузка прайса с Файла :
                     <input type="file" name="priceFile">
