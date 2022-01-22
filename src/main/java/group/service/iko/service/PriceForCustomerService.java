@@ -81,9 +81,9 @@ public class PriceForCustomerService {
            return new HashSet<>(articleList).stream().sorted().collect(Collectors.toList());
     }
 
-    public void setPriceListForCustomerFromFile(int customerId, MultipartFile uploadedFile) throws IOException {
+    public void setPriceListForCustomerFromFile(String customerName, MultipartFile uploadedFile) throws IOException {
         new StorageService().savePriceListFile(uploadedFile);
-        Customer customer = new CustomerService().getCustomerById(customerId);
+        Customer customer = new CustomerService().getCustomerByName(customerName);
         PriceForCustomerService priceForCustomerService = new PriceForCustomerService();
         Set<PriceForCustomer> set = new ExcelReaderWriter().getPriceListFromTheFile();
         set.forEach(priceForCustomer -> priceForCustomer.setCustomer(customer));

@@ -65,7 +65,7 @@
         </div>
 
 
-        <div  class="mainContent" id="hiddenFormForItemEdit" >
+        <div  class="mainContent" id="hiddenFormForItemEdit" style="display: none;">
         <form:form action="/price/itemUpdated" method="post" accept-charset="UTF-8">
             <input id="articleToEdit" type="text" name="article" required>
             <input id="descriptionToEdit" type="text" name="description" required>
