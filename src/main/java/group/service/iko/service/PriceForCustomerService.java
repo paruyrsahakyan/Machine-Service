@@ -26,6 +26,17 @@ public class PriceForCustomerService {
     }
 
     public void savePriceForCustomer(PriceForCustomer priceForCustomer) {
+        String articleToSave = priceForCustomer.getArticle();
+        Customer customer = priceForCustomer.getCustomer();
+        Set<PriceForCustomer> priceForCustomerList = customer.getPriceForCustomerList();
+        for (PriceForCustomer priceForCustomer1 : priceForCustomerList) {
+            if (priceForCustomer1.getArticle().equals(articleToSave)) {
+                 priceForCustomer1.setPrice(priceForCustomer.getPrice());
+                 updatePriceForCustomer(priceForCustomer1);
+                 return;
+            }
+                    }
+
         entityDAO.saveEntity(priceForCustomer);
     }
 

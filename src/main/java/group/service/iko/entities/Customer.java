@@ -24,7 +24,7 @@ public class Customer {
     private Worker responsible;
     @Column
     private String contract;
-    @OneToMany (mappedBy = "customer", fetch =FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany (mappedBy = "customer", fetch =FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<PriceForCustomer> priceForCustomerList;
 
 

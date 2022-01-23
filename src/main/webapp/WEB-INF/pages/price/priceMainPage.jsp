@@ -59,7 +59,7 @@
                    <form:form action="/price/setPriceListFromFile" method="post"  accept-charset="UTF-8"   enctype="multipart/form-data">
                     Загрузка прайса с Файла :
                     <input type="file" name="priceFile">
-                    <input id="customerNameInUploadForm"  type="hidden" name="customerName">
+                    <input id="customerNameInUploadForm"  type="hidden" name="customerName" value="${selectedCustomer.name}">
                     <input  type="submit" value="загрузить">
                    </form:form>
         </div>
