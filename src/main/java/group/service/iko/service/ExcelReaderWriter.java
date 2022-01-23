@@ -16,7 +16,8 @@ import java.util.*;
 @Service
 public class ExcelReaderWriter {
     @Autowired
-    private StorageService storageService;
+    private StorageService
+            storageService;
     @Autowired
     private InterChangeablePartService interChangeablePartServicel;
     public static Map<String, Part> partMap;
@@ -304,7 +305,7 @@ public class ExcelReaderWriter {
         Workbook workbook = new XSSFWorkbook(excelFile);
         Sheet datatypeSheet = workbook.getSheetAt(0);
         Set<PriceForCustomer> priceListForCustomer  = new HashSet<>();
-       int linesQuantityInTheFile = datatypeSheet.getLastRowNum();
+       int linesQuantityInTheFile = datatypeSheet.getLastRowNum()+1;
         for (int i = 0; i < linesQuantityInTheFile; i++) {
             PriceForCustomer priceForCustomer = new PriceForCustomer();
             Row row = datatypeSheet.getRow(i);

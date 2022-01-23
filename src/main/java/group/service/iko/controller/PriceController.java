@@ -134,7 +134,7 @@ public class PriceController {
                                                          ModelMap modelMap) throws IOException {
                new PriceForCustomerService().setPriceListForCustomerFromFile(customerName, uploadedFile);
                modelMap.addAttribute("selectedCustomer", customerName);
-        ModelAndView modelAndView = new ModelAndView("redirect:/price/manPage", modelMap);
+        ModelAndView modelAndView = new ModelAndView("redirect:/price/mainPage", modelMap);
         return modelAndView;
     }
 }

@@ -20,7 +20,9 @@ import java.util.stream.Collectors;
 public class PriceForCustomerService {
     @Autowired
     private EntityDAO<PriceForCustomer> entityDAO;
-    private Session session;
+    @Autowired
+    CustomerService customerService;
+    Session session;
 
     public PriceForCustomerService() {
     }
@@ -94,11 +96,10 @@ public class PriceForCustomerService {
 
     public void setPriceListForCustomerFromFile(String customerName, MultipartFile uploadedFile) throws IOException {
         new StorageService().savePriceListFile(uploadedFile);
-        Customer customer = new CustomerService().getCustomerByName(customerName);
-        PriceForCustomerService priceForCustomerService = new PriceForCustomerService();
+        Customer customer = customerService.getCustomerByName(customerName);
         Set<PriceForCustomer> set = new ExcelReaderWriter().getPriceListFromTheFile();
         set.forEach(priceForCustomer -> priceForCustomer.setCustomer(customer));
-        set.forEach(priceForCustomerService::savePriceForCustomer);
+        set.forEach(this::savePriceForCustomer);
 
 
     }
