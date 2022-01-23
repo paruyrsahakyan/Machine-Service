@@ -22,6 +22,8 @@ public class PriceForCustomerService {
     private EntityDAO<PriceForCustomer> entityDAO;
     @Autowired
     private CustomerService customerService;
+    @Autowired
+    private ExcelReaderWriter excelReaderWriter;
     Session session;
 
     public PriceForCustomerService() {
@@ -97,7 +99,7 @@ public class PriceForCustomerService {
     public void setPriceListForCustomerFromFile(String customerName, MultipartFile uploadedFile) throws IOException {
         new StorageService().savePriceListFile(uploadedFile);
         Customer customer = customerService.getCustomerByName(customerName);
-        Set<PriceForCustomer> set = new ExcelReaderWriter().getPriceListFromTheFile();
+        Set<PriceForCustomer> set = excelReaderWriter.getPriceListFromTheFile();
         set.forEach(priceForCustomer -> priceForCustomer.setCustomer(customer));
         set.forEach(this::savePriceForCustomer);
 
