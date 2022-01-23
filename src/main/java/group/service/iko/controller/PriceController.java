@@ -132,7 +132,7 @@ public class PriceController {
     public  ModelAndView setPriceListForCustomerFromFile(@RequestParam("customerName") String customerName,
                                                          @RequestParam(value = "priceFile", required = false) MultipartFile uploadedFile,
                                                          ModelMap modelMap) throws IOException {
-               new PriceForCustomerService().setPriceListForCustomerFromFile(customerName, uploadedFile);
+               priceForCustomerService.setPriceListForCustomerFromFile(customerName, uploadedFile);
                modelMap.addAttribute("selectedCustomer", customerName);
         ModelAndView modelAndView = new ModelAndView("redirect:/price/mainPage", modelMap);
         return modelAndView;

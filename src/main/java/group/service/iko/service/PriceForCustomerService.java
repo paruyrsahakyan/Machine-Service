@@ -21,7 +21,7 @@ public class PriceForCustomerService {
     @Autowired
     private EntityDAO<PriceForCustomer> entityDAO;
     @Autowired
-    CustomerService customerService;
+    private CustomerService customerService;
     Session session;
 
     public PriceForCustomerService() {
@@ -33,11 +33,11 @@ public class PriceForCustomerService {
         Set<PriceForCustomer> priceForCustomerList = customer.getPriceForCustomerList();
         for (PriceForCustomer priceForCustomer1 : priceForCustomerList) {
             if (priceForCustomer1.getArticle().equals(articleToSave)) {
-                 priceForCustomer1.setPrice(priceForCustomer.getPrice());
-                 updatePriceForCustomer(priceForCustomer1);
-                 return;
+                priceForCustomer1.setPrice(priceForCustomer.getPrice());
+                updatePriceForCustomer(priceForCustomer1);
+                return;
             }
-                    }
+        }
 
         entityDAO.saveEntity(priceForCustomer);
     }
@@ -87,11 +87,11 @@ public class PriceForCustomerService {
     public List<String> getArticlesSet() {
 
         List<String> articleList = new ArrayList<>();
-        List<PriceForCustomer> listOfPriceForCustomer =getAllPriceForCustomer();
+        List<PriceForCustomer> listOfPriceForCustomer = getAllPriceForCustomer();
         for (PriceForCustomer priceForCustomer : listOfPriceForCustomer) {
             articleList.add(priceForCustomer.getArticle());
         }
-           return new HashSet<>(articleList).stream().sorted().collect(Collectors.toList());
+        return new HashSet<>(articleList).stream().sorted().collect(Collectors.toList());
     }
 
     public void setPriceListForCustomerFromFile(String customerName, MultipartFile uploadedFile) throws IOException {
