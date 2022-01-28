@@ -74,7 +74,7 @@
 <c:forEach items="${fileList}" var="file">
     &nbsp;
     <a href="/customer/machine/historyRecord/downloadFile/${file.id}" target="_blank" >
-            ${file.fileName}  </a>
+            ${file.fileDescription}  </a>
     &nbsp;|
 </c:forEach>
 <br>
