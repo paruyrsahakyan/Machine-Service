@@ -8,7 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
-import java.util.List;
+import java.util.*;
+import java.util.stream.*;
 
 @Service
 public class MachineTypeService {
@@ -40,7 +41,10 @@ public class MachineTypeService {
         List<MachineType> machineTypeList = (List<MachineType>) query.list();
         session.flush();
         session.close();
-        return machineTypeList;
+        List list = machineTypeList.stream().sorted(Comparator.comparing(MachineType::getTypeDescription)).collect(Collectors.toList());
+
+        return list;
+
     }
 
 
