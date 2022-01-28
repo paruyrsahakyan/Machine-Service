@@ -32,7 +32,7 @@ public class PriceForCustomerService {
     public void savePriceForCustomer(PriceForCustomer priceForCustomer) {
         String articleToSave = priceForCustomer.getArticle();
         Customer customer = priceForCustomer.getCustomer();
-        Set<PriceForCustomer> priceForCustomerList = customer.getPriceForCustomerList();
+        Set<PriceForCustomer> priceForCustomerList = getPriceListByCustomerName(customer.getName());
         for (PriceForCustomer priceForCustomer1 : priceForCustomerList) {
             if (priceForCustomer1.getArticle().equals(articleToSave)) {
                 priceForCustomer1.setPrice(priceForCustomer.getPrice());
@@ -103,6 +103,17 @@ public class PriceForCustomerService {
         set.forEach(priceForCustomer -> priceForCustomer.setCustomer(customer));
         set.forEach(this::savePriceForCustomer);
 
+
+    }
+    public Set<PriceForCustomer> getPriceListByCustomerName(String customerName){
+        session = SessionFactoryImpl.getSessionFactory().openSession();
+        String hql = "from group.service.iko.entities.PriceForCustomer where customer.id=:article";
+        Query query = session.createQuery(hql);
+        query.setParameter("article", customerService.getCustomerByName(customerName).getId());
+        Set<PriceForCustomer> set = (Set<PriceForCustomer>) query.list();
+        session.flush();
+        session.close();
+        return set;
 
     }
 
