@@ -1,5 +1,6 @@
 package group.service.iko.entityDao;
 
+import group.service.iko.entities.*;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

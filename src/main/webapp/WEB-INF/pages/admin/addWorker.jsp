@@ -25,6 +25,8 @@
     <a href="/machineType/allMachineTypes"> Типы Машин</a>
     <a href="/wareHouse"> Склад </a>
     <a href="/price/mainPage"> Прайс </a>
+     <a href="/offer/mainPage">  Заказы </a>
+
 </div>
 <div class="mainContent">
 <H2> Добавление работника </H2>

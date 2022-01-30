@@ -168,7 +168,7 @@ CREATE TABLE `interchangeable_part` (
 PRIMARY KEY (`id`)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-------------------------- work_order -------------------------------
+------------------------- price_for_customer -------------------------------
 
 CREATE TABLE `price_for_customer` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -179,4 +179,19 @@ CREATE TABLE `price_for_customer` (
   PRIMARY KEY (`id`),
   KEY `foreignKeyCustomerId` (`customer_id`),
   CONSTRAINT `foreignKeyCustomerId` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+_________________________offer__________________________________________
+
+CREATE TABLE `offer` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `request_number` varchar(255) DEFAULT NULL,
+  `offer_date` datetime DEFAULT NULL,
+  `validation_date` datetime DEFAULT NULL,
+  `condition` varchar(255) DEFAULT NULL,
+  `customer_id` int(11) DEFAULT NULL,
+   PRIMARY KEY (`id`),
+  KEY `foreignKeyCustomerId` (`customer_id`),
+  CONSTRAINT `foreignKeyInOfferCustomerId` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

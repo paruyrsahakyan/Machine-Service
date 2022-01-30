@@ -24,6 +24,8 @@
     <a href="/machineType/allMachineTypes"> Типы Машин</a>
     <a href="/wareHouse"> Склад </a>
     <a href="/price/mainPage"> Прайс </a>
+     <a href="/offer/mainPage">  Заказы </a>
+
 </div>
 <հ2>Машина была удалена</հ2>
 

@@ -25,6 +25,7 @@
     <a href="/machineType/allMachineTypes"> Типы Машин</a>
     <a href="/wareHouse"> Склад </a>
     <a href="/price/mainPage"> Прайс </a>
+    <a href="/offer/mainPage">  Заказы </a>
 </div>
 <div class="mainContent">
     <H2 style="text-align: center"> Создание Сервисной Машины </H2>

@@ -27,6 +27,8 @@
     <a class="active" href="/machineType/allMachineTypes"> Типы Машин</a>
     <a href="/wareHouse"> Склад </a>
     <a href="/price/mainPage"> Прайс </a>
+     <a href="/offer/mainPage">  Заказы </a>
+
 </div>
 <div class="mainContent">
     <h2>Редактирование Типа Машины</h2> <br>
