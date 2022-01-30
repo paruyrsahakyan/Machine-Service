@@ -10,12 +10,13 @@ public class Offer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Column
+    @Column (name= "request_number")
     private String requestNumber;
     @Column(name = "offer_date")
     private GregorianCalendar offerDate;
-    @Column
+    @Column (name = "validation_date")
     private GregorianCalendar validationDate;
+    
     @OneToMany (mappedBy = "offer", fetch =FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<OfferLine> offerLineSet;
     @Column
