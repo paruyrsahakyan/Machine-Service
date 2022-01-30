@@ -53,7 +53,7 @@
           var FilteredOffers[];
           var customerList = [];
           
-           <c:forEach items="${offerList}" var="offer">
+           <c:forEach items="${currentOffers}" var="offer">
               var id ="${offer.id}"
               var customer = "${offer.customer}";
               var offerDate = "${offer.date}";

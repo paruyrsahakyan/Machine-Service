@@ -13,7 +13,7 @@ import org.springframework.web.servlet.*;
 import java.util.*;
 
 @Controller()
-@RequestMapping("/Offer")
+@RequestMapping("/offer")
 public class OfferController {
 
     @Autowired
@@ -23,7 +23,7 @@ public class OfferController {
     @RequestMapping("/mainPage")
     @PreAuthorize("hasRole('ROLE_USER')")
     public ModelAndView mainPage() {
-        ModelAndView modelAndView = new ModelAndView("mainPAge");
+        ModelAndView modelAndView = new ModelAndView("order/offer");
 
         List<Offer> offerList = offerService.getCurrentOffers();
         modelAndView.addObject( "currentOffers", offerList);
