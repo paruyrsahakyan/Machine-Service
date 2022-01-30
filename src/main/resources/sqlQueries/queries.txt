@@ -195,3 +195,25 @@ CREATE TABLE `offer` (
   KEY `foreignKeyCustomerId` (`customer_id`),
   CONSTRAINT `foreignKeyInOfferCustomerId` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+---------------------------offerLine-----------------------------------
+CREATE TABLE `offer_line` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `requested_part_number` varchar(255) DEFAULT NULL,
+   `requested_part_name` varchar(255) DEFAULT NULL,
+   `offered_part_name` varchar(255) DEFAULT NULL,
+   `offered_part_number` varchar(255) DEFAULT NULL,
+   `quantity` int(11) DEFAULT NULL,
+    `unit` varchar(255) DEFAULT NULL,
+    `price` int(11) DEFAULT NULL,
+    `sum` int(11) DEFAULT NULL,
+    `supply_date` int(11) DEFAULT NULL,
+    `producer` varchar(255) DEFAULT NULL,
+    `confirmation_condition` varchar(255) DEFAULT NULL,
+     `offer_id` int(11) DEFAULT NULL,
+      PRIMARY KEY (`id`),
+       KEY `foreignKeyOfferId` (`offer_id`),
+       CONSTRAINT `foreignKeyInOfferLineOfferId` FOREIGN KEY (`offer_id`) REFERENCES `offer` (`id`)
+     ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+

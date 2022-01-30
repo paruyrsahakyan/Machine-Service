@@ -27,8 +27,7 @@
         <mapping class="group.service.iko.entities.PriceForCustomer"/>
         <mapping class="group.service.iko.entities.Offer"/>
         <mapping class="group.service.iko.entities.OfferLine"/>
-        <mapping class="group.service.iko.entities.Order"/>
-        <mapping class="group.service.iko.entities.OrderLine"/>
+     
 
 
     </session-factory>
