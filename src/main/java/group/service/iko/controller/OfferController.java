@@ -18,6 +18,8 @@ public class OfferController {
 
     @Autowired
     private OfferService offerService;
+    @Autowired
+    private CustomerService customerService;
 
 
     @RequestMapping("/mainPage")
@@ -26,7 +28,8 @@ public class OfferController {
         ModelAndView modelAndView = new ModelAndView("order/offer");
 
         List<Offer> offerList = offerService.getCurrentOffers();
-        modelAndView.addObject( "currentOffers", offerList);
+        modelAndView.addObject( "currentOffers", offerList);;
+        modelAndView.addObject("allCustomers", CustomerDTO.convertIntoDTO(customerService.getAllCustomers()));
         return modelAndView;
 
     }
