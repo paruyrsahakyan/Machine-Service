@@ -14,14 +14,19 @@ public class OfferLine {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Column
+
+    @Column (name= "requested_part_name")
     private String requestedPartName;
-    @Column
+
+    @Column (name= "requested_part_number")
     private String requestedPartNumber;
-    @Column
+
+    @Column  (name= "offered_part_name")
     private String offeredPartName;
-    @Column
+
+    @Column  (name= "offered_part_number")
     private String offeredPartNumber;
+
     @Column
     private int quantity;
     @Column
@@ -30,14 +35,18 @@ public class OfferLine {
     private int price;
     @Column
     private int sum;
-    @Column
+
+    @Column  (name= "supply_date")
     private int supplyDate;
+
     @Column
     private String producer;
-    @Column
+
+    @Column  (name= "confirmation_condition")
     private String confirmationCondition;
+
     @ManyToOne()
-    @JoinColumn(name = "offer_id")
+        @JoinColumn(name = "offer_id")
     private Offer offer;
 
 

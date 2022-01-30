@@ -16,7 +16,7 @@ public class Offer {
     private GregorianCalendar offerDate;
     @Column (name = "validation_date")
     private GregorianCalendar validationDate;
-    
+
     @OneToMany (mappedBy = "offer", fetch =FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<OfferLine> offerLineSet;
     @Column
