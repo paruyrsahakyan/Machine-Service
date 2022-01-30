@@ -189,7 +189,7 @@ CREATE TABLE `offer` (
   `request_number` varchar(255) DEFAULT NULL,
   `offer_date` datetime DEFAULT NULL,
   `validation_date` datetime DEFAULT NULL,
-  `condition` varchar(255) DEFAULT NULL,
+  `offer_condition` varchar(255) DEFAULT NULL,
   `customer_id` int(11) DEFAULT NULL,
    PRIMARY KEY (`id`),
   KEY `foreignKeyCustomerId` (`customer_id`),

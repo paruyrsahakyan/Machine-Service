@@ -19,8 +19,10 @@ public class Offer {
 
     @OneToMany (mappedBy = "offer", fetch =FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<OfferLine> offerLineSet;
-    @Column
-    private String condition;
+
+    @Column (name= "offer_condition")
+    private String offerCondition;
+
     @ManyToOne()
     @JoinColumn(name = "customer_id")
     private Customer customer;
@@ -80,11 +82,11 @@ public class Offer {
         this.offerLineSet = offerLineSet;
     }
 
-    public String getCondition() {
-        return condition;
+    public String getOfferCondition() {
+        return offerCondition;
     }
 
-    public void setCondition(String condition) {
-        this.condition = condition;
+    public void setOfferCondition(String offerCondition) {
+        this.offerCondition = offerCondition;
     }
 }

@@ -44,7 +44,7 @@ public class OfferService {
     public List<Offer> getCurrentOffers(){
 
         Session session = SessionFactoryImpl.getSessionFactory().openSession();
-        String hql = "FROM group.service.iko.entities.Offer WHERE condition = 'closed' ";
+        String hql = "FROM group.service.iko.entities.Offer WHERE condition = 'open' ";
         Query query = session.createQuery(hql);
         List<Offer> offerList = (List<Offer>) query.list();
         session.flush();

@@ -57,16 +57,14 @@
   <c:forEach items="${currentOffers}" var="offer">
                 var id ="${offer.id}"
                 var customer = "${offer.customer}";
-                var offerDate = "${offer.date}";
+                var offerDate = "${offer.offerDate}";
                 var validationDate = "${offer.validationDate}";
-                var sum = "${offer.sum}";
                 AllOffers.push({
                 id: id,
                 customer: customer,
                 offerDate: offerDate,
                 validationDate: validationDate,
-                 sum: sum,
-                  });
+                                  });
             </c:forEach>
    <c:forEach items="${allCustomers}" var="customer">
               var id = "${customer.id}"
@@ -77,6 +75,7 @@
               });
           </c:forEach>
 
+FilteredOffers=AllOffers;
 createTable();
 
 
