@@ -12,9 +12,6 @@ public class Offer {
     private int id;
     @Column
     private String requestNumber;
-    @ManyToOne()
-    @JoinColumn(name = "customer_id")
-    private Customer customer;
     @Column
     private GregorianCalendar offerDate;
     @Column
@@ -23,6 +20,9 @@ public class Offer {
     private Set<OfferLine> offerLineSet;
     @Column
     private String condition;
+    @ManyToOne()
+    @JoinColumn(name = "customer_id")
+    private Customer customer;
 
 
 
