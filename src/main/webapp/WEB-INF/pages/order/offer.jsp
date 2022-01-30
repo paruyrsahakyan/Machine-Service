@@ -52,32 +52,7 @@
           var AllOffers = [];
           var FilteredOffers[];
           var customerList = [];
-          
-           <c:forEach items="${currentOffers}" var="offer">
-              var id ="${offer.id}"
-              var customer = "${offer.customer}";
-              var offerDate = "${offer.date}";
-              var validationDate = "${offer.validationDate}";
-              var sum = "${offer.sum}";
-
-              AllOffers.push({
-              id: id,
-              customer: customer,
-              offerDate: offerDate,
-              validationDate: validationDate,
-               sum: sum,
-                });
-          </c:forEach>
-
- <c:forEach items="${customerList}" var="customer">
-            var id = "${customer.id}"
-            var customerName = "${customer.name}";
-            customerList.push({
-            id: id,
-            customerName: customerName
-            });
-        </c:forEach>
-
+  
          function createTable() {
 
                 var table = document.getElementById("dynamicTable");

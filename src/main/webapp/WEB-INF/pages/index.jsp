@@ -18,6 +18,7 @@
         <a href="/machineType/allMachineTypes"> Типы Машин</a>
         <a href="/wareHouse"> Склад </a>
         <a href="/price/mainPage"> Прайс </a>
+          <a href="/offer/mainPage">  Заказы </a>
 </div>
 <div class="image">
     <img src='<c:url value="/images/komatsu.jpg"> </c:url>'  width="100%"/>
