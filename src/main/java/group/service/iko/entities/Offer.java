@@ -12,7 +12,7 @@ public class Offer {
     private int id;
     @Column
     private String requestNumber;
-    @Column
+    @Column(name = "offer_date")
     private GregorianCalendar offerDate;
     @Column
     private GregorianCalendar validationDate;
