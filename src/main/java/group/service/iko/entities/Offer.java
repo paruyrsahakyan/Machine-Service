@@ -27,7 +27,7 @@ public class Offer {
     @JoinColumn(name = "customer_id")
     private Customer customer;
     @Column
-    private double sum;
+    private int sum;
 
 
 
@@ -92,11 +92,11 @@ public class Offer {
         this.offerCondition = offerCondition;
     }
 
-    public double getSum() {
+    public int getSum() {
         return sum;
     }
 
-    public void setSum(double sum) {
+    public void setSum(int sum) {
         this.sum = sum;
     }
 }
