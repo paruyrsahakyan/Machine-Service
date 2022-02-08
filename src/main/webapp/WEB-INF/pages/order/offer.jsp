@@ -31,7 +31,7 @@
 <div class="mainContent">
     <h2>Коммерческие Предложения</h2>
 
-  <a href="/machineType/newTypeCreation"> Создать Новое КП</a>
+  <a href="/offer/newOffer"> Создать Новое КП</a>
     &nbsp; &nbsp;
  <h2> ${OfferMode} </h2>
  </div>
@@ -51,8 +51,8 @@
   <script>
   
           var AllOffers = [];
-          var FilteredOffers[];
-          var customerList = [];
+          var FilteredOffers=[];
+          var CustomerList = [];
 
   <c:forEach items="${currentOffers}" var="offer">
                 var id ="${offer.id}"
@@ -69,7 +69,7 @@
    <c:forEach items="${allCustomers}" var="customer">
               var id = "${customer.id}"
               var customerName = "${customer.name}";
-              customerList.push({
+              CustomerList.push({
               id: id,
               customerName: customerName
               });
@@ -83,7 +83,7 @@ createTable();
 
                 var table = document.getElementById("dynamicTable");
                 table.innerText = "";
-                var titleRow = table.insertRo/*w();
+                var titleRow = table.insertRow();
                 var titleCell1 = titleRow.insertCell(0);
                 var titleCell2 = titleRow.insertCell(1);
                 var titleCell3 = titleRow.insertCell(2);
@@ -117,11 +117,12 @@ var offerSelectionRef='<a href="/offer/'+FilteredOffers[i].id+
                         cell3.innerHTML = FilteredOffers[i].offerDate;
                         cell4.innerHTML = FilteredOffers[i].validationDate;
                         cell5.innerHTML = FilteredOffers[i].sum;
-
-
                         }
                         }
 
+</script>
+                </body>
 
+                </html>
 
 
