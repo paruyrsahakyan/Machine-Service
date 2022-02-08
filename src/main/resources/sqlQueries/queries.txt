@@ -191,10 +191,15 @@ CREATE TABLE `offer` (
   `validation_date` datetime DEFAULT NULL,
   `offer_condition` varchar(255) DEFAULT NULL,
   `customer_id` int(11) DEFAULT NULL,
+  `sum` int(11) DEFAULT NULL,
    PRIMARY KEY (`id`),
   KEY `foreignKeyCustomerId` (`customer_id`),
   CONSTRAINT `foreignKeyInOfferCustomerId` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+insert into offer values (1, "zzayabvka1", ""2022-02-07", "2022-02-30", "open", 1, 400000 );
+
 
 
 ---------------------------offerLine-----------------------------------
@@ -217,3 +222,4 @@ CREATE TABLE `offer_line` (
        CONSTRAINT `foreignKeyInOfferLineOfferId` FOREIGN KEY (`offer_id`) REFERENCES `offer` (`id`)
      ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+insert into offer_line values (1, "600-211-1340", "масл. филтр", "600-211-1341", "масл филт", 2, "шт", 32000, 62000, "2022-02-07", "2022-02-20", "Komatsu", "approved", 1  );

@@ -17,6 +17,8 @@ public class OfferDTO {
     private Set<OfferLine> offerLineSet;
     private String offerCondition;
     private String customer;
+    private double sum;
+
 
 
     public OfferDTO(Offer offer) {
@@ -27,7 +29,9 @@ public class OfferDTO {
         this.offerLineSet =  offer.getOfferLineSet();
         this.offerCondition= offer.getOfferCondition();
         this.customer = offer.getCustomer().getName();
+        this.requestNumber= offer.getRequestNumber();
             }
+
 
 
     public int getId() {
@@ -84,6 +88,14 @@ public class OfferDTO {
 
     public void setCustomer(String customer) {
         this.customer = customer;
+    }
+
+    public double getSum() {
+        return sum;
+    }
+
+    public void setSum(double sum) {
+        this.sum = sum;
     }
 
     public static List<OfferDTO> convertIntoDTO(List<Offer> offerList) {

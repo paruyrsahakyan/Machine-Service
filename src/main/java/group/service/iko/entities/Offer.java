@@ -26,6 +26,8 @@ public class Offer {
     @ManyToOne()
     @JoinColumn(name = "customer_id")
     private Customer customer;
+    @Column
+    private double sum;
 
 
 
@@ -88,5 +90,13 @@ public class Offer {
 
     public void setOfferCondition(String offerCondition) {
         this.offerCondition = offerCondition;
+    }
+
+    public double getSum() {
+        return sum;
+    }
+
+    public void setSum(double sum) {
+        this.sum = sum;
     }
 }

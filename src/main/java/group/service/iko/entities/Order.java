@@ -12,11 +12,12 @@ public class Order {
     private int id;
     @Column
     private GregorianCalendar confirmationDate;
-    @ManyToOne()
+      @ManyToOne()
     @JoinColumn(name = "customer_id")
     private Customer customer;
     @OneToMany (mappedBy = "order", fetch =FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<OrderLine> oderLines;
+
 
     public int getId() {
         return id;
@@ -41,7 +42,6 @@ public class Order {
     public void setCustomer(Customer customer) {
         this.customer = customer;
     }
-
 
     }
 

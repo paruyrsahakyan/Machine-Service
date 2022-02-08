@@ -58,7 +58,9 @@
                 var id ="${offer.id}"
                 var customer = "${offer.customer}";
                 var offerDate = "${offer.offerDate}";
+                var requestNumber = "${offer.requestNumber}"
                 var validationDate = "${offer.validationDate}";
+                var sum="${offer.sum"
                 AllOffers.push({
                 id: id,
                 customer: customer,
@@ -99,8 +101,10 @@ createTable();
                 titleCell3.style.fontWeight = 'bold';
                 titleCell4.innerHTML = "Дата КП";
                 titleCell4.style.fontWeight = 'bold';
-                titleCell5.innerHTML = "Сумма КП";
+                titleCell5.innerHTML = "дата поставки;
                 titleCell5.style.fontWeight = 'bold';
+                titleCell6.innerHTML = "Сумма КП";
+                titleCell6.style.fontWeight = 'bold';
 
                         for (var i = 0; i < filteredOffers.length; i++) {
                         var row = table.insertRow();
@@ -114,9 +118,10 @@ var offerSelectionRef='<a href="/offer/'+FilteredOffers[i].id+
                               '">'+(i+1).toString() +  '</a>';
                         cell1.innerHTML = offerSelectionRef;
                        cell2.innerHTML =  FilteredOffers[i].customer;
-                        cell3.innerHTML = FilteredOffers[i].offerDate;
-                        cell4.innerHTML = FilteredOffers[i].validationDate;
-                        cell5.innerHTML = FilteredOffers[i].sum;
+                       cell3.innerHTML = FilteredOffers[i].requestNumber
+                        cell4.innerHTML = FilteredOffers[i].offerDate;
+                        cell5.innerHTML = FilteredOffers[i].validationDate;
+                        cell6.innerHTML = FilteredOffers[i].sum;
                         }
                         }
 
