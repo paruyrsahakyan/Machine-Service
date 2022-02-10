@@ -20,7 +20,12 @@ public class OfferController {
     private OfferService offerService;
     @Autowired
     private CustomerService customerService;
-
+    @Autowired
+    private StorageService storageService;
+    @Autowired
+    private WareHouseService wareHouseService;
+    @Autowired
+    private PriceForCustomerService priceForCustomerService;
 
     @RequestMapping("/mainPage")
     @PreAuthorize("hasRole('ROLE_USER')")
@@ -28,9 +33,19 @@ public class OfferController {
         ModelAndView modelAndView = new ModelAndView("order/offer");
 
         List<Offer> offerList = offerService.getCurrentOffers();
-        modelAndView.addObject( "currentOffers", OfferDTO.convertIntoDTO(offerList));
+        modelAndView.addObject("currentOffers", OfferDTO.convertIntoDTO(offerList));
         modelAndView.addObject("allCustomers", CustomerDTO.convertIntoDTO(customerService.getAllCustomers()));
         return modelAndView;
+    }
+
+    public ModelAndView newOfferPage() {
+        ModelAndView modelAndView = new ModelAndView("order/newOffer");
+        modelAndView.addObject("allCustomers", CustomerDTO.convertIntoDTO(customerService.getAllCustomers()));
+        modelAndView.addObject("partsOnStock", WareHouseService.availablePartList);
+        modelAndView.addObject("allPriceForCustomer", priceForCustomerService.getAllPriceForCustomer());
+         return modelAndView;
 
     }
+
+
 }

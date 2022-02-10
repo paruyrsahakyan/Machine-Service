@@ -78,8 +78,16 @@ public class ExcelReaderWriter {
             for (int i = firstPartRow; i < partsQuantity + 8; i++) {
                 Part part = new Part();
                 Row row = datatypeSheet.getRow(i);
-                Cell cell = row.getCell(partNumberColumn);
-                String partNumber = row.getCell(partNumberColumn).toString();
+                Cell partNumberCell = row.getCell(partNumberColumn);
+                String partNumber;
+                if (partNumberCell.getCellTypeEnum()==CellType.STRING){
+                    partNumber = partNumberCell.getStringCellValue();
+
+                }
+                else {
+                   partNumber =  new Double(partNumberCell.getNumericCellValue()).toString();
+                }
+//                String partNumber = partNumberCell.toString();
                 part.setPartNumber(partNumber);
                 part.setNomenclature(row.getCell(nomenclatureColumn).toString());
 //                part.setUnit(row.getCell(6).getStringCellValue());

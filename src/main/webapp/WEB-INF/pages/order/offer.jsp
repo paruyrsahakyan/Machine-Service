@@ -60,13 +60,15 @@
                 var offerDate = "${offer.offerDate}";
                 var requestNumber = "${offer.requestNumber}"
                 var validationDate = "${offer.validationDate}";
-                var sum="${offer.sum"
+                var sum="${offer.sum}"
                 AllOffers.push({
                 id: id,
                 customer: customer,
+                requestNumber: requestNumber,
                 offerDate: offerDate,
                 validationDate: validationDate,
-                                  });
+                sum: sum
+                                                  });
             </c:forEach>
    <c:forEach items="${allCustomers}" var="customer">
               var id = "${customer.id}"
@@ -91,6 +93,7 @@ createTable();
                 var titleCell3 = titleRow.insertCell(2);
                 var titleCell4 = titleRow.insertCell(3);
                 var titleCell5 = titleRow.insertCell(4);
+                var titleCell6 = titleRow.insertCell(5);
 
 
                 titleCell1.innerHTML = "N";
@@ -101,18 +104,19 @@ createTable();
                 titleCell3.style.fontWeight = 'bold';
                 titleCell4.innerHTML = "Дата КП";
                 titleCell4.style.fontWeight = 'bold';
-                titleCell5.innerHTML = "дата поставки;
+                titleCell5.innerHTML = "Срок действия заявки";
                 titleCell5.style.fontWeight = 'bold';
                 titleCell6.innerHTML = "Сумма КП";
                 titleCell6.style.fontWeight = 'bold';
 
-                        for (var i = 0; i < filteredOffers.length; i++) {
+                        for (var i = 0; i < FilteredOffers.length; i++) {
                         var row = table.insertRow();
                         var cell1 = row.insertCell(0);
                         var cell2 = row.insertCell(1);
                         var cell3 = row.insertCell(2);
                         var cell4 = row.insertCell(3);
                         var cell5 = row.insertCell(4);
+                        var cell6 = row.insertCell(5);
 
 var offerSelectionRef='<a href="/offer/'+FilteredOffers[i].id+
                               '">'+(i+1).toString() +  '</a>';
