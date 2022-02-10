@@ -87,10 +87,6 @@ public class ExcelReaderWriter {
                 else { String string = new Double(partNumberCell.getNumericCellValue()).toString();
                     int lastIndexOf=   string.lastIndexOf(".");
                      partNumber = string.substring(0,lastIndexOf);
-
-
-                    throw new Throwable(partNumberCell.getCellTypeEnum().toString()+"-"+partNumber);
-
                 }
                 part.setPartNumber(partNumber);
                 part.setNomenclature(row.getCell(nomenclatureColumn).toString());
