@@ -81,11 +81,11 @@ public class ExcelReaderWriter {
                 Cell partNumberCell = row.getCell(partNumberColumn);
                 String partNumber;
                 if (partNumberCell.getCellTypeEnum()==CellType.STRING){
-                    partNumber = partNumberCell.getStringCellValue();
+                    partNumber = partNumberCell.getStringCellValue()+partNumberCell.getCellTypeEnum().toString();
 
                 }
                 else {
-                   partNumber =  new Double(partNumberCell.getNumericCellValue()).toString();
+                   partNumber =  new Double(partNumberCell.getNumericCellValue()).toString() +partNumberCell.getCellTypeEnum().toString();
                 }
 //                String partNumber = partNumberCell.toString();
                 part.setPartNumber(partNumber);
