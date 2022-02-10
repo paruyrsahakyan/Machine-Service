@@ -84,7 +84,12 @@ public class ExcelReaderWriter {
                     partNumber = partNumberCell.getStringCellValue();
 
                 }
-                else {  throw new Throwable(partNumberCell.getCellTypeEnum().toString()+"-"+new Double(partNumberCell.getNumericCellValue()));
+                else { String string = new Double(partNumberCell.getNumericCellValue()).toString();
+                    int lastIndexOf=   string.lastIndexOf(".");
+                     partNumber = string.substring(0,lastIndexOf);
+
+
+                    throw new Throwable(partNumberCell.getCellTypeEnum().toString()+"-"+partNumber);
 
                 }
                 part.setPartNumber(partNumber);
