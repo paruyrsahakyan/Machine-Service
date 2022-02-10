@@ -34,7 +34,7 @@ public class ExcelReaderWriter {
             "resources" + File.separator + "templates" + File.separator + "maintenanceRequest.xlsx";
 
 
-    public void setPartsFromWareHouseFile() {
+    public void setPartsFromWareHouseFile() throws Throwable {
         partMap = new HashMap<>();
         try {
             File wareHouseFile = new File(storageService.getWarHouseFilePath());
@@ -79,15 +79,14 @@ public class ExcelReaderWriter {
                 Part part = new Part();
                 Row row = datatypeSheet.getRow(i);
                 Cell partNumberCell = row.getCell(partNumberColumn);
-                String partNumber;
+                String partNumber="";
                 if (partNumberCell.getCellTypeEnum()==CellType.STRING){
                     partNumber = partNumberCell.getStringCellValue();
 
                 }
-                else {
-                   partNumber =  new Double(partNumberCell.getNumericCellValue()).toString();
+                else {  throw new Throwable(partNumberCell.getCellTypeEnum().toString()+"-"+partNumberCell.getStringCellValue());
+
                 }
-//                String partNumber = partNumberCell.toString();
                 part.setPartNumber(partNumber);
                 part.setNomenclature(row.getCell(nomenclatureColumn).toString());
 //                part.setUnit(row.getCell(6).getStringCellValue());

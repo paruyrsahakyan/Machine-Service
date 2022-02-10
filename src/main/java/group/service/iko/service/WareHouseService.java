@@ -79,7 +79,7 @@ public class WareHouseService {
     }
 
 
-    public void updateWareHouse(MultipartFile multipartFile) throws IOException {
+    public void updateWareHouse(MultipartFile multipartFile) throws Throwable {
         storageService.saveWareHouseFile(multipartFile);
         excelReaderWriter.setPartsFromWareHouseFile();
 
