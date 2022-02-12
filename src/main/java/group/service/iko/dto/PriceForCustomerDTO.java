@@ -18,8 +18,8 @@ public class PriceForCustomerDTO {
     private int profit;
 
 
-    public PriceForCustomerDTO(PriceForCustomer priceForCustomer) {
 
+    public PriceForCustomerDTO(PriceForCustomer priceForCustomer) {
 
         id = priceForCustomer.getId();
         customerId = priceForCustomer.getCustomer().getId();

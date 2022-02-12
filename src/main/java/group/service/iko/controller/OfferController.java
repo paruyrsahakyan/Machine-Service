@@ -42,9 +42,9 @@ public class OfferController {
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ModelAndView newOfferPage() {
         ModelAndView modelAndView = new ModelAndView("order/newOffer");
-        modelAndView.addObject("allCustomers", CustomerDTO.convertIntoDTO(customerService.getAllCustomers()));
+        modelAndView.addObject("customerList", CustomerDTO.convertIntoDTO(customerService.getAllCustomers()));
         modelAndView.addObject("partsOnStock", WareHouseService.availablePartList);
-        modelAndView.addObject("allPriceForCustomer", priceForCustomerService.getAllPriceForCustomer());
+        modelAndView.addObject("allPriceForCustomer", PriceForCustomerDTO.convertIntoDTO(priceForCustomerService.getAllPriceForCustomer()));
          return modelAndView;
     }
 
