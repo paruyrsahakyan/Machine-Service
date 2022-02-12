@@ -151,15 +151,16 @@
 
 
          <script>
-             
-             var customerList = [];
+
+        var initialPriceList = [];
+        var customerList = [];
         var priceListForSelectedCustomer = [];
         var priceListFilteredByArticle = [];
         var priceListForSelectedCustomer = [];
         var customerNameAfterDeleteOrEdit="${selectedCustomer.name}";
         var customerNameForTableCreation;
 
-         <c:forEach items="${priceList}" var="priceForCustomer">
+         <c:forEach items="${allPriceForCustomer}" var="priceForCustomer">
             var id ="${priceForCustomer.id}"
             var article = "${priceForCustomer.article}";
             var description = "${priceForCustomer.description}";

@@ -38,6 +38,8 @@ public class OfferController {
         return modelAndView;
     }
 
+    @RequestMapping("/newOffer")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ModelAndView newOfferPage() {
         ModelAndView modelAndView = new ModelAndView("order/newOffer");
         modelAndView.addObject("allCustomers", CustomerDTO.convertIntoDTO(customerService.getAllCustomers()));
