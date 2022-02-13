@@ -7,7 +7,9 @@
 --%>
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<!DOCTYPE html>
+        <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+        <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+   <!DOCTYPE html>
 <html>
 <head>
     <style><%@include file="/WEB-INF/pages/CSS/topNavigation.css"%></style>
@@ -139,9 +141,9 @@
  </div>
 
  <div  class="mainContent" id="fileUploadForm" >
-                    <form:form action="/price/setPriceListFromFile" method="post"  accept-charset="UTF-8"   enctype="multipart/form-data">
-                     Загрузка прайса с Файла :
-                     <input type="file" name="priceFile">
+                    <form:form action="/offer/setRequestFromFile" method="post"  accept-charset="UTF-8"   enctype="multipart/form-data">
+                     Загрузить запрос:
+                     <input type="file" name="requestFile">
                      <input id="customerNameInUploadForm"  type="hidden" name="customerName" value="${selectedCustomer.name}">
                      <input  type="submit" value="загрузить">
                     </form:form>

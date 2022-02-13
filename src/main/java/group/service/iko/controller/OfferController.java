@@ -54,7 +54,7 @@ public class OfferController {
     @RequestMapping("/newOffer/setRequestFromTheFile")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ModelAndView setRequestFromFile(@RequestParam("customerName") String customerName,
-                                           @RequestParam(value = "priceFile", required = false) MultipartFile uploadedFile,
+                                           @RequestParam(value = "requestFile", required = false) MultipartFile uploadedFile,
                                            ModelMap modelMap) throws IOException {
 
          modelMap.addAttribute("selectedCustomer", customerService.getCustomerByName(customerName).getId());
