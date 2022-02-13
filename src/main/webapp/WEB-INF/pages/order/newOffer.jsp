@@ -34,7 +34,7 @@
  </div>
 
 <div>
-<table >
+<table style="alignment:center">
         <form>
             <tr>
                 <td>
@@ -142,7 +142,7 @@
 
  <div  class="mainContent" id="fileUploadForm" >
 
-                    <form:form action="/offer/setRequestFromFile" method="post"  accept-charset="UTF-8"   enctype="multipart/form-data">
+                    <form:form action="/offer/newOffer/setRequestFromFile" method="post"  accept-charset="UTF-8"   enctype="multipart/form-data">
                      Загрузить запрос:
                      <input type="file" name="requestFile">
                      <input id="customerNameInUploadForm"  type="hidden" name="customerName" value="${selectedCustomer.name}">
@@ -203,7 +203,7 @@
         </c:forEach>
 
 
-              setCustomer(){
+              function setCustomer() {
 
          selectedCustomerName=document.getElementById("selectedCustomerName").value;
                 document.getElementById("customerNameInUploadForm").value=selectedCustomerName;

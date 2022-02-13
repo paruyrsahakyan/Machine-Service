@@ -51,7 +51,7 @@ public class OfferController {
          return modelAndView;
     }
 
-    @RequestMapping("/newOffer/setRequestFromTheFile")
+    @RequestMapping("/offer/newOffer/setRequestFromTheFile")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ModelAndView setRequestFromFile(@RequestParam("customerName") String customerName,
                                            @RequestParam(value = "requestFile", required = false) MultipartFile uploadedFile,
