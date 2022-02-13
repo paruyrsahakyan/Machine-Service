@@ -51,12 +51,13 @@ public class OfferController {
          return modelAndView;
     }
 
-    @RequestMapping("/offer/newOffer/setRequestFromTheFile")
+    @RequestMapping("/newOffer/setRequestFromFile")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ModelAndView setRequestFromFile(@RequestParam("customerName") String customerName,
                                            @RequestParam(value = "requestFile", required = false) MultipartFile uploadedFile,
-                                           ModelMap modelMap) throws IOException {
+                                           ModelMap modelMap) throws Exception {
 
+          if (customerName!=null) {throw new Exception(customerName);}
          modelMap.addAttribute("selectedCustomer", customerService.getCustomerByName(customerName).getId());
          modelMap.addAttribute("request", offerService.getRequestFromFile(customerName, uploadedFile));
         ModelAndView modelAndView = new ModelAndView("redirect:/offer/newOffer", modelMap);

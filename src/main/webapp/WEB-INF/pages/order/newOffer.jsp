@@ -33,7 +33,7 @@
     <h2>Создание Нового КП</h2>
  </div>
 
-<div>
+<div class = "mainContent">
 <table style="alignment:center">
         <form>
             <tr>
