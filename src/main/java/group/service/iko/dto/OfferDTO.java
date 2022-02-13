@@ -14,7 +14,7 @@ public class OfferDTO {
     private String requestNumber;
     private String offerDate;
     private String validationDate;
-    private Set<OfferLine> offerLineSet;
+    private List<OfferLine> offerLineSet;
     private String offerCondition;
     private String customer;
     private int  sum;
@@ -67,11 +67,11 @@ public class OfferDTO {
         this.validationDate = validationDate;
     }
 
-    public Set<OfferLine> getOfferLineSet() {
+    public List<OfferLine> getOfferLineSet() {
         return offerLineSet;
     }
 
-    public void setOfferLineSet(Set<OfferLine> offerLineSet) {
+    public void setOfferLineSet(List<OfferLine> offerLineSet) {
         this.offerLineSet = offerLineSet;
     }
 
