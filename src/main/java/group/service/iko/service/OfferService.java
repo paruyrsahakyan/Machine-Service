@@ -5,7 +5,9 @@ import group.service.iko.entityDao.*;
 import org.hibernate.*;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.*;
+import org.springframework.web.multipart.*;
 
+import java.io.*;
 import java.util.*;
 import java.util.stream.*;
 
@@ -13,7 +15,13 @@ import java.util.stream.*;
 public class OfferService {
 
     @Autowired
-    private  EntityDAO<Offer> entityDAO;
+    private EntityDAO<Offer> entityDAO;
+    @Autowired
+    private StorageService storageService;
+    @Autowired
+    private  CustomerService customerService;
+    @Autowired
+    private ExcelReaderWriter excelReaderWriter;
 
     public OfferService() {
     }
@@ -28,20 +36,21 @@ public class OfferService {
         session.close();
         return offer;
     }
-    public void saveOffer(Offer offer){
+
+    public void saveOffer(Offer offer) {
         entityDAO.saveEntity(offer);
 
     }
 
-    public void upDateOffer(Offer offer){
+    public void upDateOffer(Offer offer) {
         entityDAO.updateEntity(offer);
     }
 
-    public  void  deleteOffer(Offer offer){
+    public void deleteOffer(Offer offer) {
         entityDAO.deleteEntity(offer);
     }
 
-    public List<Offer> getCurrentOffers(){
+    public List<Offer> getCurrentOffers() {
 
         Session session = SessionFactoryImpl.getSessionFactory().openSession();
         String hql = "FROM group.service.iko.entities.Offer WHERE offerCondition = 'open' ";
@@ -49,8 +58,21 @@ public class OfferService {
         List<Offer> offerList = (List<Offer>) query.list();
         session.flush();
         session.close();
-        return  offerList;
+        return offerList;
     }
 
+    public  Request getRequestFromFile(String customerName, MultipartFile uploadedFile) throws IOException {
+
+        storageService.saveRequestFile(uploadedFile);
+        Customer customer = customerService.getCustomerByName(customerName);
+        List<RequestLine> requestLines = excelReaderWriter.getRequestFromStoredFile(customer);
+        Request request = new Request();
+        request.setCustomer(customer);
+        request.setRequestLines(requestLines);
+        return request;
     }
+
+}
+
+
 

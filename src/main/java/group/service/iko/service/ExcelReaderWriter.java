@@ -79,14 +79,14 @@ public class ExcelReaderWriter {
                 Part part = new Part();
                 Row row = datatypeSheet.getRow(i);
                 Cell partNumberCell = row.getCell(partNumberColumn);
-                String partNumber="";
-                if (partNumberCell.getCellTypeEnum()==CellType.STRING){
+                String partNumber = "";
+                if (partNumberCell.getCellTypeEnum() == CellType.STRING) {
                     partNumber = partNumberCell.getStringCellValue();
 
-                }
-                else { String string = new Double(partNumberCell.getNumericCellValue()).toString();
-                    int lastIndexOf=   string.lastIndexOf(".");
-                     partNumber = string.substring(0,lastIndexOf);
+                } else {
+                    String string = new Double(partNumberCell.getNumericCellValue()).toString();
+                    int lastIndexOf = string.lastIndexOf(".");
+                    partNumber = string.substring(0, lastIndexOf);
                 }
                 part.setPartNumber(partNumber);
                 part.setNomenclature(row.getCell(nomenclatureColumn).toString());
@@ -311,8 +311,8 @@ public class ExcelReaderWriter {
         FileInputStream excelFile = new FileInputStream(priceListFile);
         Workbook workbook = new XSSFWorkbook(excelFile);
         Sheet datatypeSheet = workbook.getSheetAt(0);
-        Set<PriceForCustomer> priceListForCustomer  = new HashSet<>();
-       int linesQuantityInTheFile = datatypeSheet.getLastRowNum()+1;
+        Set<PriceForCustomer> priceListForCustomer = new HashSet<>();
+        int linesQuantityInTheFile = datatypeSheet.getLastRowNum() + 1;
         for (int i = 0; i < linesQuantityInTheFile; i++) {
             PriceForCustomer priceForCustomer = new PriceForCustomer();
             Row row = datatypeSheet.getRow(i);
@@ -327,6 +327,42 @@ public class ExcelReaderWriter {
         }
         return priceListForCustomer;
     }
+
+    public List<RequestLine> getRequestFromStoredFile(Customer customer) throws IOException {
+
+        File requestFile = new File(storageService.getCurrentRequestFilePath());
+        FileInputStream excelFile = new FileInputStream(requestFile);
+        Workbook workbook = new XSSFWorkbook(excelFile);
+        Sheet datatypeSheet = workbook.getSheetAt(0);
+        List<RequestLine> requestLines = new ArrayList<>();
+        int linesQuantityInTheFile = datatypeSheet.getLastRowNum() + 1;
+        for (int i = 0; i < linesQuantityInTheFile; i++) {
+            Row row = datatypeSheet.getRow(i);
+            Cell descriptionCell = row.getCell(0);
+            Cell articleCell = row.getCell(1);
+            Cell quantityCell = row.getCell(2);
+            String partName = descriptionCell.getStringCellValue();
+            String partNumber = "";
+            if (articleCell.getCellTypeEnum() == CellType.STRING) {
+                partNumber = articleCell.getStringCellValue();
+
+            } else {
+                String string = new Double(articleCell.getNumericCellValue()).toString();
+                int lastIndexOf = string.lastIndexOf(".");
+                partNumber = string.substring(0, lastIndexOf);
+            }
+
+            int quantity = (int) quantityCell.getNumericCellValue();
+            RequestLine requestLine = new RequestLine();
+            requestLine.setPartName(partName);
+            requestLine.setPartNumber(partNumber);
+            requestLine.setQuantity(quantity);
+            requestLines.add(requestLine);
+
+                }
+        return requestLines;
+    }
+
 }
 
 

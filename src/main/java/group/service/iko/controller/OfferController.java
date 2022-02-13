@@ -7,9 +7,12 @@ import group.service.iko.service.*;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.security.access.prepost.*;
 import org.springframework.stereotype.*;
+import org.springframework.ui.*;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.*;
 import org.springframework.web.servlet.*;
 
+import java.io.*;
 import java.util.*;
 
 @Controller()
@@ -48,5 +51,16 @@ public class OfferController {
          return modelAndView;
     }
 
+    @RequestMapping("/newOffer/setRequestFromTheFile")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    public ModelAndView setRequestFromFile(@RequestParam("customerName") String customerName,
+                                           @RequestParam(value = "priceFile", required = false) MultipartFile uploadedFile,
+                                           ModelMap modelMap) throws IOException {
+
+         modelMap.addAttribute("selectedCustomer", customerService.getCustomerByName(customerName).getId());
+         modelMap.addAttribute("request", offerService.getRequestFromFile(customerName, uploadedFile));
+        ModelAndView modelAndView = new ModelAndView("redirect:/offer/newOffer", modelMap);
+        return modelAndView;
+    }
 
 }

@@ -32,7 +32,13 @@ public class StorageService {
             File.separator + "IkoService"+File.separator + "priceList";
     private final String currentPriceListFileName="uploadedPriceList.xlsx";
 
+    private final String requestFileFolder=  File.separator + "home" +File.separator + "paruyr" +
+            File.separator + "IkoService"+File.separator + "request";
+    private final String currentRequestFileName="uploadedRequest.xlsx";
+
     private final String currentPriceListFilePath=priceListFileFolder+File.separator+currentPriceListFileName;
+
+    private final String currentRequestFilePath=requestFileFolder+File.separator+currentRequestFileName;
 
     public StorageService() {
 
@@ -109,6 +115,8 @@ public class StorageService {
             e1.printStackTrace();
         }
     }
+
+
     public String getFilePath() {
         return filePath;
     }
@@ -138,6 +146,17 @@ public class StorageService {
     }
     public String getCurrentPriceListFilePath() {
         return currentPriceListFilePath;
+    }
+
+    public String getCurrentRequestFilePath() {
+        return currentRequestFilePath;
+    }
+
+    public void saveRequestFile(MultipartFile uploadedFile) {
+        File requestFolder = new File(requestFileFolder);
+
+
+
     }
 }
 

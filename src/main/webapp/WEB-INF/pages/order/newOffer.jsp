@@ -42,7 +42,7 @@
                     </label>
                 </td>
                 <td>  <input list="customers" name="customerName" id="selectedCustomerName"  value="${selectedCustomer.name}"
-                          onchange="initPriceListForSelectedCustomer()">
+                          onchange="setTheCustomer()">
                    <datalist id="customers">
                        <c:forEach items="${customerList}" var="customer">
                            <option value="${customer.name}" hidden> ${customer.name} </option>
@@ -129,7 +129,7 @@
                     <input type="radio" name="VAT" value="withVAT" id="VAT">
                     <label for="VAT"> Вкл 20% НДС</label>
                   
-                  </td>
+                 </td>
 
             </tr>
 
@@ -137,6 +137,15 @@
     </table>
 
  </div>
+
+ <div  class="mainContent" id="fileUploadForm" >
+                    <form:form action="/price/setPriceListFromFile" method="post"  accept-charset="UTF-8"   enctype="multipart/form-data">
+                     Загрузка прайса с Файла :
+                     <input type="file" name="priceFile">
+                     <input id="customerNameInUploadForm"  type="hidden" name="customerName" value="${selectedCustomer.name}">
+                     <input  type="submit" value="загрузить">
+                    </form:form>
+         </div>
 
 <div class="mainContent">
         <table class="mainTables" id="dynamicTable" style="width: auto" align="center">
@@ -157,8 +166,7 @@
         var priceListForSelectedCustomer = [];
         var priceListFilteredByArticle = [];
         var priceListForSelectedCustomer = [];
-        var customerNameAfterDeleteOrEdit="${selectedCustomer.name}";
-        var customerNameForTableCreation;
+        var selectedCustomerName = "${selectedCustomer.name}";
 
          <c:forEach items="${allPriceForCustomer}" var="priceForCustomer">
             var id ="${priceForCustomer.id}"
@@ -190,6 +198,13 @@
             customerName: customerName
             });
         </c:forEach>
+
+    setCustomerName(){
+
+         selectedCustomerName=document.getElementById("selectedCustomerName").value;
+                document.getElementById("customerNameInUploadForm").value=selectedCustomerName;
+
+    }
 
 
 
