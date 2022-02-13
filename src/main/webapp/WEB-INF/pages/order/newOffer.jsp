@@ -131,23 +131,13 @@
                     <label for="VAT"> Вкл 20% НДС</label>
                   
                  </td>
-
             </tr>
-
         </form>
     </table>
-
  </div>
 
-
-
-
-
-
-
-
-
-
+<br>
+<br>
 
 
  <div  class="mainContent" id="fileUploadForm" >
@@ -212,7 +202,8 @@
             });
         </c:forEach>
 
-    setCustomerName(){
+
+              setCustomer(){
 
          selectedCustomerName=document.getElementById("selectedCustomerName").value;
                 document.getElementById("customerNameInUploadForm").value=selectedCustomerName;
