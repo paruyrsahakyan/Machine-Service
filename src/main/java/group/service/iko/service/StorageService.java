@@ -154,9 +154,15 @@ public class StorageService {
 
     public void saveRequestFile(MultipartFile uploadedFile) {
         File requestFolder = new File(requestFileFolder);
-
-
-
+         requestFolder.mkdirs();
+        File requestFile = new File(currentRequestFilePath);
+        requestFile.delete();
+        try {
+            requestFile.createNewFile();
+            uploadedFile.transferTo(requestFile);
+        } catch (IOException e1) {
+            e1.printStackTrace();
+        }
     }
 }
 

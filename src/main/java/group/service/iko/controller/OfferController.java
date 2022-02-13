@@ -55,9 +55,8 @@ public class OfferController {
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ModelAndView setRequestFromFile(@RequestParam("customerName") String customerName,
                                            @RequestParam(value = "requestFile", required = false) MultipartFile uploadedFile,
-                                           ModelMap modelMap) throws Exception {
+                                           ModelMap modelMap) throws Throwable {
 
-          if (customerName!=null) {throw new Exception(customerName);}
          modelMap.addAttribute("selectedCustomer", customerService.getCustomerByName(customerName).getId());
          modelMap.addAttribute("request", offerService.getRequestFromFile(customerName, uploadedFile));
         ModelAndView modelAndView = new ModelAndView("redirect:/offer/newOffer", modelMap);

@@ -43,7 +43,7 @@
                     </label>
                 </td>
                 <td>  <input list="customers" name="customerName" id="selectedCustomerName"  value="${selectedCustomer.name}"
-                          onchange="setTheCustomer()">
+                          onchange="setCustomer()">
                    <datalist id="customers">
                        <c:forEach items="${customerList}" var="customer">
                            <option value="${customer.name}" hidden> ${customer.name} </option>
@@ -58,28 +58,23 @@
                  <td>
                     <input type="text" id="requestNumber" name="requestNumber">
                  </td> <br> <br>
-
                  <td>
                     <label for = "offerDate">
                         Дата КП
                         </label>
                 </td>
-
                 <td>
                      <input type="Date" name="offerDate"  id="offerDate">
                  </td>
                   <br> <br>
-
                   <td>
                     <label for = "offerValidationDate">
                         Срок действия КП
                         </label>
                 </td>
-
                 <td>
                      <input type="Date" name="offerValidationDate" id="offerValidationDate" >
                  </td>     <br> <br>
-
                   <td>
                     <label for = "currency">
                         Валюта
