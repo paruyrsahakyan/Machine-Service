@@ -5,7 +5,7 @@
   Time: 11:36 PM
   To change this template use File | Settings | File Templates.
 --%>
-%@ page contentType="text/html;charset=UTF-8" language="java" %>
+  <%@ page contentType="text/html;charset=UTF-8" language="java" %>
         <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
         <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
    <!DOCTYPE html>
@@ -16,7 +16,7 @@
     </head>
 <body>
 <div class="topnav">
-    <a href="/"> Главное меню</a>
+    <a href="/"> Главное меню </a>
     <a href="/allCustomers"> Компании </a>
     <a href="/allMachines"> Mашины </a>
     <a href="/analysis/worker/jobs"> Анализ работ</a>
@@ -165,6 +165,7 @@
         var priceListFilteredByArticle = [];
         var priceListForSelectedCustomer = [];
         var selectedCustomerName = "${selectedCustomer.name}";
+        var requestLines=[];
 
          <c:forEach items="${allPriceForCustomer}" var="priceForCustomer">
             var id ="${priceForCustomer.id}"
@@ -197,16 +198,32 @@
             });
         </c:forEach>
 
+            <c:forEach items="${request.requestLines}" var="requestLine">
+                    var partName = "${requestLine.partName}"
+                    var customerName = "${requestLine.partNumber}";
+                    var quantity = "${requestLine.quantity}";
+                    requestLines.push({
+                    partName: partName,
+                    partNumber: partNumber,
+                    quantity: quantity
+                    });
+                </c:forEach>
+
+
+               if (requestLine.length > 0) {
+
+                setRequestLinesInTable();
+                setCustomer();
+               }
 
               function setCustomer() {
 
          selectedCustomerName=document.getElementById("selectedCustomerName").value;
                 document.getElementById("customerNameInUploadForm").value=selectedCustomerName;
 
-    }
+    }           
 
-
-
+           
           function initPriceListForSelectedCustomer() {
               var customerName = customerNameForTableCreation;
             for (var i = 0; i < initialPriceList.length; i++) {
@@ -217,7 +234,7 @@
                 }
 
 
-        function createTable() {
+        function setRequestLinesInTable() {
 
         var table = document.getElementById("dynamicTable");
         table.innerText = "";
@@ -270,6 +287,25 @@
         titleCell13.style.fontWeight = 'bold';
         titleCell14.style.fontWeight = 'bold';
         titleCell15.style.fontWeight = 'bold';
+
+        for (var i = 0; i < requestLines.length; i++) {
+                var row = table.insertRow();
+                var cell1 = row.insertCell(0);
+                var cell2 = row.insertCell(1);
+                var cell3 = row.insertCell(2);
+              
+                cell1.id="N"+(i+1).toString;
+                cell2.id="partName"+(i+1).toString;
+                cell3.id ="partNumber"+(i+1).toString;
+                cell4.id ="quantity"+(i+1).toString;
+               
+            cell1.innerHTML = (i + 1).toString();
+                cell2.innerHTML = requestLines[i].partName;
+                cell3.innerHTML = requestLines[i].partNumber;
+                cell4.innerHTML = requestLines[i].quantity;
+               
+
+
 
 }
          </script>
