@@ -38,8 +38,10 @@ public class OfferController {
         List<Offer> offerList = offerService.getCurrentOffers();
         modelAndView.addObject("currentOffers", OfferDTO.convertIntoDTO(offerList));
         modelAndView.addObject("allCustomers", CustomerDTO.convertIntoDTO(customerService.getAllCustomers()));
-        modelAndView.addObject("selectedCustomer", new CustomerDTO(customerService.getCustomerById(customerId)));
-        return modelAndView;
+        if (customerId != 0) {
+            modelAndView.addObject("selectedCustomer", new CustomerDTO(customerService.getCustomerById(customerId)));
+        }
+        return  modelAndView;
     }
 
     @RequestMapping("/newOffer")
