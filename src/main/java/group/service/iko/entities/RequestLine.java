@@ -29,4 +29,13 @@ public class RequestLine {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
+
+    @Override
+    public String toString() {
+        return "RequestLine{" +
+                "partName='" + partName + '\'' +
+                ", partNumber='" + partNumber + '\'' +
+                ", quantity=" + quantity +
+                '}';
+    }
 }
