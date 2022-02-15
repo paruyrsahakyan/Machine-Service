@@ -32,25 +32,30 @@ public class OfferController {
 
     @RequestMapping("/mainPage")
     @PreAuthorize("hasRole('ROLE_USER')")
-    public ModelAndView mainPage(@RequestParam(value = "selectedCustomer", required = false, defaultValue = "0") int customerId) throws Throwable {
+    public ModelAndView mainPage()  {
 
         ModelAndView modelAndView = new ModelAndView("order/offer");
         List<Offer> offerList = offerService.getCurrentOffers();
         modelAndView.addObject("currentOffers", OfferDTO.convertIntoDTO(offerList));
         modelAndView.addObject("allCustomers", CustomerDTO.convertIntoDTO(customerService.getAllCustomers()));
-        if (customerId != 0) {  throw new Throwable("customerName" + customerService.getCustomerById(customerId));
-//            modelAndView.addObject("selectedCustomer", new CustomerDTO(customerService.getCustomerById(customerId)));
-        }
         return  modelAndView;
     }
 
     @RequestMapping("/newOffer")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
-    public ModelAndView newOfferPage() {
+    public ModelAndView newOfferPage(@RequestParam(value = "selectedCustomer", required = false, defaultValue = "0") int customerId,
+                                     @RequestParam (required = false, defaultValue = "null") Request request) {
         ModelAndView modelAndView = new ModelAndView("order/newOffer");
         modelAndView.addObject("customerList", CustomerDTO.convertIntoDTO(customerService.getAllCustomers()));
         modelAndView.addObject("partsOnStock", WareHouseService.availablePartList);
         modelAndView.addObject("allPriceForCustomer", PriceForCustomerDTO.convertIntoDTO(priceForCustomerService.getAllPriceForCustomer()));
+        if (customerId != 0){
+            modelAndView.addObject("selectedCustomer", new CustomerDTO(customerService.getCustomerById(customerId)));
+        }
+        if (request != null){
+            modelAndView.addObject("request", request);
+                    }
+        
          return modelAndView;
     }
 
