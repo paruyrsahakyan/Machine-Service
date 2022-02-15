@@ -210,7 +210,7 @@
                 </c:forEach>
 
 
-               if (requestLine.length > 0) {
+               if (requestLines.length > 0) {
 
                 setRequestLinesInTable();
                 setCustomer();
@@ -303,8 +303,7 @@
                 cell2.innerHTML = requestLines[i].partName;
                 cell3.innerHTML = requestLines[i].partNumber;
                 cell4.innerHTML = requestLines[i].quantity;
-               
-
+            }
 
 
 }

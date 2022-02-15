@@ -32,14 +32,14 @@ public class OfferController {
 
     @RequestMapping("/mainPage")
     @PreAuthorize("hasRole('ROLE_USER')")
-    public ModelAndView mainPage(@RequestParam(value = "selectedCustomer", required = false, defaultValue = "0") int customerId) {
+    public ModelAndView mainPage(@RequestParam(value = "selectedCustomer", required = false, defaultValue = "0") int customerId) throws Throwable {
 
         ModelAndView modelAndView = new ModelAndView("order/offer");
         List<Offer> offerList = offerService.getCurrentOffers();
         modelAndView.addObject("currentOffers", OfferDTO.convertIntoDTO(offerList));
         modelAndView.addObject("allCustomers", CustomerDTO.convertIntoDTO(customerService.getAllCustomers()));
-        if (customerId != 0) {
-            modelAndView.addObject("selectedCustomer", new CustomerDTO(customerService.getCustomerById(customerId)));
+        if (customerId != 0) {  throw new Throwable("customerName" + customerService.getCustomerById(customerId));
+//            modelAndView.addObject("selectedCustomer", new CustomerDTO(customerService.getCustomerById(customerId)));
         }
         return  modelAndView;
     }
