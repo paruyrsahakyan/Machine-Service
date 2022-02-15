@@ -44,7 +44,7 @@ public class OfferController {
     @RequestMapping("/newOffer")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ModelAndView newOfferPage(@RequestParam(value = "selectedCustomer", required = false, defaultValue = "0") int customerId,
-                                     Request request) {
+                                     @RequestParam (value="request", required= false) Request request ) {
         ModelAndView modelAndView = new ModelAndView("order/newOffer");
         modelAndView.addObject("customerList", CustomerDTO.convertIntoDTO(customerService.getAllCustomers()));
         modelAndView.addObject("partsOnStock", WareHouseService.availablePartList);
@@ -66,9 +66,10 @@ public class OfferController {
                                            ModelMap modelMap) throws Throwable {
 
          modelMap.addAttribute("selectedCustomer", customerService.getCustomerByName(customerName).getId());
-         modelMap.addAttribute("request", offerService.getRequestFromFile(customerName, uploadedFile));
-        ModelAndView modelAndView = new ModelAndView("redirect:/offer/newOffer", modelMap);
-        return modelAndView;
+         throw new Throwable(offerService.getRequestFromFile(customerName,uploadedFile).toString());
+        // modelMap.addAttribute("request", offerService.getRequestFromFile(customerName, uploadedFile));
+//         ModelAndView modelAndView = new ModelAndView("redirect:/offer/newOffer", modelMap);
+//            return modelAndView;
     }
 
 }

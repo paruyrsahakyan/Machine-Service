@@ -32,4 +32,13 @@ public class Request {
     public void setRequestLines(List<RequestLine> requestLines) {
         this.requestLines = requestLines;
     }
+
+    @Override
+    public String toString() {
+        return "Request{" +
+                "customer=" + customer +
+                ", requestNumber='" + requestNumber + '\'' +
+                ", requestLines=" + requestLines +
+                '}';
+    }
 }
