@@ -376,17 +376,17 @@ public class ExcelReaderWriter {
                    Row row = datatypeSheet.getRow(i);
                 Cell partNumberCell = row.getCell(partNumberColumn);
                 String partNumber = "";
-                if (partNumberCell!=null & partNumberCell.getCellTypeEnum() == CellType.STRING) {
+                if (partNumberCell!=null && partNumberCell.getCellTypeEnum() == CellType.STRING) {
                     partNumber = partNumberCell.getStringCellValue();
 
-                } else {
+                } else  if (partNumberCell!=null) {
                     String string = new Double(partNumberCell.getNumericCellValue()).toString();
                     int lastIndexOf = string.lastIndexOf(".");
                     partNumber = string.substring(0, lastIndexOf);
                 }
                 Cell priceCell = row.getCell(priceColumn);
                 Double price = new Double(0);
-                if (priceCell != null & priceCell.getCellTypeEnum()!=CellType.ERROR) {
+                if (priceCell != null && priceCell.getCellTypeEnum()==CellType.NUMERIC) {
                     price = new Double(priceCell.getNumericCellValue());
                 }
 
