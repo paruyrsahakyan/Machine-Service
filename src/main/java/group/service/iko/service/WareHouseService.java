@@ -103,7 +103,7 @@ public class WareHouseService {
 
     public Map<String, Part> getAvailablePartList () throws Throwable {
         if (availablePartList == null) {
-            excelReaderWriter.setPartsFromWareHouseFile();
+            new ExcelReaderWriter().setPartsFromWareHouseFile();
                     }
         return availablePartList;
 
