@@ -376,7 +376,7 @@ public class ExcelReaderWriter {
                    Row row = datatypeSheet.getRow(i);
                 Cell partNumberCell = row.getCell(partNumberColumn);
                 String partNumber = "";
-                if (partNumberCell.getCellTypeEnum() == CellType.STRING) {
+                if (partNumberCell!=null & partNumberCell.getCellTypeEnum() == CellType.STRING) {
                     partNumber = partNumberCell.getStringCellValue();
 
                 } else {
