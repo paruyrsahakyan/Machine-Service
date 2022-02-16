@@ -55,13 +55,12 @@ public class OfferController {
 
         if (customerId != 0){
             modelAndView.addObject("selectedCustomer", new CustomerDTO(customerService.getCustomerById(customerId)));
+            throw new Throwable(modelMap.toString());
         }
-        if (request!=null){
-         throw new Throwable(modelMap.toString());}
-//            modelAndView.addObject("request", request);
+        return modelAndView;
+        }
 
-                 return modelAndView;
-    }
+
 
     @RequestMapping("/newOffer/setRequestFromFile")
     @PreAuthorize("hasRole('ROLE_ADMIN')")

@@ -98,4 +98,7 @@ public class WareHouseService {
         return null;
     }
 
+//    public Map<String, Part> getAvailablePartList (){
+//          }
+
 }
