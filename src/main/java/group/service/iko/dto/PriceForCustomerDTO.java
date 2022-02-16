@@ -17,8 +17,7 @@ public class PriceForCustomerDTO {
     private double quantityInStock;
     private double netCost;
     private int profit;
-    @Autowired
-    private  WareHouseService wareHouseService;
+
 
 
 
@@ -30,6 +29,7 @@ public class PriceForCustomerDTO {
         article = priceForCustomer.getArticle();
         description = priceForCustomer.getDescription();
         price = priceForCustomer.getPrice();
+        WareHouseService wareHouseService = new WareHouseService();
         Part partInStock = wareHouseService.getAvailablePartList().get(article);
         if (partInStock != null) {
             quantityInStock = partInStock.getQuantity();
