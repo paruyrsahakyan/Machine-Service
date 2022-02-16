@@ -32,6 +32,9 @@ public class WareHouseService {
                 '}';
     }
 
+    public WareHouseService() {
+    }
+
     public static String getUpdateDate() {
         return updateDate;
     }
