@@ -37,7 +37,7 @@ public class ExcelReaderWriter {
     public void setPartsFromWareHouseFile() throws Throwable {
         partMap = new HashMap<>();
         try {
-            File wareHouseFile = new File(storageService.getWarHouseFilePath());
+            File wareHouseFile = new File(new StorageService().getWarHouseFilePath());
             FileInputStream excelFile = new FileInputStream(wareHouseFile);
             Workbook workbook = new XSSFWorkbook(excelFile);
             Sheet datatypeSheet = workbook.getSheetAt(0);
