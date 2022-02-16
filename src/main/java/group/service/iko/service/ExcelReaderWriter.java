@@ -373,8 +373,7 @@ public class ExcelReaderWriter {
             int priceColumn = 1;
             partsQuantity = datatypeSheet.getLastRowNum();
             for (int i = 0; i < partsQuantity; i++) {
-                Part part = new Part();
-                Row row = datatypeSheet.getRow(i);
+                   Row row = datatypeSheet.getRow(i);
                 Cell partNumberCell = row.getCell(partNumberColumn);
                 String partNumber = "";
                 if (partNumberCell.getCellTypeEnum() == CellType.STRING) {
@@ -387,7 +386,7 @@ public class ExcelReaderWriter {
                 }
                 Cell priceCell = row.getCell(priceColumn);
                 Double price = new Double(0);
-                if (priceCell != null) {
+                if (priceCell != null & priceCell.getCellTypeEnum()!=CellType.ERROR) {
                     price = new Double(priceCell.getNumericCellValue());
                 }
 
