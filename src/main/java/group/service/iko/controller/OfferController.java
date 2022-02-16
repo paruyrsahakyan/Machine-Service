@@ -15,6 +15,7 @@ import org.springframework.web.servlet.mvc.support.*;
 import org.springframework.web.servlet.view.*;
 
 import java.io.*;
+import java.nio.charset.*;
 import java.util.*;
 
 @Controller()
@@ -34,32 +35,34 @@ public class OfferController {
 
     @RequestMapping("/mainPage")
     @PreAuthorize("hasRole('ROLE_USER')")
-    public ModelAndView mainPage()  {
+    public ModelAndView mainPage() {
 
         ModelAndView modelAndView = new ModelAndView("order/offer");
         List<Offer> offerList = offerService.getCurrentOffers();
         modelAndView.addObject("currentOffers", OfferDTO.convertIntoDTO(offerList));
         modelAndView.addObject("allCustomers", CustomerDTO.convertIntoDTO(customerService.getAllCustomers()));
-        return  modelAndView;
+        return modelAndView;
     }
 
     @RequestMapping("/newOffer")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ModelAndView newOfferPage(@RequestParam(value = "selectedCustomer", required = false, defaultValue = "0") int customerId,
                                      @ModelAttribute("request") Request request,
-                                 ModelMap modelMap ) throws Throwable {
+                                     ModelMap modelMap) throws Throwable {
         ModelAndView modelAndView = new ModelAndView("order/newOffer");
         modelAndView.addObject("customerList", CustomerDTO.convertIntoDTO(customerService.getAllCustomers()));
-//        modelAndView.addObject("partsOnStock", WareHouseService.availablePartList);
-//        modelAndView.addObject("allPriceForCustomer", PriceForCustomerDTO.convertIntoDTO(priceForCustomerService.getAllPriceForCustomer()));
 
-        if (customerId != 0){
-            modelAndView.addObject("selectedCustomer", new CustomerDTO(customerService.getCustomerById(customerId)));
-            throw new Throwable(modelMap.toString());
+
+        if (customerId != 0) {
+            Customer customer = customerService.getCustomerById(customerId);
+            String customerName = customer.getName();
+            modelAndView.addObject("selectedCustomer", new CustomerDTO(customer));
+            modelAndView.addObject("priceList", priceForCustomerService.getPriceListByCustomerName(customer.getName()));
+            modelAndView.addObject("request", request);
         }
+
         return modelAndView;
-        }
-
+    }
 
 
     @RequestMapping("/newOffer/setRequestFromFile")
@@ -67,17 +70,13 @@ public class OfferController {
     public RedirectView setRequestFromFile(@RequestParam("customerName") String customerName,
                                            @RequestParam(value = "requestFile", required = false) MultipartFile uploadedFile,
                                            RedirectAttributes redirectAttributes
-                                           ) throws IOException {
-
-//         modelMap.addAttribute("selectedCustomer", customerService.getCustomerByName(customerName).getId());
-//          modelMap.addAttribute("request", );
-//         ModelAndView modelAndView = new ModelAndView("redirect:/offer/newOffer", modelMap);
-//            return modelAndView;
-
-            redirectAttributes.addFlashAttribute("request", offerService.getRequestFromFile(customerName, uploadedFile));
-            redirectAttributes.addAttribute("selectedCustomer", customerService.getCustomerByName(customerName).getId());
-            return new RedirectView("/offer/newOffer");
-        }
-
+    ) throws IOException {
+        Customer customer = customerService.getCustomerByName(customerName);
+        redirectAttributes.addFlashAttribute("priceList", priceForCustomerService.getPriceListByCustomerName(customer.getName()));
+        redirectAttributes.addFlashAttribute("request", offerService.getRequestFromFile(customerName, uploadedFile));
+        redirectAttributes.addAttribute("selectedCustomer", customerService.getCustomerByName(customerName).getId());
+        return new RedirectView("/offer/newOffer");
     }
+
+}
 
