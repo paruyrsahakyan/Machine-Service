@@ -11,6 +11,8 @@ import org.springframework.ui.*;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.*;
 import org.springframework.web.servlet.*;
+import org.springframework.web.servlet.mvc.support.*;
+import org.springframework.web.servlet.view.*;
 
 import java.io.*;
 import java.util.*;
@@ -44,15 +46,17 @@ public class OfferController {
     @RequestMapping("/newOffer")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ModelAndView newOfferPage(@RequestParam(value = "selectedCustomer", required = false, defaultValue = "0") int customerId,
+                                     @ModelAttribute("request") Request request,
                                  ModelMap modelMap ) throws Throwable {
         ModelAndView modelAndView = new ModelAndView("order/newOffer");
         modelAndView.addObject("customerList", CustomerDTO.convertIntoDTO(customerService.getAllCustomers()));
-        modelAndView.addObject("partsOnStock", WareHouseService.availablePartList);
-        modelAndView.addObject("allPriceForCustomer", PriceForCustomerDTO.convertIntoDTO(priceForCustomerService.getAllPriceForCustomer()));
+//        modelAndView.addObject("partsOnStock", WareHouseService.availablePartList);
+//        modelAndView.addObject("allPriceForCustomer", PriceForCustomerDTO.convertIntoDTO(priceForCustomerService.getAllPriceForCustomer()));
 
         if (customerId != 0){
             modelAndView.addObject("selectedCustomer", new CustomerDTO(customerService.getCustomerById(customerId)));
         }
+        
          throw new Throwable(modelMap.toString());
 //            modelAndView.addObject("request", request);
 
@@ -61,14 +65,20 @@ public class OfferController {
 
     @RequestMapping("/newOffer/setRequestFromFile")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
-    public ModelAndView setRequestFromFile(@RequestParam("customerName") String customerName,
+    public RedirectView setRequestFromFile(@RequestParam("customerName") String customerName,
                                            @RequestParam(value = "requestFile", required = false) MultipartFile uploadedFile,
-                                           ModelMap modelMap) throws IOException {
+                                           RedirectAttributes redirectAttributes
+                                           ) throws IOException {
 
-         modelMap.addAttribute("selectedCustomer", customerService.getCustomerByName(customerName).getId());
-          modelMap.addAttribute("request", offerService.getRequestFromFile(customerName, uploadedFile).);
-         ModelAndView modelAndView = new ModelAndView("redirect:/offer/newOffer", modelMap);
-            return modelAndView;
+//         modelMap.addAttribute("selectedCustomer", customerService.getCustomerByName(customerName).getId());
+//          modelMap.addAttribute("request", );
+//         ModelAndView modelAndView = new ModelAndView("redirect:/offer/newOffer", modelMap);
+//            return modelAndView;
+
+            redirectAttributes.addFlashAttribute("request", offerService.getRequestFromFile(customerName, uploadedFile));
+            redirectAttributes.addAttribute("selectedCustomer", customerService.getCustomerByName(customerName).getId());
+            return new RedirectView("/offer/newOffer");
+        }
+
     }
 
-}
