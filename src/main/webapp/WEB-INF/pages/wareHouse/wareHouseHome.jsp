@@ -42,6 +42,22 @@
     <input type="file" name="wareHouseFile">
     <input  type="submit" value="загрузить">
     </form:form>
+    <br><br>
+
+     <form:form action="/wareHouse/KCISpriceList" method="post"  accept-charset="UTF-8"
+                   enctype="multipart/form-data">
+        Загрузить прайс:
+        <input type="file" name="priceList">
+        <input  type="submit" value="загрузить">
+        </form:form>
+
+        <br><br>
+             <form:form action="/wareHouse/analogs" method="post"  accept-charset="UTF-8"
+                           enctype="multipart/form-data">
+                Загрузить аналоги:
+                <input type="file" name="priceList">
+                <input  type="submit" value="загрузить">
+                </form:form>
 </p>
 </div>
 </body>

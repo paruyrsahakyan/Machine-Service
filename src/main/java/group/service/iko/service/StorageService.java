@@ -36,9 +36,15 @@ public class StorageService {
             File.separator + "IkoService"+File.separator + "request";
     private final String currentRequestFileName="uploadedRequest.xlsx";
 
+    private final String supplierPriceListFolder=  File.separator + "home" +File.separator + "paruyr" +
+            File.separator + "IkoService"+File.separator + "supplierPriceListFolder";
+    private final String supplierPriceListFileName="supplierPriceList.xlsx";
+
     private final String currentPriceListFilePath=priceListFileFolder+File.separator+currentPriceListFileName;
 
     private final String currentRequestFilePath=requestFileFolder+File.separator+currentRequestFileName;
+
+    private final String supplierPriceListFilePath = supplierPriceListFolder+File.separator+supplierPriceListFileName;
 
     public StorageService() {
 
@@ -160,6 +166,19 @@ public class StorageService {
         try {
             requestFile.createNewFile();
             uploadedFile.transferTo(requestFile);
+        } catch (IOException e1) {
+            e1.printStackTrace();
+        }
+    }
+
+    public void saveSupplierPriceListFile(MultipartFile multipartFile) {
+        File folder = new File(supplierPriceListFolder);
+        folder.mkdirs();
+        File file = new File(supplierPriceListFilePath);
+        file.delete();
+        try {
+            file.createNewFile();
+            multipartFile.transferTo(file);
         } catch (IOException e1) {
             e1.printStackTrace();
         }

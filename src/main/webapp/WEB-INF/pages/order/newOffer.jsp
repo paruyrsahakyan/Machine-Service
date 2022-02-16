@@ -131,9 +131,7 @@
     </table>
  </div>
 
-<br>
-<br>
-
+<br><br>
 
  <div  class="mainContent" id="fileUploadForm" >
 
@@ -145,6 +143,7 @@
                     </form:form>
          </div>
 
+<br> <br>
 <div class="mainContent">
         <table class="mainTables" id="dynamicTable" style="width: auto" align="center">
         <tr>
@@ -257,13 +256,13 @@
 
 
         titleCell1.innerHTML = "N";
-       titleCell1.innerHTML = "Название";
-        titleCell1.innerHTML = "Артикул";
-       titleCell1.innerHTML =  "Количество";
-        titleCell1.innerHTML = "Артикул Предложения";
-        titleCell1.innerHTML = "Единица";
-        titleCell1.innerHTML = "Цена";
-        titleCell1.innerHTML = "Сумма";
+        titleCell12.innerHTML = "Название";
+        titleCell3.innerHTML = "Артикул";
+        titleCell4.innerHTML =  "Количество";
+        titleCell5.innerHTML = "Артикул Предложения";
+        titleCell6.innerHTML = "Единица";
+        titleCell7.innerHTML = "Цена";
+        titleCell8.innerHTML = "Сумма";
         titleCell9.innerHTML = "Срок поставки";
         titleCell10.innerHTML = "Производитель";
         titleCell11.innerHTML = "Наличие Масиса 3";
@@ -293,11 +292,23 @@
                 var cell1 = row.insertCell(0);
                 var cell2 = row.insertCell(1);
                 var cell3 = row.insertCell(2);
-              
-                cell1.id="N"+(i+1).toString;
-                cell2.id="partName"+(i+1).toString;
-                cell3.id ="partNumber"+(i+1).toString;
-                cell4.id ="quantity"+(i+1).toString;
+                var cell4 = row.insertCell(3);
+
+                cell1.id="N"+(i+1);
+                cell2.id="partName"+(i+1);
+                cell3.id ="partNumber"+(i+1);
+                cell4.id ="quantity"+(i+1);
+                cell5.id = "offerPartNumber" +;
+                cell6.id = "unit";
+                cell7.id = "price";
+                cell8.id = "sum";
+                cell9.id= "deliveryDate";
+                cell10.id = "manufacturer";
+                cell11.id = "availability";
+                cell12.id = "otherAvailability";
+                cell13.id = "profitMasis";
+                cell14.id= "lastOfferPrice";
+                cell15.id = "lastOfferDate";
                
             cell1.innerHTML = (i + 1).toString();
                 cell2.innerHTML = requestLines[i].partName;

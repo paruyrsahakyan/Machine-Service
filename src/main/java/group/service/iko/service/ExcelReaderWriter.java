@@ -363,7 +363,41 @@ public class ExcelReaderWriter {
         return requestLines;
     }
 
-}
+    public void setSupplierPriceListFile() throws  Throwable {
+        Map priceMap = new HashMap<String, Double>();
+                    File wareHouseFile = new File(new StorageService().getWarHouseFilePath());
+            FileInputStream excelFile = new FileInputStream(wareHouseFile);
+            Workbook workbook = new XSSFWorkbook(excelFile);
+            Sheet datatypeSheet = workbook.getSheetAt(0);
+            int partNumberColumn = 0;
+            int priceColumn = 1;
+            partsQuantity = datatypeSheet.getLastRowNum();
+            for (int i = 0; i < partsQuantity; i++) {
+                Part part = new Part();
+                Row row = datatypeSheet.getRow(i);
+                Cell partNumberCell = row.getCell(partNumberColumn);
+                String partNumber = "";
+                if (partNumberCell.getCellTypeEnum() == CellType.STRING) {
+                    partNumber = partNumberCell.getStringCellValue();
+
+                } else {
+                    String string = new Double(partNumberCell.getNumericCellValue()).toString();
+                    int lastIndexOf = string.lastIndexOf(".");
+                    partNumber = string.substring(0, lastIndexOf);
+                }
+                Cell priceCell = row.getCell(priceColumn);
+                Double price = new Double(0);
+                if (priceCell != null) {
+                    price = new Double(priceCell.getNumericCellValue());
+                }
+
+                priceMap.put(partNumber, price);
+            }
+
+            new WareHouseService().setSupplierPriceList(priceMap);
+        }
+    }
+
 
 
 

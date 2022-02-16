@@ -25,6 +25,9 @@ public class WareHouseService {
     @Autowired
     StorageService storageService;
 
+    public  static  Map<String, Double> supplierPriceList;
+
+
     @Override
     public String toString() {
         return "WareHouseService{" +
@@ -108,6 +111,14 @@ public class WareHouseService {
         return availablePartList;
 
     }
-//          }
 
+
+  public void setSupplierPriceList (MultipartFile multipartFile) throws Throwable {
+      storageService.saveSupplierPriceListFile(multipartFile);
+      excelReaderWriter.setSupplierPriceListFile();
+  }
+
+    public  void setSupplierPriceList(Map<String, Double> supplierPriceList) {
+        WareHouseService.supplierPriceList = supplierPriceList;
+    }
 }
