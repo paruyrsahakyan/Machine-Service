@@ -52,14 +52,12 @@ public class OfferController {
         ModelAndView modelAndView = new ModelAndView("order/newOffer");
         modelAndView.addObject("customerList", CustomerDTO.convertIntoDTO(customerService.getAllCustomers()));
 
-
         if (customerId != 0) {
             Customer customer = customerService.getCustomerById(customerId);
             String customerName = customer.getName();
             modelAndView.addObject("selectedCustomer", new CustomerDTO(customer));
             modelAndView.addObject("priceList", priceForCustomerService.getPriceListByCustomerName(customer.getName()));
-            modelAndView.addObject("request", request);
-        }
+            modelAndView.addObject("request", request);}
 
         return modelAndView;
     }

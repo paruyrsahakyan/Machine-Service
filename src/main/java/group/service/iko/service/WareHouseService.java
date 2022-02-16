@@ -98,7 +98,13 @@ public class WareHouseService {
         return null;
     }
 
-//    public Map<String, Part> getAvailablePartList (){
+    public Map<String, Part> getAvailablePartList () throws Throwable {
+        if (availablePartList == null) {
+            excelReaderWriter.setPartsFromWareHouseFile();
+                    }
+        return availablePartList;
+
+    }
 //          }
 
 }

@@ -35,7 +35,7 @@ public class PriceController {
 
     @RequestMapping(value = "/mainPage")
     public ModelAndView showPricePage(ModelMap modelMap,
-                                      @RequestParam(value = "selectedCustomer", required = false, defaultValue = "0") int customerId) {
+                                      @RequestParam(value = "selectedCustomer", required = false, defaultValue = "0") int customerId) throws Throwable {
         ModelAndView modelAndView = new ModelAndView("price/priceMainPage");
         modelAndView.addObject("customerList", CustomerDTO.convertIntoDTO(customerService.getAllCustomers()));
         modelAndView.addObject("priceList", PriceForCustomerDTO.convertIntoDTO(priceForCustomerService.getAllPriceForCustomer()));
@@ -105,9 +105,7 @@ public class PriceController {
 
     @RequestMapping(value = "/pricesByArticleForAllCustomers/{article}", method = RequestMethod.GET)
     @PreAuthorize("hasRole('ROLE_ADMIN')")
-    public ModelAndView showArticlePricesForAllCustomers(@PathVariable("article") String article)
-
-    {
+    public ModelAndView showArticlePricesForAllCustomers(@PathVariable("article") String article) throws Throwable {
         ModelAndView modelAndView = new ModelAndView("price/pricesByArticleForAllCustomers");
         List<PriceForCustomer> priceList = priceForCustomerService.getPriceForCustomerByArticle(article);
         modelAndView.addObject("priceList", PriceForCustomerDTO.convertIntoDTO(priceList));
@@ -118,7 +116,7 @@ public class PriceController {
 
     @RequestMapping(value = "/pricesByArticleForAllCustomers", method = RequestMethod.GET)
     @PreAuthorize("hasRole('ROLE_ADMIN')")
-    public ModelAndView showArticlePricesForAllCustomersBySearchInput(@RequestParam("article") String article) {
+    public ModelAndView showArticlePricesForAllCustomersBySearchInput(@RequestParam("article") String article) throws Throwable {
         ModelAndView modelAndView = new ModelAndView("price/pricesByArticleForAllCustomers");
         List<PriceForCustomer> priceList = priceForCustomerService.getPriceForCustomerByArticle(article);
         modelAndView.addObject("priceList", PriceForCustomerDTO.convertIntoDTO(priceList));

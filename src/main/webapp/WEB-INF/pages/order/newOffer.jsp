@@ -200,7 +200,7 @@
 
             <c:forEach items="${request.requestLines}" var="requestLine">
                     var partName = "${requestLine.partName}"
-                    var customerName = "${requestLine.partNumber}";
+                    var partNumber = "${requestLine.partNumber}";
                     var quantity = "${requestLine.quantity}";
                     requestLines.push({
                     partName: partName,
@@ -250,7 +250,7 @@
         var titleCell9 = titleRow.insertCell(8);
         var titleCell10 = titleRow.insertCell(9);
         var titleCell11 = titleRow.insertCell(10);
-        var titleCel12 = titleRow.insertCell(11);
+        var titleCell12 = titleRow.insertCell(11);
         var titleCell13 = titleRow.insertCell(12);
         var titleCell14 = titleRow.insertCell(13);
         var titleCell15 = titleRow.insertCell(14);

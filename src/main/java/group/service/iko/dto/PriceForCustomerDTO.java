@@ -3,6 +3,7 @@ package group.service.iko.dto;
 import group.service.iko.entities.Part;
 import group.service.iko.entities.PriceForCustomer;
 import group.service.iko.service.WareHouseService;
+import org.springframework.beans.factory.annotation.*;
 
 import java.util.*;
 
@@ -16,10 +17,12 @@ public class PriceForCustomerDTO {
     private double quantityInStock;
     private double netCost;
     private int profit;
+    @Autowired
+    private  WareHouseService wareHouseService;
 
 
 
-    public PriceForCustomerDTO(PriceForCustomer priceForCustomer) {
+    public PriceForCustomerDTO(PriceForCustomer priceForCustomer) throws Throwable {
 
         id = priceForCustomer.getId();
         customerId = priceForCustomer.getCustomer().getId();
@@ -27,15 +30,15 @@ public class PriceForCustomerDTO {
         article = priceForCustomer.getArticle();
         description = priceForCustomer.getDescription();
         price = priceForCustomer.getPrice();
-        Part partInStock = WareHouseService.availablePartList.get(article);
+        Part partInStock = wareHouseService.getAvailablePartList().get(article);
         if (partInStock != null) {
             quantityInStock = partInStock.getQuantity();
-            netCost = WareHouseService.availablePartList.get(article).getNetCost();
+            netCost = wareHouseService.getAvailablePartList().get(article).getNetCost();
             profit =  (int) ((price - netCost)/price*100);
         }
     }
 
-        public static List<PriceForCustomerDTO> convertIntoDTO (List < PriceForCustomer > priceForCustomers) {
+        public static List<PriceForCustomerDTO> convertIntoDTO (List < PriceForCustomer > priceForCustomers) throws Throwable {
             List<PriceForCustomerDTO> priceForCustomerDTOS = new ArrayList<>();
 
             for (PriceForCustomer priceForCustomer : priceForCustomers) {
