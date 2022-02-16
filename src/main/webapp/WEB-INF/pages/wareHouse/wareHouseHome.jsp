@@ -44,7 +44,7 @@
     </form:form>
     <br><br>
 
-     <form:form action="/wareHouse/KCISpriceList" method="post"  accept-charset="UTF-8"
+     <form:form action="/wareHouse/supplierPriceList" method="post"  accept-charset="UTF-8"
                    enctype="multipart/form-data">
         Загрузить прайс:
         <input type="file" name="priceList">

@@ -44,6 +44,14 @@ public class WareHouseController {
         modelAndView.addObject("updateDate", WareHouseService.getUpdateDate());
         return modelAndView;
     }
+
+        @RequestMapping(value = "/supplierPriceList", method = RequestMethod.POST)
+        public ModelAndView setSupplierPriceLists(@RequestParam(value = "priceList", required = false) MultipartFile multipartFile
+    ) throws Throwable {
+            wareHouseService.setSupplierPriceList(multipartFile);
+            ModelAndView modelAndView = new ModelAndView("wareHouse/wareHouseHome");
+              return modelAndView;
+    }
     @RequestMapping(value = "/interChangeableParts")
     public ModelAndView getAllInterChangeableGroupsParts() {
         ModelAndView modelAndView = new ModelAndView("wareHouse/interChangeableParts");
