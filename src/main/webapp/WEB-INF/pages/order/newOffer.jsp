@@ -171,7 +171,6 @@
             var article = "${priceForCustomer.article}";
             var description = "${priceForCustomer.description}";
             var price = "${priceForCustomer.price}";
-            var customerId = "${priceForCustomer.customerId}";
             var customerName = "${priceForCustomer.customerName}";
             var quantityInStock = "${priceForCustomer.quantityInStock}";
             var profit = "${priceForCustomer.profit}";
@@ -180,7 +179,6 @@
             article: article,
             description: description,
             price: price,
-            customerId: customerId,
             customerName: customerName,
             quantityInStock: quantityInStock,
             profit: profit,
@@ -195,28 +193,28 @@
             id: id,
             customerName: customerName
             });
-        </c:forEach>
+   //     </c:forEach>
 
-                   <c:forEach items="${offer.offerLines}" var="offerLine">
-                    var partName = "${offerLine.partName}";
-                    var partNumber = "${offerLine.partNumber}";
-                    var quantity = "${offerLine.quantity}";
-                    var price = "${offerLine.price}";
-                    var sum ="${offerLine.sum}";
+     //              <c:forEach items="${offer.offerLines}" var="offerLine">
+       //             var partName = "${offerLine.partName}";
+         //           var partNumber = "${offerLine.partNumber}";
+         //           var quantity = "${offerLine.quantity}";
+           //         var price = "${offerLine.price}";
+             //       var sum ="${offerLine.sum}";
 
-                    offerLines.push({
-                    partName: partName,
-                    partNumber: partNumber,
-                    quantity: quantity,
-                    price:price,
-                    sum:sum
-                                        });
-                </c:forEach>
+               //     offerLines.push({
+             //       partName: partName,
+             //       partNumber: partNumber,
+             //       quantity: quantity,
+             //       price:price,
+             //       sum:sum
+             //                           });
+              //  </c:forEach>
 
 
                if (offerLines.length > 0) {
 
-                setOfferLinesInTable();
+                // setOfferLinesInTable();
                 setCustomer();
                }
 
@@ -261,7 +259,7 @@
 
 
         titleCell1.innerHTML = "N";
-        titleCell12.innerHTML = "Название";
+        titleCell2.innerHTML = "Название";
         titleCell3.innerHTML = "Артикул";
         titleCell4.innerHTML =  "Количество";
         titleCell5.innerHTML = "Артикул Предложения";
@@ -292,7 +290,7 @@
         titleCell14.style.fontWeight = 'bold';
         titleCell15.style.fontWeight = 'bold';
 
-        for (var i = 0; i < requestLines.length; i++) {
+        for (var i = 0; i < offerLines.length; i++) {
                 var row = table.insertRow();
                 var cell1 = row.insertCell(0);
                 var cell2 = row.insertCell(1);
@@ -325,7 +323,7 @@
                 cell13.id = "profitMasis"+(i+1);
                 cell14.id= "lastOfferPrice"+(i+1);
                 cell15.id = "lastOfferDate"+(i+1);
-               
+
             cell1.innerHTML = (i + 1).toString();
                 cell2.innerHTML = offerLines[i].partName;
                 cell3.innerHTML = offerLines[i].partNumber;
