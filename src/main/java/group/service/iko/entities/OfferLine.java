@@ -160,7 +160,13 @@ public class OfferLine {
         this.offer = offer;
     }
 
+    public Double getSupplierPrice() {
+        return supplierPrice;
+    }
 
+    public void setSupplierPrice(Double supplierPrice) {
+        this.supplierPrice = supplierPrice;
+    }
 
     @Override
     public String toString() {
