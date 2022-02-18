@@ -327,9 +327,9 @@
                 cell15.id = "lastOfferDate"+(i+1);
                
             cell1.innerHTML = (i + 1).toString();
-                cell2.innerHTML = requestLines[i].partName;
-                cell3.innerHTML = requestLines[i].partNumber;
-                cell4.innerHTML = requestLines[i].quantity;
+                cell2.innerHTML = offerLines[i].partName;
+                cell3.innerHTML = offerLines[i].partNumber;
+                cell4.innerHTML = offerLines[i].quantity;
             }
 
 
