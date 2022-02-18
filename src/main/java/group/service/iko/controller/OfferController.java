@@ -55,8 +55,9 @@ public class OfferController {
         if (customerId != 0) {
             Customer customer = customerService.getCustomerById(customerId);
             String customerName = customer.getName();
+            List<PriceForCustomer> priceList = priceForCustomerService.getPriceListByCustomerName(customer.getName());
             modelAndView.addObject("selectedCustomer", new CustomerDTO(customer));
-            modelAndView.addObject("priceList", priceForCustomerService.getPriceListByCustomerName(customer.getName()));
+            modelAndView.addObject("priceList", PriceForCustomerDTO.convertIntoDTO(priceList));
             modelAndView.addObject("offer", offer);
            }
 
