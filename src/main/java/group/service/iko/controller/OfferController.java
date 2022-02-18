@@ -57,10 +57,12 @@ public class OfferController {
             String customerName = customer.getName();
             modelAndView.addObject("selectedCustomer", new CustomerDTO(customer));
             modelAndView.addObject("priceList", priceForCustomerService.getPriceListByCustomerName(customer.getName()));
-            modelAndView.addObject("offer", offer);}
-                throw new Throwable(offer.toString());
-//        return modelAndView;
+            modelAndView.addObject("offer", offer);
+            throw new Throwable(offer.toString());}
+
+        return modelAndView;
     }
+        
 
 
     @RequestMapping("/newOffer/setRequestFromFile")
