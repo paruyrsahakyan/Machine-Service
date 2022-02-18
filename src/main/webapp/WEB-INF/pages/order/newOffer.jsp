@@ -164,7 +164,7 @@
         var priceListFilteredByArticle = [];
         var priceListForSelectedCustomer = [];
         var selectedCustomerName = "${selectedCustomer.name}";
-        var requestLines=[];
+        var offerLines=[];
 
          <c:forEach items="${allPriceForCustomer}" var="priceForCustomer">
             var id ="${priceForCustomer.id}"
@@ -197,21 +197,27 @@
             });
         </c:forEach>
 
-            <c:forEach items="${request.requestLines}" var="requestLine">
-                    var partName = "${requestLine.partName}"
-                    var partNumber = "${requestLine.partNumber}";
-                    var quantity = "${requestLine.quantity}";
-                    requestLines.push({
+
+            <c:forEach items="${offer.offerLines}" var="offerLine">
+                    var partName = "${offerLine.partName}"
+                    var partNumber = "${offerLine.partNumber}";
+                    var quantity = "${offerLine.quantity}";
+                    var price = "${offerLine.price}";
+                    var sum ="${offerLne.sum}"
+
+                    offerLines.push({
                     partName: partName,
                     partNumber: partNumber,
-                    quantity: quantity
-                    });
+                    quantity: quantity,
+                    price:price,
+                    sum:sum
+                                        });
                 </c:forEach>
 
 
-               if (requestLines.length > 0) {
+               if (offerLines.length > 0) {
 
-                setRequestLinesInTable();
+                setOfferLinesInTable();
                 setCustomer();
                }
 
@@ -233,7 +239,7 @@
                 }
 
 
-        function setRequestLinesInTable() {
+        function setOfferLinesInTable() {
 
         var table = document.getElementById("dynamicTable");
         table.innerText = "";
@@ -293,22 +299,33 @@
                 var cell2 = row.insertCell(1);
                 var cell3 = row.insertCell(2);
                 var cell4 = row.insertCell(3);
+                var cell5 = row.insertCell(4);
+                var cell6= row.insertCell(5);
+                var cell7 = row.insertCell(6);
+                var cell8 = row.insertCell(7);
+                var cell9= row.insertCell(8);
+                var cell10 = row.insertCell(9);
+                var cell11 = row.insertCell(10);
+                var cell12 = row.insertCell(11);
+                var cell13 = row.insertCell(12;
+                var cell14 = row.insertCell(13);
+                var cell15 = row.insertCell(14);
 
                 cell1.id="N"+(i+1);
                 cell2.id="partName"+(i+1);
                 cell3.id ="partNumber"+(i+1);
                 cell4.id ="quantity"+(i+1);
-                cell5.id = "offerPartNumber" +;
-                cell6.id = "unit";
-                cell7.id = "price";
-                cell8.id = "sum";
-                cell9.id= "deliveryDate";
-                cell10.id = "manufacturer";
-                cell11.id = "availability";
-                cell12.id = "otherAvailability";
-                cell13.id = "profitMasis";
-                cell14.id= "lastOfferPrice";
-                cell15.id = "lastOfferDate";
+                cell5.id = "offerPartNumber" +(i+1);
+                cell6.id = "unit"+(i+1);
+                cell7.id = "price"+(i+1);
+                cell8.id = "sum"+(i+1);
+                cell9.id= "deliveryDate"+(i+1);
+                cell10.id = "manufacturer"+(i+1);
+                cell11.id = "availability"+(i+1);
+                cell12.id = "otherAvailability"+(i+1);
+                cell13.id = "profitMasis"+(i+1);
+                cell14.id= "lastOfferPrice"+(i+1);
+                cell15.id = "lastOfferDate"+(i+1);
                
             cell1.innerHTML = (i + 1).toString();
                 cell2.innerHTML = requestLines[i].partName;

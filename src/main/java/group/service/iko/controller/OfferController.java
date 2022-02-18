@@ -47,8 +47,8 @@ public class OfferController {
     @RequestMapping("/newOffer")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ModelAndView newOfferPage(@RequestParam(value = "selectedCustomer", required = false, defaultValue = "0") int customerId,
-                                     @ModelAttribute("request") Request request,
-                                     ModelMap modelMap) throws Throwable {
+                                     @ModelAttribute("offer") Offer offer,
+                                      ModelMap modelMap) throws Throwable {
         ModelAndView modelAndView = new ModelAndView("order/newOffer");
         modelAndView.addObject("customerList", CustomerDTO.convertIntoDTO(customerService.getAllCustomers()));
 
@@ -57,7 +57,7 @@ public class OfferController {
             String customerName = customer.getName();
             modelAndView.addObject("selectedCustomer", new CustomerDTO(customer));
             modelAndView.addObject("priceList", priceForCustomerService.getPriceListByCustomerName(customer.getName()));
-            modelAndView.addObject("request", request);}
+            modelAndView.addObject("offer", offer);}
 
         return modelAndView;
     }
@@ -71,7 +71,7 @@ public class OfferController {
     ) throws IOException {
         Customer customer = customerService.getCustomerByName(customerName);
         redirectAttributes.addFlashAttribute("priceList", priceForCustomerService.getPriceListByCustomerName(customer.getName()));
-        redirectAttributes.addFlashAttribute("request", offerService.getRequestFromFile(customerName, uploadedFile));
+        redirectAttributes.addFlashAttribute("offer", offerService.makeOfferFromRequestedFile(customerName, uploadedFile));
         redirectAttributes.addAttribute("selectedCustomer", customerService.getCustomerByName(customerName).getId());
         return new RedirectView("/offer/newOffer");
     }

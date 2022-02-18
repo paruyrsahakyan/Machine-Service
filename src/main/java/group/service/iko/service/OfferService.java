@@ -22,6 +22,13 @@ public class OfferService {
     private  CustomerService customerService;
     @Autowired
     private ExcelReaderWriter excelReaderWriter;
+    @Autowired
+    OfferService offerService;
+    @Autowired
+    OfferLineService offerLineService;
+    Session session;
+
+
 
     public OfferService() {
     }
@@ -71,6 +78,33 @@ public class OfferService {
         request.setRequestLines(requestLines);
         return request;
     }
+
+
+    public Offer makeOfferFromRequestedFile(String customerName, MultipartFile uploadedFile) throws IOException {
+        Offer offer = new Offer();
+        offer.setCustomer(customerService.getCustomerByName(customerName));
+        Request request = getRequestFromFile(customerName, uploadedFile);
+        offer.setCustomer(request.getCustomer());
+        offer.setOfferLineSet(offerLineService.getOfferLinesFromRequest(request));
+//        offerService.saveOffer(offer);
+//        Offer savedOffer = offerService.getLastSavedOffer();
+        return  offer;
+
+    }
+
+    public Offer getLastSavedOffer() {
+        session = SessionFactoryImpl.getSessionFactory().openSession();
+        String hql = "from group.service.iko.entities.Offer" +
+                " order by id DESC";
+        Query query = session.createQuery(hql);
+        query.setMaxResults(1);
+        Offer offer = (Offer) query.uniqueResult();
+        session.flush();
+        session.close();
+        return offer;
+    }
+
+
 
 }
 
