@@ -156,4 +156,23 @@ public class OfferLine {
     public void setOffer(Offer offer) {
         this.offer = offer;
     }
+
+    @Override
+    public String toString() {
+        return "OfferLine{" +
+                "id=" + id +
+                ", requestedPartName='" + requestedPartName + '\'' +
+                ", requestedPartNumber='" + requestedPartNumber + '\'' +
+                ", offeredPartName='" + offeredPartName + '\'' +
+                ", offeredPartNumber='" + offeredPartNumber + '\'' +
+                ", quantity=" + quantity +
+                ", unit='" + unit + '\'' +
+                ", price=" + price +
+                ", sum=" + sum +
+                ", supplyDate=" + supplyDate +
+                ", producer='" + producer + '\'' +
+                ", confirmationCondition='" + confirmationCondition + '\'' +
+                ", offer=" + offer +
+                '}';
+    }
 }

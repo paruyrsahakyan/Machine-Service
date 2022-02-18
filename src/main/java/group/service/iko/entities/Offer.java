@@ -76,6 +76,20 @@ public class Offer {
         this.validationDate = validationDate;
     }
 
+    @Override
+    public String toString() {
+        return "Offer{" +
+                "id=" + id +
+                ", requestNumber='" + requestNumber + '\'' +
+                ", offerDate=" + offerDate +
+                ", validationDate=" + validationDate +
+                ", offerLineSet=" + offerLineSet +
+                ", offerCondition='" + offerCondition + '\'' +
+                ", customer=" + customer +
+                ", sum=" + sum +
+                '}';
+    }
+
     public Set<OfferLine> getOfferLineSet() {
         return offerLineSet;
     }

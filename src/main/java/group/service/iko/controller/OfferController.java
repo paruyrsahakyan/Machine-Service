@@ -58,8 +58,8 @@ public class OfferController {
             modelAndView.addObject("selectedCustomer", new CustomerDTO(customer));
             modelAndView.addObject("priceList", priceForCustomerService.getPriceListByCustomerName(customer.getName()));
             modelAndView.addObject("offer", offer);}
-
-        return modelAndView;
+                throw new Throwable(offer.toString());
+//        return modelAndView;
     }
 
 
