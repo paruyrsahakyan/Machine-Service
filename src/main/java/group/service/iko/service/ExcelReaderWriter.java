@@ -337,11 +337,12 @@ public class ExcelReaderWriter {
         List<RequestLine> requestLines = new ArrayList<>();
         int linesQuantityInTheFile = datatypeSheet.getLastRowNum() + 1;
         for (int i = 0; i < linesQuantityInTheFile; i++) {
+            int lineNumber = i+1;
             Row row = datatypeSheet.getRow(i);
             Cell descriptionCell = row.getCell(0);
             Cell articleCell = row.getCell(1);
             Cell quantityCell = row.getCell(2);
-            String partName = descriptionCell.getStringCellValue();
+                        String partName = descriptionCell.getStringCellValue();
             String partNumber = "";
             if (articleCell.getCellTypeEnum() == CellType.STRING) {
                 partNumber = articleCell.getStringCellValue();
@@ -358,6 +359,7 @@ public class ExcelReaderWriter {
             requestLine.setPartNumber(partNumber);
             requestLine.setQuantity(quantity);
             requestLines.add(requestLine);
+            requestLine.setLineNumber(lineNumber);
 
                 }
         return requestLines;

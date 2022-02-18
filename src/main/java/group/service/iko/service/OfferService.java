@@ -85,7 +85,7 @@ public class OfferService {
         offer.setCustomer(customerService.getCustomerByName(customerName));
         Request request = getRequestFromFile(customerName, uploadedFile);
         offer.setCustomer(request.getCustomer());
-        offer.setOfferLines(offerLineService.getOfferLinesFromRequest(request));
+        offer.setOfferLines(offerLineService.makeOfferLinesFromRequest(request));
 //        offerService.saveOffer(offer);
 //        Offer savedOffer = offerService.getLastSavedOffer();
         return  offer;

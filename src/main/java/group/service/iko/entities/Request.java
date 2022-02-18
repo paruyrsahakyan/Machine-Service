@@ -9,6 +9,7 @@ public class Request {
     private  String requestNumber;
     private List<RequestLine> requestLines;
 
+
     public Customer getCustomer() {
         return customer;
     }
@@ -32,6 +33,8 @@ public class Request {
     public void setRequestLines(List<RequestLine> requestLines) {
         this.requestLines = requestLines;
     }
+
+
 
     @Override
     public String toString() {

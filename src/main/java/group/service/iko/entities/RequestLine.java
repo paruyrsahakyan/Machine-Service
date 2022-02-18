@@ -2,9 +2,11 @@ package group.service.iko.entities;
 
 public class RequestLine {
 
+    private  int lineNumber;
     private  String partName;
     private  String partNumber;
     int quantity;
+
 
     public String getPartName() {
         return partName;
@@ -28,6 +30,14 @@ public class RequestLine {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public int getLineNumber() {
+        return lineNumber;
+    }
+
+    public void setLineNumber(int lineNumber) {
+        this.lineNumber = lineNumber;
     }
 
     @Override

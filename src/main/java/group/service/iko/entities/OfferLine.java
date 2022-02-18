@@ -49,6 +49,7 @@ public class OfferLine {
         @JoinColumn(name = "offer_id")
     private Offer offer;
 
+    private Double supplierPrice;
 
     public OfferLine() {
     }
@@ -155,6 +156,14 @@ public class OfferLine {
 
     public void setOffer(Offer offer) {
         this.offer = offer;
+    }
+
+    public Double getSupplierPrice() {
+        return supplierPrice;
+    }
+
+    public void setSupplierPrice(Double supplierPrice) {
+        this.supplierPrice = supplierPrice;
     }
 
     @Override

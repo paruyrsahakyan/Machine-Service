@@ -189,15 +189,17 @@
                    var partName = "${offerLine.requestedPartName}";
                     var partNumber = "${offerLine.requestedPartNumber}";
                     var quantity = "${offerLine.quantity}";
-                     var price = "${offerLine.price}";
+                     var supplierPrice = "${offerLine.supplierPrice}";
                      var sum ="${offerLine.sum}";
+                     var M3NetCost = "${offerLine.price}";
 
                    offerLines.push({
                     partName: partName,
                    partNumber: partNumber,
                    quantity: quantity,
-                   price:price,
-                   sum:sum
+                   supplierPrice:supplierPrice,
+                   sum:sum,
+                   M3NetCost:M3NetCost
                                        });
                </c:forEach>
 
@@ -320,6 +322,8 @@
                 cell2.innerHTML = offerLines[i].partName;
                 cell3.innerHTML = offerLines[i].partNumber;
                 cell4.innerHTML = offerLines[i].quantity;
+                cell14.innerHTML= offerLines[i].supplierPrice;
+                cell7.innerHTML= offerLines[i].M3NetCost;
             }
 
 

@@ -50,9 +50,10 @@ public class OfferLineService {
 
     }
 
-    public  Set<OfferLine> getOfferLinesFromRequest (Request request) {
+    public  Set<OfferLine> makeOfferLinesFromRequest (Request request) {
         String customerName = request.getCustomer().getName();
         List<PriceForCustomer> priceListForCustomer = priceForCustomerService.getPriceListByCustomerName(customerName);
+        Map<String, Double> supplierPriceMap = WareHouseService.supplierPriceList;
         Map<String, PriceForCustomer> priceListMap = priceListForCustomer.stream()
                 .collect(Collectors.toMap(PriceForCustomer::getArticle, Function.identity()));
         List<OfferLine> offerLines = new ArrayList<>();
@@ -70,6 +71,10 @@ public class OfferLineService {
                 int price = priceForCustomer.getPrice();
                 offerLine.setPrice(price);
                 offerLine.setSum(price * quantity);
+            }
+            Double supplierPrice = supplierPriceMap.get(partNumber);
+            if (supplierPrice!= null){
+                offerLine.setSupplierPrice(supplierPrice);
             }
             offerLines.add(offerLine);
 
