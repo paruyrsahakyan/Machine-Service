@@ -166,8 +166,8 @@
         var selectedCustomerName = "${selectedCustomer.name}";
         var offerLines=[];
 
-         <c:forEach items="${allPriceForCustomer}" var="priceForCustomer">
-            var id ="${priceForCustomer.id}"
+         <c:forEach items="${priceList}" var="priceForCustomer">
+            var id ="${priceForCustomer.id}";
             var article = "${priceForCustomer.article}";
             var description = "${priceForCustomer.description}";
             var price = "${priceForCustomer.price}";
@@ -189,7 +189,7 @@
         </c:forEach>
 
         <c:forEach items="${customerList}" var="customer">
-            var id = "${customer.id}"
+            var id = "${customer.id}";
             var customerName = "${customer.name}";
             customerList.push({
             id: id,
@@ -198,11 +198,11 @@
         </c:forEach>
 
                    <c:forEach items="${offer.offerLines}" var="offerLine">
-                    var partName = "${offerLine.partName}"
+                    var partName = "${offerLine.partName}";
                     var partNumber = "${offerLine.partNumber}";
                     var quantity = "${offerLine.quantity}";
                     var price = "${offerLine.price}";
-                    var sum ="${offerLne.sum}"
+                    var sum ="${offerLine.sum}";
 
                     offerLines.push({
                     partName: partName,
