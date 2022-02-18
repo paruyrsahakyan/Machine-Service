@@ -197,8 +197,7 @@
             });
         </c:forEach>
 
-           if ()
-            <c:forEach items="${offer.offerLines}" var="offerLine">
+                   <c:forEach items="${offer.offerLines}" var="offerLine">
                     var partName = "${offerLine.partName}"
                     var partNumber = "${offerLine.partNumber}";
                     var quantity = "${offerLine.quantity}";
@@ -307,7 +306,7 @@
                 var cell10 = row.insertCell(9);
                 var cell11 = row.insertCell(10);
                 var cell12 = row.insertCell(11);
-                var cell13 = row.insertCell(12;
+                var cell13 = row.insertCell(12);
                 var cell14 = row.insertCell(13);
                 var cell15 = row.insertCell(14);
 
