@@ -182,7 +182,6 @@
             customerName: customerName,
             quantityInStock: quantityInStock,
             profit: profit,
-
             });
         </c:forEach>
 
@@ -193,23 +192,23 @@
             id: id,
             customerName: customerName
             });
-   //     </c:forEach>
+       </c:forEach>
 
-     //              <c:forEach items="${offer.offerLines}" var="offerLine">
-       //             var partName = "${offerLine.partName}";
-         //           var partNumber = "${offerLine.partNumber}";
-         //           var quantity = "${offerLine.quantity}";
-           //         var price = "${offerLine.price}";
-             //       var sum ="${offerLine.sum}";
+                 <c:forEach items="${offer.offerLines}" var="offerLine">
+                   var partName = "${offerLine.requestedPartName}";
+                    var partNumber = "${offerLine.requestedPartNumber}";
+                    var quantity = "${offerLine.quantity}";
+                     var price = "${offerLine.price}";
+                     var sum ="${offerLine.sum}";
 
-               //     offerLines.push({
-             //       partName: partName,
-             //       partNumber: partNumber,
-             //       quantity: quantity,
-             //       price:price,
-             //       sum:sum
-             //                           });
-              //  </c:forEach>
+                   offerLines.push({
+                    partName: partName,
+                   partNumber: partNumber,
+                   quantity: quantity,
+                   price:price,
+                   sum:sum
+                                       });
+               </c:forEach>
 
 
                if (offerLines.length > 0) {
