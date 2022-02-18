@@ -48,8 +48,10 @@ public class OfferLine {
     @ManyToOne()
         @JoinColumn(name = "offer_id")
     private Offer offer;
-
+    @Column (name = "supplier_price")
     private Double supplierPrice;
+
+
 
     public OfferLine() {
     }
@@ -158,13 +160,7 @@ public class OfferLine {
         this.offer = offer;
     }
 
-    public Double getSupplierPrice() {
-        return supplierPrice;
-    }
 
-    public void setSupplierPrice(Double supplierPrice) {
-        this.supplierPrice = supplierPrice;
-    }
 
     @Override
     public String toString() {
