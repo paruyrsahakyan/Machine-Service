@@ -62,7 +62,7 @@ public class OfferController {
 
         return modelAndView;
     }
-        
+
 
 
     @RequestMapping("/newOffer/setRequestFromFile")

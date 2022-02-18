@@ -18,7 +18,7 @@ public class Offer {
     private GregorianCalendar validationDate;
 
     @OneToMany (mappedBy = "offer", fetch =FetchType.EAGER, cascade = CascadeType.ALL)
-    private Set<OfferLine> offerLineSet;
+    private Set<OfferLine> offerLines;
 
     @Column (name= "offer_condition")
     private String offerCondition;
@@ -83,19 +83,19 @@ public class Offer {
                 ", requestNumber='" + requestNumber + '\'' +
                 ", offerDate=" + offerDate +
                 ", validationDate=" + validationDate +
-                ", offerLineSet=" + offerLineSet +
+                ", offerLineSet=" + offerLines +
                 ", offerCondition='" + offerCondition + '\'' +
                 ", customer=" + customer +
                 ", sum=" + sum +
                 '}';
     }
 
-    public Set<OfferLine> getOfferLineSet() {
-        return offerLineSet;
+    public Set<OfferLine> getOfferLines() {
+        return offerLines;
     }
 
-    public void setOfferLineSet(Set<OfferLine> offerLineSet) {
-        this.offerLineSet = offerLineSet;
+    public void setOfferLines(Set<OfferLine> offerLines) {
+        this.offerLines = offerLines;
     }
 
     public String getOfferCondition() {

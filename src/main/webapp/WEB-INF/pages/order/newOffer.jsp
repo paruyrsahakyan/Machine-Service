@@ -197,7 +197,7 @@
             });
         </c:forEach>
 
-
+           if ()
             <c:forEach items="${offer.offerLines}" var="offerLine">
                     var partName = "${offerLine.partName}"
                     var partNumber = "${offerLine.partNumber}";
