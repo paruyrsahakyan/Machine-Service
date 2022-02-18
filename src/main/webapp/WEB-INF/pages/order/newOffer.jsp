@@ -181,18 +181,9 @@
             price: price,
             customerName: customerName,
             quantityInStock: quantityInStock,
-            profit: profit,
+            profit: profit
             });
         </c:forEach>
-
-        <c:forEach items="${customerList}" var="customer">
-            var id = "${customer.id}";
-            var customerName = "${customer.name}";
-            customerList.push({
-            id: id,
-            customerName: customerName
-            });
-       </c:forEach>
 
                  <c:forEach items="${offer.offerLines}" var="offerLine">
                    var partName = "${offerLine.requestedPartName}";
@@ -211,9 +202,11 @@
                </c:forEach>
 
 
+
+
                if (offerLines.length > 0) {
 
-                // setOfferLinesInTable();
+             setOfferLinesInTable();
                 setCustomer();
                }
 
