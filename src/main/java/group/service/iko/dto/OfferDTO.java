@@ -26,7 +26,7 @@ public class OfferDTO {
         this.id = offer.getId();
         this.offerDate = CalendarAdapter.getStringFormat(offer.getOfferDate());
         this.validationDate = CalendarAdapter.getStringFormat(offer.getValidationDate());
-        this.offerLineSet =  offer.getOfferLineSet();
+        this.offerLineSet =  offer.getOfferLines();
         this.offerCondition= offer.getOfferCondition();
         this.customer = offer.getCustomer().getName();
         this.requestNumber= offer.getRequestNumber();
