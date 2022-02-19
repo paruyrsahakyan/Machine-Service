@@ -46,6 +46,10 @@ public class StorageService {
 
     private final String supplierPriceListFilePath = supplierPriceListFolder+File.separator+supplierPriceListFileName;
 
+    public String getSupplierPriceListFilePath() {
+        return supplierPriceListFilePath;
+    }
+
     public StorageService() {
 
     }
@@ -157,6 +161,7 @@ public class StorageService {
     public String getCurrentRequestFilePath() {
         return currentRequestFilePath;
     }
+
 
     public void saveRequestFile(MultipartFile uploadedFile) {
         File requestFolder = new File(requestFileFolder);

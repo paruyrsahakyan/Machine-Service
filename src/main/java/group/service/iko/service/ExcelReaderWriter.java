@@ -367,7 +367,7 @@ public class ExcelReaderWriter {
 
     public void setSupplierPriceListFile() throws  Throwable {
         Map priceMap = new HashMap<String, Double>();
-                    File wareHouseFile = new File(new StorageService().getWarHouseFilePath());
+                    File wareHouseFile = new File(storageService.getSupplierPriceListFilePath());
             FileInputStream excelFile = new FileInputStream(wareHouseFile);
             Workbook workbook = new XSSFWorkbook(excelFile);
             Sheet datatypeSheet = workbook.getSheetAt(0);
