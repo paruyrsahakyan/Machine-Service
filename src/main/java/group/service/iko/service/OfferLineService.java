@@ -80,7 +80,7 @@ public class OfferLineService {
                 offerLine.setLastOfferedPrice(price);
 
             }
-            Double supplierPrice = supplierPriceMap.get(partNumber);
+            Double supplierPrice = supplierPriceMap.get(offeredPartNumber);
             if (supplierPrice!= null){
                 offerLine.setSupplierPrice(supplierPrice);
             }

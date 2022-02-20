@@ -328,7 +328,7 @@
                 cell4.innerHTML = offerLines[i].quantity;
                 cell5.innerHTML = offerLines[i].offeredPartNumber;
                 cell14.innerHTML= offerLines[i].supplierPrice;
-                cell7.innerHTML= offerLines[i].supplierPrice;
+                cell7.innerHTML= offerLines[i].lastOfferPrice;
             }
 
 
