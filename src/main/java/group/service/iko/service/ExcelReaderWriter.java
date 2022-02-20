@@ -19,7 +19,7 @@ public class ExcelReaderWriter {
     @Autowired
     private StorageService storageService;
     @Autowired
-    private InterChangeablePartService interChangeablePartServicel;
+    private InterChangeablePartService interChangeablePartService;
     public static Map<String, Part> partMap;
     private int partsQuantity;
     private final String reportFileSource = File.separator + "home" + File.separator + "paruyr" + File.separator +
@@ -368,7 +368,7 @@ public class ExcelReaderWriter {
 
     public void setSupplierPriceListFile() throws  Throwable {
         Map priceMap = new HashMap<String, Double>();
-                    File supplierPriceFile = new File(storageService.getSupplierPriceListFilePath());
+                    File supplierPriceFile = new File(new StorageService().getSupplierPriceListFilePath());
 //            FileInputStream excelFile = new FileInputStream(supplierPriceFile);
 //            //            Workbook workbook = new XSSFWorkbook(excelFile);
 //        Workbook workbook = WorkbookFactory.create(supplierPriceFile);
