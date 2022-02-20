@@ -414,7 +414,7 @@ public class ExcelReaderWriter {
     public void setInterchangeableFile() throws FileNotFoundException {
 
         Map interchangeabilityMap = new HashMap<String, Double>();
-        File interchangeabilityFile = new File(storageService.getGetInterchangeabilityFilePath());
+        File interchangeabilityFile = new File(new StorageService().getGetInterchangeabilityFilePath());
         InputStream is = new FileInputStream(interchangeabilityFile);
         StreamingReader reader = StreamingReader.builder()
                 .rowCacheSize(100)    // number of rows to keep in memory (defaults to 10)
