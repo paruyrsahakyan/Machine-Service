@@ -264,12 +264,12 @@
         titleCell6.innerHTML = "Единица";
         titleCell7.innerHTML = "Цена";
         titleCell8.innerHTML = "Сумма";
-        titleCell9.innerHTML = "Срок поставки";
-        titleCell10.innerHTML = "Производитель";
+        titleCell9.innerHTML = "Цена последнего КП";
+        titleCell10.innerHTML = "Цена Поставщика";
         titleCell11.innerHTML = "Наличие Масиса 3";
         titleCell12.innerHTML = "Наличие в других складах";
         titleCell13.innerHTML = "МП от М3";
-        titleCell14.innerHTML = "Цена последнего КП";
+        titleCell14.innerHTML = "Срок поставки";
         titleCell15.innerHTML = "Дата последнего КП";
 
         titleCell1.style.fontWeight = 'bold';
@@ -327,10 +327,11 @@
                 cell3.innerHTML = offerLines[i].partNumber;
                 cell4.innerHTML = offerLines[i].quantity;
                 cell5.innerHTML = offerLines[i].offeredPartNumber;
-                cell14.innerHTML= offerLines[i].supplierPrice;
-                cell7.innerHTML= offerLines[i].lastOfferPrice;
-            }
+                cell9.innerHTML= offerLines[i].lastOfferPrice;
+                cell10.innerHTML= offerLines[i].supplierPrice;
+                cell11.innerHTML= offerLines[i].availability;
 
+            }
 
 }
          </script>

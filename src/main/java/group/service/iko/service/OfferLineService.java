@@ -52,9 +52,9 @@ public class OfferLineService {
 
     public  Set<OfferLine> makeOfferLinesFromRequest (Request request) throws Throwable {
         String customerName = request.getCustomer().getName();
-        List<PriceForCustomer> priceListForCustomer = priceForCustomerService.getPriceListByCustomerName(customerName);
         Map<String, Double> supplierPriceMap = WareHouseService.getSupplierPriceList();
         Map<String, String> interchangeabilityMap = WareHouseService.getInterchangeabilityMap();
+        List<PriceForCustomer> priceListForCustomer = priceForCustomerService.getPriceListByCustomerName(customerName);
         Map<String, PriceForCustomer> priceListMap = priceListForCustomer.stream()
                 .collect(Collectors.toMap(PriceForCustomer::getArticle, Function.identity()));
         List<OfferLine> offerLines = new ArrayList<>();
@@ -68,26 +68,29 @@ public class OfferLineService {
             offerLine.setQuantity(quantity);
 
             String offeredPartNumber = interchangeabilityMap.get(partNumber);
-            if ( offeredPartNumber !=null) {
+            if (offeredPartNumber != null) {
                 offerLine.setOfferedPartNumber(offeredPartNumber);
             } else offeredPartNumber = partNumber;
-             offerLine.setOfferedPartNumber(offeredPartNumber);
-             offerLines.add(offerLine);
+            offerLine.setOfferedPartNumber(offeredPartNumber);
+            offerLines.add(offerLine);
 
-            PriceForCustomer priceForCustomer = priceListMap.get(partNumber);
+            PriceForCustomer priceForCustomer = priceListMap.get(offeredPartNumber);
             if (priceForCustomer != null) {
                 int price = priceForCustomer.getPrice();
                 offerLine.setLastOfferedPrice(price);
 
             }
             Double supplierPrice = supplierPriceMap.get(offeredPartNumber);
-            if (supplierPrice!= null){
+            if (supplierPrice != null) {
                 offerLine.setSupplierPrice(supplierPrice);
             }
 
+
+            Part availablePart = WareHouseService.availablePartList.get(offeredPartNumber);
+            if(availablePart !=null){
+                      offerLine.setAvailability( (int) availablePart.getQuantity());
+            }
         }
-
-
         return new HashSet<OfferLine>(offerLines);
     }
 

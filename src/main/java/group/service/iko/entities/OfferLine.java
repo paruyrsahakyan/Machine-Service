@@ -52,6 +52,8 @@ public class OfferLine {
     private Double supplierPrice;
     @Column (name = "last_offered_price")
     private int lastOfferedPrice;
+    @Column (name = "availability")
+    private int availability;
 
 
     public OfferLine() {
@@ -175,6 +177,14 @@ public class OfferLine {
 
     public void setLastOfferedPrice(int lastOfferedPrice) {
         this.lastOfferedPrice = lastOfferedPrice;
+    }
+
+    public int getAvailability() {
+        return availability;
+    }
+
+    public void setAvailability(int availability) {
+        this.availability = availability;
     }
 
     @Override
