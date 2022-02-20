@@ -368,16 +368,27 @@ public class ExcelReaderWriter {
     public void setSupplierPriceListFile() throws  Throwable {
         Map priceMap = new HashMap<String, Double>();
                     File supplierPriceFile = new File(storageService.getSupplierPriceListFilePath());
-//            FileInputStream excelFile = new FileInputStream(wareHouseFile);
+//            FileInputStream excelFile = new FileInputStream(supplierPriceFile);
 //            //            Workbook workbook = new XSSFWorkbook(excelFile);
-        Workbook workbook = WorkbookFactory.create(supplierPriceFile);
-        Sheet datatypeSheet = workbook.getSheetAt(0);
+//        Workbook workbook = WorkbookFactory.create(supplierPriceFile);
+//        Sheet datatypeSheet = workbook.getSheetAt(0);
             int partNumberColumn = 0;
             int priceColumn = 1;
-            partsQuantity = datatypeSheet.getLastRowNum();
-            for (int i = 0; i < partsQuantity; i++) {
-                   Row row = datatypeSheet.getRow(i);
-                Cell partNumberCell = row.getCell(partNumberColumn);
+//            partsQuantity = datatypeSheet.getLastRowNum();
+        InputStream is = new FileInputStream(supplierPriceFile);
+        StreamingReader reader = StreamingReader.builder()
+                .rowCacheSize(100)    // number of rows to keep in memory (defaults to 10)
+                .bufferSize(4096)     // buffer size to use when reading InputStream to file (defaults to 1024)
+                .sheetIndex(0)        // index of sheet to use (defaults to 0)
+                .read(is);            // InputStream or File for XLSX file (required)
+
+        for (Row row : reader) {
+
+            Cell partNumberCell = row.getCell(0, Row.CREATE_NULL_AS_BLANK);
+
+//            for (int i = 0; i < partsQuantity; i++) {
+//                   Row row = datatypeSheet.getRow(i);
+//                Cell partNumberCell = row.getCell(partNumberColumn);
                 String partNumber = "";
                 if (partNumberCell!=null && partNumberCell.getCellTypeEnum() == CellType.STRING) {
                     partNumber = partNumberCell.getStringCellValue();
@@ -387,7 +398,7 @@ public class ExcelReaderWriter {
                     int lastIndexOf = string.lastIndexOf(".");
                     partNumber = string.substring(0, lastIndexOf);
                 }
-                Cell priceCell = row.getCell(priceColumn);
+                Cell priceCell = row.getCell(1, Row.CREATE_NULL_AS_BLANK);
                 Double price = new Double(0);
                 if (priceCell != null && priceCell.getCellTypeEnum()==CellType.NUMERIC) {
                     price = new Double(priceCell.getNumericCellValue());
