@@ -2,6 +2,7 @@ package group.service.iko.service;
 
 import group.service.iko.entities.*;
 import group.service.iko.entityDao.*;
+import org.apache.poi.openxml4j.exceptions.*;
 import org.hibernate.*;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.*;
@@ -68,7 +69,7 @@ public class OfferService {
         return offerList;
     }
 
-    public  Request getRequestFromFile(String customerName, MultipartFile uploadedFile) throws IOException {
+    public  Request getRequestFromFile(String customerName, MultipartFile uploadedFile) throws IOException, InvalidFormatException {
 
         storageService.saveRequestFile(uploadedFile);
         Customer customer = customerService.getCustomerByName(customerName);
@@ -80,7 +81,7 @@ public class OfferService {
     }
 
 
-    public Offer makeOfferFromRequestedFile(String customerName, MultipartFile uploadedFile) throws IOException {
+    public Offer makeOfferFromRequestedFile(String customerName, MultipartFile uploadedFile) throws IOException, InvalidFormatException {
         Offer offer = new Offer();
         offer.setCustomer(customerService.getCustomerByName(customerName));
         Request request = getRequestFromFile(customerName, uploadedFile);

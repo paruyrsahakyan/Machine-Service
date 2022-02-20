@@ -3,6 +3,7 @@ package group.service.iko.service;
 import group.service.iko.calendarAdapter.CalendarAdapter;
 import group.service.iko.entities.*;
 import org.apache.commons.io.FileUtils;
+import org.apache.poi.openxml4j.exceptions.*;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -328,11 +329,13 @@ public class ExcelReaderWriter {
         return priceListForCustomer;
     }
 
-    public List<RequestLine> getRequestFromStoredFile(Customer customer) throws IOException {
+    public List<RequestLine> getRequestFromStoredFile(Customer customer) throws IOException, InvalidFormatException {
 
         File requestFile = new File(storageService.getCurrentRequestFilePath());
-        FileInputStream excelFile = new FileInputStream(requestFile);
-        Workbook workbook = new XSSFWorkbook(excelFile);
+//        FileInputStream excelFile = new FileInputStream(requestFile);
+        //        Workbook workbook = new XSSFWorkbook(excelFile);
+        Workbook workbook =WorkbookFactory.create(requestFile);
+
         Sheet datatypeSheet = workbook.getSheetAt(0);
         List<RequestLine> requestLines = new ArrayList<>();
         int linesQuantityInTheFile = datatypeSheet.getLastRowNum() + 1;
@@ -368,7 +371,7 @@ public class ExcelReaderWriter {
     public void setSupplierPriceListFile() throws  Throwable {
         Map priceMap = new HashMap<String, Double>();
                     File wareHouseFile = new File(storageService.getSupplierPriceListFilePath());
-            FileInputStream excelFile = new FileInputStream(wareHouseFile);
+            FileInputStream excelFile = new FileInputStream(wareHouseFile);/////////////
             Workbook workbook = new XSSFWorkbook(excelFile);
             Sheet datatypeSheet = workbook.getSheetAt(0);
             int partNumberColumn = 0;
