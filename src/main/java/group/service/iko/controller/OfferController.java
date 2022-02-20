@@ -4,6 +4,7 @@ package group.service.iko.controller;
 import group.service.iko.dto.*;
 import group.service.iko.entities.*;
 import group.service.iko.service.*;
+import org.apache.poi.openxml4j.exceptions.*;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.security.access.prepost.*;
 import org.springframework.stereotype.*;
@@ -71,7 +72,7 @@ public class OfferController {
     public RedirectView setRequestFromFile(@RequestParam("customerName") String customerName,
                                            @RequestParam(value = "requestFile", required = false) MultipartFile uploadedFile,
                                            RedirectAttributes redirectAttributes
-    ) throws IOException {
+    ) throws IOException, InvalidFormatException {
         Customer customer = customerService.getCustomerByName(customerName);
         redirectAttributes.addFlashAttribute("priceList", priceForCustomerService.getPriceListByCustomerName(customer.getName()));
         redirectAttributes.addFlashAttribute("offer", offerService.makeOfferFromRequestedFile(customerName, uploadedFile));
