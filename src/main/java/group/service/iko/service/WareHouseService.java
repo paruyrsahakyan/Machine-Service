@@ -119,7 +119,7 @@ public class WareHouseService {
       excelReaderWriter.setSupplierPriceListFile();
   }
 
-    public  void setSupplierPriceList(Map<String, Double> supplierPriceList) {
+    public static void setSupplierPriceList(Map<String, Double> supplierPriceList) {
         WareHouseService.supplierPriceList = supplierPriceList;
     }
 

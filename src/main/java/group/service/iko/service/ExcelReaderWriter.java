@@ -408,7 +408,7 @@ public class ExcelReaderWriter {
                 priceMap.put(partNumber, price);
             }
 
-            new WareHouseService().setSupplierPriceList(priceMap);
+            WareHouseService.setSupplierPriceList(priceMap);
         }
 
     public void setInterchangeableFile() throws FileNotFoundException {
@@ -449,7 +449,7 @@ public class ExcelReaderWriter {
             interchangeabilityMap.put(oldPartNumber, newPartNumber);
         }
 
-        new WareHouseService().setInterchangeabilityMap(interchangeabilityMap);
+        WareHouseService.setInterchangeabilityMap(interchangeabilityMap);
     }
 }
 

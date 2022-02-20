@@ -192,8 +192,7 @@
                      var supplierPrice = "${offerLine.supplierPrice}";
                      var sum ="${offerLine.sum}";
                      var M3NetCost = "${offerLine.price}";
-                     var lastOfferPrice = "${offerLine.lastOfferedPrice};
-
+                     var lastOfferPrice = "${offerLine.lastOfferedPrice}";
 
                    offerLines.push({
                     partName: partName,
