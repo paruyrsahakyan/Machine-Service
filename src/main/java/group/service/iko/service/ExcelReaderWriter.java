@@ -1,5 +1,6 @@
 package group.service.iko.service;
 
+import com.monitorjbl.xlsx.*;
 import group.service.iko.calendarAdapter.CalendarAdapter;
 import group.service.iko.entities.*;
 import org.apache.commons.io.FileUtils;
@@ -384,7 +385,7 @@ public class ExcelReaderWriter {
 
         for (Row row : reader) {
 
-            Cell partNumberCell = row.getCell(0, Row.CREATE_NULL_AS_BLANK);
+            Cell partNumberCell = row.getCell(0);
 
 //            for (int i = 0; i < partsQuantity; i++) {
 //                   Row row = datatypeSheet.getRow(i);
@@ -398,7 +399,7 @@ public class ExcelReaderWriter {
                     int lastIndexOf = string.lastIndexOf(".");
                     partNumber = string.substring(0, lastIndexOf);
                 }
-                Cell priceCell = row.getCell(1, Row.CREATE_NULL_AS_BLANK);
+                Cell priceCell = row.getCell(1);
                 Double price = new Double(0);
                 if (priceCell != null && priceCell.getCellTypeEnum()==CellType.NUMERIC) {
                     price = new Double(priceCell.getNumericCellValue());
