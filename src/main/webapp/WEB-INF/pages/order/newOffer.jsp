@@ -189,6 +189,7 @@
                    var partName = "${offerLine.requestedPartName}";
                     var partNumber = "${offerLine.requestedPartNumber}";
                     var quantity = "${offerLine.quantity}";
+                    var offeredPartNumber = "${offerLine.offeredPartNumber}";
                      var supplierPrice = "${offerLine.supplierPrice}";
                      var sum ="${offerLine.sum}";
                      var M3NetCost = "${offerLine.price}";
@@ -198,6 +199,7 @@
                     partName: partName,
                    partNumber: partNumber,
                    quantity: quantity,
+                   offeredPartNumber:offeredPartNumber,
                    supplierPrice:supplierPrice,
                    sum:sum,
                    M3NetCost:M3NetCost,
@@ -308,7 +310,7 @@
                 cell2.id="partName"+(i+1);
                 cell3.id ="partNumber"+(i+1);
                 cell4.id ="quantity"+(i+1);
-                cell5.id = "offerPartNumber" +(i+1);
+                cell5.id = "offeredPartNumber" +(i+1);
                 cell6.id = "unit"+(i+1);
                 cell7.id = "price"+(i+1);
                 cell8.id = "sum"+(i+1);
@@ -324,8 +326,9 @@
                 cell2.innerHTML = offerLines[i].partName;
                 cell3.innerHTML = offerLines[i].partNumber;
                 cell4.innerHTML = offerLines[i].quantity;
-                cell14.innerHTML= offerLines[i].lastOfferPrice;
-                cell7.innerHTML= offerLines[i].M3NetCost;
+                cell5.innerHTML = offerLines[i].offeredPartNumber;
+                cell14.innerHTML= offerLines[i].supplierPrice;
+                cell7.innerHTML= offerLines[i].supplierPrice;
             }
 
 
