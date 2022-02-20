@@ -72,7 +72,7 @@ public class OfferController {
     public RedirectView setRequestFromFile(@RequestParam("customerName") String customerName,
                                            @RequestParam(value = "requestFile", required = false) MultipartFile uploadedFile,
                                            RedirectAttributes redirectAttributes
-    ) throws IOException, InvalidFormatException {
+    ) throws Throwable {
         Customer customer = customerService.getCustomerByName(customerName);
         redirectAttributes.addFlashAttribute("priceList", priceForCustomerService.getPriceListByCustomerName(customer.getName()));
         redirectAttributes.addFlashAttribute("offer", offerService.makeOfferFromRequestedFile(customerName, uploadedFile));

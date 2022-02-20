@@ -50,11 +50,11 @@ public class OfferLineService {
 
     }
 
-    public  Set<OfferLine> makeOfferLinesFromRequest (Request request) {
+    public  Set<OfferLine> makeOfferLinesFromRequest (Request request) throws Throwable {
         String customerName = request.getCustomer().getName();
         List<PriceForCustomer> priceListForCustomer = priceForCustomerService.getPriceListByCustomerName(customerName);
-        Map<String, Double> supplierPriceMap = WareHouseService.supplierPriceList;
-        Map<String, String> interchangeabilityMap = WareHouseService.interchangeabilityMap;
+        Map<String, Double> supplierPriceMap = WareHouseService.getSupplierPriceList();
+        Map<String, String> interchangeabilityMap = WareHouseService.getInterchangeabilityMap();
         Map<String, PriceForCustomer> priceListMap = priceListForCustomer.stream()
                 .collect(Collectors.toMap(PriceForCustomer::getArticle, Function.identity()));
         List<OfferLine> offerLines = new ArrayList<>();

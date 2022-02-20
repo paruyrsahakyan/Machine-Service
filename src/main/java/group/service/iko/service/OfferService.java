@@ -81,7 +81,7 @@ public class OfferService {
     }
 
 
-    public Offer makeOfferFromRequestedFile(String customerName, MultipartFile uploadedFile) throws IOException, InvalidFormatException {
+    public Offer makeOfferFromRequestedFile(String customerName, MultipartFile uploadedFile) throws Throwable {
         Offer offer = new Offer();
         offer.setCustomer(customerService.getCustomerByName(customerName));
         Request request = getRequestFromFile(customerName, uploadedFile);

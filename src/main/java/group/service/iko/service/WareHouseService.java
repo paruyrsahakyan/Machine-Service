@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.IOException;
+import java.io.*;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -123,8 +123,18 @@ public class WareHouseService {
         WareHouseService.supplierPriceList = supplierPriceList;
     }
 
-    public static Map<String, String> getInterchangeabilityMap() {
+    public static Map<String, String> getInterchangeabilityMap() throws FileNotFoundException {
+        if (interchangeabilityMap == null) {
+            new ExcelReaderWriter().setInterchangeableFile();
+        }
         return interchangeabilityMap;
+    }
+
+    public static Map<String, Double> getSupplierPriceList() throws Throwable {
+        if(supplierPriceList == null) {
+            new ExcelReaderWriter().setSupplierPriceListFile();
+        }
+        return supplierPriceList;
     }
 
     public static void setInterchangeabilityMap(Map<String, String> interchangeabilityMap) {
