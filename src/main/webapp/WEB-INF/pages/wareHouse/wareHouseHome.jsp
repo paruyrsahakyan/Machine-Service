@@ -52,10 +52,10 @@
         </form:form>
 
         <br><br>
-             <form:form action="/wareHouse/analogs" method="post"  accept-charset="UTF-8"
+             <form:form action="/wareHouse/uploadInterchangeableParts" method="post"  accept-charset="UTF-8"
                            enctype="multipart/form-data">
                 Загрузить аналоги:
-                <input type="file" name="priceList">
+                <input type="file" name="InterchangeabilityFile">
                 <input  type="submit" value="загрузить">
                 </form:form>
 </p>

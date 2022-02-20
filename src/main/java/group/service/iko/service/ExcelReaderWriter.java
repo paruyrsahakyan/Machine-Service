@@ -410,7 +410,49 @@ public class ExcelReaderWriter {
 
             new WareHouseService().setSupplierPriceList(priceMap);
         }
+
+    public void setInterchangeableFile() throws FileNotFoundException {
+
+        Map interchangeabilityMap = new HashMap<String, Double>();
+        File interchangeabilityFile = new File(storageService.getGetInterchangeabilityFilePath());
+        InputStream is = new FileInputStream(interchangeabilityFile);
+        StreamingReader reader = StreamingReader.builder()
+                .rowCacheSize(100)    // number of rows to keep in memory (defaults to 10)
+                .bufferSize(4096)    // buffer size to use when reading InputStream to file (defaults to 1024)
+                .sheetIndex(0)        // index of sheet to use (defaults to 0)
+                .read(is);            // InputStream or File for XLSX file (required)
+
+        for (Row row : reader) {
+
+            Cell oldPartNumberCell = row.getCell(0);
+            String oldPartNumber = "";
+            if (oldPartNumberCell != null && oldPartNumberCell.getCellTypeEnum() == CellType.STRING) {
+                oldPartNumber = oldPartNumberCell.getStringCellValue();
+
+            } else if (oldPartNumberCell != null) {
+                String string = new Double(oldPartNumberCell.getNumericCellValue()).toString();
+                int lastIndexOf = string.lastIndexOf(".");
+                oldPartNumber = string.substring(0, lastIndexOf);
+            }
+            Cell newPartNumberCell = row.getCell(1);
+            String newPartNumber = "";
+            if (newPartNumberCell != null && newPartNumberCell.getCellTypeEnum() == CellType.STRING) {
+                newPartNumber = newPartNumberCell.getStringCellValue();
+
+            } else if (newPartNumberCell != null) {
+                String string = new Double(newPartNumberCell.getNumericCellValue()).toString();
+                int lastIndexOf = string.lastIndexOf(".");
+                newPartNumber = string.substring(0, lastIndexOf);
+            }
+
+
+            interchangeabilityMap.put(oldPartNumber, newPartNumber);
+        }
+
+        new WareHouseService().setInterchangeabilityMap(interchangeabilityMap);
     }
+}
+
 
 
 

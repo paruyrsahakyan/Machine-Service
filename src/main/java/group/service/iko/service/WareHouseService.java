@@ -26,6 +26,7 @@ public class WareHouseService {
     StorageService storageService;
 
     public  static  Map<String, Double> supplierPriceList;
+    public  static  Map<String, String> interchangeabilityMap;
 
 
     @Override
@@ -120,5 +121,13 @@ public class WareHouseService {
 
     public  void setSupplierPriceList(Map<String, Double> supplierPriceList) {
         WareHouseService.supplierPriceList = supplierPriceList;
+    }
+
+    public static Map<String, String> getInterchangeabilityMap() {
+        return interchangeabilityMap;
+    }
+
+    public static void setInterchangeabilityMap(Map<String, String> interchangeabilityMap) {
+        WareHouseService.interchangeabilityMap = interchangeabilityMap;
     }
 }

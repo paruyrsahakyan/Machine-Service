@@ -54,6 +54,7 @@ public class OfferLineService {
         String customerName = request.getCustomer().getName();
         List<PriceForCustomer> priceListForCustomer = priceForCustomerService.getPriceListByCustomerName(customerName);
         Map<String, Double> supplierPriceMap = WareHouseService.supplierPriceList;
+        Map<String, String> interchangeabilityMap = WareHouseService.interchangeabilityMap;
         Map<String, PriceForCustomer> priceListMap = priceListForCustomer.stream()
                 .collect(Collectors.toMap(PriceForCustomer::getArticle, Function.identity()));
         List<OfferLine> offerLines = new ArrayList<>();
@@ -66,19 +67,27 @@ public class OfferLineService {
             int quantity = requestLine.getQuantity();
             offerLine.setQuantity(quantity);
 
+            String offeredPartNumber = interchangeabilityMap.get(partNumber);
+            if ( offeredPartNumber !=null) {
+                offerLine.setOfferedPartNumber(offeredPartNumber);
+            } else offeredPartNumber = partNumber;
+             offerLine.setOfferedPartNumber(offeredPartNumber);
+             offerLines.add(offerLine);
+
             PriceForCustomer priceForCustomer = priceListMap.get(partNumber);
             if (priceForCustomer != null) {
                 int price = priceForCustomer.getPrice();
-                offerLine.setPrice(price);
-                offerLine.setSum(price * quantity);
+                offerLine.setLastOfferedPrice(price);
+
             }
             Double supplierPrice = supplierPriceMap.get(partNumber);
             if (supplierPrice!= null){
                 offerLine.setSupplierPrice(supplierPrice);
             }
-            offerLines.add(offerLine);
 
         }
+
+
         return new HashSet<OfferLine>(offerLines);
     }
 

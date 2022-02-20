@@ -4,6 +4,7 @@ import group.service.iko.entities.InterChangeablePart;
 import group.service.iko.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.*;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -45,13 +46,6 @@ public class WareHouseController {
         return modelAndView;
     }
 
-        @RequestMapping(value = "/supplierPriceList", method = RequestMethod.POST)
-        public ModelAndView setSupplierPriceLists(@RequestParam(value = "priceList", required = false) MultipartFile multipartFile
-    ) throws Throwable {
-            wareHouseService.setSupplierPriceList(multipartFile);
-            ModelAndView modelAndView = new ModelAndView("wareHouse/wareHouseHome");
-              return modelAndView;
-    }
     @RequestMapping(value = "/interChangeableParts")
     public ModelAndView getAllInterChangeableGroupsParts() {
         ModelAndView modelAndView = new ModelAndView("wareHouse/interChangeableParts");
@@ -103,6 +97,22 @@ public class WareHouseController {
         modelAndView.addObject("interChangeablePartList", interChangeablePartService.getInterChangeableGroupParts(basicPartNumber));
         modelAndView.addObject("basicPartNumber", basicPartNumber);
         return  modelAndView;
+    }
+
+
+    @RequestMapping(value = "/supplierPriceList", method = RequestMethod.POST)
+    public ModelAndView setSupplierPriceLists(@RequestParam(value = "priceList", required = false) MultipartFile multipartFile
+    ) throws Throwable {
+        wareHouseService.setSupplierPriceList(multipartFile);
+        ModelAndView modelAndView = new ModelAndView("wareHouse/wareHouseHome");
+        return modelAndView;
+    }
+    @RequestMapping (value = "/uploadInterchangeableParts")
+    public ModelAndView setInterchangeableFromFile(@RequestParam(value = "InterchangeabilityFile", required = false) MultipartFile uploadedFile,
+                                                   ModelMap modelMap) throws Throwable {
+        interChangeablePartService.setInterchangeabilityFromFile(uploadedFile);
+        return  new ModelAndView("redirect:/wareHouse", modelMap);
+
     }
 }
 

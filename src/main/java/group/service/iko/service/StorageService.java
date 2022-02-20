@@ -40,11 +40,17 @@ public class StorageService {
             File.separator + "IkoService"+File.separator + "supplierPriceListFolder";
     private final String supplierPriceListFileName="supplierPriceList.xlsx";
 
+    private final String interchangeabilityFolder =  File.separator + "home" +File.separator + "paruyr" +
+            File.separator + "IkoService"+File.separator + "interchangeability";
+    private final String interchangeabilityFileName="interchangeability.xlsx";
+
+
     private final String currentPriceListFilePath=priceListFileFolder+File.separator+currentPriceListFileName;
 
     private final String currentRequestFilePath=requestFileFolder+File.separator+currentRequestFileName;
 
     private final String supplierPriceListFilePath = supplierPriceListFolder+File.separator+supplierPriceListFileName;
+    private final String getInterchangeabilityFilePath = interchangeabilityFolder +File.separator +interchangeabilityFileName;
 
     public String getSupplierPriceListFilePath() {
         return supplierPriceListFilePath;
@@ -162,6 +168,9 @@ public class StorageService {
         return currentRequestFilePath;
     }
 
+    public String getGetInterchangeabilityFilePath() {
+        return getInterchangeabilityFilePath;
+    }
 
     public void saveRequestFile(MultipartFile uploadedFile) {
         File requestFolder = new File(requestFileFolder);
@@ -187,6 +196,21 @@ public class StorageService {
         } catch (IOException e1) {
             e1.printStackTrace();
         }
+    }
+
+    public void saveInterchangeabilityFile(MultipartFile uploadedFile) {
+
+        File folder = new File(interchangeabilityFolder);
+        folder.mkdirs();
+        File file = new File(getInterchangeabilityFilePath);
+        file.delete();
+        try {
+            file.createNewFile();
+            uploadedFile.transferTo(file);
+        } catch (IOException e1) {
+            e1.printStackTrace();
+        }
+
     }
 }
 

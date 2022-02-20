@@ -7,6 +7,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.*;
 
 import java.util.List;
 
@@ -16,6 +17,10 @@ public class InterChangeablePartService {
     @Autowired
     InterChangeablePartDAO interChangeablePartDAO;
     private Session session;
+    @Autowired
+    StorageService storageService;
+    @Autowired
+    ExcelReaderWriter excelReaderWriter;
 
     public void saveInterChangeablePart(InterChangeablePart interChangeablePart){
     interChangeablePartDAO.saveInterChangeablePart(interChangeablePart);
@@ -101,4 +106,11 @@ public class InterChangeablePartService {
         }
         return null;
     }
-}
+
+    public void setInterchangeabilityFromFile(MultipartFile uploadedFile)  throws Throwable {
+            storageService.saveInterchangeabilityFile(uploadedFile);
+            excelReaderWriter.setInterchangeableFile();
+        }
+
+    }
+
