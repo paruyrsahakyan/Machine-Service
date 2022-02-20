@@ -174,7 +174,7 @@
             var customerName = "${priceForCustomer.customerName}";
             var quantityInStock = "${priceForCustomer.quantityInStock}";
             var profit = "${priceForCustomer.profit}";
-            initialPriceList.push({
+             initialPriceList.push({
             id: id,
             article: article,
             description: description,
@@ -194,6 +194,7 @@
                      var sum ="${offerLine.sum}";
                      var M3NetCost = "${offerLine.price}";
                      var lastOfferPrice = "${offerLine.lastOfferedPrice}";
+                      var availability = "${priceForCustomer.availability}";
 
                    offerLines.push({
                     partName: partName,
@@ -203,7 +204,8 @@
                    supplierPrice:supplierPrice,
                    sum:sum,
                    M3NetCost:M3NetCost,
-                   lastOfferPrice:lastOfferPrice
+                   lastOfferPrice:lastOfferPrice,
+                   availability:availability
                                        });
                </c:forEach>
 
