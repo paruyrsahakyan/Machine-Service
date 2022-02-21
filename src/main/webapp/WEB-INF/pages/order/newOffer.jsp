@@ -352,11 +352,12 @@
 
 }
 
-function setUnits()
+function setUnits()  {
 for (var i = 1; i < offerLines.length; i++) {
   var units = document.getElementById("unitForAllLines");
                table.rows[i].cell(5).innerHTML = units;
     
+}
 }
 
          </script>
