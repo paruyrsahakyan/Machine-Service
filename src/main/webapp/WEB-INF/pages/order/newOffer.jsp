@@ -354,6 +354,7 @@
 
 function setUnits()  {
 for (var i = 1; i < offerLines.length; i++) {
+ var table = document.getElementById("dynamicTable");
   var units = document.getElementById("unitForAllLines");
                table.rows[i].cell(5).innerHTML = units;
     
