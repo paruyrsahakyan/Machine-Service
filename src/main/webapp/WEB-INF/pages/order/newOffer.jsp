@@ -144,18 +144,19 @@
          </div>
 
 <br> <br>
+
 <div class="mainContent">
+
+     <form:form action="/offer/newOffer/saveOffer" method="post"  accept-charset="UTF-8"   enctype="multipart/form-data">
+
         <table class="mainTables" id="dynamicTable" style="width: auto" align="center">
         <tr>
-        <td>N</td>
-        <td>Артиикул</td>
-        <td>Название</td>
-        <td>Цена без НДС</td>
         </tr>
         </table>
+        </form:form>
+
         </div>
-
-
+    
          <script>
 
         var initialPriceList = [];
@@ -194,7 +195,7 @@
                      var sum ="${offerLine.sum}";
                      var M3NetCost = "${offerLine.price}";
                      var lastOfferPrice = "${offerLine.lastOfferedPrice}";
-                      var availability = "${priceForCustomer.availability}";
+                      var availability = "${offerLine.availability}";
 
                    offerLines.push({
                     partName: partName,
@@ -257,7 +258,6 @@
         var titleCell14 = titleRow.insertCell(13);
         var titleCell15 = titleRow.insertCell(14);
 
-
         titleCell1.innerHTML = "N";
         titleCell2.innerHTML = "Название";
         titleCell3.innerHTML = "Артикул";
@@ -289,6 +289,12 @@
         titleCell13.style.fontWeight = 'bold';
         titleCell14.style.fontWeight = 'bold';
         titleCell15.style.fontWeight = 'bold';
+
+
+        var parameterRow = table.insertRow();
+        var cellOfferedPartNumber = row.insertCell(5);
+        cellOfferedPartNumber.innerHTML = "<input type='text' id='unitForAllLines' onchange='setUnits()'>";
+
 
         for (var i = 0; i < offerLines.length; i++) {
                 var row = table.insertRow();
@@ -336,6 +342,11 @@
             }
 
 }
+
+function setUnits(){
+    
+}
+
          </script>
 
 
