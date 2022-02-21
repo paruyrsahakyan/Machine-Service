@@ -292,13 +292,8 @@
 
 
         var parameterRow = table.insertRow();
-        var cell0= row.insertCel();
-        var cell2= row.insertCel();
-        var cell3= row.insertCel();
-        var cell4= row.insertCel();
-        var cell5= row.insertCel();
 
-        var cellOfferedPartNumber = row.insertCell(5);
+        var cellOfferedPartNumber = parameterRow.insertCell(5);
         cellOfferedPartNumber.innerHTML = "<input type='text' id='unitForAllLines' onchange='setUnits()'>";
 
 
