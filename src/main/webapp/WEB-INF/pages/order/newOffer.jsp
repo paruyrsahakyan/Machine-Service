@@ -293,10 +293,13 @@
 
         var parameterRow = table.insertRow();
 
-        var cell1= parameterRow.insertCell();
-        var cell1= parameterRow.insertCell();
-        var cell1= parameterRow.insertCell();
-        var cell1= parameterRow.insertCell();
+       parameterRow.insertCell();
+       parameterRow.insertCell();
+       parameterRow.insertCell();
+       parameterRow.insertCell();
+       parameterRow.insertCell();
+        
+
         var cellOfferedPartNumber = parameterRow.insertCell(5);
 
         cellOfferedPartNumber.innerHTML = "<input type='text' id='unitForAllLines' onchange='setUnits()'>";
