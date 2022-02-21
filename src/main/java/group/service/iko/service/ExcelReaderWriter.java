@@ -369,13 +369,10 @@ public class ExcelReaderWriter {
     public void setSupplierPriceListFile() throws  Throwable {
         Map priceMap = new HashMap<String, Double>();
                     File supplierPriceFile = new File(new StorageService().getSupplierPriceListFilePath());
-//            FileInputStream excelFile = new FileInputStream(supplierPriceFile);
-//            //            Workbook workbook = new XSSFWorkbook(excelFile);
-//        Workbook workbook = WorkbookFactory.create(supplierPriceFile);
-//        Sheet datatypeSheet = workbook.getSheetAt(0);
+
             int partNumberColumn = 0;
             int priceColumn = 1;
-//            partsQuantity = datatypeSheet.getLastRowNum();
+
         InputStream is = new FileInputStream(supplierPriceFile);
         StreamingReader reader = StreamingReader.builder()
                 .rowCacheSize(100)    // number of rows to keep in memory (defaults to 10)
@@ -387,9 +384,6 @@ public class ExcelReaderWriter {
 
             Cell partNumberCell = row.getCell(0);
 
-//            for (int i = 0; i < partsQuantity; i++) {
-//                   Row row = datatypeSheet.getRow(i);
-//                Cell partNumberCell = row.getCell(partNumberColumn);
                 String partNumber = "";
                 if (partNumberCell!=null && partNumberCell.getCellTypeEnum() == CellType.STRING) {
                     partNumber = partNumberCell.getStringCellValue();
