@@ -371,18 +371,18 @@
 }
 
 function setUnits()  {
-for (var i = 1; i < offerLines.length; i++) {
-  var units = document.getElementById("unitForAllLines");
-   document.getElementById(unit+i).innerHTML = units;
+for (var i = 1; i <= offerLines.length; i++) {
+  var units = document.getElementById("unitForAllLines").value;
+   document.getElementById("unit"+i).innerHTML = units;
 
     }
 }
 
 function setProducer() {
 
-for (var i = 1; i < offerLines.length; i++) {
-  var producer = document.getElementById("ProducerForAllLines");
-   document.getElementById(producer+i).innerHTML = producer;
+for (var i = 1; i <= offerLines.length; i++) {
+  var producer = document.getElementById("ProducerForAllLines").value;
+   document.getElementById("producer"+i).innerHTML = producer;
 
     }
 }
