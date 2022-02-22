@@ -149,7 +149,7 @@
 
      <form:form action="/offer/newOffer/saveOffer" method="post"  accept-charset="UTF-8"   enctype="multipart/form-data">
 
-        <table class="mainTables" id="dynamicTable" style="width: auto" align="center">
+        <table class="mainTables" id="OfferTable" style="width: auto" align="center">
         <tr>
         </tr>
         </table>
@@ -262,17 +262,18 @@
         titleCell2.innerHTML = "Название";
         titleCell3.innerHTML = "Артикул";
         titleCell4.innerHTML =  "Количество";
-        titleCell5.innerHTML = "Артикул Предложения";
+        titleCell5.innerHTML = "Артикул КП";
         titleCell6.innerHTML = "Единица";
         titleCell7.innerHTML = "Цена";
         titleCell8.innerHTML = "Сумма";
-        titleCell9.innerHTML = "Цена последнего КП";
+        titleCell9.innerHTML = "Цена послед. КП";
         titleCell10.innerHTML = "Цена Поставщика";
-        titleCell11.innerHTML = "Наличие Масиса 3";
-        titleCell12.innerHTML = "Наличие в других складах";
+        titleCell11.innerHTML = "Налич. Масиса 3";
+        titleCell12.innerHTML = "Налич. в др. складах";
         titleCell13.innerHTML = "МП от М3";
         titleCell14.innerHTML = "Срок поставки";
-        titleCell15.innerHTML = "Дата последнего КП";
+        titleCell15.innerHTML = "Дата посл. КП";
+        titleCell16.innerHTML = "Произв.";
 
         titleCell1.style.fontWeight = 'bold';
         titleCell2.style.fontWeight = 'bold';
@@ -289,6 +290,7 @@
         titleCell13.style.fontWeight = 'bold';
         titleCell14.style.fontWeight = 'bold';
         titleCell15.style.fontWeight = 'bold';
+        titleCell16.style.fontWeight = 'bold';
 
 
         var parameterRow = table.insertRow();
@@ -298,15 +300,27 @@
        parameterRow.insertCell();
        parameterRow.insertCell();
        parameterRow.insertCell();
-
-
-        var cellUnits = parameterRow.insertCell(5);
-         cellUnits.innerHTML =  "<select id='unitForAllLines' on change = 'setUnits()'>"+
+       var cellUnits = parameterRow.insertCell(5);
+         cellUnits.innerHTML =  "<select id='unitForAllLines' onChange = 'setUnits()'>"+
         "<option  value='шт'> шт </option> "+
         "<option  value='л'> л </option> "+
-        "</select>" 
+        "</select>" ;
+        parameterRow.insertCell();
+        parameterRow.insertCell();
+        parameterRow.insertCell();
+        parameterRow.insertCell();
+        parameterRow.insertCell();
+        parameterRow.insertCell();
+        parameterRow.insertCell();
+        parameterRow.insertCell();
+        parameterRow.insertCell();
+        
+        var producerCell = parameterRow.insertCell(16);
+        var producerCell = parameterRow.insertCell(5);
+         producerCell.innerHTML =  "<input id='ProducerForAllLines' onkeyup = 'setProducer()'  value='KOMATSU' >"
+     
 
-    for (var i = 0; i < offerLines.length; i++) {
+        for (var i = 0; i < offerLines.length; i++) {
                 var row = table.insertRow();
                 var cell1 = row.insertCell(0);
                 var cell2 = row.insertCell(1);
@@ -355,9 +369,17 @@
 
 function setUnits()  {
 for (var i = 1; i < offerLines.length; i++) {
- var table = document.getElementById("dynamicTable");
   var units = document.getElementById("unitForAllLines");
    document.getElementById(unit+i).innerHTML = units;
+
+    }
+}
+
+function setProducer() {
+
+for (var i = 1; i < offerLines.length; i++) {
+  var producer = document.getElementById("ProducerForAllLines");
+   document.getElementById(producer+i).innerHTML = producer;
 
     }
 }

@@ -1,0 +1,25 @@
+.OfferTable {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: auto;
+    alignment: center;
+    margin: auto;
+    font-size: 155px;
+
+}
+
+
+td, th {
+    border: 1px solid black;
+    text-align: center;
+    padding: 8px;
+     font-size: 155px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+.mainTable th.table-head{
+    text-align: center;
+
+}
