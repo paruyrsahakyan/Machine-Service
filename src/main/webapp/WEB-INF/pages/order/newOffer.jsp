@@ -257,6 +257,7 @@
         var titleCell13 = titleRow.insertCell(12);
         var titleCell14 = titleRow.insertCell(13);
         var titleCell15 = titleRow.insertCell(14);
+        var titleCell16 = titleRow.insertCell(14);
 
         titleCell1.innerHTML = "N";
         titleCell2.innerHTML = "Название";
@@ -316,8 +317,7 @@
         parameterRow.insertCell();
         
         var producerCell = parameterRow.insertCell(16);
-        var producerCell = parameterRow.insertCell(5);
-         producerCell.innerHTML =  "<input id='ProducerForAllLines' onkeyup = 'setProducer()'  value='KOMATSU' >"
+        producerCell.innerHTML =  "<input id='ProducerForAllLines' onkeyup = 'setProducer()'  value='KOMATSU' >"
      
 
         for (var i = 0; i < offerLines.length; i++) {
@@ -337,6 +337,7 @@
                 var cell13 = row.insertCell(12);
                 var cell14 = row.insertCell(13);
                 var cell15 = row.insertCell(14);
+                var cell15 = row.insertCell(15);
 
                 cell1.id="N"+(i+1);
                 cell2.id="partName"+(i+1);
@@ -360,9 +361,10 @@
                 cell3.innerHTML = offerLines[i].partNumber;
                 cell4.innerHTML = offerLines[i].quantity;
                 cell5.innerHTML = offerLines[i].offeredPartNumber;
-                cell9.innerHTML= offerLines[i].lastOfferPrice;
+                cell9.innerHTML = offerLines[i].lastOfferPrice;
                 cell10.innerHTML= offerLines[i].supplierPrice;
                 cell11.innerHTML= offerLines[i].availability;
+
 
             }
 
