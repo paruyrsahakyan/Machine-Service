@@ -302,7 +302,15 @@
 
         var cellOfferedPartNumber = parameterRow.insertCell(5);
 
-        cellOfferedPartNumber.innerHTML = "<input type='text' id='unitForAllLines' onchange='setUnits()'>";
+
+
+
+     //   cellOfferedPartNumber.innerHTML = "<input type='text' id='unitForAllLines' onchange='setUnits()'>";
+
+        var x =  "<select id='unitForAllLines' on change = 'setUnits()'>"+
+        "<option  value='шт'> шт </option> "+
+        "<option  value='л'> л </option> "+
+        "</select>" 
 
 
         for (var i = 0; i < offerLines.length; i++) {
@@ -356,7 +364,8 @@ function setUnits()  {
 for (var i = 1; i < offerLines.length; i++) {
  var table = document.getElementById("dynamicTable");
   var units = document.getElementById("unitForAllLines");
-               table.rows[i].cell(5).innerHTML = units;
+   document.getElementById(unit+i).innerHTML = units;
+
     
 }
 }
