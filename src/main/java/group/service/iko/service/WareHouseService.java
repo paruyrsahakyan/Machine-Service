@@ -105,7 +105,7 @@ public class WareHouseService {
         return null;
     }
 
-    public Map<String, Part> getAvailablePartList () throws Throwable {
+    public  static  Map<String, Part> getAvailablePartList () throws Throwable {
         if (availablePartList == null) {
             new ExcelReaderWriter().setPartsFromWareHouseFile();
                     }

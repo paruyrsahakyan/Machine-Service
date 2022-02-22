@@ -91,7 +91,6 @@ public class ExcelReaderWriter {
                 }
                 part.setPartNumber(partNumber);
                 part.setNomenclature(row.getCell(nomenclatureColumn).toString());
-//                part.setUnit(row.getCell(6).getStringCellValue());
                 Cell quantityCell = row.getCell(quantityColumn);
                 if (quantityCell.getCellTypeEnum() == CellType.NUMERIC) {
                     part.setQuantity(quantityCell.getNumericCellValue());

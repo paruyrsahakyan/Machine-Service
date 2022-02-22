@@ -149,7 +149,7 @@
 
      <form:form action="/offer/newOffer/saveOffer" method="post"  accept-charset="UTF-8"   enctype="multipart/form-data">
 
-        <table class="mainTables" id="OfferTable" style="width: auto" align="center">
+        <table class="mainTables" id="offerTable" style="width: auto" align="center">
         <tr>
         </tr>
         </table>
@@ -239,7 +239,7 @@
 
         function setOfferLinesInTable() {
 
-        var table = document.getElementById("dynamicTable");
+        var table = document.getElementById("offerTable");
         table.innerText = "";
         var titleRow = table.insertRow();
         var titleCell1 = titleRow.insertCell(0);
@@ -257,7 +257,7 @@
         var titleCell13 = titleRow.insertCell(12);
         var titleCell14 = titleRow.insertCell(13);
         var titleCell15 = titleRow.insertCell(14);
-        var titleCell16 = titleRow.insertCell(14);
+        var titleCell16 = titleRow.insertCell(15);
 
         titleCell1.innerHTML = "N";
         titleCell2.innerHTML = "Название";
@@ -316,7 +316,7 @@
         parameterRow.insertCell();
         parameterRow.insertCell();
         
-        var producerCell = parameterRow.insertCell(16);
+        var producerCell = parameterRow.insertCell(15);
         producerCell.innerHTML =  "<input id='ProducerForAllLines' onkeyup = 'setProducer()'  value='KOMATSU' >"
      
 
@@ -337,7 +337,7 @@
                 var cell13 = row.insertCell(12);
                 var cell14 = row.insertCell(13);
                 var cell15 = row.insertCell(14);
-                var cell15 = row.insertCell(15);
+                var cell16 = row.insertCell(15);
 
                 cell1.id="N"+(i+1);
                 cell2.id="partName"+(i+1);

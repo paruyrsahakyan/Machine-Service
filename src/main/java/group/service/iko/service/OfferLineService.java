@@ -86,7 +86,7 @@ public class OfferLineService {
             }
 
 
-            Part availablePart = WareHouseService.availablePartList.get(offeredPartNumber);
+            Part availablePart = WareHouseService.getAvailablePartList().get(offeredPartNumber);
             if(availablePart !=null){
                       offerLine.setAvailability( (int) availablePart.getQuantity());
             }
