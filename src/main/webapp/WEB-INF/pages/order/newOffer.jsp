@@ -353,6 +353,7 @@
                 cell13.id = "profitMasis"+(i+1);
                 cell14.id= "lastOfferPrice"+(i+1);
                 cell15.id = "lastOfferDate"+(i+1);
+                cell16.id = "producer"+(i+1);
 
             cell1.innerHTML = (i + 1).toString();
                 cell2.innerHTML = offerLines[i].partName;
