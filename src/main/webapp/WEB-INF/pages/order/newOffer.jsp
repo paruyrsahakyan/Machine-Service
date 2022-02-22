@@ -300,20 +300,13 @@
        parameterRow.insertCell();
 
 
-        var cellOfferedPartNumber = parameterRow.insertCell(5);
-
-
-
-
-     //   cellOfferedPartNumber.innerHTML = "<input type='text' id='unitForAllLines' onchange='setUnits()'>";
-
-        var x =  "<select id='unitForAllLines' on change = 'setUnits()'>"+
+        var cellUnits = parameterRow.insertCell(5);
+         cellUnits.innerHTML =  "<select id='unitForAllLines' on change = 'setUnits()'>"+
         "<option  value='шт'> шт </option> "+
         "<option  value='л'> л </option> "+
         "</select>" 
 
-
-        for (var i = 0; i < offerLines.length; i++) {
+    for (var i = 0; i < offerLines.length; i++) {
                 var row = table.insertRow();
                 var cell1 = row.insertCell(0);
                 var cell2 = row.insertCell(1);
@@ -366,8 +359,7 @@ for (var i = 1; i < offerLines.length; i++) {
   var units = document.getElementById("unitForAllLines");
    document.getElementById(unit+i).innerHTML = units;
 
-    
-}
+    }
 }
 
          </script>
