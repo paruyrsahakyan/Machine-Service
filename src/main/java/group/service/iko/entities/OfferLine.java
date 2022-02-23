@@ -55,6 +55,9 @@ public class OfferLine {
     @Column (name = "availability")
     private int availability;
 
+    @Column (name = "in_stock_net_cost")
+    private int inStockNetCost;
+
 
     public OfferLine() {
     }
@@ -187,6 +190,13 @@ public class OfferLine {
         this.availability = availability;
     }
 
+    public int getInStockNetCost() {
+        return inStockNetCost;
+    }
+
+    public void setInStockNetCost(int inStockNetCost) {
+        this.inStockNetCost = inStockNetCost;
+    }
     @Override
     public String toString() {
         return "OfferLine{" +
@@ -205,4 +215,6 @@ public class OfferLine {
                 ", offer=" + offer +
                 '}';
     }
+
+
 }

@@ -88,7 +88,6 @@
             
         </select> 
                  </td>
-
             </tr>
             <tr>
                 <td>
@@ -112,19 +111,17 @@
                 <input type="number" name="discuntPercentage" id="discuntPercentage">
                 </td>
                 <td>
-                    <label for="currency">Курс</label>
+                    <label for="exchangeRate">Курс</label>
                 </td>
                 <td>
                       <input type="number" name="exchangeRate" step="0.01" id="exchangeRate">
                 </td>
                 <td>
-
                     <input type="radio" name="VAT" value="withoutVAT" id="VAT">
                     <label for="VAT"> Без НДС </label>
                      <br>
                     <input type="radio" name="VAT" value="withVAT" id="VAT">
                     <label for="VAT"> Вкл 20% НДС</label>
-                  
                  </td>
             </tr>
         </form>
@@ -146,7 +143,6 @@
 <br> <br>
 
 <div class="mainContent">
-
      <form:form action="/offer/newOffer/saveOffer" method="post"  accept-charset="UTF-8"   enctype="multipart/form-data">
 
         <table class="mainTables" id="offerTable" style="width: auto" align="center">
@@ -154,8 +150,7 @@
         </tr>
         </table>
         </form:form>
-
-        </div>
+ </div>
     
          <script>
 
@@ -184,6 +179,7 @@
             quantityInStock: quantityInStock,
             profit: profit
             });
+
         </c:forEach>
 
                  <c:forEach items="${offer.offerLines}" var="offerLine">
@@ -193,7 +189,7 @@
                     var offeredPartNumber = "${offerLine.offeredPartNumber}";
                      var supplierPrice = "${offerLine.supplierPrice}";
                      var sum ="${offerLine.sum}";
-                     var M3NetCost = "${offerLine.price}";
+                     var InStockNetCost = "${offerLine.InStockNetCost}";
                      var lastOfferPrice = "${offerLine.lastOfferedPrice}";
                       var availability = "${offerLine.availability}";
 
@@ -204,29 +200,22 @@
                    offeredPartNumber:offeredPartNumber,
                    supplierPrice:supplierPrice,
                    sum:sum,
-                   M3NetCost:M3NetCost,
+                   InStockNetCost:InStockNetCost,
                    lastOfferPrice:lastOfferPrice,
                    availability:availability
                                        });
                </c:forEach>
 
-
-
-
                if (offerLines.length > 0) {
-
              setOfferLinesInTable();
                 setCustomer();
                }
 
               function setCustomer() {
-
          selectedCustomerName=document.getElementById("selectedCustomerName").value;
                 document.getElementById("customerNameInUploadForm").value=selectedCustomerName;
+    }
 
-    }           
-
-           
           function initPriceListForSelectedCustomer() {
               var customerName = customerNameForTableCreation;
             for (var i = 0; i < initialPriceList.length; i++) {
@@ -236,9 +225,7 @@
         }
                 }
 
-
         function setOfferLinesInTable() {
-
         var table = document.getElementById("offerTable");
         table.innerText = "";
         var titleRow = table.insertRow();
@@ -258,6 +245,7 @@
         var titleCell14 = titleRow.insertCell(13);
         var titleCell15 = titleRow.insertCell(14);
         var titleCell16 = titleRow.insertCell(15);
+        var titleCell17 = titleRow.insertCell(15);
 
         titleCell1.innerHTML = "N";
         titleCell2.innerHTML = "Название";
@@ -268,13 +256,14 @@
         titleCell7.innerHTML = "Цена";
         titleCell8.innerHTML = "Сумма";
         titleCell9.innerHTML = "Цена послед. КП";
-        titleCell10.innerHTML = "Цена Поставщика";
+        titleCell10.innerHTML = "Дата посл. КП";
         titleCell11.innerHTML = "Налич. Масиса 3";
-        titleCell12.innerHTML = "Налич. в др. складах";
+        titleCell12.innerHTML = "Себест. Масис3";
         titleCell13.innerHTML = "МП от М3";
         titleCell14.innerHTML = "Срок поставки";
-        titleCell15.innerHTML = "Дата посл. КП";
-        titleCell16.innerHTML = "Произв.";
+        titleCell15.innerHTML = "Цена поставщика";
+        titleCell16.innerHTML = "Авиапоставка";
+        titleCell17.innerHTML = "Произв.";
 
         titleCell1.style.fontWeight = 'bold';
         titleCell2.style.fontWeight = 'bold';
@@ -292,9 +281,10 @@
         titleCell14.style.fontWeight = 'bold';
         titleCell15.style.fontWeight = 'bold';
         titleCell16.style.fontWeight = 'bold';
+        titleCell16.style.fontWeight = 'bold';
 
-
-        var parameterRow = table.insertRow();
+  
+     var parameterRow = table.insertRow();
 
        parameterRow.insertCell();
        parameterRow.insertCell();
@@ -315,11 +305,12 @@
         parameterRow.insertCell();
         parameterRow.insertCell();
         parameterRow.insertCell();
+        parameterRow.insertCell();
+
         
         var producerCell = parameterRow.insertCell(15);
         producerCell.innerHTML =  "<input id='ProducerForAllLines' onkeyup = 'setProducer()'  value='KOMATSU' >"
      
-
         for (var i = 0; i < offerLines.length; i++) {
                 var row = table.insertRow();
                 var cell1 = row.insertCell(0);
@@ -338,8 +329,9 @@
                 var cell14 = row.insertCell(13);
                 var cell15 = row.insertCell(14);
                 var cell16 = row.insertCell(15);
+                var cell17 = row.insertCell(16);
 
-                cell1.id="N"+(i+1);
+                cell1.id="position"+(i+1);
                 cell2.id="partName"+(i+1);
                 cell3.id ="partNumber"+(i+1);
                 cell4.id ="quantity"+(i+1);
@@ -347,14 +339,15 @@
                 cell6.id = "unit"+(i+1);
                 cell7.id = "price"+(i+1);
                 cell8.id = "sum"+(i+1);
-                cell9.id= "deliveryDate"+(i+1);
-                cell10.id = "manufacturer"+(i+1);
+                cell9.id= "lastOfferPrice"+(i+1);
+                cell10.id = "lastOfferDate"+(i+1);
                 cell11.id = "availability"+(i+1);
-                cell12.id = "otherAvailability"+(i+1);
-                cell13.id = "profitMasis"+(i+1);
-                cell14.id= "lastOfferPrice"+(i+1);
-                cell15.id = "lastOfferDate"+(i+1);
-                cell16.id = "producer"+(i+1);
+                cell12.id = "InStockNetCost"
+                cell13.id = "profitFromAvailable"+(i+1);
+                cell14.id = "deliveryDate"+(i+1);
+                cell15.id = "supplierPrice"+(i+1);
+                cell16.id = "avia"+(i+1);
+                cell17.id = "producer"+(i+1);
 
             cell1.innerHTML = (i + 1).toString();
                 cell2.innerHTML = offerLines[i].partName;
@@ -362,33 +355,53 @@
                 cell4.innerHTML = offerLines[i].quantity;
                 cell5.innerHTML = offerLines[i].offeredPartNumber;
                 cell9.innerHTML = offerLines[i].lastOfferPrice;
-                cell10.innerHTML= offerLines[i].supplierPrice;
+                cell10.innerHTML= offerLines[i].lastOfferDate;
                 cell11.innerHTML= offerLines[i].availability;
-
-
+                cell12.innerHTML= offerLines[i].inStockNetCost;
             }
-
 }
 
 function setUnits()  {
+
+ var units = document.getElementById("unitForAllLines").value;
 for (var i = 1; i <= offerLines.length; i++) {
-  var units = document.getElementById("unitForAllLines").value;
-   document.getElementById("unit"+i).innerHTML = units;
+    document.getElementById("unit"+i).innerHTML = units;
 
     }
 }
 
 function setProducer() {
 
+ var producer = document.getElementById("ProducerForAllLines").value;
 for (var i = 1; i <= offerLines.length; i++) {
-  var producer = document.getElementById("ProducerForAllLines").value;
-   document.getElementById("producer"+i).innerHTML = producer;
-
+     document.getElementById("producer"+i).innerHTML = producer;
     }
 }
 
-         </script>
 
+function setPrice() {
+    var profitPercentage  = document.getElementById("profitPercentage").value;
+    var transportation = document.getElementById("transportation").value;
+    var discuntPercentage = document.getElementById("discuntPercentage").value;
+    var exchangeRate = document.getElementById("exchangeRate").value;
+
+    for (var i = 1; i <= offerLines.length; i++) {
+
+     var  supplierPrice = document.getElementById("supplierPrice"+i).innerHTML;
+     var quantity = document.getElementById("quantity"+i).innerHTML;
+     var inStockNetCost = document.getElementById("inStockNetCost"+i).innerHTML;
+     var price = document.getElementById("price"+i).innerHTML;
+
+   price = supplierPrice/1.2*(100-discuntPercentage)/100*transportation*exchangeRate*profitPercentage;
+   document.getElementById("sum"+i).innerHTML = price*quantity
+
+   var profitFromAvailable = (price-inStockNetCost)/price*100 +"%";
+
+
+    }
+
+}
+         </script>
 
 </body>
 </html>

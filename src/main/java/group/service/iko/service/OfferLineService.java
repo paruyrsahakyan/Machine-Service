@@ -50,7 +50,7 @@ public class OfferLineService {
 
     }
 
-    public  Set<OfferLine> makeOfferLinesFromRequest (Request request) throws Throwable {
+    public Set<OfferLine> makeOfferLinesFromRequest(Request request) throws Throwable {
         String customerName = request.getCustomer().getName();
         Map<String, Double> supplierPriceMap = WareHouseService.getSupplierPriceList();
         Map<String, String> interchangeabilityMap = WareHouseService.getInterchangeabilityMap();
@@ -78,8 +78,8 @@ public class OfferLineService {
             if (priceForCustomer != null) {
                 int price = priceForCustomer.getPrice();
                 offerLine.setLastOfferedPrice(price);
-
             }
+
             Double supplierPrice = supplierPriceMap.get(offeredPartNumber);
             if (supplierPrice != null) {
                 offerLine.setSupplierPrice(supplierPrice);
@@ -87,8 +87,9 @@ public class OfferLineService {
 
 
             Part availablePart = WareHouseService.getAvailablePartList().get(offeredPartNumber);
-            if(availablePart !=null){
-                      offerLine.setAvailability( (int) availablePart.getQuantity());
+            if (availablePart != null) {
+                offerLine.setAvailability((int) availablePart.getQuantity());
+                offerLine.setInStockNetCost((int) availablePart.getNetCost());
             }
         }
         return new HashSet<OfferLine>(offerLines);
