@@ -162,25 +162,25 @@
         var selectedCustomerName = "${selectedCustomer.name}";
         var offerLines=[];
 
-         <c:forEach items="${priceList}" var="priceForCustomer">
-            var id ="${priceForCustomer.id}";
-            var article = "${priceForCustomer.article}";
-            var description = "${priceForCustomer.description}";
-            var price = "${priceForCustomer.price}";
-            var customerName = "${priceForCustomer.customerName}";
-            var quantityInStock = "${priceForCustomer.quantityInStock}";
-            var profit = "${priceForCustomer.profit}";
-             initialPriceList.push({
-            id: id,
-            article: article,
-            description: description,
-            price: price,
-            customerName: customerName,
-            quantityInStock: quantityInStock,
-            profit: profit
-            });
+        //  <c:forEach items="${priceList}" var="priceForCustomer">
+        //     var id ="${priceForCustomer.id}";
+        //     var article = "${priceForCustomer.article}";
+        //     var description = "${priceForCustomer.description}";
+        //     var price = "${priceForCustomer.price}";
+        //     var customerName = "${priceForCustomer.customerName}";
+        //     var quantityInStock = "${priceForCustomer.quantityInStock}";
+        //     var profit = "${priceForCustomer.profit}";
+        //      initialPriceList.push({
+        //     id: id,
+        //     article: article,
+        //     description: description,
+        //     price: price,
+        //     customerName: customerName,
+        //     quantityInStock: quantityInStock,
+        //     profit: profit
+        //     });
 
-        </c:forEach>
+        // </c:forEach>
 
                  <c:forEach items="${offer.offerLines}" var="offerLine">
                    var partName = "${offerLine.requestedPartName}";
@@ -204,6 +204,7 @@
                    lastOfferPrice:lastOfferPrice,
                    availability:availability
                                        });
+
                </c:forEach>
 
                if (offerLines.length > 0) {
