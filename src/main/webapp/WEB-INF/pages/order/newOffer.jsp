@@ -387,12 +387,13 @@ function setPrice() {
     for (var i = 1; i <= offerLines.length; i++) {
 
      var  supplierPrice = document.getElementById("supplierPrice"+i).value;
+     console.log( type of supplierPrice);
      var quantity = document.getElementById("quantity"+i).value;
      var inStockNetCost = document.getElementById("inStockNetCost"+i).value;
     
    price = supplierPrice/1.2*(100-discuntPercentage)/100*transportation*exchangeRate*profitPercentage;
-   var priceCell = document.getElementById("price"+i).innerHTML;
-   
+   var priceCell = document.getElementById("price"+i);
+
    priceCell.innerHTML=price;
    document.getElementById("sum"+i).innerHTML = price*quantity
 
