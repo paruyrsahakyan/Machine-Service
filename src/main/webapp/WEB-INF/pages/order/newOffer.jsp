@@ -341,7 +341,7 @@
                 cell9.id= "lastOfferPrice"+(i+1);
                 cell10.id = "lastOfferDate"+(i+1);
                 cell11.id = "availability"+(i+1);
-                cell12.id = "inStockNetCost"
+                cell12.id = "inStockNetCost"+(i+1);
                 cell13.id = "profitFromAvailable"+(i+1);
                 cell14.id = "deliveryDate"+(i+1);
                 cell15.id = "supplierPrice"+(i+1);
@@ -386,12 +386,14 @@ function setPrice() {
 
     for (var i = 1; i <= offerLines.length; i++) {
 
-     var  supplierPrice = document.getElementById("supplierPrice"+i).innerHTML;
-     var quantity = document.getElementById("quantity"+i).innerHTML;
-     var inStockNetCost = document.getElementById("inStockNetCost"+i).innerHTML;
-     var price = document.getElementById("price"+i).innerHTML;
-
+     var  supplierPrice = document.getElementById("supplierPrice"+i).value;
+     var quantity = document.getElementById("quantity"+i).value;
+     var inStockNetCost = document.getElementById("inStockNetCost"+i).value;
+    
    price = supplierPrice/1.2*(100-discuntPercentage)/100*transportation*exchangeRate*profitPercentage;
+   var priceCell = document.getElementById("price"+i).innerHTML;
+   
+   priceCell.innerHTML=price;
    document.getElementById("sum"+i).innerHTML = price*quantity
 
    var profitFromAvailable = (price-inStockNetCost)/price*100 +"%";
