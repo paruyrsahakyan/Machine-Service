@@ -144,15 +144,15 @@
 
 <div class="mainContent">
      <form:form action="/offer/newOffer/saveOffer" method="post"  accept-charset="UTF-8"   enctype="multipart/form-data">
-
         <table class="mainTables" id="offerTable" style="width: auto" align="center">
         <tr>
         </tr>
         </table>
         </form:form>
+        sdfsd; sdfsd;  <button type="button"  onclick="setPrice()"> Пересчитать </button>
+
  </div>
-    
-         <script>
+             <script>
 
         var initialPriceList = [];
         var customerList = [];
