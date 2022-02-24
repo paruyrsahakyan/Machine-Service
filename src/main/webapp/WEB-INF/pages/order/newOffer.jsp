@@ -244,7 +244,7 @@
         var titleCell14 = titleRow.insertCell(13);
         var titleCell15 = titleRow.insertCell(14);
         var titleCell16 = titleRow.insertCell(15);
-        var titleCell17 = titleRow.insertCell(15);
+        var titleCell17 = titleRow.insertCell(16);
 
         titleCell1.innerHTML = "N";
         titleCell2.innerHTML = "Название";
@@ -280,7 +280,7 @@
         titleCell14.style.fontWeight = 'bold';
         titleCell15.style.fontWeight = 'bold';
         titleCell16.style.fontWeight = 'bold';
-        titleCell16.style.fontWeight = 'bold';
+        titleCell17.style.fontWeight = 'bold';
 
   
      var parameterRow = table.insertRow();
