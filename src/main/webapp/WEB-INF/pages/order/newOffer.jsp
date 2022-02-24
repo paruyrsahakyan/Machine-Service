@@ -162,36 +162,35 @@
         var selectedCustomerName = "${selectedCustomer.name}";
         var offerLines=[];
 
-        //  <c:forEach items="${priceList}" var="priceForCustomer">
-        //     var id ="${priceForCustomer.id}";
-        //     var article = "${priceForCustomer.article}";
-        //     var description = "${priceForCustomer.description}";
-        //     var price = "${priceForCustomer.price}";
-        //     var customerName = "${priceForCustomer.customerName}";
-        //     var quantityInStock = "${priceForCustomer.quantityInStock}";
-        //     var profit = "${priceForCustomer.profit}";
-        //      initialPriceList.push({
-        //     id: id,
-        //     article: article,
-        //     description: description,
-        //     price: price,
-        //     customerName: customerName,
-        //     quantityInStock: quantityInStock,
-        //     profit: profit
-        //     });
+         <c:forEach items="${priceList}" var="priceForCustomer">
+            var id ="${priceForCustomer.id}";
+           var article = "${priceForCustomer.article}";
+             var description = "${priceForCustomer.description}";
+             var price = "${priceForCustomer.price}";
+             var customerName = "${priceForCustomer.customerName}";
+             var quantityInStock = "${priceForCustomer.quantityInStock}";
+             var profit = "${priceForCustomer.profit}";
+              initialPriceList.push({
+             id: id,
+             article: article,
+             description: description,
+             price: price,
+             customerName: customerName,
+             quantityInStock: quantityInStock,
+             profit: profit
+             });
+           </c:forEach>
 
-        // </c:forEach>
-
-                 <c:forEach items="${offer.offerLines}" var="offerLine">
+            <c:forEach items="${offer.offerLines}" var="offerLine">
                    var partName = "${offerLine.requestedPartName}";
-                    var partNumber = "${offerLine.requestedPartNumber}";
-                    var quantity = "${offerLine.quantity}";
-                    var offeredPartNumber = "${offerLine.offeredPartNumber}";
-                     var supplierPrice = "${offerLine.supplierPrice}";
-                     var sum ="${offerLine.sum}";
-                     var InStockNetCost = "${offerLine.InStockNetCost}";
-                     var lastOfferPrice = "${offerLine.lastOfferedPrice}";
-                      var availability = "${offerLine.availability}";
+                   var partNumber = "${offerLine.requestedPartNumber}";
+                   var quantity = "${offerLine.quantity}";
+                   var offeredPartNumber = "${offerLine.offeredPartNumber}";
+                   var supplierPrice = "${offerLine.supplierPrice}";
+                   var sum ="${offerLine.sum}";
+                   var inStockNetCost = "${offerLine.inStockNetCost}";
+                   var lastOfferPrice = "${offerLine.lastOfferedPrice}";
+                   var availability = "${offerLine.availability}";
 
                    offerLines.push({
                     partName: partName,
@@ -200,11 +199,10 @@
                    offeredPartNumber:offeredPartNumber,
                    supplierPrice:supplierPrice,
                    sum:sum,
-                   InStockNetCost:InStockNetCost,
+                   inStockNetCost:inStockNetCost,
                    lastOfferPrice:lastOfferPrice,
                    availability:availability
                                        });
-
                </c:forEach>
 
                if (offerLines.length > 0) {

@@ -35,18 +35,14 @@ public class OfferLine {
     private int price;
     @Column
     private int sum;
-
     @Column  (name= "supply_date")
     private int supplyDate;
-
     @Column
     private String producer;
-
     @Column  (name= "confirmation_condition")
     private String confirmationCondition;
-
     @ManyToOne()
-        @JoinColumn(name = "offer_id")
+    @JoinColumn(name = "offer_id")
     private Offer offer;
     @Column (name = "supplier_price")
     private Double supplierPrice;
@@ -54,7 +50,6 @@ public class OfferLine {
     private int lastOfferedPrice;
     @Column (name = "availability")
     private int availability;
-
     @Column (name = "in_stock_net_cost")
     private int inStockNetCost;
 
