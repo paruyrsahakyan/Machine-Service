@@ -341,7 +341,7 @@
                 cell9.id= "lastOfferPrice"+(i+1);
                 cell10.id = "lastOfferDate"+(i+1);
                 cell11.id = "availability"+(i+1);
-                cell12.id = "InStockNetCost"
+                cell12.id = "inStockNetCost"
                 cell13.id = "profitFromAvailable"+(i+1);
                 cell14.id = "deliveryDate"+(i+1);
                 cell15.id = "supplierPrice"+(i+1);
