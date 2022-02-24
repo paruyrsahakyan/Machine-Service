@@ -379,17 +379,17 @@ for (var i = 1; i <= offerLines.length; i++) {
 
 
 function setPrice() {
-    var profitPercentage  = document.getElementById("profitPercentage").value;
-    var transportation = document.getElementById("transportation").value;
-    var discuntPercentage = document.getElementById("discuntPercentage").value;
-    var exchangeRate = document.getElementById("exchangeRate").value;
+    var profitPercentage  = parseInt(document.getElementById("profitPercentage").value);
+    var transportation = parseInt(document.getElementById("transportation").value);
+    var discuntPercentage = parseInt(document.getElementById("discuntPercentage").value);
+    var exchangeRate = parseInt(document.getElementById("exchangeRate").value);
 
     for (var i = 1; i <= offerLines.length; i++) {
 
-     var  supplierPrice = document.getElementById("supplierPrice"+i).value;
-     console.log( type of supplierPrice);
-     var quantity = document.getElementById("quantity"+i).value;
-     var inStockNetCost = document.getElementById("inStockNetCost"+i).value;
+     var  supplierPrice = parseInt(document.getElementById("supplierPrice"+i).value);
+     console.log( typeof supplierPrice);
+     var quantity = parseInt(document.getElementById("quantity"+i).value);
+     var inStockNetCost = parseInt(document.getElementById("inStockNetCost"+i).value);
     
    price = supplierPrice/1.2*(100-discuntPercentage)/100*transportation*exchangeRate*profitPercentage;
    var priceCell = document.getElementById("price"+i);
