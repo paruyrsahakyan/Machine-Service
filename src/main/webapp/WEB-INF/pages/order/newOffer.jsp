@@ -391,7 +391,7 @@ function setPrice() {
      var  supplierPrice = offerLines[i-1].supplierPrice;
      var quantity = offerLines[i-1].quantity;
      var inStockNetCost = offerLines[i-1].inStockNetCost;
-     var price = Math.round(supplierPrice/1.2/10*(100-discuntPercentage)/100*(100+transportation)/100*exchangeRate/(100-profitPercentage)*100);
+     var price = Math.round(supplierPrice/1.2*((100-discuntPercentage)/100)*((100+transportation)/100)*exchangeRate/(100-profitPercentage)*100);
      var profitFromAvailable = Math.round((price*exchangeRate-inStockNetCost)/price*100) +" %";
      var sum = price*quantity;
 
