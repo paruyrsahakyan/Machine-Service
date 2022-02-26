@@ -137,6 +137,7 @@
                      <input type="file" name="requestFile">
                      <input id="customerNameInUploadForm"  type="hidden" name="customerName" value="${selectedCustomer.name}">
                      <input  type="submit" value="загрузить">
+                     <button type="button"  onclick="setPrice()"> Пересчитать </button>
                     </form:form>
          </div>
 
@@ -149,7 +150,7 @@
         </tr>
         </table>
         </form:form>
-        sdfsd; sdfsd;  <button type="button"  onclick="setPrice()"> Пересчитать </button>
+        
 
  </div>
              <script>
@@ -391,8 +392,8 @@ function setPrice() {
      var quantity = offerLines[i-1].quantity;
      var inStockNetCost = offerLines[i-1].inStockNetCost;
      var price = supplierPrice/1.2*(100-discuntPercentage)/100*(100+transportation)/100*exchangeRate/(100-profitPercentage)*100;
-     var profitFromAvailable = (price-inStockNetCost)/price*100 +" %";
-     sum = price.quantity;
+     var profitFromAvailable = (price*exchangeRate-inStockNetCost)/price*100 +" %";
+     var sum = price.quantity;
 
      var priceCell = document.getElementById("price"+i);
      var sumCell = document.getElementById("sum"+i);
@@ -401,7 +402,11 @@ function setPrice() {
      priceCell.innerHTML = price;
      sumCell.innerHTML = sum;
      profitFromAvailableCell.innerHTML = profitFromAvailable;
+
+ 
      
+
+
     }
 
 }
