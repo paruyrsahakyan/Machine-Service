@@ -357,6 +357,7 @@
                 cell10.innerHTML= offerLines[i].lastOfferDate;
                 cell11.innerHTML= offerLines[i].availability;
                 cell12.innerHTML= offerLines[i].inStockNetCost;
+                cell15.innerHTML= offerLines[i].supplierPrice;
             }
 }
 
@@ -379,27 +380,28 @@ for (var i = 1; i <= offerLines.length; i++) {
 
 
 function setPrice() {
-    var profitPercentage  = parseInt(document.getElementById("profitPercentage").value);
-    var transportation = parseInt(document.getElementById("transportation").value);
-    var discuntPercentage = parseInt(document.getElementById("discuntPercentage").value);
-    var exchangeRate = parseInt(document.getElementById("exchangeRate").value);
+    var profitPercentage  = document.getElementById("profitPercentage").value;
+    var transportation = document.getElementById("transportation").value;
+    var discuntPercentage = document.getElementById("discuntPercentage").value;
+    var exchangeRate = document.getElementById("exchangeRate").value;
 
     for (var i = 1; i <= offerLines.length; i++) {
 
-     var  supplierPrice = parseInt(document.getElementById("supplierPrice"+i).value);
-     console.log( typeof supplierPrice);
-     var quantity = parseInt(document.getElementById("quantity"+i).value);
-     var inStockNetCost = parseInt(document.getElementById("inStockNetCost"+i).value);
-    
-   price = supplierPrice/1.2*(100-discuntPercentage)/100*transportation*exchangeRate*profitPercentage;
-   var priceCell = document.getElementById("price"+i);
+     var  supplierPrice = offerLines[i-1].supplierPrice;
+     var quantity = offerLines[i-1].quantity;
+     var inStockNetCost = offerLines[i-1].inStockNetCost;
+     var price = supplierPrice/1.2*(100-discuntPercentage)/100*(100+transportation)/100*exchangeRate/(100-profitPercentage)*100;
+     var profitFromAvailable = (price-inStockNetCost)/price*100 +" %";
+     sum = price.quantity;
 
-   priceCell.innerHTML=price;
-   document.getElementById("sum"+i).innerHTML = price*quantity
+     var priceCell = document.getElementById("price"+i);
+     var sumCell = document.getElementById("sum"+i);
+     var profitFromAvailableCell = document.getElementById("profitFromAvailable"+i);
 
-   var profitFromAvailable = (price-inStockNetCost)/price*100 +"%";
-
-
+     priceCell.innerHTML = price;
+     sumCell.innerHTML = sum;
+     profitFromAvailableCell.innerHTML = profitFromAvailable;
+     
     }
 
 }
