@@ -400,8 +400,8 @@ function setPrice() {
      var sumCell = document.getElementById("sum"+i);
      var profitFromAvailableCell = document.getElementById("profitFromAvailable"+i);
 
-     priceCell.innerHTML = addCommas(price);
-     sumCell.innerHTML = addCommas(sum);
+     priceCell.innerHTML = price;
+     sumCell.innerHTML = sum;
      profitFromAvailableCell.innerHTML = profitFromAvailable;
 
 
@@ -410,13 +410,6 @@ function setPrice() {
 
 }
 
-function addCommas(x) {
-    //remove commas
-    retVal = x ? parseFloat(x.replace(/,/g, '')) : 0;
-
-    //apply formatting
-    return retVal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-}
          </script>
 
 </body>
