@@ -165,7 +165,7 @@
 
          <c:forEach items="${priceList}" var="priceForCustomer">
             var id ="${priceForCustomer.id}";
-           var article = "${priceForCustomer.article}";
+            var article = "${priceForCustomer.article}";
              var description = "${priceForCustomer.description}";
              var price = "${priceForCustomer.price}";
              var customerName = "${priceForCustomer.customerName}";
@@ -308,7 +308,7 @@
         parameterRow.insertCell();
 
         
-        var producerCell = parameterRow.insertCell(15);
+        var producerCell = parameterRow.insertCell(16);
         producerCell.innerHTML =  "<input id='ProducerForAllLines' onkeyup = 'setProducer()'  value='KOMATSU' >"
      
         for (var i = 0; i < offerLines.length; i++) {
@@ -393,7 +393,7 @@ function setPrice() {
      var inStockNetCost = offerLines[i-1].inStockNetCost;
      var price = supplierPrice/1.2*(100-discuntPercentage)/100*(100+transportation)/100*exchangeRate/(100-profitPercentage)*100;
      var profitFromAvailable = (price*exchangeRate-inStockNetCost)/price*100 +" %";
-     var sum = price.quantity;
+     var sum = price*quantity;
 
      var priceCell = document.getElementById("price"+i);
      var sumCell = document.getElementById("sum"+i);
@@ -403,10 +403,7 @@ function setPrice() {
      sumCell.innerHTML = sum;
      profitFromAvailableCell.innerHTML = profitFromAvailable;
 
- 
-     
-
-
+  
     }
 
 }
