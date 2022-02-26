@@ -392,21 +392,30 @@ function setPrice() {
      var quantity = offerLines[i-1].quantity;
      var inStockNetCost = offerLines[i-1].inStockNetCost;
      var price = supplierPrice/1.2*((100-discuntPercentage)/100)*exchangeRate/(100-profitPercentage)*100;
-     price = Math.round(price*(100+transportation)/100);
-     var profitFromAvailable = Math.round((price*exchangeRate-inStockNetCost)/price*100) +" %";
+     price = Math.round(price+price*transportation/100);
+     var profitFromAvailable = Math.round((price-inStockNetCost)/price*100) +" %";
      var sum = price*quantity;
 
      var priceCell = document.getElementById("price"+i);
      var sumCell = document.getElementById("sum"+i);
      var profitFromAvailableCell = document.getElementById("profitFromAvailable"+i);
 
-     priceCell.innerHTML = price;
-     sumCell.innerHTML = sum;
+     priceCell.innerHTML = addCommas(price);
+     sumCell.innerHTML = addCommas(sum);
      profitFromAvailableCell.innerHTML = profitFromAvailable;
+
 
   
     }
 
+}
+
+function addCommas(x) {
+    //remove commas
+    retVal = x ? parseFloat(x.replace(/,/g, '')) : 0;
+
+    //apply formatting
+    return retVal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
          </script>
 
