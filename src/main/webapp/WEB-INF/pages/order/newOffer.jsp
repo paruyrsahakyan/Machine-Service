@@ -395,6 +395,8 @@ function setPrice() {
      price = Math.round(price+price*transportation/100);
      var profitFromAvailable = Math.round((price-inStockNetCost)/price*100) +" %";
      var sum = price*quantity;
+     price = price.toLocaleString();
+     sum = price.toLocaleString();
     
      var priceCell = document.getElementById("price"+i);
      var sumCell = document.getElementById("sum"+i);
