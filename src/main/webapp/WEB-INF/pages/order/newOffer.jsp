@@ -394,9 +394,8 @@ function setPrice() {
      var price = supplierPrice/1.2*((100-discuntPercentage)/100)*exchangeRate/(100-profitPercentage)*100;
      price = Math.round(price+price*transportation/100);
      var profitFromAvailable = Math.round((price-inStockNetCost)/price*100) +" %";
-     var sum = price*quantity.toLocaleString();
-     price = price.toLocaleString();
-
+     var sum = price*quantity;
+    
      var priceCell = document.getElementById("price"+i);
      var sumCell = document.getElementById("sum"+i);
      var profitFromAvailableCell = document.getElementById("profitFromAvailable"+i);
