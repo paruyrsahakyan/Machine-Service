@@ -12,8 +12,7 @@
 <html>
 <head>
     <style><%@include file="/WEB-INF/pages/CSS/topNavigation.css"%></style>
-    <style><%@include file="/WEB-INF/pages/CSS/tables.css"%></style>
-    <style><%@include file="/WEB-INF/pages/CSS/offerTable.css"%></style>
+     <style><%@include file="/WEB-INF/pages/CSS/offerTable.css"%></style>
     </head>
 <body>
 <div class="topnav">
