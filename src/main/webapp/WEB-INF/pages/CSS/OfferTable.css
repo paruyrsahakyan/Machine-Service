@@ -4,7 +4,7 @@
     width: auto;
     alignment: center;
     margin: auto;
-    font-size: 155px;
+    font-size: 100px;
 
 }
 
@@ -13,7 +13,7 @@ td, th {
     border: 1px solid black;
     text-align: center;
     padding: 8px;
-     font-size: 155px;
+     font-size: 100px;
 }
 
 tr:nth-child(even) {

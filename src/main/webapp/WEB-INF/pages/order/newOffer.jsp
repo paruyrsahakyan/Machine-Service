@@ -225,6 +225,16 @@
         }
                 }
 
+        var setLastOfferPrice = function () {
+            var lastOfferPrice = event.target.innerHTML;
+            var lastOfferPriceId = event.target.id;
+            var priceId = lastOfferPriceId.replace("lastOfferPrice", "price");
+            
+            document.getElementById.(priceId).innerHTML = lastOfferPrice  
+
+    }
+
+
         function setOfferLinesInTable() {
         var table = document.getElementById("offerTable");
         table.innerText = "";
@@ -355,6 +365,7 @@
                 cell4.innerHTML = offerLines[i].quantity;
                 cell5.innerHTML = offerLines[i].offeredPartNumber;
                 cell9.innerHTML = offerLines[i].lastOfferPrice;
+                cell9.addEventListener("click", setLastOfferPrice);
                 cell10.innerHTML= offerLines[i].lastOfferDate;
                 cell11.innerHTML= offerLines[i].availability;
                 cell12.innerHTML= offerLines[i].inStockNetCost;
@@ -396,7 +407,7 @@ function setPrice() {
      var profitFromAvailable = Math.round((price-inStockNetCost)/price*100) +" %";
      var sum = price*quantity;
      price = price.toLocaleString();
-     sum = price.toLocaleString();
+     sum = sum.toLocaleString();
     
      var priceCell = document.getElementById("price"+i);
      var sumCell = document.getElementById("sum"+i);
@@ -405,7 +416,6 @@ function setPrice() {
      priceCell.innerHTML = price;
      sumCell.innerHTML = sum;
      profitFromAvailableCell.innerHTML = profitFromAvailable;
-
 
   
     }
