@@ -232,7 +232,7 @@
             
             document.getElementById("price5").innerHTML = lastOfferPrice;  
 
-    };
+    }
 
 
         function setOfferLinesInTable() {
