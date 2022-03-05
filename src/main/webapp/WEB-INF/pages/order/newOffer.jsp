@@ -226,11 +226,12 @@
                 }
 
         var setLastOfferPrice = function () {
+           alert("Hello! I am an alert box!!");
             var lastOfferPrice = event.target.innerHTML;
             var lastOfferPriceId = event.target.id;
             var priceId = lastOfferPriceId.replace("lastOfferPrice", "price");
-            
-            document.getElementById("price5").innerHTML = lastOfferPrice;  
+            alert(lastOfferPriceId);
+            document.getElementById("price5").innerHTML = lastOfferPrice;
 
     }
 

@@ -68,7 +68,7 @@
     }
 
     var copyToTextArea = function () {
-       alert("Hello! I am an alert box!!");
+
         var selectedCustomerName = event.target.innerHTML;
         document.getElementById("selectedCustomerName").value = selectedCustomerName;
         var selectedCustomer = filteredList.find(customer => {return customer.name === selectedCustomerName}
