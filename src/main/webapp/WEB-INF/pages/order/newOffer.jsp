@@ -13,6 +13,7 @@
 <head>
     <style><%@include file="/WEB-INF/pages/CSS/topNavigation.css"%></style>
     <style><%@include file="/WEB-INF/pages/CSS/tables.css"%></style>
+    <style><%@include file="/WEB-INF/pages/CSS/offerTable.css"%></style>
     </head>
 <body>
 <div class="topnav">
@@ -145,7 +146,7 @@
 
 <div class="mainContent">
      <form:form action="/offer/newOffer/saveOffer" method="post"  accept-charset="UTF-8"   enctype="multipart/form-data">
-        <table class="mainTables" id="offerTable" style="width: auto" align="center">
+        <table class="offerTable" id="offerTable" style="width: auto" align="center">
         <tr>
         </tr>
         </table>
@@ -230,9 +231,9 @@
             var lastOfferPriceId = event.target.id;
             var priceId = lastOfferPriceId.replace("lastOfferPrice", "price");
             
-            document.getElementById.(priceId).innerHTML = lastOfferPrice  
+            document.getElementById("price5").innerHTML = lastOfferPrice;  
 
-    }
+    };
 
 
         function setOfferLinesInTable() {
