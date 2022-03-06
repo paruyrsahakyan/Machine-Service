@@ -34,7 +34,7 @@
  </div>
 
 <div class = "mainContent">
-<table style="alignment:center">
+<table class="offerTable">
         <form>
             <tr>
                 <td>
@@ -393,7 +393,7 @@ function setPrice() {
      var inStockNetCost = offerLines[i-1].inStockNetCost;
      var price = supplierPrice/1.2*((100-discuntPercentage)/100)*exchangeRate/(100-profitPercentage)*100;
      price = Math.round(price+price*transportation/100);
-     var profitFromAvailable = Math.round((price-inStockNetCost)/price*100) +" %";
+     var profitFromAvailable = Math.round((price-inStockNetCost)/price*100);
      var sum = price*quantity;
       
      var priceCell = document.getElementById("price"+i);
