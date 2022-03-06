@@ -258,7 +258,7 @@
 
         titleCell1.innerHTML = "N";
         titleCell2.innerHTML = "Название";
-        titleCell3.innerHTML = "Артикул";
+        titleCell3.innerHTML = "Артикул запроса";
         titleCell4.innerHTML =  "Количество";
         titleCell5.innerHTML = "Артикул КП";
         titleCell6.innerHTML = "Ед.";
@@ -364,11 +364,10 @@
                 cell3.innerHTML = "<input type='text' size='13'name= 'partNumber[]'  value='" +offerLines[i].partNumber+"'"+"> ";
                 cell4.innerHTML = "<input type='number' style ='width:80px' name= 'quantity[]'  value='" +offerLines[i].quantity+"'"+"> ";
                 cell5.innerHTML = "<input type='text' size='13' name= 'offeredPartNumber[]'  value='" +offerLines[i].offeredPartNumber+"'"+"> ";
-                cell6.innerHTML = "<input type='text' size='4' id='unit"+(i+1)+"'"+" name= 'unit[]'  value='шт'>";
-                cell7.innerHTML = "<input type='number' style ='width:80px' id='price"+(i+1)+"'"+" name= 'price[]' >";
-                
-                cell9.innerHTML = offerLines[i].lastOfferPrice;
-                cell9.addEventListener("click", setLastOfferPrice);
+                cell6.innerHTML = "<input type='text' size='4' id='unit"+(i+1)+"' name= 'unit[]'  value='шт'>";
+                cell7.innerHTML = "<input type='number' style ='width:50px' id='price"+(i+1)+"' name= 'price[]' >";
+                cell8 .innerHTML = "<input type='number' style ='width:50px' id='sum"+(i+1)+"' name= 'sume[]' >"
+                cell9 .innerHTML = "<input type='lastOfferPrice' style ='width:50px' name= 'lastOfferPrice[]' >";
                 cell10.innerHTML= offerLines[i].lastOfferDate;
                 cell11.innerHTML= offerLines[i].availability;
                 cell12.innerHTML= offerLines[i].inStockNetCost;
