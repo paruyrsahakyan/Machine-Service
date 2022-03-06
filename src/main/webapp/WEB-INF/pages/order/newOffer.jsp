@@ -360,10 +360,10 @@
 
             cell1.innerHTML = (i + 1).toString();
 
-                cell2.innerHTML = "<input type='text' name= 'partName[]'  value='" +offerLines[i].partName+"'"+"> ";
-                cell3.innerHTML = "<input type='text' name= 'partNumber[]'  value='" +offerLines[i].partNumber+"'"+"> ";
-                cell4.innerHTML = "<input type='number' name= 'quantity[]'  value='" +offerLines[i].quantity+"'"+"> ";
-                cell5.innerHTML = "<input type='text' name= 'offeredPartNumber[]'  value='" +offerLines[i].offeredPartNumber+"'"+"> ";
+                cell2.innerHTML = "<input type='text'   name= 'partName[]'  value='" +offerLines[i].partName+"'"+"> ";
+                cell3.innerHTML = "<input type='text' size='13'name= 'partNumber[]'  value='" +offerLines[i].partNumber+"'"+"> ";
+                cell4.innerHTML = "<input type='number' size='5' name= 'quantity[]'  value='" +offerLines[i].quantity+"'"+"> ";
+                cell5.innerHTML = "<input type='text' size='13' name= 'offeredPartNumber[]'  value='" +offerLines[i].offeredPartNumber+"'"+"> ";
                 cell9.innerHTML = offerLines[i].lastOfferPrice;
                 cell9.addEventListener("click", setLastOfferPrice);
                 cell10.innerHTML= offerLines[i].lastOfferDate;
