@@ -144,8 +144,9 @@
 <br> <br>
 
 <div class="mainContent">
-     <form:form action="/offer/newOffer/saveOffer" method="post"  accept-charset="UTF-8"   enctype="multipart/form-data">
-        <table class="offerTable" id="offerTable" style="width: auto" align="center">
+     <form:form action="/offer/newOffer/saveOffer" method="post"  accept-charset="UTF-8"   enctype="multipart/form-data"
+      onkeypress="return event.keyCode != 13;">
+                   <table class="offerTable" id="offerTable" style="width: auto" align="center">
         <tr>
         </tr>
         </table>
@@ -355,7 +356,8 @@
                 cell17.id = "producer"+(i+1);
 
             cell1.innerHTML = (i + 1).toString();
-                cell2.innerHTML = offerLines[i].partName;
+
+                cell2.innerHTML = "<input type='text' name= 'partNumber[]'  value='" +offerLines[i].partName+"'"+"> ";
                 cell3.innerHTML = offerLines[i].partNumber;
                 cell4.innerHTML = offerLines[i].quantity;
                 cell5.innerHTML = offerLines[i].offeredPartNumber;
