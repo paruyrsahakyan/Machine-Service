@@ -271,7 +271,7 @@
         titleCell13.innerHTML = "МП от М3";
         titleCell14.innerHTML = "Срок поставки";
         titleCell15.innerHTML = "Цена поставщика";
-        titleCell16.innerHTML = "Авиапоставка";
+        titleCell16.innerHTML = "Авиап.";
         titleCell17.innerHTML = "Произв.";
 
         titleCell1.style.fontWeight = 'bold';
@@ -342,21 +342,21 @@
 
                 cell1.innerHTML = "<input type='number'  style ='width:15px' name= 'position[]'  value='" +(i + 1) + "' >";
                 cell2.innerHTML = "<input type='text'   name= 'partName[]'  value='" +offerLines[i].partName+"'"+"> ";
-                cell3.innerHTML = "<input type='text' size='13'name= 'partNumber[]'  value='" +offerLines[i].partNumber+"'"+"> ";
-                cell4.innerHTML = "<input type='number' style ='width:80px' name= 'quantity[]'  value='" +offerLines[i].quantity+"'"+"> ";
-                cell5.innerHTML = "<input type='text' size='13' name= 'offeredPartNumber[]'  value='" +offerLines[i].offeredPartNumber+"'"+"> ";
-                cell6.innerHTML = "<input type='text' size='4' id='unit"+(i+1)+"' name= 'unit[]'  value='шт'>";
-                cell7.innerHTML = "<input type='number' style ='width:50px' id='price"+(i+1)+"' name= 'price[]' >";
-                cell8 .innerHTML = "<input type='number' style ='width:50px' id='sum"+(i+1)+"' name= 'sume[]' >"
-                cell9 .innerHTML = "<input type='lastOfferPrice' style ='width:50px' name= 'lastOfferPrice[]' >";
-                cell10.innerHTML = "<input type='date' style ='width:50px' name= 'lastOfferDate[]' >";
-                cell11.innerHTML = "<input type='number' style ='width:30px' name= 'availability[]' >";
-                cell12.innerHTML = "<input type='number' style ='width:30px' name= 'inStockNetCost[]' >";
-                cell13.innerHTML = "<input type='number' style ='width:30px' name= 'profitFromAvailable[]' >";
-                cell14.innerHTML = "<input type='number' style ='width:30px' name= 'deliveryDate[]' >";
-                cell15.innerHTML = "<input type='text' id='supplierPrice"+(i+1)+"'name= 'supplierPrice[]' >";
-                cell16.innerHTML = "<input type='number' id='avia"+(i+1)+"'name= 'avia[]' >";
-                cell17.innerHTML = "<input type='text'    name= 'producer[]' >";
+                cell3.innerHTML = "<input type='text' size='11'name= 'partNumber[]'  value='" +offerLines[i].partNumber+"'"+"> ";
+                cell4.innerHTML = "<input type='number' style ='width:30px' name= 'quantity[]'  value='" +offerLines[i].quantity+"'"+"> ";
+                cell5.innerHTML = "<input type='text' size='11' name= 'offeredPartNumber[]'  value='" +offerLines[i].offeredPartNumber+"'"+"> ";
+                cell6.innerHTML = "<input type='text' size='2' id='unit"+(i+1)+"' name= 'unit[]'  value='шт'>";
+                cell7.innerHTML = "<input type='number' style ='width:70px' id='price"+(i+1)+"' name= 'price[]' >";
+                cell8 .innerHTML = "<input type='number' style ='width:70px' id='sum"+(i+1)+"' name= 'sume[]' >"
+                cell9 .innerHTML = "<input type='lastOfferPrice' style ='width:75px' name= 'lastOfferPrice[]' >";
+                cell10.innerHTML = "<input type='date' style ='width:75px' name= 'lastOfferDate[]' >";
+                cell11.innerHTML = "<input type='number' style ='width:75px' name= 'availability[]' >";
+                cell12.innerHTML = "<input type='number' style ='width:75px' name= 'inStockNetCost[]' >";
+                cell13.innerHTML = "<input type='number' style ='width:75px' name= 'profitFromAvailable[]' >";
+                cell14.innerHTML = "<input type='date' style ='width:75px' name= 'deliveryDate[]' >";
+                cell15.innerHTML = "<input type='number' style ='width:90px' id='supplierPrice"+(i+1)+"'name= 'supplierPrice[]' >";
+                cell16.innerHTML = "<input type='number' style ='width:75px' id='avia"+(i+1)+"'name= 'avia[]' >";
+                cell17.innerHTML = "<input type='text'  syze='10'  name= 'producer[]' >";
                 
              
             }
@@ -366,7 +366,7 @@ function setUnits()  {
 
  var units = document.getElementById("unitForAllLines").value;
 for (var i = 1; i <= offerLines.length; i++) {
-    document.getElementById("unit"+i).innerHTML = units;
+    document.getElementById("unit"+i).value = units;
 
     }
 }
