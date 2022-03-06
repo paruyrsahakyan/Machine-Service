@@ -226,14 +226,8 @@
                 }
 
         var setLastOfferPrice = function () {
-           alert("Hello! I am an alert box!!");
-            var lastOfferPrice = event.target.innerHTML;
-            var lastOfferPriceId = event.target.id;
-            var priceId = lastOfferPriceId.replace("lastOfferPrice", "price");
-            alert(lastOfferPriceId);
-            document.getElementById("price5").innerHTML = lastOfferPrice;
-
-    }
+            alert("Hello! I am an alert box!!");
+       }
 
 
         function setOfferLinesInTable() {
@@ -320,7 +314,7 @@
 
         
         var producerCell = parameterRow.insertCell(16);
-        producerCell.innerHTML =  "<input id='ProducerForAllLines' onkeyup = 'setProducer()'  value='KOMATSU' >"
+        producerCell.innerHTML =  "<input id='ProducerForAllLines'  size='5' onkeyup = 'setProducer()'  value='KOMATSU' >"
      
         for (var i = 0; i < offerLines.length; i++) {
                 var row = table.insertRow();
