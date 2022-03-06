@@ -150,6 +150,9 @@
         <tr>
         </tr>
         </table>
+        <bvr>
+            <br>
+      <input type="submit" value="Сохранить КП">
         </form:form>
         
 
@@ -357,15 +360,16 @@
 
             cell1.innerHTML = (i + 1).toString();
 
-                cell2.innerHTML = "<input type='text' name= 'partNumber[]'  value='" +offerLines[i].partName+"'"+"> ";
-                cell3.innerHTML = offerLines[i].partNumber;
-                cell4.innerHTML = offerLines[i].quantity;
-                cell5.innerHTML = offerLines[i].offeredPartNumber;
+                cell2.innerHTML = "<input type='text' name= 'partName[]'  value='" +offerLines[i].partName+"'"+"> ";
+                cell3.innerHTML = "<input type='text' name= 'partNumber[]'  value='" +offerLines[i].partNumber+"'"+"> ";
+                cell4.innerHTML = "<input type='number' name= 'quantity[]'  value='" +offerLines[i].quantity+"'"+"> ";
+                cell5.innerHTML = "<input type='text' name= 'offeredPartNumber[]'  value='" +offerLines[i].offeredPartNumber+"'"+"> ";
                 cell9.innerHTML = offerLines[i].lastOfferPrice;
                 cell9.addEventListener("click", setLastOfferPrice);
                 cell10.innerHTML= offerLines[i].lastOfferDate;
                 cell11.innerHTML= offerLines[i].availability;
                 cell12.innerHTML= offerLines[i].inStockNetCost;
+                cell14.id = "<input type='text' name= 'deliveryDate[]' >";
                 cell15.innerHTML= offerLines[i].supplierPrice;
             }
 }
