@@ -340,26 +340,7 @@
                 var cell16 = row.insertCell(15);
                 var cell17 = row.insertCell(16);
 
-                cell1.id="position"+(i+1);
-                cell2.id="partName"+(i+1);
-                cell3.id ="partNumber"+(i+1);
-                cell4.id ="quantity"+(i+1);
-                cell5.id = "offeredPartNumber" +(i+1);
-                cell6.id = "unit"+(i+1);
-                cell7.id = "price"+(i+1);
-                cell8.id = "sum"+(i+1);
-                cell9.id= "lastOfferPrice"+(i+1);
-                cell10.id = "lastOfferDate"+(i+1);
-                cell11.id = "availability"+(i+1);
-                cell12.id = "inStockNetCost"+(i+1);
-                cell13.id = "profitFromAvailable"+(i+1);
-                cell14.id = "deliveryDate"+(i+1);
-                cell15.id = "supplierPrice"+(i+1);
-                cell16.id = "avia"+(i+1);
-                cell17.id = "producer"+(i+1);
-
-            cell1.innerHTML = (i + 1).toString();
-
+                cell1.innerHTML = "<input type='number'  style ='width:15px' name= 'position[]'  value='" +(i + 1) + "' >";
                 cell2.innerHTML = "<input type='text'   name= 'partName[]'  value='" +offerLines[i].partName+"'"+"> ";
                 cell3.innerHTML = "<input type='text' size='13'name= 'partNumber[]'  value='" +offerLines[i].partNumber+"'"+"> ";
                 cell4.innerHTML = "<input type='number' style ='width:80px' name= 'quantity[]'  value='" +offerLines[i].quantity+"'"+"> ";
@@ -368,11 +349,16 @@
                 cell7.innerHTML = "<input type='number' style ='width:50px' id='price"+(i+1)+"' name= 'price[]' >";
                 cell8 .innerHTML = "<input type='number' style ='width:50px' id='sum"+(i+1)+"' name= 'sume[]' >"
                 cell9 .innerHTML = "<input type='lastOfferPrice' style ='width:50px' name= 'lastOfferPrice[]' >";
-                cell10.innerHTML= offerLines[i].lastOfferDate;
-                cell11.innerHTML= offerLines[i].availability;
-                cell12.innerHTML= offerLines[i].inStockNetCost;
-                cell14.id = "<input type='text' name= 'deliveryDate[]' >";
-                cell15.innerHTML= offerLines[i].supplierPrice;
+                cell10.innerHTML = "<input type='date' style ='width:50px' name= 'lastOfferDate[]' >";
+                cell11.innerHTML = "<input type='number' style ='width:30px' name= 'availability[]' >";
+                cell12.innerHTML = "<input type='number' style ='width:30px' name= 'inStockNetCost[]' >";
+                cell13.innerHTML = "<input type='number' style ='width:30px' name= 'profitFromAvailable[]' >";
+                cell14.innerHTML = "<input type='number' style ='width:30px' name= 'deliveryDate[]' >";
+                cell15.innerHTML = "<input type='text' id='supplierPrice"+(i+1)+"'name= 'supplierPrice[]' >";
+                cell16.innerHTML = "<input type='number' id='avia"+(i+1)+"'name= 'avia[]' >";
+                cell17.innerHTML = "<input type='text'    name= 'producer[]' >";
+                
+             
             }
 }
 
