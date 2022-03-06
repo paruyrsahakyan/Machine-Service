@@ -340,7 +340,7 @@
                 var cell16 = row.insertCell(15);
                 var cell17 = row.insertCell(16);
 
-                cell1.innerHTML = "<input type='number'  style ='width:15px' name= 'position[]'  value='" +(i + 1) + "' >";
+                cell1.innerHTML = "<input type='number'  style ='width:30px' name= 'position[]'  value='" +(i + 1) + "' >";
                 cell2.innerHTML = "<input type='text'   name= 'partName[]'  value='" +offerLines[i].partName+"'"+"> ";
                 cell3.innerHTML = "<input type='text' size='11'name= 'partNumber[]'  value='" +offerLines[i].partNumber+"'"+"> ";
                 cell4.innerHTML = "<input type='number' style ='width:30px' name= 'quantity[]'  value='" +offerLines[i].quantity+"'"+"> ";
@@ -348,15 +348,15 @@
                 cell6.innerHTML = "<input type='text' size='2' id='unit"+(i+1)+"' name= 'unit[]'  value='шт'>";
                 cell7.innerHTML = "<input type='number' style ='width:70px' id='price"+(i+1)+"' name= 'price[]' >";
                 cell8 .innerHTML = "<input type='number' style ='width:70px' id='sum"+(i+1)+"' name= 'sume[]' >"
-                cell9 .innerHTML = "<input type='lastOfferPrice' style ='width:75px' name= 'lastOfferPrice[]' >";
-                cell10.innerHTML = "<input type='date' style ='width:75px' name= 'lastOfferDate[]' >";
-                cell11.innerHTML = "<input type='number' style ='width:75px' name= 'availability[]' >";
-                cell12.innerHTML = "<input type='number' style ='width:75px' name= 'inStockNetCost[]' >";
-                cell13.innerHTML = "<input type='number' style ='width:75px' name= 'profitFromAvailable[]' >";
-                cell14.innerHTML = "<input type='date' style ='width:75px' name= 'deliveryDate[]' >";
-                cell15.innerHTML = "<input type='number' style ='width:90px' id='supplierPrice"+(i+1)+"'name= 'supplierPrice[]' >";
-                cell16.innerHTML = "<input type='number' style ='width:75px' id='avia"+(i+1)+"'name= 'avia[]' >";
-                cell17.innerHTML = "<input type='text'  syze='10'  name= 'producer[]' >";
+                cell9 .innerHTML = "<input type='lastOfferPrice' style ='width:100px' name= 'lastOfferPrice[]' value='" +offerLines[i].lastOfferPrice+"' >";
+                cell10.innerHTML = "<input type='date' style ='width:100px' name= 'lastOfferDate[]' value='" + offerLines[i].lastOfferDate + "' >";
+                cell11.innerHTML = "<input type='number' style ='width:100px' name= 'availability[]' value='" + offerLines[i].availability + "' >";
+                cell12.innerHTML = "<input type='number' style ='width:100px' name= 'inStockNetCost[]' value='" + offerLines[i].inStockNetCost + "' >";
+                cell13.innerHTML = "<input type='number' style ='width:60px' name= 'profitFromAvailable[]' value='" + offerLines[i].profitFromAvailable + "' >";
+                cell14.innerHTML = "<input type='date' style ='width:100px' name= 'deliveryDate[]' >";
+                cell15.innerHTML = "<input type='number' style ='width:110px' id='supplierPrice"+(i+1)+"'name= 'supplierPrice[]' value='" + offerLines[i].supplierPrice + "' >";
+                cell16.innerHTML = "<input type='number' style ='width:50px' id='avia"+(i+1)+"'name= 'avia[]' >";
+                cell17.innerHTML = "<input type='text'  size='10'  name= 'producer[]' >";
                 
              
             }
@@ -395,16 +395,14 @@ function setPrice() {
      price = Math.round(price+price*transportation/100);
      var profitFromAvailable = Math.round((price-inStockNetCost)/price*100) +" %";
      var sum = price*quantity;
-     price = price.toLocaleString();
-     sum = sum.toLocaleString();
-    
+      
      var priceCell = document.getElementById("price"+i);
      var sumCell = document.getElementById("sum"+i);
      var profitFromAvailableCell = document.getElementById("profitFromAvailable"+i);
 
-     priceCell.innerHTML = price;
-     sumCell.innerHTML = sum;
-     profitFromAvailableCell.innerHTML = profitFromAvailable;
+     priceCell.value = price;
+     sumCell.value = sum;
+     profitFromAvailableCell.value = profitFromAvailable;
 
   
     }
