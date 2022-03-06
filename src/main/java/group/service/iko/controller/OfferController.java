@@ -79,5 +79,21 @@ public class OfferController {
         return new RedirectView("/offer/newOffer");
     }
 
+    @RequestMapping("/newOffer/saveOffer")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    public RedirectView saveOffer( @RequestParam("customerName") String customerName,
+                                           @RequestParam(value = "requestFile", required = false) MultipartFile uploadedFile,
+                                           RedirectAttributes redirectAttributes
+    ) throws Throwable {
+        Customer customer = customerService.getCustomerByName(customerName);
+        redirectAttributes.addFlashAttribute("priceList", priceForCustomerService.getPriceListByCustomerName(customer.getName()));
+        redirectAttributes.addFlashAttribute("offer", offerService.makeOfferFromRequestedFile(customerName, uploadedFile));
+        redirectAttributes.addAttribute("selectedCustomer", customerService.getCustomerByName(customerName).getId());
+        return new RedirectView("/offer/newOffer");
+    }
+
+
+
+
 }
 
