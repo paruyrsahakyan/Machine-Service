@@ -95,6 +95,17 @@ public class OfferLineService {
         return new HashSet<OfferLine>(offerLines);
     }
 
+    public Object getOfferLinesByOfferId(int offerId) {
+
+            Session session = SessionFactoryImpl.getSessionFactory().openSession();
+            String hql = "FROM group.service.iko.entities.OfferLine  offerLine WHERE offerLine.customer.id=:offerId";
+            Query query = session.createQuery(hql);
+            query.setParameter("offerId", offerId);
+            List<OfferLine> offerLines = (List<OfferLine>) query.list();
+            List<OfferLine> sortedOfferLines= offerLines.stream().sorted(Comparator.comparing(OfferLine::getPosition)).collect(Collectors.toList());
+            session.close();
+             return sortedOfferLines;
+                     }
 }
 
 

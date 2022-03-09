@@ -348,12 +348,12 @@
                 cell6.innerHTML = "<input type='text' size='2' id='unit"+(i+1)+"' name= 'unit[]'  value='шт'>";
                 cell7.innerHTML = "<input type='number' style ='width:70px' id='price"+(i+1)+"' name= 'price[]' >";
                 cell8 .innerHTML = "<input type='number' style ='width:70px' id='sum"+(i+1)+"' name= 'sum[]' >"
-                cell9 .innerHTML = "<input type='lastOfferPrice' style ='width:100px' name= 'lastOfferPrice[]' value='" +offerLines[i].lastOfferPrice+"' >";
+                cell9 .innerHTML = "<input type='number' style ='width:100px' name= 'lastOfferPrice[]' value='" +offerLines[i].lastOfferPrice+"' >";
                 cell10.innerHTML = "<input type='date' style ='width:130px' name= 'lastOfferDate[]' value='" + offerLines[i].lastOfferDate + "' >";
                 cell11.innerHTML = "<input type='number' style ='width:100px' name= 'availability[]' value='" + offerLines[i].availability + "' >";
                 cell12.innerHTML = "<input type='number' style ='width:100px' name= 'inStockNetCost[]' value='" + offerLines[i].inStockNetCost + "' >";
                 cell13.innerHTML = "<input type='number' style ='width:60px' id='profitFromAvailable"+(i+1)+"' name= 'profitFromAvailable[]' >";
-                cell14.innerHTML = "<input type='date' style ='width:130px' name= 'deliveryDate[]' >";
+                cell14.innerHTML = "<input type='number' style ='width:130px' name= 'deliveryTime[]' >";
                 cell15.innerHTML = "<input type='number' style ='width:110px' id='supplierPrice"+(i+1)+"'name= 'supplierPrice[]' value='" + offerLines[i].supplierPrice + "' >";
                 cell16.innerHTML = "<input type='number' style ='width:50px' id='avia"+(i+1)+"'name= 'avia[]' >";
                 cell17.innerHTML = "<input type='text'  size='6'   id='producer"+(i+1)+"'  name= producer[]' >";

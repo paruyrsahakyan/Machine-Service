@@ -1,5 +1,6 @@
 package group.service.iko.entities;
 
+import group.service.iko.calendarAdapter.*;
 import org.hibernate.annotations.*;
 
 import javax.persistence.*;
@@ -14,6 +15,9 @@ public class OfferLine {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+    @Column
+    private int position;
 
     @Column (name= "requested_part_name")
     private String requestedPartName;
@@ -35,8 +39,8 @@ public class OfferLine {
     private int price;
     @Column
     private int sum;
-    @Column  (name= "supply_date")
-    private int supplyDate;
+    @Column  (name= "supply_time")
+    private int supplyTime;
     @Column
     private String producer;
     @Column  (name= "confirmation_condition")
@@ -48,13 +52,38 @@ public class OfferLine {
     private Double supplierPrice;
     @Column (name = "last_offered_price")
     private int lastOfferedPrice;
+    @Column (name = "last_offer_date")
+    private GregorianCalendar lastOfferDate;
     @Column (name = "availability")
     private int availability;
+    @Column (name = "profit_from_available")
+    private int profitFromAvailable;
     @Column (name = "in_stock_net_cost")
     private int inStockNetCost;
 
 
     public OfferLine() {
+    }
+
+    public OfferLine(int position, String partName, String partNumber, int quantity, String offeredPartNumber, String unit, int price, int sum, int lastOfferPrice,
+                     String lastOfferDate, int availability, int inStockNetCost, int profitFromAvailable, int supplyTime, Double supplierPrice, String producer) {
+    this.position = position;
+    this.requestedPartName=partName;
+    this. requestedPartNumber= partNumber;
+    this.quantity = quantity;
+    this.offeredPartNumber= offeredPartNumber;
+    this.unit= unit;
+    this.price = price;
+    this.sum = sum;
+    this.lastOfferedPrice = lastOfferPrice;
+    this.lastOfferDate = CalendarAdapter.getGregCalendar(lastOfferDate);
+    this.availability=availability;
+    this.inStockNetCost = inStockNetCost;
+    this.profitFromAvailable = profitFromAvailable;
+    this.supplyTime = supplyTime;
+    this.supplierPrice = supplierPrice;
+    this.producer = producer;
+
     }
 
     public int getId() {
@@ -137,13 +166,6 @@ public class OfferLine {
         this.sum = sum;
     }
 
-    public int getSupplyDate() {
-        return supplyDate;
-    }
-
-    public void setSupplyDate(int supplyDate) {
-        this.supplyDate = supplyDate;
-    }
 
     public String getProducer() {
         return producer;
@@ -192,6 +214,39 @@ public class OfferLine {
     public void setInStockNetCost(int inStockNetCost) {
         this.inStockNetCost = inStockNetCost;
     }
+
+    public int getPosition() {
+        return position;
+    }
+
+    public void setPosition(int position) {
+        this.position = position;
+    }
+
+    public int getSupplyTime() {
+        return supplyTime;
+    }
+
+    public void setSupplyTime(int supplyTime) {
+        this.supplyTime = supplyTime;
+    }
+
+    public GregorianCalendar getLastOfferDate() {
+        return lastOfferDate;
+    }
+
+    public void setLastOfferDate(GregorianCalendar lastOfferDate) {
+        this.lastOfferDate = lastOfferDate;
+    }
+
+    public int getProfitFromAvailable() {
+        return profitFromAvailable;
+    }
+
+    public void setProfitFromAvailable(int profitFromAvailable) {
+        this.profitFromAvailable = profitFromAvailable;
+    }
+
     @Override
     public String toString() {
         return "OfferLine{" +
@@ -204,7 +259,7 @@ public class OfferLine {
                 ", unit='" + unit + '\'' +
                 ", price=" + price +
                 ", sum=" + sum +
-                ", supplyDate=" + supplyDate +
+                ", supplyDate=" + supplyTime +
                 ", producer='" + producer + '\'' +
                 ", confirmationCondition='" + confirmationCondition + '\'' +
                 ", offer=" + offer +

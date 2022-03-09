@@ -19,18 +19,24 @@ public class Offer {
 
     @OneToMany (mappedBy = "offer", fetch =FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<OfferLine> offerLines;
-
     @Column (name= "offer_condition")
     private String offerCondition;
+    @Column (name= "currency")
+    private String currency;
 
     @ManyToOne()
     @JoinColumn(name = "customer_id")
     private Customer customer;
     @Column
     private int sum;
-
-
-
+    @Column  (name= "profit_percentage")
+    private int profitPercentage;
+    @Column  (name= "transportation")
+    private int transportation;
+    @Column  (name= "discount")
+    private int discount;
+    @Column  (name= "VAT")
+    private String VAT;
 
 
     public Offer() {
@@ -48,32 +54,81 @@ public class Offer {
         return requestNumber;
     }
 
-    public void setRequestNumber(String requestNumber) {
+    public Offer setRequestNumber(String requestNumber) {
         this.requestNumber = requestNumber;
+        return this;
     }
 
     public Customer getCustomer() {
         return customer;
     }
 
-    public void setCustomer(Customer customer) {
+    public Offer setCustomer(Customer customer) {
         this.customer = customer;
+        return  this;
     }
 
     public GregorianCalendar getOfferDate() {
         return offerDate;
     }
 
-    public void setOfferDate(GregorianCalendar offerDate) {
+    public Offer setOfferDate(GregorianCalendar offerDate) {
         this.offerDate = offerDate;
+        return  this;
     }
 
     public GregorianCalendar getValidationDate() {
         return validationDate;
     }
 
-    public void setValidationDate(GregorianCalendar validationDate) {
+    public Offer setValidationDate(GregorianCalendar validationDate) {
         this.validationDate = validationDate;
+        return  this;
+    }
+
+    public String getCurrency() {
+        return currency;
+    }
+
+    public Offer setCurrency(String currency) {
+        this.currency = currency;
+        return  this;
+    }
+
+    public int getProfitPercentage() {
+        return profitPercentage;
+    }
+
+    public Offer setProfitPercentage(int profitPercentage) {
+        this.profitPercentage = profitPercentage;
+        return  this;
+    }
+
+    public int getTransportation() {
+        return transportation;
+    }
+
+    public Offer setTransportation(int transportation) {
+        this.transportation = transportation;
+        return  this;
+    }
+
+    public int getDiscount() {
+        return discount;
+    }
+
+    public Offer setDiscount(int discount) {
+        this.discount = discount;
+        return this;
+    }
+
+    public String getVAT() {
+        return VAT;
+    }
+
+    public Offer setVAT(String VAT) {
+        this.VAT = VAT;
+        return  this;
     }
 
     @Override
@@ -94,23 +149,32 @@ public class Offer {
         return offerLines;
     }
 
-    public void setOfferLines(Set<OfferLine> offerLines) {
+    public Offer setOfferLines(Set<OfferLine> offerLines) {
+
         this.offerLines = offerLines;
+        return  this;
     }
 
     public String getOfferCondition() {
         return offerCondition;
     }
 
-    public void setOfferCondition(String offerCondition) {
+    public Offer setOfferCondition(String offerCondition) {
+
         this.offerCondition = offerCondition;
+        return this;
     }
 
     public int getSum() {
         return sum;
     }
 
-    public void setSum(int sum) {
-        this.sum = sum;
+   public Offer setSum(int sum) {
+                this.sum = sum;
+                return this;
     }
+
+
+
+
 }

@@ -223,3 +223,8 @@ CREATE TABLE `offer_line` (
      ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 insert into offer_line values (1, "600-211-1340", "масл. филтр", "600-211-1341", "масл филт", 2, "шт", 32000, 62000, "2022-02-07", "2022-02-20", "Komatsu", "approved", 1  );
+
+ALTER TABLE offer_line ADD last_offer_date datetime DEFAULT NULL;
+ALTER TABLE offer_line ADD profit_from_available int(11) DEFAULT NULL;
+ALTER TABLE offer_line ADD profit_from_available int(11) DEFAULT NULL;
+ALTER TABLE offer_line CHANGE supply_Date supply_time int(11) DEFAULT NULL;
