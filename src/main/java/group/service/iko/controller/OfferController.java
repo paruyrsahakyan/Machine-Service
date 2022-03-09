@@ -95,76 +95,33 @@ public class OfferController {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-
     @RequestMapping("/newOffer/saveOffer")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ModelAndView saveOffer(@RequestParam("position[]") int[] position,
                                   @RequestParam("partName[]") String[] partName,
                                   @RequestParam("partNumber[]") String[] partNumber,
                                   @RequestParam("quantity[]") int[] quantity,
-                                  @RequestParam("offeredPartNumber[]") String[] offeredPartNumber,
+                                  @RequestParam(value="offeredPartNumber[]", required = false) String[] offeredPartNumber,
                                   @RequestParam("unit[]") String[] unit,
                                   @RequestParam("price[]") int[] price,
                                   @RequestParam("sum[]") int[] sum,
-                                  @RequestParam("lastOfferPrice[]") int[] lastOfferPrice,
-                                  @RequestParam("lastOfferDate[]") String[] lastOfferDate,
-                                  @RequestParam("availability[]") int[] availability,
-                                  @RequestParam("inStockNetCost[]") int[] inStockNetCost,
-                                  @RequestParam("profitFromAvailable[]") int[] profitFromAvailable,
-                                  @RequestParam("deliveryDate[]") int[] deliveryTime,
-                                  @RequestParam("supplierPrice[]") double[] supplierPrice,
-                                  @RequestParam("producer[]") String[] producer,
-                                  @RequestParam("customerName") String customerName,
-                                  @RequestParam("requestNumber") String requestNumber,
-                                  @RequestParam("offerDate") String offerDate,
-                                  @RequestParam("offerValidityDate") String offerValidityDate,
-                                  @RequestParam("currency") String currency,
-                                  @RequestParam("profit") int profitPercentage,
-                                  @RequestParam("transportation") int transportation,
-                                  @RequestParam("discount") int discount,
-                                  @RequestParam("VAT") String VAT,
+                                  @RequestParam(value="lastOfferPrice[]", required = false) int[] lastOfferPrice,
+                                  @RequestParam(value="lastOfferDate[]", required = false) String[] lastOfferDate,
+                                  @RequestParam(value="availability[]", required = false) int[] availability,
+                                  @RequestParam(value="inStockNetCost[]", required = false) int[] inStockNetCost,
+                                  @RequestParam(value="profitFromAvailable[]", required = false) int[] profitFromAvailable,
+                                  @RequestParam(value="deliveryTime[]", required = false) int[] deliveryTime,
+                                  @RequestParam(value="supplierPrice[]", required = false) double[] supplierPrice,
+                                  @RequestParam(value="producer[]", required = false) String[] producer,
+                                  @RequestParam(value="customerName", required = false) String customerName,
+                                  @RequestParam(value="requestNumber", required = false) String requestNumber,
+                                  @RequestParam(value="offerDate", required = false) String offerDate,
+                                  @RequestParam(value="offerValidityDate", required = false) String offerValidityDate,
+                                  @RequestParam(value="currency", required = false) String currency,
+                                  @RequestParam(value="profit", required = false) int profitPercentage,
+                                  @RequestParam(value="transportation", required = false) int transportation,
+                                  @RequestParam(value="discount", required = false) int discount,
+                                  @RequestParam(value="VAT", required = false) String VAT,
                                   ModelMap modelMap
     )
     {
