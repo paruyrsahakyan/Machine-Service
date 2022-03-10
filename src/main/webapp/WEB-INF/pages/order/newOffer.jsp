@@ -110,7 +110,7 @@
         <input id="hiddenProfitPercentage"  type="hidden" name="profit" value="${offer.profitPercentage}">
         <input id="hiddenTransportation"  type="hidden" name="transportation" value="${offer.transportation}">
         <input id="hiddenDiscount"  type="hidden" name="discount" value="${offer.discount}">
-        <input id="hiddenExchangeRate"  type="hidden" name="VAT" value="${offer.exchangeRate}" >
+        <input id="hiddenExchangeRate"  type="hidden" name="exchangeRate" value="${offer.exchangeRate}" >
         <input id="hiddenVAT"  type="hidden" name="VAT" value="${offer.VAT}" >
         <bvr>
             <br>
