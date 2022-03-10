@@ -112,6 +112,7 @@ public class OfferController {
                                   @RequestParam(value="profitFromAvailable[]", required = false) int[] profitFromAvailable,
                                   @RequestParam(value="deliveryTime[]", required = false) int[] deliveryTime,
                                   @RequestParam(value="supplierPrice[]", required = false) double[] supplierPrice,
+                                  @RequestParam(value="avia[]", required = false) int avia,
                                   @RequestParam(value="producer[]", required = false) String[] producer,
                                   @RequestParam(value="customerName", required = false) String customerName,
                                   @RequestParam(value="requestNumber", required = false) String requestNumber,
@@ -121,8 +122,8 @@ public class OfferController {
                                   @RequestParam(value="profit", required = false) int profitPercentage,
                                   @RequestParam(value="transportation", required = false) int transportation,
                                   @RequestParam(value="discount", required = false) int discount,
-                                  @RequestParam(value="VAT", required = false) String VAT,
                                   @RequestParam(value="exchangeRate", required = false) double exchangeRate,
+                                  @RequestParam(value="VAT", required = false) String VAT,
                                   ModelMap modelMap
     )
     {

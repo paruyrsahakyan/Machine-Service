@@ -105,7 +105,7 @@
         </table>
         <input id="hiddenCustomerName"  type="hidden" name="customerName" value="${selectedCustomer.name}">
         <input id="hiddenOfferDate"  type="hidden" name="offerDate" value="${offer.offerDate}">
-        <input id="hiddenOfferValidationDate"  type="hidden" name="offerDate" value="${offer.validationDate.name}">
+        <input id="hiddenOfferValidationDate"  type="hidden" name="offerValidationDate" value="${offer.validationDate.name}">
         <input id="hiddenCurrency"  type="hidden" name="currency" value="${offer.currency}">
         <input id="hiddenProfitPercentage"  type="hidden" name="profit" value="${offer.profitPercentage}">
         <input id="hiddenTransportation"  type="hidden" name="transportation" value="${offer.transportation}">
