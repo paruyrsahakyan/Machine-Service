@@ -70,7 +70,7 @@
                 <td> <label for="transportation">Перевозка %</label> </td>
                 <td> <input type="number" name="transportation" id="transportation" onchange="setHiddenTransportation()">  </td>
                 <td> <label for="discount">Скидка</label>  </td>
-                <td> <input type="number" name="discount" id="discountPercentage" onchange="setHiddenDiscount()">  </td>
+                <td> <input type="number" name="discount" id="discount" onchange="setHiddenDiscount()">  </td>
                 <td> <label for="exchangeRate">Курс</label> </td>
                 <td> <input type="number" name="exchangeRate" step="0.01" id="exchangeRate" onchange="setHiddenExchangeRate()">   </td>
                 <td> <input type="radio" name="VAT" value="withoutVAT" id="VAT" onchange="setHiddenVAT()">  <label for="VAT"> Без НДС </label>
@@ -109,7 +109,8 @@
         <input id="hiddenCurrency"  type="hidden" name="currency" value="${offer.currency}">
         <input id="hiddenProfitPercentage"  type="hidden" name="profit" value="${offer.profitPercentage}">
         <input id="hiddenTransportation"  type="hidden" name="transportation" value="${offer.transportation}">
-        <input id="HiddenDiscount"  type="hidden" name="discount" value="${offer.discount}">
+        <input id="hiddenDiscount"  type="hidden" name="discount" value="${offer.discount}">
+        <input id="hiddenExchangeRate"  type="hidden" name="VAT" value="${offer.exchangeRate}" >
         <input id="hiddenVAT"  type="hidden" name="VAT" value="${offer.VAT}" >
         <bvr>
             <br>
@@ -401,17 +402,17 @@ function setHiddenTransportation(){
 
 function setHiddenDiscount(){
     var discount = document.getElementById("discount");
-    document.getElementById("HiddenDiscount").value = discount;
+    document.getElementById("hiddenDiscount").value = discount;
 }
 
 function setHiddenExchangeRate(){
     var exchangeRate = document.getElementById("exchangeRate");
-    document.getElementById("HiddenExchangeRate").value = exchangeRate;
+    document.getElementById("hiddenExchangeRate").value = exchangeRate;
 }
 
 function setHiddenVAT(){
     var VAT = document.getElementById("VAT");
-    document.getElementById("HiddenVAT").value = VAT;
+    document.getElementById("hiddenVAT").value = VAT;
 }
 
          
