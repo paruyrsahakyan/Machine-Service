@@ -97,8 +97,7 @@
 <br> <br>
 
 <div class="mainContent">
-     <form:form action="/offer/newOffer/saveOffer" method="get"  accept-charset="UTF-8"   enctype="multipart/form-data"
-      onkeypress="return event.keyCode != 13;">
+     <form:form action="/offer/newOffer/saveOffer" method="get"  accept-charset="UTF-8" >
                    <table class="offerTable" id="offerTable" style="width: auto" align="center">
         <tr>
         </tr>
