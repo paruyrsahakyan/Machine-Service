@@ -371,47 +371,47 @@ function setPrice() {
 }
 
 function setHiddenRequestNumber(){
-    var requestNumber = document.getElementById("requestNumber");
+    var requestNumber = document.getElementById("requestNumber").value;
     document.getElementById("hiddenRequestNumber").value = requestNumber;
 }
 
 function setHiddenOfferDate(){
-    var offerDate = document.getElementById("offerDate");
+    var offerDate = document.getElementById("offerDate").value;
     document.getElementById("hiddenOfferDate").value = offerDate;
 }
 
 function setHiddenValidationDate(){
-    var offerValidationDate = document.getElementById("offerValidationDate");
+    var offerValidationDate = document.getElementById("offerValidationDate").value;
     document.getElementById("hiddenOfferValidationDate").value = offerValidationDate;
 }
 
 function setHiddenCurrency(){
-    var currency = document.getElementById("currency");
+    var currency = document.getElementById("currency").value;
     document.getElementById("hiddenCurrency").value = currency;
 }
 
 function setHiddenProfitPercentage(){
-    var profitPercentage = document.getElementById("profitPercentage");
+    var profitPercentage = document.getElementById("profitPercentage").value;
     document.getElementById("hiddenProfitPercentage").value = profitPercentage;
 }
 
 function setHiddenTransportation(){
-    var transportation = document.getElementById("transportation");
+    var transportation = document.getElementById("transportation").value;
     document.getElementById("hiddenTransportation").value = transportation;
 }
 
 function setHiddenDiscount(){
-    var discount = document.getElementById("discount");
+    var discount = document.getElementById("discount").value;
     document.getElementById("hiddenDiscount").value = discount;
 }
 
 function setHiddenExchangeRate(){
-    var exchangeRate = document.getElementById("exchangeRate");
+    var exchangeRate = document.getElementById("exchangeRate").value;
     document.getElementById("hiddenExchangeRate").value = exchangeRate;
 }
 
 function setHiddenVAT(){
-    var VAT = document.getElementById("VAT");
+    var VAT = document.getElementById("VAT").value;
     document.getElementById("hiddenVAT").value = VAT;
 }
 
