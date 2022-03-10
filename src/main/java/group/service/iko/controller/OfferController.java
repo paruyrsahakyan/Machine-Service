@@ -116,12 +116,13 @@ public class OfferController {
                                   @RequestParam(value="customerName", required = false) String customerName,
                                   @RequestParam(value="requestNumber", required = false) String requestNumber,
                                   @RequestParam(value="offerDate", required = false) String offerDate,
-                                  @RequestParam(value="offerValidityDate", required = false) String offerValidityDate,
+                                  @RequestParam(value="offerValidationDate", required = false) String offerValidityDate,
                                   @RequestParam(value="currency", required = false) String currency,
                                   @RequestParam(value="profit", required = false) int profitPercentage,
                                   @RequestParam(value="transportation", required = false) int transportation,
                                   @RequestParam(value="discount", required = false) int discount,
                                   @RequestParam(value="VAT", required = false) String VAT,
+                                  @RequestParam(value="exchangeRate", required = false) double exchangeRate,
                                   ModelMap modelMap
     )
     {
@@ -130,7 +131,7 @@ public class OfferController {
                 setRequestNumber(requestNumber).setOfferDate(CalendarAdapter.getGregCalendar(offerDate)).
                 setValidationDate(CalendarAdapter.getGregCalendar(offerValidityDate)).setCurrency(currency).
                 setProfitPercentage(profitPercentage).setTransportation(transportation).
-                setProfitPercentage(profitPercentage).setDiscount(discount).setVAT(VAT);
+                setProfitPercentage(profitPercentage).setDiscount(discount).setVAT(VAT).setExchangeRate(exchangeRate);
         offerService.saveOffer(offer);
         Offer savedOffer = offerService.getLastSavedOffer();
         Set<OfferLine> offerLines = new HashSet<>();

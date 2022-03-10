@@ -37,11 +37,7 @@
 <table class="offerTable">
         <form>
             <tr>
-                <td>
-                    <label for="selectedCustomerName">
-                         Заказчик
-                    </label>
-                </td>
+                <td>  <label for="selectedCustomerName">  Заказчик   </label>  </td>
                 <td>  <input list="customers" name="customerName" id="selectedCustomerName"  value="${selectedCustomer.name}"
                           onchange="setCustomer()">
                    <datalist id="customers">
@@ -49,38 +45,17 @@
                            <option value="${customer.name}" hidden> ${customer.name} </option>
                        </c:forEach>
                    </datalist>
-                </td>     <br> <br>
-                <td>
-                    <label for = "requestNumber">
-                        Номер Заявки
-                        </label>
-                </td>
-                 <td>
-                    <input type="text" id="requestNumber" name="requestNumber">
-                 </td> <br> <br>
-                 <td>
-                    <label for = "offerDate">
-                        Дата КП
-                        </label>
-                </td>
-                <td>
-                     <input type="Date" name="offerDate"  id="offerDate">
-                 </td>
-                  <br> <br>
-                  <td>
-                    <label for = "offerValidationDate">
-                        Срок действия КП
-                        </label>
-                </td>
-                <td>
-                     <input type="Date" name="offerValidationDate" id="offerValidationDate" >
-                 </td>     <br> <br>
-                  <td>
-                    <label for = "currency">
-                        Валюта
-                        </label>
+                </td>   <br> <br>
+                <td>  <label for = "requestNumber">  Номер Заявки   </label> </td> 
+                <td>   <input type="text" id="requestNumber" name="requestNumber" onchange="setHiddenRequestNumber()">  </td> <br> <br>
+                <td>  <label for = "offerDate"> Дата КП  </label>   </td>
+                <td>  <input type="Date" name="offerDate"  id="offerDate" onchange="setHiddenOfferDate()"> </td>
+                <br>  <br>
+                <td>  <label for = "offerValidationDate"> Срок действия КП </label> </td>
+                <td>  <input type="Date" name="offerValidationDate" id="offerValidationDate"  onchange="setHiddenValidationDate()"> </td>  <br> <br>
+                <td>  <label for = "currency">  Валюта </label>
             
-                     <select name="currency" required  id="currency">
+                     <select name="currency" required  id="currency" onchange="setHiddenCurrency()">
             <option  value="AMD"> AMD  </option> 
             <option  value="USD"> USD </option>
             <option  value="RUB"> RUB </option>
@@ -90,38 +65,17 @@
                  </td>
             </tr>
             <tr>
-                <td>
-                    <label for="profitPercentage">МП %</label>
-                </td>
-                <td>
-                    <input type="number" id = "profitPercentage" name = "profitPercentage">
-
-                </td>
-                <td>
-                    <label for="transportation">Перевозка %</label>
-                </td>
-                <td>
-                <input type="number" name="transportation" id="transportation">
-                </td>
-                <td>
-                    <label for="discuntPercentage">Скидка</label>
-                </td>
-
-                <td>
-                <input type="number" name="discuntPercentage" id="discuntPercentage">
-                </td>
-                <td>
-                    <label for="exchangeRate">Курс</label>
-                </td>
-                <td>
-                      <input type="number" name="exchangeRate" step="0.01" id="exchangeRate">
-                </td>
-                <td>
-                    <input type="radio" name="VAT" value="withoutVAT" id="VAT">
-                    <label for="VAT"> Без НДС </label>
-                     <br>
-                    <input type="radio" name="VAT" value="withVAT" id="VAT">
-                    <label for="VAT"> Вкл 20% НДС</label>
+                <td> <label for="profitPercentage">МП %</label>  </td>
+                <td> <input type="number" id = "profitPercentage" name = "profitPercentage" onchange="setHiddenProfitPercentage()">  </td>
+                <td> <label for="transportation">Перевозка %</label> </td>
+                <td> <input type="number" name="transportation" id="transportation" onchange="setHiddenTransportation()">  </td>
+                <td> <label for="discount">Скидка</label>  </td>
+                <td> <input type="number" name="discount" id="discountPercentage" onchange="setHiddenDiscount()">  </td>
+                <td> <label for="exchangeRate">Курс</label> </td>
+                <td> <input type="number" name="exchangeRate" step="0.01" id="exchangeRate" onchange="setHiddenExchangeRate()">   </td>
+                <td> <input type="radio" name="VAT" value="withoutVAT" id="VAT" onchange="setHiddenVAT()">  <label for="VAT"> Без НДС </label>
+                     <br>  <input type="radio" name="VAT" value="withVAT" id="VAT"> 
+                       <label for="VAT"> Вкл 20% НДС</label>
                  </td>
             </tr>
         </form>
@@ -131,7 +85,6 @@
 <br><br>
 
  <div  class="mainContent" id="fileUploadForm" >
-
                     <form:form action="/offer/newOffer/setRequestFromFile" method="post"  accept-charset="UTF-8"   enctype="multipart/form-data">
                      Загрузить запрос:
                      <input type="file" name="requestFile">
@@ -150,6 +103,14 @@
         <tr>
         </tr>
         </table>
+        <input id="hiddenCustomerName"  type="hidden" name="customerName" value="${selectedCustomer.name}">
+        <input id="hiddenOfferDate"  type="hidden" name="offerDate" value="${offer.offerDate}">
+        <input id="hiddenOfferValidationDate"  type="hidden" name="offerDate" value="${offer.validationDate.name}">
+        <input id="hiddenCurrency"  type="hidden" name="currency" value="${offer.currency}">
+        <input id="hiddenProfit"  type="hidden" name="profit" value="${offer.profitPercentage}">
+        <input id="hiddenTransportation"  type="hidden" name="transportation" value="${offer.transportation}">
+        <input id="HiddenDiscount"  type="hidden" name="discount" value="${offer.discount}">
+        <input id="hiddenVAT"  type="hidden" name="VAT" value="${offer.VAT}" >
         <bvr>
             <br>
       <input type="submit" value="Сохранить КП">
@@ -383,7 +344,7 @@ for (var i = 1; i <= offerLines.length; i++) {
 function setPrice() {
     var profitPercentage  = document.getElementById("profitPercentage").value;
     var transportation = document.getElementById("transportation").value;
-    var discuntPercentage = document.getElementById("discuntPercentage").value;
+    var discount = document.getElementById("discount").value;
     var exchangeRate = document.getElementById("exchangeRate").value;
 
     for (var i = 1; i <= offerLines.length; i++) {
@@ -391,7 +352,7 @@ function setPrice() {
      var  supplierPrice = offerLines[i-1].supplierPrice;
      var quantity = offerLines[i-1].quantity;
      var inStockNetCost = offerLines[i-1].inStockNetCost;
-     var price = supplierPrice/1.2*((100-discuntPercentage)/100)*exchangeRate/(100-profitPercentage)*100;
+     var price = supplierPrice/1.2*((100-discount)/100)*exchangeRate/(100-profitPercentage)*100;
      price = Math.round(price+price*transportation/100);
      var profitFromAvailable = Math.round((price-inStockNetCost)/price*100);
      var sum = price*quantity;
@@ -403,11 +364,57 @@ function setPrice() {
      priceCell.value = price;
      sumCell.value = sum;
      profitFromAvailableCell.value = profitFromAvailable;
-
   
     }
 
 }
+
+function setHiddenRequestNumber(){
+    var requestNumber = document.getElementById(requestNumber);
+    document.getElementById(hiddenRequestNumber).value = requestNumber;
+}
+
+function setHiddenOfferDate(){
+    var offerDate = document.getElementById(offerDate);
+    document.getElementById(hiddenOfferDate).value = offerDate;
+}
+
+function setHiddenValidationDate(){
+    var offerValidationDate = document.getElementById(offerValidationDate);
+    document.getElementById(hiddenOfferValidationDate).value = offerValidationDate;
+}
+
+function setHiddenCurrency(){
+    var currency = document.getElementById(currency);
+    document.getElementById(hiddenCurrency).value = currency;
+}
+
+function setHiddenProfitPercentage(){
+    var profitPercentage = document.getElementById(profitPercentage);
+    document.getElementById(hiddenProfitPercentage).value = profitPercentage;
+}
+
+function setHiddenTransportation(){
+    var transportation = document.getElementById(transportation);
+    document.getElementById(hiddenTransportation).value = transportation;
+}
+
+function setHiddenDiscount(){
+    var discount = document.getElementById(discount);
+    document.getElementById(HiddenDiscount).value = discount;
+}
+
+function setHiddenExchangeRate(){
+    var exchangeRate = document.getElementById(exchangeRate);
+    document.getElementById(HiddenExchangeRate).value = exchangeRate;
+}
+
+function setHiddenVAT(){
+    var VAT = document.getElementById(VAT);
+    document.getElementById(HiddenVAT).value = VAT;
+}
+
+         
 
          </script>
 

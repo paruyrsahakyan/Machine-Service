@@ -37,6 +37,9 @@ public class Offer {
     private int discount;
     @Column  (name= "VAT")
     private String VAT;
+    @Column  (name= "exchange_rate")
+    private double exchangeRate;
+
 
 
     public Offer() {
@@ -128,6 +131,15 @@ public class Offer {
 
     public Offer setVAT(String VAT) {
         this.VAT = VAT;
+        return  this;
+    }
+
+    public double getExchangeRate() {
+        return exchangeRate;
+    }
+
+    public Offer setExchangeRate(double exchangeRate) {
+        this.exchangeRate = exchangeRate;
         return  this;
     }
 
