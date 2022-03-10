@@ -107,7 +107,7 @@
         <input id="hiddenOfferDate"  type="hidden" name="offerDate" value="${offer.offerDate}">
         <input id="hiddenOfferValidationDate"  type="hidden" name="offerDate" value="${offer.validationDate.name}">
         <input id="hiddenCurrency"  type="hidden" name="currency" value="${offer.currency}">
-        <input id="hiddenProfit"  type="hidden" name="profit" value="${offer.profitPercentage}">
+        <input id="hiddenProfitPercentage"  type="hidden" name="profit" value="${offer.profitPercentage}">
         <input id="hiddenTransportation"  type="hidden" name="transportation" value="${offer.transportation}">
         <input id="HiddenDiscount"  type="hidden" name="discount" value="${offer.discount}">
         <input id="hiddenVAT"  type="hidden" name="VAT" value="${offer.VAT}" >
@@ -370,48 +370,48 @@ function setPrice() {
 }
 
 function setHiddenRequestNumber(){
-    var requestNumber = document.getElementById(requestNumber);
-    document.getElementById(hiddenRequestNumber).value = requestNumber;
+    var requestNumber = document.getElementById("requestNumber");
+    document.getElementById("hiddenRequestNumber").value = requestNumber;
 }
 
 function setHiddenOfferDate(){
-    var offerDate = document.getElementById(offerDate);
-    document.getElementById(hiddenOfferDate).value = offerDate;
+    var offerDate = document.getElementById("offerDate");
+    document.getElementById("hiddenOfferDate").value = offerDate;
 }
 
 function setHiddenValidationDate(){
-    var offerValidationDate = document.getElementById(offerValidationDate);
-    document.getElementById(hiddenOfferValidationDate).value = offerValidationDate;
+    var offerValidationDate = document.getElementById("offerValidationDate");
+    document.getElementById("hiddenOfferValidationDate").value = offerValidationDate;
 }
 
 function setHiddenCurrency(){
-    var currency = document.getElementById(currency);
-    document.getElementById(hiddenCurrency).value = currency;
+    var currency = document.getElementById("currency");
+    document.getElementById("hiddenCurrency").value = currency;
 }
 
 function setHiddenProfitPercentage(){
-    var profitPercentage = document.getElementById(profitPercentage);
-    document.getElementById(hiddenProfitPercentage).value = profitPercentage;
+    var profitPercentage = document.getElementById("profitPercentage");
+    document.getElementById("hiddenProfitPercentage").value = profitPercentage;
 }
 
 function setHiddenTransportation(){
-    var transportation = document.getElementById(transportation);
-    document.getElementById(hiddenTransportation).value = transportation;
+    var transportation = document.getElementById("transportation");
+    document.getElementById("hiddenTransportation").value = transportation;
 }
 
 function setHiddenDiscount(){
-    var discount = document.getElementById(discount);
-    document.getElementById(HiddenDiscount).value = discount;
+    var discount = document.getElementById("discount");
+    document.getElementById("HiddenDiscount").value = discount;
 }
 
 function setHiddenExchangeRate(){
-    var exchangeRate = document.getElementById(exchangeRate);
-    document.getElementById(HiddenExchangeRate).value = exchangeRate;
+    var exchangeRate = document.getElementById("exchangeRate");
+    document.getElementById("HiddenExchangeRate").value = exchangeRate;
 }
 
 function setHiddenVAT(){
-    var VAT = document.getElementById(VAT);
-    document.getElementById(HiddenVAT).value = VAT;
+    var VAT = document.getElementById("VAT");
+    document.getElementById("HiddenVAT").value = VAT;
 }
 
          
