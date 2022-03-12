@@ -149,6 +149,7 @@ input[type=number] {
              var customerName = "${priceForCustomer.customerName}";
              var quantityInStock = "${priceForCustomer.quantityInStock}";
              var profit = "${priceForCustomer.profit}";
+             var lastOfferDate = "1111-11-11"; 
               initialPriceList.push({
              id: id,
              article: article,
@@ -156,7 +157,8 @@ input[type=number] {
              price: price,
              customerName: customerName,
              quantityInStock: quantityInStock,
-             profit: profit
+             profit: profit,
+             lastOfferDate : lastOfferDate
              });
            </c:forEach>
 
@@ -434,11 +436,11 @@ function setDefaultOfferDates(){
 
    var today =   new Date();
    document.getElementById("offerDate").valueAsDate = today;
-   /*document.getElementById("hiddenOfferDate").value =  today.toString; */
+   document.getElementById("hiddenOfferDate").value =  document.getElementById("offerDate").value;
 
    var lastDayOfMonth = new Date(today.getFullYear(), today.getMonth()+1, 0);
       document.getElementById("offerValidationDate").valueAsDate = lastDayOfMonth;
-  /* document.getElementById("hiddenOfferValidationDate").value = lastDayOfMonth.toString; */
+ document.getElementById("hiddenOfferValidationDate").value = document.getElementById("offerValidationDate").value;
 
 }
 
