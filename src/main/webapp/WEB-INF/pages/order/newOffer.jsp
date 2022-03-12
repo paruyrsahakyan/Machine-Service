@@ -110,7 +110,7 @@ input[type=number] {
 <br> <br>
 
 <div class="mainContent">
-     <form:form action="/offer/newOffer/saveOffer" method="GET"  accept-charset="UTF-8" >
+     <form:form action="/offer/newOffer/saveOffer" method="post"  accept-charset="UTF-8" >
                    <table class="offerTable" id="offerTable" style="width: auto" align="center">
         <tr>
         </tr>
