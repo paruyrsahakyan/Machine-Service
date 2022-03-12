@@ -112,7 +112,7 @@ public class OfferController {
                                   @RequestParam(value="profitFromAvailable[]", defaultValue = "0") int[] profitFromAvailable,
                                   @RequestParam(value="deliveryTime[]", defaultValue = "0") int[] deliveryTime,
                                   @RequestParam(value="supplierPrice[]") double[] supplierPrice,
-                                  @RequestParam(value="avia[]", defaultValue = "1") int avia,
+                                  @RequestParam(value="avia[]", defaultValue = "1") int[] avia,
                                   @RequestParam(value="producer[]", defaultValue = "KOMATSU") String[] producer,
                                   @RequestParam(value="customerName", defaultValue = "customer") String customerName,
                                   @RequestParam(value="requestNumber", defaultValue = "Request Number") String requestNumber,
@@ -151,7 +151,9 @@ public class OfferController {
                 profitFromAvailable.length +
                 deliveryTime.length +
              supplierPrice.length +
-                producer.length) ;
+                producer.length+
+                avia.length
+                ) ;
 //
 //        for (int i=0; i<position.length; i++) {
 //            OfferLine offerLine = new OfferLine(position[i],
