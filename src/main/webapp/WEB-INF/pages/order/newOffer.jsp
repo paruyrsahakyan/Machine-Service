@@ -434,11 +434,11 @@ function setDefaultOfferDates(){
 
    var today =   new Date();
    document.getElementById("offerDate").valueAsDate = today;
-   document.getElementById("hiddenOfferDate").valueAsDate =  today;
+   document.getElementById("hiddenOfferDate").valueAsDate =  today.toString;
 
-   var lastDayOfMonth = new Date(today.getFullYear(), today.getMonth()+1, 0).toDateInputValue();
-   document.getElementById("offerValidationDate").value = lastDayOfMonth;
-   document.getElementById("hiddenOfferValidationDate").value = lastDayOfMonth;
+   var lastDayOfMonth = new Date(today.getFullYear(), today.getMonth()+1, 0);
+      document.getElementById("offerValidationDate").valueAsDate = lastDayOfMonth;
+   document.getElementById("hiddenOfferValidationDate").valueAsDate = lastDayOfMonth;
 
 }
 
