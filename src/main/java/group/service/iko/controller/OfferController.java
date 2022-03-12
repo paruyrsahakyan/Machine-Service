@@ -136,22 +136,22 @@ public class OfferController {
         Offer savedOffer = offerService.getLastSavedOffer();
         Set<OfferLine> offerLines = new HashSet<>();
 
-        throw new Throwable( "p n"+ partName[1]+
-                "pnumb" +partNumber[1]+
-                "pos" + position[1]+
-                quantity[1]+
-                offeredPartNumber[1]+
-                unit[1]+
-                price[1]+
-                sum[1]+
-                lastOfferPrice[1]+
-                lastOfferDate[1]+
-                availability[1]+
-                inStockNetCost[1]+
-                profitFromAvailable[1]+
-                deliveryTime[1]+
-             supplierPrice[1]+
-                producer[1]);
+        throw new Throwable( "p n"+ partName.length +
+                "pnumb" +partNumber.length +
+                "pos" + position.length +
+                quantity.length +
+                offeredPartNumber.length +
+                unit.length +
+                price.length +
+                sum.length +
+                lastOfferPrice.length +
+                lastOfferDate.length +
+                availability.length +
+                inStockNetCost.length +
+                profitFromAvailable.length +
+                deliveryTime.length +
+             supplierPrice.length +
+                producer.length) ;
 //
 //        for (int i=0; i<position.length; i++) {
 //            OfferLine offerLine = new OfferLine(position[i],
