@@ -125,8 +125,7 @@ public class OfferController {
                                   @RequestParam(value="exchangeRate", defaultValue = "1") double exchangeRate,
                                   @RequestParam(value="VAT", defaultValue = "without VAT") String VAT,
                                   ModelMap modelMap
-    )
-    {
+    ) throws Throwable {
 
         Offer offer = new Offer().setCustomer(customerService.getCustomerByName(customerName)).
                 setRequestNumber(requestNumber).setOfferDate(CalendarAdapter.getGregCalendar(offerDate)).
@@ -137,28 +136,45 @@ public class OfferController {
         Offer savedOffer = offerService.getLastSavedOffer();
         Set<OfferLine> offerLines = new HashSet<>();
 
-        for (int i=0; i<position.length; i++) {
-            OfferLine offerLine = new OfferLine(position[i],
-                    partName[i],
-                    partNumber[i],
-                    quantity[i],
-                    offeredPartNumber[i],
-                    unit[i],
-                    price[i],
-                    sum[i],
-                    lastOfferPrice[i],
-                    lastOfferDate[i],
-                    availability[i],
-                    inStockNetCost[i],
-                    profitFromAvailable[i],
-                    deliveryTime[i],
-                    new Double(supplierPrice[i]),
-                    producer[i]);
-            offerLine.setOffer(savedOffer);
-            offerLineService.saveOfferLine(offerLine);
-                }
+        throw new Throwable( position.toString()+
+                partName.toString()+
+                partNumber.toString()+
+                quantity.toString()+
+                offeredPartNumber.toString()+
+                unit.toString()+
+                price.toString()+
+                sum.toString()+
+                lastOfferPrice.toString()+
+                lastOfferDate.toString()+
+                availability.toString()+
+                inStockNetCost.toString()+
+                profitFromAvailable.toString()+
+                deliveryTime.toString()+
+             supplierPrice.toString()+
+                producer.toString());
+//
+//        for (int i=0; i<position.length; i++) {
+//            OfferLine offerLine = new OfferLine(position[i],
+//                    partName[i],
+//                    partNumber[i],
+//                    quantity[i],
+//                    offeredPartNumber[i],
+//                    unit[i],
+//                    price[i],
+//                    sum[i],
+//                    lastOfferPrice[i],
+//                    lastOfferDate[i],
+//                    availability[i],
+//                    inStockNetCost[i],
+//                    profitFromAvailable[i],
+//                    deliveryTime[i],
+//                    new Double(supplierPrice[i]),
+//                    producer[i]);
+//            offerLine.setOffer(savedOffer);
+//            offerLineService.saveOfferLine(offerLine);
+//                }
 
-                return new ModelAndView("redirect:/"+savedOffer.getId(), modelMap);
+//                return new ModelAndView("redirect:/"+savedOffer.getId(), modelMap);
     }
 
 
