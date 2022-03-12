@@ -136,47 +136,47 @@ public class OfferController {
         Offer savedOffer = offerService.getLastSavedOffer();
         Set<OfferLine> offerLines = new HashSet<>();
 
-        throw new Throwable( "p n"+ partName.length +
-                "pnumb" +partNumber.length +
-                "pos" + position.length +
-                quantity.length +
-                offeredPartNumber.length +
-                unit.length +
-                price.length +
-                sum.length +
-                lastOfferPrice.length +
-                lastOfferDate.length +
-                availability.length +
-                inStockNetCost.length +
-                profitFromAvailable.length +
-                deliveryTime.length +
-             supplierPrice.length +
-                producer.length+
-                avia.length
-                ) ;
-//
-//        for (int i=0; i<position.length; i++) {
-//            OfferLine offerLine = new OfferLine(position[i],
-//                    partName[i],
-//                    partNumber[i],
-//                    quantity[i],
-//                    offeredPartNumber[i],
-//                    unit[i],
-//                    price[i],
-//                    sum[i],
-//                    lastOfferPrice[i],
-//                    lastOfferDate[i],
-//                    availability[i],
-//                    inStockNetCost[i],
-//                    profitFromAvailable[i],
-//                    deliveryTime[i],
-//                    new Double(supplierPrice[i]),
-//                    producer[i]);
-//            offerLine.setOffer(savedOffer);
-//            offerLineService.saveOfferLine(offerLine);
-//                }
+//        throw new Throwable( "p n"+ partName.length +
+//                "pnumb" +partNumber.length +
+//                "pos" + position.length +
+//                quantity.length +
+//                offeredPartNumber.length +
+//                unit.length +
+//                price.length +
+//                sum.length +
+//                lastOfferPrice.length +
+//                lastOfferDate.length +
+//                availability.length +
+//                inStockNetCost.length +
+//                profitFromAvailable.length +
+//                deliveryTime.length +
+//             supplierPrice.length +
+//                producer.length+
+//                avia.length
+//                ) ;
 
-//                return new ModelAndView("redirect:/"+savedOffer.getId(), modelMap);
+        for (int i=0; i<position.length; i++) {
+            OfferLine offerLine = new OfferLine(position[i],
+                    partName[i],
+                    partNumber[i],
+                    quantity[i],
+                    offeredPartNumber[i],
+                    unit[i],
+                    price[i],
+                    sum[i],
+                    lastOfferPrice[i],
+                    lastOfferDate[i],
+                    availability[i],
+                    inStockNetCost[i],
+                    profitFromAvailable[i],
+                    deliveryTime[i],
+                    new Double(supplierPrice[i]),
+                    producer[i]);
+            offerLine.setOffer(savedOffer);
+            offerLineService.saveOfferLine(offerLine);
+                }
+
+                return new ModelAndView("redirect:/"+savedOffer.getId(), modelMap);
     }
 
 

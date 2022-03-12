@@ -336,7 +336,7 @@ input[type=number] {
                 cell14.innerHTML = "<input type='number' style ='width:130px' name= 'deliveryTime[]' >";
                 cell15.innerHTML = "<input type='number' step = 'any' style ='width:110px' id='supplierPrice"+(i+1)+"'name= 'supplierPrice[]' value='" + offerLines[i].supplierPrice + "' >";
                 cell16.innerHTML = "<input type='number' style ='width:50px' id='avia"+(i+1)+"'name= 'avia[]' >";
-                cell17.innerHTML = "<input type='text'  size='6'   id='producer"+(i+1)+"'  name= producer[]' >";
+                cell17.innerHTML = "<input type='text'  size='6'   id='producer"+(i+1)+"' name= 'producer[]' >";
                 
              
             }
