@@ -13,6 +13,19 @@
 <head>
     <style><%@include file="/WEB-INF/pages/CSS/topNavigation.css"%></style>
      <style><%@include file="/WEB-INF/pages/CSS/offerTable.css"%></style>
+     <style>
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+</style>
     </head>
 <body>
 <div class="topnav">
