@@ -138,8 +138,18 @@ public class OfferController {
         Set<OfferLine> offerLines = new HashSet<>();
 
         for (int i=0; i<position.length; i++) {
-            OfferLine offerLine = new OfferLine(position[i], partName[i], partNumber[i], quantity[i], offeredPartNumber[i], unit[i], price[i],
-                    sum[i], lastOfferPrice[i], lastOfferDate[i], availability[i], inStockNetCost[i],
+            OfferLine offerLine = new OfferLine(position[i],
+                    partName[i],
+                    partNumber[i],
+                    quantity[i],
+                    offeredPartNumber[i],
+                    unit[i],
+                    price[i],
+                    sum[i],
+                    lastOfferPrice[i],
+                    lastOfferDate[i],
+                    availability[i],
+                    inStockNetCost[i],
                     profitFromAvailable[i],
                     deliveryTime[i],
                     new Double(supplierPrice[i]),
