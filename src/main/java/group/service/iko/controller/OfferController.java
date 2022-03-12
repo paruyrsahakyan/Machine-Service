@@ -111,7 +111,7 @@ public class OfferController {
                                   @RequestParam(value="inStockNetCost[]", defaultValue = "0") int[] inStockNetCost,
                                   @RequestParam(value="profitFromAvailable[]", defaultValue = "0") int[] profitFromAvailable,
                                   @RequestParam(value="deliveryTime[]", defaultValue = "0") int[] deliveryTime,
-                                  @RequestParam(value="supplierPrice[]", defaultValue = "0") double[] supplierPrice,
+                                  @RequestParam(value="supplierPrice[]") double[] supplierPrice,
                                   @RequestParam(value="avia[]", defaultValue = "1") int avia,
                                   @RequestParam(value="producer[]", defaultValue = "KOMATSU") String[] producer,
                                   @RequestParam(value="customerName", defaultValue = "customer") String customerName,
