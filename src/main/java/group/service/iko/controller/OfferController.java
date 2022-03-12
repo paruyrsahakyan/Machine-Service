@@ -142,7 +142,7 @@ public class OfferController {
                     sum[i], lastOfferPrice[i], lastOfferDate[i], availability[i], inStockNetCost[i],
                     profitFromAvailable[i],
                     deliveryTime[i],
-                    supplierPrice[i],
+                    new Double(supplierPrice[i]),
                     producer[i]);
             offerLine.setOffer(savedOffer);
             offerLineService.saveOfferLine(offerLine);
