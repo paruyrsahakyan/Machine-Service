@@ -140,7 +140,10 @@ public class OfferController {
         for (int i=0; i<position.length; i++) {
             OfferLine offerLine = new OfferLine(position[i], partName[i], partNumber[i], quantity[i], offeredPartNumber[i], unit[i], price[i],
                     sum[i], lastOfferPrice[i], lastOfferDate[i], availability[i], inStockNetCost[i],
-                    profitFromAvailable[i], deliveryTime[i], supplierPrice[i], producer[i]);
+                    profitFromAvailable[i],
+                    deliveryTime[i],
+                    supplierPrice[i],
+                    producer[i]);
             offerLine.setOffer(savedOffer);
             offerLineService.saveOfferLine(offerLine);
                 }
