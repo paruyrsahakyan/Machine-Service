@@ -184,6 +184,9 @@ input[type=number] {
                                        });
                </c:forEach>
 
+                
+                 setDefaultOfferDates();
+
                if (offerLines.length > 0) {
              setOfferLinesInTable();
                 setCustomer();
@@ -328,7 +331,7 @@ input[type=number] {
                 cell12.innerHTML = "<input type='number' style ='width:100px' name= 'inStockNetCost[]' value='" + offerLines[i].inStockNetCost + "' >";
                 cell13.innerHTML = "<input type='number' style ='width:60px' id='profitFromAvailable"+(i+1)+"' name= 'profitFromAvailable[]' >";
                 cell14.innerHTML = "<input type='number' style ='width:130px' name= 'deliveryTime[]' >";
-                cell15.innerHTML = "<input type='number' style ='width:110px' id='supplierPrice"+(i+1)+"'name= 'supplierPrice[]' value='" + offerLines[i].supplierPrice + "' >";
+                cell15.innerHTML = "<input type='number' step = 'any' style ='width:110px' id='supplierPrice"+(i+1)+"'name= 'supplierPrice[]' value='" + offerLines[i].supplierPrice + "' >";
                 cell16.innerHTML = "<input type='number' style ='width:50px' id='avia"+(i+1)+"'name= 'avia[]' >";
                 cell17.innerHTML = "<input type='text'  size='6'   id='producer"+(i+1)+"'  name= producer[]' >";
                 
@@ -425,6 +428,19 @@ function setHiddenExchangeRate(){
 function setHiddenVAT(){
     var VAT = document.getElementById("VAT").value;
     document.getElementById("hiddenVAT").value = VAT;
+}
+
+function setDefaultOfferDates(){
+
+   var todaysDate =   new Date().toDateInputValue();
+   document.getElementById("offerDate").value = todaysDate;
+   document.getElementById("hiddenOfferDate").value =  todaysDate;
+
+   var today = new Date();
+   var lastDayOfMonth = new Date(today.getFullYear(), today.getMonth()+1, 0).toDateInputValue();
+   document.getElementById("offerValidationDate").value = lastDayOfMonth;
+   document.getElementById("hiddenOfferValidationDate").value = lastDayOfMonth;
+
 }
 
          
