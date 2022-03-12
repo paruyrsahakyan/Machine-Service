@@ -116,7 +116,7 @@ input[type=number] {
         </tr>
         </table>
         <input id="hiddenCustomerName"  type="hidden" name="customerName" value="${selectedCustomer.name}">
-        <input id="hiddenRequestNumber"  type="hidden" name="customerName" value="${offer.requestNumber:}">
+        <input id="hiddenRequestNumber"  type="hidden" name="customerName" value="${offer.requestNumber}">
         <input id="hiddenOfferDate"  type="hidden" name="offerDate" value="${offer.offerDate}">
         <input id="hiddenOfferValidationDate"  type="hidden" name="offerValidationDate" value="${offer.validationDate.name}">
         <input id="hiddenCurrency"  type="hidden" name="currency" value="${offer.currency}">
