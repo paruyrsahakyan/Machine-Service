@@ -432,11 +432,10 @@ function setHiddenVAT(){
 
 function setDefaultOfferDates(){
 
-   var todaysDate =   new Date().toDateInputValue();
-   document.getElementById("offerDate").value = todaysDate;
-   document.getElementById("hiddenOfferDate").value =  todaysDate;
+   var today =   new Date();
+   document.getElementById("offerDate").valueAsDate = todaysDate;
+   document.getElementById("hiddenOfferDate").valueAsDate =  todaysDate;
 
-   var today = new Date();
    var lastDayOfMonth = new Date(today.getFullYear(), today.getMonth()+1, 0).toDateInputValue();
    document.getElementById("offerValidationDate").value = lastDayOfMonth;
    document.getElementById("hiddenOfferValidationDate").value = lastDayOfMonth;
