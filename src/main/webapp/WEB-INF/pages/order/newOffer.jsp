@@ -126,7 +126,7 @@ input[type=number] {
         <input id="hiddenDiscount"  type="hidden" name="discount" value="${offer.discount}">
         <input id="hiddenExchangeRate"  type="hidden" name="exchangeRate" value="${offer.exchangeRate}" >
         <input id="hiddenVAT"  type="hidden" name="VAT" value="${offer.VAT}" >
-        <bvr>
+          <bvr>
             <br>
       <input type="submit" value="Сохранить КП">
         </form:form>
@@ -355,6 +355,7 @@ input[type=number] {
                 }
                 
             }
+
             setTotalSum();
 
 }
@@ -418,6 +419,8 @@ function setPrice() {
      priceCell.value = price;
      sumCell.value = sum;
      profitFromAvailableCell.value = profitFromAvailable;
+
+     setTotalSum();
   
     }
 

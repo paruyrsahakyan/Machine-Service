@@ -40,7 +40,7 @@ public class OfferController {
     @PreAuthorize("hasRole('ROLE_USER')")
     public ModelAndView mainPage() {
 
-        ModelAndView modelAndView = new ModelAndView("order/offer");
+        ModelAndView modelAndView = new ModelAndView("order/offerMainPage");
         List<Offer> offerList = offerService.getCurrentOffers();
         modelAndView.addObject("currentOffers", OfferDTO.convertIntoDTO(offerList));
         modelAndView.addObject("allCustomers", CustomerDTO.convertIntoDTO(customerService.getAllCustomers()));
@@ -51,9 +51,9 @@ public class OfferController {
     @PreAuthorize("hasRole('ROLE_USER')")
     public ModelAndView getOffer(@PathVariable("offerId") int id) {
 
-        ModelAndView modelAndView = new ModelAndView("order/offer");
-        modelAndView.addObject("offer", offerService.getOfferById(id)).
-                addObject("offerLines", offerLineService.getOfferLinesByOfferId(id));
+        ModelAndView modelAndView = new ModelAndView("order/newOffer");
+                List<OfferLine> offerLines = offerLineService.getOfferLinesByOfferId(id);
+         modelAndView.addObject("offer",  new OfferDTO(offerService.getOfferById(id), offerLines));
         return modelAndView;
 
     }
@@ -63,7 +63,7 @@ public class OfferController {
     public ModelAndView newOfferPage(@RequestParam(value = "selectedCustomer", required = false, defaultValue = "0") int customerId,
                                      @ModelAttribute("offer") Offer offer,
                                       ModelMap modelMap) throws Throwable {
-        ModelAndView modelAndView = new ModelAndView("order/newOffer");
+        ModelAndView modelAndView = new ModelAndView("order/offer");
         modelAndView.addObject("customerList", CustomerDTO.convertIntoDTO(customerService.getAllCustomers()));
 
         if (customerId != 0) {

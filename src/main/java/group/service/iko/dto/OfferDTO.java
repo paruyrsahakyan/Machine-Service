@@ -5,35 +5,81 @@ import group.service.iko.entities.*;
 
 import javax.persistence.*;
 import java.util.*;
+import java.util.stream.*;
 
 public class OfferDTO {
-
 
 
     private int id;
     private String requestNumber;
     private String offerDate;
     private String validationDate;
-    private Set<OfferLine> offerLineSet;
+    private List<OfferLine> offerLines;
     private String offerCondition;
-    private String customer;
-    private double  sum;
+    private String currency;
+    private String customerName;
+    private double sum;
+    private int profitPercentage;
+    private int transportation;
+    private int discount;
+    private String VAT;
+    private double exchangeRate;
 
 
-
-    public OfferDTO(Offer offer) {
+    public OfferDTO(Offer offer, List<OfferLine> offerLines) {
 
         this.id = offer.getId();
+        this.requestNumber= offer.getRequestNumber();
         this.offerDate = CalendarAdapter.getStringFormat(offer.getOfferDate());
         this.validationDate = CalendarAdapter.getStringFormat(offer.getValidationDate());
-        this.offerLineSet =  offer.getOfferLines();
+        this.offerLines =  offerLines.stream().sorted(Comparator.comparing(OfferLine::getPosition)).collect(Collectors.toList());;
         this.offerCondition= offer.getOfferCondition();
-        this.customer = offer.getCustomer().getName();
+        this.customerName = offer.getCustomer().getName();
+        this.sum = offer.getSum();
+        this.profitPercentage = offer.getProfitPercentage();
+        this.transportation = offer.getTransportation();
+        this.discount = offer.getDiscount();
+        this.VAT = offer.getVAT();
+        this.exchangeRate = offer.getExchangeRate();
         this.requestNumber= offer.getRequestNumber();
         this.sum = offer.getSum();
             }
 
+    public OfferDTO(Offer offer) {
 
+        this.id = offer.getId();
+        this.requestNumber= offer.getRequestNumber();
+        this.offerDate = CalendarAdapter.getStringFormat(offer.getOfferDate());
+        this.validationDate = CalendarAdapter.getStringFormat(offer.getValidationDate());
+        this.offerLines =  offer.getOfferLines().stream().sorted(Comparator.comparing(OfferLine::getPosition)).collect(Collectors.toList());;
+        this.offerCondition= offer.getOfferCondition();
+        this.customerName = offer.getCustomer().getName();
+        this.sum = offer.getSum();
+        this.profitPercentage = offer.getProfitPercentage();
+        this.transportation = offer.getTransportation();
+        this.discount = offer.getDiscount();
+        this.VAT = offer.getVAT();
+        this.exchangeRate = offer.getExchangeRate();
+        this.requestNumber= offer.getRequestNumber();
+        this.sum = offer.getSum();
+    }
+
+
+
+    public static List<OfferDTO> convertIntoDTO(List<Offer> offerList) {
+
+
+        List<OfferDTO> offerDTOList = new ArrayList<>();
+        if (offerList != null) {
+
+            for (Offer offer: offerList){
+                offerDTOList.add(new OfferDTO(offer));
+            }
+
+        }
+return offerDTOList;
+
+    }
 
     public int getId() {
         return id;
@@ -67,12 +113,12 @@ public class OfferDTO {
         this.validationDate = validationDate;
     }
 
-    public Set<OfferLine> getOfferLineSet() {
-        return offerLineSet;
+    public List<OfferLine> getOfferLines() {
+        return offerLines;
     }
 
-    public void setOfferLineSet(Set<OfferLine> offerLineSet) {
-        this.offerLineSet = offerLineSet;
+    public void setOfferLines(List<OfferLine> offerLines) {
+        this.offerLines = offerLines;
     }
 
     public String getOfferCondition() {
@@ -83,35 +129,67 @@ public class OfferDTO {
         this.offerCondition = offerCondition;
     }
 
-    public String getCustomer() {
-        return customer;
+    public String getCurrency() {
+        return currency;
     }
 
-    public void setCustomer(String customer) {
-        this.customer = customer;
+    public void setCurrency(String currency) {
+        this.currency = currency;
+    }
+
+    public String getCustomerName() {
+        return customerName;
+    }
+
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
     }
 
     public double getSum() {
         return sum;
     }
 
-    public void setSum(int sum) {
+    public void setSum(double sum) {
         this.sum = sum;
     }
 
-    public static List<OfferDTO> convertIntoDTO(List<Offer> offerList) {
-
-
-        List<OfferDTO> offerDTOList = new ArrayList<>();
-        if (offerList != null) {
-
-            for (Offer offer: offerList){
-                offerDTOList.add(new OfferDTO(offer));
-            }
-
-        }
-return offerDTOList;
-
+    public int getProfitPercentage() {
+        return profitPercentage;
     }
 
+    public void setProfitPercentage(int profitPercentage) {
+        this.profitPercentage = profitPercentage;
+    }
+
+    public int getTransportation() {
+        return transportation;
+    }
+
+    public void setTransportation(int transportation) {
+        this.transportation = transportation;
+    }
+
+    public int getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(int discount) {
+        this.discount = discount;
+    }
+
+    public String getVAT() {
+        return VAT;
+    }
+
+    public void setVAT(String VAT) {
+        this.VAT = VAT;
+    }
+
+    public double getExchangeRate() {
+        return exchangeRate;
+    }
+
+    public void setExchangeRate(double exchangeRate) {
+        this.exchangeRate = exchangeRate;
+    }
 }
