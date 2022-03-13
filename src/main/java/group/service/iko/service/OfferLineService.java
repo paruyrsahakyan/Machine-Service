@@ -98,7 +98,7 @@ public class OfferLineService {
     public Object getOfferLinesByOfferId(int offerId) {
 
             Session session = SessionFactoryImpl.getSessionFactory().openSession();
-            String hql = "FROM group.service.iko.entities.OfferLine  offerLine WHERE customer.id=:offerId";
+            String hql = "FROM group.service.iko.entities.OfferLine  WHERE offer.id=:offerId";
             Query query = session.createQuery(hql);
             query.setParameter("offerId", offerId);
             List<OfferLine> offerLines = (List<OfferLine>) query.list();
