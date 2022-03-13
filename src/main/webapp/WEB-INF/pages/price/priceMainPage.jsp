@@ -30,7 +30,7 @@
         <br>
 
           <div class="mainContent">
-               <form:form id="toCreateNewItem" action="/price/createdNewPrice" method="post" accept-charset="UTF-8">
+               <form:form id="toCreateNewItem" action="/price/createdNewPrice" method="post" accept-charset="UTF-8" >
                    <B>Клиент </B>
                    <input list="customers" name="customerName" id="selectedCustomerName"  value="${selectedCustomer.name}"
                           onchange="createTableOnCustomerSelection()">

@@ -110,7 +110,8 @@ input[type=number] {
 <br> <br>
 
 <div class="mainContent">
-     <form:form action="/offer/newOffer/saveOffer" method="post"  accept-charset="UTF-8" >
+     <form:form action="/offer/newOffer/saveOffer" method="post"  accept-charset="UTF-8" 
+       onkeypress="return event.keyCode != 13; " >
                    <table class="offerTable" id="offerTable" style="width: auto" align="center">
         <tr>
         </tr>
@@ -354,6 +355,7 @@ input[type=number] {
                 }
                 
             }
+            setTotalSum();
 
 }
 
@@ -361,10 +363,15 @@ input[type=number] {
     var price = document.getElementById("price"+(rowNumber+1)).value;
     var quantity  = document.getElementById("quantity" +(rowNumber+1)).value;
     document.getElementById("sum"+(rowNumber+1)).value = price*quantity;
-  var totalSum =rowNumber;
+    setTotalSum();
+  
+}
+
+function setTotalSum() {
+  var totalSum = 0;
   for (var i = 0; i < offerLines.length; i++){
     var rowSum = document.getElementById("sum" +(i+1)).value;
-    totalSum = totalSum+rowSum;
+    totalSum = totalSum*1+rowSum*1;
       }
       document.getElementById("totalSum").value = totalSum;
 
