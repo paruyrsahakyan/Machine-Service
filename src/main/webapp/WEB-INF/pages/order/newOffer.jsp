@@ -116,7 +116,7 @@ input[type=number] {
         </tr>
         </table>
         <input id="hiddenCustomerName"  type="hidden" name="customerName" value="${selectedCustomer.name}">
-        <input id="hiddenRequestNumber"  type="hidden" name="customerName" value="${offer.requestNumber}">
+        <input id="hiddenRequestNumber"  type="hidden" name="requestNumber" value="${offer.requestNumber}">
         <input id="hiddenOfferDate"  type="hidden" name="offerDate" value="${offer.offerDate}">
         <input id="hiddenOfferValidationDate"  type="hidden" name="offerValidationDate" value="${offer.validationDate.name}">
         <input id="hiddenCurrency"  type="hidden" name="currency" value="${offer.currency}">
@@ -198,6 +198,7 @@ input[type=number] {
               function setCustomer() {
          selectedCustomerName=document.getElementById("selectedCustomerName").value;
                 document.getElementById("customerNameInUploadForm").value=selectedCustomerName;
+                document.getElementById("hiddenCustomerName").value = selectedCustomerName;
     }
 
           function initPriceListForSelectedCustomer() {
@@ -391,6 +392,11 @@ function setPrice() {
 function setHiddenRequestNumber(){
     var requestNumber = document.getElementById("requestNumber").value;
     document.getElementById("hiddenRequestNumber").value = requestNumber;
+}
+
+function setHiddenCustomerName(){
+    var customerName = document.getElementById("customerName").value;
+    document.getElementById("setHiddenCustomerName").value = customerName;
 }
 
 function setHiddenOfferDate(){
