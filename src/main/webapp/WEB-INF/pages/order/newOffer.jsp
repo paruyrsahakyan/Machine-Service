@@ -216,6 +216,7 @@ input[type=number] {
 
 
         function setOfferLinesInTable() {
+
         var table = document.getElementById("offerTable");
         table.innerText = "";
         var titleRow = table.insertRow();
@@ -343,12 +344,12 @@ input[type=number] {
             }
 
                 var totaRow = table.insertRow;
-            for (var i = 1; i < 18; i++) {
+            for (var i = 0; i < 17; i++) {
                     if (i==8) {
-                    var totalSumCell = totaRow.incertCell;
+                    var totalSumCell = totaRow.incertCell(i);
                     totalSumCell.innerHTML = "<input type='number' style ='width:70px' name= 'totalSum' id ='totalSum' value='" +offer.sume+"' >";
                 }
-                row.insertCell;
+                row.insertCell(i);
             }
 
 }
@@ -362,7 +363,7 @@ input[type=number] {
     var rowSum = document.getElementById("sum" +(i+1)).value;
     totalSum = totalSum+rowSum;
       }
-      document.getElementById("toalSum").value = totalSum;
+      document.getElementById("totalSum").value = totalSum;
 
  }
 
