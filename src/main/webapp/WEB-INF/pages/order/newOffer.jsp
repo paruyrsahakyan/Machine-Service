@@ -327,7 +327,7 @@ input[type=number] {
                 cell1.innerHTML = "<input type='number'  style ='width:30px' name= 'position[]'  value='" +(i + 1) + "' >";
                 cell2.innerHTML = "<input type='text'   name= 'partName[]'  value='" +offerLines[i].partName+"'"+"> ";
                 cell3.innerHTML = "<input type='text' size='11'name= 'partNumber[]'  value='" +offerLines[i].partNumber+"'"+"> ";
-                cell4.innerHTML = "<input type='number' style ='width:30px' name= 'quantity[]'  value='" +offerLines[i].quantity+"'"+"> ";
+                cell4.innerHTML = "<input type='number' style ='width:30px'  id ='quantity"+(i+1)+ "' name='quantity[]'  value='" +offerLines[i].quantity+"'"+"> ";
                 cell5.innerHTML = "<input type='text' size='11' name= 'offeredPartNumber[]'  value='" +offerLines[i].offeredPartNumber+"'"+"> ";
                 cell6.innerHTML = "<input type='text' size='2' id='unit"+(i+1)+"' name= 'unit[]'  value='шт'>";
                 cell7.innerHTML = "<input type='number' style ='width:70px' id='price"+(i+1)+"' name= 'price[]' onChange ='setSum("+i+")' >";
@@ -359,7 +359,7 @@ input[type=number] {
 
  function setSum(rowNumber) {
     var price = document.getElementById("price"+(rowNumber+1)).value;
-    var quantity  = document.getElementById("unit" +(rowNumber+1)).value;
+    var quantity  = document.getElementById("quantity" +(rowNumber+1)).value;
     document.getElementById("sum"+(rowNumber+1)).value = price*quantity;
   var totalSum =rowNumber;
   for (var i = 0; i < offerLines.length; i++){
