@@ -346,7 +346,7 @@ input[type=number] {
                 var totalRow = table.insertRow();
             for (var i = 0; i < 17; i++) {
                     if (i==7) {
-                    var totalSumCell = totaRow.insertCell(i);
+                    var totalSumCell = totalRow.insertCell(i);
                     totalSumCell.innerHTML = "<input type='number' style ='width:70px' name= 'totalSum' id ='totalSum' value='" +offer.sume+"' >";
                 } else {
                   totalRow.insertCell(i);
