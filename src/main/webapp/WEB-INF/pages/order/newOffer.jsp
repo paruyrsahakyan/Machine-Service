@@ -330,7 +330,7 @@ input[type=number] {
                 cell4.innerHTML = "<input type='number' style ='width:30px' name= 'quantity[]'  value='" +offerLines[i].quantity+"'"+"> ";
                 cell5.innerHTML = "<input type='text' size='11' name= 'offeredPartNumber[]'  value='" +offerLines[i].offeredPartNumber+"'"+"> ";
                 cell6.innerHTML = "<input type='text' size='2' id='unit"+(i+1)+"' name= 'unit[]'  value='шт'>";
-                cell7.innerHTML = "<input type='number' style ='width:70px' id='price"+(i+1)+"' name= 'price[]' onChange ='setSum("+'"'+i+'+'+")' >";
+                cell7.innerHTML = "<input type='number' style ='width:70px' id='price"+(i+1)+"' name= 'price[]' onChange ='setSum("+i+")' >";
                 cell8.innerHTML = "<input type='number' style ='width:70px' id='sum"+(i+1)+"' name= 'sum[]' value='" + offerLines[i].sum+ "' >"
                 cell9.innerHTML = "<input type='number' style ='width:100px' name= 'lastOfferPrice[]' value='" +offerLines[i].lastOfferPrice+"' >";
                 cell10.innerHTML = "<input type='date' style ='width:130px' name= 'lastOfferDate[]' value='" + offerLines[i].lastOfferDate + "' >";
