@@ -45,9 +45,11 @@ public class OfferLine {
     private String producer;
     @Column  (name= "confirmation_condition")
     private String confirmationCondition;
+
     @ManyToOne()
     @JoinColumn(name = "offer_id")
-    private Offer offer;
+     private Offer offer;
+
     @Column (name = "supplier_price")
     private Double supplierPrice;
     @Column (name = "last_offered_price")
