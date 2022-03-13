@@ -28,7 +28,7 @@ public class Offer {
     @JoinColumn(name = "customer_id")
     private Customer customer;
     @Column
-    private int sum;
+    private double sum;
     @Column  (name= "profit_percentage")
     private int profitPercentage;
     @Column  (name= "transportation")
@@ -177,11 +177,11 @@ public class Offer {
         return this;
     }
 
-    public int getSum() {
+    public double getSum() {
         return sum;
     }
 
-   public Offer setSum(int sum) {
+   public Offer setSum(double sum) {
                 this.sum = sum;
                 return this;
     }

@@ -17,7 +17,7 @@ public class OfferDTO {
     private Set<OfferLine> offerLineSet;
     private String offerCondition;
     private String customer;
-    private int  sum;
+    private double  sum;
 
 
 
@@ -91,7 +91,7 @@ public class OfferDTO {
         this.customer = customer;
     }
 
-    public int getSum() {
+    public double getSum() {
         return sum;
     }
 

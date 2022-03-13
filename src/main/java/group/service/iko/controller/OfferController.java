@@ -115,7 +115,7 @@ public class OfferController {
                                   @RequestParam(value="avia[]", required = false) int[] avia,
                                   @RequestParam(value="producer[]", required = false) String[] producer,
                                   @RequestParam(value="customerName" ) String customerName,
-                                  @RequestParam(value=" ", defaultValue = "Request Number") String requestNumber,
+                                  @RequestParam(value="requestNumber", defaultValue = " ") String requestNumber,
                                   @RequestParam(value="offerDate", defaultValue = "111-11-11") String offerDate,
                                   @RequestParam(value="offerValidationDate", defaultValue = "111-11-11") String offerValidityDate,
                                   @RequestParam(value="currency", defaultValue = "AMD") String currency,
@@ -124,6 +124,7 @@ public class OfferController {
                                   @RequestParam(value="discount", defaultValue = "0") int discount,
                                   @RequestParam(value="exchangeRate", defaultValue = "1") double exchangeRate,
                                   @RequestParam(value="VAT", defaultValue = "without VAT") String VAT,
+                                  @RequestParam(value = "totalSum", defaultValue = "0") double totalSum,
                                   ModelMap modelMap
     )    {
 
@@ -131,7 +132,7 @@ public class OfferController {
                 setRequestNumber(requestNumber).setOfferDate(CalendarAdapter.getGregCalendar(offerDate)).
                 setValidationDate(CalendarAdapter.getGregCalendar(offerValidityDate)).setCurrency(currency).
                 setProfitPercentage(profitPercentage).setTransportation(transportation).
-                setProfitPercentage(profitPercentage).setDiscount(discount).setVAT(VAT).setExchangeRate(exchangeRate).setOfferCondition("current");
+                setProfitPercentage(profitPercentage).setDiscount(discount).setVAT(VAT).setExchangeRate(exchangeRate).setOfferCondition("current").setSum(totalSum);
         offerService.saveOffer(offer);
         Offer savedOffer = offerService.getLastSavedOffer();
         Set<OfferLine> offerLines = new HashSet<>();
