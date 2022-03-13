@@ -83,7 +83,7 @@ input[type=number] {
        <table class="offerTable" id="offerTable" style="width: auto" align="center">
                     </table>
                 </div>
-                
+
                     <script>
 
         var offerLines=[];
@@ -124,10 +124,10 @@ input[type=number] {
                    availability:availability,
                    profitFromAvailable:profitFromAvailable;
                    inStockNetCost:inStockNetCost,
-
                                        });
-             
+                   </c:forEach>
 
+             
         function setOfferLinesInTable() {
 
         var table = document.getElementById("offerTable");
