@@ -51,7 +51,7 @@ public class OfferController {
     @PreAuthorize("hasRole('ROLE_USER')")
     public ModelAndView getOffer(@PathVariable("offerId") int id) {
 
-        ModelAndView modelAndView = new ModelAndView("order/newOffer");
+        ModelAndView modelAndView = new ModelAndView("order/offer");
                 List<OfferLine> offerLines = offerLineService.getOfferLinesByOfferId(id);
          modelAndView.addObject("offer",  new OfferDTO(offerService.getOfferById(id), offerLines));
         return modelAndView;
