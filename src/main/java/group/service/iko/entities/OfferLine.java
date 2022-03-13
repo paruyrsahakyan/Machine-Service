@@ -15,22 +15,16 @@ public class OfferLine {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
     @Column
     private int position;
-
     @Column (name= "requested_part_name")
     private String requestedPartName;
-
     @Column (name= "requested_part_number")
     private String requestedPartNumber;
-
     @Column  (name= "offered_part_name")
     private String offeredPartName;
-
     @Column  (name= "offered_part_number")
     private String offeredPartNumber;
-
     @Column
     private int quantity;
     @Column
@@ -47,7 +41,7 @@ public class OfferLine {
     private String confirmationCondition;
     @ManyToOne()
     @JoinColumn(name = "offer_id")
-     private Offer offer;
+    private Offer offer;
     @Column (name = "supplier_price")
     private Double supplierPrice;
     @Column (name = "last_offered_price")

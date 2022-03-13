@@ -14,7 +14,7 @@ public class OfferDTO {
     private String requestNumber;
     private String offerDate;
     private String validationDate;
-    private List<OfferLine> offerLines;
+    private List<OfferLineDTO> offerLines;
     private String offerCondition;
     private String currency;
     private String customerName;
@@ -32,8 +32,8 @@ public class OfferDTO {
         this.requestNumber= offer.getRequestNumber();
         this.offerDate = CalendarAdapter.getStringFormat(offer.getOfferDate());
         this.validationDate = CalendarAdapter.getStringFormat(offer.getValidationDate());
-        this.offerLines =  offerLines.stream().sorted(Comparator.comparing(OfferLine::getPosition)).collect(Collectors.toList());;
         this.offerCondition= offer.getOfferCondition();
+        this.currency = offer.getCurrency();
         this.customerName = offer.getCustomer().getName();
         this.sum = offer.getSum();
         this.profitPercentage = offer.getProfitPercentage();
@@ -43,6 +43,12 @@ public class OfferDTO {
         this.exchangeRate = offer.getExchangeRate();
         this.requestNumber= offer.getRequestNumber();
         this.sum = offer.getSum();
+        List<OfferLineDTO> offerLineDTOS = new ArrayList<>();
+        for (OfferLine offerLine: offerLines) {
+            offerLineDTOS.add(new OfferLineDTO(offerLine));
+        }
+        this.offerLines = offerLineDTOS.stream().sorted(Comparator.comparing(OfferLineDTO::getPosition)).collect(Collectors.toList());
+
             }
 
     public OfferDTO(Offer offer) {
@@ -51,8 +57,7 @@ public class OfferDTO {
         this.requestNumber= offer.getRequestNumber();
         this.offerDate = CalendarAdapter.getStringFormat(offer.getOfferDate());
         this.validationDate = CalendarAdapter.getStringFormat(offer.getValidationDate());
-        this.offerLines =  offer.getOfferLines().stream().sorted(Comparator.comparing(OfferLine::getPosition)).collect(Collectors.toList());;
-        this.offerCondition= offer.getOfferCondition();
+         this.offerCondition= offer.getOfferCondition();
         this.customerName = offer.getCustomer().getName();
         this.sum = offer.getSum();
         this.profitPercentage = offer.getProfitPercentage();
@@ -62,6 +67,11 @@ public class OfferDTO {
         this.exchangeRate = offer.getExchangeRate();
         this.requestNumber= offer.getRequestNumber();
         this.sum = offer.getSum();
+        List<OfferLineDTO> offerLineDTOS = new ArrayList<>();
+        for (OfferLine offerLine: offer.getOfferLines()) {
+            offerLineDTOS.add(new OfferLineDTO(offerLine));
+        }
+        this.offerLines = offerLineDTOS.stream().sorted(Comparator.comparing(OfferLineDTO::getPosition)).collect(Collectors.toList());
     }
 
 
@@ -113,11 +123,11 @@ return offerDTOList;
         this.validationDate = validationDate;
     }
 
-    public List<OfferLine> getOfferLines() {
+    public List<OfferLineDTO> getOfferLines() {
         return offerLines;
     }
 
-    public void setOfferLines(List<OfferLine> offerLines) {
+    public void setOfferLines(List<OfferLineDTO> offerLines) {
         this.offerLines = offerLines;
     }
 

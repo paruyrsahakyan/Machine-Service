@@ -104,7 +104,7 @@ createTable();
                 titleCell3.style.fontWeight = 'bold';
                 titleCell4.innerHTML = "Дата КП";
                 titleCell4.style.fontWeight = 'bold';
-                titleCell5.innerHTML = "Срок действия заявки";
+                titleCell5.innerHTML = "Срок действия КП";
                 titleCell5.style.fontWeight = 'bold';
                 titleCell6.innerHTML = "Сумма КП";
                 titleCell6.style.fontWeight = 'bold';
