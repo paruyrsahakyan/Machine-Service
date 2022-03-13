@@ -343,13 +343,13 @@ input[type=number] {
                   
             }
 
-                var totaRow = table.insertRow();
+                var totalRow = table.insertRow();
             for (var i = 0; i < 17; i++) {
                     if (i==7) {
-                    var totalSumCell = totaRow.incertCell(i);
+                    var totalSumCell = totaRow.insertCell(i);
                     totalSumCell.innerHTML = "<input type='number' style ='width:70px' name= 'totalSum' id ='totalSum' value='" +offer.sume+"' >";
                 } else {
-                  totaRow.insertCell(i);
+                  totalRow.insertCell(i);
                 }
                 
             }
