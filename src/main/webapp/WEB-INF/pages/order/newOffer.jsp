@@ -302,7 +302,7 @@ input[type=number] {
         var producerCell = parameterRow.insertCell(16);
         producerCell.innerHTML =  "<input id='ProducerForAllLines'  size='5' onkeyup = 'setProducer()'  value='KOMATSU' >"
                      
-                var row = table.insertRow();
+              
         for (var i = 0; i < offerLines.length; i++) {
                 var row = table.insertRow();
                 var cell1 = row.insertCell(0);
@@ -345,7 +345,7 @@ input[type=number] {
 
                 var totaRow = table.insertRow;
             for (var i = 0; i < 17; i++) {
-                    if (i==8) {
+                    if (i==7) {
                     var totalSumCell = totaRow.incertCell(i);
                     totalSumCell.innerHTML = "<input type='number' style ='width:70px' name= 'totalSum' id ='totalSum' value='" +offer.sume+"' >";
                 }

@@ -115,7 +115,7 @@ public class OfferController {
                                   @RequestParam(value="avia[]", required = false) int[] avia,
                                   @RequestParam(value="producer[]", required = false) String[] producer,
                                   @RequestParam(value="customerName" ) String customerName,
-                                  @RequestParam(value="requestNumber", defaultValue = "Request Number") String requestNumber,
+                                  @RequestParam(value=" ", defaultValue = "Request Number") String requestNumber,
                                   @RequestParam(value="offerDate", defaultValue = "111-11-11") String offerDate,
                                   @RequestParam(value="offerValidationDate", defaultValue = "111-11-11") String offerValidityDate,
                                   @RequestParam(value="currency", defaultValue = "AMD") String currency,
