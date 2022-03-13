@@ -50,7 +50,7 @@ input[type=number] {
 <table class="offerTable">
              <tr>
                 <td>  Заказчик  </td>
-                <td>  ${offer.customer.name}</td>   <br> <br>
+                <td>  ${offer.customerName}</td>   <br> <br>
                 <td>  Номер Заявки  </td>
                 <td>  ${offer.requestNumber}</td> <br> <br>
                 <td>  Дата КП  

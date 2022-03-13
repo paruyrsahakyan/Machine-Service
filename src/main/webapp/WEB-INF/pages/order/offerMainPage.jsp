@@ -56,7 +56,7 @@
 
   <c:forEach items="${currentOffers}" var="offer">
                 var id ="${offer.id}"
-                var customer = "${offer.customer}";
+                var customer = "${offer.customerName}";
                 var offerDate = "${offer.offerDate}";
                 var requestNumber = "${offer.requestNumber}"
                 var validationDate = "${offer.validationDate}";

@@ -43,8 +43,7 @@ public class OfferController {
         ModelAndView modelAndView = new ModelAndView("order/offerMainPage");
         List<Offer> offerList = offerService.getCurrentOffers();
         modelAndView.addObject("currentOffers", OfferDTO.convertIntoDTO(offerList));
-        modelAndView.addObject("allCustomers", CustomerDTO.convertIntoDTO(customerService.getAllCustomers()));
-        return modelAndView;
+           return modelAndView;
     }
 
     @RequestMapping("/{offerId}")
@@ -63,7 +62,7 @@ public class OfferController {
     public ModelAndView newOfferPage(@RequestParam(value = "selectedCustomer", required = false, defaultValue = "0") int customerId,
                                      @ModelAttribute("offer") Offer offer,
                                       ModelMap modelMap) throws Throwable {
-        ModelAndView modelAndView = new ModelAndView("order/offer");
+        ModelAndView modelAndView = new ModelAndView("order/newOffer");
         modelAndView.addObject("customerList", CustomerDTO.convertIntoDTO(customerService.getAllCustomers()));
 
         if (customerId != 0) {
