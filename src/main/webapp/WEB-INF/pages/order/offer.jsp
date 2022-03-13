@@ -62,9 +62,9 @@ input[type=number] {
             </tr>
             <tr>
                 <td> МП % </td>
-                <td> ${offer.profitPercentage}</td>
+                <td> ${offer.profitPercentage} </td>
                 <td> Перевозка % </td>
-                <td> ${offer.transportation}< /td>
+                <td> ${offer.transportation} </td>
                 <td> Скидка </td>
                 <td> ${offer.discount}</td>
                 <td> Курс </td>
@@ -122,11 +122,13 @@ input[type=number] {
                    lastOfferPrice:lastOfferPrice,
                    lastOfferDate: lastOfferDate,
                    availability:availability,
-                   profitFromAvailable:profitFromAvailable;
-                   inStockNetCost:inStockNetCost,
+                   profitFromAvailable:profitFromAvailable,
+                   inStockNetCost:inStockNetCost
                                        });
                    </c:forEach>
 
+
+           setOfferLinesInTable();
              
         function setOfferLinesInTable() {
 
@@ -238,6 +240,7 @@ input[type=number] {
                 }
 
             }
+        }
           
 
           </script>

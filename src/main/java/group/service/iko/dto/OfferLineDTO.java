@@ -34,7 +34,7 @@ public class OfferLineDTO {
          this.id = offerLine.getId();
          this.position = offerLine.getPosition();
          this.requestedPartName = offerLine.getRequestedPartName();
-         this.requestedPartNumber = offerLine.getOfferedPartName();
+         this.requestedPartNumber = offerLine.getRequestedPartNumber();
          this.offeredPartName = offerLine.getOfferedPartName();
          this.offeredPartNumber =offerLine.getOfferedPartNumber();
          this.quantity =  offerLine.getQuantity();
@@ -42,6 +42,7 @@ public class OfferLineDTO {
          this.price = offerLine.getPrice();
          this.sum = offerLine.getSum();
          this.supplyTime = offerLine.getSupplyTime();
+         this.producer = offerLine.getProducer();
          this.confirmationCondition = offerLine.getConfirmationCondition();
          this.supplierPrice = offerLine.getSupplierPrice();
          this.lastOfferedPrice = offerLine.getLastOfferedPrice();
