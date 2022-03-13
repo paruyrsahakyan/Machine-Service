@@ -51,7 +51,7 @@ public class OfferController {
     @PreAuthorize("hasRole('ROLE_USER')")
     public ModelAndView getOffer(@PathVariable("offerId") int id) {
 
-        ModelAndView modelAndView = new ModelAndView();
+        ModelAndView modelAndView = new ModelAndView("order/offer");
         modelAndView.addObject("offer", offerService.getOfferById(id)).
                 addObject("offerLines", offerLineService.getOfferLinesByOfferId(id));
         return modelAndView;
@@ -97,23 +97,23 @@ public class OfferController {
 
     @RequestMapping("/newOffer/saveOffer")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
-    public ModelAndView saveOffer(@RequestParam("position[]") int[] position,
-                                  @RequestParam("partName[]") String[] partName,
-                                  @RequestParam("partNumber[]") String[] partNumber,
-                                  @RequestParam("quantity[]") int[] quantity,
+    public ModelAndView saveOffer(@RequestParam(value="position[]", required = false) int[] position,
+                                  @RequestParam(value="partName[]", required = false) String[] partName,
+                                  @RequestParam(value="partNumber[]", required = false) String[] partNumber,
+                                  @RequestParam(value="quantity[]", required = false) int[] quantity,
                                   @RequestParam(value="offeredPartNumber[]", required = false) String[] offeredPartNumber,
-                                  @RequestParam("unit[]") String[] unit,
-                                  @RequestParam("price[]") int[] price,
-                                  @RequestParam("sum[]") int[] sum,
-                                  @RequestParam(value="lastOfferPrice[]", defaultValue = "0") int[] lastOfferPrice,
-                                  @RequestParam(value="lastOfferDate[]", defaultValue = "111-11-11") String[] lastOfferDate,
-                                  @RequestParam(value="availability[]", defaultValue = "0") int[] availability,
-                                  @RequestParam(value="inStockNetCost[]", defaultValue = "0") int[] inStockNetCost,
-                                  @RequestParam(value="profitFromAvailable[]", defaultValue = "0") int[] profitFromAvailable,
-                                  @RequestParam(value="deliveryTime[]", defaultValue = "0") int[] deliveryTime,
-                                  @RequestParam(value="supplierPrice[]") double[] supplierPrice,
-                                  @RequestParam(value="avia[]", defaultValue = "1") int[] avia,
-                                  @RequestParam(value="producer[]", defaultValue = "KOMATSU") String[] producer,
+                                  @RequestParam(value="unit[]", required = false) String[] unit,
+                                  @RequestParam(value="price[]", required = false) int[] price,
+                                  @RequestParam(value="sum[]", required = false) int[] sum,
+                                  @RequestParam(value="lastOfferPrice[]", required = false) int[] lastOfferPrice,
+                                  @RequestParam(value="lastOfferDate[]", required = false) String[] lastOfferDate,
+                                  @RequestParam(value="availability[]", required = false) int[] availability,
+                                  @RequestParam(value="inStockNetCost[]", required = false) int[] inStockNetCost,
+                                  @RequestParam(value="profitFromAvailable[]", required = false) int[] profitFromAvailable,
+                                  @RequestParam(value="deliveryTime[]", required = false) int[] deliveryTime,
+                                  @RequestParam(value="supplierPrice[]", required = false) double[] supplierPrice,
+                                  @RequestParam(value="avia[]", required = false) int[] avia,
+                                  @RequestParam(value="producer[]", required = false) String[] producer,
                                   @RequestParam(value="customerName", defaultValue = "customer") String customerName,
                                   @RequestParam(value="requestNumber", defaultValue = "Request Number") String requestNumber,
                                   @RequestParam(value="offerDate", defaultValue = "111-11-11") String offerDate,
@@ -125,35 +125,17 @@ public class OfferController {
                                   @RequestParam(value="exchangeRate", defaultValue = "1") double exchangeRate,
                                   @RequestParam(value="VAT", defaultValue = "without VAT") String VAT,
                                   ModelMap modelMap
-    ) throws Throwable {
+    )    {
 
         Offer offer = new Offer().setCustomer(customerService.getCustomerByName(customerName)).
                 setRequestNumber(requestNumber).setOfferDate(CalendarAdapter.getGregCalendar(offerDate)).
                 setValidationDate(CalendarAdapter.getGregCalendar(offerValidityDate)).setCurrency(currency).
                 setProfitPercentage(profitPercentage).setTransportation(transportation).
-                setProfitPercentage(profitPercentage).setDiscount(discount).setVAT(VAT).setExchangeRate(exchangeRate);
+                setProfitPercentage(profitPercentage).setDiscount(discount).setVAT(VAT).setExchangeRate(exchangeRate).setOfferCondition("current");
         offerService.saveOffer(offer);
         Offer savedOffer = offerService.getLastSavedOffer();
         Set<OfferLine> offerLines = new HashSet<>();
 
-//        throw new Throwable( "p n"+ partName.length +
-//                "pnumb" +partNumber.length +
-//                "pos" + position.length +
-//                quantity.length +
-//                offeredPartNumber.length +
-//                unit.length +
-//                price.length +
-//                sum.length +
-//                lastOfferPrice.length +
-//                lastOfferDate.length +
-//                availability.length +
-//                inStockNetCost.length +
-//                profitFromAvailable.length +
-//                deliveryTime.length +
-//             supplierPrice.length +
-//                producer.length+
-//                avia.length
-//                ) ;
 
         for (int i=0; i<position.length; i++) {
             OfferLine offerLine = new OfferLine(position[i],
@@ -176,7 +158,7 @@ public class OfferController {
             offerLineService.saveOfferLine(offerLine);
                 }
 
-                return new ModelAndView("redirect:/"+savedOffer.getId(), modelMap);
+                return new ModelAndView("redirect:/offer/"+savedOffer.getId(), modelMap);
     }
 
 
