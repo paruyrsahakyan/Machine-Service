@@ -26,6 +26,9 @@ public class OfferDTO {
     private double exchangeRate;
 
 
+    public OfferDTO() {
+    }
+
     public OfferDTO(Offer offer, List<OfferLine> offerLines) {
 
         this.id = offer.getId();
