@@ -290,7 +290,9 @@ input[type=number] {
         "<option  value='шт'> шт </option> "+
         "<option  value='л'> л </option> "+
         "</select>" ;
-        parameterRow.insertCell();
+        var priceRoundingCell.insertCell(6);
+        priceRoundingCell.innerHTML = "<input  type ='number' style ='width:70px id='priceRounding'  onchange = 'setPrice()'  value='100' >"
+
         parameterRow.insertCell();
         parameterRow.insertCell();
         parameterRow.insertCell();
@@ -417,7 +419,11 @@ function setPrice() {
      var avia = document.getElementById("avia"+1).value;
 
      var price = supplierPrice*avia/1.2*((100-discount)/100)*exchangeRate/(100-profitPercentage)*100;
-     price = Math.round(price+price*transportation/100);
+     price = price+price*transportation/100;
+     var rounding = document.getElementById("priceRounding").value;
+
+     price = Math.round(price / rounding) *rounding;
+
      var profitFromAvailable = Math.round((price-inStockNetCost)/price*100);
      var sum = price*quantity;
       
