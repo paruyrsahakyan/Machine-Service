@@ -119,7 +119,7 @@ input[type=number] {
         <input id="hiddenCustomerName"  type="hidden" name="customerName" value="${selectedCustomer.name}">
         <input id="hiddenRequestNumber"  type="hidden" name="requestNumber" value="${offer.requestNumber}">
         <input id="hiddenOfferDate"  type="hidden" name="offerDate" value="${offer.offerDate}">
-        <input id="hiddenOfferValidationDate"  type="hidden" name="offerValidationDate" value="${offer.validationDate.name}">
+        <input id="hiddenOfferValidationDate"  type="hidden" name="offerValidationDate" value="${offer.validationDate}">
         <input id="hiddenCurrency"  type="hidden" name="currency" value="${offer.currency}">
         <input id="hiddenProfitPercentage"  type="hidden" name="profit" value="${offer.profitPercentage}">
         <input id="hiddenTransportation"  type="hidden" name="transportation" value="${offer.transportation}">
@@ -151,8 +151,7 @@ input[type=number] {
              var customerName = "${priceForCustomer.customerName}";
              var quantityInStock = "${priceForCustomer.quantityInStock}";
              var profit = "${priceForCustomer.profit}";
-             var lastOfferDate = "1111-11-11"; 
-
+           
               initialPriceList.push({
              id: id,
              article: article,
@@ -160,8 +159,8 @@ input[type=number] {
              price: price,
              customerName: customerName,
              quantityInStock: quantityInStock,
-             profit: profit,
-             lastOfferDate : lastOfferDate
+             profit: profit
+        
              });
            </c:forEach>
 
@@ -175,6 +174,7 @@ input[type=number] {
                    var inStockNetCost = "${offerLine.inStockNetCost}";
                    var lastOfferPrice = "${offerLine.lastOfferedPrice}";
                    var availability = "${offerLine.availability}";
+                   var lastOfferDate = "${offeLine.lastOfferDate}";
 
                    offerLines.push({
                     partName: partName,
@@ -185,6 +185,7 @@ input[type=number] {
                    sum:sum,
                    inStockNetCost:inStockNetCost,
                    lastOfferPrice:lastOfferPrice,
+                   lastOfferDate:lastOfferDate,
                    availability:availability
                                        });
                </c:forEach>
@@ -340,7 +341,7 @@ input[type=number] {
                 cell13.innerHTML = "<input type='number' style ='width:60px' id='profitFromAvailable"+(i+1)+"' name= 'profitFromAvailable[]' >";
                 cell14.innerHTML = "<input type='number' style ='width:130px' name= 'deliveryTime[]' >";
                 cell15.innerHTML = "<input type='number' step = 'any' style ='width:110px' id='supplierPrice"+(i+1)+"'name= 'supplierPrice[]' value='" + offerLines[i].supplierPrice + "' >";
-                cell16.innerHTML = "<input type='number' style ='width:50px' id='avia"+(i+1)+"'name= 'avia[]' value = 1 >";
+                cell16.innerHTML = "<input type='number' style ='width:50px' id='avia"+(i+1)+"'name= 'avia[]' value = '1' >";
                 cell17.innerHTML = "<input type='text'  size='6'   id='producer"+(i+1)+"' name= 'producer[]' value ='Komatsu' >";
                   
             }
@@ -406,6 +407,7 @@ function setPrice() {
     var transportation = document.getElementById("transportation").value;
     var discount = document.getElementById("discount").value;
     var exchangeRate = document.getElementById("exchangeRate").value;
+    var avia = document.getElementById("avia").value;
 
     for (var i = 1; i <= offerLines.length; i++) {
 
@@ -413,7 +415,7 @@ function setPrice() {
      var  quantity = document.getElementById("quantity"+i).value;
      var  quantity = document.getElementById("inStockNetCost"+i).value;
 
-     var price = supplierPrice/1.2*((100-discount)/100)*exchangeRate/(100-profitPercentage)*100;
+     var price = supplierPrice*avia/1.2*((100-discount)/100)*exchangeRate/(100-profitPercentage)*100;
      price = Math.round(price+price*transportation/100);
      var profitFromAvailable = Math.round((price-inStockNetCost)/price*100);
      var sum = price*quantity;
