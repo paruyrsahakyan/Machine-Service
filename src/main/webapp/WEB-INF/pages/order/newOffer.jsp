@@ -291,7 +291,7 @@ input[type=number] {
         "<option  value='л'> л </option> "+
         "</select>" ;
         var priceRoundingCell = parameterRow.insertCell(6);
-        priceRoundingCell.innerHTML = "<input  type ='number' style ='width:70px id='priceRounding'  onchange = 'setPrice()'  value='100' >"
+        priceRoundingCell.innerHTML = "<input  type ='number' style ='width:70px' id='priceRounding'  onchange = 'setPrice()'  value='100' >"
 
         parameterRow.insertCell();
         parameterRow.insertCell();
