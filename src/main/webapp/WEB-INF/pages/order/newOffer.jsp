@@ -291,7 +291,7 @@ input[type=number] {
         "<option  value='л'> л </option> "+
         "</select>" ;
         var priceRoundingCell = parameterRow.insertCell(6);
-        priceRoundingCell.innerHTML = "<input  type ='number' style ='width:70px' id='priceRounding'  onchange = 'setPrice()'  value='100' >"
+        priceRoundingCell.innerHTML = "<input  type ='number' style ='width:70px' id='priceRounding'  onchange = 'roundPrices()'  value='10' >"
 
         parameterRow.insertCell();
         parameterRow.insertCell();
@@ -421,8 +421,10 @@ function setPrice() {
      var price = supplierPrice*avia/1.2*((100-discount)/100)*exchangeRate/(100-profitPercentage)*100;
      price = price+price*transportation/100;
      var rounding = document.getElementById("priceRounding").value;
+      
+      if(price>rounding) {
 
-     price = Math.round(price / rounding) *rounding;
+     price = Math.round(price / rounding) *rounding; }
 
      var profitFromAvailable = Math.round((price-inStockNetCost)/price*100);
      var sum = price*quantity;
@@ -440,6 +442,21 @@ function setPrice() {
     }
 
 }
+
+function roundPrices(){
+
+          var rounding = document.getElementById("priceRounding").value;
+
+         for (var i = 1; i <= offerLines.length; i++) {
+            var price = document.getElementById("price"+i).value;
+            if(price>rounding) {
+     price = Math.round(price / rounding) *rounding; }
+           
+         }
+
+    }
+
+
 
 function setHiddenRequestNumber(){
     var requestNumber = document.getElementById("requestNumber").value;
