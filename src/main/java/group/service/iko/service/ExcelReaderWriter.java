@@ -355,6 +355,7 @@ public class ExcelReaderWriter {
 
             int quantity = (int) quantityCell.getNumericCellValue();
             RequestLine requestLine = new RequestLine();
+            requestLine.setPosition(lineNumber);
             requestLine.setPartName(partName);
             requestLine.setPartNumber(partNumber);
             requestLine.setQuantity(quantity);

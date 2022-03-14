@@ -2,6 +2,10 @@ package group.service.iko.entities;
 
 public class RequestLine {
 
+
+
+
+    private  int position;
     private  int lineNumber;
     private  String partName;
     private  String partNumber;
@@ -38,6 +42,14 @@ public class RequestLine {
 
     public void setLineNumber(int lineNumber) {
         this.lineNumber = lineNumber;
+    }
+
+    public int getPosition() {
+        return position;
+    }
+
+    public void setPosition(int position) {
+        this.position = position;
     }
 
     @Override

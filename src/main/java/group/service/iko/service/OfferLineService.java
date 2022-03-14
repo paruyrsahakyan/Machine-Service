@@ -60,8 +60,10 @@ public class OfferLineService {
         List<OfferLine> offerLines = new ArrayList<>();
         for (RequestLine requestLine : request.getRequestLines()) {
 
+
             String partNumber = requestLine.getPartNumber();
             OfferLine offerLine = new OfferLine();
+            offerLine.setPosition(requestLine.getPosition());
             offerLine.setRequestedPartNumber(partNumber);
             offerLine.setRequestedPartName(requestLine.getPartName());
             int quantity = requestLine.getQuantity();

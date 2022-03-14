@@ -86,8 +86,8 @@ input[type=number] {
                 <td> <input type="number" name="discount" id="discount" onchange="setHiddenDiscount()">  </td>
                 <td> <label for="exchangeRate">Курс</label> </td>
                 <td> <input type="number" name="exchangeRate" step="0.01" id="exchangeRate" onchange="setHiddenExchangeRate()">   </td>
-                <td> <input type="radio" name="VAT" value="withoutVAT" id="VAT" onchange="setHiddenVAT()">  <label for="VAT"> Без НДС </label>
-                     <br>  <input type="radio" name="VAT" value="withVAT" id="VAT"> 
+                <td> <input type="radio" name="VAT" value="Без НДС" id="VAT" onchange="setHiddenVAT()">  <label for="VAT"> Без НДС </label>
+                     <br>  <input type="radio" name="VAT" value="Вкл 20% НДС" id="VAT"> 
                        <label for="VAT"> Вкл 20% НДС</label>
                  </td>
             </tr>

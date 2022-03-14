@@ -87,7 +87,8 @@ public class OfferController {
     ) throws Throwable {
         Customer customer = customerService.getCustomerByName(customerName);
         redirectAttributes.addFlashAttribute("priceList", priceForCustomerService.getPriceListByCustomerName(customer.getName()));
-        redirectAttributes.addFlashAttribute("offer", offerService.makeOfferFromRequestedFile(customerName, uploadedFile));
+        Offer offer = offerService.makeOfferFromRequestedFile(customerName, uploadedFile);
+        redirectAttributes.addFlashAttribute("offer", new OfferDTO(offer));
         redirectAttributes.addAttribute("selectedCustomer", customerService.getCustomerByName(customerName).getId());
         return new RedirectView("/offer/newOffer");
     }

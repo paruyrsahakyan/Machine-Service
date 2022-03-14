@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Request {
 
-
+    private int position;
     private  Customer customer;
     private  String requestNumber;
     private List<RequestLine> requestLines;
@@ -34,7 +34,13 @@ public class Request {
         this.requestLines = requestLines;
     }
 
+    public int getPosition() {
+        return position;
+    }
 
+    public void setPosition(int position) {
+        this.position = position;
+    }
 
     @Override
     public String toString() {

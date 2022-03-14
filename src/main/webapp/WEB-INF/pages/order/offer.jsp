@@ -243,7 +243,7 @@ input[type=number] {
                    else if (i==7) {
                     var totalSumCell = totalRow.insertCell(i);
                      totalSumCell.innerHTML = "Итого";
-                    totalSumCell.innerHTML = "<input type='number' style ='width:70px' name= 'totalSum' id ='totalSum' >";
+                    totalSumCell.innerHTML = ${offer.sum};
                 } else {
                   totalRow.insertCell(i);
                 }
