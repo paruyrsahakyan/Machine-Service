@@ -43,7 +43,7 @@ input[type=number] {
 </div>
 
 <div class="mainContent">
-    <h2>Создание Нового КП</h2>
+    <h2>Коммерческое Предложение</h2>
  </div>
 
 <div class = "mainContent">

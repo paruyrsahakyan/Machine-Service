@@ -340,7 +340,7 @@ input[type=number] {
                 cell13.innerHTML = "<input type='number' style ='width:60px' id='profitFromAvailable"+(i+1)+"' name= 'profitFromAvailable[]' >";
                 cell14.innerHTML = "<input type='number' style ='width:130px' name= 'deliveryTime[]' >";
                 cell15.innerHTML = "<input type='number' step = 'any' style ='width:110px' id='supplierPrice"+(i+1)+"'name= 'supplierPrice[]' value='" + offerLines[i].supplierPrice + "' >";
-                cell16.innerHTML = "<input type='number' style ='width:50px' id='avia"+(i+1)+"'name= 'avia[]' >";
+                cell16.innerHTML = "<input type='number' style ='width:50px' id='avia"+(i+1)+"'name= 'avia[]' value = 1 >";
                 cell17.innerHTML = "<input type='text'  size='6'   id='producer"+(i+1)+"' name= 'producer[]' value ='Komatsu' >";
                   
             }
@@ -348,7 +348,7 @@ input[type=number] {
                 var totalRow = table.insertRow();
             for (var i = 0; i < 17; i++) {
                 if(i==6){
-                    var  totalSumLableCell = totalRow.insertCell;
+                    var  totalSumLableCell = totalRow.insertCell(i);
                     totalSumLableCell.innerHTML = "Итого";
                 }
                    else if (i==7) {
