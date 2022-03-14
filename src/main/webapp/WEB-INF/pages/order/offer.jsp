@@ -242,6 +242,7 @@ input[type=number] {
                 }
                    else if (i==7) {
                     var totalSumCell = totalRow.insertCell(i);
+                     totalSumLableCell.style.fontWeight = 'bold';
                      totalSumCell.innerHTML = "Итого";
                     totalSumCell.innerHTML = ${offer.sum};
                 } else {

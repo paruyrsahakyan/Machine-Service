@@ -60,7 +60,7 @@ public class OfferController {
     @RequestMapping("/newOffer")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ModelAndView newOfferPage(@RequestParam(value = "selectedCustomer", required = false, defaultValue = "0") int customerId,
-                                     @ModelAttribute("offer") Offer offer,
+                                     @ModelAttribute("offer") OfferDTO offer,
                                       ModelMap modelMap) throws Throwable {
         ModelAndView modelAndView = new ModelAndView("order/newOffer");
         modelAndView.addObject("customerList", CustomerDTO.convertIntoDTO(customerService.getAllCustomers()));
