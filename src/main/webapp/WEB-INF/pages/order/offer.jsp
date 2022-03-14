@@ -105,6 +105,7 @@ input[type=number] {
                    var availability = "${offerLine.availability}";
                    var profitFromAvailable = "${offerLine.profitFromAvailable}";
                    var inStockNetCost = "${offerLine.inStockNetCost}";
+                   var deliveryTime = "${offerLine.supplyTime}";
                   
   
                    offerLines.push({
@@ -123,7 +124,8 @@ input[type=number] {
                    lastOfferDate: lastOfferDate,
                    availability:availability,
                    profitFromAvailable:profitFromAvailable,
-                   inStockNetCost:inStockNetCost
+                   inStockNetCost:inStockNetCost,
+                   deliveryTime:deliveryTime
                                        });
                    </c:forEach>
 
@@ -234,11 +236,13 @@ input[type=number] {
             for (var i = 0; i < 17; i++) {
                 if(i==6){
                     var  totalSumLableCell = totalRow.insertCell(i);
+                     totalSumLableCell.style.fontWeight = 'bold';
                     totalSumLableCell.innerHTML = "Итого";
-                    totalSumLableCell.style.fontWeight = 'bold';
+
                 }
                    else if (i==7) {
                     var totalSumCell = totalRow.insertCell(i);
+                     totalSumCell.innerHTML = "Итого";
                     totalSumCell.innerHTML = "<input type='number' style ='width:70px' name= 'totalSum' id ='totalSum' >";
                 } else {
                   totalRow.insertCell(i);
