@@ -13,9 +13,13 @@ public class CalendarAdapter {
         return  new GregorianCalendar(Integer.parseInt(year), Integer.parseInt(month)-1, Integer.parseInt(day));
     }
     public static String getStringFormat(GregorianCalendar calendar){
+        String dateFormatted;
+        if (calendar!=null){
         SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd");   // formerly  was "dd.MM.yyyy"
         fmt.setCalendar(calendar);
-        String dateFormatted = fmt.format(calendar.getTime());
+        dateFormatted = fmt.format(calendar.getTime());}
+          else { dateFormatted ="111-11-11";}
+
         return dateFormatted;
     }
 }

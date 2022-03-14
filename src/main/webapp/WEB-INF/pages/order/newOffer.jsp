@@ -410,8 +410,9 @@ function setPrice() {
     for (var i = 1; i <= offerLines.length; i++) {
 
      var  supplierPrice = document.getElementById("supplierPrice"+i).value;
-     var quantity = offerLines[i-1].quantity;
-     var inStockNetCost = offerLines[i-1].inStockNetCost;
+     var  quantity = document.getElementById("quantity"+i).value;
+     var  quantity = document.getElementById("inStockNetCost"+i).value;
+
      var price = supplierPrice/1.2*((100-discount)/100)*exchangeRate/(100-profitPercentage)*100;
      price = Math.round(price+price*transportation/100);
      var profitFromAvailable = Math.round((price-inStockNetCost)/price*100);
