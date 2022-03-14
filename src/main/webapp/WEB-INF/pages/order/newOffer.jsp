@@ -303,7 +303,7 @@ input[type=number] {
 
         
         var producerCell = parameterRow.insertCell(16);
-        producerCell.innerHTML =  "<input id='ProducerForAllLines'  size='5' onkeyup = 'setProducer()'  value='KOMATSU' >"
+        producerCell.innerHTML =  "<input id='ProducerForAllLines'  size='5' onkeyup = 'setProducer()'  value='Komatsu' >"
                      
               
         for (var i = 0; i < offerLines.length; i++) {
@@ -339,7 +339,7 @@ input[type=number] {
                 cell11.innerHTML = "<input type='number' style ='width:100px' name= 'availability[]' value='" + offerLines[i].availability + "' >";
                 cell12.innerHTML = "<input type='number' style ='width:100px'  id='inStockNetCost"+(i+1)+"'  name= 'inStockNetCost[]' value='" + offerLines[i].inStockNetCost + "' >";
                 cell13.innerHTML = "<input type='number' style ='width:60px' id='profitFromAvailable"+(i+1)+"' name= 'profitFromAvailable[]' >";
-                cell14.innerHTML = "<input type='number' style ='width:130px' name= 'deliveryTime[]' >";
+                cell14.innerHTML = "<input type='number' style ='width:130px' name= 'deliveryTime[]' value = '0' >";
                 cell15.innerHTML = "<input type='number' step = 'any' style ='width:110px' id='supplierPrice"+(i+1)+"'name= 'supplierPrice[]' value='" + offerLines[i].supplierPrice + "' >";
                 cell16.innerHTML = "<input type='number' style ='width:50px' id='avia"+(i+1)+"'name= 'avia[]' value = '1' >";
                 cell17.innerHTML = "<input type='text'  size='6'   id='producer"+(i+1)+"' name= 'producer[]' value ='Komatsu' >";
@@ -356,6 +356,7 @@ input[type=number] {
                    else if (i==7) {
                     var totalSumCell = totalRow.insertCell(i);
                     totalSumCell.innerHTML = "<input type='number' style ='width:70px' name= 'totalSum' id ='totalSum' >";
+                    totalSumCell.style.fontWeight = 'bold';
                 } else {
                   totalRow.insertCell(i);
                 }
@@ -407,13 +408,13 @@ function setPrice() {
     var transportation = document.getElementById("transportation").value;
     var discount = document.getElementById("discount").value;
     var exchangeRate = document.getElementById("exchangeRate").value;
-    var avia = document.getElementById("avia").value;
-
+    
     for (var i = 1; i <= offerLines.length; i++) {
 
      var  supplierPrice = document.getElementById("supplierPrice"+i).value;
      var  quantity = document.getElementById("quantity"+i).value;
      var  inStockNetCost = document.getElementById("inStockNetCost"+i).value;
+     var avia = document.getElementById("avia"+1).value;
 
      var price = supplierPrice*avia/1.2*((100-discount)/100)*exchangeRate/(100-profitPercentage)*100;
      price = Math.round(price+price*transportation/100);

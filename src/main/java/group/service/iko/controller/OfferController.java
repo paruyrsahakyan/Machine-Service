@@ -123,7 +123,7 @@ public class OfferController {
                                   @RequestParam(value="transportation", defaultValue = "0") int transportation,
                                   @RequestParam(value="discount", defaultValue = "0") int discount,
                                   @RequestParam(value="exchangeRate", defaultValue = "1") double exchangeRate,
-                                  @RequestParam(value="VAT", defaultValue = "without VAT") String VAT,
+                                  @RequestParam(value="VAT", defaultValue = "драм Без НДС") String VAT,
                                   @RequestParam(value = "totalSum", defaultValue = "0") double totalSum,
                                   ModelMap modelMap
     )    {
