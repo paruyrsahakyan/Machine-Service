@@ -341,14 +341,14 @@ input[type=number] {
                 cell14.innerHTML = "<input type='number' style ='width:130px' name= 'deliveryTime[]' >";
                 cell15.innerHTML = "<input type='number' step = 'any' style ='width:110px' id='supplierPrice"+(i+1)+"'name= 'supplierPrice[]' value='" + offerLines[i].supplierPrice + "' >";
                 cell16.innerHTML = "<input type='number' style ='width:50px' id='avia"+(i+1)+"'name= 'avia[]' >";
-                cell17.innerHTML = "<input type='text'  size='6'   id='producer"+(i+1)+"' name= 'producer[]' >";
+                cell17.innerHTML = "<input type='text'  size='6'   id='producer"+(i+1)+"' name= 'producer[]' value ='Komatsu' >";
                   
             }
 
                 var totalRow = table.insertRow();
             for (var i = 0; i < 17; i++) {
                 if(i==6){
-                    var = totalSumLableCell = totalRow.insertCell;
+                    var  totalSumLableCell = totalRow.insertCell;
                     totalSumLableCell.innerHTML = "Итого";
                 }
                    else if (i==7) {
@@ -395,7 +395,7 @@ function setProducer() {
 
  var producer = document.getElementById("ProducerForAllLines").value;
 for (var i = 1; i <= offerLines.length; i++) {
-     document.getElementById("producer"+i).innerHTML = producer;
+     document.getElementById("producer"+i).value = producer;
     }
 }
 
