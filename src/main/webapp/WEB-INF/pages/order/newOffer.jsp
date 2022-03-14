@@ -349,6 +349,7 @@ input[type=number] {
             for (var i = 0; i < 17; i++) {
                 if(i==6){
                     var  totalSumLableCell = totalRow.insertCell(i);
+                    totalSumLableCell.style.fontWeight = 'bold';
                     totalSumLableCell.innerHTML = "Итого";
                 }
                    else if (i==7) {
@@ -408,7 +409,7 @@ function setPrice() {
 
     for (var i = 1; i <= offerLines.length; i++) {
 
-     var  supplierPrice = offerLines[i-1].supplierPrice;
+     var  supplierPrice = document.getElementById("supplierPrice"+i).value;
      var quantity = offerLines[i-1].quantity;
      var inStockNetCost = offerLines[i-1].inStockNetCost;
      var price = supplierPrice/1.2*((100-discount)/100)*exchangeRate/(100-profitPercentage)*100;
