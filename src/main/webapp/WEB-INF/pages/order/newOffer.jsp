@@ -174,8 +174,9 @@ input[type=number] {
                    var inStockNetCost = "${offerLine.inStockNetCost}";
                    var lastOfferPrice = "${offerLine.lastOfferedPrice}";
                    var availability = "${offerLine.availability}";
-                   var lastOfferDate = "${offeLine.lastOfferDate}";
-                   
+                   var lastOfferDate = "${offeLine.lastOfferDate}"
+                   if(lastOfferDate==null){lastOfferDate="0"};
+
                    offerLines.push({
                     partName: partName,
                    partNumber: partNumber,
