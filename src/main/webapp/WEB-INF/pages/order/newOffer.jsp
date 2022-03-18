@@ -175,7 +175,7 @@ input[type=number] {
                    var lastOfferPrice = "${offerLine.lastOfferedPrice}";
                    var availability = "${offerLine.availability}";
                    var lastOfferDate = "${offeLine.lastOfferDate}";
-
+                   
                    offerLines.push({
                     partName: partName,
                    partNumber: partNumber,
@@ -337,14 +337,14 @@ input[type=number] {
                 cell7.innerHTML = "<input type='number' style ='width:70px' id='price"+(i+1)+"' name= 'price[]' onChange ='setSum("+i+")' >";
                 cell8.innerHTML = "<input type='number' style ='width:70px' id='sum"+(i+1)+"' name= 'sum[]' value='" + offerLines[i].sum+ "' >"
                 cell9.innerHTML = "<input type='number' style ='width:100px' name= 'lastOfferPrice[]' value='" +offerLines[i].lastOfferPrice+"' >";
-                cell10.innerHTML = "<input type='date' style ='width:130px' name= 'lastOfferDate[]' value='" + offerLines[i].lastOfferDate + "' >";
+                cell10.innerHTML = "<input type='text' style ='width:130px' name= 'lastOfferDate[]' value='" + offerLines[i].lastOfferDate + "' >";
                 cell11.innerHTML = "<input type='number' style ='width:100px' name= 'availability[]' value='" + offerLines[i].availability + "' >";
                 cell12.innerHTML = "<input type='number' style ='width:100px'  id='inStockNetCost"+(i+1)+"'  name= 'inStockNetCost[]' value='" + offerLines[i].inStockNetCost + "' >";
                 cell13.innerHTML = "<input type='number' style ='width:60px' id='profitFromAvailable"+(i+1)+"' name= 'profitFromAvailable[]' >";
                 cell14.innerHTML = "<input type='number' style ='width:130px' name= 'deliveryTime[]' value = '0' >";
                 cell15.innerHTML = "<input type='number' step = 'any' style ='width:110px' id='supplierPrice"+(i+1)+"'name= 'supplierPrice[]' value='" + offerLines[i].supplierPrice + "' >";
                 cell16.innerHTML = "<input type='number' style ='width:50px' id='avia"+(i+1)+"'name= 'avia[]' value = '1' >";
-                cell17.innerHTML = "<input type='text'  size='6'   id='producer"+(i+1)+"' name= 'producer[]' value ='Komatsu' >";
+                cell17.innerHTML = "<input type='text'  size='6'   id='producer"+(i+1)+"' name= 'producer[]'  value ='Komatsu' onkeyup='setProducer()'>";
                   
             }
 
