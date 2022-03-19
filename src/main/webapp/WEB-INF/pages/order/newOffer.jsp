@@ -86,8 +86,9 @@ input[type=number] {
                 <td> <input type="number" name="discount" id="discount" onchange="setHiddenDiscount()">  </td>
                 <td> <label for="exchangeRate">Курс</label> </td>
                 <td> <input type="number" name="exchangeRate" step="0.01" id="exchangeRate" onchange="setHiddenExchangeRate()" value ="1">   </td>
-                <td> <input type="radio" name="VAT" value="Без НДС" id="VAT" onchange="setHiddenVAT()">  <label for="VAT"> Без НДС </label>
-                     <br>  <input type="radio" name="VAT" value="Вкл 20% НДС" id="VAT"> 
+                <td> <input type="radio" name="VAT" value="Без НДС" id="VAT" onchange="setHiddenVAT()">
+                    <label for="VAT"> Без НДС </label>
+                     <br>  <input type="radio" name="VAT" value="Вкл 20% НДС" >
                        <label for="VAT"> Вкл 20% НДС</label>
                  </td>
             </tr>
@@ -139,7 +140,6 @@ input[type=number] {
         var customerList = [];
         var priceListForSelectedCustomer = [];
         var priceListFilteredByArticle = [];
-        var priceListForSelectedCustomer = [];
         var selectedCustomerName = "${selectedCustomer.name}";
         var offerLines=[];
 
@@ -213,10 +213,6 @@ input[type=number] {
                   }
         }
                 }
-
-        var setLastOfferPrice = function () {
-            alert("Hello! I am an alert box!!");
-       }
 
 
         function setOfferLinesInTable() {
@@ -450,17 +446,23 @@ function roundPrices(){
 
          for (var i = 1; i <= offerLines.length; i++) {
             var priceCell = document.getElementById("price"+i);
-            var privce = priceCell.value;
+            var price = priceCell.value;
+
             if(price>rounding) {
-     price = Math.round(price / rounding)*rounding; 
      var priceCell = document.getElementById("price"+i);
      var sumCell = document.getElementById("sum"+i);
-     var profitFromAvailableCell = document.getElementById("profitFromAvailable"+i); 
+     var profitFromAvailableCell = document.getElementById("profitFromAvailable"+i);
+     var  inStockNetCost = document.getElementById("inStockNetCost"+i).value;
+     var  quantity = document.getElementById("quantity"+i).value;
+     price = Math.round(price / rounding)*rounding; 
+     var sum = price*quantity;
+     var profitFromAvailable = Math.round((price-inStockNetCost)/price*100);
+
      priceCell.value = price;
      sumCell.value = sum;
      profitFromAvailableCell.value = profitFromAvailable;
-
      setTotalSum();
+
  }
       }
  
