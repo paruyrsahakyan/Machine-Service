@@ -85,7 +85,7 @@ input[type=number] {
                 <td> <label for="discount">Скидка</label>  </td>
                 <td> <input type="number" name="discount" id="discount" onchange="setHiddenDiscount()">  </td>
                 <td> <label for="exchangeRate">Курс</label> </td>
-                <td> <input type="number" name="exchangeRate" step="0.01" id="exchangeRate" onchange="setHiddenExchangeRate()">   </td>
+                <td> <input type="number" name="exchangeRate" step="0.01" id="exchangeRate" onchange="setHiddenExchangeRate()" value ="1">   </td>
                 <td> <input type="radio" name="VAT" value="Без НДС" id="VAT" onchange="setHiddenVAT()">  <label for="VAT"> Без НДС </label>
                      <br>  <input type="radio" name="VAT" value="Вкл 20% НДС" id="VAT"> 
                        <label for="VAT"> Вкл 20% НДС</label>
@@ -174,7 +174,7 @@ input[type=number] {
                    var inStockNetCost = "${offerLine.inStockNetCost}";
                    var lastOfferPrice = "${offerLine.lastOfferedPrice}";
                    var availability = "${offerLine.availability}";
-                   var lastOfferDate = "${offeLine.lastOfferDate}"
+                   var lastOfferDate = "${offeLine.lastOfferDate}";
                    if(lastOfferDate==null){lastOfferDate="0"};
 
                    offerLines.push({
@@ -292,7 +292,7 @@ input[type=number] {
         "<option  value='л'> л </option> "+
         "</select>" ;
         var priceRoundingCell = parameterRow.insertCell(6);
-        priceRoundingCell.innerHTML = "<input  type ='number' style ='width:70px' id='priceRounding'  onchange = 'roundPrices()'  value='10' >"
+        priceRoundingCell.innerHTML = "<input  type ='number' style ='width:70px' id='priceRounding'  onchange = 'roundPrices()'  value='1' >"
 
         parameterRow.insertCell();
         parameterRow.insertCell();
@@ -449,13 +449,22 @@ function roundPrices(){
           var rounding = document.getElementById("priceRounding").value;
 
          for (var i = 1; i <= offerLines.length; i++) {
-            var price = document.getElementById("price"+i).value;
+            var priceCell = document.getElementById("price"+i);
+            var privce = priceCell.value;
             if(price>rounding) {
-     price = Math.round(price / rounding) *rounding; }
-           
-         }
+     price = Math.round(price / rounding)*rounding; 
+     var priceCell = document.getElementById("price"+i);
+     var sumCell = document.getElementById("sum"+i);
+     var profitFromAvailableCell = document.getElementById("profitFromAvailable"+i); 
+     priceCell.value = price;
+     sumCell.value = sum;
+     profitFromAvailableCell.value = profitFromAvailable;
 
-    }
+     setTotalSum();
+ }
+      }
+ 
+         }
 
 
 
