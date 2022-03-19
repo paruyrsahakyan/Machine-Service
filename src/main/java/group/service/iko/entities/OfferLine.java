@@ -69,7 +69,8 @@ public class OfferLine {
     this.price = price;
     this.sum = sum;
     this.lastOfferedPrice = lastOfferPrice;
-    this.lastOfferDate = CalendarAdapter.getGregCalendar(lastOfferDate);
+    if (lastOfferDate.contains("-")){
+    this.lastOfferDate = CalendarAdapter.getGregCalendar(lastOfferDate);}
     this.availability=availability;
     this.inStockNetCost = inStockNetCost;
     this.profitFromAvailable = profitFromAvailable;

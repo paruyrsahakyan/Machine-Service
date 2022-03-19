@@ -127,8 +127,7 @@ public class OfferController {
                                   @RequestParam(value = "totalSum", defaultValue = "0") double totalSum,
                                   ModelMap modelMap
     )    {
-
-        Offer offer = new Offer().setCustomer(customerService.getCustomerByName(customerName)).
+       Offer offer = new Offer().setCustomer(customerService.getCustomerByName(customerName)).
                 setRequestNumber(requestNumber).setOfferDate(CalendarAdapter.getGregCalendar(offerDate)).
                 setValidationDate(CalendarAdapter.getGregCalendar(offerValidityDate)).setCurrency(currency).
                 setProfitPercentage(profitPercentage).setTransportation(transportation).
@@ -164,4 +163,3 @@ public class OfferController {
 
 
 }
-
