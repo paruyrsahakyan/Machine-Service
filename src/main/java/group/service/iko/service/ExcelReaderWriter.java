@@ -84,7 +84,7 @@ public class ExcelReaderWriter {
                 if (partNumberCell.getCellTypeEnum() == CellType.STRING) {
                     partNumber = partNumberCell.getStringCellValue();
                     if (partNumber.contains("\"")) {
-                        partNumber.replace("\"", " ");
+                        partNumber = "contains quotes";
                     }
 
                 } else {
@@ -92,7 +92,7 @@ public class ExcelReaderWriter {
                     int lastIndexOf = string.lastIndexOf(".");
                     partNumber = string.substring(0, lastIndexOf);
                     if (partNumber.contains("\"")) {
-                        partNumber.replace("\"", " ");
+                        partNumber = "contains quotes";
                     }
                 }
                 part.setPartNumber(partNumber);
