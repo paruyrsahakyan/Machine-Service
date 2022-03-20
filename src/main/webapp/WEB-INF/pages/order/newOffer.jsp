@@ -196,7 +196,6 @@ input[type=number] {
         </c:forEach>
 
 
-           </c:forEach>
 
             <c:forEach items="${partsOnStock}" var="item">
        
@@ -205,16 +204,15 @@ input[type=number] {
        var inStockNetCost = "${item.value.netCost}";
        partsOnStockMap.set(key, {quantity: quantity,
         inStockNetCost:inStockNetCost});
+
+
         </c:forEach>
-
-
 
                var rowQuantity = offerLines.length;
                 
                  setDefaultOfferDates();
 
                  setTabeHeadRow();
-
 
                if (rowQuantity > 0) {
              setOfferLinesInTable();
@@ -236,8 +234,7 @@ input[type=number] {
         }
                 }
 
-             
-        function setOfferLinesInTable() {
+             function setOfferLinesInTable() {
 
             var table = document.getElementById("offerTable");
                   
