@@ -604,7 +604,7 @@ function addRow(){
 }
 
 function deleteRow(rowNumber){
-    table.deleteRow(rowNumber);
+    table.deleteRow(rowNumber+1);
     rowQuantity--;
 
 }
