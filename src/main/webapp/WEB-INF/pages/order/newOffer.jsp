@@ -143,6 +143,7 @@ input[type=number] {
         var priceListFilteredByArticle = [];
         var selectedCustomerName = "${selectedCustomer.name}";
         var offerLines=[];
+        var table = document.getElementById("offerTable");
 
          <c:forEach items="${priceList}" var="priceForCustomer">
             var id ="${priceForCustomer.id}";
@@ -200,7 +201,7 @@ input[type=number] {
                  setTabeHeadRow();
 
 
-               if (offerLines.length > 0) {
+               if (rowQuantity > 0) {
              setOfferLinesInTable();
                 setCustomer();
                }
@@ -225,7 +226,7 @@ input[type=number] {
 
             var table = document.getElementById("offerTable");
                   
-        for (var i = 0; i < offerLines.length; i++) {
+        for (var i = 0; i < rowQuantity; i++) {
 
                 var row = table.insertRow();
 
@@ -284,7 +285,7 @@ input[type=number] {
 
 function setTotalSum() {
   var totalSum = 0;
-  for (var i = 0; i < offerLines.length; i++){
+  for (var i = 0; i < rowQuantity; i++){
     var rowSum = document.getElementById("sum" +(i+1)).value;
     totalSum = totalSum*1+rowSum*1;
       }
@@ -295,7 +296,7 @@ function setTotalSum() {
 function setUnits()  {
 
  var units = document.getElementById("unitForAllLines").value;
-for (var i = 1; i <= offerLines.length; i++) {
+for (var i = 1; i <= rowQuantity; i++) {
     document.getElementById("unit"+i).value = units;
 
     }
@@ -304,7 +305,7 @@ for (var i = 1; i <= offerLines.length; i++) {
 function setProducer() {
 
  var producer = document.getElementById("ProducerForAllLines").value;
-for (var i = 1; i <= offerLines.length; i++) {
+for (var i = 1; i <= rowQuantity; i++) {
      document.getElementById("producer"+i).value = producer;
     }
 }
@@ -316,7 +317,7 @@ function setPrice() {
     var discount = document.getElementById("discount").value;
     var exchangeRate = document.getElementById("exchangeRate").value;
     
-    for (var i = 1; i <= offerLines.length; i++) {
+    for (var i = 1; i <= rowQuantity; i++) {
 
      var  supplierPrice = document.getElementById("supplierPrice"+i).value;
      var  quantity = document.getElementById("quantity"+i).value;
@@ -352,7 +353,7 @@ function roundPrices(){
 
           var rounding = document.getElementById("priceRounding").value;
 
-         for (var i = 1; i <= offerLines.length; i++) {
+         for (var i = 1; i <= rowQuantity; i++) {
             var priceCell = document.getElementById("price"+i);
             var price = priceCell.value;
 
@@ -509,12 +510,12 @@ var table = document.getElementById("offerTable");
        parameterRow.insertCell();
        parameterRow.insertCell();
        parameterRow.insertCell();
-       var cellUnits = parameterRow.insertCell(5);
+       var cellUnits = parameterRow.insertCell(6);
          cellUnits.innerHTML =  "<select id='unitForAllLines' onChange = 'setUnits()'>"+
         "<option  value='шт'> шт </option> "+
         "<option  value='л'> л </option> "+
         "</select>" ;
-        var priceRoundingCell = parameterRow.insertCell(6);
+        var priceRoundingCell = parameterRow.insertCell(7);
         priceRoundingCell.innerHTML = "<input  type ='number' style ='width:70px' id='priceRounding'  onchange = 'roundPrices()'  value='1' >"
 
         parameterRow.insertCell();
@@ -527,7 +528,7 @@ var table = document.getElementById("offerTable");
         parameterRow.insertCell();
         parameterRow.insertCell();
 
-       var producerCell = parameterRow.insertCell(16);
+       var producerCell = parameterRow.insertCell(17);
         producerCell.innerHTML =  "<input id='ProducerForAllLines'  size='5' onkeyup = 'setProducer()'  value='Komatsu' >"
 
                      }
@@ -537,12 +538,12 @@ function setTableSumRow() {
     var table = document.getElementById("offerTable");
    var totalRow = table.insertRow();
             for (var i = 0; i < 17; i++) {
-                if(i==6){
+                if(i==7){
                     var  totalSumLableCell = totalRow.insertCell(i);
                     totalSumLableCell.style.fontWeight = 'bold';
                     totalSumLableCell.innerHTML = "Итого";
                 }
-                   else if (i==7) {
+                   else if (i==8) {
                     var totalSumCell = totalRow.insertCell(i);
                     totalSumCell.innerHTML = "<input type='number' style ='width:70px' name= 'totalSum' id ='totalSum' >";
                     totalSumCell.style.fontWeight = 'bold';
@@ -602,6 +603,13 @@ function addRow(){
                 rowQuantity++;
 
 }
+
+function deleteRow(rowNumber){
+    table.deleteRow(rowNumber);
+    rowQuantity--;
+
+}
+
 
          </script>
 
