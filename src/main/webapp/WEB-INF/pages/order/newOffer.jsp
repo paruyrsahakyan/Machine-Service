@@ -625,7 +625,7 @@ function deleteRow(rowNumber){
 function checkNewPartInsert(rowNumber) {
 
 
-var  partNumber = document.getElementById(rowNumber).value;
+var  partNumber = document.getElementById("partNUmber"+(rowNumber+1)).value;
 
 var inStockQuantity = partsOnStockMap.get(partNumber).quantity;
 var inStockNetCost = partsOnStockMap.get(partNumber).inStockNetCost;
