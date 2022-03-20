@@ -144,6 +144,8 @@ input[type=number] {
         var selectedCustomerName = "${selectedCustomer.name}";
         var offerLines=[];
         var table = document.getElementById("offerTable");
+        const partsOnStockMap = new Map();
+
 
          <c:forEach items="${priceList}" var="priceForCustomer">
             var id ="${priceForCustomer.id}";
@@ -192,6 +194,20 @@ input[type=number] {
             availability:availability
         });
         </c:forEach>
+
+
+           </c:forEach>
+
+            <c:forEach items="${partsOnStock}" var="item">
+       
+       var key =  "${item.key})";
+       var quantity = "${item.value.quantity})
+       var inStockNetCost = "${item.value.netCost}";
+       partsOnStockMap.set(key, {quantity: quantity,
+        inStockNetCost:inStockNetCost});
+        </c:forEach>
+
+
 
                var rowQuantity = offerLines.length;
                 
@@ -613,8 +629,8 @@ function checkNewPartInsert(rowNumber) {
 
 var partNumber = udocument.getElementById(rowNumber).value;
 
-var inStockQuantity = ${partsOnStock[partNumber].quantity};
-var inStockNetCost = ${partsOnStock[partNumber].netCost};
+var inStockQuantity = partsOnStockMap.get(partNumber).quantity;
+var inStockNetCost = partsOnStockMap.get(partNumber).inStockNetCost;
 
  
  document.getElementById("inStockNetCost"+(rowNumber+1)).value = inStockNetCost;
