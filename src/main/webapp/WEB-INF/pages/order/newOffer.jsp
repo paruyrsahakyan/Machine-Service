@@ -625,14 +625,14 @@ function deleteRow(rowNumber){
 function checkNewPartInsert(rowNumber) {
 
 
-var  partNumber = document.getElementById("partNumber"+(rowNumber+1)).value;
+var  partNumber = document.getElementById("partNumber" +rowNumber).value;
 
 var inStockQuantity = partsOnStockMap.get(partNumber).quantity;
 var inStockNetCost = partsOnStockMap.get(partNumber).inStockNetCost;
 
  
- document.getElementById("inStockNetCost"+(rowNumber+1)).value = inStockNetCost;
- document.getElementById("availability"+(rowNumber+1)).value = inStockQuantity;
+ document.getElementById("inStockNetCost" + rowNumber).value = inStockNetCost;
+ document.getElementById("availability"+rowNumber).value = inStockQuantity;
 
 
 
