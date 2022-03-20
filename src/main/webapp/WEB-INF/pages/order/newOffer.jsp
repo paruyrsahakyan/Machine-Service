@@ -167,32 +167,31 @@ input[type=number] {
            </c:forEach>
 
             <c:forEach items="${offer.offerLines}" var="offerLine">
-                   var partName = "${offerLine.requestedPartName}";
-                   var partNumber = "${offerLine.requestedPartNumber}";
-                   var quantity = "${offerLine.quantity}";
-                   var offeredPartNumber = "${offerLine.offeredPartNumber}";
-                   var supplierPrice = "${offerLine.supplierPrice}";
-                   var sum ="${offerLine.sum}";
-                   var inStockNetCost = "${offerLine.inStockNetCost}";
-                   var lastOfferPrice = "${offerLine.lastOfferedPrice}";
-                   var availability = "${offerLine.availability}";
-                   var lastOfferDate = "${offeLine.lastOfferDate}";
-                   if(lastOfferDate==null){lastOfferDate="0"};
+        var partName = "${offerLine.requestedPartName}";
+        var partNumber = "${offerLine.requestedPartNumber}";
+        var quantity = "${offerLine.quantity}";
+        var offeredPartNumber = "${offerLine.offeredPartNumber}";
+        var supplierPrice = "${offerLine.supplierPrice}";
+        var sum ="${offerLine.sum}";
+        var inStockNetCost = "${offerLine.inStockNetCost}";
+        var lastOfferPrice = "${offerLine.lastOfferedPrice}";
+        var availability = "${offerLine.availability}";
+        var lastOfferDate = "${offeLine.lastOfferDate}";
+        if(lastOfferDate==null){lastOfferDate="0"};
 
-                   offerLines.push({
-                    partName: partName,
-                   partNumber: partNumber,
-                   quantity: quantity,
-                   offeredPartNumber:offeredPartNumber,
-                   supplierPrice:supplierPrice,
-                   sum:sum,
-                   inStockNetCost:inStockNetCost,
-                   lastOfferPrice:lastOfferPrice,
-                   lastOfferDate:lastOfferDate,
-                   availability:availability
-                                       });
-               </c:forEach>
-
+        offerLines.push({
+            partName: partName,
+            partNumber: partNumber,
+            quantity: quantity,
+            offeredPartNumber:offeredPartNumber,
+            supplierPrice:supplierPrice,
+            sum:sum,
+            inStockNetCost:inStockNetCost,
+            lastOfferPrice:lastOfferPrice,
+            lastOfferDate:lastOfferDate,
+            availability:availability
+        });
+        </c:forEach>
 
                var rowQuantity = offerLines.length;
                 
@@ -582,7 +581,7 @@ function addRow(){
                 var cell16 = row.insertCell(16);
                 var cell17 = row.insertCell(17);
 
-                cellDelete.innerHTML = "<input type='button'  style ='width:30px' style='color:red' value='X'  onclick='deleteRow("+(rowQuantity+1)+"')  >";
+                cellDelete.innerHTML = "<input type='button'  style ='width:30px' style='color:red' value='X'  onclick='deleteRow("+(rowQuantity+1)+")'  >";
                 cell1.innerHTML = "<input type='number'  style ='width:30px' name= 'position[]'  value='" +(rowQuantity+1) + "' >";
                 cell2.innerHTML = "<input type='text'   name= 'partName[]' >";
                 cell3.innerHTML = "<input type='text' size='11' name= 'partNumber[]' >";

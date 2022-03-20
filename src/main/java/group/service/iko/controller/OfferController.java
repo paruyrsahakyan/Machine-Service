@@ -72,6 +72,8 @@ public class OfferController {
             modelAndView.addObject("selectedCustomer", new CustomerDTO(customer));
             modelAndView.addObject("priceList", PriceForCustomerDTO.convertIntoDTO(priceList));
             modelAndView.addObject("offer", offer);
+            modelAndView.addObject("partsOnStock", WareHouseService.getAvailablePartList());
+
            }
 
         return modelAndView;
