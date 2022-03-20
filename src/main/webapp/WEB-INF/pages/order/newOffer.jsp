@@ -219,95 +219,7 @@ input[type=number] {
 
 
         function setOfferLinesInTable() {
-
-        var table = document.getElementById("offerTable");
-        table.innerText = "";
-        var titleRow = table.insertRow();
-        var titleCell1 = titleRow.insertCell(0);
-        var titleCell2 = titleRow.insertCell(1);
-        var titleCell3 = titleRow.insertCell(2);
-        var titleCell4 = titleRow.insertCell(3);
-        var titleCell5 = titleRow.insertCell(4);
-        var titleCell6 = titleRow.insertCell(5);
-        var titleCell7 = titleRow.insertCell(6);
-        var titleCell8 = titleRow.insertCell(7);
-        var titleCell9 = titleRow.insertCell(8);
-        var titleCell10 = titleRow.insertCell(9);
-        var titleCell11 = titleRow.insertCell(10);
-        var titleCell12 = titleRow.insertCell(11);
-        var titleCell13 = titleRow.insertCell(12);
-        var titleCell14 = titleRow.insertCell(13);
-        var titleCell15 = titleRow.insertCell(14);
-        var titleCell16 = titleRow.insertCell(15);
-        var titleCell17 = titleRow.insertCell(16);
-
-        titleCell1.innerHTML = "N";
-        titleCell2.innerHTML = "Название";
-        titleCell3.innerHTML = "Артикул запроса";
-        titleCell4.innerHTML =  "Количество";
-        titleCell5.innerHTML = "Артикул КП";
-        titleCell6.innerHTML = "Ед.";
-        titleCell7.innerHTML = "Цена";
-        titleCell8.innerHTML = "Сумма";
-        titleCell9.innerHTML = "Цена послед. КП";
-        titleCell10.innerHTML = "Дата посл. КП";
-        titleCell11.innerHTML = "Налич. Масиса 3";
-        titleCell12.innerHTML = "Себест. Масис3";
-        titleCell13.innerHTML = "МП от М3";
-        titleCell14.innerHTML = "Срок поставки";
-        titleCell15.innerHTML = "Цена поставщика";
-        titleCell16.innerHTML = "Авиап.";
-        titleCell17.innerHTML = "Произв.";
-
-        titleCell1.style.fontWeight = 'bold';
-        titleCell2.style.fontWeight = 'bold';
-        titleCell3.style.fontWeight = 'bold';
-        titleCell4.style.fontWeight = 'bold'
-        titleCell5.style.fontWeight = 'bold'
-        titleCell6.style.fontWeight = 'bold'
-        titleCell7.style.fontWeight = 'bold';
-        titleCell8.style.fontWeight = 'bold';
-        titleCell9.style.fontWeight = 'bold';
-        titleCell10.style.fontWeight = 'bold';
-        titleCell11.style.fontWeight = 'bold';
-        titleCell12.style.fontWeight = 'bold';
-        titleCell13.style.fontWeight = 'bold';
-        titleCell14.style.fontWeight = 'bold';
-        titleCell15.style.fontWeight = 'bold';
-        titleCell16.style.fontWeight = 'bold';
-        titleCell17.style.fontWeight = 'bold';
-
-  
-     var parameterRow = table.insertRow();
-
-       parameterRow.insertCell();
-       parameterRow.insertCell();
-       parameterRow.insertCell();
-       parameterRow.insertCell();
-       parameterRow.insertCell();
-       var cellUnits = parameterRow.insertCell(5);
-         cellUnits.innerHTML =  "<select id='unitForAllLines' onChange = 'setUnits()'>"+
-        "<option  value='шт'> шт </option> "+
-        "<option  value='л'> л </option> "+
-        "</select>" ;
-        var priceRoundingCell = parameterRow.insertCell(6);
-        priceRoundingCell.innerHTML = "<input  type ='number' style ='width:70px' id='priceRounding'  onchange = 'roundPrices()'  value='1' >"
-
-        parameterRow.insertCell();
-        parameterRow.insertCell();
-        parameterRow.insertCell();
-        parameterRow.insertCell();
-        parameterRow.insertCell();
-        parameterRow.insertCell();
-        parameterRow.insertCell();
-        parameterRow.insertCell();
-        parameterRow.insertCell();
-
-        
-        var producerCell = parameterRow.insertCell(16);
-        producerCell.innerHTML =  "<input id='ProducerForAllLines'  size='5' onkeyup = 'setProducer()'  value='Komatsu' >"
-                     
-              
+                      
         for (var i = 0; i < offerLines.length; i++) {
                 var row = table.insertRow();
                 var cell1 = row.insertCell(0);
@@ -535,6 +447,96 @@ function setDefaultOfferDates(){
 
 }
 
+ function setTabeHeadRow() {
+
+var table = document.getElementById("offerTable");
+        table.innerText = "";
+        var titleRow = table.insertRow();
+        var titleCell1 = titleRow.insertCell(0);
+        var titleCell2 = titleRow.insertCell(1);
+        var titleCell3 = titleRow.insertCell(2);
+        var titleCell4 = titleRow.insertCell(3);
+        var titleCell5 = titleRow.insertCell(4);
+        var titleCell6 = titleRow.insertCell(5);
+        var titleCell7 = titleRow.insertCell(6);
+        var titleCell8 = titleRow.insertCell(7);
+        var titleCell9 = titleRow.insertCell(8);
+        var titleCell10 = titleRow.insertCell(9);
+        var titleCell11 = titleRow.insertCell(10);
+        var titleCell12 = titleRow.insertCell(11);
+        var titleCell13 = titleRow.insertCell(12);
+        var titleCell14 = titleRow.insertCell(13);
+        var titleCell15 = titleRow.insertCell(14);
+        var titleCell16 = titleRow.insertCell(15);
+        var titleCell17 = titleRow.insertCell(16);
+
+        titleCell1.innerHTML = "N";
+        titleCell2.innerHTML = "Название";
+        titleCell3.innerHTML = "Артикул запроса";
+        titleCell4.innerHTML =  "Количество";
+        titleCell5.innerHTML = "Артикул КП";
+        titleCell6.innerHTML = "Ед.";
+        titleCell7.innerHTML = "Цена";
+        titleCell8.innerHTML = "Сумма";
+        titleCell9.innerHTML = "Цена послед. КП";
+        titleCell10.innerHTML = "Дата посл. КП";
+        titleCell11.innerHTML = "Налич. Масиса 3";
+        titleCell12.innerHTML = "Себест. Масис3";
+        titleCell13.innerHTML = "МП от М3";
+        titleCell14.innerHTML = "Срок поставки";
+        titleCell15.innerHTML = "Цена поставщика";
+        titleCell16.innerHTML = "Авиап.";
+        titleCell17.innerHTML = "Произв.";
+
+        titleCell1.style.fontWeight = 'bold';
+        titleCell2.style.fontWeight = 'bold';
+        titleCell3.style.fontWeight = 'bold';
+        titleCell4.style.fontWeight = 'bold'
+        titleCell5.style.fontWeight = 'bold'
+        titleCell6.style.fontWeight = 'bold'
+        titleCell7.style.fontWeight = 'bold';
+        titleCell8.style.fontWeight = 'bold';
+        titleCell9.style.fontWeight = 'bold';
+        titleCell10.style.fontWeight = 'bold';
+        titleCell11.style.fontWeight = 'bold';
+        titleCell12.style.fontWeight = 'bold';
+        titleCell13.style.fontWeight = 'bold';
+        titleCell14.style.fontWeight = 'bold';
+        titleCell15.style.fontWeight = 'bold';
+        titleCell16.style.fontWeight = 'bold';
+        titleCell17.style.fontWeight = 'bold';
+
+  
+     var parameterRow = table.insertRow();
+
+       parameterRow.insertCell();
+       parameterRow.insertCell();
+       parameterRow.insertCell();
+       parameterRow.insertCell();
+       parameterRow.insertCell();
+       var cellUnits = parameterRow.insertCell(5);
+         cellUnits.innerHTML =  "<select id='unitForAllLines' onChange = 'setUnits()'>"+
+        "<option  value='шт'> шт </option> "+
+        "<option  value='л'> л </option> "+
+        "</select>" ;
+        var priceRoundingCell = parameterRow.insertCell(6);
+        priceRoundingCell.innerHTML = "<input  type ='number' style ='width:70px' id='priceRounding'  onchange = 'roundPrices()'  value='1' >"
+
+        parameterRow.insertCell();
+        parameterRow.insertCell();
+        parameterRow.insertCell();
+        parameterRow.insertCell();
+        parameterRow.insertCell();
+        parameterRow.insertCell();
+        parameterRow.insertCell();
+        parameterRow.insertCell();
+        parameterRow.insertCell();
+
+        
+        var producerCell = parameterRow.insertCell(16);
+        producerCell.innerHTML =  "<input id='ProducerForAllLines'  size='5' onkeyup = 'setProducer()'  value='Komatsu' >"
+
+                     }
 
 function addRow(){
 
