@@ -191,6 +191,8 @@ input[type=number] {
                                        });
                </c:forEach>
 
+               var rowQantity = offerLines.length;
+
                 
                  setDefaultOfferDates();
 
@@ -331,16 +333,16 @@ input[type=number] {
                 cell4.innerHTML = "<input type='number' style ='width:30px'  id ='quantity"+(i+1)+ "' name='quantity[]'  value='" +offerLines[i].quantity+"'"+"> ";
                 cell5.innerHTML = "<input type='text' size='11' name= 'offeredPartNumber[]'  value='" +offerLines[i].offeredPartNumber+"'"+"> ";
                 cell6.innerHTML = "<input type='text' size='2' id='unit"+(i+1)+"' name= 'unit[]'  value='шт'>";
-                cell7.innerHTML = "<input type='number' style ='width:70px' id='price"+(i+1)+"' name= 'price[]' onChange ='setSum("+i+")' >";
-                cell8.innerHTML = "<input type='number' style ='width:70px' id='sum"+(i+1)+"' name= 'sum[]' value='" + offerLines[i].sum+ "' >"
-                cell9.innerHTML = "<input type='number' style ='width:100px' name= 'lastOfferPrice[]' value='" +offerLines[i].lastOfferPrice+"' >";
-                cell10.innerHTML = "<input type='text' style ='width:130px' name= 'lastOfferDate[]' value='" + offerLines[i].lastOfferDate + "' >";
+                cell7.innerHTML = "<input type='number' step = 'any' style ='width:70px' id='price"+(i+1)+"' name= 'price[]' onChange ='setSum("+i+")' >";
+                cell8.innerHTML = "<input type='number'  step = 'any'style ='width:70px' id='sum"+(i+1)+"' name= 'sum[]' value='" + offerLines[i].sum+ "' >";
+                cell9.innerHTML = "<input type='number' step = 'any' style ='width:100px' name= 'lastOfferPrice[]' value='" +offerLines[i].lastOfferPrice+"' >";
+                cell10.innerHTML = "<input type='text'  style ='width:130px' name= 'lastOfferDate[]' value='" + offerLines[i].lastOfferDate + "' >";
                 cell11.innerHTML = "<input type='number' style ='width:100px' name= 'availability[]' value='" + offerLines[i].availability + "' >";
-                cell12.innerHTML = "<input type='number' style ='width:100px'  id='inStockNetCost"+(i+1)+"'  name= 'inStockNetCost[]' value='" + offerLines[i].inStockNetCost + "' >";
-                cell13.innerHTML = "<input type='number' style ='width:60px' id='profitFromAvailable"+(i+1)+"' name= 'profitFromAvailable[]' >";
-                cell14.innerHTML = "<input type='number' style ='width:130px' name= 'deliveryTime[]' value = '0' >";
-                cell15.innerHTML = "<input type='number' step = 'any' style ='width:110px' id='supplierPrice"+(i+1)+"'name= 'supplierPrice[]' value='" + offerLines[i].supplierPrice + "' >";
-                cell16.innerHTML = "<input type='number' style ='width:50px' id='avia"+(i+1)+"'name= 'avia[]' value = '1' >";
+                cell12.innerHTML = "<input type='number' step = 'any' style ='width:100px'  id='inStockNetCost"+(i+1)+"'  name= 'inStockNetCost[]' value='" + offerLines[i].inStockNetCost + "' >";
+                cell13.innerHTML = "<input type='number' step = 'any' style ='width:60px' id='profitFromAvailable"+(i+1)+"' name= 'profitFromAvailable[]' >";
+                cell14.innerHTML = "<input type='number'  style ='width:130px' name= 'deliveryTime[]' value = '0' >";
+                cell15.innerHTML = "<input type='number'  step = 'any' style ='width:110px' id='supplierPrice"+(i+1)+"'name= 'supplierPrice[]' value='" + offerLines[i].supplierPrice + "' >";
+                cell16.innerHTML = "<input type='number' step = 'any' style ='width:50px' id='avia"+(i+1)+"'name= 'avia[]' value = '1' >";
                 cell17.innerHTML = "<input type='text'  size='6'   id='producer"+(i+1)+"' name= 'producer[]'  value ='Komatsu' onkeyup='setProducer()'>";
                   
             }
@@ -532,7 +534,49 @@ function setDefaultOfferDates(){
 
 }
 
-         
+
+function addLine(){
+
+     var table = document.getElementById("offerTable");
+     var newRow = table.insertRow(rowQantity-1);
+
+                var cell1 = row.insertCell(0);
+                var cell2 = row.insertCell(1);
+                var cell3 = row.insertCell(2);
+                var cell4 = row.insertCell(3);
+                var cell5 = row.insertCell(4);
+                var cell6= row.insertCell(5);
+                var cell7 = row.insertCell(6);
+                var cell8 = row.insertCell(7);
+                var cell9= row.insertCell(8);
+                var cell10 = row.insertCell(9);
+                var cell11 = row.insertCell(10);
+                var cell12 = row.insertCell(11);
+                var cell13 = row.insertCell(12);
+                var cell14 = row.insertCell(13);
+                var cell15 = row.insertCell(14);
+                var cell16 = row.insertCell(15);
+                var cell17 = row.insertCell(16);
+
+
+                cell1.innerHTML = "<input type='number'  style ='width:30px' name= 'position[]'  value='" +rowQantity + "' >";
+                cell2.innerHTML = "<input type='text'   name= 'partName[]' ";
+                cell3.innerHTML = "<input type='text' size='11' name= 'partNumber[]' >";
+                cell4.innerHTML = "<input type='number' style ='width:30px'  id ='quantity"+rowQantity +"' name='quantity[]' > ";
+                cell5.innerHTML = "<input type='text' size='11' name= 'offeredPartNumber[]'  > ";
+                cell6.innerHTML = "<input type='text' size='2' id='unit"+rowQantity"' name= 'unit[]'  value='шт'>";
+                cell7.innerHTML = "<input type='number' step = 'any' style ='width:70px' id='price"+rowQantity+"' name= 'price[]' onChange ='setSum("+i+")' >";
+                cell8.innerHTML = "<input type='number'  step = 'any'style ='width:70px' id='sum"+rowQantity+"' name= 'sum[]' >";
+                cell9.innerHTML = "<input type='number' step = 'any' style ='width:100px' name= 'lastOfferPrice[]' >";
+                cell10.innerHTML = "<input type='text'  style ='width:130px' name= 'lastOfferDate[]'  >";
+                cell11.innerHTML = "<input type='number' style ='width:100px' name= 'availability[]' >";
+                cell12.innerHTML = "<input type='number' step = 'any' style ='width:100px'  id='inStockNetCost"+ rowQantity+"'  name= 'inStockNetCost[]' >";
+                cell13.innerHTML = "<input type='number' step = 'any' style ='width:60px' id='profitFromAvailable"+rowQantity+"' name= 'profitFromAvailable[]' >";
+                cell14.innerHTML = "<input type='number'  style ='width:130px' name= 'deliveryTime[]' value = '0' >";
+                cell15.innerHTML = "<input type='number'  step = 'any' style ='width:110px' id='supplierPrice"+rowQantity+"'name= 'supplierPrice[]' >";
+                cell16.innerHTML = "<input type='number' step = 'any' style ='width:50px' id='avia"+rowQantity+"'name= 'avia[]' value = '1' >";
+                cell17.innerHTML = "<input type='text'  size='6'   id='producer"+rowQantity"' name= 'producer[]'  value ='Komatsu' onkeyup='setProducer()'>";
+}
 
          </script>
 
