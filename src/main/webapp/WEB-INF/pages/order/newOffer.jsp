@@ -264,7 +264,7 @@ input[type=number] {
                 cellDelete.innerHTML = "<input type='button'  style ='width:30px' style='color:red' value='X'  onclick='deleteRow("+(rowQuantity+1)+"')  >";
                 cell1.innerHTML = "<input type='number'  style ='width:30px' name= 'position[]'  value='" +(i + 1) + "' >";
                 cell2.innerHTML = "<input type='text'   name= 'partName[]'  value='" +offerLines[i].partName+"'"+"> ";
-                cell3.innerHTML = "<input type='text' size='11'name= 'partNumber[]'  value='" +offerLines[i].partNumber+"'"+"> ";
+                cell3.innerHTML = "<input type='text' size='11'name= 'partNumber[]' id='partNumber"+(i+1)+"'  value='" +offerLines[i].partNumber+"'"+"> ";
                 cell4.innerHTML = "<input type='number' style ='width:30px'  id ='quantity"+(i+1)+ "' name='quantity[]'  value='" +offerLines[i].quantity+"'"+"> ";
                 cell5.innerHTML = "<input type='text' size='11' name= 'offeredPartNumber[]'  value='" +offerLines[i].offeredPartNumber+"'"+"> ";
                 cell6.innerHTML = "<input type='text' size='2' id='unit"+(i+1)+"' name= 'unit[]'  value='шт'>";
@@ -597,9 +597,9 @@ function addRow(){
                 cellDelete.innerHTML = "<input type='button'  style ='width:30px' style='color:red' value='X'  onclick='deleteRow("+(rowQuantity+1)+")'  >";
                 cell1.innerHTML = "<input type='number'  style ='width:30px' name= 'position[]'  value='" +(rowQuantity+1) + "' >";
                 cell2.innerHTML = "<input type='text'   name= 'partName[]'  onChange='checkNewPartInsert(" +(rowQuantity+1)+")' >";
-                cell3.innerHTML = "<input type='text' size='11' name= 'partNumber[]' >";
+                cell3.innerHTML = "<input type='text' size='11' name= 'partNumber[]' id='partNumber"+(rowQuantity+1)+"' >";
                 cell4.innerHTML = "<input type='number' style ='width:30px'  id ='quantity"+(rowQuantity+1) +"' name='quantity[]' > ";
-                cell5.innerHTML = "<input type='text' size='11' name= 'offeredPartNumber[]'  > ";
+                cell5.innerHTML = "<input type='text' size='11' name= 'offeredPartNumber[]'   > ";
                 cell6.innerHTML = "<input type='text' size='2' id='unit"+(rowQuantity+1)+"' name= 'unit[]'  value='шт'>";
                 cell7.innerHTML = "<input type='number' step = 'any' style ='width:70px' id='price"+(rowQuantity+1)+"' name= 'price[]' onChange ='setSum("+rowQuantity+")' >";
                 cell8.innerHTML = "<input type='number'  step = 'any'style ='width:70px' id='sum"+(rowQuantity+1)+"' name= 'sum[]' >";
@@ -624,7 +624,8 @@ function deleteRow(rowNumber){
 
 function checkNewPartInsert(rowNumber) {
 
-var partNumber = document.getElementById(rowNumber).value;
+
+var  = document.getElementById(rowNumber).value;
 
 var inStockQuantity = partsOnStockMap.get(partNumber).quantity;
 var inStockNetCost = partsOnStockMap.get(partNumber).inStockNetCost;
