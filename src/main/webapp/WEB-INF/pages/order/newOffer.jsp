@@ -129,6 +129,7 @@ input[type=number] {
         <input id="hiddenVAT"  type="hidden" name="VAT" value="${offer.VAT}" >
           <bvr>
             <br>
+            <input type="button" value="Добавить строку" onclick="addRow()" > 
       <input type="submit" value="Сохранить КП">
         </form:form>
         
