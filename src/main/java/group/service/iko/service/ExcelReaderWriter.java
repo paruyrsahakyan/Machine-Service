@@ -83,11 +83,17 @@ public class ExcelReaderWriter {
                 String partNumber = "";
                 if (partNumberCell.getCellTypeEnum() == CellType.STRING) {
                     partNumber = partNumberCell.getStringCellValue();
+                    if (partNumber.contains("\"")) {
+                        partNumber.replace("\"", " ");
+                    }
 
                 } else {
                     String string = new Double(partNumberCell.getNumericCellValue()).toString();
                     int lastIndexOf = string.lastIndexOf(".");
                     partNumber = string.substring(0, lastIndexOf);
+                    if (partNumber.contains("\"")) {
+                        partNumber.replace("\"", " ");
+                    }
                 }
                 part.setPartNumber(partNumber);
                 part.setNomenclature(row.getCell(nomenclatureColumn).toString());
