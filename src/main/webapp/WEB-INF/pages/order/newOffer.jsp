@@ -226,25 +226,29 @@ input[type=number] {
             var table = document.getElementById("offerTable");
                   
         for (var i = 0; i < offerLines.length; i++) {
-                var row = table.insertRow();
-                var cell1 = row.insertCell(0);
-                var cell2 = row.insertCell(1);
-                var cell3 = row.insertCell(2);
-                var cell4 = row.insertCell(3);
-                var cell5 = row.insertCell(4);
-                var cell6= row.insertCell(5);
-                var cell7 = row.insertCell(6);
-                var cell8 = row.insertCell(7);
-                var cell9= row.insertCell(8);
-                var cell10 = row.insertCell(9);
-                var cell11 = row.insertCell(10);
-                var cell12 = row.insertCell(11);
-                var cell13 = row.insertCell(12);
-                var cell14 = row.insertCell(13);
-                var cell15 = row.insertCell(14);
-                var cell16 = row.insertCell(15);
-                var cell17 = row.insertCell(16);
 
+                var row = table.insertRow();
+
+                var cellDelete = titleRow.insertCell(0);
+                var cell1 = row.insertCell(1);
+                var cell2 = row.insertCell(2);
+                var cell3 = row.insertCell(3);
+                var cell4 = row.insertCell(4);
+                var cell5 = row.insertCell(5);
+                var cell6 = row.insertCell(6);
+                var cell7 = row.insertCell(7);
+                var cell8 = row.insertCell(8);
+                var cell9 = row.insertCell(9);
+                var cell10 = row.insertCell(10);
+                var cell11 = row.insertCell(11);
+                var cell12 = row.insertCell(12);
+                var cell13 = row.insertCell(13);
+                var cell14 = row.insertCell(14);
+                var cell15 = row.insertCell(15);
+                var cell16 = row.insertCell(16);
+                var cell17 = row.insertCell(17);
+
+                cellDelete.innerHTML = "<input type='button'  style ='width:30px' style='color:red' value='X'  onclick='deleteRow("+(rowQuantity+1)+"')  >";
                 cell1.innerHTML = "<input type='number'  style ='width:30px' name= 'position[]'  value='" +(i + 1) + "' >";
                 cell2.innerHTML = "<input type='text'   name= 'partName[]'  value='" +offerLines[i].partName+"'"+"> ";
                 cell3.innerHTML = "<input type='text' size='11'name= 'partNumber[]'  value='" +offerLines[i].partNumber+"'"+"> ";
@@ -441,23 +445,25 @@ function setDefaultOfferDates(){
 var table = document.getElementById("offerTable");
         table.innerText = "";
         var titleRow = table.insertRow();
-        var titleCell1 = titleRow.insertCell(0);
-        var titleCell2 = titleRow.insertCell(1);
-        var titleCell3 = titleRow.insertCell(2);
-        var titleCell4 = titleRow.insertCell(3);
-        var titleCell5 = titleRow.insertCell(4);
-        var titleCell6 = titleRow.insertCell(5);
-        var titleCell7 = titleRow.insertCell(6);
-        var titleCell8 = titleRow.insertCell(7);
-        var titleCell9 = titleRow.insertCell(8);
-        var titleCell10 = titleRow.insertCell(9);
-        var titleCell11 = titleRow.insertCell(10);
-        var titleCell12 = titleRow.insertCell(11);
-        var titleCell13 = titleRow.insertCell(12);
-        var titleCell14 = titleRow.insertCell(13);
-        var titleCell15 = titleRow.insertCell(14);
-        var titleCell16 = titleRow.insertCell(15);
-        var titleCell17 = titleRow.insertCell(16);
+
+        var cellDelete = titleRow.insertCell(0);
+        var titleCell1 = titleRow.insertCell(1);
+        var titleCell2 = titleRow.insertCell(2);
+        var titleCell3 = titleRow.insertCell(3);
+        var titleCell4 = titleRow.insertCell(4);
+        var titleCell5 = titleRow.insertCell(5);
+        var titleCell6 = titleRow.insertCell(6);
+        var titleCell7 = titleRow.insertCell(7);
+        var titleCell8 = titleRow.insertCell(8);
+        var titleCell9 = titleRow.insertCell(9);
+        var titleCell10 = titleRow.insertCell(10);
+        var titleCell11 = titleRow.insertCell(11);
+        var titleCell12 = titleRow.insertCell(12);
+        var titleCell13 = titleRow.insertCell(13);
+        var titleCell14 = titleRow.insertCell(14);
+        var titleCell15 = titleRow.insertCell(15);
+        var titleCell16 = titleRow.insertCell(16);
+        var titleCell17 = titleRow.insertCell(17);
 
         titleCell1.innerHTML = "N";
         titleCell2.innerHTML = "Название";
@@ -496,7 +502,8 @@ var table = document.getElementById("offerTable");
         titleCell17.style.fontWeight = 'bold';
   
      var parameterRow = table.insertRow();
-
+       
+       parameterRow.insertCell();
        parameterRow.insertCell();
        parameterRow.insertCell();
        parameterRow.insertCell();
@@ -525,7 +532,7 @@ var table = document.getElementById("offerTable");
 
                      }
 
-function setTableSumRow{
+function setTableSumRow() {
 
     var table = document.getElementById("offerTable");
    var totalRow = table.insertRow();
@@ -553,26 +560,28 @@ function addRow(){
         setTableSumRow();
      }
 
-     var row = table.insertRow(rowQuantity+1);
+     var row = table.insertRow(rowQuantity+2);
 
-                var cell1 = row.insertCell(0);
-                var cell2 = row.insertCell(1);
-                var cell3 = row.insertCell(2);
-                var cell4 = row.insertCell(3);
-                var cell5 = row.insertCell(4);
-                var cell6= row.insertCell(5);
-                var cell7 = row.insertCell(6);
-                var cell8 = row.insertCell(7);
-                var cell9= row.insertCell(8);
-                var cell10 = row.insertCell(9);
-                var cell11 = row.insertCell(10);
-                var cell12 = row.insertCell(11);
-                var cell13 = row.insertCell(12);
-                var cell14 = row.insertCell(13);
-                var cell15 = row.insertCell(14);
-                var cell16 = row.insertCell(15);
-                var cell17 = row.insertCell(16);
+                var cellDelete = row.insertCell(0);
+                var cell1 = row.insertCell(1);
+                var cell2 = row.insertCell(2);
+                var cell3 = row.insertCell(3);
+                var cell4 = row.insertCell(4);
+                var cell5 = row.insertCell(5);
+                var cell6= row.insertCell(6);
+                var cell7 = row.insertCell(7);
+                var cell8 = row.insertCell(8);
+                var cell9= row.insertCell(9);
+                var cell10 = row.insertCell(10);
+                var cell11 = row.insertCell(11);
+                var cell12 = row.insertCell(12);
+                var cell13 = row.insertCell(13);
+                var cell14 = row.insertCell(14);
+                var cell15 = row.insertCell(15);
+                var cell16 = row.insertCell(16);
+                var cell17 = row.insertCell(17);
 
+                cellDelete.innerHTML = "<input type='button'  style ='width:30px' style='color:red' value='X'  onclick='deleteRow("+(rowQuantity+1)+"')  >";
                 cell1.innerHTML = "<input type='number'  style ='width:30px' name= 'position[]'  value='" +(rowQuantity+1) + "' >";
                 cell2.innerHTML = "<input type='text'   name= 'partName[]' >";
                 cell3.innerHTML = "<input type='text' size='11' name= 'partNumber[]' >";
