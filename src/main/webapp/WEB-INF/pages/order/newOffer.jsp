@@ -272,7 +272,7 @@ input[type=number] {
                 cell8.innerHTML = "<input type='number'  step = 'any'style ='width:70px' id='sum"+(i+1)+"' name= 'sum[]' value='" + offerLines[i].sum+ "' >";
                 cell9.innerHTML = "<input type='number' step = 'any' style ='width:100px' name= 'lastOfferPrice[]' value='" +offerLines[i].lastOfferPrice+"' >";
                 cell10.innerHTML = "<input type='text'  style ='width:130px' name= 'lastOfferDate[]' value='" + offerLines[i].lastOfferDate + "' >";
-                cell11.innerHTML = "<input type='number' style ='width:100px' name= 'availability[]' value='" + offerLines[i].availability + "' >";
+                cell11.innerHTML = "<input type='number' style ='width:100px' name= 'availability[]' value='" + offerLines[i].availability + "' id= 'availability"+(i+1)+"'>";
                 cell12.innerHTML = "<input type='number' step = 'any' style ='width:100px'  id='inStockNetCost"+(i+1)+"'  name= 'inStockNetCost[]' value='" + offerLines[i].inStockNetCost + "' >";
                 cell13.innerHTML = "<input type='number' step = 'any' style ='width:60px' id='profitFromAvailable"+(i+1)+"' name= 'profitFromAvailable[]' >";
                 cell14.innerHTML = "<input type='number'  style ='width:130px' name= 'deliveryTime[]' value = '0' >";
@@ -605,7 +605,7 @@ function addRow(){
                 cell8.innerHTML = "<input type='number'  step = 'any'style ='width:70px' id='sum"+(rowQuantity+1)+"' name= 'sum[]' >";
                 cell9.innerHTML = "<input type='number' step = 'any' style ='width:100px' name= 'lastOfferPrice[]' >";
                 cell10.innerHTML = "<input type='text'  style ='width:130px' name= 'lastOfferDate[]'  >";
-                cell11.innerHTML = "<input type='number' style ='width:100px' name= 'availability[]' >";
+                cell11.innerHTML = "<input type='number' style ='width:100px' name= 'availability[]' id= 'availability"+(rowQuantity+1)+"' >";
                 cell12.innerHTML = "<input type='number' step = 'any' style ='width:100px'  id='inStockNetCost"+ (rowQuantity+1)+"'  name= 'inStockNetCost[]' >";
                 cell13.innerHTML = "<input type='number' step = 'any' style ='width:60px' id='profitFromAvailable"+(rowQuantity+1)+"' name= 'profitFromAvailable[]' >";
                 cell14.innerHTML = "<input type='number'  style ='width:130px' name= 'deliveryTime[]' value = '0' >";
