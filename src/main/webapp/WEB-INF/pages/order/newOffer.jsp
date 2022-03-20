@@ -583,7 +583,7 @@ function addRow(){
 
                 cellDelete.innerHTML = "<input type='button'  style ='width:30px' style='color:red' value='X'  onclick='deleteRow("+(rowQuantity+1)+")'  >";
                 cell1.innerHTML = "<input type='number'  style ='width:30px' name= 'position[]'  value='" +(rowQuantity+1) + "' >";
-                cell2.innerHTML = "<input type='text'   name= 'partName[]' >";
+                cell2.innerHTML = "<input type='text'   name= 'partName[]'  onChange='checkNewPartInsert(" +(rowQuantity+1)+")' >";
                 cell3.innerHTML = "<input type='text' size='11' name= 'partNumber[]' >";
                 cell4.innerHTML = "<input type='number' style ='width:30px'  id ='quantity"+(rowQuantity+1) +"' name='quantity[]' > ";
                 cell5.innerHTML = "<input type='text' size='11' name= 'offeredPartNumber[]'  > ";
@@ -606,6 +606,21 @@ function addRow(){
 function deleteRow(rowNumber){
     table.deleteRow(rowNumber+1);
     rowQuantity--;
+
+}
+
+function checkNewPartInsert(rowNumber) {
+
+var partNumber = udocument.getElementById(rowNumber).value;
+
+var inStockQuantity = ${partsOnStock[partNumber].quantity};
+var inStockNetCost = ${partsOnStock[partNumber].netCost};
+
+ 
+ document.getElementById("inStockNetCost"+(rowNumber+1)).value = inStockNetCost;
+ document.getElementById("availability"+(rowNumber+1)).value = inStockQuantity;
+
+
 
 }
 
