@@ -264,24 +264,8 @@ input[type=number] {
                 cell17.innerHTML = "<input type='text'  size='6'   id='producer"+(i+1)+"' name= 'producer[]'  value ='Komatsu' onkeyup='setProducer()'>";
                   
             }
-
-                var totalRow = table.insertRow();
-            for (var i = 0; i < 17; i++) {
-                if(i==6){
-                    var  totalSumLableCell = totalRow.insertCell(i);
-                    totalSumLableCell.style.fontWeight = 'bold';
-                    totalSumLableCell.innerHTML = "Итого";
-                }
-                   else if (i==7) {
-                    var totalSumCell = totalRow.insertCell(i);
-                    totalSumCell.innerHTML = "<input type='number' style ='width:70px' name= 'totalSum' id ='totalSum' >";
-                    totalSumCell.style.fontWeight = 'bold';
-                } else {
-                  totalRow.insertCell(i);
-                }
-                
-            }
-
+        
+         setTableSumRow();
             setTotalSum();
 
 }
@@ -510,7 +494,6 @@ var table = document.getElementById("offerTable");
         titleCell15.style.fontWeight = 'bold';
         titleCell16.style.fontWeight = 'bold';
         titleCell17.style.fontWeight = 'bold';
-
   
      var parameterRow = table.insertRow();
 
@@ -537,15 +520,39 @@ var table = document.getElementById("offerTable");
         parameterRow.insertCell();
         parameterRow.insertCell();
 
-        
-        var producerCell = parameterRow.insertCell(16);
+       var producerCell = parameterRow.insertCell(16);
         producerCell.innerHTML =  "<input id='ProducerForAllLines'  size='5' onkeyup = 'setProducer()'  value='Komatsu' >"
 
                      }
 
+function setTableSumRow{
+
+    var table = document.getElementById("offerTable");
+   var totalRow = table.insertRow();
+            for (var i = 0; i < 17; i++) {
+                if(i==6){
+                    var  totalSumLableCell = totalRow.insertCell(i);
+                    totalSumLableCell.style.fontWeight = 'bold';
+                    totalSumLableCell.innerHTML = "Итого";
+                }
+                   else if (i==7) {
+                    var totalSumCell = totalRow.insertCell(i);
+                    totalSumCell.innerHTML = "<input type='number' style ='width:70px' name= 'totalSum' id ='totalSum' >";
+                    totalSumCell.style.fontWeight = 'bold';
+                } else {
+                  totalRow.insertCell(i);
+                }
+                            }
+}
+
 function addRow(){
 
      var table = document.getElementById("offerTable");
+
+     if (rowQuantity===0){
+        setTableSumRow();
+     }
+
      var row = table.insertRow(rowQuantity+1);
 
                 var cell1 = row.insertCell(0);
@@ -566,7 +573,6 @@ function addRow(){
                 var cell16 = row.insertCell(15);
                 var cell17 = row.insertCell(16);
 
-
                 cell1.innerHTML = "<input type='number'  style ='width:30px' name= 'position[]'  value='" +(rowQuantity+1) + "' >";
                 cell2.innerHTML = "<input type='text'   name= 'partName[]' >";
                 cell3.innerHTML = "<input type='text' size='11' name= 'partNumber[]' >";
@@ -584,7 +590,6 @@ function addRow(){
                 cell15.innerHTML = "<input type='number'  step = 'any' style ='width:110px' id='supplierPrice"+(rowQuantity+1)+"'name= 'supplierPrice[]' >";
                 cell16.innerHTML = "<input type='number' step = 'any' style ='width:50px' id='avia"+(rowQuantity+1)+"'name= 'avia[]' value = '1' >";
                 cell17.innerHTML = "<input type='text'  size='6'   id='producer"+(rowQuantity+1)+"' name= 'producer[]'  value ='Komatsu' onkeyup='setProducer()'>";
-
                 rowQuantity++;
 
 }
