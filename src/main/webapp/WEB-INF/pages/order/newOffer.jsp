@@ -560,12 +560,12 @@ function addLine(){
 
 
                 cell1.innerHTML = "<input type='number'  style ='width:30px' name= 'position[]'  value='" +rowQantity + "' >";
-                cell2.innerHTML = "<input type='text'   name= 'partName[]' ";
+                cell2.innerHTML = "<input type='text'   name= 'partName[]' >";
                 cell3.innerHTML = "<input type='text' size='11' name= 'partNumber[]' >";
                 cell4.innerHTML = "<input type='number' style ='width:30px'  id ='quantity"+rowQantity +"' name='quantity[]' > ";
                 cell5.innerHTML = "<input type='text' size='11' name= 'offeredPartNumber[]'  > ";
-                cell6.innerHTML = "<input type='text' size='2' id='unit"+rowQantity"' name= 'unit[]'  value='шт'>";
-                cell7.innerHTML = "<input type='number' step = 'any' style ='width:70px' id='price"+rowQantity+"' name= 'price[]' onChange ='setSum("+i+")' >";
+                cell6.innerHTML = "<input type='text' size='2' id='unit"+rowQantity+"' name= 'unit[]'  value='шт'>";
+                cell7.innerHTML = "<input type='number' step = 'any' style ='width:70px' id='price"+rowQantity+"' name= 'price[]' onChange ='setSum("+rowQantity+")' >";
                 cell8.innerHTML = "<input type='number'  step = 'any'style ='width:70px' id='sum"+rowQantity+"' name= 'sum[]' >";
                 cell9.innerHTML = "<input type='number' step = 'any' style ='width:100px' name= 'lastOfferPrice[]' >";
                 cell10.innerHTML = "<input type='text'  style ='width:130px' name= 'lastOfferDate[]'  >";
@@ -575,7 +575,7 @@ function addLine(){
                 cell14.innerHTML = "<input type='number'  style ='width:130px' name= 'deliveryTime[]' value = '0' >";
                 cell15.innerHTML = "<input type='number'  step = 'any' style ='width:110px' id='supplierPrice"+rowQantity+"'name= 'supplierPrice[]' >";
                 cell16.innerHTML = "<input type='number' step = 'any' style ='width:50px' id='avia"+rowQantity+"'name= 'avia[]' value = '1' >";
-                cell17.innerHTML = "<input type='text'  size='6'   id='producer"+rowQantity"' name= 'producer[]'  value ='Komatsu' onkeyup='setProducer()'>";
+                cell17.innerHTML = "<input type='text'  size='6'   id='producer"+rowQantity+"' name= 'producer[]'  value ='Komatsu' onkeyup='setProducer()'>";
 }
 
          </script>
