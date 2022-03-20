@@ -229,7 +229,7 @@ input[type=number] {
 
                 var row = table.insertRow();
 
-                var cellDelete = titleRow.insertCell(0);
+                var cellDelete = row.insertCell(0);
                 var cell1 = row.insertCell(1);
                 var cell2 = row.insertCell(2);
                 var cell3 = row.insertCell(3);
