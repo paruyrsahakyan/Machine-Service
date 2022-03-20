@@ -192,7 +192,7 @@ input[type=number] {
                                        });
                </c:forEach>
 
-               var rowQantity = offerLines.length;
+               var rowQuantity = offerLines.length;
 
                 
                  setDefaultOfferDates();
@@ -536,10 +536,10 @@ function setDefaultOfferDates(){
 }
 
 
-function addLine(){
+function addRow(){
 
      var table = document.getElementById("offerTable");
-     var newRow = table.insertRow(rowQantity-1);
+     var row = table.insertRow(rowQuantity+1);
 
                 var cell1 = row.insertCell(0);
                 var cell2 = row.insertCell(1);
@@ -560,23 +560,26 @@ function addLine(){
                 var cell17 = row.insertCell(16);
 
 
-                cell1.innerHTML = "<input type='number'  style ='width:30px' name= 'position[]'  value='" +rowQantity + "' >";
+                cell1.innerHTML = "<input type='number'  style ='width:30px' name= 'position[]'  value='" +rowQuantity + "' >";
                 cell2.innerHTML = "<input type='text'   name= 'partName[]' >";
                 cell3.innerHTML = "<input type='text' size='11' name= 'partNumber[]' >";
-                cell4.innerHTML = "<input type='number' style ='width:30px'  id ='quantity"+rowQantity +"' name='quantity[]' > ";
+                cell4.innerHTML = "<input type='number' style ='width:30px'  id ='quantity"+rowQuantity +"' name='quantity[]' > ";
                 cell5.innerHTML = "<input type='text' size='11' name= 'offeredPartNumber[]'  > ";
-                cell6.innerHTML = "<input type='text' size='2' id='unit"+rowQantity+"' name= 'unit[]'  value='шт'>";
-                cell7.innerHTML = "<input type='number' step = 'any' style ='width:70px' id='price"+rowQantity+"' name= 'price[]' onChange ='setSum("+rowQantity+")' >";
-                cell8.innerHTML = "<input type='number'  step = 'any'style ='width:70px' id='sum"+rowQantity+"' name= 'sum[]' >";
+                cell6.innerHTML = "<input type='text' size='2' id='unit"+rowQuantity+"' name= 'unit[]'  value='шт'>";
+                cell7.innerHTML = "<input type='number' step = 'any' style ='width:70px' id='price"+rowQuantity+"' name= 'price[]' onChange ='setSum("+rowQuantity+")' >";
+                cell8.innerHTML = "<input type='number'  step = 'any'style ='width:70px' id='sum"+rowQuantity+"' name= 'sum[]' >";
                 cell9.innerHTML = "<input type='number' step = 'any' style ='width:100px' name= 'lastOfferPrice[]' >";
                 cell10.innerHTML = "<input type='text'  style ='width:130px' name= 'lastOfferDate[]'  >";
                 cell11.innerHTML = "<input type='number' style ='width:100px' name= 'availability[]' >";
-                cell12.innerHTML = "<input type='number' step = 'any' style ='width:100px'  id='inStockNetCost"+ rowQantity+"'  name= 'inStockNetCost[]' >";
-                cell13.innerHTML = "<input type='number' step = 'any' style ='width:60px' id='profitFromAvailable"+rowQantity+"' name= 'profitFromAvailable[]' >";
+                cell12.innerHTML = "<input type='number' step = 'any' style ='width:100px'  id='inStockNetCost"+ rowQuantity+"'  name= 'inStockNetCost[]' >";
+                cell13.innerHTML = "<input type='number' step = 'any' style ='width:60px' id='profitFromAvailable"+rowQuantity+"' name= 'profitFromAvailable[]' >";
                 cell14.innerHTML = "<input type='number'  style ='width:130px' name= 'deliveryTime[]' value = '0' >";
-                cell15.innerHTML = "<input type='number'  step = 'any' style ='width:110px' id='supplierPrice"+rowQantity+"'name= 'supplierPrice[]' >";
-                cell16.innerHTML = "<input type='number' step = 'any' style ='width:50px' id='avia"+rowQantity+"'name= 'avia[]' value = '1' >";
-                cell17.innerHTML = "<input type='text'  size='6'   id='producer"+rowQantity+"' name= 'producer[]'  value ='Komatsu' onkeyup='setProducer()'>";
+                cell15.innerHTML = "<input type='number'  step = 'any' style ='width:110px' id='supplierPrice"+rowQuantity+"'name= 'supplierPrice[]' >";
+                cell16.innerHTML = "<input type='number' step = 'any' style ='width:50px' id='avia"+rowQuantity+"'name= 'avia[]' value = '1' >";
+                cell17.innerHTML = "<input type='text'  size='6'   id='producer"+rowQuantity+"' name= 'producer[]'  value ='Komatsu' onkeyup='setProducer()'>";
+
+                rowQuantity++;
+
 }
 
          </script>
