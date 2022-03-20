@@ -200,8 +200,8 @@ input[type=number] {
             <c:forEach items="${partsOnStock}" var="item">
        
        var key =  "${item.key}";
-       var quantity = "${item.value.quantity}"
-       var inStockNetCost = "${item.value.netCost}";
+       var quantity = ${item.value.quantity};
+       var inStockNetCost = ${item.value.netCost};
        partsOnStockMap.set(key, {quantity: quantity,
         inStockNetCost:inStockNetCost});
 
@@ -624,7 +624,7 @@ function deleteRow(rowNumber){
 
 function checkNewPartInsert(rowNumber) {
 
-var partNumber = udocument.getElementById(rowNumber).value;
+var partNumber = document.getElementById(rowNumber).value;
 
 var inStockQuantity = partsOnStockMap.get(partNumber).quantity;
 var inStockNetCost = partsOnStockMap.get(partNumber).inStockNetCost;
