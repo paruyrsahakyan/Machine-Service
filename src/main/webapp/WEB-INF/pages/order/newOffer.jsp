@@ -197,14 +197,14 @@ input[type=number] {
 
 
 
-            <c:forEach items="${partsOnStock}" var="item">
+    /*        <c:forEach items="${partsOnStock}" var="item">
        
        var key =  "${item.key}";
-       var quantity = ${item.value.quantity};
-       var inStockNetCost = ${item.value.netCost};
+       var quantity = "${item.value.quantity}";
+       var inStockNetCost = "${item.value.netCost}";
        partsOnStockMap.set(key, {quantity: quantity,
         inStockNetCost:inStockNetCost});
-
+         */
 
         </c:forEach>
 
