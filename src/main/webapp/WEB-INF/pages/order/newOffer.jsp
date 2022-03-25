@@ -144,7 +144,7 @@ input[type=number] {
         var selectedCustomerName = "${selectedCustomer.name}";
         var offerLines=[];
         var table = document.getElementById("offerTable");
-        const partsOnStockMap = new Map();
+        var partsOnStockMap = new Map();
 
 
          <c:forEach items="${priceList}" var="priceForCustomer">
@@ -197,14 +197,14 @@ input[type=number] {
 
 
 
-    /*        <c:forEach items="${partsOnStock}" var="item">
+       <c:forEach items="${partsOnStock}" var="item">
        
        var key =  "${item.key}";
        var quantity = "${item.value.quantity}";
        var inStockNetCost = "${item.value.netCost}";
        partsOnStockMap.set(key, {quantity: quantity,
         inStockNetCost:inStockNetCost});
-         */
+
 
         </c:forEach>
 
