@@ -528,7 +528,7 @@ var table = document.getElementById("offerTable");
         "<option  value='л'> л </option> "+
         "</select>" ;
         var priceRoundingCell = parameterRow.insertCell(7);
-        priceRoundingCell.innerHTML = "<input  type ='number' style ='width:70px' id='priceRounding'  onchange = 'roundPrices()'  value='1' >"
+        priceRoundingCell.innerHTML = "<input  type ='number' style ='width:70px' step = 'any' id='priceRounding'  onchange = 'roundPrices()'  value='1' >"
 
         parameterRow.insertCell();
         parameterRow.insertCell();

@@ -73,7 +73,7 @@ public class OfferController {
             modelAndView.addObject("priceList", PriceForCustomerDTO.convertIntoDTO(priceList));
             modelAndView.addObject("offer", offer);
             modelAndView.addObject("partsOnStock", WareHouseService.getAvailablePartList());
-
+            modelAndView.addObject("priceList", priceForCustomerService.getPriceListMapByCustomerName(customerName));
            }
 
         return modelAndView;
@@ -87,9 +87,8 @@ public class OfferController {
                                            @RequestParam(value = "requestFile", required = false) MultipartFile uploadedFile,
                                            RedirectAttributes redirectAttributes
     ) throws Throwable {
-        Customer customer = customerService.getCustomerByName(customerName);
-        redirectAttributes.addFlashAttribute("priceList", priceForCustomerService.getPriceListByCustomerName(customer.getName()));
-        Offer offer = offerService.makeOfferFromRequestedFile(customerName, uploadedFile);
+
+       Offer offer = offerService.makeOfferFromRequestedFile(customerName, uploadedFile);
         redirectAttributes.addFlashAttribute("offer", new OfferDTO(offer));
         redirectAttributes.addAttribute("selectedCustomer", customerService.getCustomerByName(customerName).getId());
         return new RedirectView("/offer/newOffer");

@@ -14,6 +14,7 @@ import org.springframework.web.servlet.*;
 
 import java.io.*;
 import java.util.*;
+import java.util.function.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -25,6 +26,8 @@ public class PriceForCustomerService {
     @Autowired
     private ExcelReaderWriter excelReaderWriter;
     Session session;
+    @Autowired
+    private PriceForCustomerService priceForCustomerService;
 
     public PriceForCustomerService() {
     }
@@ -115,6 +118,13 @@ public class PriceForCustomerService {
         session.close();
         return list;
 
+    }
+    public  Map<String, PriceForCustomer> getPriceListMapByCustomerName(String customerName){
+
+        List<PriceForCustomer> priceListForCustomer = priceForCustomerService.getPriceListByCustomerName(customerName);
+        Map<String, PriceForCustomer> priceListMap = priceListForCustomer.stream()
+                .collect(Collectors.toMap(PriceForCustomer::getArticle, Function.identity()));
+        return  priceListMap;
     }
 
 }
