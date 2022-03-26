@@ -18,7 +18,7 @@ public class CalendarAdapter {
         SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd");   // formerly  was "dd.MM.yyyy"
         fmt.setCalendar(calendar);
         dateFormatted = fmt.format(calendar.getTime());}
-          else { dateFormatted ="1111-11-11";}
+          else { dateFormatted = "not specified";}
 
         return dateFormatted;
     }
