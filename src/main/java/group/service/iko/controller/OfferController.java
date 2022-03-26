@@ -74,7 +74,7 @@ public class OfferController {
             modelAndView.addObject("offer", offer);
             modelAndView.addObject("partsOnStock", WareHouseService.getAvailablePartList());
             modelAndView.addObject("priceList", priceForCustomerService.getPriceListMapByCustomerName(customerName));
-           }
+               }
 
         return modelAndView;
     }

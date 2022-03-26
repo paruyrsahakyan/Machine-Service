@@ -145,6 +145,7 @@ input[type=number] {
         var offerLines=[];
         var table = document.getElementById("offerTable");
         const partsOnStockMap = new Map();
+
          <c:forEach items="${priceList}" var="priceForCustomer">
             var id ="${priceForCustomer.id}";
             var article = "${priceForCustomer.article}";
@@ -175,7 +176,7 @@ input[type=number] {
         var inStockNetCost = "${offerLine.inStockNetCost}";
         var lastOfferPrice = "${offerLine.lastOfferedPrice}";
         var availability = "${offerLine.availability}";
-        var lastOfferDate = "${offeLine.lastOfferDate}";
+        var lastOfferDate = "${offerLine.lastOfferDate}";
         if(lastOfferDate==null){lastOfferDate="0"};
         offerLines.push({
             partName: partName,
@@ -203,7 +204,7 @@ input[type=number] {
                 
                  setDefaultOfferDates();
 
-                 setTabeHeadRow();
+                 setTableHeadRow();
 
                if (rowQuantity > 0) {
              setOfferLinesInTable();
@@ -260,7 +261,7 @@ input[type=number] {
                 cell5.innerHTML = "<input type='text' size='11' name= 'offeredPartNumber[]'  value='" +offerLines[i].offeredPartNumber+"'"+"> ";
                 cell6.innerHTML = "<input type='text' size='2' id='unit"+(i+1)+"' name= 'unit[]'  value='шт'>";
                 cell7.innerHTML = "<input type='number' step = 'any' style ='width:70px' id='price"+(i+1)+"' name= 'price[]' onChange ='setSum("+i+")' >";
-                cell8.innerHTML = "<input type='number'  step = 'any'style ='width:70px' id='sum"+(i+1)+"' name= 'sum[]' value='" + offerLines[i].sum+ "' >";
+                cell8.innerHTML = "<input type='number'  step = 'any' style ='width:70px' id='sum"+(i+1)+"' name= 'sum[]' value='" + offerLines[i].sum+ "' >";
                 cell9.innerHTML = "<input type='number' step = 'any' style ='width:100px' name= 'lastOfferPrice[]' value='" +offerLines[i].lastOfferPrice+"' >";
                 cell10.innerHTML = "<input type='text'  style ='width:130px' name= 'lastOfferDate[]' value='" + offerLines[i].lastOfferDate + "' >";
                 cell11.innerHTML = "<input type='number' style ='width:100px' name= 'availability[]' value='" + offerLines[i].availability + "' >";
@@ -444,7 +445,7 @@ function setDefaultOfferDates(){
 
 }
 
- function setTabeHeadRow() {
+ function setTableHeadRow() {
 
 var table = document.getElementById("offerTable");
         table.innerText = "";
