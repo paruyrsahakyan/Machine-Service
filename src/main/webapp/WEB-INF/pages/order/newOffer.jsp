@@ -179,7 +179,7 @@ input[type=number] {
         var lastOfferPrice = "${offerLine.lastOfferedPrice}";
         var availability = "${offerLine.availability}";
         var lastOfferDate = "${offerLine.lastOfferDate}";
-        if(lastOfferDate==null){lastOfferDate="0"}
+        if(lastOfferDate===null){lastOfferDate="0"; }
 
         offerLines.push({
             partName: partName,
@@ -195,17 +195,6 @@ input[type=number] {
         });
         </c:forEach>
 
-
-
-       <c:forEach items="${partsOnStock}" var="item">
-       
-       var key =  "${item.key}";
-       var partQuantity = "${item.value.quantity}";
-       var PartInStockNetCost = "${item.value.netCost}";
-       partsOnStockMap.set(key, {quantity: quantity,
-        inStockNetCost:inStockNetCost});
-
-        </c:forEach>
 
                var rowQuantity = offerLines.length;
                 
