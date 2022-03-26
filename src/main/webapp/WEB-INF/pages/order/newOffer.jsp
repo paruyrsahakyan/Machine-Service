@@ -176,8 +176,8 @@ input[type=number] {
         var inStockNetCost = "${offerLine.inStockNetCost}";
         var lastOfferPrice = "${offerLine.lastOfferedPrice}";
         var availability = "${offerLine.availability}";
-        var lastOfferDate = "1";
-        if(lastOfferDate==null){lastOfferDate="0"};
+        var lastOfferDate = "${offerLine.lastOfferDate}";
+
         offerLines.push({
             partName: partName,
             partNumber: partNumber,
@@ -594,7 +594,7 @@ function addRow(){
                 cell5.innerHTML = "<input type='text' size='11' name= 'offeredPartNumber[]'   > ";
                 cell6.innerHTML = "<input type='text' size='2' id='unit"+(rowQuantity+1)+"' name= 'unit[]'  value='шт'>";
                 cell7.innerHTML = "<input type='number' step = 'any' style ='width:70px' id='price"+(rowQuantity+1)+"' name= 'price[]' onChange ='setSum("+rowQuantity+")' >";
-                cell8.innerHTML = "<input type='number'  step = 'any'style ='width:70px' id='sum"+(rowQuantity+1)+"' name= 'sum[]' >";
+                cell8.innerHTML = "<input type='number'  step = 'any' style ='width:70px' id='sum"+(rowQuantity+1)+"' name= 'sum[]' >";
                 cell9.innerHTML = "<input type='number' step = 'any' style ='width:100px' name= 'lastOfferPrice[]' >";
                 cell10.innerHTML = "<input type='text'  style ='width:130px' name= 'lastOfferDate[]'  >";
                 cell11.innerHTML = "<input type='number' style ='width:100px' name= 'availability[]' >";
