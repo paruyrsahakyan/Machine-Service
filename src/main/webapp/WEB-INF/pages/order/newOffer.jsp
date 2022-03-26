@@ -137,16 +137,14 @@ input[type=number] {
  </div>
              <script>
 
-        var initialPriceList = [];
+       var initialPriceList = [];
         var customerList = [];
         var priceListForSelectedCustomer = [];
         var priceListFilteredByArticle = [];
         var selectedCustomerName = "${selectedCustomer.name}";
         var offerLines=[];
         var table = document.getElementById("offerTable");
-        var partsOnStockMap = new Map();
-
-
+        const partsOnStockMap = new Map();
          <c:forEach items="${priceList}" var="priceForCustomer">
             var id ="${priceForCustomer.id}";
             var article = "${priceForCustomer.article}";
@@ -167,7 +165,6 @@ input[type=number] {
         
              });
            </c:forEach>
-
             <c:forEach items="${offer.offerLines}" var="offerLine">
         var partName = "${offerLine.requestedPartName}";
         var partNumber = "${offerLine.requestedPartNumber}";
@@ -178,9 +175,8 @@ input[type=number] {
         var inStockNetCost = "${offerLine.inStockNetCost}";
         var lastOfferPrice = "${offerLine.lastOfferedPrice}";
         var availability = "${offerLine.availability}";
-        var lastOfferDate = "${offerLine.lastOfferDate}";
-        if(lastOfferDate===null){lastOfferDate="0"; }
-
+        var lastOfferDate = "${offeLine.lastOfferDate}";
+        if(lastOfferDate==null){lastOfferDate="0"};
         offerLines.push({
             partName: partName,
             partNumber: partNumber,
@@ -194,7 +190,14 @@ input[type=number] {
             availability:availability
         });
         </c:forEach>
-
+            <c:forEach items="${partsOnStock}" var="item">
+       
+       var key =  "${item.key}";
+       var quantity = ${item.value.quantity};
+       var inStockNetCost = ${item.value.netCost};
+       partsOnStockMap.set(key, {quantity: quantity,
+        inStockNetCost:inStockNetCost});
+        </c:forEach>
 
                var rowQuantity = offerLines.length;
                 
