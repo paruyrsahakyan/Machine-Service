@@ -139,12 +139,11 @@ input[type=number] {
 
        var initialPriceList = [];
         var customerList = [];
-        var priceListForSelectedCustomer = [];
         var selectedCustomerName = "${selectedCustomer.name}";
         var offerLines=[];
         var table = document.getElementById("offerTable");
         const partsOnStockMap = new Map();
-
+        const priceListForSelectedCustomer =  new Map[];
 
          <c:forEach items="${offer.offerLines}" var="offerLine">
         var partName = "${offerLine.requestedPartName}";
