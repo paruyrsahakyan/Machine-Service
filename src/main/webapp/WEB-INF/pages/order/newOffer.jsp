@@ -146,27 +146,8 @@ input[type=number] {
         var table = document.getElementById("offerTable");
         const partsOnStockMap = new Map();
 
-         <c:forEach items="${priceList}" var="priceForCustomer">
-            var id ="${priceForCustomer.id}";
-            var article = "${priceForCustomer.article}";
-             var description = "${priceForCustomer.description}";
-             var price = "${priceForCustomer.price}";
-             var customerName = "${priceForCustomer.customerName}";
-             var quantityInStock = "${priceForCustomer.quantityInStock}";
-             var profit = "${priceForCustomer.profit}";
-           
-              initialPriceList.push({
-             id: id,
-             article: article,
-             description: description,
-             price: price,
-             customerName: customerName,
-             quantityInStock: quantityInStock,
-             profit: profit
-        
-             });
-           </c:forEach>
-            <c:forEach items="${offer.offerLines}" var="offerLine">
+
+         <c:forEach items="${offer.offerLines}" var="offerLine">
         var partName = "${offerLine.requestedPartName}";
         var partNumber = "${offerLine.requestedPartNumber}";
         var quantity = "${offerLine.quantity}";
@@ -190,6 +171,8 @@ input[type=number] {
             lastOfferDate:lastOfferDate,
             availability:availability
         });
+
+
         </c:forEach>
             <c:forEach items="${partsOnStock}" var="item">
        
@@ -217,17 +200,8 @@ input[type=number] {
                 document.getElementById("hiddenCustomerName").value = selectedCustomerName;
     }
 
-          function initPriceListForSelectedCustomer() {
-              var customerName = customerNameForTableCreation;
-            for (var i = 0; i < initialPriceList.length; i++) {
-        if (initialPriceList[i].customerName === customerName) {
-            priceListForSelectedCustomer.push(initialPriceList[i]);
-                  }
-        }
-                }
 
-             function setOfferLinesInTable() {
-
+              function setOfferLinesInTable() {
             var table = document.getElementById("offerTable");
                   
         for (var i = 0; i < rowQuantity; i++) {
