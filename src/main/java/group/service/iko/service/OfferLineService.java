@@ -86,7 +86,9 @@ public class OfferLineService {
             if (supplierPrice != null) {
                 offerLine.setSupplierPrice(supplierPrice);
             }
+            else { offerLine.setSupplierPrice(new Double(0));
 
+            }
 
             Part availablePart = WareHouseService.getAvailablePartList().get(offeredPartNumber);
             if (availablePart != null) {

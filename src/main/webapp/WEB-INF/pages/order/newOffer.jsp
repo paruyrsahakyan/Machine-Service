@@ -143,7 +143,7 @@ input[type=number] {
         var offerLines=[];
         var table = document.getElementById("offerTable");
         const partsOnStockMap = new Map();
-        const priceListForSelectedCustomer =  new Map[];
+        const priceListForSelectedCustomer =  new Map();
 
          <c:forEach items="${offer.offerLines}" var="offerLine">
         var partName = "${offerLine.requestedPartName}";
@@ -206,7 +206,6 @@ input[type=number] {
                 document.getElementById("customerNameInUploadForm").value=selectedCustomerName;
                 document.getElementById("hiddenCustomerName").value = selectedCustomerName;
     }
-
 
               function setOfferLinesInTable() {
             var table = document.getElementById("offerTable");
@@ -279,7 +278,6 @@ function setTotalSum() {
  }
 
 function setUnits()  {
-
  var units = document.getElementById("unitForAllLines").value;
 for (var i = 1; i <= rowQuantity; i++) {
     document.getElementById("unit"+i).value = units;
@@ -316,10 +314,8 @@ function setPrice() {
       if(price>rounding) {
 
      price = Math.round(price / rounding) *rounding; }
-
      var profitFromAvailable = Math.round((price-inStockNetCost)/price*100);
      var sum = price*quantity;
-      
      var priceCell = document.getElementById("price"+i);
      var sumCell = document.getElementById("sum"+i);
      var profitFromAvailableCell = document.getElementById("profitFromAvailable"+i);
@@ -596,8 +592,19 @@ function deleteRow(rowNumber){
 
 function checkPartInsert(rowNumber) {
 var  partNumber = document.getElementById("partNumber" +rowNumber).value;
-var inStockQuantity = partsOnStockMap.get(partNumber).quantity;
-var lastOfferPrice  = priceListForSelectedCustomer.get(partNumber).price;
+var stockPart = partsOnStockMap.get(partNumber);
+if  (stockPart !=null) {
+var inStockQuantity = stockPart.inStockQuantity;
+var inStockNetCost  = stockPart.inStockNetCost;
+}
+else {inStockQuantity = 0;
+       inStockNetCost = 0;
+}
+var priceForCustomer = priceListForSelectedCustomer.get(partNumber);
+if  (priceForCustomer !=null) {
+var lastOfferPrice = priceForCustomer.price;
+}
+else {inStockQuantity = 0; }
 
 document.getElementById("inStockNetCost" + rowNumber).value = inStockNetCost;
 document.getElementById("availability"+rowNumber).value = inStockQuantity;
