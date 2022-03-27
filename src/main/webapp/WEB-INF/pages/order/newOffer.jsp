@@ -238,7 +238,7 @@ input[type=number] {
                 cell2.innerHTML = "<input type='text'   name= 'partName[]'  value='" +offerLines[i].partName+"'"+"> ";
                 cell3.innerHTML = "<input type='text' size='11'name= 'partNumber[]' id='partNumber"+(i+1)+"' onChange ='checkPartInsert("+(i+1)+")' value='" +offerLines[i].partNumber+"'"+"> ";
                 cell4.innerHTML = "<input type='number' style ='width:30px'  id ='quantity"+(i+1)+ "' name='quantity[]'  value='" +offerLines[i].quantity+"'> ";
-                cell5.innerHTML = "<input type='text' size='11' name= 'offeredPartNumber[]'  value='" +offerLines[i].offeredPartNumber+"'> ";
+                cell5.innerHTML = "<input type='text' size='11' id= 'offeredPartNumber" +(i+1)+")' name= 'offeredPartNumber[]'  value='" +offerLines[i].offeredPartNumber+"'> ";
                 cell6.innerHTML = "<input type='text' size='2' id='unit"+(i+1)+"' name= 'unit[]'  value='шт'>";
                 cell7.innerHTML = "<input type='number' step = 'any' style ='width:70px' id='price"+(i+1)+"' name= 'price[]' onChange ='setSum("+i+")' >";
                 cell8.innerHTML = "<input type='number'  step = 'any' style ='width:70px' id='sum"+(i+1)+"' name= 'sum[]' value='" + offerLines[i].sum+ "' >";
@@ -568,7 +568,7 @@ function addRow(){
                 cell2.innerHTML = "<input type='text'   name= 'partName[]' >";
                 cell3.innerHTML = "<input type='text' size='11' name= 'partNumber[]' id='partNumber"+(rowQuantity+1)+"' onChange='checkPartInsert(" +(rowQuantity+1)+")' >";
                 cell4.innerHTML = "<input type='number' style ='width:30px'  id ='quantity"+(rowQuantity+1) +"' name='quantity[]' > ";
-                cell5.innerHTML = "<input type='text' size='11' name= 'offeredPartNumber[]'   > ";
+                cell5.innerHTML = "<input type='text' size='11' id= 'offeredPartNumber" +(rowQuantity+1)+")'  name= 'offeredPartNumber[]'   > ";
                 cell6.innerHTML = "<input type='text' size='2' id='unit"+(rowQuantity+1)+"' name= 'unit[]'  value='шт'>";
                 cell7.innerHTML = "<input type='number' step = 'any' style ='width:70px' id='price"+(rowQuantity+1)+"' name= 'price[]' onChange ='setSum("+rowQuantity+")' >";
                 cell8.innerHTML = "<input type='number'  step = 'any' style ='width:70px' id='sum"+(rowQuantity+1)+"' name= 'sum[]' >";
@@ -609,6 +609,7 @@ else {inStockQuantity = 0; }
 document.getElementById("inStockNetCost" + rowNumber).value = inStockNetCost;
 document.getElementById("availability"+rowNumber).value = inStockQuantity;
 document.getElementById("lastOfferPrice"+rowNumber).value = lastOfferPrice;
+document.getElementById("supplierPrice"+rowNumber).value =0;
 
 }
 
