@@ -182,12 +182,10 @@ input[type=number] {
         inStockNetCost:inStockNetCost});
         </c:forEach>
 
-        </c:forEach>
-
-            <c:forEach items="${priceList}" var="item">
+                <c:forEach items="${priceList}" var="item">
               var partNumber =  "${item.key}";
-               var price  = ${item.value.price};
-               var partName = ${item.value.description};
+               var price  =  ${item.value.price};
+               var partName = "${item.value.description}";
              priceListForSelectedCustomer.set(partNumber, {price: price,
                 partName:partName});
                 </c:forEach>
