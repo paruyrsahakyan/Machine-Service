@@ -470,7 +470,7 @@ public class ExcelReaderWriter {
         String offerDate = CalendarAdapter.getStringFormat(offer.getOfferDate());
         String offerValidationDate = CalendarAdapter.getStringFormat(offer.getValidationDate());
 
-        int rowNumber = 17;
+        int rowNumber = 16;
         for (OfferLine offerLine : offer.getOfferLines()) {
             rowNumber++;
             Row row = datatypeSheet.getRow(rowNumber);
@@ -486,13 +486,13 @@ public class ExcelReaderWriter {
 
             cellPartDescription.setCellValue(offerLine.getRequestedPartName());
             cellPartNumber.setCellValue(offerLine.getRequestedPartNumber());
-//            cellOfferedPartNumber.setCellValue(offerLine.getOfferedPartNumber());
-//            cellPartQuantity.setCellValue(offerLine.getQuantity());
-//            cellUnit.setCellValue(offerLine.getUnit());
-//            cellPrice.setCellValue(offerLine.getPrice());
-//            cellSum.setCellValue(offerLine.getSum());
-//            cellSupplyTime.setCellValue(offerLine.getSupplyTime());
-//            cellProducer.setCellValue(offerLine.getProducer());
+            cellOfferedPartNumber.setCellValue(offerLine.getOfferedPartNumber());
+            cellPartQuantity.setCellValue(offerLine.getQuantity());
+            cellUnit.setCellValue(offerLine.getUnit());
+            cellPrice.setCellValue(offerLine.getPrice());
+            cellSum.setCellValue(offerLine.getSum());
+            cellSupplyTime.setCellValue(offerLine.getSupplyTime());
+            cellProducer.setCellValue(offerLine.getProducer());
         }
 
             fileInputStream.close();
