@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.*;
 import org.springframework.security.access.prepost.*;
 import org.springframework.stereotype.*;
 import org.springframework.ui.*;
+import org.springframework.util.*;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.*;
 import org.springframework.web.servlet.*;
@@ -17,6 +18,8 @@ import org.springframework.web.servlet.mvc.support.*;
 import org.springframework.web.servlet.view.*;
 
 
+import javax.servlet.http.*;
+import java.io.*;
 import java.util.*;
 
 @Controller()
@@ -35,6 +38,8 @@ public class OfferController {
     private WareHouseService wareHouseService;
     @Autowired
     private PriceForCustomerService priceForCustomerService;
+    @Autowired
+    private  ExcelReaderWriter excelReaderWriter;
 
     @RequestMapping("/mainPage")
     @PreAuthorize("hasRole('ROLE_USER')")
@@ -169,7 +174,21 @@ public class OfferController {
         offerService.deleteOffer(offerService.getOfferById(id));
         ModelAndView modelAndView = new ModelAndView("redirect:/offer/mainPage", modelMap);
         return modelAndView;
-
     }
+
+    @RequestMapping(value = "/offer/${offerId}/downloadOffer", method = RequestMethod.GET)
+    public void downloadOffer(HttpServletResponse response,
+                                         @PathVariable("offerId") int offerId) throws IOException {
+        Offer offer = offerService.getOfferById(offerId);
+        File file = excelReaderWriter.getOfferFile(offer);
+        String mimeType;
+        mimeType = "application/vnd.ms-excel";
+        response.setContentType(mimeType);
+        response.setHeader("Content-Disposition", String.format("inline; filename=\"Offer.xlsx\""));
+        response.setContentLength((int) file.length());
+        InputStream inputStream = new BufferedInputStream(new FileInputStream(file));
+        FileCopyUtils.copy(inputStream, response.getOutputStream());
+    }
+
 
     }
