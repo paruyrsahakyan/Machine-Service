@@ -474,15 +474,15 @@ public class ExcelReaderWriter {
         for (OfferLine offerLine : offer.getOfferLines()) {
             rowNumber++;
             Row row = datatypeSheet.getRow(rowNumber);
-            Cell cellPartDescription = row.getCell(1);
-            Cell cellPartNumber = row.getCell(2);
-            Cell cellOfferedPartNumber = row.getCell(3);
-            Cell cellPartQuantity = row.getCell(4);
-            Cell cellUnit = row.getCell(5);
-            Cell cellPrice = row.getCell(6);
-            Cell cellSum = row.getCell(7);
-            Cell cellSupplyTime = row.getCell(8);
-            Cell cellProducer = row.getCell(9);
+            Cell cellPartDescription = row.getCell(0);
+            Cell cellPartNumber = row.getCell(1);
+            Cell cellOfferedPartNumber = row.getCell(2);
+            Cell cellPartQuantity = row.getCell(3);
+            Cell cellUnit = row.getCell(4);
+            Cell cellPrice = row.getCell(5);
+            Cell cellSum = row.getCell(6);
+            Cell cellSupplyTime = row.getCell(7);
+            Cell cellProducer = row.getCell(8);
 
             cellPartDescription.setCellValue(offerLine.getRequestedPartName());
             cellPartNumber.setCellValue(offerLine.getRequestedPartNumber());
