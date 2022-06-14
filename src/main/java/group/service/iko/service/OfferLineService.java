@@ -113,12 +113,11 @@ public class OfferLineService {
 
     public void deleteOfferLinesByOfferId(int offerId) {
         Session session = SessionFactoryImpl.getSessionFactory().openSession();
-        String hql = "Delete group.service.iko.entities.OfferLine  WHERE offer.id=:offerId";
+        String hql = "Delete from group.service.iko.entities.OfferLine  WHERE offer.id=:offerId";
         Query query = session.createQuery(hql);
         query.setParameter("offerId", offerId);
         query.executeUpdate();
         session.close();
-
 
     }
 }
