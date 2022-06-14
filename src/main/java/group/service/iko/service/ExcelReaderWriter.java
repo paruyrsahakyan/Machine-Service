@@ -487,7 +487,6 @@ public class ExcelReaderWriter {
             cellPartDescription.setCellValue(offerLine.getRequestedPartName());
             cellPartNumber.setCellValue(offerLine.getRequestedPartNumber());
 //            cellOfferedPartNumber.setCellValue(offerLine.getOfferedPartNumber());
-            cellOfferedPartNumber.setCellValue("apushutyun");
             cellPartQuantity.setCellValue(offerLine.getQuantity());
             cellUnit.setCellValue(offerLine.getUnit());
             cellPrice.setCellValue(offerLine.getPrice());
