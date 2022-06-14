@@ -487,12 +487,12 @@ public class ExcelReaderWriter {
             cellPartDescription.setCellValue(offerLine.getRequestedPartName());
             cellPartNumber.setCellValue(offerLine.getRequestedPartNumber());
 //            cellOfferedPartNumber.setCellValue(offerLine.getOfferedPartNumber());
-            cellPartQuantity.setCellValue(offerLine.getQuantity());
-            cellUnit.setCellValue(offerLine.getUnit());
-            cellPrice.setCellValue(offerLine.getPrice());
-            cellSum.setCellValue(offerLine.getSum());
-            cellSupplyTime.setCellValue(offerLine.getSupplyTime());
-            cellProducer.setCellValue(offerLine.getProducer());
+//            cellPartQuantity.setCellValue(offerLine.getQuantity());
+//            cellUnit.setCellValue(offerLine.getUnit());
+//            cellPrice.setCellValue(offerLine.getPrice());
+//            cellSum.setCellValue(offerLine.getSum());
+//            cellSupplyTime.setCellValue(offerLine.getSupplyTime());
+//            cellProducer.setCellValue(offerLine.getProducer());
         }
 
             fileInputStream.close();
