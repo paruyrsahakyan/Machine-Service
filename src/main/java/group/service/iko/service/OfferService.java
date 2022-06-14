@@ -55,7 +55,7 @@ public class OfferService {
     }
 
     public void deleteOffer(Offer offer) {
-        offerLineService.deleteOfferLinesByOfferId(offer.getId());
+//        offerLineService.deleteOfferLinesByOfferId(offer.getId());
         entityDAO.deleteEntity(offer);
     }
 

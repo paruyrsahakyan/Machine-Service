@@ -44,19 +44,15 @@ input[type=number] {
 
 <div class="mainContent">
     <h2>Коммерческое Предложение</h2>
-      <a href="/offer/deleteOffer/${offer.id}"
-           onclick="return confirm('!!!Вы уверены что хатите удалить машину!!!');"
-           style="color: crimson;">Удалить</a>
- </div>
-
+       </div>
 
 <div class = "mainContent">
-<table class="offerTable">
 
 <a href="/offer/deleteOffer/${offer.id}"
-           onclick="return confirm('!!!Вы уверены что хатите удалить машину!!!');"
+           onclick="return confirm('!!!Вы уверены что хатите удалить КП!!!');"
            style="color: crimson;">Удалить</a>
 
+<table class="offerTable">
              <tr>
                 <td>  Заказчик  </td>
                 <td>  ${offer.customerName}</td>   <br> <br>
