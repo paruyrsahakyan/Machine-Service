@@ -474,8 +474,8 @@ public class ExcelReaderWriter {
         Row headRow = datatypeSheet.getRow(rowNumber);
         Cell cellPriceHeader = headRow.getCell(5);
         Cell cellSumHeader = headRow.getCell(6);
-        cellPriceHeader.setCellValue("Цена ("+offer.getCurrency()+offer.getVAT()+")");
-        cellSumHeader.setCellValue("Сумма ("+offer.getCurrency()+offer.getVAT()+")");
+        cellPriceHeader.setCellValue("Цена ("+offer.getVAT()+")");
+        cellSumHeader.setCellValue("Сумма ("+offer.getVAT()+")");
         for (OfferLine offerLine : offer.getOfferLines()) {
             rowNumber++;
             Row row = datatypeSheet.getRow(rowNumber);
