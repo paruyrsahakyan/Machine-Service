@@ -176,7 +176,7 @@ public class OfferController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/offer/${offerId}/downloadOffer", method = RequestMethod.GET)
+    @RequestMapping(value = "/offer/{offerId}/downloadOffer", method = RequestMethod.GET)
     public void downloadOffer(HttpServletResponse response,
                                          @PathVariable("offerId") int offerId) throws IOException {
         Offer offer = offerService.getOfferById(offerId);
