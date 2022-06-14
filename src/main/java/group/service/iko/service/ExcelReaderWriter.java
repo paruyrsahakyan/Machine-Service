@@ -471,6 +471,11 @@ public class ExcelReaderWriter {
         String offerValidationDate = CalendarAdapter.getStringFormat(offer.getValidationDate());
 
         int rowNumber = 16;
+        Row headRow = datatypeSheet.getRow(rowNumber);
+        Cell cellPriceHeader = headRow.getCell(5);
+        Cell cellSumHeader = headRow.getCell(6);
+        cellPriceHeader.setCellValue("Цена ("+offer.getCurrency()+offer.getVAT()+")");
+        cellSumHeader.setCellValue("Сумма ("+offer.getCurrency()+offer.getVAT()+")");
         for (OfferLine offerLine : offer.getOfferLines()) {
             rowNumber++;
             Row row = datatypeSheet.getRow(rowNumber);
@@ -493,8 +498,8 @@ public class ExcelReaderWriter {
             cellSum.setCellValue(offerLine.getSum());
             cellSupplyTime.setCellValue(offerLine.getSupplyTime());
             cellProducer.setCellValue(offerLine.getProducer());
-        }
 
+        }
             fileInputStream.close();
             FileOutputStream fileOutputStream = new FileOutputStream(file);
             workbook.write(fileOutputStream);
