@@ -55,6 +55,7 @@ public class OfferService {
     }
 
     public void deleteOffer(Offer offer) {
+        offerLineService.deleteOfferLinesByOfferId(offer.getId());
         entityDAO.deleteEntity(offer);
     }
 
@@ -104,8 +105,6 @@ public class OfferService {
         session.close();
         return offer;
     }
-
-
 
 }
 

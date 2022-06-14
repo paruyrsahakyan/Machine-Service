@@ -162,5 +162,14 @@ public class OfferController {
                 return new ModelAndView("redirect:/offer/"+savedOffer.getId(), modelMap);
     }
 
+    @RequestMapping("/deleteOffer/{offerId}")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    public ModelAndView deleteOffer(@PathVariable("offerId") int id,
+                                    ModelMap modelMap){
+        offerService.deleteOffer(offerService.getOfferById(id));
+        ModelAndView modelAndView = new ModelAndView("redirect:/offer/mainPage", modelMap);
+        return modelAndView;
 
-}
+    }
+
+    }

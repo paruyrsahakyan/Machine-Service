@@ -46,6 +46,11 @@ input[type=number] {
     <h2>Коммерческое Предложение</h2>
  </div>
 
+  <a href="/offer//deleteOffer/${offer.id}"
+       onclick="return confirm('!!!Вы уверены что хатите удалить машину!!!');"
+       style="color: crimson;">Удалить</a>
+
+
 <div class = "mainContent">
 <table class="offerTable">
              <tr>

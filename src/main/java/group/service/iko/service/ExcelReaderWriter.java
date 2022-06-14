@@ -33,7 +33,9 @@ public class ExcelReaderWriter {
     private final String maintenanceRequestFileSource = File.separator + "home" + File.separator + "paruyr" + File.separator +
             "Machine-Service" + File.separator + "src" + File.separator + "main" + File.separator +
             "resources" + File.separator + "templates" + File.separator + "maintenanceRequest.xlsx";
-
+    private final String offerFileSource = File.separator + "home" + File.separator + "paruyr" + File.separator +
+            "Machine-Service" + File.separator + "src" + File.separator + "main" + File.separator +
+            "resources" + File.separator + "templates" + File.separator + "OfferInRussian.xlsx";
 
     public void setPartsFromWareHouseFile() throws Throwable {
         partMap = new HashMap<>();
@@ -343,12 +345,12 @@ public class ExcelReaderWriter {
         List<RequestLine> requestLines = new ArrayList<>();
         int linesQuantityInTheFile = datatypeSheet.getLastRowNum() + 1;
         for (int i = 0; i < linesQuantityInTheFile; i++) {
-            int lineNumber = i+1;
+            int lineNumber = i + 1;
             Row row = datatypeSheet.getRow(i);
             Cell descriptionCell = row.getCell(0);
             Cell articleCell = row.getCell(1);
             Cell quantityCell = row.getCell(2);
-                        String partName = descriptionCell.getStringCellValue();
+            String partName = descriptionCell.getStringCellValue();
             String partNumber = "";
             if (articleCell.getCellTypeEnum() == CellType.STRING) {
                 partNumber = articleCell.getStringCellValue();
@@ -368,16 +370,16 @@ public class ExcelReaderWriter {
             requestLines.add(requestLine);
             requestLine.setLineNumber(lineNumber);
 
-                }
+        }
         return requestLines;
     }
 
-    public void setSupplierPriceListFile() throws  Throwable {
+    public void setSupplierPriceListFile() throws Throwable {
         Map priceMap = new HashMap<String, Double>();
-                    File supplierPriceFile = new File(new StorageService().getSupplierPriceListFilePath());
+        File supplierPriceFile = new File(new StorageService().getSupplierPriceListFilePath());
 
-            int partNumberColumn = 0;
-            int priceColumn = 1;
+        int partNumberColumn = 0;
+        int priceColumn = 1;
 
         InputStream is = new FileInputStream(supplierPriceFile);
         StreamingReader reader = StreamingReader.builder()
@@ -390,26 +392,26 @@ public class ExcelReaderWriter {
 
             Cell partNumberCell = row.getCell(0);
 
-                String partNumber = "";
-                if (partNumberCell!=null && partNumberCell.getCellTypeEnum() == CellType.STRING) {
-                    partNumber = partNumberCell.getStringCellValue();
+            String partNumber = "";
+            if (partNumberCell != null && partNumberCell.getCellTypeEnum() == CellType.STRING) {
+                partNumber = partNumberCell.getStringCellValue();
 
-                } else  if (partNumberCell!=null) {
-                    String string = new Double(partNumberCell.getNumericCellValue()).toString();
-                    int lastIndexOf = string.lastIndexOf(".");
-                    partNumber = string.substring(0, lastIndexOf);
-                }
-                Cell priceCell = row.getCell(1);
-                Double price = new Double(0);
-                if (priceCell != null && priceCell.getCellTypeEnum()==CellType.NUMERIC) {
-                    price = new Double(priceCell.getNumericCellValue());
-                }
-
-                priceMap.put(partNumber, price);
+            } else if (partNumberCell != null) {
+                String string = new Double(partNumberCell.getNumericCellValue()).toString();
+                int lastIndexOf = string.lastIndexOf(".");
+                partNumber = string.substring(0, lastIndexOf);
+            }
+            Cell priceCell = row.getCell(1);
+            Double price = new Double(0);
+            if (priceCell != null && priceCell.getCellTypeEnum() == CellType.NUMERIC) {
+                price = new Double(priceCell.getNumericCellValue());
             }
 
-            WareHouseService.setSupplierPriceList(priceMap);
+            priceMap.put(partNumber, price);
         }
+
+        WareHouseService.setSupplierPriceList(priceMap);
+    }
 
     public void setInterchangeableFile() throws FileNotFoundException {
 
@@ -445,12 +447,61 @@ public class ExcelReaderWriter {
                 newPartNumber = string.substring(0, lastIndexOf);
             }
 
-
             interchangeabilityMap.put(oldPartNumber, newPartNumber);
         }
 
         WareHouseService.setInterchangeabilityMap(interchangeabilityMap);
     }
+
+
+    public File getOfferFile(Offer offer) throws IOException {
+        File sourceFile = new File(offerFileSource);
+        File fileFolder = new File(templatesFolder);
+        File file = new File(templatesFolder + File.separator + "OfferInRussian.xlsx");
+        fileFolder.mkdir();
+
+        if (file.exists()) file.delete();
+        FileUtils.copyFile(sourceFile, file);
+        FileInputStream fileInputStream = new FileInputStream(file);
+        Workbook workbook = new XSSFWorkbook(fileInputStream);
+        Sheet datatypeSheet = workbook.getSheetAt(0);
+        String customer = offer.getCustomer().getName();
+        String requestNumber = offer.getRequestNumber();
+        String offerDate = CalendarAdapter.getStringFormat(offer.getOfferDate());
+        String offerValidationDate = CalendarAdapter.getStringFormat(offer.getValidationDate());
+
+        int rowNumber = 17;
+        for (OfferLine offerLine : offer.getOfferLines()) {
+            rowNumber++;
+            Row row = datatypeSheet.getRow(rowNumber);
+            Cell cellPartDescription = row.getCell(1);
+            Cell cellPartNumber = row.getCell(2);
+            Cell cellOfferedPartNumber = row.getCell(3);
+            Cell cellPartQuantity = row.getCell(4);
+            Cell cellUnit = row.getCell(5);
+            Cell cellPrice = row.getCell(6);
+            Cell cellSum = row.getCell(7);
+            Cell cellSupplyTime = row.getCell(8);
+            Cell cellProducer = row.getCell(9);
+
+            cellPartDescription.setCellValue(offerLine.getRequestedPartName());
+            cellPartNumber.setCellValue(offerLine.getRequestedPartNumber());
+            cellOfferedPartNumber.setCellValue(offerLine.getOfferedPartNumber());
+            cellPartQuantity.setCellValue(offerLine.getQuantity());
+            cellUnit.setCellValue(offerLine.getUnit());
+            cellPrice.setCellValue(offerLine.getPrice());
+            cellSum.setCellValue(offerLine.getSum());
+            cellSupplyTime.setCellValue(offerLine.getSupplyTime());
+            cellProducer.setCellValue(offerLine.getProducer());
+        }
+
+            fileInputStream.close();
+            FileOutputStream fileOutputStream = new FileOutputStream(file);
+            workbook.write(fileOutputStream);
+            fileInputStream.close();
+            return file;
+        }
+
 }
 
 
