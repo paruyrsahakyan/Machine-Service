@@ -52,23 +52,23 @@ input[type=number] {
             <tr>
                 <td>  <label for="selectedCustomerName">  Заказчик   </label>  </td>
                 <td>  <input list="customers" name="customerName" id="selectedCustomerName"  value="${selectedCustomer.name}"
-                          onchange="setCustomer()">
+                          onchange="setCustomer()" required>
                    <datalist id="customers">
                        <c:forEach items="${customerList}" var="customer">
                            <option value="${customer.name}" hidden> ${customer.name} </option>
                        </c:forEach>
                    </datalist>
                 </td>   <br> <br>
-                <td>  <label for = "requestNumber">  Номер Заявки   </label> </td> 
-                <td>   <input type="text" id="requestNumber" name="requestNumber" onchange="setHiddenRequestNumber()">  </td> <br> <br>
+                <td>  <label for = "requestNumber">  Номер Заявки   </label> </td>
+                <td>   <input type="text" id="requestNumber" name="requestNumber" onchange="setHiddenRequestNumber()" required>  </td> <br> <br>
                 <td>  <label for = "offerDate"> Дата КП  </label>   </td>
-                <td>  <input type="Date" name="offerDate"  id="offerDate" onchange="setHiddenOfferDate()"> </td>
+                <td>  <input type="Date" name="offerDate"  id="offerDate" onchange="setHiddenOfferDate()" required> </td>
                 <br>  <br>
                 <td>  <label for = "offerValidationDate"> Срок действия КП </label> </td>
-                <td>  <input type="Date" name="offerValidationDate" id="offerValidationDate"  onchange="setHiddenValidationDate()"> </td>  <br> <br>
+                <td>  <input type="Date" name="offerValidationDate" id="offerValidationDate"  onchange="setHiddenValidationDate()" required> </td>  <br> <br>
                 <td>  <label for = "currency">  Валюта </label>
             
-                     <select name="currency" required  id="currency" onchange="setHiddenCurrency()">
+                     <select name="currency" required  id="currency" onchange="setHiddenCurrency()" required>
             <option  value="AMD"> AMD  </option> 
             <option  value="USD"> USD </option>
             <option  value="RUB"> RUB </option>
