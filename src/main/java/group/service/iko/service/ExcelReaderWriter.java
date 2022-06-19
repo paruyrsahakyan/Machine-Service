@@ -500,15 +500,15 @@ public class ExcelReaderWriter {
         for (OfferLine offerLine : offer.getOfferLines()) {
             rowNumber++;
             Row row = datatypeSheet.getRow(rowNumber);
-            Cell cellPartDescription = row.getCell(0);
-             Cell cellPartNumber = row.getCell(1);
-             Cell cellOfferedPartNumber = row.getCell(2);
-             Cell cellPartQuantity = row.getCell(3);
-             Cell cellUnit = row.getCell(4);
-             Cell cellPrice = row.getCell(5);
-             Cell cellSum = row.getCell(6);
-             Cell cellSupplyTime = row.getCell(7);
-             Cell cellProducer = row.getCell(8);
+            Cell cellPartDescription = row.createCell(0);
+             Cell cellPartNumber = row.createCell(1);
+             Cell cellOfferedPartNumber = row.createCell(2);
+             Cell cellPartQuantity = row.createCell(3);
+             Cell cellUnit = row.createCell(4);
+             Cell cellPrice = row.createCell(5);
+             Cell cellSum = row.createCell(6);
+             Cell cellSupplyTime = row.createCell(7);
+             Cell cellProducer = row.createCell(8);
 
             cellPartDescription.setCellStyle(stylePartDescription);
             cellPartNumber.setCellStyle(stylePartNumber);
