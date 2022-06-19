@@ -474,9 +474,10 @@ public class ExcelReaderWriter {
         Cell requestNumberCell = datatypeSheet.getRow(10).getCell(1);
         requestNumberCell.setCellValue(offer.getRequestNumber());
         Cell offerDateCell = datatypeSheet.getRow(11).getCell(1);
-        offerDateCell.setCellValue(offer.getOfferDate());
+        offerDateCell.setCellValue(CalendarAdapter.getStringFormat(offer.getOfferDate()));
         Cell offerValidationDateCell = datatypeSheet.getRow(12).getCell(1);
-        offerValidationDateCell.setCellValue(offer.getValidationDate());
+        offerValidationDateCell.setCellValue(CalendarAdapter.getStringFormat(offer.getValidationDate()));
+
         int rowNumber = 16;
         Row headRow = datatypeSheet.getRow(rowNumber);
         Cell cellPriceHeader = headRow.getCell(5);
@@ -506,18 +507,23 @@ public class ExcelReaderWriter {
             cellSupplyTime.setCellValue(offerLine.getSupplyTime());
             cellProducer.setCellValue(offerLine.getProducer());
         }
-            Cell  totalSumTitleCell = datatypeSheet.getRow(rowNumber++).getCell(4);
-             totalSumTitleCell.setCellValue("Итого ("+offer.getCurrency()+")");
-            Cell  totalSumValueCell = datatypeSheet.getRow(rowNumber++).getCell(5);
-             totalSumValueCell.setCellValue(offer.getSum());
-                      
+            rowNumber++;
+            Cell  totalSumTitleCell = datatypeSheet.getRow(rowNumber).getCell(4);
+            totalSumTitleCell.setCellValue("Итого ("+offer.getVAT()+")");
+            CellStyle cellStyle = workbook.createCellStyle();
+            Font boldFont = workbook.createFont();
+            boldFont.setBold(true);
+            cellStyle.setFont(boldFont);
+            totalSumTitleCell.setCellStyle(cellStyle);
+            Cell  totalSumValueCell = datatypeSheet.getRow(rowNumber).getCell(5);
+            totalSumValueCell.setCellValue(offer.getSum());
+            totalSumValueCell.setCellStyle(cellStyle);
             fileInputStream.close();
             FileOutputStream fileOutputStream = new FileOutputStream(file);
             workbook.write(fileOutputStream);
             fileInputStream.close();
             return file;
         }
-
 }
 
 
