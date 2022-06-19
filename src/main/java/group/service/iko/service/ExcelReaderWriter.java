@@ -508,16 +508,14 @@ public class ExcelReaderWriter {
             cellProducer.setCellValue(offerLine.getProducer());
         }
             rowNumber++;
+
+
             Cell  totalSumTitleCell = datatypeSheet.getRow(rowNumber).getCell(4);
+            totalSumTitleCell.setCellStyle(datatypeSheet.getRow(1).getCell(5).getCellStyle());
             totalSumTitleCell.setCellValue("Итого ("+offer.getVAT()+")");
-            CellStyle cellStyle = workbook.createCellStyle();
-            Font boldFont = workbook.createFont();
-            boldFont.setBold(true);
-            cellStyle.setFont(boldFont);
-            totalSumTitleCell.setCellStyle(cellStyle);
             Cell  totalSumValueCell = datatypeSheet.getRow(rowNumber).getCell(5);
             totalSumValueCell.setCellValue(offer.getSum());
-            totalSumValueCell.setCellStyle(cellStyle);
+            totalSumValueCell.setCellStyle(datatypeSheet.getRow(1).getCell(6).getCellStyle());
             fileInputStream.close();
             FileOutputStream fileOutputStream = new FileOutputStream(file);
             workbook.write(fileOutputStream);
