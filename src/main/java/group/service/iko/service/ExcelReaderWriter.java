@@ -484,18 +484,41 @@ public class ExcelReaderWriter {
         Cell cellSumHeader = headRow.getCell(6);
         cellPriceHeader.setCellValue("Цена ("+offer.getVAT()+")");
         cellSumHeader.setCellValue("Сумма ("+offer.getVAT()+")");
+
+        Row styleRow = datatypeSheet.getRow(rowNumber+1);
+        CellStyle stylePartDescription = styleRow.getCell(0).getCellStyle();
+        CellStyle stylePartNumber = styleRow.getCell(1).getCellStyle();
+        CellStyle styleOfferedPartNumber = styleRow.getCell(2).getCellStyle();
+        CellStyle stylePartQuantity = styleRow.getCell(3).getCellStyle();
+        CellStyle styleUnit = styleRow.getCell(4).getCellStyle();
+        CellStyle stylePrice = styleRow.getCell(5).getCellStyle();
+        CellStyle styleSum = styleRow.getCell(6).getCellStyle();
+        CellStyle styleSupplyTime = styleRow.getCell(7).getCellStyle();
+        CellStyle styleProducer = styleRow.getCell(8).getCellStyle();
+
+
         for (OfferLine offerLine : offer.getOfferLines()) {
             rowNumber++;
             Row row = datatypeSheet.getRow(rowNumber);
             Cell cellPartDescription = row.getCell(0);
-            Cell cellPartNumber = row.getCell(1);
-            Cell cellOfferedPartNumber = row.getCell(2);
-            Cell cellPartQuantity = row.getCell(3);
-            Cell cellUnit = row.getCell(4);
-            Cell cellPrice = row.getCell(5);
-            Cell cellSum = row.getCell(6);
-            Cell cellSupplyTime = row.getCell(7);
-            Cell cellProducer = row.getCell(8);
+             Cell cellPartNumber = row.getCell(1);
+             Cell cellOfferedPartNumber = row.getCell(2);
+             Cell cellPartQuantity = row.getCell(3);
+             Cell cellUnit = row.getCell(4);
+             Cell cellPrice = row.getCell(5);
+             Cell cellSum = row.getCell(6);
+             Cell cellSupplyTime = row.getCell(7);
+             Cell cellProducer = row.getCell(8);
+
+            cellPartDescription.setCellStyle(stylePartDescription);
+            cellPartNumber.setCellStyle(stylePartNumber);
+            cellOfferedPartNumber.setCellStyle(styleProducer);
+            cellPartQuantity.setCellStyle(stylePartQuantity);
+            cellUnit.setCellStyle(styleUnit);
+            cellPrice.setCellStyle(stylePrice);
+            cellSum.setCellStyle(styleSum);
+            cellSupplyTime.setCellStyle(styleSupplyTime);
+            cellProducer.setCellStyle(styleProducer);
 
             cellPartDescription.setCellValue(offerLine.getRequestedPartName());
             cellPartNumber.setCellValue(offerLine.getRequestedPartNumber());
@@ -509,9 +532,8 @@ public class ExcelReaderWriter {
         }
             rowNumber++;
 
-
-            Cell  totalSumTitleCell = datatypeSheet.getRow(rowNumber).getCell(4);
-            totalSumTitleCell.setCellStyle(datatypeSheet.getRow(1).getCell(5).getCellStyle());
+            Cell  totalSumTitleCell = datatypeSheet.getRow(rowNumber).getCell(5);
+            totalSumTitleCell.setCellStyle(datatypeSheet.getRow(1).getCell(6).getCellStyle());
             totalSumTitleCell.setCellValue("Итого ("+offer.getVAT()+")");
             Cell  totalSumValueCell = datatypeSheet.getRow(rowNumber).getCell(5);
             totalSumValueCell.setCellValue(offer.getSum());
