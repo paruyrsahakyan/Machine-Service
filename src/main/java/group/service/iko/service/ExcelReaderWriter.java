@@ -533,9 +533,9 @@ public class ExcelReaderWriter {
             rowNumber++;
 
             Cell  totalSumTitleCell = datatypeSheet.getRow(rowNumber).getCell(5);
-            totalSumTitleCell.setCellStyle(datatypeSheet.getRow(1).getCell(6).getCellStyle());
+            totalSumTitleCell.setCellStyle(datatypeSheet.getRow(1).getCell(5).getCellStyle());
             totalSumTitleCell.setCellValue("Итого ("+offer.getVAT()+")");
-            Cell  totalSumValueCell = datatypeSheet.getRow(rowNumber).getCell(5);
+            Cell  totalSumValueCell = datatypeSheet.getRow(rowNumber).getCell(6);
             totalSumValueCell.setCellValue(offer.getSum());
             totalSumValueCell.setCellStyle(datatypeSheet.getRow(1).getCell(6).getCellStyle());
             fileInputStream.close();
