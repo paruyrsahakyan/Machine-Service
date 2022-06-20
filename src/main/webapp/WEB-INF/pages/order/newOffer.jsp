@@ -259,13 +259,22 @@ input[type=number] {
 
 }
 
- function setSum(rowNumber) {
+ function setSum(previousRowNumber) {
+
+     setProfitFromAvailable(rowNumber);
     var price = document.getElementById("price"+(rowNumber+1)).value;
     var quantity  = document.getElementById("quantity" +(rowNumber+1)).value;
     document.getElementById("sum"+(rowNumber+1)).value = price*quantity;
     setTotalSum();
   
 }
+
+  function  setProfitFromAvailable(rowNumber){
+  var price = document.getElementById("price"+(rowNumber+1)).value;
+  var availableNetCost  = document.getElementById("inStockNetCost" +(rowNumber+1)).value;
+  document.getElementById("profitFromAvailable"+(rowNumber+1)).value = (price-availableNetCost)/price*100;
+
+  }
 
 function setTotalSum() {
   var totalSum = 0;

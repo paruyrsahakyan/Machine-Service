@@ -482,8 +482,8 @@ public class ExcelReaderWriter {
         Row headRow = datatypeSheet.getRow(rowNumber);
         Cell cellPriceHeader = headRow.getCell(5);
         Cell cellSumHeader = headRow.getCell(6);
-        cellPriceHeader.setCellValue("Цена ("+offer.getVAT()+")");
-        cellSumHeader.setCellValue("Сумма ("+offer.getVAT()+")");
+        cellPriceHeader.setCellValue("Цена ("+offer.getCurrency()+ offer.getVAT()+")");
+        cellSumHeader.setCellValue("Сумма ("+offer.getCurrency() + offer.getVAT()+")");
 
         Row styleRow = datatypeSheet.getRow(rowNumber+1);
         CellStyle stylePartDescription = styleRow.getCell(0).getCellStyle();
@@ -534,7 +534,7 @@ public class ExcelReaderWriter {
 
             Cell  totalSumTitleCell = datatypeSheet.getRow(rowNumber).getCell(5);
             totalSumTitleCell.setCellStyle(datatypeSheet.getRow(1).getCell(5).getCellStyle());
-            totalSumTitleCell.setCellValue("Итого ("+offer.getVAT()+")");
+            totalSumTitleCell.setCellValue("Итого ("+ offer.getCurrency()+ offer.getVAT()+")");
             Cell  totalSumValueCell = datatypeSheet.getRow(rowNumber).getCell(6);
             totalSumValueCell.setCellValue(offer.getSum());
             totalSumValueCell.setCellStyle(datatypeSheet.getRow(1).getCell(6).getCellStyle());
