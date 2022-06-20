@@ -45,7 +45,7 @@ input[type=number] {
 <div class="mainContent">
     <h2>Коммерческое Предложение</h2>
 
-<a href="/offer/${offer.id}/downloadOffer" style="color: darkgreen"> скачать КП</a> &nbsp;  <b>|</b>
+<a href="/offer/${offer.id}/downloadOffer" style="color: darkgreen"> Скачать КП</a> &nbsp;  <b>|</b>
 <a href="/offer/deleteOffer/${offer.id}"
            onclick="return confirm('!!!Вы уверены что хатите удалить КП!!!');"
            style="color: crimson;">Удалить</a> &nbsp; <b>|</b>

@@ -261,7 +261,7 @@ input[type=number] {
 
  function setSum(previousRowNumber) {
 
-     setProfitFromAvailable(rowNumber);
+     setProfitFromAvailable(previousRowNumber);
     var price = document.getElementById("price"+(rowNumber+1)).value;
     var quantity  = document.getElementById("quantity" +(rowNumber+1)).value;
     document.getElementById("sum"+(rowNumber+1)).value = price*quantity;
