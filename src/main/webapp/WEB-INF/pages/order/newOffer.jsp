@@ -272,7 +272,7 @@ input[type=number] {
   function  setProfitFromAvailable(rowNumber){
   var price = document.getElementById("price"+(rowNumber+1)).value;
   var availableNetCost  = document.getElementById("inStockNetCost" +(rowNumber+1)).value;
-  document.getElementById("profitFromAvailable"+(rowNumber+1)).value = (price-availableNetCost)/price*100;
+  document.getElementById("profitFromAvailable"+(rowNumber+1)).value = Math.round((price-availableNetCost)/price*100);
 
   }
 
